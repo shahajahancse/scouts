@@ -319,84 +319,105 @@
       });
     });
 
-<?php /*
-    // Upazila / Thana dropdown
-    // $('#district').change(function(){
-    //   $('.upazila_thana_val').addClass('form-control input-sm');
-    //   $(".upazila_thana_val > option").remove();
-    //   var dis_id = $('#district').val();
-    //   $.ajax({
-    //     type: "POST",
-    //     url: hostname +"general_setting/ajax_get_upa_tha_by_dis/" + dis_id,
-    //     success: function(upazilaThanas)
-    //     {
-    //       $.each(upazilaThanas,function(id,ut_name)
-    //       {
-    //         var opt = $('<option />');
-    //         opt.val(id);
-    //         opt.text(ut_name);
-    //         $('.upazila_thana_val').append(opt);
-    //       });
-    //     }
-    //   });
-    // });
-*/ ?>    
+    <?php /*
+        // Upazila / Thana dropdown
+        // $('#district').change(function(){
+        //   $('.upazila_thana_val').addClass('form-control input-sm');
+        //   $(".upazila_thana_val > option").remove();
+        //   var dis_id = $('#district').val();
+        //   $.ajax({
+        //     type: "POST",
+        //     url: hostname +"general_setting/ajax_get_upa_tha_by_dis/" + dis_id,
+        //     success: function(upazilaThanas)
+        //     {
+        //       $.each(upazilaThanas,function(id,ut_name)
+        //       {
+        //         var opt = $('<option />');
+        //         opt.val(id);
+        //         opt.text(ut_name);
+        //         $('.upazila_thana_val').append(opt);
+        //       });
+        //     }
+        //   });
+        // });
+    */ ?>    
 
     // Scouts Badge / role dropdown
-   $('#sc_section').change(function(){
-    $('.sc_badge_val').addClass('form-control input-sm');
-    $(".sc_badge_val > option").remove();
-    var memberID = $('#member_id').val();    
-    var sectionID = $('#sc_section').val();
+    $('#sc_section').change(function(){
+      $('.sc_badge_val').addClass('form-control input-sm');
+      $(".sc_badge_val > option").remove();
+      var memberID = $('#member_id').val();    
+      var sectionID = $('#sc_section').val();
 
-    //Check select for member ID
-    if(memberID == ''){
-      alert('Please select member type');
-      return false;
-    }
-
-    $.ajax({
-      type: "POST",
-      url: hostname +"general_setting/ajax_get_scout_badge_by_section/" + memberID + "/" + sectionID,
-      success: function(func_data)
-      {
-        $.each(func_data,function(id,name)
-        {
-          var opt = $('<option />');
-          opt.val(id);
-          opt.text(name);
-          $('.sc_badge_val').append(opt);
-        });
+      //Check select for member ID
+      if(memberID == ''){
+        alert('Please select member type');
+        return false;
       }
+
+      $.ajax({
+        type: "POST",
+        url: hostname +"general_setting/ajax_get_scout_badge_by_section/" + memberID + "/" + sectionID,
+        success: function(func_data)
+        {
+          $.each(func_data,function(id,name)
+          {
+            var opt = $('<option />');
+            opt.val(id);
+            opt.text(name);
+            $('.sc_badge_val').append(opt);
+          });
+        }
+      });
     });
 
+
+    $('#member_id').change(function(){
+      $('.sc_rsection_val').addClass('form-control input-sm');
+      $(".sc_rsection_val > option").remove();
+      $.ajax({
+        type: "POST",
+        url: hostname +"general_setting/ajax_get_scout_section",
+        success: function(func_data)
+        {
+          $('.sc_rsection_val').append('<option>-- Select Section --</option>');
+          $.each(func_data,function(id,name)
+          {
+            var opt = $('<option />');
+            opt.val(id);
+            opt.text(name);
+            $('.sc_rsection_val').append(opt);
+          });
+        }
+      });
     });
+
 
     // Scout Role
     $('#sc_section').change(function(){
-          // group
-          $('.sc_role_val').addClass('form-control input-sm');
-          $(".sc_role_val > option").remove();
-          var memberID = $('#member_id').val();
-          var sectionID = $('#sc_section').val();
-          if(memberID == ''){
-            //alert('Please select member type');
-            return false;
-          }
-          $.ajax({
-            type: "POST",
-            url: hostname +"general_setting/ajax_get_scout_role_by_section/" + memberID + "/" + sectionID,
-            success: function(func_data)
-            {
-              $.each(func_data,function(id,name)
-              {
-                var opt = $('<option />');
-                opt.val(id);
-                opt.text(name);
-                $('.sc_role_val').append(opt);
-              });
-            }
+      // group
+      $('.sc_role_val').addClass('form-control input-sm');
+      $(".sc_role_val > option").remove();
+      var memberID = $('#member_id').val();
+      var sectionID = $('#sc_section').val();
+      if(memberID == ''){
+        //alert('Please select member type');
+        return false;
+      }
+      $.ajax({
+        type: "POST",
+        url: hostname +"general_setting/ajax_get_scout_role_by_section/" + memberID + "/" + sectionID,
+        success: function(func_data)
+        {
+          $.each(func_data,function(id,name)
+          {
+            var opt = $('<option />');
+            opt.val(id);
+            opt.text(name);
+            $('.sc_role_val').append(opt);
           });
+        }
+      });
     });
 
 
@@ -431,52 +452,52 @@
 
 
 
-<?php /*
-    // $('#member_id').change(function(){
-    //   $('.sc_badge_val').addClass('form-control input-sm');
-    //   $(".sc_badge_val > option").remove();
-    //   var id = $('#member_id').val();
-    //   var id2 = $('#sc_section').val();
-    //   $.ajax({
-    //     type: "POST",
-    //     url: hostname +"general_setting/ajax_get_scout_badge_by_section/" + id2 + "/" + id,
-    //     success: function(func_data)
-    //     {
-    //       $.each(func_data,function(id,name)
-    //       {
-    //         var opt = $('<option />');
-    //         opt.val(id);
-    //         opt.text(name);
-    //         $('.sc_badge_val').append(opt);
-    //       });
-    //     }
-    //   });
-    // });
+    <?php /*
+        // $('#member_id').change(function(){
+        //   $('.sc_badge_val').addClass('form-control input-sm');
+        //   $(".sc_badge_val > option").remove();
+        //   var id = $('#member_id').val();
+        //   var id2 = $('#sc_section').val();
+        //   $.ajax({
+        //     type: "POST",
+        //     url: hostname +"general_setting/ajax_get_scout_badge_by_section/" + id2 + "/" + id,
+        //     success: function(func_data)
+        //     {
+        //       $.each(func_data,function(id,name)
+        //       {
+        //         var opt = $('<option />');
+        //         opt.val(id);
+        //         opt.text(name);
+        //         $('.sc_badge_val').append(opt);
+        //       });
+        //     }
+        //   });
+        // });
 
-    // $('#member_id').change(function(){
-    //       $('.sc_role_val').addClass('form-control input-sm');
-    //       $(".sc_role_val > option").remove();
-    //       var id = $('#member_id').val();
-    //       var id2 = $('#sc_section').val();
-    //       $.ajax({
-    //         type: "POST",
-    //         url: hostname +"general_setting/ajax_get_scout_role_by_section/" + id2 + "/" + id,
-    //         success: function(func_data)
-    //         {
-    //           $.each(func_data,function(id,name)
-    //           {
-    //             var opt = $('<option />');
-    //             opt.val(id);
-    //             opt.text(name);
-    //             $('.sc_role_val').append(opt);
-    //           });
-    //         }
-    //       });
+        // $('#member_id').change(function(){
+        //       $('.sc_role_val').addClass('form-control input-sm');
+        //       $(".sc_role_val > option").remove();
+        //       var id = $('#member_id').val();
+        //       var id2 = $('#sc_section').val();
+        //       $.ajax({
+        //         type: "POST",
+        //         url: hostname +"general_setting/ajax_get_scout_role_by_section/" + id2 + "/" + id,
+        //         success: function(func_data)
+        //         {
+        //           $.each(func_data,function(id,name)
+        //           {
+        //             var opt = $('<option />');
+        //             opt.val(id);
+        //             opt.text(name);
+        //             $('.sc_role_val').append(opt);
+        //           });
+        //         }
+        //       });
 
-    // });
-*/ ?>
+        // });
+    */ ?>
 
-  // Scouts Region Dropdown
+    // Scouts Region Dropdown
     $('#region').change(function(){
       $('.sc_district_val').addClass('form-control input-sm');
       $(".sc_district_val > option").remove();

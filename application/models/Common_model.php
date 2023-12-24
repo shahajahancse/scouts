@@ -1406,6 +1406,10 @@ public function set_scout_section(){
    return array(''=>'-- Select Section --', '1' => 'Cub Scout', '2'=> 'Scout', '3'=>'Rover Scout', '4'=>'Not Applicable');
 }
 
+public function get_set_scout_section(){
+   return array('1' => 'Cub Scout', '2'=> 'Scout', '3'=>'Rover Scout', '4'=>'Not Applicable');
+}
+
 public function set_scout_progress(){
    return array(''=>'-- Select Progress --', '1' => 'Cub Progress', '2'=> 'Scout Progress', '3'=>'Rover Scout Progress', '4'=>'Adult Leader Progress');
 }

@@ -264,10 +264,13 @@
                            </div>
                            <div class="col-md-4">
                               <label class="form-label">30. Scouts Section Type <span class='required'>*</span></label>
-                              <?php echo form_error('sc_section_id');
-                              $more_attr = 'class="form-control input-sm" id="sc_section"';
-                              echo form_dropdown('sc_section_id', $scout_section, set_value('sc_section_id'), $more_attr);
+                              <?php //echo form_error('sc_section_id');
+                              //$more_attr = 'class="form-control input-sm" id="sc_section"';
+                              //echo form_dropdown('sc_section_id', $scout_section, set_value('sc_section_id'), $more_attr);
                               ?>
+                              <select name="sc_section_id" class="sc_rsection_val form-control input-sm" id="sc_section">
+                                 <option value="">-- Select One --</option>
+                              </select>
                            </div> 
                         </div>
 

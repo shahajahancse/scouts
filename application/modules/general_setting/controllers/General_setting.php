@@ -1844,6 +1844,11 @@ class General_setting extends Backend_Controller {
         echo (json_encode($this->Common_model->get_get_designation_by_service($id)));
     }
 
+    function ajax_get_scout_section(){
+        header('Content-Type: application/x-json; charset=utf-8');
+        echo (json_encode($this->Common_model->get_set_scout_section()));
+    }
+
 
     // function ajax_get_scout_badge_by_section($id, $id2=NULL){
     //     header('Content-Type: application/x-json; charset=utf-8');
