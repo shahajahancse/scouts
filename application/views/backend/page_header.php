@@ -13,8 +13,9 @@
    <?php /*
    <!--  <link href="<?=base_url();?>awedget/assets/plugins/bootstrap-select2/select2.css" rel="stylesheet" type="text/css" media="screen"/> -->
    <!-- <link href="<?=base_url();?>awedget/assets/plugins/select2/select2.css" rel="stylesheet" type="text/css" media="screen"/>  -->
-   <!-- <link href="<?=base_url();?>awedget/assets/plugins/dropzone/css/dropzone.css" rel="stylesheet" type="text/css"/> --> */ ?>
-   <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.0.1/min/dropzone.min.css" rel="stylesheet">
+   <!-- <link href="<?=base_url();?>awedget/assets/plugins/dropzone/css/dropzone.css" rel="stylesheet" type="text/css"/> -->
+   <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.0.1/min/dropzone.min.css" rel="stylesheet"> -->
+   */ ?>
    <link href="<?=base_url();?>awedget/assets/plugins/bootstrap-datepicker/css/datepicker.css" rel="stylesheet" type="text/css" />
    <link href="<?=base_url();?>awedget/assets/plugins/bootstrap-timepicker/css/bootstrap-timepicker.css" rel="stylesheet" type="text/css" />
    <link href="<?=base_url();?>awedget/assets/plugins/jquery-datatable/css/jquery.dataTables.css" rel="stylesheet" type="text/css"/>
@@ -43,8 +44,9 @@
    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
    <!-- <script src="<?=base_url();?>awedget/assets/plugins/jquery-1.8.3.min.js" type="text/javascript"></script> -->
    <!-- <script src="<?=base_url();?>awedget/assets/plugins/jquery-1.9.1.min.js" type="text/javascript"></script> -->
+   <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script> -->
    */?>
-   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+   <script src="<?=base_url('awedget/assets/js/jquery.1.9.1.min.js');?>" type="text/javascript"></script>
    <script type="text/javascript">var hostname='<?php echo base_url();?>';</script>
    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
@@ -59,27 +61,27 @@
          <div class="navbar-inner">
             <div class="header-seperation">
                <ul class="nav pull-left notifcation-center" id="main-menu-toggle-wrapper" style="display:none">
-                  <li class="dropdown"> <a id="main-menu-toggle" href="#main-menu"  class="" >              
-                     <div class="iconset top-menu-toggle-white"></div> </a> 
+                  <li class="dropdown"> <a id="main-menu-toggle" href="#main-menu"  class="" >
+                     <div class="iconset top-menu-toggle-white"></div> </a>
                   </li>
                </ul>
                <a href="<?=base_url('dashboard')?>"><img src="<?=base_url('awedget/assets/img/logo-200.png');?>" class="logo" alt=""  data-src="<?=base_url('awedget/assets/img/logo-200.png');?>" data-src-retina="<?=base_url('awedget/assets/img/logo-200.png');?>" height="35"/></a>
                <ul class="nav pull-right notifcation-center">
                   <li class="dropdown" id="header_task_bar"> <a href="<?=base_url()?>" class="dropdown-toggle active" data-toggle="">
-                     <div class="iconset top-home"></div> </a> 
+                     <div class="iconset top-home"></div> </a>
                   </li>
                </ul>
             </div>
             <div class="header-quick-nav" >
                <div class="pull-left">
                   <ul class="nav quick-section">
-                     <li class="quicklinks"> 
+                     <li class="quicklinks">
                         <a href="javascript:;" class="" id="layout-condensed-toggle" style="color: #8dc641;"><i class="fa fa-bars" style="font-size: 22px; color: #8dc641 !important;"></i>
-                        </a> 
+                        </a>
                      </li>
                   </ul>
 
-                  <?php if(!$this->officeSess){ ?>           
+                  <?php if(!$this->officeSess){ ?>
                   <div class="pull-left" style="margin: 20px 0 0 5px; height: 30px;">
                      <span style="font-size: 15px; float: left; font-weight: bold; color: #8dc641; margin: 0px 15px 0 0;"> <?=$this->ion_auth->is_employee()?'প্রোফাইল':'Profile'?> </span>
                      <div class="progress progress-striped active progress-large no-radius no-margin" style="width: 200px;border: 1px solid #cbc2c2;">
@@ -87,33 +89,33 @@
                      </div>
                      <div class="pull-right">
                         <div class="details-status"> <span data-animation-duration="560" data-value="<?=$userDetails['profile_score']?>" class="animate-number"></span>% </div>
-                     </div>              
+                     </div>
                   </div>
                   <?php } ?>
-               </div> 
+               </div>
 
                <!-- BEGIN CHAT TOGGLER -->
                <div class="pull-right">
                   <div class="chat-toggler"> <a href="javascript:;" class="dropdown-toggle" id="my-task-list" data-placement="bottom"  data-content='' data-toggle="dropdown" data-original-title="Notifications">
                      <?php if($this->ion_auth->is_employee()){ ?>
-                     <div class="user-details">                
-                        <div class="username">  
+                     <div class="user-details">
+                        <div class="username">
                            <div class="bold" style=" line-height: 20px"><?=$userDetails['user_info']->first_name?></div>
                            <div style="font-size: 12px; font-weight: bold; line-height: 20px"><?=$designationDetails->designation_name;?></div>
                         </div>
                      </div>
                      <?php }elseif(!$this->officeSess){ ?>
-                     <div class="user-details">                
-                        <div class="username">  
-                           <?php //if($userDetails['user_info']->scout_id != NULL){ ?>                 
-                           <strong>BS ID</strong>: <span class="label label-success"><?=$userDetails['user_info']->scout_id?></span> 
+                     <div class="user-details">
+                        <div class="username">
+                           <?php //if($userDetails['user_info']->scout_id != NULL){ ?>
+                           <strong>BS ID</strong>: <span class="label label-success"><?=$userDetails['user_info']->scout_id?></span>
                            <?php //} ?>
                            <span class="bold" style="margin-left: 20px;"><?=$userDetails['user_info']->first_name?></span>
                            <span style="font-size: 12px; font-weight: bold;">(<?=$userDetails['user_info']->username;?>)</span>
                         </div>
                      </div>
                      <?php }else{ ?>
-                     <div class="user-details">                
+                     <div class="user-details">
                         <div class="username">
                            <span class="bold" style="margin-left: 20px;"><?=$officeName?></span> <span style="font-size: 12px; font-weight: bold;">(<?=$officeDetails->username;?>)</span>
                         </div>
@@ -122,7 +124,7 @@
 
                      <div class="iconset top-down-arrow"></div> </a>
 
-                     <?php if(!$this->officeSess){ 
+                     <?php if(!$this->officeSess){
                         $path = base_url().'profile_img/';
                         if($userDetails['user_info']->profile_img != NULL){
                            $img_url = $path.$userDetails['user_info']->profile_img;
@@ -140,7 +142,7 @@
                         </a>
                         <ul class="dropdown-menu  pull-right" role="menu" aria-labelledby="user-options">
                            <?php if(!$this->officeSess){ ?>
-                           <?php if($userDetails['user_info']->is_request != 2){ ?> 
+                           <?php if($userDetails['user_info']->is_request != 2){ ?>
                            <li><a href="<?=base_url('my_profile')?>"> <i class="fa fa-user"></i>  <?=$this->ion_auth->is_employee()?'প্রোফাইল':'My Profile'?></a> </li>
                            <?php } ?>
                            <?php }else{ ?>
@@ -178,80 +180,80 @@
                            <?php }else{ ?>
                            <span style="color: #683091">Login as:</span>
                            <span class="label label-success"> <strong><?= $this->session->userdata('current_group_name') ?></strong></span>
-                           <?php } ?>               
+                           <?php } ?>
                         </div>
                      </div>
 
                      <!-- BEGIN SIDEBAR MENU -->
                      <ul class="pull-left">
-                        <li class="start <?=backend_activate_menu_class('dashboard')?>"> 
+                        <li class="start <?=backend_activate_menu_class('dashboard')?>">
                            <a href="<?=base_url('dashboard');?>"> <i class="icon-custom-home"></i>  <span class="title"><?=$this->ion_auth->is_employee()?'ড্যাশবোর্ড':'Dashboard'?></span></a>
                         </li>
 
-                        <?php 
+                        <?php
                         // Vendor role (Third Party)
                         if($this->ion_auth->is_vendor()){ ?>
                         <li class="start"><a href="<?=base_url('scouts_member/all')?>"> <i class="fa fa-circle"></i> <span class="title">Scout Member List</span> </a></li>
-                        <li class="start"><a href="<?=base_url('offices/scout_group')?>"> <i class="fa fa-circle"></i> <span class="title">Scout Group List</span> </a></li>                     
+                        <li class="start"><a href="<?=base_url('offices/scout_group')?>"> <i class="fa fa-circle"></i> <span class="title">Scout Group List</span> </a></li>
                         <?php }else{ // Other user role ?>
 
                         <?php if(!$this->officeSess){ ?>
-                        <?php if($userDetails['user_info']->is_request != 2){ ?> 
-                        <li class="start <?=backend_activate_menu_class('my_profile')?>"> 
+                        <?php if($userDetails['user_info']->is_request != 2){ ?>
+                        <li class="start <?=backend_activate_menu_class('my_profile')?>">
                            <a href="<?=base_url('my_profile');?>"> <i class="fa fa-user"></i> <span class="title"><?=$this->ion_auth->is_employee()?'প্রোফাইল':'My Profile'?></span></a>
                         </li>
                         <?php } ?>
                         <?php }else{ ?>
-                        <li class="start <?=backend_activate_menu_class('my_office')?>"> 
+                        <li class="start <?=backend_activate_menu_class('my_office')?>">
                            <a href="<?=base_url('my_office');?>"> <i class="fa fa-user"></i> <span class="title">My Office</span></a>
                         </li>
                         <?php } ?>
 
                         <?php if(!$this->ion_auth->is_guest()){ ?>
                         <?php if($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin() || $this->ion_auth->is_region_admin() || $this->ion_auth->is_district_admin() || $this->ion_auth->is_upazila_admin() || $this->ion_auth->is_group_admin()){ ?>
-                        <li class="start <?=backend_activate_menu_class('scouts_member')?>"> 
+                        <li class="start <?=backend_activate_menu_class('scouts_member')?>">
                            <a href="javascript:;" > <i class="fa fa-user"></i> <span class="title">Scouts Member</span> <span class="selected"></span>
-                              <?php             
-                              if($this->ion_auth->is_group_admin()){   
+                              <?php
+                              if($this->ion_auth->is_group_admin()){
                                  if($count_member_req > 0){
                                     echo '<span class="badge badge-danger pull-right">'.$count_member_req.'</span>';
                                  }
                               }
                               ?>
-                              <span class="arrow"></span> 
-                           </a> 
-                           <ul class="sub-menu">                           
+                              <span class="arrow"></span>
+                           </a>
+                           <ul class="sub-menu">
                               <li> <a href="<?=base_url('scouts_member/all');?>"> Scout Member List</a></li>
 
-                              <?php if($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin() || $this->ion_auth->is_group_admin()){ ?> 
+                              <?php if($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin() || $this->ion_auth->is_group_admin()){ ?>
                               <li> <a href="<?=base_url('scouts_member/create');?>"> Add Scout Member </a> </li>
                               <?php } ?>
 
                               <?php if($this->ion_auth->is_group_admin()){ ?>
                               <li> <a href="<?=base_url('scouts_member/request');?>"> Member Request List
-                                 <?php                
+                                 <?php
                                  if($count_member_req > 0){
                                     echo '<span class="badge badge-danger pull-right">'.$count_member_req.'</span>';
                                  }
                                  ?>
-                              </a> </li>                              
+                              </a> </li>
                               <li> <a href="<?=base_url('scouts_member/verified_list');?>"> Verified Member List</a></li>
                               <li> <a href="<?=base_url('scouts_member/cancel_request');?>"> Cancel Request List</a></li>
                               <?php } ?>
 
-                              <?php if($this->ion_auth->is_admin() || $this->ion_auth->is_region_admin() || $this->ion_auth->is_district_admin() || $this->ion_auth->is_upazila_admin() || $this->ion_auth->is_group_admin()){ ?> 
+                              <?php if($this->ion_auth->is_admin() || $this->ion_auth->is_region_admin() || $this->ion_auth->is_district_admin() || $this->ion_auth->is_upazila_admin() || $this->ion_auth->is_group_admin()){ ?>
                               <li> <a href="<?=base_url('scouts_member/archive_list');?>"> Archive Member List</a></li>
                               <?php if($this->ion_auth->is_admin()) { ?>
                               <li> <a href="<?=base_url('scouts_member/delete_request');?>"> Delete Request List</a></li>
                               <?php } ?>
                               <?php } ?>
                            </ul>
-                        </li> 
+                        </li>
                         <?php } ?>
 
                         <?php if($this->ion_auth->is_admin() || $this->ion_auth->is_region_admin() || $this->ion_auth->is_district_admin() || $this->ion_auth->is_upazila_admin()){ ?>
-                        <li class="start <?=backend_activate_menu_class('offices')?>"> 
-                           <a href="javascript:;" > <i class="fa fa-user"></i> <span class="title">Office Setup</span> <span class="selected"></span> <span class="arrow"></span> </a> 
+                        <li class="start <?=backend_activate_menu_class('offices')?>">
+                           <a href="javascript:;" > <i class="fa fa-user"></i> <span class="title">Office Setup</span> <span class="selected"></span> <span class="arrow"></span> </a>
                            <ul class="sub-menu">
                               <?php if($this->ion_auth->is_admin()){ ?>
                               <li> <a href="<?=base_url('offices/nhq');?>"> NHQ Office </a> </li>
@@ -268,17 +270,17 @@
                               <?php } ?>
                               <?php if($this->ion_auth->is_admin() || $this->ion_auth->is_region_admin() || $this->ion_auth->is_district_admin() || $this->ion_auth->is_upazila_admin() || $this->ion_auth->is_group_admin()){ ?>
                               <!-- <li> <a href="<?=base_url('offices/scout_unit');?>"> Scout Unit</a></li> -->
-                              <?php } ?>                  
+                              <?php } ?>
                            </ul>
                         </li>
                         <?php } ?>
 
                         <?php if(!$this->officeSess){ ?>
                         <?php if($userDetails['user_info']->member_id == '2'){ ?>
-                        <li class="start <?=backend_activate_menu_class('program')?>"> 
+                        <li class="start <?=backend_activate_menu_class('program')?>">
                            <a href="javascript:;" > <i class="fa fa-user"></i> <span class="title">My Progress</span> <span class="selected"></span>
-                              <span class="arrow"></span> 
-                           </a> 
+                              <span class="arrow"></span>
+                           </a>
                            <ul class="sub-menu">
                               <?php if($userDetails['user_info']->sc_section_id == '1'){ ?>
                               <li> <a href="<?=base_url('program/cub_program')?>"> Cub Program</a> </li>
@@ -290,32 +292,32 @@
                               <li> <a href="<?=base_url('program/rover_program')?>"> Rover Scout Program</a> </li>
                               <?php } ?>
                            </ul>
-                        </li> 
+                        </li>
 
-                        <?php }elseif($userDetails['user_info']->member_id == 8 || $userDetails['user_info']->member_id == 9 || $userDetails['user_info']->member_id == 10 || $userDetails['user_info']->member_id == 12){ 
+                        <?php }elseif($userDetails['user_info']->member_id == 8 || $userDetails['user_info']->member_id == 9 || $userDetails['user_info']->member_id == 10 || $userDetails['user_info']->member_id == 12){
                            // || $userDetails['user_info']->member_id == '9' || $userDetails['user_info']->member_id == '10' || $userDetails['user_info']->member_id == '12'
                            ?>
-                           <li class="start <?=backend_activate_menu_class('program')?>"> 
-                              <a href="<?=base_url('program/leader_progress');?>"> <i class="fa fa-user"></i> <span class="title">Leader Progress </span> 
+                           <li class="start <?=backend_activate_menu_class('program')?>">
+                              <a href="<?=base_url('program/leader_progress');?>"> <i class="fa fa-user"></i> <span class="title">Leader Progress </span>
                               </a>
                            </li>
                            <?php } ?>
                            <?php } ?>
 
                            <?php if($this->ion_auth->is_scout_member()){ ?>
-                           <li class="start <?=backend_activate_menu_class('migration')?>"> 
+                           <li class="start <?=backend_activate_menu_class('migration')?>">
                               <a href="javascript:;" > <i class="fa fa-user"></i> <span class="title">Group Migration</span> <span class="selected"></span>
-                                 <span class="arrow"></span> 
-                              </a> 
+                                 <span class="arrow"></span>
+                              </a>
                               <ul class="sub-menu">
                                  <li> <a href="<?=base_url('migration/group_migration_application');?>"> Group Migration Application</a></li>
                                  <li> <a href="<?=base_url('migration/my_group_migration_list');?>"> My Group Migration List </a> </li>
                               </ul>
                            </li>
-                           <li class="start <?=backend_activate_menu_class('migration')?>"> 
+                           <li class="start <?=backend_activate_menu_class('migration')?>">
                               <a href="javascript:;" > <i class="fa fa-user"></i> <span class="title">Section Migration</span> <span class="selected"></span>
-                                 <span class="arrow"></span> 
-                              </a> 
+                                 <span class="arrow"></span>
+                              </a>
                               <ul class="sub-menu">
                                  <li> <a href="<?=base_url('migration/section_migration_application');?>"> Section Migration Application</a></li>
                                  <li> <a href="<?=base_url('migration/my_section_migration_list');?>"> My Section Migration List </a> </li>
@@ -324,57 +326,57 @@
                            <?php } ?>
 
                            <?php if($this->ion_auth->is_group_admin()){ ?>
-                           <li class="start <?=backend_activate_menu_class('migration')?>"> 
+                           <li class="start <?=backend_activate_menu_class('migration')?>">
                               <a href="javascript:;" > <i class="fa fa-user"></i> <span class="title">Migration</span> <span class="selected"></span>
-                                 <?php                
+                                 <?php
                                  if($this->ion_auth->is_group_admin() && $count_req_total_grp_mig > 0){
                                     echo '<span class="badge badge-danger pull-right">'.$count_req_total_grp_mig.'</span>';
                                  }
                                  ?>
-                                 <span class="arrow"></span> 
-                              </a> 
+                                 <span class="arrow"></span>
+                              </a>
                               <ul class="sub-menu">
-                                 <?php if($this->ion_auth->is_group_admin()) { ?> 
-                                 <li> 
-                                    <a href="<?=base_url('migration/release_group_request_list');?>"> Release Member Request 
-                                       <?php                
+                                 <?php if($this->ion_auth->is_group_admin()) { ?>
+                                 <li>
+                                    <a href="<?=base_url('migration/release_group_request_list');?>"> Release Member Request
+                                       <?php
                                        if($this->ion_auth->is_group_admin() && $count_req_release_grp_mig > 0){
                                           echo '<span class="badge badge-danger pull-right">'.$count_req_release_grp_mig.'</span>';
                                        }
-                                       ?> 
-                                    </a> 
-                                 </li> 
-                                 <li> 
-                                    <a href="<?=base_url('migration/migrate_group_request_list');?>"> Migrate Member Request 
-                                       <?php                
+                                       ?>
+                                    </a>
+                                 </li>
+                                 <li>
+                                    <a href="<?=base_url('migration/migrate_group_request_list');?>"> Migrate Member Request
+                                       <?php
                                        if($count_req_migrate_grp_mig > 0){
                                           echo '<span class="badge badge-danger pull-right">'.$count_req_migrate_grp_mig.'</span>';
                                        }
-                                       ?> 
-                                    </a> 
-                                 </li> 
+                                       ?>
+                                    </a>
+                                 </li>
                                  <?php } ?>
 
-                                 <?php if($this->ion_auth->is_group_admin()) { ?> 
+                                 <?php if($this->ion_auth->is_group_admin()) { ?>
                                  <?php /*
-                                 <li> 
-                                    <a href="<?=base_url('migration/release_section_request_list');?>"> Release Section Request 
-                                       <?php                
+                                 <li>
+                                    <a href="<?=base_url('migration/release_section_request_list');?>"> Release Section Request
+                                       <?php
                                        if($count_req_release_section_mig > 0){
                                           echo '<span class="badge badge-danger pull-right">'.$count_req_release_section_mig.'</span>';
                                        }
-                                       ?> 
-                                    </a> 
-                                 </li> 
+                                       ?>
+                                    </a>
+                                 </li>
                                  */ ?>
-                                 <li> <a href="<?=base_url('migration/migrate_section_request_list');?>"> Migrate Section Request 
-                                    <?php                
+                                 <li> <a href="<?=base_url('migration/migrate_section_request_list');?>"> Migrate Section Request
+                                    <?php
                                     if($count_req_migrate_section_mig > 0){
                                        echo '<span class="badge badge-danger pull-right">'.$count_req_migrate_section_mig.'</span>';
                                     }
-                                    ?> 
-                                 </a> 
-                              </li> 
+                                    ?>
+                                 </a>
+                              </li>
                               <?php } ?>
                            </ul>
                         </li>
@@ -382,9 +384,9 @@
 
                         <?php if($this->ion_auth->is_admin() || $this->ion_auth->in_group('event') || $this->ion_auth->is_region_admin() || $this->ion_auth->is_district_admin() || $this->ion_auth->is_upazila_admin() || $this->ion_auth->is_group_admin() || $this->ion_auth->is_scout_member()){ ?>
 
-                        <li class="start <?=backend_activate_menu_class('events')?>"> 
-                           <a href="javascript:;" > <i class="fa fa-user"></i> <span class="title">Events</span> <span class="selected"></span> <span class="arrow"></span> 
-                           </a> 
+                        <li class="start <?=backend_activate_menu_class('events')?>">
+                           <a href="javascript:;" > <i class="fa fa-user"></i> <span class="title">Events</span> <span class="selected"></span> <span class="arrow"></span>
+                           </a>
                            <ul class="sub-menu">
                               <?php if($this->ion_auth->is_scout_member()){ ?>
                               <li> <a href="<?=base_url('events/upcomming_event');?>"> Upcomming Events </a> </li>
@@ -410,8 +412,8 @@
                         <?php } ?>
 
                         <?php if($this->ion_auth->is_admin() || $this->ion_auth->in_group('training') || $this->ion_auth->is_region_admin() || $this->ion_auth->is_district_admin() || $this->ion_auth->is_upazila_admin() || $this->ion_auth->is_group_admin() || $this->ion_auth->is_scout_member()){ ?>
-                        <li class="start <?=backend_activate_menu_class('training')?>"> 
-                           <a href="javascript:;" > <i class="fa fa-user"></i> <span class="title">Training</span> <span class="selected"></span> <span class="arrow"></span> </a> 
+                        <li class="start <?=backend_activate_menu_class('training')?>">
+                           <a href="javascript:;" > <i class="fa fa-user"></i> <span class="title">Training</span> <span class="selected"></span> <span class="arrow"></span> </a>
                            <ul class="sub-menu">
                               <?php if($this->ion_auth->is_scout_member()){ ?>
                               <li> <a href="<?=base_url('training/upcomming_training');?>"> Upcomming Training </a> </li>
@@ -424,19 +426,19 @@
                               <?php } ?>
 
                               <?php if($this->ion_auth->is_admin() || $this->ion_auth->in_group('training') || $this->ion_auth->is_region_admin() || $this->ion_auth->is_district_admin() || $this->ion_auth->is_upazila_admin() || $this->ion_auth->is_group_admin()){ ?>
-                              <li> <a href="<?=base_url('training/application_list');?>"> Applicant List</a></li>               
+                              <li> <a href="<?=base_url('training/application_list');?>"> Applicant List</a></li>
                               <?php } ?>
 
                               <?php if($this->ion_auth->is_admin() || $this->ion_auth->in_group('training') || $this->ion_auth->is_region_admin() || $this->ion_auth->is_district_admin() || $this->ion_auth->is_upazila_admin()){ ?>
-                              <li> <a href="<?=base_url('training/trainer_list');?>"> Trainer List</a></li>               
-                              <?php } ?>            
+                              <li> <a href="<?=base_url('training/trainer_list');?>"> Trainer List</a></li>
+                              <?php } ?>
                            </ul>
                         </li>
                         <?php } ?>
 
                         <?php if($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin()|| $this->ion_auth->in_group('award') || $this->ion_auth->is_region_admin() || $this->ion_auth->is_district_admin() || $this->ion_auth->is_upazila_admin() || $this->ion_auth->is_group_admin() || $this->ion_auth->is_scout_member()){ ?>
-                        <li class="start <?=backend_activate_menu_class('award')?>"> 
-                           <a href="javascript:;" > <i class="fa fa-user"></i> <span class="title">Award</span> <span class="selected"></span> <span class="arrow"></span> </a> 
+                        <li class="start <?=backend_activate_menu_class('award')?>">
+                           <a href="javascript:;" > <i class="fa fa-user"></i> <span class="title">Award</span> <span class="selected"></span> <span class="arrow"></span> </a>
                            <ul class="sub-menu">
                               <?php if($this->ion_auth->is_admin() || $this->ion_auth->in_group('award') || $this->ion_auth->is_scout_admin()){ ?>
                               <li> <a href="<?=base_url('award/circular_create');?>">Create Award Circular </a> </li>
@@ -462,15 +464,15 @@
                         <?php } ?>
 
                         <?php if($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin()){ ?>
-                        <li class="start <?=backend_activate_menu_class('employee')?>"> <a href="javascript:;" > <i class="fa fa-user"></i> <span class="title">Employee / PDS</span> <span class="selected"></span> <span class="arrow"></span> </a> 
+                        <li class="start <?=backend_activate_menu_class('employee')?>"> <a href="javascript:;" > <i class="fa fa-user"></i> <span class="title">Employee / PDS</span> <span class="selected"></span> <span class="arrow"></span> </a>
                            <ul class="sub-menu">
 
-                             <li> <a href="<?=base_url('employee/create');?>"> Create New Employee / PDS </a> </li>  
+                             <li> <a href="<?=base_url('employee/create');?>"> Create New Employee / PDS </a> </li>
                              <li> <a href="<?=base_url('employee/all');?>"> Employee / PDS List </a> </li>
 
 
                              <li> <a href="<?=base_url('employee/all2');?>">Professional Employee/PDS List </a> </li>
-                             <li> <a href="<?=base_url('employee/deactive');?>"> Deactive Employee List</a> </li>  
+                             <li> <a href="<?=base_url('employee/deactive');?>"> Deactive Employee List</a> </li>
                              <li> <a href="<?=base_url('employee/emp_id_card_expiry');?>"> Employee ID Card Expiry Date</a> </li>
 
                           </ul>
@@ -478,8 +480,8 @@
                        <?php } ?>
 
                        <?php //if($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin()){ ?>
-                        <!-- <li class="start <?=backend_activate_menu_class('pds')?>"> 
-                           <a href="javascript:;" > <i class="fa fa-user"></i> <span class="title">PDS</span> <span class="selected"></span> <span class="arrow"></span> </a> 
+                        <!-- <li class="start <?=backend_activate_menu_class('pds')?>">
+                           <a href="javascript:;" > <i class="fa fa-user"></i> <span class="title">PDS</span> <span class="selected"></span> <span class="arrow"></span> </a>
                            <ul class="sub-menu">
                               <li> <a href="<?=base_url('pds/add');?>">Add PDS </a> </li>
                               <li> <a href="<?=base_url('pds/pds_list');?>">PDS List </a> </li>
@@ -487,11 +489,11 @@
                         </li> -->
                         <?php //} ?>
 
-                        <?php 
+                        <?php
                         /*
                         if($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin()){ ?>
 
-                        <li class="start <?=backend_activate_menu_class('e_nathi')?>"> <a href="javascript:;" > <i class="fa fa-folder"></i> <span class="title">Nothi List</span> <span class="selected"></span> <span class="arrow"></span> </a> 
+                        <li class="start <?=backend_activate_menu_class('e_nathi')?>"> <a href="javascript:;" > <i class="fa fa-folder"></i> <span class="title">Nothi List</span> <span class="selected"></span> <span class="arrow"></span> </a>
                            <ul class="sub-menu">
 
                               <?php if($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin()){ ?>
@@ -504,13 +506,13 @@
 
                         <?php if($this->ion_auth->is_employee()){ ?>
 
-                        <li class="start <?=backend_activate_menu_class('e_nathi')?>"> <a href="javascript:;" > <i class="fa fa-folder"></i> <span class="title">নথি তালিকা</span> <span class="selected"></span> <span class="arrow"></span> </a> 
+                        <li class="start <?=backend_activate_menu_class('e_nathi')?>"> <a href="javascript:;" > <i class="fa fa-folder"></i> <span class="title">নথি তালিকা</span> <span class="selected"></span> <span class="arrow"></span> </a>
                            <ul class="sub-menu">
 
                               <?php if($this->ion_auth->is_employee()){ ?>
                               <?php if($userDetails['user_info']->desk_officer==1){?>
                               <li> <a href="<?=base_url('e_nathi/nathi_list');?>"> ফোল্ডার আকারে </a> </li>
-                              <li> <a href="<?=base_url('e_nathi/nathi_list2');?>"> সকল নথি</a> </li>   
+                              <li> <a href="<?=base_url('e_nathi/nathi_list2');?>"> সকল নথি</a> </li>
                               <!-- <li> <a href="<?=base_url('e_nathi/nathi');?>">নথি তৈরি করুন </a> </li> -->
                               <!-- <li> <a href="<?=base_url('e_nathi/paragraph');?>">নথির অনুচ্ছেদ তৈরি করুন </a> </li> -->
                                       <!-- <li> <a href="<?=base_url('e_nathi/suggestion');?>">নথির প্রস্তাবনা  তৈরি করুন </a> </li>
@@ -526,7 +528,7 @@
                                    </ul>
                                 </li>
 
-                             <!-- <li class="start <?=backend_activate_menu_class('e_filing')?>"> <a href="javascript:;" > <i class="fa fa-folder"></i> <span class="title">ই-চিঠি</span> <span class="selected"></span> <span class="arrow"></span> </a> 
+                             <!-- <li class="start <?=backend_activate_menu_class('e_filing')?>"> <a href="javascript:;" > <i class="fa fa-folder"></i> <span class="title">ই-চিঠি</span> <span class="selected"></span> <span class="arrow"></span> </a>
                                  <ul class="sub-menu">
 
                                  <?php if($this->ion_auth->is_employee()){ ?>
@@ -537,19 +539,19 @@
                                       <li> <a href="<?=base_url('e_filing/create');?>"> নতুন চিঠি তৈরি করুন </a> </li>
                                       <li> <a href="<?=base_url('e_filing/file_list');?>"> চিঠি তালিকা </a> </li>
                                    <?php } ?>
-                                   <li> <a href="<?=base_url('e_filing/file_done');?>"> অনুমোদিত চিঠি তালিকা </a> </li> 
+                                   <li> <a href="<?=base_url('e_filing/file_done');?>"> অনুমোদিত চিঠি তালিকা </a> </li>
                                  <?php } ?>
 
                                 </ul>
                              </li> -->
 
-                              <!-- <li class="start <?=backend_activate_menu_class('demand')?>"> 
+                              <!-- <li class="start <?=backend_activate_menu_class('demand')?>">
                                  <a href="#"> <i class="fa fa-folder"></i>  <span class="title">ই-চাহিদা</span></a>
                               </li> -->
-                              
+
 
                             <!--  <?php if($userDetails['user_info']->desk_officer==1){?>
-                                 <li class="start <?=backend_activate_menu_class('e_folder')?>"> <a href="javascript:;" > <i class="fa fa-folder"></i> <span class="title">ই-ফোল্ডার</span> <span class="selected"></span> <span class="arrow"></span> </a> 
+                                 <li class="start <?=backend_activate_menu_class('e_folder')?>"> <a href="javascript:;" > <i class="fa fa-folder"></i> <span class="title">ই-ফোল্ডার</span> <span class="selected"></span> <span class="arrow"></span> </a>
                                     <ul class="sub-menu">
 
                                       <li> <a href="<?=base_url('e_folder/all');?>"> ফোল্ডার তালিকা </a> </li>
@@ -557,12 +559,12 @@
                                    </ul>
                                 </li>
                                 <?php } ?> -->
-                              <!-- <li class="start <?=backend_activate_menu_class('purchase')?>"> 
+                              <!-- <li class="start <?=backend_activate_menu_class('purchase')?>">
                                  <a href="#"> <i class="fa fa-folder"></i>  <span class="title">ক্রয়ের প্রকিয়া </span></a>
                               </li> -->
 
                               <?php if($userDetails['user_info']->desk_officer==1){?>
-                              <li class="start <?=backend_activate_menu_class('attachment')?>"> <a href="javascript:;" > <i class="fa fa-folder"></i> <span class="title">সাধারণ সংযুক্তি</span> <span class="selected"></span> <span class="arrow"></span> </a> 
+                              <li class="start <?=backend_activate_menu_class('attachment')?>"> <a href="javascript:;" > <i class="fa fa-folder"></i> <span class="title">সাধারণ সংযুক্তি</span> <span class="selected"></span> <span class="arrow"></span> </a>
                                  <ul class="sub-menu">
 
                                    <li> <a href="<?=base_url('e_attachment/all')?>"> সংযুক্তি তালিকা </a> </li>
@@ -574,14 +576,14 @@
                              <li class="start <?=backend_activate_menu_method('change_department')?>">
                               <a href="<?=base_url('my_profile/change_department')?>"><i class="fa fa-home"></i> বিভাগ পরিবর্তন</a>
                            </li>
-                           
+
                            <?php } ?>
 
 
 
                         <?php /* // if($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin()){ ?>
-                        <li class="start <?=backend_activate_menu_class('award_application')?>"> 
-                           <a href="javascript:;" > <i class="fa fa-user"></i> <span class="title">Award Application</span> <span class="selected"></span> <span class="arrow"></span> </a> 
+                        <li class="start <?=backend_activate_menu_class('award_application')?>">
+                           <a href="javascript:;" > <i class="fa fa-user"></i> <span class="title">Award Application</span> <span class="selected"></span> <span class="arrow"></span> </a>
                            <ul class="sub-menu">
                            <?php if($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin() || $this->ion_auth->is_region_admin() || $this->ion_auth->is_district_admin() || $this->ion_auth->is_upazila_admin() || $this->ion_auth->is_group_admin()){ ?>
                               <li> <a href="<?=base_url('award_application/all_award_request_list');?>">Award Request List </a> </li>
@@ -604,7 +606,7 @@
                         <?php //} */ ?>
 
                         <?php if($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin() || $this->ion_auth->is_region_admin() || $this->ion_auth->is_district_admin() || $this->ion_auth->is_upazila_admin() || $this->ion_auth->is_group_admin()){ ?>
-                        <li class="start <?=backend_activate_menu_class('edirectory')?>"> <a href="javascript:;" > <i class="fa fa-user"></i> <span class="title">E-Directory Contact</span> <span class="selected"></span> <span class="arrow"></span> </a> 
+                        <li class="start <?=backend_activate_menu_class('edirectory')?>"> <a href="javascript:;" > <i class="fa fa-user"></i> <span class="title">E-Directory Contact</span> <span class="selected"></span> <span class="arrow"></span> </a>
                            <ul class="sub-menu">
                               <?php if($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin() || $this->ion_auth->in_group('award')){ ?>
                               <li> <a href="<?=base_url('edirectory/listing');?>"> NHQ Directory List </a> </li>
@@ -624,13 +626,13 @@
 
                               <?php if($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin() || $this->ion_auth->in_group('award') || $this->ion_auth->is_region_admin() || $this->ion_auth->is_district_admin() || $this->ion_auth->is_upazila_admin() || $this->ion_auth->is_group_admin()){ ?>
                               <li> <a href="<?=base_url('edirectory/listing_scout_group');?>"> S. Groups Directory List</a></li>
-                              <?php } ?>    
+                              <?php } ?>
                               <?php if($this->ion_auth->is_admin() || $this->ion_auth->in_group('award') || $this->ion_auth->is_scout_admin()){ ?>
                               <li> <a href="<?=base_url('edirectory/listing_training_center');?>"> Training Center Directory List </a> </li>
-                              <?php } ?>      
+                              <?php } ?>
                               <?php if($this->ion_auth->is_admin() || $this->ion_auth->in_group('award') || $this->ion_auth->is_scout_admin()){ ?>
                               <li> <a href="<?=base_url('edirectory/designation');?>"> Designations </a> </li>
-                              <?php } ?>      
+                              <?php } ?>
                            </ul>
                         </li>
                         <?php } ?>
@@ -638,7 +640,7 @@
 
                         <?php if($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin() || $this->ion_auth->in_group('event') || $this->ion_auth->is_region_admin() || $this->ion_auth->is_district_admin() || $this->ion_auth->is_upazila_admin()){ ?>
 
-                        <li class="start <?=backend_activate_menu_class('event_calendar')?>"> <a href="javascript:;" > <i class="fa fa-user"></i> <span class="title">Event Calendar</span> <span class="selected"></span> <span class="arrow"></span> </a> 
+                        <li class="start <?=backend_activate_menu_class('event_calendar')?>"> <a href="javascript:;" > <i class="fa fa-user"></i> <span class="title">Event Calendar</span> <span class="selected"></span> <span class="arrow"></span> </a>
                            <ul class="sub-menu">
                               <li> <a href="<?=base_url('event_calendar/index');?>"> Scouts Event </a> </li>
                               <?php if($this->ion_auth->is_admin()){ ?>
@@ -651,40 +653,40 @@
 
                         <?php if($this->ion_auth->is_region_admin() || $this->ion_auth->is_district_admin() || $this->ion_auth->is_upazila_admin() || $this->ion_auth->is_group_admin()){ ?>
                      <?php /*
-                        <!--  <li class="start <?=backend_activate_menu_class('image_gallery')?>"> 
-                     <a href="<?=base_url('image_gallery/index');?>"> <i class="fa fa-user"></i> 
+                        <!--  <li class="start <?=backend_activate_menu_class('image_gallery')?>">
+                     <a href="<?=base_url('image_gallery/index');?>"> <i class="fa fa-user"></i>
                      <span class="title">Image Gallery</span> </a></li> -->
                      */ ?>
                      <?php } ?>
 
-                     <?php if($this->ion_auth->is_admin()){ ?>   
-                     <li class="start <?=backend_activate_menu_class('e_book')?>"> 
-                        <a href="<?=base_url('e_book');?>"> <i class="fa fa-book"></i> 
-                           <span class="title">E-book</span> 
-                        </a>
-                     </li> 
-                     
-                     <li class="start <?=backend_activate_menu_class('scout_news')?>"> 
-                        <a href="<?=base_url('scout_news/index');?>"> <i class="fa fa-user"></i> 
-                           <span class="title">Scout News</span> 
+                     <?php if($this->ion_auth->is_admin()){ ?>
+                     <li class="start <?=backend_activate_menu_class('e_book')?>">
+                        <a href="<?=base_url('e_book');?>"> <i class="fa fa-book"></i>
+                           <span class="title">E-book</span>
                         </a>
                      </li>
-                     <li class="start <?=backend_activate_menu_class('slider')?>"> 
-                        <a href="<?=base_url('slider');?>"> <i class="fa fa-user"></i> 
-                           <span class="title">Slider</span> 
+
+                     <li class="start <?=backend_activate_menu_class('scout_news')?>">
+                        <a href="<?=base_url('scout_news/index');?>"> <i class="fa fa-user"></i>
+                           <span class="title">Scout News</span>
+                        </a>
+                     </li>
+                     <li class="start <?=backend_activate_menu_class('slider')?>">
+                        <a href="<?=base_url('slider');?>"> <i class="fa fa-user"></i>
+                           <span class="title">Slider</span>
                         </a>
                      </li>
                      <?php } ?>
 
 
                      <?php if($this->ion_auth->is_admin() || $this->ion_auth->is_region_admin() || $this->ion_auth->is_district_admin() || $this->ion_auth->is_upazila_admin() || $this->ion_auth->is_group_admin()){  ?>
-                     <li class="start <?=backend_activate_menu_class('committee')?>"> <a href="javascript:;" > <i class="fa fa-user"></i> <span class="title">Committee Setup</span> <span class="selected"></span> <span class="arrow"></span> </a> 
+                     <li class="start <?=backend_activate_menu_class('committee')?>"> <a href="javascript:;" > <i class="fa fa-user"></i> <span class="title">Committee Setup</span> <span class="selected"></span> <span class="arrow"></span> </a>
                         <ul class="sub-menu">
                            <?php //if($this->ion_auth->is_admin()){ ?>
                            <li> <a href="<?=base_url('committee/national');?>"> National Committee </a> </li>
                            <?php //} ?>
                            <?php //if($this->ion_auth->is_admin() || $this->ion_auth->is_region_admin()){ ?>
-                           <li> <a href="<?=base_url('committee/region');?>"> Region Committee </a> </li> 
+                           <li> <a href="<?=base_url('committee/region');?>"> Region Committee </a> </li>
                            <?php //} ?>
                            <?php //if($this->ion_auth->is_admin() || $this->ion_auth->is_region_admin() || $this->ion_auth->is_district_admin()){ ?>
                            <li> <a href="<?=base_url('committee/district'); ?>"> District Committee</a></li>
@@ -696,16 +698,16 @@
                            <li> <a href="<?=base_url('committee/scout_group');?>"> Group Committee</a></li>
                            <?php //} ?>
                         </ul>
-                     </li>       
-                     <?php } ?>                     
+                     </li>
+                     <?php } ?>
 
 
                      <?php if($this->ion_auth->is_admin() || $this->ion_auth->is_region_admin() ||
                      $this->ion_auth->is_district_admin() || $this->ion_auth->is_upazila_admin() || $this->ion_auth->is_group_admin()){ ?>
-                     <li class="start <?=backend_activate_menu_class('services')?>"> 
-                        <a href="javascript:;" > <i class="fa fa-user"></i> <span class="title">Service Request</span> <span class="selected"></span> <span class="arrow"></span> </a> 
+                     <li class="start <?=backend_activate_menu_class('services')?>">
+                        <a href="javascript:;" > <i class="fa fa-user"></i> <span class="title">Service Request</span> <span class="selected"></span> <span class="arrow"></span> </a>
                         <ul class="sub-menu">
-                           <?php if($this->ion_auth->is_admin() || $this->ion_auth->is_region_admin()){ ?>                  
+                           <?php if($this->ion_auth->is_admin() || $this->ion_auth->is_region_admin()){ ?>
                            <li> <a href="<?=base_url('services/request_list');?>">Request List </a> </li>
                            <li> <a href="<?=base_url('services/assign_to_list');?>">Assign To List </a> </li>
                            <li> <a href="<?=base_url('services/task_assign_list');?>">Task Assign List </a> </li>
@@ -722,8 +724,8 @@
 
 
                      <?php if($this->ion_auth->is_admin()){ ?>
-                     <li class="start <?=backend_activate_menu_class('complain')?>"> 
-                        <a href="<?=base_url('complain/complain_list');?>"> <i class="fa fa-user"></i> 
+                     <li class="start <?=backend_activate_menu_class('complain')?>">
+                        <a href="<?=base_url('complain/complain_list');?>"> <i class="fa fa-user"></i>
                            <span class="title">Feedback or Complain</span>
                         </a>
                      </li>
@@ -732,13 +734,13 @@
 
                      <?php if($this->ion_auth->is_admin() || $this->ion_auth->is_region_admin() ||
                      $this->ion_auth->is_district_admin() || $this->ion_auth->is_upazila_admin()){ ?>
-                     <li class="start <?=backend_activate_menu_class('scout_group_application')?>"> 
+                     <li class="start <?=backend_activate_menu_class('scout_group_application')?>">
                         <a href="<?=base_url('scout_group_application/application_list');?>"> <i class="fa fa-user"></i> <span class="title">Scout Group Application</span></a>
                      </li>
                      <?php } ?>
 
                      <?php if($this->ion_auth->is_admin()){ ?>
-                     <li class="start <?=backend_activate_menu_class('reports')?>"> <a href="javascript:;" > <i class="fa fa-user"></i> <span class="title">Reports</span> <span class="selected"></span> <span class="arrow"></span> </a> 
+                     <li class="start <?=backend_activate_menu_class('reports')?>"> <a href="javascript:;" > <i class="fa fa-user"></i> <span class="title">Reports</span> <span class="selected"></span> <span class="arrow"></span> </a>
                         <ul class="sub-menu">
                            <li> <a href="<?=base_url('reports/scouts_member');?>"> Scout Member List</a></li>
                               <?php /*
@@ -760,10 +762,10 @@
                               */ ?>
                            </ul>
                         </li>
-                        <?php } ?>              
+                        <?php } ?>
 
                         <?php if($this->ion_auth->is_admin()){ ?>
-                        <li class="start <?=backend_activate_menu_class('general_setting')?>"> <a href="javascript:;" > <i class="fa fa-user"></i> <span class="title">General Setting</span> <span class="selected"></span> <span class="arrow"></span> </a> 
+                        <li class="start <?=backend_activate_menu_class('general_setting')?>"> <a href="javascript:;" > <i class="fa fa-user"></i> <span class="title">General Setting</span> <span class="selected"></span> <span class="arrow"></span> </a>
                            <ul class="sub-menu">
                               <li> <a href="<?=base_url('general_setting/division');?>"> Division</a></li>
                               <li> <a href="<?=base_url('general_setting/district');?>"> District</a></li>
@@ -786,9 +788,9 @@
                               <li> <a href="<?=base_url('general_setting/proficiency_badge_group');?>"> Proficiency Badge Group </a></li>
                               <li> <a href="<?=base_url('general_setting/progress_course');?>"> Progress Course </a></li>
                            </ul>
-                        </li>           
+                        </li>
 
-                        <li class="start <?=backend_activate_menu_class('acl')?>"> <a href="javascript:;" > <i class="fa fa-user"></i> <span class="title">Access Control</span> <span class="selected"></span> <span class="arrow"></span> </a> 
+                        <li class="start <?=backend_activate_menu_class('acl')?>"> <a href="javascript:;" > <i class="fa fa-user"></i> <span class="title">Access Control</span> <span class="selected"></span> <span class="arrow"></span> </a>
                            <ul class="sub-menu">
                               <li> <a href="<?=base_url('acl');?>"> User List </a> </li>
                               <!-- <li> <a href="<?=base_url('acl/task_register');?>"> Task Register </a> </li> -->
@@ -801,7 +803,7 @@
                            </ul>
                         </li>
 
-                        <li class="start <?=backend_activate_menu_class('activity_logs')?>"> 
+                        <li class="start <?=backend_activate_menu_class('activity_logs')?>">
                            <a href="<?=base_url('activity_logs');?>"> <i class="icon-custom-home"></i>  <span class="title">Activity Logs</span></a>
                         </li>
 
@@ -813,7 +815,7 @@
                         <?php } ?>
                         <?php } ?>
 
-                        <li class="start"><a href="<?=base_url('logout')?>"> <i class="fa fa-power-off"></i> <span class="title">Log Out</span> </a></li>         
+                        <li class="start"><a href="<?=base_url('logout')?>"> <i class="fa fa-power-off"></i> <span class="title">Log Out</span> </a></li>
                      </ul>
                      <div class="clearfix"></div>
                      <!-- END SIDEBAR MENU -->
@@ -822,8 +824,8 @@
                   <!-- </div> -->
 
                   <?php if($this->router->fetch_class('my_message') == 'my_message'){ ?>
-                  <div class="inner-menu nav-collapse" style="float: right;">   
-                     <div class="inner-wrapper" style="margin-bottom: 10px;">    
+                  <div class="inner-menu nav-collapse" style="float: right;">
+                     <div class="inner-wrapper" style="margin-bottom: 10px;">
                         <a href="javascript:void();" class="btn btn-block btn-primary" ><span class="bold">COMPOSE</span></a>
                      </div>
                      <ul class="big-items">
@@ -836,15 +838,15 @@
                         <li class=""><a href="#" > Home</a></li>
                         <li><span class="badge badge-important">2</span><a href="#"> Work</a></li>
                      </ul>
-                     <div class="inner-wrapper" style="margin-top: 5px;">            
-                        <p class="menu-title">QUICK VIEW</p>    
+                     <div class="inner-wrapper" style="margin-top: 5px;">
+                        <p class="menu-title">QUICK VIEW</p>
                      </div>
                      <ul class="small-items" style="margin-bottom: 0px;">
                         <li class=""><a href="#"> Documents</a></li>
-                        <li class=""><span class=" badge badge-disable ">203</span><a href="#"> Images</a></li> 
+                        <li class=""><span class=" badge badge-disable ">203</span><a href="#"> Images</a></li>
                      </ul>
-                  </div> 
-                  <?php } ?>    
+                  </div>
+                  <?php } ?>
 
                </div>
 
@@ -852,21 +854,21 @@
 
                <div class="footer-widget">
                   <div class="copyrights pull-left" style="width: 50%" >
-                     <span> <span style="vertical-align: bottom; font-size: 10px;">কারিগরি সহায়তায় |</span>  <a href="http://a2i.pmo.gov.bd/" target="_blank"> 
+                     <span> <span style="vertical-align: bottom; font-size: 10px;">কারিগরি সহায়তায় |</span>  <a href="http://a2i.pmo.gov.bd/" target="_blank">
                      <img src="<?php echo base_url('fwedget/assets/images/logo_ict.png')?>" height="10"> </a> </span>
                   </div>
                   <div class="copyrights pull-right" style="width: 50%">
-                     <span style=" float: right;"> <span style="vertical-align: bottom; font-size: 11px;">Developed By |</span> <a href="http://www.mysoftheaven.com/" target="_blank"> 
+                     <span style=" float: right;"> <span style="vertical-align: bottom; font-size: 11px;">Developed By |</span> <a href="http://www.mysoftheaven.com/" target="_blank">
                      <img src="<?php echo base_url('awedget/assets/img/mysoft-logo.png')?>" height="18"></a> </span>
                   </div>
 
                   <?php /*
-                  <!-- <div class="lock">    
+                  <!-- <div class="lock">
                   <a href="<?=base_url('login/logout')?>"><i class="fa fa-power-off"></i></a>
                   </div> -->
                   */ ?>
                </div>
-               <!-- END SIDEBAR --> 
+               <!-- END SIDEBAR -->
 
                <script type="text/javascript">
                <?php /*

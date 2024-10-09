@@ -77,8 +77,8 @@ if($info->member_id == 2){
     </div>
 
     <div style="border: 0px solid black; height: 50px; margin-top: 10px; margin-right: 40px; font-size: 33pt; font-family: arial; font-weight: bold; color: red; float: right; text-align: right;">
-      <span> Expire Date: </span>
-      <span style="border: 0px solid black; font-size: 33pt;"> <?=$expire_date?> </span>
+      <!-- <span> Expire Date: </span> -->
+      <!-- <span style="border: 0px solid black; font-size: 33pt;"> <?=$expire_date?> </span> -->
     </div>
   </div>
 </div>

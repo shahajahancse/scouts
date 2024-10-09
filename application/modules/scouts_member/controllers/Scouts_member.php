@@ -20,7 +20,7 @@ class Scouts_member extends Backend_Controller {
 
       $this->load->model('Common_model');
       $this->load->model('Scouts_member_model');
-      $this->load->model('my_profile/My_profile_model');      
+      $this->load->model('my_profile/My_profile_model');
       $this->load->model('offices/Offices_model');
       $this->load->model('committee/Committee_model');
       $this->img_path = realpath(APPPATH . '../profile_img');
@@ -40,7 +40,7 @@ class Scouts_member extends Backend_Controller {
    //     $data_array =  array (
    //     $data_array[] = array ("Oliver", "Peter", "Paul"),
    //                      array ("Marlene", "Mica", "Lina")
-   //              ); 
+   //              );
    //     $xls = new Excel_XML;
    //     $xls->addArray ($data_array);
    //     $xls->generateXML ( "output_name" );
@@ -59,9 +59,9 @@ class Scouts_member extends Backend_Controller {
          //Dropdown
          $this->data['regions'] = $this->Common_model->get_regions();
          // print_r($this->data['regions']) ; exit();
-         $this->data['scouts_district'] = array(''=>'Scouts District');  
-         $this->data['scouts_upazila'] = array(''=>'Scouts Upazila');   
-         $this->data['scouts_group'] = array(''=>'Scouts Group');  
+         $this->data['scouts_district'] = array(''=>'Scouts District');
+         $this->data['scouts_upazila'] = array(''=>'Scouts Upazila');
+         $this->data['scouts_group'] = array(''=>'Scouts Group');
 
       }elseif($this->ion_auth->is_vendor()){
          // Superadmin
@@ -69,21 +69,29 @@ class Scouts_member extends Backend_Controller {
          //Dropdown
          $this->data['regions'] = $this->Common_model->get_regions();
          // print_r($this->data['regions']) ; exit();
-         $this->data['scouts_district'] = array(''=>'Scouts District');  
-         $this->data['scouts_upazila'] = array(''=>'Scouts Upazila');   
-         $this->data['scouts_group'] = array(''=>'Scouts Group'); 
+         $this->data['scouts_district'] = array(''=>'Scouts District');
+         $this->data['scouts_upazila'] = array(''=>'Scouts Upazila');
+         $this->data['scouts_group'] = array(''=>'Scouts Group');
 
-      }elseif($this->ion_auth->is_region_admin()){  
+      }elseif($this->ion_auth->is_region_admin()){
          // Region Admin
          $office = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
          //Result
          $results = $this->Scouts_member_model->get_scout_member($limit, $offset, $office, '', '', '', 1);
          //Dropdown
-         // $this->data['scout_district'] = $this->Common_model->get_dropdown_office('office_district', 'dis_name', 'dis_scout_region_id', $office); 
-         
+         // $this->data['scout_district'] = $this->Common_model->get_dropdown_office('office_district', 'dis_name', 'dis_scout_region_id', $office);
+
          $this->data['scouts_district'] =  $this->Common_model->get_scout_districts($office);
-         $this->data['scouts_upazila'] = array(''=>'Scouts Upazila');   
+         $this->data['scouts_upazila'] = array(''=>'Scouts Upazila');
          $this->data['scouts_group'] = array(''=>'Scouts Group');
+
+      }elseif($this->ion_auth->is_district_admin() && $this->session->userdata('sc_region_id') == 10){
+         // District Admin Rover
+         //Result
+         $sc_dis_id = $this->session->userdata('sc_district_id');
+         $results = $this->Scouts_member_model->get_scout_member($limit, $offset, 10, $sc_dis_id, '', '', 1);
+         //Dropdown
+         $this->data['scouts_group'] = $this->Common_model->get_scout_group_office($sc_dis_id);
 
       }elseif($this->ion_auth->is_district_admin()){
          // District Admin
@@ -92,7 +100,7 @@ class Scouts_member extends Backend_Controller {
          $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', $office, '', '', 1);
          //Dropdown
 
-         $this->data['scouts_upazila'] =  $this->Common_model->get_scout_upazila_thana($office);   
+         $this->data['scouts_upazila'] =  $this->Common_model->get_scout_upazila_thana($office);
          $this->data['scouts_group'] = array(''=>'Scouts Group');
 
       }elseif($this->ion_auth->is_upazila_admin()){
@@ -100,7 +108,7 @@ class Scouts_member extends Backend_Controller {
          $office = $this->Offices_model->get_upazila_office_by_user_id($this->userSessID)->id;
          //Result
          $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', '', $office, '', 1);
-         
+
          $this->data['scouts_group'] =  $this->Common_model->get_scout_group_office('', $office);
 
       }elseif($this->ion_auth->is_group_admin()){
@@ -111,8 +119,8 @@ class Scouts_member extends Backend_Controller {
       }else{
          redirect('dashboard');
       }
-      
-      
+
+
       if($_GET['region']>0 && $_GET['region'] !=NULL){
          $this->data['scouts_district'] =  $this->Common_model->get_scout_districts($_GET['region']);
       }
@@ -125,7 +133,7 @@ class Scouts_member extends Backend_Controller {
          $this->data['scouts_group'] =  $this->Common_model->get_scout_group_office('', $_GET['upazila']);
       }
 
-      // echo $this->db->last_query(); 
+      // echo $this->db->last_query();
       // Fethch User Group
       // foreach ($results['rows'] as $k => $user){
       //    $results['rows'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
@@ -170,18 +178,18 @@ class Scouts_member extends Backend_Controller {
          //Dropdown
          $this->data['regions'] = $this->Common_model->get_regions();
          // print_r($this->data['regions']) ; exit();
-         $this->data['scouts_district'] = array(''=>'Scouts District');  
-         $this->data['scouts_upazila'] = array(''=>'Scouts Upazila');   
-         $this->data['scouts_group'] = array(''=>'Scouts Group');  
+         $this->data['scouts_district'] = array(''=>'Scouts District');
+         $this->data['scouts_upazila'] = array(''=>'Scouts Upazila');
+         $this->data['scouts_group'] = array(''=>'Scouts Group');
 
-      }elseif($this->ion_auth->is_region_admin()){  
+      }elseif($this->ion_auth->is_region_admin()){
          // Region Admin
          $office = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
          //Result
          $results = $this->Scouts_member_model->get_scout_member($limit, $offset, $office, '', '', '', 1);
-         
+
          $this->data['scouts_district'] =  $this->Common_model->get_scout_districts($office);
-         $this->data['scouts_upazila'] = array(''=>'Scouts Upazila');   
+         $this->data['scouts_upazila'] = array(''=>'Scouts Upazila');
          $this->data['scouts_group'] = array(''=>'Scouts Group');
 
       }elseif($this->ion_auth->is_district_admin()){
@@ -191,7 +199,7 @@ class Scouts_member extends Backend_Controller {
          $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', $office, '', '', 1);
          //Dropdown
 
-         $this->data['scouts_upazila'] =  $this->Common_model->get_scout_upazila_thana($office);   
+         $this->data['scouts_upazila'] =  $this->Common_model->get_scout_upazila_thana($office);
          $this->data['scouts_group'] = array(''=>'Scouts Group');
 
       }elseif($this->ion_auth->is_upazila_admin()){
@@ -199,7 +207,7 @@ class Scouts_member extends Backend_Controller {
          $office = $this->Offices_model->get_upazila_office_by_user_id($this->userSessID)->id;
          //Result
          $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', '', $office, '', 1);
-         
+
          $this->data['scouts_group'] =  $this->Common_model->get_scout_group_office('', $office);
 
       }elseif($this->ion_auth->is_group_admin()){
@@ -210,8 +218,8 @@ class Scouts_member extends Backend_Controller {
       }else{
          redirect('dashboard');
       }
-      
-      
+
+
       if($_GET['region']>0 && $_GET['region'] !=NULL){
          $this->data['scouts_district'] =  $this->Common_model->get_scout_districts($_GET['region']);
       }
@@ -231,7 +239,7 @@ class Scouts_member extends Backend_Controller {
 
       //...............................................................................
       $this->data['meta_title'] = 'Scouts Member';
-      $html = $this->load->view('scout_member_pdf', $this->data, true);   
+      $html = $this->load->view('scout_member_pdf', $this->data, true);
       $file_name ="scout_member_pdf.pdf";
 
         //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
@@ -240,7 +248,7 @@ class Scouts_member extends Backend_Controller {
         //generate the PDF from the given html
       $mpdf->WriteHTML($html);
 
-        //download it for 'D'. 
+        //download it for 'D'.
       $mpdf->Output($file_name, "D");
 
    }
@@ -248,1070 +256,1065 @@ class Scouts_member extends Backend_Controller {
 
    public function scout_member_Excel($offset=0){
 
-    $this->load->library("excel");
-    $this->load->library("PHPExcel");
-    $object = new PHPExcel();
+      $this->load->library("excel");
+      $this->load->library("PHPExcel");
+      $object = new PHPExcel();
 
-    // Set document properties
+      // Set document properties
 
-    $object->setActiveSheetIndex(0)->mergeCells('A1:F1');
-    $object->getActiveSheet()->setCellValue('A1','                          BANGLADESH SCOUTS');
-    $table_columns = array(" SL"," FULL NAME", "  SCOUT ID", " MEMBER TYPE", "SECTION", "GROUP NAME"," USERNAME");
+      $object->setActiveSheetIndex(0)->mergeCells('A1:F1');
+      $object->getActiveSheet()->setCellValue('A1','                          BANGLADESH SCOUTS');
+      $table_columns = array(" SL"," FULL NAME", "  SCOUT ID", " MEMBER TYPE", "SECTION", "GROUP NAME"," USERNAME");
 
-    $column = 0;
+      $column = 0;
 
-    foreach($table_columns as $field)
-    {
-     $object->getActiveSheet()->setCellValueByColumnAndRow($column, 2, $field);
-     $column++;
-  }
-
-    //Check authentication
-  if($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin() || $this->ion_auth->in_group(array('award', 'event', 'training'))){
-         // Superadmin
-   $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', '', '', '', 1);
-         //Dropdown
-   $this->data['regions'] = $this->Common_model->get_regions();
-         // print_r($this->data['regions']) ; exit();
-   $this->data['scouts_district'] = array(''=>'Scouts District');  
-   $this->data['scouts_upazila'] = array(''=>'Scouts Upazila');   
-   $this->data['scouts_group'] = array(''=>'Scouts Group');  
-
-}elseif($this->ion_auth->is_region_admin()){  
-         // Region Admin
-   $office = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
-         //Result
-   $results = $this->Scouts_member_model->get_scout_member($limit, $offset, $office, '', '', '', 1);
-
-   $this->data['scouts_district'] =  $this->Common_model->get_scout_districts($office);
-   $this->data['scouts_upazila'] = array(''=>'Scouts Upazila');   
-   $this->data['scouts_group'] = array(''=>'Scouts Group');
-
-}elseif($this->ion_auth->is_district_admin()){
-         // District Admin
-   $office = $this->Offices_model->get_district_office_by_user_id($this->userSessID)->id;
-         //Result
-   $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', $office, '', '', 1);
-         //Dropdown
-
-   $this->data['scouts_upazila'] =  $this->Common_model->get_scout_upazila_thana($office);   
-   $this->data['scouts_group'] = array(''=>'Scouts Group');
-
-}elseif($this->ion_auth->is_upazila_admin()){
-         // Upazila Admin
-   $office = $this->Offices_model->get_upazila_office_by_user_id($this->userSessID)->id;
-         //Result
-   $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', '', $office, '', 1);
-
-   $this->data['scouts_group'] =  $this->Common_model->get_scout_group_office('', $office);
-
-}elseif($this->ion_auth->is_group_admin()){
-         // Group Admin
-   $office = $this->Offices_model->get_scout_group_by_user_id($this->userSessID)->id;
-         //Result
-   $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', '', '', $office, 1);
-}else{
-   redirect('dashboard');
-}
-
-
-if($_GET['region']>0 && $_GET['region'] !=NULL){
-   $this->data['scouts_district'] =  $this->Common_model->get_scout_districts($_GET['region']);
-}
-
-if($_GET['district']>0 && $_GET['district'] !=NULL){
-   $this->data['scouts_upazila'] =  $this->Common_model->get_scout_upazila_thana($_GET['district']);
-}
-
-if($_GET['upazila']>0 && $_GET['upazila'] !=NULL){
-   $this->data['scouts_group'] =  $this->Common_model->get_scout_group_office('', $_GET['upazila']);
-}
-
-      //Results
-$this->data['results'] = $results['rows'];
-$this->data['total_rows'] = $results['num_rows'];
-
-$excel_row = 3;
-
-$sl = 1;
-
-
-foreach ($results['rows'] as $row){
-  $sl++;
-        // Profile Image
-  $path = base_url().'profile_img/';
-  if($row->profile_img != NULL){
-   $img_url = '<img src="'.$path.$row->profile_img.'" height="20">';
-}else{
-   $img_url = '<img src="'.$path.'no-img.png" height="20">';
-}
-
-$cont = 'Some content <br> <strong>inside</strong> the popover';
-
-
-$object->getActiveSheet()->setCellValueByColumnAndRow(0, $excel_row, $sl);
-$object->getActiveSheet()->setCellValueByColumnAndRow(1, $excel_row, $row->first_name);
-$object->getActiveSheet()->setCellValueByColumnAndRow(2, $excel_row, $row->scout_id);
-$object->getActiveSheet()->setCellValueByColumnAndRow(3, $excel_row, $row->member_type_name);
-$object->getActiveSheet()->setCellValueByColumnAndRow(4, $excel_row, get_scout_section($row->sc_section_id));
-$object->getActiveSheet()->setCellValueByColumnAndRow(5, $excel_row, $row->grp_name);
-$object->getActiveSheet()->setCellValueByColumnAndRow(6, $excel_row, $row->username);
-$excel_row++;
-}
-
-$object_writer = PHPExcel_IOFactory::createWriter($object, 'Excel5');
-header('Content-Type: application/vnd.ms-excel');
-header('Content-Disposition: attachment;filename="scout_member_Excel.xls"');
-$object_writer->save('php://output');
-}
-
-/****************Scout Member Doc FIle Function start******************/
-public function scout_member_doc(){
-
-   $limit = 25;
+      foreach($table_columns as $field)
+      {
+         $object->getActiveSheet()->setCellValueByColumnAndRow($column, 2, $field);
+         $column++;
+      }
 
       //Check authentication
-   if($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin() || $this->ion_auth->in_group(array('award', 'event', 'training'))){
-         // Superadmin
-      $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', '', '', '', 1);
-         //Dropdown
-      $this->data['regions'] = $this->Common_model->get_regions();
-         // print_r($this->data['regions']) ; exit();
-      $this->data['scouts_district'] = array(''=>'Scouts District');  
-      $this->data['scouts_upazila'] = array(''=>'Scouts Upazila');   
-      $this->data['scouts_group'] = array(''=>'Scouts Group');  
+      if($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin() || $this->ion_auth->in_group(array('award', 'event', 'training'))){
+            // Superadmin
+         $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', '', '', '', 1);
+               //Dropdown
+         $this->data['regions'] = $this->Common_model->get_regions();
+               // print_r($this->data['regions']) ; exit();
+         $this->data['scouts_district'] = array(''=>'Scouts District');
+         $this->data['scouts_upazila'] = array(''=>'Scouts Upazila');
+         $this->data['scouts_group'] = array(''=>'Scouts Group');
 
-   }elseif($this->ion_auth->is_region_admin()){  
-         // Region Admin
-      $office = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
-         //Result
-      $results = $this->Scouts_member_model->get_scout_member($limit, $offset, $office, '', '', '', 1);
+      }elseif($this->ion_auth->is_region_admin()){
+            // Region Admin
+         $office = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
+               //Result
+         $results = $this->Scouts_member_model->get_scout_member($limit, $offset, $office, '', '', '', 1);
 
-      $this->data['scouts_district'] =  $this->Common_model->get_scout_districts($office);
-      $this->data['scouts_upazila'] = array(''=>'Scouts Upazila');   
-      $this->data['scouts_group'] = array(''=>'Scouts Group');
+         $this->data['scouts_district'] =  $this->Common_model->get_scout_districts($office);
+         $this->data['scouts_upazila'] = array(''=>'Scouts Upazila');
+         $this->data['scouts_group'] = array(''=>'Scouts Group');
 
-   }elseif($this->ion_auth->is_district_admin()){
-         // District Admin
-      $office = $this->Offices_model->get_district_office_by_user_id($this->userSessID)->id;
-         //Result
-      $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', $office, '', '', 1);
-         //Dropdown
+      }elseif($this->ion_auth->is_district_admin()){
+            // District Admin
+         $office = $this->Offices_model->get_district_office_by_user_id($this->userSessID)->id;
+               //Result
+         $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', $office, '', '', 1);
+               //Dropdown
 
-      $this->data['scouts_upazila'] =  $this->Common_model->get_scout_upazila_thana($office);   
-      $this->data['scouts_group'] = array(''=>'Scouts Group');
+         $this->data['scouts_upazila'] =  $this->Common_model->get_scout_upazila_thana($office);
+         $this->data['scouts_group'] = array(''=>'Scouts Group');
 
-   }elseif($this->ion_auth->is_upazila_admin()){
-         // Upazila Admin
-      $office = $this->Offices_model->get_upazila_office_by_user_id($this->userSessID)->id;
-         //Result
-      $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', '', $office, '', 1);
+      }elseif($this->ion_auth->is_upazila_admin()){
+            // Upazila Admin
+         $office = $this->Offices_model->get_upazila_office_by_user_id($this->userSessID)->id;
+               //Result
+         $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', '', $office, '', 1);
 
-      $this->data['scouts_group'] =  $this->Common_model->get_scout_group_office('', $office);
+         $this->data['scouts_group'] =  $this->Common_model->get_scout_group_office('', $office);
 
-   }elseif($this->ion_auth->is_group_admin()){
-         // Group Admin
-      $office = $this->Offices_model->get_scout_group_by_user_id($this->userSessID)->id;
-         //Result
-      $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', '', '', $office, 1);
-   }else{
-      redirect('dashboard');
-   }
+      }elseif($this->ion_auth->is_group_admin()){
+            // Group Admin
+         $office = $this->Offices_model->get_scout_group_by_user_id($this->userSessID)->id;
+            //Result
+         $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', '', '', $office, 1);
+      }else{
+         redirect('dashboard');
+      }
 
 
-   if($_GET['region']>0 && $_GET['region'] !=NULL){
-      $this->data['scouts_district'] =  $this->Common_model->get_scout_districts($_GET['region']);
-   }
+      if($_GET['region']>0 && $_GET['region'] !=NULL){
+         $this->data['scouts_district'] =  $this->Common_model->get_scout_districts($_GET['region']);
+      }
 
-   if($_GET['district']>0 && $_GET['district'] !=NULL){
-      $this->data['scouts_upazila'] =  $this->Common_model->get_scout_upazila_thana($_GET['district']);
-   }
+      if($_GET['district']>0 && $_GET['district'] !=NULL){
+         $this->data['scouts_upazila'] =  $this->Common_model->get_scout_upazila_thana($_GET['district']);
+      }
 
-   if($_GET['upazila']>0 && $_GET['upazila'] !=NULL){
-      $this->data['scouts_group'] =  $this->Common_model->get_scout_group_office('', $_GET['upazila']);
-   }
+      if($_GET['upazila']>0 && $_GET['upazila'] !=NULL){
+         $this->data['scouts_group'] =  $this->Common_model->get_scout_group_office('', $_GET['upazila']);
+      }
 
       //Results
-   $this->data['results'] = $results['rows'];
-   $this->data['total_rows'] = $results['num_rows'];
+      $this->data['results'] = $results['rows'];
+      $this->data['total_rows'] = $results['num_rows'];
 
-      //...............................................................................
-      // generate doc
-   require_once 'vendor/autoload.php';
-   $phpWord = new \PhpOffice\PhpWord\PhpWord();
-      //echo '<pre>'; print_r(111);die();
-        // 27-08-18
-   $phpWord->setDefaultFontName('Courier New');
-   $phpWord->setDefaultFontSize(11);
+      $excel_row = 3;
 
-        //our docx will have 'lanscape' paper orientation
-   $section = $phpWord->createSection(array('marginTop' => 2000));
-
-   $header = $section->addHeader();
-
-        // Add footer
-   $footer = $section->createFooter();
-   $footer->addPreserveText('Page {PAGE} of {NUMPAGES}.', array('margin-top' => '2.9pt','align'=>'center'));
+      $sl = 1;
 
 
-   $section->addTextBreak(1);
+      foreach ($results['rows'] as $row){
+         $sl++;
+               // Profile Image
+         $path = base_url().'profile_img/';
+         if($row->profile_img != NULL){
+            $img_url = '<img src="'.$path.$row->profile_img.'" height="20">';
+         }else{
+            $img_url = '<img src="'.$path.'no-img.png" height="20">';
+         }
 
-        // Define font style for first row
-   $fontStyle = array('bold'=>true, 'align'=>'center', 'underline' => 'single');
-   $fontStyleTwo = array('align'=>'center', 'underline' => 'single');
-   $fontStyleThree = array('bold' => true, 'align'=>'center');
-   $fontStyleFour = array('bold' => false);
-   $styleTable = array('cellMargin'=>10);
-   $styleTableTwo = array('cellMargin'=>10, 'borderSize' => 1, 'borderColor'=>'000000');
-   $styleCell = array('valign'=>'center');
-   $styleCellTwo = array('valign'=>'top');
-   $styleCellBTLR = array('valign'=>'center');
-
-   $cellColSpan = array('gridSpan' => 4);
-
-        // Add table style
-   $phpWord->addTableStyle('myOwnTableStyle', $styleTable);
-   
-        // Add table
-   $table = $section->addTable('myOwnTableStyle');
-
-        // Add row
-   $table->addRow(90);
-
-        // Add cells
-
-   $table->addCell(10000, $styleCell)->addText('All Scouts Member' , $fontStyle,array('align' => 'center'));
+         $cont = 'Some content <br> <strong>inside</strong> the popover';
 
 
-   $phpWord->addTableStyle('myOwnTableTwoStyle', $styleTableTwo);
-
-   $tableTwo = $section->addTable('myOwnTableTwoStyle');
-
-   $tableTwo->addRow(10);
-
-        // Add cells
-   $tableTwo->addCell(900, $styleCellTwo)->addText("SL", $fontStyleThree, array('align' => 'center', 'space' => array('before' => 50, 'after' => 0)));
-   $tableTwo->addCell(3300, $styleCell)->addText("Image", $fontStyleThree, array('align' => 'center', 'space' => array('before' => 50, 'after' => 0)));
-   $tableTwo->addCell(1800, $styleCellTwo)->addText("Full Name", $fontStyleThree, array('align' => 'center', 'space' => array('before' => 50, 'after' => 0)));
-   $tableTwo->addCell(2000, $styleCellTwo)->addText("Scout ID", $fontStyleThree, array('align' => 'center', 'space' => array('before' => 50, 'after' => 0)));
-   $tableTwo->addCell(2500, $styleCellTwo)->addText("Member Type", $fontStyleThree, array('align' => 'center', 'space' => array('before' => 50, 'after' => 0)));
-   /*$tableTwo->addCell(1500, $styleCellTwo)->addText("Group Name", $fontStyleThree, array('align' => 'center', 'space' => array('before' => 50, 'after' => 0)));*/
-   $tableTwo->addCell(1500, $styleCellTwo)->addText("Username", $fontStyleThree, array('align' => 'center', 'space' => array('before' => 50, 'after' => 0)));
-
-   $sln=0;
-   foreach ($results['rows'] as $row){
-      $sln++;
-
-      $path = base_url().'profile_img/';
-      if($row->profile_img != NULL){
-         $image =  $path.$row->profile_img;
+         $object->getActiveSheet()->setCellValueByColumnAndRow(0, $excel_row, $sl);
+         $object->getActiveSheet()->setCellValueByColumnAndRow(1, $excel_row, $row->first_name);
+         $object->getActiveSheet()->setCellValueByColumnAndRow(2, $excel_row, $row->scout_id);
+         $object->getActiveSheet()->setCellValueByColumnAndRow(3, $excel_row, $row->member_type_name);
+         $object->getActiveSheet()->setCellValueByColumnAndRow(4, $excel_row, get_scout_section($row->sc_section_id));
+         $object->getActiveSheet()->setCellValueByColumnAndRow(5, $excel_row, $row->grp_name);
+         $object->getActiveSheet()->setCellValueByColumnAndRow(6, $excel_row, $row->username);
+         $excel_row++;
       }
+
+      $object_writer = PHPExcel_IOFactory::createWriter($object, 'Excel5');
+      header('Content-Type: application/vnd.ms-excel');
+      header('Content-Disposition: attachment;filename="scout_member_Excel.xls"');
+      $object_writer->save('php://output');
+   }
+
+   /****************Scout Member Doc FIle Function start******************/
+   public function scout_member_doc(){
+
+      $limit = 25;
+
+         //Check authentication
+      if($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin() || $this->ion_auth->in_group(array('award', 'event', 'training'))){
+            // Superadmin
+         $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', '', '', '', 1);
+            //Dropdown
+         $this->data['regions'] = $this->Common_model->get_regions();
+            // print_r($this->data['regions']) ; exit();
+         $this->data['scouts_district'] = array(''=>'Scouts District');
+         $this->data['scouts_upazila'] = array(''=>'Scouts Upazila');
+         $this->data['scouts_group'] = array(''=>'Scouts Group');
+
+      }elseif($this->ion_auth->is_region_admin()){
+            // Region Admin
+         $office = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
+            //Result
+         $results = $this->Scouts_member_model->get_scout_member($limit, $offset, $office, '', '', '', 1);
+
+         $this->data['scouts_district'] =  $this->Common_model->get_scout_districts($office);
+         $this->data['scouts_upazila'] = array(''=>'Scouts Upazila');
+         $this->data['scouts_group'] = array(''=>'Scouts Group');
+
+      }elseif($this->ion_auth->is_district_admin()){
+            // District Admin
+         $office = $this->Offices_model->get_district_office_by_user_id($this->userSessID)->id;
+            //Result
+         $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', $office, '', '', 1);
+            //Dropdown
+
+         $this->data['scouts_upazila'] =  $this->Common_model->get_scout_upazila_thana($office);
+         $this->data['scouts_group'] = array(''=>'Scouts Group');
+
+      }elseif($this->ion_auth->is_upazila_admin()){
+            // Upazila Admin
+         $office = $this->Offices_model->get_upazila_office_by_user_id($this->userSessID)->id;
+            //Result
+         $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', '', $office, '', 1);
+
+         $this->data['scouts_group'] =  $this->Common_model->get_scout_group_office('', $office);
+
+      }elseif($this->ion_auth->is_group_admin()){
+            // Group Admin
+         $office = $this->Offices_model->get_scout_group_by_user_id($this->userSessID)->id;
+            //Result
+         $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', '', '', $office, 1);
+      }else{
+         redirect('dashboard');
+      }
+
+
+      if($_GET['region']>0 && $_GET['region'] !=NULL){
+         $this->data['scouts_district'] =  $this->Common_model->get_scout_districts($_GET['region']);
+      }
+
+      if($_GET['district']>0 && $_GET['district'] !=NULL){
+         $this->data['scouts_upazila'] =  $this->Common_model->get_scout_upazila_thana($_GET['district']);
+      }
+
+      if($_GET['upazila']>0 && $_GET['upazila'] !=NULL){
+         $this->data['scouts_group'] =  $this->Common_model->get_scout_group_office('', $_GET['upazila']);
+      }
+
+         //Results
+      $this->data['results'] = $results['rows'];
+      $this->data['total_rows'] = $results['num_rows'];
+
+         //...............................................................................
+         // generate doc
+      require_once 'vendor/autoload.php';
+      $phpWord = new \PhpOffice\PhpWord\PhpWord();
+         //echo '<pre>'; print_r(111);die();
+         // 27-08-18
+      $phpWord->setDefaultFontName('Courier New');
+      $phpWord->setDefaultFontSize(11);
+
+         //our docx will have 'lanscape' paper orientation
+      $section = $phpWord->createSection(array('marginTop' => 2000));
+
+      $header = $section->addHeader();
+
+         // Add footer
+      $footer = $section->createFooter();
+      $footer->addPreserveText('Page {PAGE} of {NUMPAGES}.', array('margin-top' => '2.9pt','align'=>'center'));
+
+
+      $section->addTextBreak(1);
+
+         // Define font style for first row
+      $fontStyle = array('bold'=>true, 'align'=>'center', 'underline' => 'single');
+      $fontStyleTwo = array('align'=>'center', 'underline' => 'single');
+      $fontStyleThree = array('bold' => true, 'align'=>'center');
+      $fontStyleFour = array('bold' => false);
+      $styleTable = array('cellMargin'=>10);
+      $styleTableTwo = array('cellMargin'=>10, 'borderSize' => 1, 'borderColor'=>'000000');
+      $styleCell = array('valign'=>'center');
+      $styleCellTwo = array('valign'=>'top');
+      $styleCellBTLR = array('valign'=>'center');
+
+      $cellColSpan = array('gridSpan' => 4);
+
+         // Add table style
+      $phpWord->addTableStyle('myOwnTableStyle', $styleTable);
+
+         // Add table
+      $table = $section->addTable('myOwnTableStyle');
+
+         // Add row
+      $table->addRow(90);
+
+         // Add cells
+
+      $table->addCell(10000, $styleCell)->addText('All Scouts Member' , $fontStyle,array('align' => 'center'));
+
+
+      $phpWord->addTableStyle('myOwnTableTwoStyle', $styleTableTwo);
+
+      $tableTwo = $section->addTable('myOwnTableTwoStyle');
 
       $tableTwo->addRow(10);
 
-      $tableTwo->addCell(1000, $styleCellTwo)->addText($sln, $fontStyleFour, array('align' => 'center', 'space' => array('before' => 50, 'after' => 0)));
-
-      if($row->profile_img != NULL){
-         $tableTwo->addCell(3300, $styleCellTwo)->addImage($image, array('width' => 35,
-           'height' => 40, 'marginTop' => -1, 'marginLeft' => -1, 'wrappingStyle' => 'behind' ));
-      }else{
-       $tableTwo->addCell(3300, $styleCellTwo)->addText(' ', $fontStyleFour, array('align' => 'center', 'space' => array('before' => 50, 'after' => 0)));
-    }
-
-    $tableTwo->addCell(2000, $styleCellTwo)->addText($row->first_name, $fontStyleFour, array('align' => 'left', 'space' => array('before' => 50, 'after' => 0)));
-    $tableTwo->addCell(2500, $styleCellTwo)->addText($row->scout_id, $fontStyleFour, array('align' => 'left', 'space' => array('before' => 50, 'after' => 0), 'indentation' => array('right' => 100)));
-    $tableTwo->addCell(2000, $styleCellTwo)->addText($row->member_type_name, $fontStyleFour, array('align' => 'left', 'space' => array('before' => 50, 'after' => 0)));
-    /*$tableTwo->addCell(3000, $styleCellTwo)->addText($row->grp_name, $fontStyleFour, array('align' => 'left', 'space' => array('before' => 50, 'after' => 0)));*/
-    $tableTwo->addCell(1500, $styleCellTwo)->addText($row->username, $fontStyleFour, array('align' => 'center', 'space' => array('before' => 50, 'after' => 0), 'indentation' => array('right' => 100)));
- }
-
- $section->addTextBreak(1);
-
- if($_SERVER['HTTP_HOST'] === 'localhost'){
-
-  $file_name = './report_doc/scout_member_doc.docx';
-  $phpWord->save($file_name, 'Word2007');
-  header("Content-Disposition: attachment; filename='scout_member_doc.docx'");
-  readfile($file_name);
-  unlink($file_name);
-} else {
-   $file_name = './report_doc/scout_member_doc.docx';
-   header("Content-Disposition: attachment; filename='scout_member_doc.docx'");
-   readfile($file_name);
-}
-
-
-}
-/****************Scout Member Doc FIle Function End******************/
-
-
-public function archive_list($offset=0){
-   $limit = 25;
-
-   if($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin()){
-         //Super Admin
-      $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', '', '', '', 2);
-         //Dropdown
-      $this->data['regions'] = $this->Common_model->get_regions(); 
-      $this->data['scouts_district'] = array(''=>'Scouts District');  
-      $this->data['scouts_upazila'] = array(''=>'Scouts Upazila');   
-      $this->data['scouts_group'] = array(''=>'Scouts Group'); 
-
-   }elseif($this->ion_auth->is_region_admin()){  
-         //Region Admin
-      $office = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
-         //Result
-      $results = $this->Scouts_member_model->get_scout_member($limit, $offset, $office, '', '', '', 2);
-         //Dropdown
-      $this->data['scouts_district'] =  $this->Common_model->get_scout_districts($office);
-      $this->data['scouts_upazila'] = array(''=>'Scouts Upazila');   
-      $this->data['scouts_group'] = array(''=>'Scouts Group'); 
-
-   }elseif($this->ion_auth->is_district_admin()){
-         //District Admin
-      $office = $this->Offices_model->get_district_office_by_user_id($this->userSessID)->id;
-         //Result
-      $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', $office, '', '', 2);
-
-      $this->data['scouts_upazila'] =  $this->Common_model->get_scout_upazila_thana($office);   
-      $this->data['scouts_group'] = array(''=>'Scouts Group');
-
-   }elseif($this->ion_auth->is_upazila_admin()){
-         //Upazila Admin
-      $office = $this->Offices_model->get_upazila_office_by_user_id($this->userSessID)->id;
-         //Result
-      $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', '', $office, '', 2);
-
-      $this->data['scouts_group'] =  $this->Common_model->get_scout_group_office('', $office);
-
-   }elseif($this->ion_auth->is_group_admin()){
-         //Group Admin
-      $office = $this->Offices_model->get_scout_group_by_user_id($this->userSessID)->id;
-         //Result
-      $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', '', '', $office, 2);
-   }else{
-      redirect('dashboard');
-   }
-
-
-   if($_GET['region']>0 && $_GET['region'] !=NULL){
-      $this->data['scouts_district'] =  $this->Common_model->get_scout_districts($_GET['region']);
-   }
-
-   if($_GET['district']>0 && $_GET['district'] !=NULL){
-      $this->data['scouts_upazila'] =  $this->Common_model->get_scout_upazila_thana($_GET['district']);
-   }
-
-   if($_GET['upazila']>0 && $_GET['upazila'] !=NULL){
-      $this->data['scouts_group'] =  $this->Common_model->get_scout_group_office('', $_GET['upazila']);
-   }
-
-      //Results
-   $this->data['results'] = $results['rows'];
-   $this->data['total_rows'] = $results['num_rows'];
-
-      //pagination
-   $this->data['pagination'] = create_pagination('scouts_member/archive_list/', $this->data['total_rows'], $limit, 3, $full_tag_wrap = true);
-
-   $this->data['member_type'] = $this->Common_model->get_member_type();
-   $this->data['scout_section'] = $this->Common_model->set_scout_section();       
-
-      // Load page
-   $this->data['meta_title'] = 'Scouts Member Archive List';
-   $this->data['subview'] = 'archive_list';
-   $this->load->view('backend/_layout_main', $this->data);
-}
-
-/****************Scout archive_list_pdf pdf FIle Function start******************/
-public function archive_list_pdf()
-{
-   $limit = 25;
-
-   if($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin()){
-         //Super Admin
-      $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', '', '', '', 2);
-         //Dropdown
-      $this->data['regions'] = $this->Common_model->get_regions(); 
-      $this->data['scouts_district'] = array(''=>'Scouts District');  
-      $this->data['scouts_upazila'] = array(''=>'Scouts Upazila');   
-      $this->data['scouts_group'] = array(''=>'Scouts Group'); 
-
-   }elseif($this->ion_auth->is_region_admin()){  
-         //Region Admin
-      $office = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
-         //Result
-      $results = $this->Scouts_member_model->get_scout_member($limit, $offset, $office, '', '', '', 2);
-         //Dropdown
-      $this->data['scouts_district'] =  $this->Common_model->get_scout_districts($office);
-      $this->data['scouts_upazila'] = array(''=>'Scouts Upazila');   
-      $this->data['scouts_group'] = array(''=>'Scouts Group'); 
-
-   }elseif($this->ion_auth->is_district_admin()){
-         //District Admin
-      $office = $this->Offices_model->get_district_office_by_user_id($this->userSessID)->id;
-         //Result
-      $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', $office, '', '', 2);
-
-      $this->data['scouts_upazila'] =  $this->Common_model->get_scout_upazila_thana($office);   
-      $this->data['scouts_group'] = array(''=>'Scouts Group');
-
-   }elseif($this->ion_auth->is_upazila_admin()){
-         //Upazila Admin
-      $office = $this->Offices_model->get_upazila_office_by_user_id($this->userSessID)->id;
-         //Result
-      $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', '', $office, '', 2);
-
-      $this->data['scouts_group'] =  $this->Common_model->get_scout_group_office('', $office);
-
-   }elseif($this->ion_auth->is_group_admin()){
-         //Group Admin
-      $office = $this->Offices_model->get_scout_group_by_user_id($this->userSessID)->id;
-         //Result
-      $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', '', '', $office, 2);
-   }else{
-      redirect('dashboard');
-   }
-
-
-   if($_GET['region']>0 && $_GET['region'] !=NULL){
-      $this->data['scouts_district'] =  $this->Common_model->get_scout_districts($_GET['region']);
-   }
-
-   if($_GET['district']>0 && $_GET['district'] !=NULL){
-      $this->data['scouts_upazila'] =  $this->Common_model->get_scout_upazila_thana($_GET['district']);
-   }
-
-   if($_GET['upazila']>0 && $_GET['upazila'] !=NULL){
-      $this->data['scouts_group'] =  $this->Common_model->get_scout_group_office('', $_GET['upazila']);
-   }
-
-      //Results
-   $this->data['results'] = $results['rows'];
-   $this->data['total_rows'] = $results['num_rows'];
-
-      //...............................................................................
-   $this->data['meta_title'] = 'Scouts Member Archive List';
-   $html = $this->load->view('archive_list_pdf', $this->data, true);   
-   $file_name ="archive_list_pdf.pdf";
-
-      //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
-   $mpdf = new mPDF('', 'A4', 10, 'nikosh', 10, 10, 10, 10);
-
-      //generate the PDF from the given html
-   $mpdf->WriteHTML($html);
-
-      //download it for 'D'. 
-   $mpdf->Output($file_name, "D");
-}
-
-/****************Scout archive_list_pdf pdf FIle Function end******************/
-
-/****************Scout archive_list_doc doc FIle Function start******************/
-public function archive_list_doc()
-{
-   $limit = 25;
-
-   if($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin()){
-         //Super Admin
-      $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', '', '', '', 2);
-         //Dropdown
-      $this->data['regions'] = $this->Common_model->get_regions(); 
-      $this->data['scouts_district'] = array(''=>'Scouts District');  
-      $this->data['scouts_upazila'] = array(''=>'Scouts Upazila');   
-      $this->data['scouts_group'] = array(''=>'Scouts Group'); 
-
-   }elseif($this->ion_auth->is_region_admin()){  
-         //Region Admin
-      $office = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
-         //Result
-      $results = $this->Scouts_member_model->get_scout_member($limit, $offset, $office, '', '', '', 2);
-         //Dropdown
-      $this->data['scouts_district'] =  $this->Common_model->get_scout_districts($office);
-      $this->data['scouts_upazila'] = array(''=>'Scouts Upazila');   
-      $this->data['scouts_group'] = array(''=>'Scouts Group'); 
-
-   }elseif($this->ion_auth->is_district_admin()){
-         //District Admin
-      $office = $this->Offices_model->get_district_office_by_user_id($this->userSessID)->id;
-         //Result
-      $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', $office, '', '', 2);
-
-      $this->data['scouts_upazila'] =  $this->Common_model->get_scout_upazila_thana($office);   
-      $this->data['scouts_group'] = array(''=>'Scouts Group');
-
-   }elseif($this->ion_auth->is_upazila_admin()){
-         //Upazila Admin
-      $office = $this->Offices_model->get_upazila_office_by_user_id($this->userSessID)->id;
-         //Result
-      $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', '', $office, '', 2);
-
-      $this->data['scouts_group'] =  $this->Common_model->get_scout_group_office('', $office);
-
-   }elseif($this->ion_auth->is_group_admin()){
-         //Group Admin
-      $office = $this->Offices_model->get_scout_group_by_user_id($this->userSessID)->id;
-         //Result
-      $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', '', '', $office, 2);
-   }else{
-      redirect('dashboard');
-   }
-
-
-   if($_GET['region']>0 && $_GET['region'] !=NULL){
-      $this->data['scouts_district'] =  $this->Common_model->get_scout_districts($_GET['region']);
-   }
-
-   if($_GET['district']>0 && $_GET['district'] !=NULL){
-      $this->data['scouts_upazila'] =  $this->Common_model->get_scout_upazila_thana($_GET['district']);
-   }
-
-   if($_GET['upazila']>0 && $_GET['upazila'] !=NULL){
-      $this->data['scouts_group'] =  $this->Common_model->get_scout_group_office('', $_GET['upazila']);
-   }
-
-      //Results
-   $this->data['results'] = $results;
-   $this->data['total_rows'] = $results['num_rows'];
-
-      //...............................................................................
-      // generate doc
-   require_once 'vendor/autoload.php';
-   $phpWord = new \PhpOffice\PhpWord\PhpWord();
-      //echo '<pre>'; print_r(111);die();
-        // 27-08-18
-   $phpWord->setDefaultFontName('Courier New');
-   $phpWord->setDefaultFontSize(11);
-
-        //our docx will have 'lanscape' paper orientation
-   $section = $phpWord->createSection(array('marginTop' => 2000));
-
-   $header = $section->addHeader();
-
-        // Add footer
-   $footer = $section->createFooter();
-   $footer->addPreserveText('Page {PAGE} of {NUMPAGES}.', array('margin-top' => '2.9pt','align'=>'center'));
-
-
-   $section->addTextBreak(1);
-
-        // Define font style for first row
-   $fontStyle = array('bold'=>true, 'align'=>'center', 'underline' => 'single');
-   $fontStyleTwo = array('align'=>'center', 'underline' => 'single');
-   $fontStyleThree = array('bold' => true, 'align'=>'center');
-   $fontStyleFour = array('bold' => false);
-   $styleTable = array('cellMargin'=>10);
-   $styleTableTwo = array('cellMargin'=>10, 'borderSize' => 1, 'borderColor'=>'000000');
-   $styleCell = array('valign'=>'center');
-   $styleCellTwo = array('valign'=>'top');
-   $styleCellBTLR = array('valign'=>'center');
-
-   $cellColSpan = array('gridSpan' => 4);
-
-        // Add table style
-   $phpWord->addTableStyle('myOwnTableStyle', $styleTable);
-   
-        // Add table
-   $table = $section->addTable('myOwnTableStyle');
-
-        // Add row
-   $table->addRow(90);
-
-        // Add cells
-
-   $table->addCell(10000, $styleCell)->addText('Scouts Member Archive List' , $fontStyle,array('align' => 'center'));
-
-
-   $phpWord->addTableStyle('myOwnTableTwoStyle', $styleTableTwo);
-
-   $tableTwo = $section->addTable('myOwnTableTwoStyle');
-
-   $tableTwo->addRow(10);
-
-        // Add cells
-   $tableTwo->addCell(900, $styleCellTwo)->addText("SL", $fontStyleThree, array('align' => 'center', 'space' => array('before' => 50, 'after' => 0)));
-   $tableTwo->addCell(3300, $styleCell)->addText("Image", $fontStyleThree, array('align' => 'center', 'space' => array('before' => 50, 'after' => 0)));
-   $tableTwo->addCell(1800, $styleCellTwo)->addText("Full Name", $fontStyleThree, array('align' => 'center', 'space' => array('before' => 50, 'after' => 0)));
-   $tableTwo->addCell(2000, $styleCellTwo)->addText("Scout ID", $fontStyleThree, array('align' => 'center', 'space' => array('before' => 50, 'after' => 0)));
-   $tableTwo->addCell(2500, $styleCellTwo)->addText("Member Type", $fontStyleThree, array('align' => 'center', 'space' => array('before' => 50, 'after' => 0)));
-   $tableTwo->addCell(1500, $styleCellTwo)->addText("Group Name", $fontStyleThree, array('align' => 'center', 'space' => array('before' => 50, 'after' => 0)));
-   $tableTwo->addCell(1500, $styleCellTwo)->addText("Username", $fontStyleThree, array('align' => 'center', 'space' => array('before' => 50, 'after' => 0)));
-
-   $sln=0;
-   foreach ($results['rows'] as $row){
-      $sln++;
-
-
-      if($row->profile_img != NULL){
-         $image =  __DIR__ . '/../../../../profile_img/'.$row->profile_img;
+         // Add cells
+      $tableTwo->addCell(900, $styleCellTwo)->addText("SL", $fontStyleThree, array('align' => 'center', 'space' => array('before' => 50, 'after' => 0)));
+      $tableTwo->addCell(3300, $styleCell)->addText("Image", $fontStyleThree, array('align' => 'center', 'space' => array('before' => 50, 'after' => 0)));
+      $tableTwo->addCell(1800, $styleCellTwo)->addText("Full Name", $fontStyleThree, array('align' => 'center', 'space' => array('before' => 50, 'after' => 0)));
+      $tableTwo->addCell(2000, $styleCellTwo)->addText("Scout ID", $fontStyleThree, array('align' => 'center', 'space' => array('before' => 50, 'after' => 0)));
+      $tableTwo->addCell(2500, $styleCellTwo)->addText("Member Type", $fontStyleThree, array('align' => 'center', 'space' => array('before' => 50, 'after' => 0)));
+      /*$tableTwo->addCell(1500, $styleCellTwo)->addText("Group Name", $fontStyleThree, array('align' => 'center', 'space' => array('before' => 50, 'after' => 0)));*/
+      $tableTwo->addCell(1500, $styleCellTwo)->addText("Username", $fontStyleThree, array('align' => 'center', 'space' => array('before' => 50, 'after' => 0)));
+
+      $sln=0;
+      foreach ($results['rows'] as $row){
+         $sln++;
+
+         $path = base_url().'profile_img/';
+         if($row->profile_img != NULL){
+            $image =  $path.$row->profile_img;
+         }
+
+         $tableTwo->addRow(10);
+
+         $tableTwo->addCell(1000, $styleCellTwo)->addText($sln, $fontStyleFour, array('align' => 'center', 'space' => array('before' => 50, 'after' => 0)));
+
+         if($row->profile_img != NULL){
+            $tableTwo->addCell(3300, $styleCellTwo)->addImage($image, array('width' => 35,
+         'height' => 40, 'marginTop' => -1, 'marginLeft' => -1, 'wrappingStyle' => 'behind' ));
+         }else{
+            $tableTwo->addCell(3300, $styleCellTwo)->addText(' ', $fontStyleFour, array('align' => 'center', 'space' => array('before' => 50, 'after' => 0)));
+         }
+
+         $tableTwo->addCell(2000, $styleCellTwo)->addText($row->first_name, $fontStyleFour, array('align' => 'left', 'space' => array('before' => 50, 'after' => 0)));
+         $tableTwo->addCell(2500, $styleCellTwo)->addText($row->scout_id, $fontStyleFour, array('align' => 'left', 'space' => array('before' => 50, 'after' => 0), 'indentation' => array('right' => 100)));
+         $tableTwo->addCell(2000, $styleCellTwo)->addText($row->member_type_name, $fontStyleFour, array('align' => 'left', 'space' => array('before' => 50, 'after' => 0)));
+         /*$tableTwo->addCell(3000, $styleCellTwo)->addText($row->grp_name, $fontStyleFour, array('align' => 'left', 'space' => array('before' => 50, 'after' => 0)));*/
+         $tableTwo->addCell(1500, $styleCellTwo)->addText($row->username, $fontStyleFour, array('align' => 'center', 'space' => array('before' => 50, 'after' => 0), 'indentation' => array('right' => 100)));
       }
+
+      $section->addTextBreak(1);
+
+      if($_SERVER['HTTP_HOST'] === 'localhost'){
+         $file_name = './report_doc/scout_member_doc.docx';
+         $phpWord->save($file_name, 'Word2007');
+         header("Content-Disposition: attachment; filename='scout_member_doc.docx'");
+         readfile($file_name);
+         unlink($file_name);
+      } else {
+         $file_name = './report_doc/scout_member_doc.docx';
+         header("Content-Disposition: attachment; filename='scout_member_doc.docx'");
+         readfile($file_name);
+      }
+   }
+   /****************Scout Member Doc FIle Function End******************/
+
+
+   public function archive_list($offset=0){
+      $limit = 25;
+
+      if($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin()){
+            //Super Admin
+         $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', '', '', '', 2);
+            //Dropdown
+         $this->data['regions'] = $this->Common_model->get_regions();
+         $this->data['scouts_district'] = array(''=>'Scouts District');
+         $this->data['scouts_upazila'] = array(''=>'Scouts Upazila');
+         $this->data['scouts_group'] = array(''=>'Scouts Group');
+
+      }elseif($this->ion_auth->is_region_admin()){
+            //Region Admin
+         $office = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
+            //Result
+         $results = $this->Scouts_member_model->get_scout_member($limit, $offset, $office, '', '', '', 2);
+            //Dropdown
+         $this->data['scouts_district'] =  $this->Common_model->get_scout_districts($office);
+         $this->data['scouts_upazila'] = array(''=>'Scouts Upazila');
+         $this->data['scouts_group'] = array(''=>'Scouts Group');
+
+      }elseif($this->ion_auth->is_district_admin()){
+            //District Admin
+         $office = $this->Offices_model->get_district_office_by_user_id($this->userSessID)->id;
+            //Result
+         $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', $office, '', '', 2);
+
+         $this->data['scouts_upazila'] =  $this->Common_model->get_scout_upazila_thana($office);
+         $this->data['scouts_group'] = array(''=>'Scouts Group');
+
+      }elseif($this->ion_auth->is_upazila_admin()){
+            //Upazila Admin
+         $office = $this->Offices_model->get_upazila_office_by_user_id($this->userSessID)->id;
+            //Result
+         $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', '', $office, '', 2);
+
+         $this->data['scouts_group'] =  $this->Common_model->get_scout_group_office('', $office);
+
+      }elseif($this->ion_auth->is_group_admin()){
+            //Group Admin
+         $office = $this->Offices_model->get_scout_group_by_user_id($this->userSessID)->id;
+            //Result
+         $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', '', '', $office, 2);
+      }else{
+         redirect('dashboard');
+      }
+
+
+      if($_GET['region']>0 && $_GET['region'] !=NULL){
+         $this->data['scouts_district'] =  $this->Common_model->get_scout_districts($_GET['region']);
+      }
+
+      if($_GET['district']>0 && $_GET['district'] !=NULL){
+         $this->data['scouts_upazila'] =  $this->Common_model->get_scout_upazila_thana($_GET['district']);
+      }
+
+      if($_GET['upazila']>0 && $_GET['upazila'] !=NULL){
+         $this->data['scouts_group'] =  $this->Common_model->get_scout_group_office('', $_GET['upazila']);
+      }
+
+         //Results
+      $this->data['results'] = $results['rows'];
+      $this->data['total_rows'] = $results['num_rows'];
+
+         //pagination
+      $this->data['pagination'] = create_pagination('scouts_member/archive_list/', $this->data['total_rows'], $limit, 3, $full_tag_wrap = true);
+
+      $this->data['member_type'] = $this->Common_model->get_member_type();
+      $this->data['scout_section'] = $this->Common_model->set_scout_section();
+
+         // Load page
+      $this->data['meta_title'] = 'Scouts Member Archive List';
+      $this->data['subview'] = 'archive_list';
+      $this->load->view('backend/_layout_main', $this->data);
+   }
+
+   /****************Scout archive_list_pdf pdf FIle Function start******************/
+   public function archive_list_pdf()
+   {
+      $limit = 25;
+
+      if($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin()){
+            //Super Admin
+         $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', '', '', '', 2);
+            //Dropdown
+         $this->data['regions'] = $this->Common_model->get_regions();
+         $this->data['scouts_district'] = array(''=>'Scouts District');
+         $this->data['scouts_upazila'] = array(''=>'Scouts Upazila');
+         $this->data['scouts_group'] = array(''=>'Scouts Group');
+
+      }elseif($this->ion_auth->is_region_admin()){
+            //Region Admin
+         $office = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
+            //Result
+         $results = $this->Scouts_member_model->get_scout_member($limit, $offset, $office, '', '', '', 2);
+            //Dropdown
+         $this->data['scouts_district'] =  $this->Common_model->get_scout_districts($office);
+         $this->data['scouts_upazila'] = array(''=>'Scouts Upazila');
+         $this->data['scouts_group'] = array(''=>'Scouts Group');
+
+      }elseif($this->ion_auth->is_district_admin()){
+            //District Admin
+         $office = $this->Offices_model->get_district_office_by_user_id($this->userSessID)->id;
+            //Result
+         $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', $office, '', '', 2);
+
+         $this->data['scouts_upazila'] =  $this->Common_model->get_scout_upazila_thana($office);
+         $this->data['scouts_group'] = array(''=>'Scouts Group');
+
+      }elseif($this->ion_auth->is_upazila_admin()){
+            //Upazila Admin
+         $office = $this->Offices_model->get_upazila_office_by_user_id($this->userSessID)->id;
+            //Result
+         $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', '', $office, '', 2);
+
+         $this->data['scouts_group'] =  $this->Common_model->get_scout_group_office('', $office);
+
+      }elseif($this->ion_auth->is_group_admin()){
+            //Group Admin
+         $office = $this->Offices_model->get_scout_group_by_user_id($this->userSessID)->id;
+            //Result
+         $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', '', '', $office, 2);
+      }else{
+         redirect('dashboard');
+      }
+
+
+      if($_GET['region']>0 && $_GET['region'] !=NULL){
+         $this->data['scouts_district'] =  $this->Common_model->get_scout_districts($_GET['region']);
+      }
+
+      if($_GET['district']>0 && $_GET['district'] !=NULL){
+         $this->data['scouts_upazila'] =  $this->Common_model->get_scout_upazila_thana($_GET['district']);
+      }
+
+      if($_GET['upazila']>0 && $_GET['upazila'] !=NULL){
+         $this->data['scouts_group'] =  $this->Common_model->get_scout_group_office('', $_GET['upazila']);
+      }
+
+         //Results
+      $this->data['results'] = $results['rows'];
+      $this->data['total_rows'] = $results['num_rows'];
+
+         //...............................................................................
+      $this->data['meta_title'] = 'Scouts Member Archive List';
+      $html = $this->load->view('archive_list_pdf', $this->data, true);
+      $file_name ="archive_list_pdf.pdf";
+
+         //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
+      $mpdf = new mPDF('', 'A4', 10, 'nikosh', 10, 10, 10, 10);
+
+         //generate the PDF from the given html
+      $mpdf->WriteHTML($html);
+
+         //download it for 'D'.
+      $mpdf->Output($file_name, "D");
+   }
+
+   /****************Scout archive_list_pdf pdf FIle Function end******************/
+
+   /****************Scout archive_list_doc doc FIle Function start******************/
+   public function archive_list_doc()
+   {
+      $limit = 25;
+
+      if($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin()){
+            //Super Admin
+         $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', '', '', '', 2);
+            //Dropdown
+         $this->data['regions'] = $this->Common_model->get_regions();
+         $this->data['scouts_district'] = array(''=>'Scouts District');
+         $this->data['scouts_upazila'] = array(''=>'Scouts Upazila');
+         $this->data['scouts_group'] = array(''=>'Scouts Group');
+
+      }elseif($this->ion_auth->is_region_admin()){
+            //Region Admin
+         $office = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
+            //Result
+         $results = $this->Scouts_member_model->get_scout_member($limit, $offset, $office, '', '', '', 2);
+            //Dropdown
+         $this->data['scouts_district'] =  $this->Common_model->get_scout_districts($office);
+         $this->data['scouts_upazila'] = array(''=>'Scouts Upazila');
+         $this->data['scouts_group'] = array(''=>'Scouts Group');
+
+      }elseif($this->ion_auth->is_district_admin()){
+            //District Admin
+         $office = $this->Offices_model->get_district_office_by_user_id($this->userSessID)->id;
+            //Result
+         $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', $office, '', '', 2);
+
+         $this->data['scouts_upazila'] =  $this->Common_model->get_scout_upazila_thana($office);
+         $this->data['scouts_group'] = array(''=>'Scouts Group');
+
+      }elseif($this->ion_auth->is_upazila_admin()){
+            //Upazila Admin
+         $office = $this->Offices_model->get_upazila_office_by_user_id($this->userSessID)->id;
+            //Result
+         $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', '', $office, '', 2);
+
+         $this->data['scouts_group'] =  $this->Common_model->get_scout_group_office('', $office);
+
+      }elseif($this->ion_auth->is_group_admin()){
+            //Group Admin
+         $office = $this->Offices_model->get_scout_group_by_user_id($this->userSessID)->id;
+            //Result
+         $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', '', '', $office, 2);
+      }else{
+         redirect('dashboard');
+      }
+
+
+      if($_GET['region']>0 && $_GET['region'] !=NULL){
+         $this->data['scouts_district'] =  $this->Common_model->get_scout_districts($_GET['region']);
+      }
+
+      if($_GET['district']>0 && $_GET['district'] !=NULL){
+         $this->data['scouts_upazila'] =  $this->Common_model->get_scout_upazila_thana($_GET['district']);
+      }
+
+      if($_GET['upazila']>0 && $_GET['upazila'] !=NULL){
+         $this->data['scouts_group'] =  $this->Common_model->get_scout_group_office('', $_GET['upazila']);
+      }
+
+         //Results
+      $this->data['results'] = $results;
+      $this->data['total_rows'] = $results['num_rows'];
+
+         //...............................................................................
+         // generate doc
+      require_once 'vendor/autoload.php';
+      $phpWord = new \PhpOffice\PhpWord\PhpWord();
+         //echo '<pre>'; print_r(111);die();
+         // 27-08-18
+      $phpWord->setDefaultFontName('Courier New');
+      $phpWord->setDefaultFontSize(11);
+
+         //our docx will have 'lanscape' paper orientation
+      $section = $phpWord->createSection(array('marginTop' => 2000));
+
+      $header = $section->addHeader();
+
+         // Add footer
+      $footer = $section->createFooter();
+      $footer->addPreserveText('Page {PAGE} of {NUMPAGES}.', array('margin-top' => '2.9pt','align'=>'center'));
+
+
+      $section->addTextBreak(1);
+
+         // Define font style for first row
+      $fontStyle = array('bold'=>true, 'align'=>'center', 'underline' => 'single');
+      $fontStyleTwo = array('align'=>'center', 'underline' => 'single');
+      $fontStyleThree = array('bold' => true, 'align'=>'center');
+      $fontStyleFour = array('bold' => false);
+      $styleTable = array('cellMargin'=>10);
+      $styleTableTwo = array('cellMargin'=>10, 'borderSize' => 1, 'borderColor'=>'000000');
+      $styleCell = array('valign'=>'center');
+      $styleCellTwo = array('valign'=>'top');
+      $styleCellBTLR = array('valign'=>'center');
+
+      $cellColSpan = array('gridSpan' => 4);
+
+         // Add table style
+      $phpWord->addTableStyle('myOwnTableStyle', $styleTable);
+
+         // Add table
+      $table = $section->addTable('myOwnTableStyle');
+
+         // Add row
+      $table->addRow(90);
+
+         // Add cells
+
+      $table->addCell(10000, $styleCell)->addText('Scouts Member Archive List' , $fontStyle,array('align' => 'center'));
+
+
+      $phpWord->addTableStyle('myOwnTableTwoStyle', $styleTableTwo);
+
+      $tableTwo = $section->addTable('myOwnTableTwoStyle');
 
       $tableTwo->addRow(10);
 
-      $tableTwo->addCell(1000, $styleCellTwo)->addText($sln, $fontStyleFour, array('align' => 'center', 'space' => array('before' => 50, 'after' => 0)));
-
-      if($row->profile_img != NULL){
-         $tableTwo->addCell(3300, $styleCellTwo)->addImage($image, array('width' => 35,
-           'height' => 40, 'marginTop' => -1, 'marginLeft' => -1, 'wrappingStyle' => 'behind' ));
-      }else{
-       $tableTwo->addCell(3300, $styleCellTwo)->addText(' ', $fontStyleFour, array('align' => 'center', 'space' => array('before' => 50, 'after' => 0)));
-    }
-
-    $tableTwo->addCell(2000, $styleCellTwo)->addText($row->first_name, $fontStyleFour, array('align' => 'left', 'space' => array('before' => 50, 'after' => 0)));
-    $tableTwo->addCell(2000, $styleCellTwo)->addText($row->scout_id, $fontStyleFour, array('align' => 'left', 'space' => array('before' => 50, 'after' => 0)));
-    $tableTwo->addCell(2000, $styleCellTwo)->addText($row->member_type_name, $fontStyleFour, array('align' => 'left', 'space' => array('before' => 50, 'after' => 0)));
-    $tableTwo->addCell(2500, $styleCellTwo)->addText($row->grp_name, $fontStyleFour, array('align' => 'left', 'space' => array('before' => 50, 'after' => 0), 'indentation' => array('right' => 100)));
-    $tableTwo->addCell(1500, $styleCellTwo)->addText($row->username, $fontStyleFour, array('align' => 'center', 'space' => array('before' => 50, 'after' => 0), 'indentation' => array('right' => 100)));
- }
-
- $section->addTextBreak(1);
-
- if($_SERVER['HTTP_HOST'] === 'localhost'){
-
-    $file_name = './report_doc/archive_list_doc.docx';
-    $phpWord->save($file_name, 'Word2007');
-    header("Content-Disposition: attachment; filename='archive_list_doc.docx'");
-    readfile($file_name);
-    unlink($file_name);
- } else {
-   $file_name = './report_doc/archive_list_doc.docx';
-   header("Content-Disposition: attachment; filename='archive_list_doc.docx'");
-   readfile($file_name);
-}
-
-
-}
-/****************Scout archive_list_doc doc FIle Function end******************/
-
-public function delete_request($offset=0){
-   $limit = 25;
-
-   if($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin()){
-         //Superadmin
-      $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', '', '', '', 3);
-         //Dropdown
-      $this->data['regions'] = $this->Common_model->get_regions(); 
-      $this->data['scouts_district'] = array(''=>'Scouts District');  
-      $this->data['scouts_upazila'] = array(''=>'Scouts Upazila');   
-      $this->data['scouts_group'] = array(''=>'Scouts Group'); 
-
-   }elseif($this->ion_auth->is_region_admin()){  
-         //Region Admin
-      $office = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
-         //Result
-      $results = $this->Scouts_member_model->get_scout_member($limit, $offset, $office, '', '', '', 3);
-         //Dropdown
-      $this->data['scouts_district'] =  $this->Common_model->get_scout_districts($office);
-      $this->data['scouts_upazila'] = array(''=>'Scouts Upazila');   
-      $this->data['scouts_group'] = array(''=>'Scouts Group'); 
-
-   }elseif($this->ion_auth->is_district_admin()){
-         //District Admin
-      $office = $this->Offices_model->get_district_office_by_user_id($this->userSessID)->id;
-         //Result
-      $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', $office, '', '', 3);
-
-      $this->data['scouts_upazila'] =  $this->Common_model->get_scout_upazila_thana($office);   
-      $this->data['scouts_group'] = array(''=>'Scouts Group');
-
-   }elseif($this->ion_auth->is_upazila_admin()){
-         //Upazila Admin
-      $office = $this->Offices_model->get_upazila_office_by_user_id($this->userSessID)->id;
-         //Result
-      $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', '', $office, '', 3);
-
-      $this->data['scouts_group'] =  $this->Common_model->get_scout_group_office('', $office);
-
-   }elseif($this->ion_auth->is_group_admin()){
-         //Group Admin
-      $office = $this->Offices_model->get_scout_group_by_user_id($this->userSessID)->id;
-         //Result
-      $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', '', '', $office, 3);
-   }else{
-      redirect('dashboard');
-   }
-
-
-   if($_GET['region']>0 && $_GET['region'] !=NULL){
-      $this->data['scouts_district'] =  $this->Common_model->get_scout_districts($_GET['region']);
-   }
-
-   if($_GET['district']>0 && $_GET['district'] !=NULL){
-      $this->data['scouts_upazila'] =  $this->Common_model->get_scout_upazila_thana($_GET['district']);
-   }
-
-   if($_GET['upazila']>0 && $_GET['upazila'] !=NULL){
-      $this->data['scouts_group'] =  $this->Common_model->get_scout_group_office('', $_GET['upazila']);
-   }
-
-      //Result
-   $this->data['results'] = $results['rows'];
-   $this->data['total_rows'] = $results['num_rows'];
-
-      //pagination
-   $this->data['pagination'] = create_pagination('scouts_member/delete_request/', $this->data['total_rows'], $limit, 3, $full_tag_wrap = true); 
-
-   $this->data['member_type'] = $this->Common_model->get_member_type();
-   $this->data['scout_section'] = $this->Common_model->set_scout_section();      
-
-      // Load page
-   $this->data['meta_title'] = 'Scouts Member Delete Request List';
-   $this->data['subview'] = 'delete_request';
-   $this->load->view('backend/_layout_main', $this->data);
-}
-
-
-/****************Scout delete_request_pdf pdf FIle Function start******************/
-public function delete_request_pdf()
-{
-   $limit = 25;
-
-   if($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin()){
-         //Superadmin
-      $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', '', '', '', 3);
-         //Dropdown
-      $this->data['regions'] = $this->Common_model->get_regions(); 
-      $this->data['scouts_district'] = array(''=>'Scouts District');  
-      $this->data['scouts_upazila'] = array(''=>'Scouts Upazila');   
-      $this->data['scouts_group'] = array(''=>'Scouts Group'); 
-
-   }elseif($this->ion_auth->is_region_admin()){  
-         //Region Admin
-      $office = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
-         //Result
-      $results = $this->Scouts_member_model->get_scout_member($limit, $offset, $office, '', '', '', 3);
-         //Dropdown
-      $this->data['scouts_district'] =  $this->Common_model->get_scout_districts($office);
-      $this->data['scouts_upazila'] = array(''=>'Scouts Upazila');   
-      $this->data['scouts_group'] = array(''=>'Scouts Group'); 
-
-   }elseif($this->ion_auth->is_district_admin()){
-         //District Admin
-      $office = $this->Offices_model->get_district_office_by_user_id($this->userSessID)->id;
-         //Result
-      $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', $office, '', '', 3);
-
-      $this->data['scouts_upazila'] =  $this->Common_model->get_scout_upazila_thana($office);   
-      $this->data['scouts_group'] = array(''=>'Scouts Group');
-
-   }elseif($this->ion_auth->is_upazila_admin()){
-         //Upazila Admin
-      $office = $this->Offices_model->get_upazila_office_by_user_id($this->userSessID)->id;
-         //Result
-      $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', '', $office, '', 3);
-
-      $this->data['scouts_group'] =  $this->Common_model->get_scout_group_office('', $office);
-
-   }elseif($this->ion_auth->is_group_admin()){
-         //Group Admin
-      $office = $this->Offices_model->get_scout_group_by_user_id($this->userSessID)->id;
-         //Result
-      $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', '', '', $office, 3);
-   }else{
-      redirect('dashboard');
-   }
-
-
-   if($_GET['region']>0 && $_GET['region'] !=NULL){
-      $this->data['scouts_district'] =  $this->Common_model->get_scout_districts($_GET['region']);
-   }
-
-   if($_GET['district']>0 && $_GET['district'] !=NULL){
-      $this->data['scouts_upazila'] =  $this->Common_model->get_scout_upazila_thana($_GET['district']);
-   }
-
-   if($_GET['upazila']>0 && $_GET['upazila'] !=NULL){
-      $this->data['scouts_group'] =  $this->Common_model->get_scout_group_office('', $_GET['upazila']);
-   }
-
-      //Result
-   $this->data['results'] = $results['rows'];
-   $this->data['total_rows'] = $results['num_rows'];
-
-      //...............................................................................
-   $this->data['meta_title'] = 'Scouts Member Delete Request List';
-   $html = $this->load->view('delete_request_pdf', $this->data, true);   
-   $file_name ="delete_request_pdf.pdf";
-
-      //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
-   $mpdf = new mPDF('', 'A4', 10, 'nikosh', 10, 10, 10, 10);
-
-      //generate the PDF from the given html
-   $mpdf->WriteHTML($html);
-
-      //download it for 'D'. 
-   $mpdf->Output($file_name, "D");
-}
-
-/****************Scout delete_request_pdf pdf FIle Function end******************/
-
-/****************Scout delete_request_doc doc FIle Function start******************/
-public function delete_request_doc()
-{
-   $limit = 25;
-
-   if($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin()){
-         //Superadmin
-      $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', '', '', '', 3);
-         //Dropdown
-      $this->data['regions'] = $this->Common_model->get_regions(); 
-      $this->data['scouts_district'] = array(''=>'Scouts District');  
-      $this->data['scouts_upazila'] = array(''=>'Scouts Upazila');   
-      $this->data['scouts_group'] = array(''=>'Scouts Group'); 
-
-   }elseif($this->ion_auth->is_region_admin()){  
-         //Region Admin
-      $office = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
-         //Result
-      $results = $this->Scouts_member_model->get_scout_member($limit, $offset, $office, '', '', '', 3);
-         //Dropdown
-      $this->data['scouts_district'] =  $this->Common_model->get_scout_districts($office);
-      $this->data['scouts_upazila'] = array(''=>'Scouts Upazila');   
-      $this->data['scouts_group'] = array(''=>'Scouts Group'); 
-
-   }elseif($this->ion_auth->is_district_admin()){
-         //District Admin
-      $office = $this->Offices_model->get_district_office_by_user_id($this->userSessID)->id;
-         //Result
-      $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', $office, '', '', 3);
-
-      $this->data['scouts_upazila'] =  $this->Common_model->get_scout_upazila_thana($office);   
-      $this->data['scouts_group'] = array(''=>'Scouts Group');
-
-   }elseif($this->ion_auth->is_upazila_admin()){
-         //Upazila Admin
-      $office = $this->Offices_model->get_upazila_office_by_user_id($this->userSessID)->id;
-         //Result
-      $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', '', $office, '', 3);
-
-      $this->data['scouts_group'] =  $this->Common_model->get_scout_group_office('', $office);
-
-   }elseif($this->ion_auth->is_group_admin()){
-         //Group Admin
-      $office = $this->Offices_model->get_scout_group_by_user_id($this->userSessID)->id;
-         //Result
-      $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', '', '', $office, 3);
-   }else{
-      redirect('dashboard');
-   }
-
-
-   if($_GET['region']>0 && $_GET['region'] !=NULL){
-      $this->data['scouts_district'] =  $this->Common_model->get_scout_districts($_GET['region']);
-   }
-
-   if($_GET['district']>0 && $_GET['district'] !=NULL){
-      $this->data['scouts_upazila'] =  $this->Common_model->get_scout_upazila_thana($_GET['district']);
-   }
-
-   if($_GET['upazila']>0 && $_GET['upazila'] !=NULL){
-      $this->data['scouts_group'] =  $this->Common_model->get_scout_group_office('', $_GET['upazila']);
-   }
-
-      //Result
-   $this->data['results'] = $results['rows'];
-   $this->data['total_rows'] = $results['num_rows'];
-
-      //...............................................................................
-      // generate doc
-   require_once 'vendor/autoload.php';
-   $phpWord = new \PhpOffice\PhpWord\PhpWord();
-      //echo '<pre>'; print_r(111);die();
-        // 27-08-18
-   $phpWord->setDefaultFontName('Courier New');
-   $phpWord->setDefaultFontSize(11);
-
-        //our docx will have 'lanscape' paper orientation
-   $section = $phpWord->createSection(array('marginTop' => 2000));
-
-   $header = $section->addHeader();
-
-        // Add footer
-   $footer = $section->createFooter();
-   $footer->addPreserveText('Page {PAGE} of {NUMPAGES}.', array('margin-top' => '2.9pt','align'=>'center'));
-
-
-   $section->addTextBreak(1);
-
-        // Define font style for first row
-   $fontStyle = array('bold'=>true, 'align'=>'center', 'underline' => 'single');
-   $fontStyleTwo = array('align'=>'center', 'underline' => 'single');
-   $fontStyleThree = array('bold' => true, 'align'=>'center');
-   $fontStyleFour = array('bold' => false);
-   $styleTable = array('cellMargin'=>10);
-   $styleTableTwo = array('cellMargin'=>10, 'borderSize' => 1, 'borderColor'=>'000000');
-   $styleCell = array('valign'=>'center');
-   $styleCellTwo = array('valign'=>'top');
-   $styleCellBTLR = array('valign'=>'center');
-
-   $cellColSpan = array('gridSpan' => 4);
-
-        // Add table style
-   $phpWord->addTableStyle('myOwnTableStyle', $styleTable);
-   
-        // Add table
-   $table = $section->addTable('myOwnTableStyle');
-
-        // Add row
-   $table->addRow(90);
-
-        // Add cells
-
-   $table->addCell(10000, $styleCell)->addText('Scouts Member Archive List' , $fontStyle,array('align' => 'center'));
-
-
-   $phpWord->addTableStyle('myOwnTableTwoStyle', $styleTableTwo);
-
-   $tableTwo = $section->addTable('myOwnTableTwoStyle');
-
-   $tableTwo->addRow(10);
-
-        // Add cells
-   $tableTwo->addCell(900, $styleCellTwo)->addText("SL", $fontStyleThree, array('align' => 'center', 'space' => array('before' => 50, 'after' => 0)));
-   $tableTwo->addCell(3300, $styleCell)->addText("Image", $fontStyleThree, array('align' => 'center', 'space' => array('before' => 50, 'after' => 0)));
-   $tableTwo->addCell(1800, $styleCellTwo)->addText("Full Name", $fontStyleThree, array('align' => 'center', 'space' => array('before' => 50, 'after' => 0)));
-   $tableTwo->addCell(2000, $styleCellTwo)->addText("Scout ID", $fontStyleThree, array('align' => 'center', 'space' => array('before' => 50, 'after' => 0)));
-   $tableTwo->addCell(2500, $styleCellTwo)->addText("Member Type", $fontStyleThree, array('align' => 'center', 'space' => array('before' => 50, 'after' => 0)));
-   $tableTwo->addCell(1500, $styleCellTwo)->addText("Group Name", $fontStyleThree, array('align' => 'center', 'space' => array('before' => 50, 'after' => 0)));
-   $tableTwo->addCell(1500, $styleCellTwo)->addText("Username", $fontStyleThree, array('align' => 'center', 'space' => array('before' => 50, 'after' => 0)));
-
-   $sln=0;
-   foreach ($results['rows'] as $row){
-      $sln++;
-
-
-      if($row->profile_img != NULL){
-         $image =  __DIR__ . '/../../../../profile_img/'.$row->profile_img;
+         // Add cells
+      $tableTwo->addCell(900, $styleCellTwo)->addText("SL", $fontStyleThree, array('align' => 'center', 'space' => array('before' => 50, 'after' => 0)));
+      $tableTwo->addCell(3300, $styleCell)->addText("Image", $fontStyleThree, array('align' => 'center', 'space' => array('before' => 50, 'after' => 0)));
+      $tableTwo->addCell(1800, $styleCellTwo)->addText("Full Name", $fontStyleThree, array('align' => 'center', 'space' => array('before' => 50, 'after' => 0)));
+      $tableTwo->addCell(2000, $styleCellTwo)->addText("Scout ID", $fontStyleThree, array('align' => 'center', 'space' => array('before' => 50, 'after' => 0)));
+      $tableTwo->addCell(2500, $styleCellTwo)->addText("Member Type", $fontStyleThree, array('align' => 'center', 'space' => array('before' => 50, 'after' => 0)));
+      $tableTwo->addCell(1500, $styleCellTwo)->addText("Group Name", $fontStyleThree, array('align' => 'center', 'space' => array('before' => 50, 'after' => 0)));
+      $tableTwo->addCell(1500, $styleCellTwo)->addText("Username", $fontStyleThree, array('align' => 'center', 'space' => array('before' => 50, 'after' => 0)));
+
+      $sln=0;
+      foreach ($results['rows'] as $row){
+         $sln++;
+
+
+         if($row->profile_img != NULL){
+            $image =  __DIR__ . '/../../../../profile_img/'.$row->profile_img;
+         }
+
+         $tableTwo->addRow(10);
+
+         $tableTwo->addCell(1000, $styleCellTwo)->addText($sln, $fontStyleFour, array('align' => 'center', 'space' => array('before' => 50, 'after' => 0)));
+
+         if($row->profile_img != NULL){
+            $tableTwo->addCell(3300, $styleCellTwo)->addImage($image, array('width' => 35,
+            'height' => 40, 'marginTop' => -1, 'marginLeft' => -1, 'wrappingStyle' => 'behind' ));
+         }else{
+            $tableTwo->addCell(3300, $styleCellTwo)->addText(' ', $fontStyleFour, array('align' => 'center', 'space' => array('before' => 50, 'after' => 0)));
+         }
+
+         $tableTwo->addCell(2000, $styleCellTwo)->addText($row->first_name, $fontStyleFour, array('align' => 'left', 'space' => array('before' => 50, 'after' => 0)));
+         $tableTwo->addCell(2000, $styleCellTwo)->addText($row->scout_id, $fontStyleFour, array('align' => 'left', 'space' => array('before' => 50, 'after' => 0)));
+         $tableTwo->addCell(2000, $styleCellTwo)->addText($row->member_type_name, $fontStyleFour, array('align' => 'left', 'space' => array('before' => 50, 'after' => 0)));
+         $tableTwo->addCell(2500, $styleCellTwo)->addText($row->grp_name, $fontStyleFour, array('align' => 'left', 'space' => array('before' => 50, 'after' => 0), 'indentation' => array('right' => 100)));
+         $tableTwo->addCell(1500, $styleCellTwo)->addText($row->username, $fontStyleFour, array('align' => 'center', 'space' => array('before' => 50, 'after' => 0), 'indentation' => array('right' => 100)));
       }
+
+      $section->addTextBreak(1);
+
+      if($_SERVER['HTTP_HOST'] === 'localhost'){
+
+         $file_name = './report_doc/archive_list_doc.docx';
+         $phpWord->save($file_name, 'Word2007');
+         header("Content-Disposition: attachment; filename='archive_list_doc.docx'");
+         readfile($file_name);
+         unlink($file_name);
+      } else {
+         $file_name = './report_doc/archive_list_doc.docx';
+         header("Content-Disposition: attachment; filename='archive_list_doc.docx'");
+         readfile($file_name);
+      }
+   }
+   /****************Scout archive_list_doc doc FIle Function end******************/
+
+   public function delete_request($offset=0){
+      $limit = 25;
+
+      if($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin()){
+            //Superadmin
+         $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', '', '', '', 3);
+            //Dropdown
+         $this->data['regions'] = $this->Common_model->get_regions();
+         $this->data['scouts_district'] = array(''=>'Scouts District');
+         $this->data['scouts_upazila'] = array(''=>'Scouts Upazila');
+         $this->data['scouts_group'] = array(''=>'Scouts Group');
+
+      }elseif($this->ion_auth->is_region_admin()){
+            //Region Admin
+         $office = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
+            //Result
+         $results = $this->Scouts_member_model->get_scout_member($limit, $offset, $office, '', '', '', 3);
+            //Dropdown
+         $this->data['scouts_district'] =  $this->Common_model->get_scout_districts($office);
+         $this->data['scouts_upazila'] = array(''=>'Scouts Upazila');
+         $this->data['scouts_group'] = array(''=>'Scouts Group');
+
+      }elseif($this->ion_auth->is_district_admin()){
+            //District Admin
+         $office = $this->Offices_model->get_district_office_by_user_id($this->userSessID)->id;
+            //Result
+         $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', $office, '', '', 3);
+
+         $this->data['scouts_upazila'] =  $this->Common_model->get_scout_upazila_thana($office);
+         $this->data['scouts_group'] = array(''=>'Scouts Group');
+
+      }elseif($this->ion_auth->is_upazila_admin()){
+            //Upazila Admin
+         $office = $this->Offices_model->get_upazila_office_by_user_id($this->userSessID)->id;
+            //Result
+         $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', '', $office, '', 3);
+
+         $this->data['scouts_group'] =  $this->Common_model->get_scout_group_office('', $office);
+
+      }elseif($this->ion_auth->is_group_admin()){
+            //Group Admin
+         $office = $this->Offices_model->get_scout_group_by_user_id($this->userSessID)->id;
+            //Result
+         $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', '', '', $office, 3);
+      }else{
+         redirect('dashboard');
+      }
+
+
+      if($_GET['region']>0 && $_GET['region'] !=NULL){
+         $this->data['scouts_district'] =  $this->Common_model->get_scout_districts($_GET['region']);
+      }
+
+      if($_GET['district']>0 && $_GET['district'] !=NULL){
+         $this->data['scouts_upazila'] =  $this->Common_model->get_scout_upazila_thana($_GET['district']);
+      }
+
+      if($_GET['upazila']>0 && $_GET['upazila'] !=NULL){
+         $this->data['scouts_group'] =  $this->Common_model->get_scout_group_office('', $_GET['upazila']);
+      }
+
+         //Result
+      $this->data['results'] = $results['rows'];
+      $this->data['total_rows'] = $results['num_rows'];
+
+         //pagination
+      $this->data['pagination'] = create_pagination('scouts_member/delete_request/', $this->data['total_rows'], $limit, 3, $full_tag_wrap = true);
+
+      $this->data['member_type'] = $this->Common_model->get_member_type();
+      $this->data['scout_section'] = $this->Common_model->set_scout_section();
+
+         // Load page
+      $this->data['meta_title'] = 'Scouts Member Delete Request List';
+      $this->data['subview'] = 'delete_request';
+      $this->load->view('backend/_layout_main', $this->data);
+   }
+
+
+   /****************Scout delete_request_pdf pdf FIle Function start******************/
+   public function delete_request_pdf()
+   {
+      $limit = 25;
+
+      if($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin()){
+            //Superadmin
+         $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', '', '', '', 3);
+            //Dropdown
+         $this->data['regions'] = $this->Common_model->get_regions();
+         $this->data['scouts_district'] = array(''=>'Scouts District');
+         $this->data['scouts_upazila'] = array(''=>'Scouts Upazila');
+         $this->data['scouts_group'] = array(''=>'Scouts Group');
+
+      }elseif($this->ion_auth->is_region_admin()){
+            //Region Admin
+         $office = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
+            //Result
+         $results = $this->Scouts_member_model->get_scout_member($limit, $offset, $office, '', '', '', 3);
+            //Dropdown
+         $this->data['scouts_district'] =  $this->Common_model->get_scout_districts($office);
+         $this->data['scouts_upazila'] = array(''=>'Scouts Upazila');
+         $this->data['scouts_group'] = array(''=>'Scouts Group');
+
+      }elseif($this->ion_auth->is_district_admin()){
+            //District Admin
+         $office = $this->Offices_model->get_district_office_by_user_id($this->userSessID)->id;
+            //Result
+         $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', $office, '', '', 3);
+
+         $this->data['scouts_upazila'] =  $this->Common_model->get_scout_upazila_thana($office);
+         $this->data['scouts_group'] = array(''=>'Scouts Group');
+
+      }elseif($this->ion_auth->is_upazila_admin()){
+            //Upazila Admin
+         $office = $this->Offices_model->get_upazila_office_by_user_id($this->userSessID)->id;
+            //Result
+         $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', '', $office, '', 3);
+
+         $this->data['scouts_group'] =  $this->Common_model->get_scout_group_office('', $office);
+
+      }elseif($this->ion_auth->is_group_admin()){
+            //Group Admin
+         $office = $this->Offices_model->get_scout_group_by_user_id($this->userSessID)->id;
+            //Result
+         $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', '', '', $office, 3);
+      }else{
+         redirect('dashboard');
+      }
+
+
+      if($_GET['region']>0 && $_GET['region'] !=NULL){
+         $this->data['scouts_district'] =  $this->Common_model->get_scout_districts($_GET['region']);
+      }
+
+      if($_GET['district']>0 && $_GET['district'] !=NULL){
+         $this->data['scouts_upazila'] =  $this->Common_model->get_scout_upazila_thana($_GET['district']);
+      }
+
+      if($_GET['upazila']>0 && $_GET['upazila'] !=NULL){
+         $this->data['scouts_group'] =  $this->Common_model->get_scout_group_office('', $_GET['upazila']);
+      }
+
+         //Result
+      $this->data['results'] = $results['rows'];
+      $this->data['total_rows'] = $results['num_rows'];
+
+         //...............................................................................
+      $this->data['meta_title'] = 'Scouts Member Delete Request List';
+      $html = $this->load->view('delete_request_pdf', $this->data, true);
+      $file_name ="delete_request_pdf.pdf";
+
+         //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
+      $mpdf = new mPDF('', 'A4', 10, 'nikosh', 10, 10, 10, 10);
+
+         //generate the PDF from the given html
+      $mpdf->WriteHTML($html);
+
+         //download it for 'D'.
+      $mpdf->Output($file_name, "D");
+   }
+
+   /****************Scout delete_request_pdf pdf FIle Function end******************/
+
+   /****************Scout delete_request_doc doc FIle Function start******************/
+   public function delete_request_doc()
+   {
+      $limit = 25;
+
+      if($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin()){
+            //Superadmin
+         $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', '', '', '', 3);
+            //Dropdown
+         $this->data['regions'] = $this->Common_model->get_regions();
+         $this->data['scouts_district'] = array(''=>'Scouts District');
+         $this->data['scouts_upazila'] = array(''=>'Scouts Upazila');
+         $this->data['scouts_group'] = array(''=>'Scouts Group');
+
+      }elseif($this->ion_auth->is_region_admin()){
+            //Region Admin
+         $office = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
+            //Result
+         $results = $this->Scouts_member_model->get_scout_member($limit, $offset, $office, '', '', '', 3);
+            //Dropdown
+         $this->data['scouts_district'] =  $this->Common_model->get_scout_districts($office);
+         $this->data['scouts_upazila'] = array(''=>'Scouts Upazila');
+         $this->data['scouts_group'] = array(''=>'Scouts Group');
+
+      }elseif($this->ion_auth->is_district_admin()){
+            //District Admin
+         $office = $this->Offices_model->get_district_office_by_user_id($this->userSessID)->id;
+            //Result
+         $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', $office, '', '', 3);
+
+         $this->data['scouts_upazila'] =  $this->Common_model->get_scout_upazila_thana($office);
+         $this->data['scouts_group'] = array(''=>'Scouts Group');
+
+      }elseif($this->ion_auth->is_upazila_admin()){
+            //Upazila Admin
+         $office = $this->Offices_model->get_upazila_office_by_user_id($this->userSessID)->id;
+            //Result
+         $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', '', $office, '', 3);
+
+         $this->data['scouts_group'] =  $this->Common_model->get_scout_group_office('', $office);
+
+      }elseif($this->ion_auth->is_group_admin()){
+            //Group Admin
+         $office = $this->Offices_model->get_scout_group_by_user_id($this->userSessID)->id;
+            //Result
+         $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', '', '', $office, 3);
+      }else{
+         redirect('dashboard');
+      }
+
+
+      if($_GET['region']>0 && $_GET['region'] !=NULL){
+         $this->data['scouts_district'] =  $this->Common_model->get_scout_districts($_GET['region']);
+      }
+
+      if($_GET['district']>0 && $_GET['district'] !=NULL){
+         $this->data['scouts_upazila'] =  $this->Common_model->get_scout_upazila_thana($_GET['district']);
+      }
+
+      if($_GET['upazila']>0 && $_GET['upazila'] !=NULL){
+         $this->data['scouts_group'] =  $this->Common_model->get_scout_group_office('', $_GET['upazila']);
+      }
+
+         //Result
+      $this->data['results'] = $results['rows'];
+      $this->data['total_rows'] = $results['num_rows'];
+
+         //...............................................................................
+         // generate doc
+      require_once 'vendor/autoload.php';
+      $phpWord = new \PhpOffice\PhpWord\PhpWord();
+         //echo '<pre>'; print_r(111);die();
+         // 27-08-18
+      $phpWord->setDefaultFontName('Courier New');
+      $phpWord->setDefaultFontSize(11);
+
+         //our docx will have 'lanscape' paper orientation
+      $section = $phpWord->createSection(array('marginTop' => 2000));
+
+      $header = $section->addHeader();
+
+         // Add footer
+      $footer = $section->createFooter();
+      $footer->addPreserveText('Page {PAGE} of {NUMPAGES}.', array('margin-top' => '2.9pt','align'=>'center'));
+
+
+      $section->addTextBreak(1);
+
+         // Define font style for first row
+      $fontStyle = array('bold'=>true, 'align'=>'center', 'underline' => 'single');
+      $fontStyleTwo = array('align'=>'center', 'underline' => 'single');
+      $fontStyleThree = array('bold' => true, 'align'=>'center');
+      $fontStyleFour = array('bold' => false);
+      $styleTable = array('cellMargin'=>10);
+      $styleTableTwo = array('cellMargin'=>10, 'borderSize' => 1, 'borderColor'=>'000000');
+      $styleCell = array('valign'=>'center');
+      $styleCellTwo = array('valign'=>'top');
+      $styleCellBTLR = array('valign'=>'center');
+
+      $cellColSpan = array('gridSpan' => 4);
+
+         // Add table style
+      $phpWord->addTableStyle('myOwnTableStyle', $styleTable);
+
+         // Add table
+      $table = $section->addTable('myOwnTableStyle');
+
+         // Add row
+      $table->addRow(90);
+
+         // Add cells
+
+      $table->addCell(10000, $styleCell)->addText('Scouts Member Archive List' , $fontStyle,array('align' => 'center'));
+
+
+      $phpWord->addTableStyle('myOwnTableTwoStyle', $styleTableTwo);
+
+      $tableTwo = $section->addTable('myOwnTableTwoStyle');
 
       $tableTwo->addRow(10);
 
-      $tableTwo->addCell(1000, $styleCellTwo)->addText($sln, $fontStyleFour, array('align' => 'center', 'space' => array('before' => 50, 'after' => 0)));
+         // Add cells
+      $tableTwo->addCell(900, $styleCellTwo)->addText("SL", $fontStyleThree, array('align' => 'center', 'space' => array('before' => 50, 'after' => 0)));
+      $tableTwo->addCell(3300, $styleCell)->addText("Image", $fontStyleThree, array('align' => 'center', 'space' => array('before' => 50, 'after' => 0)));
+      $tableTwo->addCell(1800, $styleCellTwo)->addText("Full Name", $fontStyleThree, array('align' => 'center', 'space' => array('before' => 50, 'after' => 0)));
+      $tableTwo->addCell(2000, $styleCellTwo)->addText("Scout ID", $fontStyleThree, array('align' => 'center', 'space' => array('before' => 50, 'after' => 0)));
+      $tableTwo->addCell(2500, $styleCellTwo)->addText("Member Type", $fontStyleThree, array('align' => 'center', 'space' => array('before' => 50, 'after' => 0)));
+      $tableTwo->addCell(1500, $styleCellTwo)->addText("Group Name", $fontStyleThree, array('align' => 'center', 'space' => array('before' => 50, 'after' => 0)));
+      $tableTwo->addCell(1500, $styleCellTwo)->addText("Username", $fontStyleThree, array('align' => 'center', 'space' => array('before' => 50, 'after' => 0)));
 
-      if($row->profile_img != NULL){
-         $tableTwo->addCell(3300, $styleCellTwo)->addImage($image, array('width' => 35,
-           'height' => 40, 'marginTop' => -1, 'marginLeft' => -1, 'wrappingStyle' => 'behind' ));
+      $sln=0;
+      foreach ($results['rows'] as $row){
+         $sln++;
+
+
+         if($row->profile_img != NULL){
+            $image =  __DIR__ . '/../../../../profile_img/'.$row->profile_img;
+         }
+
+         $tableTwo->addRow(10);
+
+         $tableTwo->addCell(1000, $styleCellTwo)->addText($sln, $fontStyleFour, array('align' => 'center', 'space' => array('before' => 50, 'after' => 0)));
+
+         if($row->profile_img != NULL){
+            $tableTwo->addCell(3300, $styleCellTwo)->addImage($image, array('width' => 35,
+            'height' => 40, 'marginTop' => -1, 'marginLeft' => -1, 'wrappingStyle' => 'behind' ));
+         }else{
+            $tableTwo->addCell(3300, $styleCellTwo)->addText(' ', $fontStyleFour, array('align' => 'center', 'space' => array('before' => 50, 'after' => 0)));
+         }
+
+         $tableTwo->addCell(2000, $styleCellTwo)->addText($row->first_name, $fontStyleFour, array('align' => 'left', 'space' => array('before' => 50, 'after' => 0)));
+         $tableTwo->addCell(2000, $styleCellTwo)->addText($row->scout_id, $fontStyleFour, array('align' => 'left', 'space' => array('before' => 50, 'after' => 0)));
+         $tableTwo->addCell(2000, $styleCellTwo)->addText($row->member_type_name, $fontStyleFour, array('align' => 'left', 'space' => array('before' => 50, 'after' => 0)));
+         $tableTwo->addCell(2500, $styleCellTwo)->addText($row->grp_name, $fontStyleFour, array('align' => 'left', 'space' => array('before' => 50, 'after' => 0), 'indentation' => array('right' => 100)));
+         $tableTwo->addCell(1500, $styleCellTwo)->addText($row->username, $fontStyleFour, array('align' => 'center', 'space' => array('before' => 50, 'after' => 0), 'indentation' => array('right' => 100)));
+      }
+
+      $section->addTextBreak(1);
+
+      if($_SERVER['HTTP_HOST'] === 'localhost'){
+
+         $file_name = './report_doc/delete_request_doc.docx';
+         $phpWord->save($file_name, 'Word2007');
+         header("Content-Disposition: attachment; filename='delete_request_doc.docx'");
+         readfile($file_name);
+         unlink($file_name);
+      } else {
+         $file_name = './report_doc/delete_request_doc.docx';
+         header("Content-Disposition: attachment; filename='delete_request_doc.docx'");
+         readfile($file_name);
+      }
+
+   }
+   /****************Scout delete_request_doc doc FIle Function end******************/
+
+   public function request(){
+      if(!$this->ion_auth->is_group_admin()){
+         redirect('dashboard');
+      }
+
+         //Scouts Group office
+      $office = $this->Offices_model->get_scout_group_by_user_id($this->userSessID)->id;
+
+         //Result
+      $this->data['results'] = $this->Scouts_member_model->get_request_member($office);
+
+         // Load page
+      $this->data['meta_title'] = 'Scouts Member Request';
+      $this->data['subview'] = 'request';
+      $this->load->view('backend/_layout_main', $this->data);
+   }
+
+   public function verified_list(){
+      if(!$this->ion_auth->is_group_admin()){
+         redirect('dashboard');
+      }
+
+         //Scouts Group office
+      $office = $this->Offices_model->get_scout_group_by_user_id($this->userSessID)->id;
+
+         //Result
+      $this->data['results'] = $this->Scouts_member_model->get_verified_member($office);
+
+         // Load page
+      $this->data['meta_title'] = 'Scouts Member Verified List';
+      $this->data['subview'] = 'verified_list';
+      $this->load->view('backend/_layout_main', $this->data);
+   }
+
+   public function verified_member_generate_scout_id($id){
+      $scoutID = (int) decrypt_url($id);
+         // Check Exists
+      if(!$this->Common_model->exists('users', 'id', $scoutID)){
+         show_404('scouts_member - verified_member_generate_scout_id - exists', TRUE);
+      }
+
+         // Cross check
+      if($this->ion_auth->is_group_admin()){
+            // Group Admin
+         $groupInfo = $this->Offices_model->get_scout_group_by_user_id($this->userSessID);
+         $group      = $groupInfo->id;
+            //Cross check for group
+         if(!$this->Offices_model->cross_check_scouts_member($scoutID, '', '', '', $group)){
+            show_404('scouts_member - verified_member_generate_scout_id - GA', TRUE);
+         }
+
+            //Get information
+         $info = $this->Scouts_member_model->get_info($scoutID);
+
+            //Generate Scout ID and Save
+         if($info->scout_id == NULL){
+               $last_scout_id = $this->Scouts_member_model->get_last_scout_id(); //exit;
+               $generate_scout_id = $this->generateScoutID($last_scout_id);
+               if($this->Scouts_member_model->set_scout_id($info->id, $generate_scout_id)){
+               func_activity_log(5, 'Genterate scout ID :'.$scoutID); //1=C, 2=U, 3=D, 4=V, 5=G
+               $this->session->set_flashdata('success', 'Scout ID generate successfully.');
+               redirect('scouts_member/all');
+            }
+         }else{
+            show_404('scouts_member - scout id already generated - GA', TRUE);
+         }
+
       }else{
-       $tableTwo->addCell(3300, $styleCellTwo)->addText(' ', $fontStyleFour, array('align' => 'center', 'space' => array('before' => 50, 'after' => 0)));
-    }
-
-    $tableTwo->addCell(2000, $styleCellTwo)->addText($row->first_name, $fontStyleFour, array('align' => 'left', 'space' => array('before' => 50, 'after' => 0)));
-    $tableTwo->addCell(2000, $styleCellTwo)->addText($row->scout_id, $fontStyleFour, array('align' => 'left', 'space' => array('before' => 50, 'after' => 0)));
-    $tableTwo->addCell(2000, $styleCellTwo)->addText($row->member_type_name, $fontStyleFour, array('align' => 'left', 'space' => array('before' => 50, 'after' => 0)));
-    $tableTwo->addCell(2500, $styleCellTwo)->addText($row->grp_name, $fontStyleFour, array('align' => 'left', 'space' => array('before' => 50, 'after' => 0), 'indentation' => array('right' => 100)));
-    $tableTwo->addCell(1500, $styleCellTwo)->addText($row->username, $fontStyleFour, array('align' => 'center', 'space' => array('before' => 50, 'after' => 0), 'indentation' => array('right' => 100)));
- }
-
- $section->addTextBreak(1);
-
- if($_SERVER['HTTP_HOST'] === 'localhost'){
-
-    $file_name = './report_doc/delete_request_doc.docx';
-    $phpWord->save($file_name, 'Word2007');
-    header("Content-Disposition: attachment; filename='delete_request_doc.docx'");
-    readfile($file_name);
-    unlink($file_name);
- } else {
-   $file_name = './report_doc/delete_request_doc.docx';
-   header("Content-Disposition: attachment; filename='delete_request_doc.docx'");
-   readfile($file_name);
-}
-
-}
-/****************Scout delete_request_doc doc FIle Function end******************/
-
-public function request(){
-   if(!$this->ion_auth->is_group_admin()){
-      redirect('dashboard');
+         redirect('dashboard');
+      }
    }
 
-      //Scouts Group office
-   $office = $this->Offices_model->get_scout_group_by_user_id($this->userSessID)->id;
-
-      //Result
-   $this->data['results'] = $this->Scouts_member_model->get_request_member($office); 
-
-      // Load page
-   $this->data['meta_title'] = 'Scouts Member Request';
-   $this->data['subview'] = 'request';
-   $this->load->view('backend/_layout_main', $this->data);
-}
-
-public function verified_list(){
-   if(!$this->ion_auth->is_group_admin()){
-      redirect('dashboard');
-   }      
-
-      //Scouts Group office
-   $office = $this->Offices_model->get_scout_group_by_user_id($this->userSessID)->id;
-
-      //Result
-   $this->data['results'] = $this->Scouts_member_model->get_verified_member($office); 
-
-      // Load page
-   $this->data['meta_title'] = 'Scouts Member Verified List';
-   $this->data['subview'] = 'verified_list';
-   $this->load->view('backend/_layout_main', $this->data);
-}
-
-public function verified_member_generate_scout_id($id){
-   $scoutID = (int) decrypt_url($id);
-      // Check Exists
-   if(!$this->Common_model->exists('users', 'id', $scoutID)){
-      show_404('scouts_member - verified_member_generate_scout_id - exists', TRUE);
-   }
-
-      // Cross check
-   if($this->ion_auth->is_group_admin()){
-         // Group Admin
-      $groupInfo = $this->Offices_model->get_scout_group_by_user_id($this->userSessID);
-      $group      = $groupInfo->id;
-         //Cross check for group
-      if(!$this->Offices_model->cross_check_scouts_member($scoutID, '', '', '', $group)){
-         show_404('scouts_member - verified_member_generate_scout_id - GA', TRUE);
+   public function cancel_request(){
+      if(!$this->ion_auth->is_group_admin()){
+         redirect('dashboard');
       }
 
-         //Get information
-      $info = $this->Scouts_member_model->get_info($scoutID);
+         //Scouts Group office
+      $office = $this->Offices_model->get_scout_group_by_user_id($this->userSessID)->id;
 
-         //Generate Scout ID and Save
-      if($info->scout_id == NULL){
-            $last_scout_id = $this->Scouts_member_model->get_last_scout_id(); //exit;
-            $generate_scout_id = $this->generateScoutID($last_scout_id);
-            if($this->Scouts_member_model->set_scout_id($info->id, $generate_scout_id)){
-              func_activity_log(5, 'Genterate scout ID :'.$scoutID); //1=C, 2=U, 3=D, 4=V, 5=G
-              $this->session->set_flashdata('success', 'Scout ID generate successfully.');
-              redirect('scouts_member/all');
-           }
-        }else{
-         show_404('scouts_member - scout id already generated - GA', TRUE);
-      }
+         //Result
+      $this->data['results'] = $this->Scouts_member_model->get_request_member_cancel($office);
 
-   }else{
-      redirect('dashboard');
+         // Load page
+      $this->data['meta_title'] = 'Scouts Member Request Cancel';
+      $this->data['subview'] = 'cancel_request';
+      $this->load->view('backend/_layout_main', $this->data);
    }
-}
-
-public function cancel_request(){
-   if(!$this->ion_auth->is_group_admin()){
-      redirect('dashboard');
-   }
-
-      //Scouts Group office
-   $office = $this->Offices_model->get_scout_group_by_user_id($this->userSessID)->id;
-
-      //Result
-   $this->data['results'] = $this->Scouts_member_model->get_request_member_cancel($office);          
-
-      // Load page
-   $this->data['meta_title'] = 'Scouts Member Request Cancel';
-   $this->data['subview'] = 'cancel_request';
-   $this->load->view('backend/_layout_main', $this->data);
-}
 
 
 
    /************************* Details Scouts Member **************************
-   ***************************************************************************/   
+   ***************************************************************************/
 
    public function details($id){
       $scoutID = (int) decrypt_url($id); //exit;
@@ -1324,7 +1327,7 @@ public function cancel_request(){
       $activity_data['user_id'] = $this->userSessID;
       $activity_data['message'] = 'Scouts Member Details ID: '.$scoutID;
       $activity_data['activity_type_id'] = 3; //For Delete Activity log
-      $activity_data['ip_address'] = $this->Common_model->get_client_ip(); 
+      $activity_data['ip_address'] = $this->Common_model->get_client_ip();
       $activity_data['created'] = date('Y-m-d H:i:s');
       $this->Common_model->save('activity_logs',$activity_data);
       /***********Activity Logs End**********/
@@ -1332,10 +1335,10 @@ public function cancel_request(){
       //Check authentication
       if($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin() || $this->ion_auth->in_group(array('award', 'event', 'training'))){
          //Superadmin
-         //Goto next  
+         //Goto next
       }elseif($this->ion_auth->is_region_admin()){
          // Region Admin
-         $region = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id; 
+         $region = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
          //Cross check for region admin
          if(!$this->Offices_model->cross_check_scouts_member($scoutID, $region, '', '', '')){
             show_404('scouts_member - details - RA', TRUE);
@@ -1343,7 +1346,7 @@ public function cancel_request(){
 
       }elseif($this->ion_auth->is_district_admin()){
          // District Admin
-         $districtInfo = $this->Offices_model->get_district_office_by_user_id($this->userSessID);  
+         $districtInfo = $this->Offices_model->get_district_office_by_user_id($this->userSessID);
          $region     = $districtInfo->dis_scout_region_id;
          $district   = $districtInfo->id;
          //Cross check for district admin
@@ -1362,8 +1365,8 @@ public function cancel_request(){
             show_404('scouts_member - details - UA', TRUE);
          }
 
-      }elseif($this->ion_auth->is_group_admin()){     
-         // Group Admin    
+      }elseif($this->ion_auth->is_group_admin()){
+         // Group Admin
          $groupInfo = $this->Offices_model->get_scout_group_by_user_id($this->userSessID);
          $group      = $groupInfo->id;
          //Cross check for group admin
@@ -1417,14 +1420,14 @@ public function cancel_request(){
       if(!$this->Common_model->exists('users', 'id', $scoutID)){
          show_404('scouts_member - details - exists', TRUE);
       }
-      
+
       //Check authentication
       if($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin() || $this->ion_auth->in_group(array('award', 'event', 'training'))){
          //Superadmin
-         //Goto next  
+         //Goto next
       }elseif($this->ion_auth->is_region_admin()){
          // Region Admin
-         $region = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id; 
+         $region = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
          //Cross check for region admin
          if(!$this->Offices_model->cross_check_scouts_member($scoutID, $region, '', '', '')){
             show_404('scouts_member - details - RA', TRUE);
@@ -1432,7 +1435,7 @@ public function cancel_request(){
 
       }elseif($this->ion_auth->is_district_admin()){
          // District Admin
-         $districtInfo = $this->Offices_model->get_district_office_by_user_id($this->userSessID);  
+         $districtInfo = $this->Offices_model->get_district_office_by_user_id($this->userSessID);
          $region     = $districtInfo->dis_scout_region_id;
          $district   = $districtInfo->id;
          //Cross check for district admin
@@ -1451,8 +1454,8 @@ public function cancel_request(){
             show_404('scouts_member - details - UA', TRUE);
          }
 
-      }elseif($this->ion_auth->is_group_admin()){     
-         // Group Admin    
+      }elseif($this->ion_auth->is_group_admin()){
+         // Group Admin
          $groupInfo = $this->Offices_model->get_scout_group_by_user_id($this->userSessID);
          $group      = $groupInfo->id;
          //Cross check for group admin
@@ -1488,7 +1491,7 @@ public function cancel_request(){
 
       //...............................................................................
       $this->data['meta_title'] = 'Details Scouts Member';
-      $html = $this->load->view('scout_member_details_pdf', $this->data, true);   
+      $html = $this->load->view('scout_member_details_pdf', $this->data, true);
       $file_name ="scout_member_details_pdf.pdf";
 
       //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
@@ -1497,7 +1500,7 @@ public function cancel_request(){
       //generate the PDF from the given html
       $mpdf->WriteHTML($html);
 
-      //download it for 'D'. 
+      //download it for 'D'.
       $mpdf->Output($file_name, "D");
    }
 
@@ -1508,7 +1511,7 @@ public function cancel_request(){
       // Check Exists
       if(!$this->Common_model->exists('users', 'id', $scoutID)){
          show_404('scouts_member - edit - exists', TRUE);
-      }      
+      }
 
       //Get information
       $this->data['info'] = $this->Scouts_member_model->get_info($scoutID);
@@ -1522,15 +1525,15 @@ public function cancel_request(){
          $scGroupId = $this->data['info']->sc_group_id;
 
          //Dropdown
-         $this->data['regions'] = $this->Common_model->get_regions(); 
-         $this->data['scout_districts'] = $this->Common_model->get_scout_districts(); 
-         $this->data['scout_upazila'] = $this->Common_model->get_scout_upazila_thana(); 
-         $this->data['scout_group'] = $this->Common_model->get_scout_group_office($scDistrictId); 
+         $this->data['regions'] = $this->Common_model->get_regions();
+         $this->data['scout_districts'] = $this->Common_model->get_scout_districts();
+         $this->data['scout_upazila'] = $this->Common_model->get_scout_upazila_thana();
+         $this->data['scout_group'] = $this->Common_model->get_scout_group_office($scDistrictId);
          $this->data['scout_unit'] = $this->Common_model->get_scout_unit_office($scGroupId);
 
       }elseif($this->ion_auth->is_region_admin()){
          // Region Admin
-         $region = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id; 
+         $region = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
          //Cross check for region admin
          if(!$this->Offices_model->cross_check_scouts_member($scoutID, $region, '', '', '')){
             show_404('scouts_member - edit - RA', TRUE);
@@ -1543,7 +1546,7 @@ public function cancel_request(){
 
       }elseif($this->ion_auth->is_district_admin()){
          // District Admin
-         $districtInfo = $this->Offices_model->get_district_office_by_user_id($this->userSessID);  
+         $districtInfo = $this->Offices_model->get_district_office_by_user_id($this->userSessID);
          $region     = $districtInfo->dis_scout_region_id;
          $district   = $districtInfo->id;
          //Cross check for district admin
@@ -1594,7 +1597,7 @@ public function cancel_request(){
          redirect('dashboard');
       }
 
-      // validate form input        
+      // validate form input
       $this->form_validation->set_rules('first_name', 'full name (English)', 'required|trim');
       $this->form_validation->set_rules('full_name_bn', 'full name (Bangla)', 'required|trim');
       $this->form_validation->set_rules('father_name', 'father name (English)', 'required|trim');
@@ -1604,12 +1607,12 @@ public function cancel_request(){
       $this->form_validation->set_rules('day', 'day', 'required|trim');
       $this->form_validation->set_rules('month', 'month', 'required|trim');
       $this->form_validation->set_rules('year', 'year', 'required|trim');
-      $this->form_validation->set_rules('gender', 'gender', 'required|trim'); 
-      $this->form_validation->set_rules('religion_id', 'religion', 'required|trim');       
+      $this->form_validation->set_rules('gender', 'gender', 'required|trim');
+      $this->form_validation->set_rules('religion_id', 'religion', 'required|trim');
       $this->form_validation->set_rules('blood_group', 'blood group', 'trim');
       $this->form_validation->set_rules('phone', 'mobile number', 'required|trim');
       $this->form_validation->set_rules('email', 'email', 'valid_email|trim');
-      
+
       $this->form_validation->set_rules('pre_village_house', 'present village/house (English)', 'required|trim');
       $this->form_validation->set_rules('pre_village_house_bn', 'present village/house (Bangla)', 'required|trim');
       $this->form_validation->set_rules('pre_road_block', 'present road/block (English)', 'required|trim');
@@ -1642,28 +1645,28 @@ public function cancel_request(){
          $this->form_validation->set_rules('sc_group_id', 'scout group', 'required|trim');
       }
 
-      $this->form_validation->set_rules('sc_unit_id', 'scout unit', 'trim');        
+      $this->form_validation->set_rules('sc_unit_id', 'scout unit', 'trim');
       $this->form_validation->set_rules('userfile', 'profile image required', '');
       $this->form_validation->set_rules('hide_img', 'profile image required', 'trim');
 
       // update the password if it was posted
       if ($this->input->post('password')){
-         $this->form_validation->set_rules('password', $this->lang->line('edit_user_validation_password_label'), 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|max_length[' . $this->config->item('max_password_length', 'ion_auth') . ']');        
+         $this->form_validation->set_rules('password', $this->lang->line('edit_user_validation_password_label'), 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|max_length[' . $this->config->item('max_password_length', 'ion_auth') . ']');
       }
 
       // if(@$_FILES['userfile']['size'] > 0){
       //    $this->form_validation->set_rules('userfile', '', 'callback_file_check');
-      // }      
+      // }
 
       // Run after validation and input data
       if ($this->form_validation->run() == true){
-         //check request 
+         //check request
          if(decrypt_url($this->input->post('dataID')) != $scoutID){
             show_404('scouts_member - edit - submit check request post data', TRUE);
          }
-         $dob = $this->input->post('year').'-'.$this->input->post('month').'-'.$this->input->post('day');         
-         $form_data = array(            
-            'first_name'        =>  $this->input->post('first_name'),            
+         $dob = $this->input->post('year').'-'.$this->input->post('month').'-'.$this->input->post('day');
+         $form_data = array(
+            'first_name'        =>  $this->input->post('first_name'),
             'full_name_bn'      => $this->input->post('full_name_bn'),
             'father_name'       => $this->input->post('father_name'),
             'father_name_bn'    => $this->input->post('father_name_bn'),
@@ -1672,8 +1675,8 @@ public function cancel_request(){
             'dob'               =>  $dob,
             'gender'            =>  $this->input->post('gender'),
             'blood_group'       =>  $this->input->post('blood_group'),
-            'phone'             =>  $this->input->post('phone'),   
-            'email'             =>  $this->input->post('email'),   
+            'phone'             =>  $this->input->post('phone'),
+            'email'             =>  $this->input->post('email'),
             'is_interested'     =>  NULL,
             'religion_id'       =>  $this->input->post('religion_id'),
             'is_request'        =>  '0',
@@ -1685,11 +1688,11 @@ public function cancel_request(){
             'pre_division_id'   =>  $this->input->post('pre_division_id'),
             'pre_district_id'   =>  $this->input->post('pre_district_id'),
             'pre_upa_tha_id'    =>  $this->input->post('pre_upa_tha_id'),
-            'pre_post_office'   =>  $this->input->post('pre_post_office'),   
+            'pre_post_office'   =>  $this->input->post('pre_post_office'),
             'curr_institute_id' =>  $this->input->post('curr_institute_id'),
             'curr_class'        =>  $this->input->post('curr_class'),
             'curr_role_no'      =>  $this->input->post('curr_role_no'),
-            'scout_designation' =>  $this->input->post('scout_designation'),         
+            'scout_designation' =>  $this->input->post('scout_designation'),
             'curr_org'          =>  $this->input->post('curr_org'),
             'curr_desig'        =>  $this->input->post('curr_desig'),
             'sc_cub'            =>  $this->input->post('sc_cub')=='Yes'?'Yes':'No',
@@ -1707,19 +1710,19 @@ public function cancel_request(){
 
          // Scout office update by access level
          if($this->ion_auth->is_group_admin()){
-            $form_data['sc_unit_id']      = $this->input->post('sc_unit_id'); 
+            $form_data['sc_unit_id']      = $this->input->post('sc_unit_id');
          }elseif($this->ion_auth->is_upazila_admin()){
             $form_data['sc_group_id']     = $this->input->post('sc_group_id');
-            $form_data['sc_unit_id']      = $this->input->post('sc_unit_id'); 
+            $form_data['sc_unit_id']      = $this->input->post('sc_unit_id');
          }elseif($this->ion_auth->is_district_admin()){
             $form_data['sc_upa_tha_id']   = $this->input->post('sc_upa_tha_id');
             $form_data['sc_group_id']     = $this->input->post('sc_group_id');
-            $form_data['sc_unit_id']      = $this->input->post('sc_unit_id'); 
+            $form_data['sc_unit_id']      = $this->input->post('sc_unit_id');
          }elseif($this->ion_auth->is_region_admin()){
             $form_data['sc_district_id']  = $this->input->post('sc_district_id');
             $form_data['sc_upa_tha_id']   = $this->input->post('sc_upa_tha_id');
             $form_data['sc_group_id']     = $this->input->post('sc_group_id');
-            $form_data['sc_unit_id']      = $this->input->post('sc_unit_id'); 
+            $form_data['sc_unit_id']      = $this->input->post('sc_unit_id');
          }else{
             $form_data['sc_region_id']    = $this->input->post('sc_region_id');
             $form_data['sc_district_id']  = $this->input->post('sc_district_id');
@@ -1731,7 +1734,7 @@ public function cancel_request(){
          // update the password if it was posted
          if ($this->input->post('password')){
             $form_data['password'] = $this->input->post('password');
-         }       
+         }
 
          // Find last scout ID like AA1003 and generate next ID AA1004
          // if($this->input->post('generateID')){
@@ -1739,7 +1742,7 @@ public function cancel_request(){
          //    $scout_id = $this->generateScoutID($last_scout_id);
          //    $form_data['scout_id'] = $this->input->post('generateID')?$scout_id:NULL;
          //    //$this->qrcode_generator($last_scout_id);
-         // }    
+         // }
 
          // Image Upload
          // if($_FILES['userfile']['size'] > 0){
@@ -1772,14 +1775,14 @@ public function cancel_request(){
          // }
 
          // if($_FILES['userfile']['size'] > 0){
-         //    $form_data['profile_img'] = $uploadedFile; 
+         //    $form_data['profile_img'] = $uploadedFile;
          // }
 
          // if($scoutID == '1910'){
          // echo '<pre>';
          // print_r($form_data); exit;
          // }
-         
+
          if($this->ion_auth->update($scoutID, $form_data)){
             $id = $this->data['info']->id;
 
@@ -1787,9 +1790,9 @@ public function cancel_request(){
             if($this->input->post('hide_img') != NULL){
                $file_name = $this->input->post('hide_img');
                $tmp = explode('.', $file_name);
-               $file_extension = end($tmp);                          
+               $file_extension = end($tmp);
 
-	            //Copy file and rename 
+	            //Copy file and rename
                $file = $this->img_thumb_path.'/'.$this->input->post('hide_img');
 	            // $file = 'temp_dir/_thumb/'.$this->input->post('hide_img');
                $newfile = $id.'.'.$file_extension;
@@ -1815,19 +1818,19 @@ public function cancel_request(){
             $this->session->set_flashdata('success', 'Information update successfully.');
             redirect('scouts_member/all');
           }
-          
-          
-       }      
+
+
+       }
 
       //Dropdown
        $this->data['religions'] = $this->Common_model->set_religion();
-       $this->data['days'] = $this->Common_model->get_days(); 
-       $this->data['months'] = $this->Common_model->get_months(); 
+       $this->data['days'] = $this->Common_model->get_days();
+       $this->data['months'] = $this->Common_model->get_months();
        $this->data['years'] = $this->Common_model->get_years();
        $this->data['blood_group'] = $this->Common_model->get_blood_group();
-       $this->data['divisions'] = $this->Common_model->get_division(); 
-       $this->data['districts'] = $this->Common_model->get_district(); 
-       $this->data['upazilas'] = $this->Common_model->get_upazila_thana();       
+       $this->data['divisions'] = $this->Common_model->get_division();
+       $this->data['districts'] = $this->Common_model->get_district();
+       $this->data['upazilas'] = $this->Common_model->get_upazila_thana();
        $this->data['member_type'] = $this->Common_model->get_member_type();
        $this->data['scout_section'] = $this->Common_model->set_scout_section();
        $this->data['scout_badges'] = $this->Common_model->get_badges($this->data['info']->member_id, $this->data['info']->sc_section_id);
@@ -1844,7 +1847,7 @@ public function cancel_request(){
    /*************************** Add Scouts Member ****************************
    ***************************************************************************/
 
-   public function create(){      
+   public function create(){
       // scout office
       // $region = NULL;
       // $district = NULL;
@@ -1854,17 +1857,17 @@ public function cancel_request(){
       //Check authentication
       if($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin()){
          // Superadmin
-         $this->data['regions'] = $this->Common_model->get_regions(); 
-         $this->data['scout_districts'] = $this->Common_model->get_scout_districts(); 
-         $this->data['scout_upazila'] = $this->Common_model->get_scout_upazila_thana(); 
-         $this->data['scout_group'] = $this->Common_model->get_scout_group_office(); 
+         $this->data['regions'] = $this->Common_model->get_regions();
+         $this->data['scout_districts'] = $this->Common_model->get_scout_districts();
+         $this->data['scout_upazila'] = $this->Common_model->get_scout_upazila_thana();
+         $this->data['scout_group'] = $this->Common_model->get_scout_group_office();
          $this->data['scout_unit'] = $this->Common_model->get_scout_unit_office();
 
       }elseif($this->ion_auth->is_region_admin()){
          redirect('scouts_member/all');
 
          // Region Admin
-         $office = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;    
+         $office = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
          $region = $office;
          //Dropdown
          $this->data['region_info'] = $this->Common_model->get_office_info('office_region', $office);
@@ -1872,8 +1875,8 @@ public function cancel_request(){
 
       }elseif($this->ion_auth->is_district_admin()){
          redirect('scouts_member/all');
-         // District Admin        
-         $office = $this->Offices_model->get_district_office_by_user_id($this->userSessID);  
+         // District Admin
+         $office = $this->Offices_model->get_district_office_by_user_id($this->userSessID);
          $region     = $office->dis_scout_region_id;
          $district   = $office->id;
          //Dropdown
@@ -1887,7 +1890,7 @@ public function cancel_request(){
          // Upazila Admin
          $office = $this->Offices_model->get_upazila_office_by_user_id($this->userSessID);
          $region     = $office->upa_region_id;
-         $district   = $office->upa_scout_dis_id;         
+         $district   = $office->upa_scout_dis_id;
          $upazila    = $office->id;
          //Dropdown
          $this->data['region_info'] = $this->Common_model->get_office_info('office_region', $region);
@@ -1897,7 +1900,7 @@ public function cancel_request(){
 
       }elseif($this->ion_auth->is_group_admin()){
          // Group Admin
-         $office = $this->Offices_model->get_scout_group_by_user_id($this->userSessID);         
+         $office = $this->Offices_model->get_scout_group_by_user_id($this->userSessID);
          $region     = $office->grp_region_id;
          $district   = $office->grp_scout_dis_id;
          $upazila    = $office->grp_scout_upa_id;
@@ -1911,8 +1914,8 @@ public function cancel_request(){
 
       }else{
          redirect('dashboard');
-      }      
-      
+      }
+
       //user
       $tables = $this->config->item('tables','ion_auth');
       $identity_column = $this->config->item('identity','ion_auth');
@@ -1936,8 +1939,8 @@ public function cancel_request(){
       $this->form_validation->set_rules('day', 'day', 'required|trim');
       $this->form_validation->set_rules('month', 'month', 'required|trim');
       $this->form_validation->set_rules('year', 'year', 'required|trim');
-      $this->form_validation->set_rules('gender', 'gender', 'required|trim'); 
-      $this->form_validation->set_rules('religion_id', 'religion', 'required|trim');       
+      $this->form_validation->set_rules('gender', 'gender', 'required|trim');
+      $this->form_validation->set_rules('religion_id', 'religion', 'required|trim');
       $this->form_validation->set_rules('blood_group', 'blood group', 'trim');
       $this->form_validation->set_rules('phone', 'mobile number', 'required|trim');
       $this->form_validation->set_rules('email', 'email', 'valid_email|trim');
@@ -1968,14 +1971,14 @@ public function cancel_request(){
       $this->form_validation->set_rules('sc_district_id', 'scout district', 'trim');
       $this->form_validation->set_rules('sc_upa_tha_id', 'scout upazila/thana', 'trim');
       // $this->form_validation->set_rules('sc_group_id', 'scout group', 'required|trim');
-      // $this->form_validation->set_rules('sc_unit_id', 'scout unit', 'trim');        
+      // $this->form_validation->set_rules('sc_unit_id', 'scout unit', 'trim');
 
       if($this->ion_auth->is_group_admin()){
          $this->form_validation->set_rules('sc_group_id', 'scout group', 'trim');
       }else{
          $this->form_validation->set_rules('sc_group_id', 'scout group', 'required|trim');
       }
-      $this->form_validation->set_rules('sc_unit_id', 'scout unit', 'trim');        
+      $this->form_validation->set_rules('sc_unit_id', 'scout unit', 'trim');
 
       // $this->form_validation->set_rules('userfile', 'profile image required', '');
 
@@ -1998,7 +2001,7 @@ public function cancel_request(){
             // $row_id = $this->Scouts_member_model->get_scout_row_id($scout_id)->id;
             // $this->qrcode_generator($row_id);
          }
-         
+
          // Array data
          $additional_data = array(
             'scout_id'          => $this->input->post('generateID')==1?$scout_id:NULL,
@@ -2011,8 +2014,8 @@ public function cancel_request(){
             'dob'               =>  $dob,
             'gender'            =>  $this->input->post('gender'),
             'blood_group'       =>  $this->input->post('blood_group'),
-            'phone'             =>  $this->input->post('phone'),      
-            'email'             =>  $this->input->post('email'),      
+            'phone'             =>  $this->input->post('phone'),
+            'email'             =>  $this->input->post('email'),
             'is_interested'     =>  NULL,
             'religion_id'       =>  $this->input->post('religion_id'),
             'is_request'        =>  '0',
@@ -2024,11 +2027,11 @@ public function cancel_request(){
             'pre_division_id'   =>  $this->input->post('pre_division_id'),
             'pre_district_id'   =>  $this->input->post('pre_district_id'),
             'pre_upa_tha_id'    =>  $this->input->post('pre_upa_tha_id'),
-            'pre_post_office'   =>  $this->input->post('pre_post_office'),     
-            'scout_designation' =>  $this->input->post('scout_designation'),     
+            'pre_post_office'   =>  $this->input->post('pre_post_office'),
+            'scout_designation' =>  $this->input->post('scout_designation'),
             'curr_institute_id' =>  $this->input->post('curr_institute_id'),
             'curr_class'        =>  $this->input->post('curr_class'),
-            'curr_role_no'      =>  $this->input->post('curr_role_no'),            
+            'curr_role_no'      =>  $this->input->post('curr_role_no'),
             'curr_org'          =>  $this->input->post('curr_org'),
             'curr_desig'        =>  $this->input->post('curr_desig'),
             'sc_cub'            =>  $this->input->post('sc_cub')=='Yes'?'Yes':'No',
@@ -2041,14 +2044,14 @@ public function cancel_request(){
             'certificate_date'  =>  date_db_format($this->input->post('certificate_date')),
             'sc_section_id'     =>  $this->input->post('sc_section_id'),
             'sc_badge_id'       =>  $this->input->post('sc_badge_id'),
-            'sc_role_id'        =>  $this->input->post('sc_role_id'),   
-            'sc_region_id'      =>  $region != NULL ? $region:$this->input->post('sc_region_id'),  
-            'sc_district_id'    =>  $district != NULL ? $district:$this->input->post('sc_district_id'), 
-            'sc_upa_tha_id'     =>  $upazila != NULL ? $upazila:$this->input->post('sc_upa_tha_id'), 
-            'sc_group_id'       =>  $group != NULL ? $group:$this->input->post('sc_group_id'), 
-            'sc_unit_id'        =>  $this->input->post('sc_unit_id'),     
+            'sc_role_id'        =>  $this->input->post('sc_role_id'),
+            'sc_region_id'      =>  $region != NULL ? $region:$this->input->post('sc_region_id'),
+            'sc_district_id'    =>  $district != NULL ? $district:$this->input->post('sc_district_id'),
+            'sc_upa_tha_id'     =>  $upazila != NULL ? $upazila:$this->input->post('sc_upa_tha_id'),
+            'sc_group_id'       =>  $group != NULL ? $group:$this->input->post('sc_group_id'),
+            'sc_unit_id'        =>  $this->input->post('sc_unit_id'),
             );
-         
+
          // echo '<pre>';
          // print_r($additional_data); exit;
 
@@ -2056,15 +2059,15 @@ public function cancel_request(){
          $user_group = array('9');
          // if ($this->form_validation->run() == true && $this->ion_auth->register($identity, $password, $email, $additional_data, $user_group)) {
          // $insert_id = $this->db->insert_id();
-         
+
          if($insert_id = $this->ion_auth->register($identity, $password, $email, $additional_data, $user_group)){
             //Copy image, rename and remove from temp directory
             if($this->input->post('hide_img') != NULL){
                $file_name = $this->input->post('hide_img');
                $tmp = explode('.', $file_name);
-               $file_extension = end($tmp);                          
+               $file_extension = end($tmp);
 
-               //Copy file and rename 
+               //Copy file and rename
                $file = $this->img_thumb_path.'/'.$this->input->post('hide_img');
                // $file = 'temp_dir/_thumb/'.$this->input->post('hide_img');
                $newfile = $insert_id.'.'.$file_extension;
@@ -2086,7 +2089,7 @@ public function cancel_request(){
             }
 
             //1=C, 2=U, 3=D, 4=V, 5=G ,A = 6
-            func_activity_log(1, 'Scout Member create ID :'.$insert_id); 
+            func_activity_log(1, 'Scout Member create ID :'.$insert_id);
             // check to see if we are creating the user
             // redirect them back to the admin page
             $this->session->set_flashdata('message', $this->ion_auth->messages());
@@ -2096,26 +2099,25 @@ public function cancel_request(){
 
       // display the create user form
       // set the flash data error message if there is one
-      $this->data['message'] = (validation_errors() ? validation_errors() : ($this->ion_auth->errors() ? $this->ion_auth->errors() : $this->session->flashdata('message')));     
+      $this->data['message'] = (validation_errors() ? validation_errors() : ($this->ion_auth->errors() ? $this->ion_auth->errors() : $this->session->flashdata('message')));
 
       // dropdown list
-      $this->data['religions'] = $this->Common_model->set_religion(); 
-      $this->data['days'] = $this->Common_model->get_days(); 
-      $this->data['months'] = $this->Common_model->get_months(); 
+      $this->data['religions'] = $this->Common_model->set_religion();
+      $this->data['days'] = $this->Common_model->get_days();
+      $this->data['months'] = $this->Common_model->get_months();
       $this->data['years'] = $this->Common_model->get_years();
       $this->data['blood_group'] = $this->Common_model->get_blood_group();
-      $this->data['divisions'] = $this->Common_model->get_division(); 
-      $this->data['districts'] = $this->Common_model->get_district(); 
-      $this->data['upazilas'] = $this->Common_model->get_upazila_thana(); 
-      // $this->data['regions'] = $this->Common_model->get_regions(); 
+      $this->data['divisions'] = $this->Common_model->get_division();
+      $this->data['districts'] = $this->Common_model->get_district();
+      $this->data['upazilas'] = $this->Common_model->get_upazila_thana();
+      // $this->data['regions'] = $this->Common_model->get_regions();
       $this->data['member_type'] = $this->Common_model->get_member_type();
-      $this->data['scout_section'] = $this->Common_model->set_scout_section();    
-
+      $this->data['scout_section'] = $this->Common_model->set_scout_section();
       // Load Page
-      $this->data['meta_title'] = 'Add Scouts Member';            
+      $this->data['meta_title'] = 'Add Scouts Member';
       $this->data['subview'] = 'create';
       $this->load->view('backend/_layout_main', $this->data);
-   }   
+   }
 
 
 
@@ -2131,8 +2133,8 @@ public function cancel_request(){
       }
 
       //Check authentication
-      if($this->ion_auth->is_group_admin()){     
-         // Group Admin    
+      if($this->ion_auth->is_group_admin()){
+         // Group Admin
          $groupInfo = $this->Offices_model->get_scout_group_by_user_id($this->userSessID);
          $group      = $groupInfo->id;
          //Cross check for group admin
@@ -2147,8 +2149,8 @@ public function cancel_request(){
       $this->form_validation->set_rules('scout_section', 'approved scout section', 'trim');
 
       //Validate and input data
-      if ($this->form_validation->run() == true){    
-         //check request 
+      if ($this->form_validation->run() == true){
+         //check request
          if(decrypt_url($this->input->post('dataID')) != $scoutID){
             show_404('scouts_member - verify - post submit check request ', TRUE);
          }
@@ -2177,7 +2179,7 @@ public function cancel_request(){
 
       //Results
       $this->data['info'] = $this->Scouts_member_model->get_verify($scoutID);
-      $this->data['scout_section'] = $this->Common_model->set_scout_section(); 
+      $this->data['scout_section'] = $this->Common_model->set_scout_section();
 
       //Load view
       $this->data['meta_title'] = 'Verify Scouts Member Request';
@@ -2220,7 +2222,7 @@ public function cancel_request(){
          //Goto next
       }elseif($this->ion_auth->is_region_admin()){
          // Region Admin
-         $region = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id; 
+         $region = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
          //Cross check for region admin
          if(!$this->Offices_model->cross_check_scouts_member($scoutID, $region, '', '', '')){
             show_404('scouts_member - restore - RA', TRUE);
@@ -2228,7 +2230,7 @@ public function cancel_request(){
 
       }elseif($this->ion_auth->is_district_admin()){
          // District Admin
-         $districtInfo = $this->Offices_model->get_district_office_by_user_id($this->userSessID);  
+         $districtInfo = $this->Offices_model->get_district_office_by_user_id($this->userSessID);
          $region     = $districtInfo->dis_scout_region_id;
          $district   = $districtInfo->id;
          //Cross check for district admin
@@ -2247,8 +2249,8 @@ public function cancel_request(){
             show_404('scouts_member - restore - UA', TRUE);
          }
 
-      }elseif($this->ion_auth->is_group_admin()){     
-         // Group Admin    
+      }elseif($this->ion_auth->is_group_admin()){
+         // Group Admin
          $groupInfo = $this->Offices_model->get_scout_group_by_user_id($this->userSessID);
          $group      = $groupInfo->id;
          //Cross check for group admin
@@ -2283,8 +2285,8 @@ public function cancel_request(){
       }
 
       // Change 'status' field to delete request list
-      if ($scoutID){         
-         $data = array(            
+      if ($scoutID){
+         $data = array(
             'is_request' => '1',
             'is_verify' => '0'
             );
@@ -2305,10 +2307,10 @@ public function cancel_request(){
       }
 
       /***********Activity Logs Start**********/
-      $activity_data['user_id'] = $this->userSessID; 
-      $activity_data['message'] = 'Scouts Member archive ID: '.$scoutID; 
+      $activity_data['user_id'] = $this->userSessID;
+      $activity_data['message'] = 'Scouts Member archive ID: '.$scoutID;
       $activity_data['activity_type_id'] = 2; //For Update Activity log
-      $activity_data['ip_address'] = $this->Common_model->get_client_ip(); 
+      $activity_data['ip_address'] = $this->Common_model->get_client_ip();
       $activity_data['created'] = date('Y-m-d H:i:s');
       $this->Common_model->save('activity_logs',$activity_data);
       /***********Activity Logs End**********/
@@ -2320,7 +2322,7 @@ public function cancel_request(){
 
       }elseif($this->ion_auth->is_region_admin()){
          // Region Admin
-         $region = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id; 
+         $region = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
          //Cross check for region admin
          if(!$this->Offices_model->cross_check_scouts_member($scoutID, $region, '', '', '')){
             show_404('scouts_member - archive - RA', TRUE);
@@ -2328,7 +2330,7 @@ public function cancel_request(){
 
       }elseif($this->ion_auth->is_district_admin()){
          // District Admin
-         $districtInfo = $this->Offices_model->get_district_office_by_user_id($this->userSessID);  
+         $districtInfo = $this->Offices_model->get_district_office_by_user_id($this->userSessID);
          $region     = $districtInfo->dis_scout_region_id;
          $district   = $districtInfo->id;
          //Cross check for district admin
@@ -2347,15 +2349,15 @@ public function cancel_request(){
             show_404('scouts_member - archive - UA', TRUE);
          }
 
-      }elseif($this->ion_auth->is_group_admin()){     
-         // Group Admin    
+      }elseif($this->ion_auth->is_group_admin()){
+         // Group Admin
          $groupInfo = $this->Offices_model->get_scout_group_by_user_id($this->userSessID);
          $group      = $groupInfo->id;
          //Cross check for group admin
          if(!$this->Offices_model->cross_check_scouts_member($scoutID, '', '', '', $group)){
             show_404('scouts_member - archive - GA', TRUE);
          }
-         
+
       }else{
          redirect('dashboard');
       }
@@ -2366,10 +2368,10 @@ public function cancel_request(){
          if($this->Common_model->edit('users', $scoutID, 'id', $data)){
           func_activity_log(6, 'Scout Member Archive ID :'.$scoutID); //1=C, 2=U, 3=D, 4=V, 5=G ,A = 6
           $this->session->set_flashdata('success', 'Scouts member archived successfully.');
-       }
-       redirect('scouts_member/archive_list');
-    }
- }
+         }
+         redirect('scouts_member/archive_list');
+      }
+   }
 
 
 
@@ -2377,7 +2379,7 @@ public function cancel_request(){
    ***************************************************************************/
 
    public function delete($id){
-      $scoutID = (int) decrypt_url($id); 
+      $scoutID = (int) decrypt_url($id);
 
       if(!$this->Common_model->exists('users', 'id', $scoutID)){
          show_404('scouts_member - delete - exists', TRUE);
@@ -2389,7 +2391,7 @@ public function cancel_request(){
          //Goto next
       }elseif($this->ion_auth->is_region_admin()){
          // Region Admin
-         $region = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id; 
+         $region = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
          //Cross check for region admin
          if(!$this->Offices_model->cross_check_scouts_member($scoutID, $region, '', '', '')){
             show_404('scouts_member - delete - RA', TRUE);
@@ -2397,7 +2399,7 @@ public function cancel_request(){
 
       }elseif($this->ion_auth->is_district_admin()){
          // District Admin
-         $districtInfo = $this->Offices_model->get_district_office_by_user_id($this->userSessID);  
+         $districtInfo = $this->Offices_model->get_district_office_by_user_id($this->userSessID);
          $region     = $districtInfo->dis_scout_region_id;
          $district   = $districtInfo->id;
          //Cross check for district admin
@@ -2416,8 +2418,8 @@ public function cancel_request(){
             show_404('scouts_member - delete - UA', TRUE);
          }
 
-      }elseif($this->ion_auth->is_group_admin()){     
-         // Group Admin    
+      }elseif($this->ion_auth->is_group_admin()){
+         // Group Admin
          $groupInfo = $this->Offices_model->get_scout_group_by_user_id($this->userSessID);
          $group      = $groupInfo->id;
          //Cross check for group admin
@@ -2432,7 +2434,7 @@ public function cancel_request(){
       $activity_data['user_id'] = $this->userSessID;
       $activity_data['message'] = 'Scouts Member Delete ID: '.$scoutID;
       $activity_data['activity_type_id'] = 3; //For Delete Activity log
-      $activity_data['ip_address'] = $this->Common_model->get_client_ip(); 
+      $activity_data['ip_address'] = $this->Common_model->get_client_ip();
       $activity_data['created'] = date('Y-m-d H:i:s');
       $this->Common_model->save('activity_logs',$activity_data);
       /***********Activity Logs End**********/
@@ -2448,7 +2450,7 @@ public function cancel_request(){
       }
    }
 
-   public function scout_member_delete($id){      
+   public function scout_member_delete($id){
       if(!($this->ion_auth->is_admin() || $this->ion_auth->is_region_admin() || $this->ion_auth->is_district_admin() || $this->ion_auth->is_upazila_admin())){
          redirect('dashboard');
       }
@@ -2458,10 +2460,10 @@ public function cancel_request(){
       //Delete user and all related information
       if($this->Scouts_member_model->destroy_user_information($scoutID)){
          $this->session->set_flashdata('success', 'All relevant information is deleted from the database of this member.');
-         redirect("scouts_member/delete_request");   
+         redirect("scouts_member/delete_request");
       }else{
          $this->session->set_flashdata('warning', 'Someting is wrong.');
-         redirect("scouts_member/delete_request");   
+         redirect("scouts_member/delete_request");
       }
    }
 
@@ -2483,14 +2485,14 @@ public function cancel_request(){
    //      $this->qrcode_generator($this->data['info']->id);
    //       // redirect('my_profile/id_card');
    //    // }
-   //    //Load page       
+   //    //Load page
    //    $this->data['meta_title'] = 'Scout Member ID Card';
    //    $this->data['subview'] = 'id_card';
    //    $this->load->view('backend/_layout_main', $this->data);
-   // } 
+   // }
 
    public function pdf_id_card($id){
-      if(!$this->ion_auth->is_admin()){
+      if(!$this->ion_auth->in_group(array('admin', 'scout_admin', 'monitor_team', 'regional_head', 'district_office', 'upazila_office'))){
          redirect('dashboard');
       }
 
@@ -2498,21 +2500,21 @@ public function cancel_request(){
       if(!$this->Common_model->exists('users', 'id', $scoutID)){
          show_404('scouts_member - pdf_id_card - exists', TRUE);
       }
-      
+
       // Generate QR Code
       $this->qrcode_generator($scoutID);
 
-      // Scout Information      
+      // Scout Information
       $this->data['info'] = $this->My_profile_model->get_info($scoutID);
-      // echo $this->data['info']->scout_id; exit;        
+      // echo $this->data['info']->scout_id; exit;
 
       //Generate HTML
       $html = $this->load->view('pdf_id_card_front', $this->data, true);
-      $html2 = $this->load->view('pdf_id_card_back', $this->data, true);    
+      $html2 = $this->load->view('pdf_id_card_back', $this->data, true);
 
       $mpdf = new mPDF('', array(349, 225), 10, 'arial', 0, 0, 0, 0);
       $file_name ="scout-id-".$this->data['info']->scout_id.".pdf";
-      
+
       // $mpdf->showImageErrors = true;
       // $mpdf->debug = true;
       //$mpdf->img_dpi = 72;
@@ -2522,7 +2524,7 @@ public function cancel_request(){
       $mpdf->AddPage(); // Adds a new page in Landscape orientation
       $mpdf->WriteHTML($html2);
 
-      //download it for 'D'. 
+      //download it for 'D'.
       $mpdf->Output($file_name, 'I');
    }
 
@@ -2539,11 +2541,11 @@ public function cancel_request(){
          show_404('scouts_member - print_completed - exists', TRUE);
       }
 
-      // 
+      //
       $info = $this->Scouts_member_model->get_info($scoutID);
 
       // Flag for print scout id card
-      if ($scoutID){         
+      if ($scoutID){
          $data = array( 'is_printed' => '1' );
 
          if($this->Common_model->edit('users', $scoutID, 'id', $data)){
@@ -2565,11 +2567,11 @@ public function cancel_request(){
          show_404('scouts_member - print_not_completed - exists', TRUE);
       }
 
-      // 
+      //
       $info = $this->Scouts_member_model->get_info($scoutID);
 
       // Flag for print scout id card
-      if ($scoutID){         
+      if ($scoutID){
          $data = array( 'is_printed' => '0' );
 
          if($this->Common_model->edit('users', $scoutID, 'id', $data)){
@@ -2578,7 +2580,7 @@ public function cancel_request(){
          redirect('scouts_member/all');
       }
    }
-   
+
 
    /************************* Scouts Experience ******************************
    ***************************************************************************/
@@ -2602,7 +2604,7 @@ public function cancel_request(){
       $this->form_validation->set_rules('sc_district_id', 'scout district', 'trim');
       $this->form_validation->set_rules('sc_upa_tha_id', 'scout upazila', 'trim');
       $this->form_validation->set_rules('sc_group_id', 'scout group', 'trim');
-      $this->form_validation->set_rules('sc_unit_id', 'scout unit', 'trim');        
+      $this->form_validation->set_rules('sc_unit_id', 'scout unit', 'trim');
 
         // Run after validation
       if ($this->form_validation->run() == true){
@@ -2629,15 +2631,15 @@ public function cancel_request(){
             if($this->Common_model->save('scout_experience', $form_data)){
                $this->session->set_flashdata('message', $this->ion_auth->messages() );
                redirect('scouts_member/details/'.$id);
-            } 
+            }
          }
       }
 
       //dropdown
-      $this->data['regions'] = $this->Common_model->get_regions(); 
-      $this->data['scout_districts'] = $this->Common_model->get_scout_districts(); 
-      $this->data['scout_upazila_thana'] = $this->Common_model->get_scout_upazila_thana(); 
-      $this->data['scout_group'] = $this->Common_model->get_scout_group_office(); 
+      $this->data['regions'] = $this->Common_model->get_regions();
+      $this->data['scout_districts'] = $this->Common_model->get_scout_districts();
+      $this->data['scout_upazila_thana'] = $this->Common_model->get_scout_upazila_thana();
+      $this->data['scout_group'] = $this->Common_model->get_scout_group_office();
       $this->data['scout_unit'] = $this->Common_model->get_scout_unit_office();
       $this->data['member_type'] = $this->Common_model->get_member_type();
       $this->data['scout_section'] = $this->Common_model->set_scout_section();
@@ -2668,11 +2670,11 @@ public function cancel_request(){
       $this->form_validation->set_rules('sc_district_id', 'scout district', 'trim');
       $this->form_validation->set_rules('sc_upa_tha_id', 'scout upazila', 'trim');
       $this->form_validation->set_rules('sc_group_id', 'scout group', 'trim');
-      $this->form_validation->set_rules('sc_unit_id', 'scout unit', 'trim');        
+      $this->form_validation->set_rules('sc_unit_id', 'scout unit', 'trim');
 
         // Run after validation
       if ($this->form_validation->run() == true){
-         $form_data = array(             
+         $form_data = array(
             'scout_id'          => $id,
             'join_date'         => date_db_format($this->input->post('join_date')),
             'member_id'         => $this->input->post('member_id'),
@@ -2695,15 +2697,15 @@ public function cancel_request(){
             if($this->Common_model->save('scout_experience', $form_data)){
                $this->session->set_flashdata('message', $this->ion_auth->messages() );
                redirect('scouts_member/details/'.$id);
-            } 
+            }
          }
       }
 
       //dropdown
-      $this->data['regions'] = $this->Common_model->get_regions(); 
-      $this->data['scout_districts'] = $this->Common_model->get_scout_districts(); 
-      $this->data['scout_upazila_thana'] = $this->Common_model->get_scout_upazila_thana(); 
-      $this->data['scout_group'] = $this->Common_model->get_scout_group_office(); 
+      $this->data['regions'] = $this->Common_model->get_regions();
+      $this->data['scout_districts'] = $this->Common_model->get_scout_districts();
+      $this->data['scout_upazila_thana'] = $this->Common_model->get_scout_upazila_thana();
+      $this->data['scout_group'] = $this->Common_model->get_scout_group_office();
       $this->data['scout_unit'] = $this->Common_model->get_scout_unit_office();
       $this->data['member_type'] = $this->Common_model->get_member_type();
       $this->data['scout_section'] = $this->Common_model->set_scout_section();
@@ -2735,7 +2737,7 @@ public function cancel_request(){
       $this->form_validation->set_rules('sc_district_id', 'scout district', 'trim');
       $this->form_validation->set_rules('sc_upa_tha_id', 'scout upazila', 'trim');
       $this->form_validation->set_rules('sc_group_id', 'scout group', 'trim');
-      $this->form_validation->set_rules('sc_unit_id', 'scout unit', 'trim');        
+      $this->form_validation->set_rules('sc_unit_id', 'scout unit', 'trim');
 
       // Run after validation
       if ($this->form_validation->run() == true){
@@ -2762,15 +2764,15 @@ public function cancel_request(){
             if($this->Common_model->save('scout_experience', $form_data)){
                $this->session->set_flashdata('message', $this->ion_auth->messages() );
                redirect('scouts_member/details/'.$id);
-            } 
+            }
          }
       }
 
       //dropdown
-      $this->data['regions'] = $this->Common_model->get_regions(); 
-      $this->data['scout_districts'] = $this->Common_model->get_scout_districts(); 
-      $this->data['scout_upazila_thana'] = $this->Common_model->get_scout_upazila_thana(); 
-      $this->data['scout_group'] = $this->Common_model->get_scout_group_office(); 
+      $this->data['regions'] = $this->Common_model->get_regions();
+      $this->data['scout_districts'] = $this->Common_model->get_scout_districts();
+      $this->data['scout_upazila_thana'] = $this->Common_model->get_scout_upazila_thana();
+      $this->data['scout_group'] = $this->Common_model->get_scout_group_office();
       $this->data['scout_unit'] = $this->Common_model->get_scout_unit_office();
       $this->data['member_type'] = $this->Common_model->get_member_type();
       $this->data['scout_section'] = $this->Common_model->set_scout_section();
@@ -2797,17 +2799,17 @@ public function cancel_request(){
       } else {
          return TRUE;
       }
-   } 
+   }
 
    public function file_check($str){
       $this->load->helper('file');
       $allowed_mime_type_arr = array('image/jpeg','image/png','image/x-png');
       $mime = get_mime_by_extension($_FILES['userfile']['name']);
-      $file_size = 524288; 
+      $file_size = 524288;
       $size_kb = '512 KB';
 
       if(isset($_FILES['userfile']['name']) && $_FILES['userfile']['name']!=""){
-         if(!in_array($mime, $allowed_mime_type_arr)){                
+         if(!in_array($mime, $allowed_mime_type_arr)){
             $this->form_validation->set_message('file_check', 'Please select only jpg, jpeg, png file.');
             return false;
          }elseif($_FILES["userfile"]["size"] > $file_size){
@@ -2820,7 +2822,7 @@ public function cancel_request(){
          $this->form_validation->set_message('file_check', 'Please choose a image file to upload.');
          return false;
       }
-   }   
+   }
 
    // Scout ID office type wise
    // public function scout_id_by_office_search($regionID=NULL, $districtID=NULL, $upazilaID=NULL, $groupID=NULL){
@@ -2829,16 +2831,16 @@ public function cancel_request(){
    //       $this->db->select('id, CONCAT(scout_id, " (", first_name, ")") AS text');
 
    //       if(!empty($regionID)){
-   //          $this->db->where('sc_region_id', $regionID); 
+   //          $this->db->where('sc_region_id', $regionID);
    //       }
    //       if(!empty($districtID)){
-   //          $this->db->where('sc_district_id', $districtID); 
+   //          $this->db->where('sc_district_id', $districtID);
    //       }
    //       if(!empty($upazilaID)){
-   //          $this->db->where('sc_upa_tha_id', $upazilaID); 
-   //       } 
+   //          $this->db->where('sc_upa_tha_id', $upazilaID);
+   //       }
    //       if(!empty($groupID)){
-   //          $this->db->where('sc_group_id', $groupID); 
+   //          $this->db->where('sc_group_id', $groupID);
    //       }
 
    //       $this->db->where("(scout_id LIKE '%".$this->input->get("q")."%' OR first_name LIKE '%".$this->input->get("q")."%')", NULL, FALSE);
@@ -2860,7 +2862,7 @@ public function cancel_request(){
          $this->db->select('id, CONCAT(scout_id, " (", first_name, ")") AS text');
 
          if(!empty($officeID)){
-            $this->db->where('sc_region_id', $officeID); 
+            $this->db->where('sc_region_id', $officeID);
          }
 
          $this->db->where("(scout_id LIKE '%".$this->input->get("q")."%' OR first_name LIKE '%".$this->input->get("q")."%')", NULL, FALSE);
@@ -2883,7 +2885,7 @@ public function cancel_request(){
          $this->db->select('id, CONCAT(scout_id, " (", first_name, ")") AS text');
 
          if(!empty($officeID)){
-            $this->db->where('sc_district_id', $officeID); 
+            $this->db->where('sc_district_id', $officeID);
          }
 
          $this->db->where("(scout_id LIKE '%".$this->input->get("q")."%' OR first_name LIKE '%".$this->input->get("q")."%')", NULL, FALSE);
@@ -2906,7 +2908,7 @@ public function cancel_request(){
          $this->db->select('id, CONCAT(scout_id, " (", first_name, ")") AS text');
 
          if(!empty($officeID)){
-            $this->db->where('sc_upa_tha_id', $officeID); 
+            $this->db->where('sc_upa_tha_id', $officeID);
          }
 
          $this->db->where("(scout_id LIKE '%".$this->input->get("q")."%' OR first_name LIKE '%".$this->input->get("q")."%')", NULL, FALSE);
@@ -2929,7 +2931,7 @@ public function cancel_request(){
          $this->db->select('id, CONCAT(scout_id, " (", first_name, ")") AS text');
 
          if(!empty($officeID)){
-            $this->db->where('sc_group_id', $officeID);             
+            $this->db->where('sc_group_id', $officeID);
          }
 
          $this->db->where("(scout_id LIKE '%".$this->input->get("q")."%' OR first_name LIKE '%".$this->input->get("q")."%')", NULL, FALSE);
@@ -2959,23 +2961,23 @@ public function cancel_request(){
       //       $office = $this->Offices_model->get_scout_group_by_user_id($this->userSessID);
       //       $district   = $office->grp_scout_dis_id;
       //       $upazila    = $office->grp_scout_upa_id;
-      // } 
+      // }
       // print_r($office); exit();
 
       $json = [];
       if(!empty($this->input->get("q"))){
          // $this->db->like('scout_id', $this->input->get("q"));
-         $this->db->or_like('scout_id', $this->input->get("q")); 
+         $this->db->or_like('scout_id', $this->input->get("q"));
          $this->db->or_like('first_name', $this->input->get("q"));
          // if(!empty($region)){
-         //    $this->db->where('sc_region_id', $region); 
+         //    $this->db->where('sc_region_id', $region);
          // }
          // if(!empty($district)){
-         //    $this->db->where('sc_district_id', $district); 
+         //    $this->db->where('sc_district_id', $district);
          // }
          // if(!empty($upazila)){
-         //    $this->db->where('sc_upa_tha_id', $upazila); 
-         // } 
+         //    $this->db->where('sc_upa_tha_id', $upazila);
+         // }
          $query = $this->db->select('id, CONCAT(scout_id, " (", first_name, ")") AS text')
          ->limit(1)
          ->get("users");
@@ -2987,11 +2989,11 @@ public function cancel_request(){
    public function scout_id_search_training(){
       $json = [];
       if(!empty($this->input->get("q"))){
-         $this->db->select('u.id, CONCAT(u.scout_id, " (", u.first_name, ")") AS text');         
+         $this->db->select('u.id, CONCAT(u.scout_id, " (", u.first_name, ")") AS text');
          $this->db->from('prog_training t');
          $this->db->join('users u', 'u.id = t.scout_id', 'LEFT');
-         $this->db->or_like('u.scout_id', $this->input->get("q")); 
-         $this->db->or_like('u.first_name', $this->input->get("q"));         
+         $this->db->or_like('u.scout_id', $this->input->get("q"));
+         $this->db->or_like('u.first_name', $this->input->get("q"));
          $this->db->or_where('t.course_id', 34);
          $this->db->limit(1);
          $query = $this->db->get();
@@ -3016,23 +3018,23 @@ public function cancel_request(){
       //       $office = $this->Offices_model->get_scout_group_by_user_id($this->userSessID);
       //       $district   = $office->grp_scout_dis_id;
       //       $upazila    = $office->grp_scout_upa_id;
-      // } 
+      // }
       // print_r($office); exit();
 
       $json = [];
       if(!empty($this->input->get("q"))){
          // $this->db->like('scout_id', $this->input->get("q"));
-         $this->db->or_like('scout_id', $this->input->get("q")); 
+         $this->db->or_like('scout_id', $this->input->get("q"));
          $this->db->or_like('first_name', $this->input->get("q"));
          // if(!empty($region)){
-         //    $this->db->where('sc_region_id', $region); 
+         //    $this->db->where('sc_region_id', $region);
          // }
          // if(!empty($district)){
-         //    $this->db->where('sc_district_id', $district); 
+         //    $this->db->where('sc_district_id', $district);
          // }
          // if(!empty($upazila)){
-         //    $this->db->where('sc_upa_tha_id', $upazila); 
-         // } 
+         //    $this->db->where('sc_upa_tha_id', $upazila);
+         // }
          $query = $this->db->select('id, CONCAT(scout_id, " (", first_name, ")") AS text')
          ->where('sc_group_id', 90)
          ->limit(10)
@@ -3049,10 +3051,10 @@ public function cancel_request(){
    /************************** Generate Scout ID ******************************
    ***************************************************************************/
    public function generateScoutID($last_id){
-      $lastIdScoutChar = substr($last_id, 0, 2); 
-      $lastScoutIdNumber = substr($last_id, 2, 5); 
+      $lastIdScoutChar = substr($last_id, 0, 2);
+      $lastScoutIdNumber = substr($last_id, 2, 5);
       $nextScoutIdResult = "";
-      
+
       if($lastScoutIdNumber == 9999)
       {
          //Next Scout char example: AZ to BA.
@@ -3073,7 +3075,7 @@ public function cancel_request(){
       }
 
       return $nextScoutIdResult;
-   }      
+   }
 
 
 
@@ -3088,7 +3090,7 @@ public function cancel_request(){
       $scout_id   = $info->scout_id;
       $url        = base_url("user/").$scout_id;
 
-      $codeContents = 'URL: '.$url."\n"; 
+      $codeContents = 'URL: '.$url."\n";
 
       $data['img_url']="";
       $this->load->library('ciqrcode');
@@ -3114,40 +3116,40 @@ public function cancel_request(){
    //    $info = $this->Scouts_member_model->get_info($id);
    //    // print_r($info); exit;
 
-   //    // here our data 
+   //    // here our data
    //    $name         = $info->first_name;
-   //    $scout_id     = $info->scout_id; 
-   //    $phone        = '(+88)'.$info->phone;               
-   //    $orgName      = 'Bangladesh Scouts'; 
-   //    $email        = $info->email; 
+   //    $scout_id     = $info->scout_id;
+   //    $phone        = '(+88)'.$info->phone;
+   //    $orgName      = 'Bangladesh Scouts';
+   //    $email        = $info->email;
 
-   //    // if not used - leave blank! 
+   //    // if not used - leave blank!
    //    $addressLabel     = 'Present Address';
-   //    $addressCo        = $info->pre_village_house; 
+   //    $addressCo        = $info->pre_village_house;
    //    $addressStreet    = $info->pre_road_block;
    //    $addressTown      = $info->pre_district_name;
    //    $addressRegion    = $info->pre_div_name;
    //    $addressPostCode  = $info->per_post_office;
-   //    $addressCountry   = 'Bangladesh'; 
+   //    $addressCountry   = 'Bangladesh';
 
-   //    // we building raw data 
-   //    $codeContents  = 'BEGIN:VCARD'."\n"; 
-   //    $codeContents .= 'NAME: '.$name."\n"; 
-   //    $codeContents .= 'SCOUT ID: '.$scout_id."\n"; 
-   //    $codeContents .= 'ORG: '.$orgName."\n"; 
-   //    $codeContents .= 'CELL: '.$phone."\n"; 
-   //    $codeContents .= 'EMAIL: '.$email."\n"; 
+   //    // we building raw data
+   //    $codeContents  = 'BEGIN:VCARD'."\n";
+   //    $codeContents .= 'NAME: '.$name."\n";
+   //    $codeContents .= 'SCOUT ID: '.$scout_id."\n";
+   //    $codeContents .= 'ORG: '.$orgName."\n";
+   //    $codeContents .= 'CELL: '.$phone."\n";
+   //    $codeContents .= 'EMAIL: '.$email."\n";
 
-   //    $codeContents .= 'ADR;'. 
-   //    'LABEL="'.$addressLabel.'": ' 
-   //    .$addressCo.';' 
-   //    .$addressStreet.';' 
-   //    .$addressTown.';' 
+   //    $codeContents .= 'ADR;'.
+   //    'LABEL="'.$addressLabel.'": '
+   //    .$addressCo.';'
+   //    .$addressStreet.';'
+   //    .$addressTown.';'
    //    .$addressRegion.';'
-   //    .$addressPostCode.';' 
-   //    .$addressCountry 
-   //    ."\n"; 
-   //    $codeContents .= 'END:VCARD'; 
+   //    .$addressPostCode.';'
+   //    .$addressCountry
+   //    ."\n";
+   //    $codeContents .= 'END:VCARD';
 
    //    $data['img_url']="";
    //    $this->load->library('ciqrcode');
@@ -3161,7 +3163,7 @@ public function cancel_request(){
    //       $data['img_url']=$qr_image;
    //    }
    //    //$this->load->view('qrcode', $data);
-   // }   
+   // }
 
    public function access_denied(){
       // Load page
@@ -3182,8 +3184,8 @@ public function cancel_request(){
    //    // $comb = array('1','2','3','4','5','6','7','8','9');
    //    // $comb = range(1, 9999);
 
-   //    $inputChar = substr($last_id, 0, 2); 
-   //    $inputNumber = substr($last_id, 2, 5); 
+   //    $inputChar = substr($last_id, 0, 2);
+   //    $inputNumber = substr($last_id, 2, 5);
    //    $nextInput = $inputNumber+1;
    //   // print_r($input);
    //   // $comb = array($nextInput);
@@ -3229,7 +3231,7 @@ public function cancel_request(){
    //          print_r($val);
    //          return $val;
    //       }
-   //       // if($last_id==$val)$flag=2;          
+   //       // if($last_id==$val)$flag=2;
    //    }
 
 
@@ -3240,12 +3242,12 @@ public function cancel_request(){
    //    // $this->data['meta_title'] = 'Test Generate Scout ID';
    //    // $this->data['subview'] = 'scout_id';
    //    // $this->load->view('backend/_layout_main', $this->data);
-   // }       
+   // }
 
    // public function generate_id($last_id,$chars, $size, $combinations = array()) {
    //    # recursive function
-   //    # should be remove like this ID AA0000, BB0000 
-   //    # if it's the first iteration, the first set 
+   //    # should be remove like this ID AA0000, BB0000
+   //    # if it's the first iteration, the first set
    //    # of combinations is the same as the set of characters
    //    if (empty($combinations)) {
    //       $combinations = $chars;
@@ -3268,7 +3270,7 @@ public function cancel_request(){
    //      // print_r($combinations);
    //      // die();
    //       foreach ($combinations as $combination) {
-   //          // echo $combination = sprintf("%04d", $combination);// exit;                 
+   //          // echo $combination = sprintf("%04d", $combination);// exit;
    //          // $new_combinations[] = $combination . $char;
 
 

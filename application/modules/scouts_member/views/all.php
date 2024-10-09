@@ -1,5 +1,5 @@
-<div class="page-content">     
- <div class="content">  
+<div class="page-content">
+ <div class="content">
   <ul class="breadcrumb" style="margin-bottom: 20px;">
    <li> <a href="<?=base_url('dashboard')?>" class="active"> Dashboard </a> </li>
    <li> <a href="<?=base_url('scouts_member')?>" class="active"> <?=$module_title; ?> </a></li>
@@ -18,7 +18,7 @@
         <a href="<?=base_url('scouts_member/create')?>" class="btn btn-blueviolet btn-xs btn-mini"> Create Scouts Member </a>
         <?php } ?>
         <a href="<?=base_url('scouts_member/all')?>" class="btn btn-blueviolet btn-xs btn-mini"> Scouts Member List</a>
-      </div>            
+      </div>
     </div>
 
     <div class="grid-body ">
@@ -28,7 +28,7 @@
        <?php echo $this->session->flashdata('success');?>
      </div>
    <?php endif; ?>
-   <?php 
+   <?php
 
    /*****************Filter check start*********************/
    if (!empty($_GET['region']) && isset($_GET['region']) || (!empty($_GET['memberType'])) || (!empty($_GET['scoutID'])) || (!empty($_GET['name'])) || (!empty($_GET['username'])) || (!empty($_GET['gender']))|| (!empty($_GET['section']))) { ?>
@@ -77,15 +77,14 @@
     }
     ?>
   </div>
-  <?php 
+  <?php
 }
 /*****************Filter check End*********************/
 ?>
-<br>
 
 <?php $this->load->view('search_view')?>
 
-<?php 
+<?php
 if(!$this->ion_auth->is_vendor()){
  if ($region) { ?>
  <div class="row" style="float: right;">
@@ -114,7 +113,7 @@ if(!$this->ion_auth->is_vendor()){
    </tr>
  </thead>
  <tbody>
-  <?php 
+  <?php
   $sl=$pagination['current_page'];
   foreach ($results as $row):
     $sl++;
@@ -142,7 +141,7 @@ if(!$this->ion_auth->is_vendor()){
       <td class="v-align-middle"><?=$row->grp_name?></td>
       <td class="v-align-middle"><strong><?=$row->username?></strong></td>
                     <?php /* <!-- <td class="v-align-middle"> -->
-                      <?php 
+                      <?php
                         // foreach ($row->groups as $group):
                         // echo '<span class="btn btn-primary btn-xs btn-mini" style="background-color:#6b64d0;margin-bottom:1px;">'.htmlspecialchars($group->description,ENT_QUOTES,'UTF-8').'</span>';
                         // echo '&nbsp;';
@@ -157,14 +156,14 @@ if(!$this->ion_auth->is_vendor()){
                            <?php if($this->ion_auth->is_admin() || $this->ion_auth->is_region_admin() || $this->ion_auth->is_district_admin() || $this->ion_auth->is_upazila_admin() || $this->ion_auth->is_group_admin()){ ?>
                            <li><a href="<?=base_url("scouts_member/edit/".encrypt_url($row->id))?>" target="_blank">Edit Scouts Member</a></li>
 
-                           <?php if($this->ion_auth->is_admin()){ ?>
+                           <?php if($this->ion_auth->in_group(array('admin', 'scout_admin', 'monitor_team', 'regional_head', 'district_office', 'upazila_office'))){ ?>
                            <li><a href="<?=base_url("scouts_member/pdf_id_card/".encrypt_url($row->id))?>" target="_blank">ID Card Download</a></li>
                            <li class="divider"></li>
-                           <li><a href="<?=base_url("scouts_member/delete/".encrypt_url($row->id))?>" onclick="return confirm('Be careful! are you sure you want to delete this user?');">Member Delete Request</a></li>                           
+                           <li><a href="<?=base_url("scouts_member/delete/".encrypt_url($row->id))?>" onclick="return confirm('Be careful! are you sure you want to delete this user?');">Member Delete Request</a></li>
                            <?php } ?>
 
                            <li><a href="<?=base_url("scouts_member/archive/".encrypt_url($row->id))?>" onclick="return confirm('Are you sure you want to archive this scouts member?');">Archive Scouts Member</a></li>
-                           <?php } ?>                           
+                           <?php } ?>
 
                            <?php if($this->ion_auth->is_vendor()){ ?>
                            <li><a target="_blank" href="<?=base_url("scouts_member/print_completed/".encrypt_url($row->id))?>" onclick="return confirm('ID Card printing is complete?');">Print Complete</a></li>
@@ -173,9 +172,9 @@ if(!$this->ion_auth->is_vendor()){
 
                          </ul>
                        </div>
-                     </td> 
+                     </td>
                    </tr>
-                 <?php endforeach;?>                      
+                 <?php endforeach;?>
                </tbody>
              </table>
              <div class="row">

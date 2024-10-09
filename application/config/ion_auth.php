@@ -88,14 +88,14 @@ $config['admin_email']                = "admin@scouts.gov.bd"; 	// Admin Email, 
 $config['admin_group']                = 'admin';             	// id= 1, Default administrators / superadmin group, use name
 $config['scout_admin_group']          = 'scout_admin';			// id=2, scout admin
 $config['monitor_team_group']         = 'monitor_team';			// id=3, monitor team
-$config['region_group']        		  = 'regional_head';			// id=4, region admin
+$config['region_group']        		  = 'regional_head';		// id=4, region admin
 $config['district_group']      		  = 'district_office';		// id=5, district admin
-$config['upazila_group']		  		  = 'upazila_office';		// id=6, upazila admin
-$config['group_leader_group']         = 'group_leader';			// id=7, Group leader 
-$config['unit_leader_group']          = 'unit_leader';         // id=8, Unit leader 
+$config['upazila_group']		  	  = 'upazila_office';		// id=6, upazila admin
+$config['group_leader_group']         = 'group_leader';			// id=7, Group leader
+$config['unit_leader_group']          = 'unit_leader';          // id=8, Unit leader
 $config['member_group']               = 'members';           	// id=9, scout member group
 $config['vendor_group']               = 'vendor';           	// id=11, vendor (Third Paryt Company)
-$config['employee_group']             = 'employee';            // id=12, E-filing employee
+$config['employee_group']             = 'employee';             // id=12, E-filing employee
 $config['default_group']              = 'guest';           		// Default group, guest
 
 $config['identity']                   = 'username';             // You can use any unique column in your table as identity column. The values in this column, alongside password, will be used for login purposes
@@ -114,7 +114,7 @@ $config['forgot_password_expiration'] = 0;                   // The number of mi
 $config['recheck_timer']              = 0;                   /* The number of seconds after which the session is checked again against database to see if the user still exists and is active.
 							           Leave 0 if you don't want session recheck. if you really think you need to recheck the session against database, we would
 								   recommend a higher value, as this would affect performance */
-								
+
 
 /*
  | -------------------------------------------------------------------------

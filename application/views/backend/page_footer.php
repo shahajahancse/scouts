@@ -46,7 +46,8 @@
 */ ?>
 
 <script src="<?=base_url();?>awedget/assets/plugins/jquery-superbox/js/superbox.js" type="text/javascript"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.2.0/min/dropzone.min.js"></script>
+<script src="<?=base_url();?>awedget/assets/js/mindropzone.4.2.0.min.js" type="text/javascript" ></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.2.0/min/dropzone.min.js"></script> -->
   
 <!-- BEGIN PAGE DATATABLE -->   
 <script src="<?=base_url();?>awedget/assets/plugins/jquery-datatable/js/jquery.dataTables.min.js" type="text/javascript" ></script>
@@ -85,7 +86,8 @@
 <!-- <script src="<?=base_url();?>awedget/assets/croper/js/main.js"></script> -->
 
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-KJS3N7B2XV"></script>
+<script src="<?=base_url();?>awedget/assets/js/googletagmanager.comgtag.js"></script>
+<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-KJS3N7B2XV"></script> -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
