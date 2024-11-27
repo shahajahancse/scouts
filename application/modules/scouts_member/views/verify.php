@@ -1,5 +1,5 @@
-<div class="page-content">     
-  <div class="content">  
+<div class="page-content">
+  <div class="content">
     <ul class="breadcrumb" style="margin-bottom: 20px;">
       <li> <a href="<?=base_url()?>" class="active"> Dashboard </a> </li>
       <li> <a href="<?=base_url()?>" class="active"> <?=$module_title; ?> </a></li>
@@ -25,8 +25,8 @@
       <div class="grid simple horizontal red">
        <div class="grid-title">
         <h4><span class="semi-bold"><?=$meta_title; ?></span></h4>
-        <div class="pull-right">                
-          <a href="<?=base_url('scouts_member/request')?>" class="btn btn-blueviolet btn-xs btn-mini"> Scouts Member Request</a>  
+        <div class="pull-right">
+          <a href="<?=base_url('scouts_member/request')?>" class="btn btn-blueviolet btn-xs btn-mini"> Scouts Member Request</a>
         </div>
       </div>
       <div class="grid-body">
@@ -37,8 +37,12 @@
             <?php echo $this->session->flashdata('success');;?>
           </div>
         <?php endif; ?>
+        <?php if($this->session->flashdata('error')):?>
+          <div class="alert alert-danger">
+            <?php echo $this->session->flashdata('error');;?>
+          </div>
+        <?php endif; ?>
         <?php echo form_open_multipart(uri_string());?>
-
         <div class="row form-row">
           <div class="col-md-6">
             <div class="scout-verify-box">
@@ -83,7 +87,7 @@
                 </tr>
                 <tr>
                   <th class="tg-9vst">Religion:</th>
-                  <td class="tg-031e"><?=get_religion($info->religion_id)?></td>                  
+                  <td class="tg-031e"><?=get_religion($info->religion_id)?></td>
                 </tr>
                 <tr>
                   <th class="tg-9vst">Blood Group:</th>
@@ -92,7 +96,7 @@
                 <tr>
                   <th class="tg-9vst">Mobile No:</th>
                   <td class="tg-031e"><?=$info->phone?></td>
-                </tr>                
+                </tr>
                 <tr>
                   <th colspan="2" class="tg-9vst2"><em>Present Address</em></th>
                 </tr>
@@ -119,7 +123,7 @@
                 <tr>
                   <th class="tg-9vst">Post Code:</th>
                   <td class="tg-031e"><?=$info->pre_post_office?></td>
-                </tr>                
+                </tr>
               </table>
             </div>
           </div>
@@ -131,7 +135,7 @@
                 <tr>
                   <th colspan="2" class="tg-9vst2"><em>Other's Information</em></th>
                 </tr>
-                <?php if($info->member_id == 1 || $info->member_id == 2){ ?>          
+                <?php if($info->member_id == 1 || $info->member_id == 2){ ?>
                 <tr>
                   <th class="tg-9vst">Current Institute:</th>
                   <td class="tg-031e"><?=$info->institute_name?></td>
@@ -144,10 +148,10 @@
                   <th class="tg-9vst">Current Roll No:</th>
                   <td class="tg-031e"><?=$info->curr_role_no?></td>
                 </tr>
-                <?php }else{ ?> 
+                <?php }else{ ?>
                 <tr>
                   <th class="tg-9vst">Present Organization / Office / Business Name:</th>
-                  <td class="tg-031e"><?=$info->curr_org?></td>                
+                  <td class="tg-031e"><?=$info->curr_org?></td>
                 </tr>
                 <tr>
                   <th class="tg-9vst">Present Designation:</th>
@@ -159,7 +163,7 @@
                 </tr>
                 <tr>
                   <th class="tg-9vst" width="140">Application Type:</th>
-                  <td class="tg-031e"><?php 
+                  <td class="tg-031e"><?php
                       if(!$info->is_interested){
                         echo 'For Scouts member';
                       }else{
@@ -226,7 +230,7 @@
             </div>
           </div>
 
-          <div class="form-actions">  
+          <div class="form-actions">
             <div class="pull-left">
               <div class="checkbox checkbox check-success pull-left" style="margin-top: 13px;">
                 <?php echo form_checkbox('generateID', '1', TRUE, 'id="generateID"');?>
@@ -241,7 +245,7 @@
           </div>
           <?php echo form_close();?>
 
-        </div>  <!-- END GRID BODY -->              
+        </div>  <!-- END GRID BODY -->
       </div> <!-- END GRID -->
     </div>
 

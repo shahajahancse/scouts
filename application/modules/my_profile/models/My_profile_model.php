@@ -17,7 +17,7 @@ class My_profile_model extends CI_Model {
     // }
 
     public function get_info($id) {
-        $this->db->select('u.id, u.scout_id, u.member_id, mt.member_type_name, u.username, u.first_name, u.full_name_bn, u.father_name, u.mother_name, u.gender, u.dob, u.nid, u.birth_id, u.phone, u.email, u.join_date, u.sc_section_id, u.created_on, u.last_login, FROM_UNIXTIME(u.last_login) as lastlogin, u.is_verify, u.sc_badge_id, u.sc_role_id, u.profile_img, u.qr_img, u.occupation_id, u.occp_others, u.is_interested, u.phone_emergency, u.blood_group, u.is_request, u.is_verify, u.sc_section_id, u.sc_region_id, u.sc_district_id, u.sc_upa_tha_id, u.sc_group_id, u.sc_unit_id, u.full_name_bn, u.father_name_bn, u.mother_name_bn, u.phone2, u.phone_emergency, u.passport_no, u.pass_date_issue, u.pass_date_expiry, u.pass_place_issue, u.pass_place_birth, u.religion_id, u.occp_others, u.sc_cub, u.sc_scout, u.sc_rover, u.pre_village_house, u.pre_village_house_bn, u.pre_road_block, u.pre_road_block_bn, u.pre_division_id, u.pre_district_id, u.pre_upa_tha_id, u.pre_post_office, u.per_village_house, u.per_village_house_bn, u.per_road_block, u.per_road_block_bn,  u.per_division_id, u.per_district_id, u.per_upa_tha_id, u.per_post_office, u.scout_designation, u.curr_institute_id, u.curr_class,  u.curr_role_no, u.curr_org, u.curr_desig, u.certificate_no, u.expire_date, oc.occupation_name, bg.bg_name_en, dv.div_name as pre_div_name, dv2.div_name as per_div_name, ds.district_name as pre_district_name, ds2.district_name as per_district_name, ut.up_th_name as pre_up_th_name, ut2.up_th_name as per_up_th_name, po.po_name as pre_po_name, po2.po_name as per_po_name, r.region_type, r.region_name, r.region_name_en, od.dis_name, od.dis_name_en, ou.upa_name, ou.upa_name_en, og.grp_name, og.grp_name_bn, unit.unit_name, unit.unit_name_bn, og.grp_address, bt.badge_type_name_bn, bt.badge_type_name_en, rt.role_type_name_bn, rt.role_type_name_en, it.name as institute_name, u.blood_donate_interested, u.last_donate_date');
+        $this->db->select('u.id, u.scout_id, u.member_id, mt.member_type_name, u.username, u.first_name, u.full_name_bn, u.father_name, u.mother_name, u.gender, u.dob, u.nid, u.birth_id, u.phone, u.email, u.join_date, u.sc_section_id, u.created_on, u.last_login, FROM_UNIXTIME(u.last_login) as lastlogin, u.is_verify, u.sc_badge_id, u.sc_role_id, u.profile_img, u.qr_img, u.occupation_id, u.occp_others, u.is_interested, u.phone_emergency, u.blood_group, u.is_request, u.is_verify, u.sc_section_id, u.sc_region_id, u.sc_district_id, u.sc_upa_tha_id, u.sc_group_id, u.sc_unit_id, u.full_name_bn, u.father_name_bn, u.mother_name_bn, u.phone2, u.phone_emergency, u.passport_no, u.pass_date_issue, u.pass_date_expiry, u.pass_place_issue, u.pass_place_birth, u.religion_id, u.occp_others, u.sc_cub, u.sc_scout, u.sc_rover, u.pre_village_house, u.pre_village_house_bn, u.pre_road_block, u.pre_road_block_bn, u.pre_division_id, u.pre_district_id, u.pre_upa_tha_id, u.pre_post_office, u.per_village_house, u.per_village_house_bn, u.per_road_block, u.per_road_block_bn,  u.per_division_id, u.per_district_id, u.per_upa_tha_id, u.per_post_office, u.scout_designation, u.curr_institute_id, u.curr_class,  u.curr_role_no, u.curr_org, u.curr_desig, u.certificate_no, u.expire_date, oc.occupation_name, bg.bg_name_en, dv.div_name as pre_div_name, dv2.div_name as per_div_name, ds.district_name as pre_district_name, ds2.district_name as per_district_name, ut.up_th_name as pre_up_th_name, ut2.up_th_name as per_up_th_name, po.po_name as pre_po_name, po2.po_name as per_po_name, r.region_type, r.region_name, r.region_name_en, od.dis_name, od.dis_name_en, ou.upa_name, ou.upa_name_en, og.grp_name, og.grp_name_bn, unit.unit_name, unit.unit_name_bn, og.grp_address, bt.badge_type_name_bn, bt.badge_type_name_en, rt.role_type_name_bn, rt.role_type_name_en, it.name as institute_name, u.blood_donate_interested, u.last_donate_date, u.facebook, u.linkedin, u.instagram, u.skype');
         $this->db->from('users u');
         $this->db->join('blood_group bg', 'bg.id=u.blood_group', 'LEFT');
         $this->db->join('occupation oc', 'oc.id=u.occupation_id', 'LEFT');
@@ -36,7 +36,7 @@ class My_profile_model extends CI_Model {
         $this->db->join('office_region r', 'r.id = u.sc_region_id', 'LEFT');
         $this->db->join('institute it', 'it.id = u.curr_institute_id', 'LEFT');
         $this->db->join('scout_badge sb', 'sb.id = u.sc_badge_id', 'LEFT');
-        $this->db->join('badge_type bt', 'bt.id = sb.badge_type_id', 'LEFT');        
+        $this->db->join('badge_type bt', 'bt.id = sb.badge_type_id', 'LEFT');
         $this->db->join('member_type mt', 'mt.id = u.member_id', 'LEFT');
         $this->db->join('scout_role so', 'so.id = u.sc_role_id', 'LEFT');
         $this->db->join('role_type rt', 'rt.id = so.role_type_id', 'LEFT');
@@ -59,7 +59,7 @@ class My_profile_model extends CI_Model {
         $this->db->join('badge_type bt', 'bt.id = sb.badge_type_id', 'LEFT');
         $this->db->join('scout_role so', 'so.id = se.sc_role_id', 'LEFT');
         $this->db->join('role_type rt', 'rt.id = so.role_type_id', 'LEFT');
-        $this->db->join('office_region r', 'r.id = se.sc_region_id', 'LEFT');        
+        $this->db->join('office_region r', 'r.id = se.sc_region_id', 'LEFT');
         $this->db->where('se.scout_id', $id);
         $this->db->where('se.section_id', $section);
         $query = $this->db->get()->row();
@@ -91,7 +91,7 @@ class My_profile_model extends CI_Model {
 
         return $query;
     }
-    
+
     public function get_award_list() {
         // result query
         $this->db->select('*');
@@ -104,7 +104,7 @@ class My_profile_model extends CI_Model {
     public function get_slider() {
         // result query
         $this->db->select('*');
-        $this->db->from('slider');    
+        $this->db->from('slider');
         $this->db->where('status', 1);
 
         $query = $this->db->get()->result();
@@ -153,7 +153,7 @@ class My_profile_model extends CI_Model {
 
       return ($query->num_rows() >= 1);
    }
-   
+
    public function get_institute($keyword) {
         $this->db->select('id, name');
         $this->db->from('institute');
@@ -205,7 +205,7 @@ class My_profile_model extends CI_Model {
         $this->db->where('es.status', 'Approved');
         $this->db->order_by('e.id', 'DESC');
         $query = $this->db->get()->result();
-        
+
         return $query;
     }
 
@@ -217,7 +217,7 @@ class My_profile_model extends CI_Model {
         $this->db->from('training e');
         $this->db->join('training_to_scouts es', 'e.id=es.training_id');
         $this->db->where('e.training_end_date <',date('Y-m-d'));
-        
+
         // $this->db->where('e.sc_region_id', $this->users->sc_region_id);
         // $this->db->where('e.sc_district_id', $this->users->sc_district_id);
         // $this->db->where('e.sc_upa_tha_id', $this->users->sc_upa_tha_id);
@@ -226,9 +226,9 @@ class My_profile_model extends CI_Model {
         $this->db->where('es.status', 'Approved');
         $this->db->order_by('e.id', 'DESC');
         $query = $this->db->get()->result();
-       
+
         return $query;
-       
+
     }
 
     public function get_badge_details($form_data) {
@@ -237,13 +237,13 @@ class My_profile_model extends CI_Model {
         $this->db->join('users u', 'u.id = p.user_id', 'LEFT');
         $this->db->join('users au', 'au.id = p.examiner_id', 'LEFT');
         $this->db->join('scout_badge sbg', 'sbg.id = p.badge_id', 'LEFT');
-        $this->db->join('badge_type bt', 'bt.id = sbg.badge_type_id', 'LEFT');        
+        $this->db->join('badge_type bt', 'bt.id = sbg.badge_type_id', 'LEFT');
         $this->db->join('scout_badge_question sb', 'sb.id = p.question_id', 'LEFT');
-        
+
         $this->db->where('p.scout_id',$form_data['scout_id']);
         $this->db->where('p.status',1);
-        // $this->db->where('p.section_id',$form_data['section_id']);     
-        
+        // $this->db->where('p.section_id',$form_data['section_id']);
+
         $query = $this->db->get()->result();
         //echo $this->db->last_query();
 
@@ -256,13 +256,13 @@ class My_profile_model extends CI_Model {
         $this->db->join('users u', 'u.id = p.user_id', 'LEFT');
         $this->db->join('users au', 'au.id = p.examiner_id', 'LEFT');
         $this->db->join('scout_badge sbg', 'sbg.id = p.badge_id', 'LEFT');
-        $this->db->join('badge_type bt', 'bt.id = sbg.badge_type_id', 'LEFT');        
+        $this->db->join('badge_type bt', 'bt.id = sbg.badge_type_id', 'LEFT');
         $this->db->join('scout_expertness_group sb', 'sb.id = p.expert_group_id', 'LEFT');
-        
+
         $this->db->where('p.scout_id',$form_data['scout_id']);
         $this->db->where('p.status',1);
-        // $this->db->where('p.section_id',$form_data['section_id']);     
-        
+        // $this->db->where('p.section_id',$form_data['section_id']);
+
         $query = $this->db->get()->result();
 
         return $query;
@@ -274,7 +274,7 @@ class My_profile_model extends CI_Model {
         $this->db->join('scout_progress_course c', 'c.id = p.course_id', 'LEFT');
         $this->db->where('p.scout_id', $data);
         $this->db->order_by('p.id', 'DESC');
-        
+
         $query = $this->db->get()->result();
         // echo $this->db->last_query(); exit;
         return $query;
@@ -286,11 +286,11 @@ class My_profile_model extends CI_Model {
         $this->db->join('users u', 'u.id = p.user_id', 'LEFT');
         $this->db->join('users au', 'au.id = p.examiner_id', 'LEFT');
         $this->db->join('scout_badge sbg', 'sbg.id = p.badge_id', 'LEFT');
-        $this->db->join('badge_type bt', 'bt.id = sbg.badge_type_id', 'LEFT');        
+        $this->db->join('badge_type bt', 'bt.id = sbg.badge_type_id', 'LEFT');
         $this->db->where('p.scout_id',$form_data['scout_id']);
         $this->db->where('p.status',1);
-        // $this->db->where('p.section_id',$form_data['section_id']);     
-        
+        // $this->db->where('p.section_id',$form_data['section_id']);
+
         $query = $this->db->get()->result();
         //echo $this->db->last_query();
 
@@ -302,11 +302,11 @@ class My_profile_model extends CI_Model {
         $this->db->from('prog_camping p');
         $this->db->join('users u', 'u.id = p.user_id', 'LEFT');
         $this->db->join('users au', 'au.id = p.examiner_id', 'LEFT');
-        
+
         $this->db->where('p.scout_id',$form_data['scout_id']);
         $this->db->where('p.status',1);
-        // $this->db->where('p.section_id',$form_data['section_id']);     
-        
+        // $this->db->where('p.section_id',$form_data['section_id']);
+
         $query = $this->db->get()->result();
         //echo $this->db->last_query();
 
@@ -319,11 +319,11 @@ class My_profile_model extends CI_Model {
         $this->db->join('users u', 'u.id = p.user_id', 'LEFT');
         $this->db->join('users au', 'au.id = p.examiner_id', 'LEFT');
         $this->db->join('scout_badge sbg', 'sbg.id = p.badge_id', 'LEFT');
-        $this->db->join('badge_type bt', 'bt.id = sbg.badge_type_id', 'LEFT');        
+        $this->db->join('badge_type bt', 'bt.id = sbg.badge_type_id', 'LEFT');
         $this->db->where('p.scout_id',$form_data['scout_id']);
         $this->db->where('p.status',1);
-        // $this->db->where('p.section_id',$form_data['section_id']);     
-        
+        // $this->db->where('p.section_id',$form_data['section_id']);
+
         $query = $this->db->get()->result();
         //echo $this->db->last_query();
 
@@ -337,8 +337,8 @@ class My_profile_model extends CI_Model {
         $this->db->join('users au', 'au.id = h.examiner_id', 'LEFT');
         $this->db->where('h.scout_id',$form_data['scout_id']);
         $this->db->where('h.status',1);
-        // $this->db->where('h.section_id',$form_data['section_id']);     
-        
+        // $this->db->where('h.section_id',$form_data['section_id']);
+
         $query = $this->db->get()->result();
         //echo $this->db->last_query();
 
@@ -353,8 +353,8 @@ class My_profile_model extends CI_Model {
         $this->db->join('users au', 'au.id = h.examiner_id', 'LEFT');
         $this->db->where('h.scout_id',$form_data['scout_id']);
         $this->db->where('h.status',1);
-        // $this->db->where('h.section_id',$form_data['section_id']);     
-        
+        // $this->db->where('h.section_id',$form_data['section_id']);
+
         $query = $this->db->get()->result();
         //echo $this->db->last_query();
 
@@ -370,11 +370,11 @@ class My_profile_model extends CI_Model {
         $this->db->join('badge_type bt', 'bt.id = sbg.badge_type_id', 'LEFT');
         $this->db->join('scout_role sr', 'sr.id = p.role_id', 'LEFT');
         $this->db->join('role_type rt', 'rt.id = sr.role_type_id', 'LEFT');
-        
+
         $this->db->where('p.scout_id',$form_data['scout_id']);
         $this->db->where('p.status',1);
-        // $this->db->where('p.section_id',$form_data['section_id']);     
-        
+        // $this->db->where('p.section_id',$form_data['section_id']);
+
         $query = $this->db->get()->result();
         //echo $this->db->last_query();
 
@@ -388,8 +388,8 @@ class My_profile_model extends CI_Model {
         $this->db->join('users au', 'au.id = p.examiner_id', 'LEFT');
         $this->db->where('p.scout_id',$form_data['scout_id']);
         $this->db->where('p.status',1);
-        // $this->db->where('p.section_id',$form_data['section_id']);     
-        
+        // $this->db->where('p.section_id',$form_data['section_id']);
+
         $query = $this->db->get()->result();
         //echo $this->db->last_query();
 

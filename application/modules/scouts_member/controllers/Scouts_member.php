@@ -2147,6 +2147,7 @@ class Scouts_member extends Backend_Controller {
 
       // validation
       $this->form_validation->set_rules('scout_section', 'approved scout section', 'trim');
+      $this->data['info'] = $this->Scouts_member_model->get_verify($scoutID);
 
       //Validate and input data
       if ($this->form_validation->run() == true){
@@ -2162,24 +2163,35 @@ class Scouts_member extends Backend_Controller {
             $scout_id = $this->generateScoutID($last_id);
             // $this->qrcode_generator($last_id);
          }
+         // set form data
          $form_data = array(
             'scout_id' => $this->input->post('generateID')==1?$scout_id:NULL,
             'is_request' => '0',
             'is_verify' => '1'
-            );
-         // print_r($form_data); exit;
+         );
+         // Count user nit number
 
-         if($this->Common_model->edit('users', $scoutID, 'id', $form_data)){
-            $this->ion_auth->remove_from_group('', $scoutID);
-            $this->ion_auth->add_to_group('9', $scoutID);
-            $this->session->set_flashdata('success', 'New scout member verify successfully.');
-            redirect('scouts_member/all');
+         $this->db->select('COUNT(id) as cnt')->where('sc_unit_id',$this->data['info']->sc_unit_id);
+         $check = $this->db->where('status', 1)->where('is_verify', 1)->group_by('sc_unit_id')->get('users')->row();
+
+         // Check Max 40 member per unit
+         if($check->cnt >= 40){
+            $this->session->set_flashdata('error', 'Max 40 member per unit.');
+            // redirect('scouts_member/verify/'.encrypt_url($scoutID));
+         } else {
+            // update user data
+            if($this->Common_model->edit('users', $scoutID, 'id', $form_data)){
+               $this->ion_auth->remove_from_group('', $scoutID);
+               $this->ion_auth->add_to_group('9', $scoutID);
+               $this->session->set_flashdata('success', 'New scout member verify successfully.');
+               redirect('scouts_member/all');
+            }
          }
       }
 
       //Results
-      $this->data['info'] = $this->Scouts_member_model->get_verify($scoutID);
       $this->data['scout_section'] = $this->Common_model->set_scout_section();
+      // dd($this->data['info']->sc_unit_id);
 
       //Load view
       $this->data['meta_title'] = 'Verify Scouts Member Request';

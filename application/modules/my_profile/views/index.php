@@ -137,14 +137,14 @@ $qr_code_text = 'Name: ' . $info->first_name . ' ('. $info->scout_id .')';
 // Other's Information
 $display_edu='';
 $display_org='';
-if($info->member_id == 1 || $info->member_id == 2){ 
+if($info->member_id == 1 || $info->member_id == 2){
    $display_edu = "display: block;";
    $display_org = "display: none;";
 }else if($info->member_id == 8 || $info->member_id == 12 || $info->member_id == 10 || $info->member_id == 9 || $info->member_id == 13){
    $display_edu = "display: none;";
    $display_org = "display: block;";
 }
-?>     
+?>
 <style type="text/css">
   .info{margin-left: 25px; color: black;}
   .dt_label{margin-left: 10px; width: 150px; display: block; float: left; color: #796b6b;}
@@ -170,8 +170,8 @@ if($info->member_id == 1 || $info->member_id == 2){
   .id_card td{padding-left: 10px;padding-bottom: 6px; }*/
 </style>
 
-<div class="page-content"> 
-  <div class="content">  
+<div class="page-content">
+  <div class="content">
 
     <!-- <div class="row">
       <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -194,16 +194,16 @@ if($info->member_id == 1 || $info->member_id == 2){
       <div class="col-md-12">
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
           <div class="carousel-inner">
-          <?php 
-            $slid = 0; 
-            foreach ($slider as $slide) { 
+          <?php
+            $slid = 0;
+            foreach ($slider as $slide) {
               $slid++;
               $img_path = base_url().'slider_img/';
               if($slide->image_file != NULL){
                 $src= $img_path.$slide->image_file;
                 // echo "<img src='$src'>";
               }
-            ?>          
+            ?>
             <div class="item <?=$slid == 1?'active':''?>">
               <img src="<?=$src?>" alt="Slider" style="width:100%;">
               <!-- <div class="carousel-caption">
@@ -211,7 +211,7 @@ if($info->member_id == 1 || $info->member_id == 2){
                 <p>LA is always so much fun!</p>
               </div> -->
             </div>
-          <?php } ?>            
+          <?php } ?>
           </div>
 
           <!-- Left and right controls -->
@@ -225,7 +225,7 @@ if($info->member_id == 1 || $info->member_id == 2){
           </a>
         </div> <!-- /carousel -->
         <!-- <div class=" tiles white col-md-12 no-padding">
-          <div class="tiles green cover-pic-wrapper">           
+          <div class="tiles green cover-pic-wrapper">
             <div class="overlayer bottom-right"> </div>
             <img src="<?=base_url('awedget/assets/img/cover_pic.png')?>" alt="">
           </div>
@@ -234,7 +234,7 @@ if($info->member_id == 1 || $info->member_id == 2){
     </div>
 
     <div class="row">
-      <div class="col-md-12">      
+      <div class="col-md-12">
         <div class="tiles white">
           <div class="row">
             <div class="col-md-2 col-sm-2" style="margin:0 20px;">
@@ -255,41 +255,41 @@ if($info->member_id == 1 || $info->member_id == 2){
               <div class="row">
                 <div class="pull-left" style="width: 60%; border:0px solid red;">
                   <h4 class="semi-bold no-margin" ><?=$name;?></h4>
-                  <h6 class="no-margin" style="font-weight: bold;"><?=$info->member_type_name;?></h6>  
-                </div>              
+                  <h6 class="no-margin" style="font-weight: bold;"><?=$info->member_type_name;?></h6>
+                </div>
 
-                <div class="pull-right">    
+                <div class="pull-right">
                     <?php /*if($scout_id != NULL){ ?>
-                    <a href="<?=base_url('my_profile/id_card')?>" class="btn btn-blueviolet btn-xs btn-mini"><i class="fa fa-download"></i> Scout ID Card</a>   
-                    <?php }*/ ?>       
+                    <a href="<?=base_url('my_profile/id_card')?>" class="btn btn-blueviolet btn-xs btn-mini"><i class="fa fa-download"></i> Scout ID Card</a>
+                    <?php }*/ ?>
                     <a href="<?=base_url('my_profile/change_image')?>" class="btn btn-blueviolet btn-xs btn-mini"><i class="fa fa-user"></i> Change Image</a>
                     <a href="<?=base_url('my_profile/change_username')?>" class="btn btn-blueviolet btn-xs btn-mini"><i class="fa fa-refresh"></i> Change Username</a>
                     <a href="<?=base_url('my_profile/change_password')?>" class="btn btn-blueviolet btn-xs btn-mini"><i class="fa fa-key"></i> Change Password</a>
                 </div>
               </div>
-                            
+
               <div class="row" style="margin-top: 20px;">
                 <div class="col-md-6">
                   <p><i class="fa fa-circle"></i>Login Username or Email <br>
-                    <span class="info"><?=$username?></span> </p>                  
+                    <span class="info"><?=$username?></span> </p>
                   <p><i class="fa fa-circle"></i> Date of Birth <br>
                     <span class="info"><?=$dob?></span> </p>
-                  <p><i class="fa fa-circle"></i>Last Login <br> 
+                  <p><i class="fa fa-circle"></i>Last Login <br>
                     <span class="info"><?=$last_update?></span> </p>
                 </div>
                 <div class="col-md-6">
-                  <p><i class="fa fa-globe"></i>Scout Join Date <br> 
+                  <p><i class="fa fa-globe"></i>Scout Join Date <br>
                     <span class="info"><?=$sc_join_date?></span> </p>
                   <p><i class="fa fa-globe"></i>Scout Group Name <br>
                     <span class="info"><?=$sc_group_name?></span> </p>
                   <p><i class="fa fa-globe"></i>Scout Region  <br>
-                    <span class="info"><?=$sc_region_name?></span> </p>                  
+                    <span class="info"><?=$sc_region_name?></span> </p>
                 </div>
               </div>
-            </div>            
+            </div>
 
           </div> <!--/row -->
-          
+
           <?php if(!$this->ion_auth->is_guest()){ ?>
           <div class="row">
             <div class="col-md-12">
@@ -321,10 +321,10 @@ if($info->member_id == 1 || $info->member_id == 2){
                     <div class="col-md-12" style="margin-bottom: 20px;">
                       <h3><span class="semi-bold pull-left">Basic Information</span> </h3>
                       <div class="pull-right">
-                         <a href="<?=base_url('my_profile/update_basic_info')?>" class="btn btn-primary btn-xs btn-mini"><i class="fa fa-edit"></i> Update Basic Info</a> 
+                         <a href="<?=base_url('my_profile/update_basic_info')?>" class="btn btn-primary btn-xs btn-mini"><i class="fa fa-edit"></i> Update Basic Info</a>
                       </div>
                     </div>
-                    
+
                     <div class="col-md-6">
                       <p> <span class="dt_label">Full Name</span>
                         <span class="dt_data"><?=$name?></span> </p>
@@ -334,9 +334,9 @@ if($info->member_id == 1 || $info->member_id == 2){
                         <span class="dt_data"><?=$father?></span> </p>
                       <p> <span class="dt_label">Father's Name (Bangla)</span>
                         <span class="dt_data"><?=$father_bn?></span> </p>
-                      
+
                       <p> <span class="dt_label">Mother's Name</span>
-                        <span class="dt_data"><?=$mother?></span> </p> 
+                        <span class="dt_data"><?=$mother?></span> </p>
                       <p> <span class="dt_label">Mother's Name (Bangla)</span>
                         <span class="dt_data"><?=$mother_bn?></span> </p>
                       <p> <span class="dt_label">Gender </span>
@@ -345,29 +345,29 @@ if($info->member_id == 1 || $info->member_id == 2){
                         <span class="dt_data"><?=get_religion($info->religion_id)?></span> </p>
                       <p> <span class="dt_label">Date of Birth </span>
                         <span class="dt_data"><?=$dob?></span> </p>
-                      
+
                       <p> <span class="dt_label">Blood Group </span>
                         <span class="dt_data"><?=$blood_group?></span> </p>
-                      <p> <span class="dt_label">National ID</span> 
+                      <p> <span class="dt_label">National ID</span>
                         <span class="dt_data"><?=$nid?></span> </p>
-                      <p> <span class="dt_label">Passport No</span> 
-                        <span class="dt_data"><?=$passport_no?></span> </p>  
+                      <p> <span class="dt_label">Passport No</span>
+                        <span class="dt_data"><?=$passport_no?></span> </p>
                       <p> <span class="dt_label">Birth ID</span>
                         <span class="dt_data"><?=$birth_id?></span> </p>
-                      
-                      <p> <span class="dt_label">Mobile Number</span> 
+
+                      <p> <span class="dt_label">Mobile Number</span>
                         <span class="dt_data"><?=$phone?></span> </p>
-                      <p> <span class="dt_label">Phone Number</span> 
+                      <p> <span class="dt_label">Phone Number</span>
                         <span class="dt_data"><?=$phone2?></span> </p>
-                      <p> <span class="dt_label">Emergency Phone No</span> 
+                      <p> <span class="dt_label">Emergency Phone No</span>
                         <span class="dt_data"><?=$emergency_phone?></span> </p>
                       <p> <span class="dt_label">Email Address</span>
                         <span class="dt_data"><?=$email?></span> </p>
 
                       <p> <span class="dt_label">Occupation </span>
                         <span class="dt_data"><?= empty($info->occp_others)?$info->occupation_name:$info->occp_others?></span> </p>
-                      
-                      <h5> <span class="dt_label"><b>Passport Information</b></span> 
+
+                      <h5> <span class="dt_label"><b>Passport Information</b></span>
                         <span class="dt_data">: :</span></h5>
                       <p> <span class="dt_label">Passport No</span>
                         <span class="dt_data"><?=$passport_no?></span> </p>
@@ -383,15 +383,15 @@ if($info->member_id == 1 || $info->member_id == 2){
                     <div class="col-md-6">
 
                       <h5> <span class="dt_label"><b>Present Address</b></span>
-                        <span class="dt_data">: :</span></h5> 
+                        <span class="dt_data">: :</span></h5>
                       <p> <span class="dt_label">Village/House (EN)</span>
                         <span class="dt_data"><?=$pre_village?></span></p>
                       <p> <span class="dt_label">Village/House (BN)</span>
                         <span class="dt_data"><?=$pre_village_bn?></span></p>
                       <p> <span class="dt_label">Road/Block (EN)</span>
-                        <span class="dt_data"><?=$pre_rode?></span></p>    
+                        <span class="dt_data"><?=$pre_rode?></span></p>
                       <p> <span class="dt_label">Road/Block (BN)</span>
-                        <span class="dt_data"><?=$pre_rode_bn?></span></p>   
+                        <span class="dt_data"><?=$pre_rode_bn?></span></p>
                       <p> <span class="dt_label">Division </span>
                         <span class="dt_data"><?=$pre_division?></span></p>
                       <p> <span class="dt_label">District </span>
@@ -401,7 +401,7 @@ if($info->member_id == 1 || $info->member_id == 2){
                       <p> <span class="dt_label">Post Office</span>
                         <span class="dt_data"><?=$pre_po?></span> </p>
 
-                     <h5> <span class="dt_label"><b>Permanent Address</b></span> 
+                     <h5> <span class="dt_label"><b>Permanent Address</b></span>
                         <span class="dt_data">: :</span></h5>
                       <p> <span class="dt_label">Village/House (EN)</span>
                         <span class="dt_data"><?=$per_village?></span></p>
@@ -410,7 +410,7 @@ if($info->member_id == 1 || $info->member_id == 2){
                       <p> <span class="dt_label">Road/Block (EN)</span>
                         <span class="dt_data"><?=$per_rode?></span></p>
                       <p> <span class="dt_label">Road/Block (BN)</span>
-                        <span class="dt_data"><?=$per_rode_bn?></span></p>    
+                        <span class="dt_data"><?=$per_rode_bn?></span></p>
                       <p> <span class="dt_label">Division </span>
                         <span class="dt_data"><?=$per_division?></span></p>
                       <p> <span class="dt_label">District </span>
@@ -420,11 +420,20 @@ if($info->member_id == 1 || $info->member_id == 2){
                       <p> <span class="dt_label">Post Office</span>
                         <span class="dt_data"><?=$per_po?></span> </p>
 
+                      <p> <span class="dt_label">Facebook</span>
+                        <span class="dt_data"><?=$info->facebook?></span> </p>
+                      <p> <span class="dt_label">Instagram</span>
+                        <span class="dt_data"><?=$info->instagram?></span> </p>
+                      <p> <span class="dt_label">Linkedin </span>
+                        <span class="dt_data"><?=$info->linkedin?></span> </p>
+                      <p> <span class="dt_label">Skype</span>
+                        <span class="dt_data"><?=$info->skype?></span> </p>
+
                       <p> <span class="dt_label">Created Date</span>
                         <span class="dt_data"><?=$created_date?></span> </p>
                       <p> <span class="dt_label">Last Update </span>
                         <span class="dt_data"><?=$last_update?></span> </p>
-                     
+
                     </div>
                   </div>
                 </div>
@@ -433,13 +442,13 @@ if($info->member_id == 1 || $info->member_id == 2){
                   <div class="row column-seperation">
                     <div class="col-md-12" style="margin-bottom: 20px;">
                       <h3><span class="semi-bold pull-left">Current Scouts Information</span> </h3>
-                      <!-- <a href="<?=base_url('my_profile/update')?>" class="btn btn-primary btn-xs btn-mini pull-right"><i class="fa fa-edit"></i> Update Scout Info</a>    -->                   
+                      <!-- <a href="<?=base_url('my_profile/update')?>" class="btn btn-primary btn-xs btn-mini pull-right"><i class="fa fa-edit"></i> Update Scout Info</a>    -->
                     </div>
-                    
+
                     <div class="col-md-12">
-                      <p> <span class="dt_label">Scout ID</span> 
+                      <p> <span class="dt_label">Scout ID</span>
                         <span class="dt_data"><?=$scout_id?></span> </p>
-                      <p> <span class="dt_label">Member Type</span> 
+                      <p> <span class="dt_label">Member Type</span>
                         <span class="dt_data"><?=$info->member_type_name;?></span> </p>
                       <p> <span class="dt_label">Scout Section</span>
                         <span class="dt_data"><?=$section_name?></span> </p>
@@ -470,7 +479,7 @@ if($info->member_id == 1 || $info->member_id == 2){
                         <span class="dt_data"><?=$curr_role_no?></span> </p>
                      </div>
 
-                     <div id="orgDiv" style="<?=$display_org?>">                     
+                     <div id="orgDiv" style="<?=$display_org?>">
                       <p> <span class="dt_label">Scout Designation </span> </p>
                         <span class="dt_data"><?=$scout_designation?></span> </p>
                       <p> <span class="dt_label">Current Org./Office </span>
@@ -486,21 +495,21 @@ if($info->member_id == 1 || $info->member_id == 2){
                         <span class="dt_data"><?=$sc_scout?></span> </p>
                       <p> <span class="dt_label">Rover Scouts Experience </span>
                         <span class="dt_data"><?=$sc_rover?></span> </p>
-                      
+
                     </div> -->
 
-                    
+
                   <?php if($info->sc_cub == 'Yes'){ ?>
                     <div class="col-md-12" style="margin-bottom: 20px;">
                       <h3><span class="semi-bold pull-left">Cub Scouts Experience</span> </h3>
                       <?php /* ?>
                       <?php if($sc_cub=='Yes'){?>
-                      <a href="<?=base_url('my_profile/cub_experience/'.$info->id)?>" class="btn btn-primary btn-xs btn-mini pull-right"> Update</a> 
+                      <a href="<?=base_url('my_profile/cub_experience/'.$info->id)?>" class="btn btn-primary btn-xs btn-mini pull-right"> Update</a>
                       <?php } ?>
                       <?php */ ?>
                     </div>
-                 
-                    
+
+
                     <div class="col-md-12">
                       <p> <span class="dt_label">Scout Section</span>
                         <span class="dt_data">Cub Scout</span> </p>
@@ -531,11 +540,11 @@ if($info->member_id == 1 || $info->member_id == 2){
                      <div class="col-md-12" style="margin-bottom: 20px;">
                       <h3><span class="semi-bold pull-left">Scouts Experience</span> </h3>
                       <?php if($sc_scout=='Yes'){?>
-                      <a href="<?=base_url('my_profile/scout_experience/'.$info->id)?>" class="btn btn-primary btn-xs btn-mini pull-right"> Update</a> 
+                      <a href="<?=base_url('my_profile/scout_experience/'.$info->id)?>" class="btn btn-primary btn-xs btn-mini pull-right"> Update</a>
                       <?php } ?>
 
                     </div>
-                    
+
                     <div class="col-md-12">
                       <p> <span class="dt_label">Scout Section</span>
                         <span class="dt_data">Scout</span> </p>
@@ -567,11 +576,11 @@ if($info->member_id == 1 || $info->member_id == 2){
                      <div class="col-md-12" style="margin-bottom: 20px;">
                       <h3><span class="semi-bold pull-left">Rover Scouts Experience</span> </h3>
                       <?php if($sc_rover=='Yes'){?>
-                      <a href="<?=base_url('my_profile/rover_experience/'.$info->id)?>" class="btn btn-primary btn-xs btn-mini pull-right"> Update</a> 
+                      <a href="<?=base_url('my_profile/rover_experience/'.$info->id)?>" class="btn btn-primary btn-xs btn-mini pull-right"> Update</a>
                       <?php } ?>
 
                     </div>
-                    
+
                     <div class="col-md-12">
                       <p> <span class="dt_label">Scout Section</span>
                         <span class="dt_data">Rover Scout</span> </p>
@@ -598,7 +607,7 @@ if($info->member_id == 1 || $info->member_id == 2){
                     </div>
                 <?php } ?>
                   </div>
-                </div>                
+                </div>
 
                 <div class="tab-pane" id="achievement">
                   <div class="row">
@@ -617,10 +626,10 @@ if($info->member_id == 1 || $info->member_id == 2){
                          <th width="110">Certificate No</th>
                          <th width="100">Issue Date</th>
                       </tr>
-                          <?php 
+                          <?php
                             $i=0;
                             foreach ($trainings as $row) {
-                              $i++; 
+                              $i++;
                           ?>
                           <tr>
                             <td><?=$i?></td>
@@ -632,14 +641,14 @@ if($info->member_id == 1 || $info->member_id == 2){
                             <td><?=$row->certificate_no?></td>
                             <td><?=date_bangla_format($row->issue_date)?></td>
                           </tr>
-                          <?php } ?>  
+                          <?php } ?>
                     </table>
 
                     </br></br>
                     <?php /*
                     <table class="profile_table" width="100%">
                       <caption>
-                        Award Information 
+                        Award Information
                         <a href="<?=base_url('my_profile/update_award')?>" class="btn btn-primary btn-xs btn-mini pull-right"><i class="fa fa-edit"></i> Update Award Info</a>
                       </br>
                       </caption>
@@ -658,17 +667,17 @@ if($info->member_id == 1 || $info->member_id == 2){
                     */ ?>
 
                     </div>
-                  </div>                        
+                  </div>
                 </div>
 
                 <div class="tab-pane" id="tab_education">
                   <div class="row">
                     <div class="col-md-12">
                       <h3>
-                          <span class="semi-bold">Education/Academic Information</span> 
+                          <span class="semi-bold">Education/Academic Information</span>
                           <a href="<?=base_url('my_profile/update_education')?>" class="btn btn-primary btn-xs btn-mini pull-right"><i class="fa fa-edit"></i> Update Education Info</a>
                       </h3>
-                    
+
                       <table class="profile_table" width="100%">
                            <tr class="bg-success">
                               <th width="5%" class="text-left">SL</th>
@@ -677,9 +686,9 @@ if($info->member_id == 1 || $info->member_id == 2){
                               <th width="20%" class="text-left">Result</th>
                               <th width="30%" class="text-center">Passing Year</th>
                            </tr>
-                           <?php 
+                           <?php
                            $sl=0;
-                           foreach ($my_education as $row) { 
+                           foreach ($my_education as $row) {
                             $sl++;
                           ?>
                            <tr>
@@ -725,11 +734,11 @@ if($info->member_id == 1 || $info->member_id == 2){
                               <?php
                             }
                           }?>
-                        
+
                         </tbody>
                       </table>
                     </div>
-                  </div>                        
+                  </div>
                 </div>
 
                 <div class="tab-pane" id="tab_events">
@@ -763,12 +772,12 @@ if($info->member_id == 1 || $info->member_id == 2){
                               <?php
                             }
                           }?>
-                        
+
                         </tbody>
                       </table>
                     </div>
-                  </div>                        
-                </div> 
+                  </div>
+                </div>
 
                 <div class="tab-pane" id="activities">
                   <div class="row">
@@ -791,7 +800,7 @@ if($info->member_id == 1 || $info->member_id == 2){
                             <th>যাচাইকারী</th>
                          </tr>
                          <?php for($i=0;$i<sizeof($camping);$i++){ ?>
-                      
+
                           <tr>
                             <td><?=$i+1?></td>
                             <td><?=get_scout_section($camping[$i]->section_id); ?></td>
@@ -801,14 +810,14 @@ if($info->member_id == 1 || $info->member_id == 2){
                             <td><?=date_bangla_format($camping[$i]->camp_date); ?></td>
                             <td><?=$camping[$i]->examiner_id; ?></td>
                             <td><?=$camping[$i]->scout_id; ?></td>
-                            
+
                           </tr>
-                          <?php } ?>  
+                          <?php } ?>
                     </table>
 
                     </br></br>
 
-                    
+
                     <table class="profile_table" width="100%">
                       <caption>প্রশিক্ষণ রেকর্ডের বিবরণ</caption>
                          <tr class="bg-success">
@@ -822,7 +831,7 @@ if($info->member_id == 1 || $info->member_id == 2){
                             <th>যাচাইকারী</th>
                          </tr>
                          <?php for($i=0;$i<sizeof($badge_training);$i++){ ?>
-                      
+
                           <tr>
                             <td><?=$i+1?></td>
                             <td><?=get_scout_section($badge_training[$i]->section_id); ?></td>
@@ -832,14 +841,14 @@ if($info->member_id == 1 || $info->member_id == 2){
                             <td><?=date_bangla_format($badge_training[$i]->training_date); ?></td>
                             <td><?=$badge_training[$i]->examiner_id; ?></td>
                             <td><?=$badge_training[$i]->scout_id; ?></td>
-                            
+
                           </tr>
-                          <?php } ?>  
+                          <?php } ?>
                     </table>
 
                     </br></br>
 
-                    
+
                     <table class="profile_table" width="100%">
                       <caption>পদোন্নতির বিবরণ</caption>
                          <tr class="bg-success">
@@ -853,7 +862,7 @@ if($info->member_id == 1 || $info->member_id == 2){
                             <th>যাচাইকারী</th>
                          </tr>
                          <?php for($i=0;$i<sizeof($promotion);$i++){ ?>
-                      
+
                           <tr>
                             <td><?=$i+1?></td>
                             <td><?=get_scout_section($promotion[$i]->section_id); ?></td>
@@ -863,24 +872,24 @@ if($info->member_id == 1 || $info->member_id == 2){
                             <td><?=$promotion[$i]->badge_type_name_bn; ?></td>
                             <td><?=$promotion[$i]->examiner_id; ?></td>
                             <td><?=$promotion[$i]->scout_id; ?></td>
-                            
+
                           </tr>
-                          <?php } ?>  
+                          <?php } ?>
                     </table>
 
 
                     </div>
-                  </div>                        
-                </div>               
+                  </div>
+                </div>
 
                 <div class="tab-pane" id="tab_award">
                   <div class="row">
                     <div class="col-md-12">
                       <h3>
-                          <span class="semi-bold">My Achived Award Information</span> 
+                          <span class="semi-bold">My Achived Award Information</span>
                           <a href="<?=base_url('my_profile/update_award')?>" class="btn btn-primary btn-xs btn-mini pull-right"><i class="fa fa-edit"></i> Update Award Info</a>
                       </h3>
-                    
+
                       <table width="70%"  class="table table-bordered">
                            <tr class="bg-success">
                               <th width="250" class="text-center">Award Name</th>
@@ -902,11 +911,11 @@ if($info->member_id == 1 || $info->member_id == 2){
                   <div class="row column-seperation">
                     <div class="col-md-12" style="margin-bottom: 20px;">
                       <h3><span class="semi-bold pull-left">Blood Donation Information</span> </h3>
-                      <a href="<?=base_url('my_profile/update_donation')?>" class="btn btn-primary btn-xs btn-mini pull-right"><i class="fa fa-edit"></i> Update Blood Donation</a>                      
+                      <a href="<?=base_url('my_profile/update_donation')?>" class="btn btn-primary btn-xs btn-mini pull-right"><i class="fa fa-edit"></i> Update Blood Donation</a>
                     </div>
-                    
+
                     <div class="col-md-6">
-                      <p> <span class="dt_label">Blood Group</span> 
+                      <p> <span class="dt_label">Blood Group</span>
                         <span class="dt_data"><?=$blood_group?></span> </p>
                       <p> <span class="dt_label">Donate Interested</span>
                         <span class="dt_data"><?=$info->blood_donate_interested?></span> </p>
@@ -922,7 +931,7 @@ if($info->member_id == 1 || $info->member_id == 2){
                     <div class="col-md-5">
                       <div class="card7" style="width: 315px; height: 179px font-family: 'Open Sans';">
                         <div>
-                          <div style="float: left;margin:5px 10px 0px 15px;"> <img src="fwedget/assets/images/scout_logo.png" height="40"></div>                          
+                          <div style="float: left;margin:5px 10px 0px 15px;"> <img src="fwedget/assets/images/scout_logo.png" height="40"></div>
                           <div class="pull-right" style="margin:8px 10px 0px 15px;"><p class="img-thu" class="rounded" style="height: 37px; width: 32px; color: white; padding-top: 10px; font-size: 16px; text-align: center; background-image: url(<?= base_url('awedget/assets/img/blooddrop.png')?>); background-repeat: no-repeat;"><?= $info->bg_name_en ?></p></div>
                         </div>
                         <div  style="clear: both;"></div>
@@ -941,13 +950,13 @@ if($info->member_id == 1 || $info->member_id == 2){
 
                         <!-- <div class="logo7"><img src="awedget/assets/img/scout_logo.png" style="height: 40px; width: 260px; margin: 5px 0;"></div> -->
                         <div class="" style="overflow: hidden; margin: 0 20px;" >
-                        
-                        
+
+
                           </div>
                         <div class="divider7"></div>
 
                         <div style="color: black; background-color: white; font-size: 15px; text-align: center; padding: 5px 0px 0px 0px;"><b>Bangladesh Scout ID: <?=$info->scout_id?> </b></div>
-                        
+
                         <div class="card-info7" style="padding: 7px 20px ; font-size: 10px; background-color: #ffffff;">
                           <div class="row row-form">
                             <div style="width: 100%;">
@@ -987,9 +996,9 @@ if($info->member_id == 1 || $info->member_id == 2){
                                 <div id="qrcode" style="width: 100%;"></div>
                               </div>
                             </div>
-                            
+
                           </div>
-                        </div>  
+                        </div>
                         <div class="divider8"></div>
                         <!-- <div class="footer7"><span class="text-center">www.scout.gov.bd</span></div> -->
                       </div>
@@ -1001,29 +1010,29 @@ if($info->member_id == 1 || $info->member_id == 2){
                         <div class="card-info7" style="padding-top: -15px; font-size: 10px; background-color: #ffffff; height: 155px;">
                           <!-- <h3 class="text-center" style="font-size: bold;">Instructions</h3> -->
                           <div style="padding: 10px 20px;; font-size: bold; color: black; font-size: 12px;">
-                            <span class="justify-content-left"><b>Section: &nbsp;</b><?= $section_name ?></span> 
+                            <span class="justify-content-left"><b>Section: &nbsp;</b><?= $section_name ?></span>
                             <br>
-                            <span class="justify-content-left"><b>Institute Name: &nbsp;</b><?= $curr_institute ?></span> 
+                            <span class="justify-content-left"><b>Institute Name: &nbsp;</b><?= $curr_institute ?></span>
                             <br>
-                            <span class="justify-content-left"><b>Group Name: &nbsp;</b><?= $sc_group_name ?></span> 
+                            <span class="justify-content-left"><b>Group Name: &nbsp;</b><?= $sc_group_name ?></span>
                             <br>
                             <span class="justify-content-left"><b>Present Address:</b> <?= $full_pre_add ?></span> <br>
                             <!-- <span class="justify-content-left"><b>Permanent Address:</b> <?= $full_perm_addre ?></span> <br> -->
                             <span class="justify-content-left" style="padding-left: 20%; padding-top: 10px; font-size: 10px;">If found, please return to BDSCOUT.</span> <br>
                             <!-- <span class="justify-content-left">This card is not transferable and if found please return it to the contact mentioned.</span> <br><br> -->
                             <!-- <span class="text-center" style="text-align: center;">Issue Date : 01-12-17</span> <br> -->
-                            <span class="text-center" style="padding-left: 22%; padding-top: ; font-size: 10px;">Expire Date : 
-                                <?php 
+                            <span class="text-center" style="padding-left: 22%; padding-top: ; font-size: 10px;">Expire Date :
+                                <?php
                                 // echo date('Y-m-d', strtotime($info->join_date));
-                                // echo $created_on = $info->created_on; 
-                                 // echo $created_on = strtotime($info->created_on); 
+                                // echo $created_on = $info->created_on;
+                                 // echo $created_on = strtotime($info->created_on);
                                   echo date_detail_format(date('Y-m-d', strtotime("+5 years", $info->created_on)));
                                 ?>
                             </span> <br>
                             <!-- <span class="text-center">Preserve the card carefully.</span> -->
                           </div>
                           <!-- <div><img src="awedget/assets/img/signature.png" style="padding-bottom: 5px; padding-left:30px;"></div> -->
-                        </div> 
+                        </div>
                         <!-- <div class="divider8"></div> -->
                         <div class="footer7"><span class="text-center">scouts.gov.bd</span></div>
                         <input type="hidden" name="qr_code_text" id="qr_code_text" value="<?= $qr_code_text ?>">
@@ -1071,7 +1080,7 @@ if($info->member_id == 1 || $info->member_id == 2){
       <h3><span class="semi-bold">My Progress</span></h5>
 
       </br></br>
-      
+
       <table class="profile_table" width="100%">
         <caption>ব্যাজ অর্জনের বিবরণ</caption>
            <tr class="bg-success">
@@ -1084,7 +1093,7 @@ if($info->member_id == 1 || $info->member_id == 2){
               <th>যাচাইকারী</th>
            </tr>
            <?php for($i=0;$i<sizeof($badge_details);$i++){ ?>
-        
+
             <tr>
               <td><?=$i+1?></td>
               <td><?=get_scout_section($badge_details[$i]->section_id); ?></td>
@@ -1093,14 +1102,14 @@ if($info->member_id == 1 || $info->member_id == 2){
               <td><?=date_bangla_format($badge_details[$i]->achive_date); ?></td>
               <td><?=$badge_details[$i]->examiner_id; ?></td>
               <td><?=$badge_details[$i]->scout_id; ?></td>
-              
+
             </tr>
-            <?php } ?>  
+            <?php } ?>
       </table>
 
       </br></br>
 
-      
+
       <table class="profile_table" width="100%">
         <caption>পারদর্শিতা ব্যাজ অর্জনের বিবরণ</caption>
            <tr class="bg-success">
@@ -1114,7 +1123,7 @@ if($info->member_id == 1 || $info->member_id == 2){
               <th>যাচাইকারী</th>
            </tr>
            <?php for($i=0;$i<sizeof($expertness);$i++){ ?>
-        
+
             <tr>
               <td><?=$i+1?></td>
               <td><?=get_scout_section($expertness[$i]->section_id); ?></td>
@@ -1124,14 +1133,14 @@ if($info->member_id == 1 || $info->member_id == 2){
               <td><?=$expertness[$i]->extra_badge; ?></td>
               <td><?=$expertness[$i]->examiner_id; ?></td>
               <td><?=$expertness[$i]->scout_id; ?></td>
-              
+
             </tr>
-            <?php } ?>  
+            <?php } ?>
       </table>
 
       </br></br>
 
-      
+
       <table class="profile_table" width="100%">
         <caption>দীক্ষা / ব্যাজ অর্জনের তারিখ ও বিবরণ</caption>
            <tr class="bg-success">
@@ -1143,7 +1152,7 @@ if($info->member_id == 1 || $info->member_id == 2){
               <th>যাচাইকারী</th>
            </tr>
            <?php for($i=0;$i<sizeof($achievement);$i++){ ?>
-        
+
             <tr>
               <td><?=$i+1?></td>
               <td><?=get_scout_section($achievement[$i]->section_id); ?></td>
@@ -1151,14 +1160,14 @@ if($info->member_id == 1 || $info->member_id == 2){
               <td><?=date_bangla_format($achievement[$i]->achive_date); ?></td>
               <td><?=$achievement[$i]->examiner_id; ?></td>
               <td><?=$achievement[$i]->scout_id; ?></td>
-              
+
             </tr>
-            <?php } ?>  
+            <?php } ?>
       </table>
 
       </br></br>
 
-      
+
       <table class="profile_table" width="100%">
         <caption>ক্যাম্প রেকর্ডের বিবরণ</caption>
            <tr class="bg-success">
@@ -1172,7 +1181,7 @@ if($info->member_id == 1 || $info->member_id == 2){
               <th>যাচাইকারী</th>
            </tr>
            <?php for($i=0;$i<sizeof($camping);$i++){ ?>
-        
+
             <tr>
               <td><?=$i+1?></td>
               <td><?=get_scout_section($camping[$i]->section_id); ?></td>
@@ -1182,14 +1191,14 @@ if($info->member_id == 1 || $info->member_id == 2){
               <td><?=date_bangla_format($camping[$i]->camp_date); ?></td>
               <td><?=$camping[$i]->examiner_id; ?></td>
               <td><?=$camping[$i]->scout_id; ?></td>
-              
+
             </tr>
-            <?php } ?>  
+            <?php } ?>
       </table>
 
       </br></br>
 
-      
+
       <table class="profile_table" width="100%">
         <caption>প্রশিক্ষণ রেকর্ডের বিবরণ</caption>
            <tr class="bg-success">
@@ -1203,7 +1212,7 @@ if($info->member_id == 1 || $info->member_id == 2){
               <th>যাচাইকারী</th>
            </tr>
            <?php for($i=0;$i<sizeof($badge_training);$i++){ ?>
-        
+
             <tr>
               <td><?=$i+1?></td>
               <td><?=get_scout_section($badge_training[$i]->section_id); ?></td>
@@ -1213,14 +1222,14 @@ if($info->member_id == 1 || $info->member_id == 2){
               <td><?=date_bangla_format($badge_training[$i]->training_date); ?></td>
               <td><?=$badge_training[$i]->examiner_id; ?></td>
               <td><?=$badge_training[$i]->scout_id; ?></td>
-              
+
             </tr>
-            <?php } ?>  
+            <?php } ?>
       </table>
 
       </br></br>
 
-      
+
       <table class="profile_table" width="100%">
         <caption>দৈহিক ও স্বাস্থ্যগত রেকর্ডের বিবরণ</caption>
            <tr class="bg-success">
@@ -1238,7 +1247,7 @@ if($info->member_id == 1 || $info->member_id == 2){
               <th>যাচাইকারী</th>
            </tr>
            <?php for($i=0;$i<sizeof($health);$i++){ ?>
-        
+
             <tr>
               <td><?=$i+1?></td>
               <td><?=get_scout_section($health[$i]->section_id); ?></td>
@@ -1252,14 +1261,14 @@ if($info->member_id == 1 || $info->member_id == 2){
               <td><?=$health[$i]->temperature; ?></td>
               <td><?=$health[$i]->examiner_id; ?></td>
               <td><?=$health[$i]->scout_id; ?></td>
-              
+
             </tr>
-            <?php } ?>  
+            <?php } ?>
       </table>
 
       </br></br>
 
-      
+
       <table class="profile_table" width="100%">
         <caption>বিদ্যালয়ের ক্রমোন্নতি তথ্য বিবরণ</caption>
            <tr class="bg-success">
@@ -1273,7 +1282,7 @@ if($info->member_id == 1 || $info->member_id == 2){
               <th>যাচাইকারী</th>
            </tr>
            <?php for($i=0;$i<sizeof($institute);$i++){ ?>
-        
+
             <tr>
               <td><?=$i+1?></td>
               <td><?=get_scout_section($institute[$i]->section_id); ?></td>
@@ -1283,14 +1292,14 @@ if($info->member_id == 1 || $info->member_id == 2){
               <td><?=$institute[$i]->total_unmber; ?></td>
               <td><?=$institute[$i]->examiner_id; ?></td>
               <td><?=$institute[$i]->scout_id; ?></td>
-              
+
             </tr>
-            <?php } ?>  
+            <?php } ?>
       </table>
 
       </br></br>
 
-      
+
       <table class="profile_table" width="100%">
         <caption>পদোন্নতির বিবরণ</caption>
            <tr class="bg-success">
@@ -1304,7 +1313,7 @@ if($info->member_id == 1 || $info->member_id == 2){
               <th>যাচাইকারী</th>
            </tr>
            <?php for($i=0;$i<sizeof($promotion);$i++){ ?>
-        
+
             <tr>
               <td><?=$i+1?></td>
               <td><?=get_scout_section($promotion[$i]->section_id); ?></td>
@@ -1314,14 +1323,14 @@ if($info->member_id == 1 || $info->member_id == 2){
               <td><?=$promotion[$i]->badge_type_name_bn; ?></td>
               <td><?=$promotion[$i]->examiner_id; ?></td>
               <td><?=$promotion[$i]->scout_id; ?></td>
-              
+
             </tr>
-            <?php } ?>  
+            <?php } ?>
       </table>
 
       </br></br>
 
-      
+
       <table class="profile_table" width="100%">
         <caption>গ্রুপ ত্যাগের বিবরণ</caption>
            <tr class="bg-success">
@@ -1333,7 +1342,7 @@ if($info->member_id == 1 || $info->member_id == 2){
               <th>যাচাইকারী</th>
            </tr>
            <?php for($i=0;$i<sizeof($resign);$i++){ ?>
-        
+
             <tr>
               <td><?=$i+1?></td>
               <td><?=get_scout_section($resign[$i]->section_id); ?></td>
@@ -1341,13 +1350,13 @@ if($info->member_id == 1 || $info->member_id == 2){
               <td><?=$resign[$i]->resign_reason; ?></td>
               <td><?=$resign[$i]->examiner_id; ?></td>
               <td><?=$resign[$i]->scout_id; ?></td>
-              
+
             </tr>
-            <?php } ?>  
+            <?php } ?>
       </table>
 
       </div>
-    </div>                        
+    </div>
   </div> -->
 
   */ ?>

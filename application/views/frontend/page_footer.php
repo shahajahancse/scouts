@@ -1,13 +1,25 @@
          <!-- </div> -->
       </div> <!-- main row -->
    </div>
-   <div class="pt-3"></div> 
+   <div class="pt-3"></div>
+
+   <style>
+      @media only screen and (max-width: 768px) {
+         .design-class {
+            text-align-last: center;
+         }
+         .img-dg {
+            height: auto;
+         }
+      }
+
+   </style>
 
    <!-- footer -->
    <div class="footer">
 
       <div class="container w-75">
-         <div class="row">
+         <div class="row design-class">
             <div class="col-md-2">
                <ul class="fa-ul text-left">
                   <h6 class="font-weight-bold"><?=lang('site_footer_home')?></h6>
@@ -39,22 +51,26 @@
                   <div class="col-md-4 text-left" style="padding: 0;">
                      <ul class="list-inline" style="margin-bottom: 0; padding-bottom:5px; ">
                         <li class="list-inline-item"><a href="https://a2i.gov.bd/" target="_blank" style="padding: 0px 0px;"><img src="<?=base_url();?>fwedget/assets/images/a2i_logo.png" height="20"></a></li>
-                        <li class="list-inline-item"><a href="https://ictd.gov.bd/" target="_blank" style="padding-left: 0px;"><img src="<?=base_url();?>fwedget/assets/images/logo_ict.png" width="55"></a></li>                  
+                        <li class="list-inline-item"><a href="https://ictd.gov.bd/" target="_blank" style="padding-left: 0px;"><img src="<?=base_url();?>fwedget/assets/images/logo_ict.png" width="55"></a></li>
                      </ul>
                      <?=lang('site_footer_a2i_Program')?>
                   </div>
                   <div class="col-md-4 text-left" style="border-left:1px solid #ccc; padding: 0 0 0 5px;">
                      <ul class="list-inline" style="margin-bottom: 0; padding-bottom:5px; ">
-                        <li class="list-inline-item"><a href="http://www.scouts.gov.bd/" target="_blank" style="padding-left: 0px;"><img src="<?=base_url();?>fwedget/assets/images/bd_scout_logo.png" height="20"></a></li>                  
+                        <li class="list-inline-item"><a href="http://www.scouts.gov.bd/" target="_blank" style="padding-left: 0px;"><img src="<?=base_url();?>fwedget/assets/images/bd_scout_logo.png" height="20"></a></li>
                      </ul>
                      <?=lang('site_footer_scouts_logo')?>
                   </div>
-                  
-                  <div class="col-md-4 text-right" style="border-left:1px solid #ccc; width: 150px; padding: auto 0;">
-                     <ul class="list-inline" style="margin-bottom: 0; padding-bottom:5px; ">
+
+                  <div class="col-md-4 text-right" style="padding: auto 0;">
+                   <!--   <ul class="list-inline" style="margin-bottom: 0; padding-bottom:5px; ">
                         <li class="list-inline-item"><a href="http://mysoftheaven.com/" target="_blank" style="padding-left: 0px;"><img src="<?=base_url();?>fwedget/assets/images/mysoftheaven_bd_ltd_logo.png" height="20"></a></li>
-                     </ul>
-                     Developed By
+                     </ul> -->
+                     <span style="display: flex;flex-direction: column;align-items: center;margin-top: 17px;gap: 6px;">
+                        Developed By
+                      <a href="http://mysoftheaven.com/" target="_blank" style="padding-left: 0px;"><img class="img-dg" src="<?=base_url();?>fwedget/assets/images/mysoftheaven_bd_ltd_logo.png" height="20"></a>
+
+                     </span>
                   </div>
                </div>
 
@@ -103,7 +119,7 @@
 </script>
 
 <script>
-      
+
 
    // for up arrow
    $(document).ready(function(){
@@ -237,7 +253,7 @@
   //           $.each(func_data,function(id,name)
   //           {
   //             i=i+1;
-  //              var opt ='<tr><td width="5%">'+convertlan(i)+'</td><td><a href="<?=base_url()?>groups-details/'+id+'" style="color:#000;">'+name+'</a></td></tr>' 
+  //              var opt ='<tr><td width="5%">'+convertlan(i)+'</td><td><a href="<?=base_url()?>groups-details/'+id+'" style="color:#000;">'+name+'</a></td></tr>'
   //              $('.sc_group_val').append(opt);
   //           });
   //        }
@@ -282,7 +298,7 @@
             $.each(func_data,function(id,name)
             {
                i=i+1;
-               var opt ='<tr><td width="5%">'+convertlan(i)+'</td><td><a href="<?=base_url()?>district-details/'+id+'" style="color:#000;">'+name+'</a></td></tr>' 
+               var opt ='<tr><td width="5%">'+convertlan(i)+'</td><td><a href="<?=base_url()?>district-details/'+id+'" style="color:#000;">'+name+'</a></td></tr>'
                $('.sc_district_val').append(opt);
             });
          }
@@ -304,7 +320,7 @@
             $.each(func_data,function(id,name)
             {
                i=i+1;
-               var opt ='<tr><td width="5%">'+ convertlan(i) +'</td><td><a href="<?=base_url()?>upazila-details/'+id+'" style="color:#000;">'+name+'</a></td></tr>' 
+               var opt ='<tr><td width="5%">'+ convertlan(i) +'</td><td><a href="<?=base_url()?>upazila-details/'+id+'" style="color:#000;">'+name+'</a></td></tr>'
                $('.sc_upzila_val').append(opt);
             });
          }
@@ -324,7 +340,7 @@
             $.each(func_data,function(id,name)
             {
                i=i+1;
-               var opt ='<tr><td width="5%">'+convertlan(i)+'</td><td><a href="<?=base_url()?>groups-details/'+id+'" style="color:#000;">'+name+'</a></td></tr>' 
+               var opt ='<tr><td width="5%">'+convertlan(i)+'</td><td><a href="<?=base_url()?>groups-details/'+id+'" style="color:#000;">'+name+'</a></td></tr>'
                $('.sc_group_val').append(opt);
             });
          }
@@ -344,7 +360,7 @@
             $.each(func_data,function(id,name)
             {
                i=i+1;
-               var opt ='<tr><td width="5%">'+ convertlan(i) +'</td><td><a href="<?=base_url()?>unit-details/'+id+'" style="color:#000;">'+name+'</a></td></tr>' 
+               var opt ='<tr><td width="5%">'+ convertlan(i) +'</td><td><a href="<?=base_url()?>unit-details/'+id+'" style="color:#000;">'+name+'</a></td></tr>'
                $('.sc_unit_val').append(opt);
             });
          }
@@ -413,7 +429,7 @@
             }
             return retStr;
          };
-      </script> 
+      </script>
 
       <script>
          $(".pagination li.page-item a").addClass("page-link");

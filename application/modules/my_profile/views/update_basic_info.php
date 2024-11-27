@@ -8,25 +8,25 @@ if($info->profile_img != NULL){
 
 $display_edu='';
 $display_org='';
-if($info->member_id == 1 || $info->member_id == 2){ 
+if($info->member_id == 1 || $info->member_id == 2){
  $display_edu = "display: block;";
  $display_org = "display: none;";
 }else if($info->member_id == 8 || $info->member_id == 12 || $info->member_id == 10 || $info->member_id == 9 || $info->member_id == 13){
  $display_edu = "display: none;";
  $display_org = "display: block;";
 }
-?> 
+?>
 <style type="text/css">
  .info{margin-left: 25px; color: black;}
  /*.required {color: red; font-size: 20px;}*/
 </style>
 
-<div class="page-content"> 
-  <div class="content">  
+<div class="page-content">
+  <div class="content">
 
     <div class="row">
       <div class="col-md-2 col-sm-2" style="margin:0 0px;">
-        <div class="user-profile-pic" style="margin-top: 20px;"> 
+        <div class="user-profile-pic" style="margin-top: 20px;">
           <img width="100" height="100" data-src-retina="<?=$img_url?>" data-src="<?=$img_url?>" src="<?=$img_url?>" alt="" style="border: 5px solid #ccc;">
         </div>
         <div class="user-mini-description"  style="font-size: 150%;"><h2 class="text-success semi-bold"> BS ID</h2></div>
@@ -37,8 +37,8 @@ if($info->member_id == 1 || $info->member_id == 2){
         <div class="grid simple horizontal red">
           <div class="grid-title">
             <h4><span class="semi-bold"><?=$meta_title; ?></span></h4>
-            <div class="pull-right">                
-              <a href="<?=base_url('my_profile')?>" class="btn btn-blueviolet btn-xs btn-mini"> My Profile</a> 
+            <div class="pull-right">
+              <a href="<?=base_url('my_profile')?>" class="btn btn-blueviolet btn-xs btn-mini"> My Profile</a>
             </div>
           </div>
           <div class="grid-body">
@@ -48,8 +48,7 @@ if($info->member_id == 1 || $info->member_id == 2){
               </div>
             <?php endif; ?>
 
-            <?php 
-            $attributes = array('id' => 'basic_update_validation');
+            <?php $attributes = array('id' => 'basic_update_validation');
             echo form_open_multipart(base_url()."my_profile/update_basic_info", $attributes);?>
 
             <div class="row">
@@ -70,11 +69,11 @@ if($info->member_id == 1 || $info->member_id == 2){
                     <label class="form-label">Date of Birth <span class='required'>*</span></label>
                     <?php echo form_error('day'); echo form_error('month'); echo form_error('year'); ?>
                     <div class="row form-row">
-                      <?php 
-                      $dob=explode('-', $info->dob);
-                      $day  =$dob[2];
-                      $month=$dob[1]; 
-                      $year =$dob[0];  
+                      <?php
+                        $dob=explode('-', $info->dob);
+                        $day  =$dob[2];
+                        $month=$dob[1];
+                        $year =$dob[0];
                       ?>
                       <div class="col-md-4" style="">
                         <?php echo form_dropdown('day', $days, set_value('day',$day), 'class="form-control input-sm"'); ?>
@@ -93,7 +92,7 @@ if($info->member_id == 1 || $info->member_id == 2){
                     $more_attr = 'class="form-control input-sm"';
                     echo form_dropdown('religion_id', $religions, set_value('religion_id', $info->religion_id), $more_attr);
                     ?>
-                  </div>                  
+                  </div>
                 </div>
 
                 <div class="row form-row">
@@ -115,7 +114,7 @@ if($info->member_id == 1 || $info->member_id == 2){
                   <div class="col-md-3">
                     <label class="form-label">Gender <span class='required'>*</span></label>
                     <?php echo form_error('gender'); ?>
-                    <input type="radio" name="gender" value="Male" <?=set_value('gender',$info->gender)=='Male'?'checked':'';?>> <span style="color: black; font-size: 14px;">Male</span> 
+                    <input type="radio" name="gender" value="Male" <?=set_value('gender',$info->gender)=='Male'?'checked':'';?>> <span style="color: black; font-size: 14px;">Male</span>
                     <input type="radio" name="gender" value="Female" <?=set_value('gender',$info->gender)=='Female'?'checked':'';?>> <span style="color: black; font-size: 14px;">Female</span>
                     <input type="radio" name="gender" value="Others" <?=set_value('gender',$info->gender)=='Others'?'checked':'';?>> <span style="color: black; font-size: 14px;">Others</span>
                   </div>
@@ -156,7 +155,7 @@ if($info->member_id == 1 || $info->member_id == 2){
                     <label class="form-label">Birth ID</label>
                     <?php echo form_error('birth_id'); ?>
                     <input name="birth_id" value="<?=set_value('birth_id', $info->birth_id)?>" type="text" class="form-control input-sm" placeholder="">
-                  </div> 
+                  </div>
                   <div class="col-md-2">
                     <label class="form-label">Telephone No.</label>
                     <?php echo form_error('phone2'); ?>
@@ -171,15 +170,36 @@ if($info->member_id == 1 || $info->member_id == 2){
                     <label class="form-label">Occupation</label>
                     <?php echo form_error('occupation_id');
                     $more_attr = 'class="form-control input-sm" id="occupation"';
-                    echo form_dropdown('occupation_id', $occupation, set_value('occupation_id', $info->occupation_id), $more_attr);
-                    ?>
+                    echo form_dropdown('occupation_id', $occupation, set_value('occupation_id', $info->occupation_id), $more_attr); ?>
                   </div>
+                </div>
+
+                <div class="row form-row">
                   <div class="col-md-3">
                     <label class="form-label">Scout Join Date</label>
                     <?php echo form_error('join_date'); ?>
                     <input name="join_date" value="<?=set_value('join_date', $info->join_date != NULL ? date_bangla_format($info->join_date):'')?>" type="text" class="form-control input-sm datetime" placeholder="DD-MM-YYYY">
                   </div>
-
+                  <div class="col-md-5">
+                    <label class="form-label">Facebook</label>
+                    <?php echo form_error('facebook'); ?>
+                    <input name="facebook" value="<?=set_value('facebook', $info->facebook)?>" type="text" class="form-control input-sm" placeholder="https://www.facebook.com/profile">
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label">Skype</label>
+                    <?php echo form_error('skype'); ?>
+                    <input name="skype" value="<?=set_value('skype', $info->skype)?>" type="text" class="form-control input-sm" placeholder="skype">
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Linkedin</label>
+                    <?php echo form_error('linkedin'); ?>
+                    <input name="linkedin" value="<?=set_value('linkedin', $info->linkedin)?>" type="text" class="form-control input-sm" placeholder="https://bd.linkedin.com/">
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Instagram</label>
+                    <?php echo form_error('instagram'); ?>
+                    <input name="instagram" value="<?=set_value('instagram', $info->instagram)?>" type="text" class="form-control input-sm" placeholder="https://www.instagram.com/">
+                  </div>
                 </div>
 
                 <div class="row form-row" id='occp_others'>
@@ -196,7 +216,7 @@ if($info->member_id == 1 || $info->member_id == 2){
               <div class="col-md-7">
                 <div class="row form-row">
                   <h4 class="margin_left_15 semi-bold">Address Information</h4>
-                  <div class="col-md-6">      
+                  <div class="col-md-6">
                     <h5 class="semi-bold"><em>Present Address</em></h5> <br>
                     <div class="row form-row">
                       <div class="col-md-12">
@@ -246,7 +266,7 @@ if($info->member_id == 1 || $info->member_id == 2){
                         <input type="text" name="pre_post_office" class="form-control input-sm" value="<?=set_value('pre_post_office', $info->pre_post_office)?>">
                       </div>
                     </div>
-                  </div> 
+                  </div>
                   <div class="col-md-6">
                     <h5 class="semi-bold"><em>Permanent Addess</em></h5>
                     <h5 class="semi-bold"><input type="checkbox" id="same_as" name="same_as" value="Yes"> Same as present address</h5>
@@ -341,17 +361,17 @@ if($info->member_id == 1 || $info->member_id == 2){
                         var $newOption = $("<option></option>").val("<?php echo $info->curr_institute_id;?>").text("<?php echo $info->institute_name;?>");
                         $("#curr_institute_id").append($newOption).trigger('change');
                       </script>
-                    </div> 
+                    </div>
                     <div class="col-md-12">
                       <label class="form-label">Current Class</label>
                       <?php echo form_error('curr_class'); ?>
                       <input name="curr_class" value="<?=set_value('curr_class', $info->curr_class)?>" type="text" class="form-control input-sm" placeholder="">
-                    </div> 
+                    </div>
                     <div class="col-md-12">
                       <label class="form-label">Current Roll No</label>
                       <?php echo form_error('curr_role_no'); ?>
                       <input name="curr_role_no" value="<?=set_value('curr_role_no', $info->curr_role_no)?>" type="text" class="form-control input-sm" placeholder="">
-                    </div> 
+                    </div>
                   </div>
 
                   <div id="orgDiv" style="<?=$display_org?>">
@@ -373,7 +393,7 @@ if($info->member_id == 1 || $info->member_id == 2){
 
             </div> <!-- /row -->
 
-            <div class="form-actions">  
+            <div class="form-actions">
               <div class="pull-right">
                 <?php echo form_submit('submit', 'Save', "class='btn btn-primary btn-small btn-cons'"); ?>
                 <a href="<?=base_url('my_profile')?>" class="btn btn-white btn-small btn-cons">Cancel</a>
@@ -382,9 +402,9 @@ if($info->member_id == 1 || $info->member_id == 2){
 
             <?php echo form_close();?>
 
-          </div> <!-- END GRID BODY -->    
-        </div> <!-- END GRID -->        
-      </div>  <!-- END GRID BODY -->              
+          </div> <!-- END GRID BODY -->
+        </div> <!-- END GRID -->
+      </div>  <!-- END GRID BODY -->
     </div> <!-- END GRID -->
   </div>  <!-- </content> -->
 </div> <!-- </page-content> -->
@@ -392,7 +412,7 @@ if($info->member_id == 1 || $info->member_id == 2){
 <script type="text/javascript">
  $(document).ready(function() {
   $('#basic_update_validation').validate({
-      // focusInvalid: false, 
+      // focusInvalid: false,
       ignore: "",
       rules: {
         first_name: {
@@ -418,7 +438,7 @@ if($info->member_id == 1 || $info->member_id == 2){
         },
         religion_id: {
           required: true
-        },         
+        },
         father_name: {
           required: true
         },
@@ -427,10 +447,10 @@ if($info->member_id == 1 || $info->member_id == 2){
         },
         mother_name: {
           required: true
-        }, 
+        },
         mother_name_bn: {
           required: true
-        },  
+        },
         nid:{
           number: true,
         },
@@ -442,10 +462,10 @@ if($info->member_id == 1 || $info->member_id == 2){
           number: true,
           minlength: 11,
           maxlength: 11
-        },         
-        email: {            
+        },
+        email: {
           email:true
-        }, 
+        },
         pre_village_house:{
           required: true
         },
@@ -454,13 +474,13 @@ if($info->member_id == 1 || $info->member_id == 2){
         },
         pre_road_block:{
           required: true
-        },  
+        },
         pre_road_block_bn:{
           required: true
         },
         pre_road_block:{
           required: true
-        },        
+        },
         pre_division_id: {
           required: true
         },
@@ -477,7 +497,7 @@ if($info->member_id == 1 || $info->member_id == 2){
       },
 
     });
-}); 
+});
 
  $(document).ready(function(){
   $("#same_as").click(function(){
@@ -513,7 +533,7 @@ if($info->member_id == 1 || $info->member_id == 2){
 
     }
   });
-});  
+});
 </script>
 
 <script type="text/javascript">
