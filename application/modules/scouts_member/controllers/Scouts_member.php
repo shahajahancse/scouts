@@ -51,7 +51,7 @@ class Scouts_member extends Backend_Controller {
 
    public function all($offset=0){
       $limit = 25;
-
+      
       //Check authentication
       if($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin() || $this->ion_auth->in_group(array('award', 'event', 'training'))){
          // Superadmin

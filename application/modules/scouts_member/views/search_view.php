@@ -1,4 +1,51 @@
 <form method="get" action="">
+	<style>
+		@media (max-width: 767px) {
+			.marTopSearch {
+				margin-top: 10px;
+			}
+			
+			.form-control {
+				width: 100%;
+				margin-bottom: 10px;
+			}
+			
+			.col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-6 {
+				width: 100%;
+				float: none;
+			}
+			
+			.pull-right {
+				float: none !important;
+				text-align: center;
+			}
+			
+			.btn-mini {
+				width: 100%;
+				margin-bottom: 10px;
+			}
+		}
+		
+		@media (min-width: 768px) {
+			.marTopSearch {
+				margin-top: 10px;
+			}
+			
+			.form-control {
+				width: 100%;
+			}
+			
+			.col-md-1 {width: 8.33%;}
+			.col-md-2 {width: 16.66%;}
+			.col-md-3 {width: 25%;}
+			.col-md-4 {width: 33.33%;}
+			.col-md-6 {width: 50%;}
+			
+			.pull-right {
+				float: right !important;
+			}
+		}
+	</style>
 
 	<?php if($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin() || $this->ion_auth->in_group('award') || $this->ion_auth->in_group('event') || $this->ion_auth->in_group('training') || $this->ion_auth->is_vendor()){ ?>
 	<div class="row">
@@ -11,25 +58,16 @@
 			<?php $more_attr = 'class="sc_district_val form-control input-sm" id="sc_district"';
 			echo form_dropdown('district', $scouts_district, $_GET['district'], $more_attr);
 			?>
-			<!-- <select name="district" class="sc_district_val form-control input-sm" id="sc_district">
-				<option value="">-- Scouts District --</option>
-			</select> -->
 		</div>
 		<div class="col-md-3">
 			<?php $more_attr = 'class="sc_upazila_thana_val form-control input-sm" id="sc_upazila_thana"';
 			echo form_dropdown('upazila', $scouts_upazila, $_GET['upazila'], $more_attr);
 			?>
-			<!-- <select name="upazila" class="sc_upazila_thana_val form-control input-sm" id="sc_upazila_thana">
-				<option value="">-- Scouts Upazila --</option>
-			</select> -->
 		</div>
 		<div class="col-md-3">
 		    <?php $more_attr = 'class="sc_group_val form-control input-sm basic-select2"';
 			echo form_dropdown('sgroup', $scouts_group, $_GET['sgroup'], $more_attr);
 			?>
-			<!-- <select name="sgroup" class="sc_group_val form-control input-sm">
-				<option value="">-- Scouts Group --</option>
-			</select> -->
 		</div>
 		<div class="col-md-2">
 			<?php $more_attr = 'class="form-control input-sm"';
@@ -65,7 +103,7 @@
 			?>
 		</div>
 		<div class="col-md-1 marTopSearch">
-			<div class="pull-right ">
+			<div class="pull-right">
 				<button type="submit" class="btn btn-blueviolet btn-mini"><i class="icon-ok"></i> Search</button>
 			</div>
 		</div>
@@ -85,17 +123,11 @@
 			<?php $more_attr = 'class="sc_upazila_thana_val form-control input-sm" id="sc_upazila_thana"';
 			echo form_dropdown('upazila', $scouts_upazila, $_GET['upazila'], $more_attr);
 			?>
-			<!-- <select name="upazila" class="sc_upazila_thana_val form-control input-sm" id="sc_upazila_thana">
-				<option value="">-- Scouts Upazila --</option>
-			</select> -->
 		</div>
 		<div class="col-md-4">
 		    <?php $more_attr = 'class="sc_group_val form-control input-sm"';
 			echo form_dropdown('sgroup', $scouts_group, $_GET['sgroup'], $more_attr);
 			?>
-			<!-- <select name="sgroup" class="sc_group_val form-control input-sm">
-				<option value="">-- Scouts Group --</option>
-			</select> -->
 		</div>
 		<div class="col-md-2">
 			<?php $more_attr = 'class="form-control input-sm"';
@@ -127,7 +159,7 @@
 			?>
 		</div>
 		<div class="col-md-1 marTopSearch">
-			<div class="pull-right ">
+			<div class="pull-right">
 				<button type="submit" class="btn btn-blueviolet btn-mini"><i class="icon-ok"></i> Search</button>
 			</div>
 		</div>
@@ -172,7 +204,7 @@
 			</select>
 		</div>
 		<div class="col-md-1 marTopSearch">
-			<div class="pull-right ">
+			<div class="pull-right">
 				<button type="submit" class="btn btn-blueviolet btn-mini"><i class="icon-ok"></i> Search</button>
 			</div>
 		</div>
@@ -217,7 +249,7 @@
 			</select>
 		</div>
 		<div class="col-md-1 marTopSearch">
-			<div class="pull-right ">
+			<div class="pull-right">
 				<button type="submit" class="btn btn-blueviolet btn-mini"><i class="icon-ok"></i> Search</button>
 			</div>
 		</div>
@@ -262,7 +294,7 @@
 			</select>
 		</div>
 		<div class="col-md-1 marTopSearch">
-			<div class="pull-right ">
+			<div class="pull-right">
 				<button type="submit" class="btn btn-blueviolet btn-mini"><i class="icon-ok"></i> Search</button>
 			</div>
 		</div>
@@ -294,7 +326,7 @@
 			</select>
 		</div>
 		<div class="col-md-1">
-			<div class="pull-right ">
+			<div class="pull-right">
 				<button type="submit" class="btn btn-blueviolet btn-mini"><i class="icon-ok"></i> Search</button>
 			</div>
 		</div>
@@ -304,4 +336,4 @@
 </form>
 
 <div class="clearfix"></div>
-<hr >
+<hr>

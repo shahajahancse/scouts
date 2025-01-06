@@ -7,6 +7,48 @@
       <li><?=$meta_title; ?> </li>
     </ul>
 
+    <style type="text/css">
+      .table-responsive {
+        width: 100%;
+        margin-bottom: 15px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .btn-group-responsive {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+      }
+
+      @media screen and (max-width: 767px) {
+        .grid-title {
+          flex-direction: column;
+          align-items: stretch;
+        }
+        
+        .grid-title .pull-right {
+          margin-top: 10px;
+        }
+
+        .btn-xs, .btn-mini {
+          width: 100%;
+          margin-bottom: 5px;
+        }
+
+        .table th,
+        .table td {
+          white-space: nowrap;
+          min-width: 120px;
+        }
+
+        .col-md-8 {
+          width: 100%;
+          padding: 0 15px;
+        }
+      }
+    </style>
+
     <div class="row">
       <div class="col-md-8">
         <div class="grid simple horizontal green">
@@ -17,7 +59,7 @@
             </div>            
           </div>
 
-          <div class="grid-body ">
+          <div class="grid-body">
             <div id="infoMessage"><?php //echo $message;?></div>
             <?php if($this->session->flashdata('message')):?>
                 <div class="alert alert-success">
@@ -25,51 +67,42 @@
                 </div>
             <?php endif; ?>
 
-            <table class="table table-hover table-bordered  table-flip-scroll cf">
-                <thead class="cf">
-                  <tr>
-                    <th>SL</th>
-                    <th>Group Name</th>
-                    <th>Description</th>
-                    <!-- <th>User List</th> -->
-                    <th width="150">Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                <?php 
-                  $sl = 0;
-                  foreach ($results as $row):
-                    $sl++;
-                ?>
+            <div class="table-responsive">
+              <table class="table table-hover table-bordered">
+                  <thead>
                     <tr>
-                      <td><?=$sl.'.'?></td>
-                      <td><?php echo $row->name;?></td>
-                      <td><?php echo $row->description;?></td>
-                      <!-- <td><?php echo anchor("acl/userbygroup/".$row->id, 'User List','class="btn btn-mini btn-primary" target="_blank"');?></td> -->
-					            <td><?php echo anchor("acl/edit_group/".$row->id, 'Edit','class="btn btn-mini btn-primary"') ;?>&nbsp;<a class="btn btn-mini btn-primary" href="#">Delete</a></td>
-                      <?php /*?><td>
-                        <div class="btn-group">
-                          <button class="btn btn-mini btn-success">Action</button>
-                          <button class="btn btn-mini btn-success dropdown-toggle" data-toggle="dropdown"> <span class="caret"></span> </button>
-                          <ul class="dropdown-menu">
-                            <li><?php echo anchor("acl/edit_group/".$row->id, 'Edit') ;?></li>
-                            <li class="divider"></li>
-                            <li><a href="#">Delete</a></li>
-                          </ul>
-                        </div> 
-                      </td><?php */?>
+                      <th>SL</th>
+                      <th>Group Name</th>
+                      <th>Description</th>
+                      <th width="150">Action</th>
                     </tr>
-                  <?php endforeach;?>
-                </tbody>
-            </table>
- 
+                  </thead>
+                  <tbody>
+                  <?php 
+                    $sl = 0;
+                    foreach ($results as $row):
+                      $sl++;
+                  ?>
+                      <tr>
+                        <td><?=$sl.'.'?></td>
+                        <td><?php echo $row->name;?></td>
+                        <td><?php echo $row->description;?></td>
+                        <td>
+                          <div class="btn-group-responsive">
+                            <?php echo anchor("acl/edit_group/".$row->id, 'Edit','class="btn btn-mini btn-primary"') ;?>
+                            <a class="btn btn-mini btn-primary" href="#">Delete</a>
+                          </div>
+                        </td>
+                      </tr>
+                    <?php endforeach;?>
+                  </tbody>
+              </table>
+            </div>
           </div>
 
         </div>
       </div>
     </div>
-
-    </div> <!-- END ROW -->
 
   </div>
 </div>

@@ -6,12 +6,56 @@
       <li><?=$meta_title; ?> </li>
     </ul>
 
+    <style type="text/css">
+      .table-responsive {
+        width: 100%;
+        margin-bottom: 15px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .pdf-download {
+        margin-bottom: 10px;
+      }
+
+      .btn-group-responsive {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+      }
+
+      @media screen and (max-width: 767px) {
+        .grid-title {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .grid-title .pull-right {
+          margin-top: 10px;
+        }
+
+        .btn-xs {
+          width: 100%;
+          margin-bottom: 5px;
+        }
+
+        .table th,
+        .table td {
+          white-space: nowrap;
+          min-width: 120px;
+        }
+
+        .btn-group-responsive {
+          width: 100%;
+        }
+      }
+    </style>
+
     <div class="row-fluid">
       <div class="span12">
         <div class="grid simple ">
           <div class="grid-title">
             <h4><span class="semi-bold"><?=$meta_title; ?></span></h4>
-                    
           </div>
 
           <div class="grid-body ">
@@ -22,42 +66,49 @@
                     <?php echo $this->session->flashdata('success');?>
                 </div>
             <?php endif; ?>
-            <a href="<?=base_url('Complain/complain_list_pdf')?>" class="btn btn-primary btn-xs btn-mini" style="float: right;">PDF Download</a>
-            <table class="table table-hover table-condensed" id="example">
-              <thead>
-                <tr>
-                  <th style="width:2%"> SL </th>
-                  <th style="width:14%">Name</th>
-                  <th style="width:10%">Phone</th>
-                  <th style="width:10%">Email</th>
-                  <th style="width:10%">Address</th>
-                  <th style="width:24%" class="text-center">Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <?php if(!empty($complain)){
-                  $i=0;
-                  foreach ($complain as $row) {
-                    ?>
+
+            <div class="text-right pdf-download">
+              <a href="<?=base_url('Complain/complain_list_pdf')?>" class="btn btn-primary btn-xs btn-mini">PDF Download</a>
+            </div>
+
+            <div class="table-responsive">
+              <table class="table table-hover table-condensed" id="example">
+                <thead>
                   <tr>
-                    <td class="v-align-middle"><?=++$i?></td>
-                    <td class="v-align-middle"><?=$row->name?></td>
-                    <td class="v-align-middle"><?=$row->phone?></td>
-                    <td class="v-align-middle"><?=$row->email?></td>
-                    <td class="v-align-middle"><?=$row->address?></td>
-                    <td class="text-center">
-                      <a href="<?=base_url('complain/details/'.encrypt_url($row->id));?>" class="btn btn-primary btn-xs btn-mini">Details</a>     
-                      <?php if($this->ion_auth->is_admin()){ ?> 
-                        <a href="<?=base_url('complain/delete/'.$row->id);?>" class="btn btn-info btn-xs btn-mini">Delete</a>
-                      <?php } ?>
-                    </td>
+                    <th style="width:2%"> SL </th>
+                    <th style="width:14%">Name</th>
+                    <th style="width:10%">Phone</th>
+                    <th style="width:10%">Email</th>
+                    <th style="width:10%">Address</th>
+                    <th style="width:24%" class="text-center">Action</th>
                   </tr>
-                    <?php
-                  }
-                }?>
-              
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  <?php if(!empty($complain)){
+                    $i=0;
+                    foreach ($complain as $row) {
+                      ?>
+                    <tr>
+                      <td class="v-align-middle"><?=++$i?></td>
+                      <td class="v-align-middle"><?=$row->name?></td>
+                      <td class="v-align-middle"><?=$row->phone?></td>
+                      <td class="v-align-middle"><?=$row->email?></td>
+                      <td class="v-align-middle"><?=$row->address?></td>
+                      <td class="text-center">
+                        <div class="btn-group-responsive">
+                          <a href="<?=base_url('complain/details/'.encrypt_url($row->id));?>" class="btn btn-primary btn-xs btn-mini">Details</a>     
+                          <?php if($this->ion_auth->is_admin()){ ?> 
+                            <a href="<?=base_url('complain/delete/'.$row->id);?>" class="btn btn-info btn-xs btn-mini">Delete</a>
+                          <?php } ?>
+                        </div>
+                      </td>
+                    </tr>
+                      <?php
+                    }
+                  }?>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>

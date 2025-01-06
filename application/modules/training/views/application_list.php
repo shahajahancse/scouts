@@ -6,6 +6,94 @@
       <li><?=$meta_title; ?> </li>
     </ul>
 
+    <style>
+      /* Common styles */
+      .table-responsive {
+        width: 100%;
+        margin-bottom: 15px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 1rem;
+      }
+
+      .table th,
+      .table td {
+        padding: 12px;
+        text-align: left;
+        border: 1px solid #dee2e6;
+        vertical-align: middle;
+      }
+
+      .table th {
+        background: #f8f9fa;
+        font-weight: 600;
+      }
+
+      .table tbody tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+
+      .table tbody tr:hover {
+        background-color: #f5f5f5;
+      }
+
+      .btn-group {
+        display: inline-flex;
+        gap: 4px;
+      }
+
+      .pagination {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 5px;
+      }
+
+      /* Mobile styles */
+      @media screen and (max-width: 767px) {
+        .table th, 
+        .table td {
+          white-space: nowrap;
+          min-width: 120px;
+          font-size: 14px;
+        }
+
+        .btn-group {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+        }
+
+        .btn {
+          width: 100%;
+          margin: 2px 0;
+          padding: 8px;
+          font-size: 14px;
+        }
+
+        .dropdown-menu {
+          width: 100%;
+          position: static;
+          float: none;
+        }
+
+        .grid-title h4 {
+          text-align: center;
+          font-size: 18px;
+        }
+
+        .alert {
+          margin: 10px 0;
+          padding: 10px;
+        }
+      }
+    </style>
+
     <div class="row-fluid">
       <div class="span12">
         <div class="grid simple ">
@@ -22,74 +110,75 @@
             <?php endif; ?>
 
             <?php if($results) {  //print_r($results);?>
-              <!-- <a href="<?=base_url('Events/application_list_pdf')?>" class="btn btn-primary btn-xs btn-mini" style="float: right;">PDF Download</a> -->
-            <table class="table table-hover table-condensed" id="example">
-              <thead>
-                <tr>
-                  <th style="width:2%"> SL </th>
-                  <th style="width:30%">Training Title<br>Training Date</th>
-                  <th style="width:20%">Scout ID <br>Full Name</th>
-                  <th style="width:10%">App. Date</th>
-                  <th style="width:10%">Verify Status</th>
-                  <th style="width:10%" class="text-center">Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <?php 
-                $sl = $pagination['current_page'];
-                foreach ($results as $row):
-                  $sl++;
+            <div class="table-responsive">
+              <table class="table table-hover table-condensed" id="example">
+                <thead>
+                  <tr>
+                    <th style="width:2%"> SL </th>
+                    <th style="width:30%">Training Title<br>Training Date</th>
+                    <th style="width:20%">Scout ID <br>Full Name</th>
+                    <th style="width:10%">App. Date</th>
+                    <th style="width:10%">Verify Status</th>
+                    <th style="width:10%" class="text-center">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php 
+                  $sl = $pagination['current_page'];
+                  foreach ($results as $row):
+                    $sl++;
      
-                  $status = '';
-                  if($this->ion_auth->is_admin()){
-                    $status = event_verify_status($row->verify_nhq);
-                  }elseif($this->ion_auth->is_region_admin()){
-                    $status = event_verify_status($row->verify_region);
-                  }elseif($this->ion_auth->is_district_admin()){
-                    $status = event_verify_status($row->verify_district);
-                  }elseif($this->ion_auth->is_upazila_admin()){
-                    $status = event_verify_status($row->verify_upazila);
-                  }elseif($this->ion_auth->is_group_admin()){
-                    $status = event_verify_status($row->verify_group);
-                  }
-                ?>
-                <tr>
-                  <td class="v-align-middle"><?=$sl?></td>
-                  <td class="v-align-middle"><a href="<?=base_url('training/details/'.encrypt_url($row->triningid));?>" target="_blank" ><strong><?=$row->training_title?></strong></a> <br> <?=date('d M, Y', strtotime($row->start_date))?> to <?=date('d M, Y', strtotime($row->end_date))?></td>
-                  <td class="v-align-middle"><a href="<?=base_url('scouts_member/details/'.encrypt_url($row->user_id));?>" target="_blank"><strong> <?=$row->scout_id?></strong></a> <br> <?=$row->first_name?></td>
-                  <td class="v-align-middle"><?=date('d M, Y', strtotime($row->app_date))?></td>          
-                  <td class="v-align-middle"><?=$status?> </td>
-                  <td align="right">
-                     <div class="btn-group"> <a class="btn btn-primary dropdown-toggle btn-mini" data-toggle="dropdown" href="#"> Action <span class="caret"></span> </a>
-                       <ul class="dropdown-menu pull-right">
-                        <li><a href="<?=base_url('training/participant_verify/'.encrypt_url($row->id));?>">Verify</a></li>
-                        <?php /*<li><a href="<?=base_url('events/edit/'.$row->id);?>">Cancel</a></li>*/ ?>
-                      </ul>
-                    </div>
-                  </td>
-                </tr>
-              <?php endforeach; ?> 
+                    $status = '';
+                    if($this->ion_auth->is_admin()){
+                      $status = event_verify_status($row->verify_nhq);
+                    }elseif($this->ion_auth->is_region_admin()){
+                      $status = event_verify_status($row->verify_region);
+                    }elseif($this->ion_auth->is_district_admin()){
+                      $status = event_verify_status($row->verify_district);
+                    }elseif($this->ion_auth->is_upazila_admin()){
+                      $status = event_verify_status($row->verify_upazila);
+                    }elseif($this->ion_auth->is_group_admin()){
+                      $status = event_verify_status($row->verify_group);
+                    }
+                  ?>
+                  <tr>
+                    <td class="v-align-middle"><?=$sl?></td>
+                    <td class="v-align-middle"><a href="<?=base_url('training/details/'.encrypt_url($row->triningid));?>" target="_blank" ><strong><?=$row->training_title?></strong></a> <br> <?=date('d M, Y', strtotime($row->start_date))?> to <?=date('d M, Y', strtotime($row->end_date))?></td>
+                    <td class="v-align-middle"><a href="<?=base_url('scouts_member/details/'.encrypt_url($row->user_id));?>" target="_blank"><strong> <?=$row->scout_id?></strong></a> <br> <?=$row->first_name?></td>
+                    <td class="v-align-middle"><?=date('d M, Y', strtotime($row->app_date))?></td>          
+                    <td class="v-align-middle"><?=$status?> </td>
+                    <td align="right">
+                       <div class="btn-group"> <a class="btn btn-primary dropdown-toggle btn-mini" data-toggle="dropdown" href="#"> Action <span class="caret"></span> </a>
+                         <ul class="dropdown-menu pull-right">
+                          <li><a href="<?=base_url('training/participant_verify/'.encrypt_url($row->id));?>">Verify</a></li>
+                          <?php /*<li><a href="<?=base_url('events/edit/'.$row->id);?>">Cancel</a></li>*/ ?>
+                        </ul>
+                      </div>
+                    </td>
+                  </tr>
+                <?php endforeach; ?> 
 
-            </tbody>
-          </table>
-
-          <div class="row">
-            <div class="col-sm-4 col-md-4 text-left" style="margin-top: 20px;"> Total <span style="color: green; font-weight: bold;"><?php echo $total_rows; ?> Total Application </span></div>
-            <div class="col-sm-8 col-md-8 text-right">
-              <?php echo $pagination['links']; ?>
+              </tbody>
+            </table>
             </div>
+
+            <div class="row">
+              <div class="col-sm-4 col-md-4 text-left" style="margin-top: 20px;"> Total <span style="color: green; font-weight: bold;"><?php echo $total_rows; ?> Total Application </span></div>
+              <div class="col-sm-8 col-md-8 text-right">
+                <?php echo $pagination['links']; ?>
+              </div>
+            </div>
+            <?php }else{ ?>
+            <div class="alert alert-block alert-error fade in">
+              <h4 class="alert-heading"><i class="icon-warning-sign"></i>No data found!</h4>
+            </div>
+            <?php } ?>
           </div>
-          <?php }else{ ?>
-          <div class="alert alert-block alert-error fade in">
-            <h4 class="alert-heading"><i class="icon-warning-sign"></i>No data found!</h4>
-          </div>
-          <?php } ?>
         </div>
       </div>
     </div>
-  </div>
 
-</div> <!-- END ROW -->
+  </div> <!-- END ROW -->
 
 </div>
 </div>

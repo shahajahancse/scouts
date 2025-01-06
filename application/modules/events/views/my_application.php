@@ -6,6 +6,64 @@
       <li><?=$meta_title; ?> </li>
     </ul>
 
+    <style>
+      @media (max-width: 767px) {
+        .table-responsive {
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+        }
+        
+        .btn {
+          width: 100%;
+          margin-bottom: 5px;
+          white-space: normal;
+        }
+
+        .grid-title h4 {
+          text-align: center;
+        }
+
+        .tg {
+          display: block;
+          width: 100%;
+        }
+
+        .tg th, .tg td {
+          min-width: 100px;
+        }
+
+        .tg th:first-child,
+        .tg td:first-child {
+          min-width: 50px;
+        }
+
+        .tg tr:nth-child(2) td {
+          display: block;
+          width: 100%;
+        }
+
+        .tg tr:nth-child(2) td table {
+          display: block;
+          width: 100%;
+        }
+
+        .tg tr:nth-child(2) td table th,
+        .tg tr:nth-child(2) td table td {
+          display: block;
+          width: 100%;
+          text-align: left;
+          border-bottom: 1px solid #cabebe;
+        }
+
+        .tg tr:nth-child(2) td table th:before {
+          content: attr(data-label);
+          float: left;
+          font-weight: bold;
+          text-transform: uppercase;
+        }
+      }
+    </style>
+
     <div class="row-fluid">
       <div class="span12">
         <div class="grid simple ">
@@ -24,7 +82,6 @@
               </div>
             <?php endif; ?>
 
-
             <style type="text/css">
               .tg  {border-collapse:collapse;border-spacing:0; width: 100%; color: black;}
               .tg td{font-family:Arial, sans-serif;font-size:14px;padding:4px 4px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
@@ -36,85 +93,88 @@
               .tg .tg-2bev{border-color:#656565;text-align:left;vertical-align:top}
               .tg .tg-2bev2{border-color:#656565;text-align:left;vertical-align:top; border-color: #cabebe;}
             </style>
+
             <?php if($results) {  //print_r($results);?>
             <?php 
             // echo '<pre>';
             // print_r($results); exit;
             ?>
-            <table class="tg">
-              <tr>
-                <th class="tg-8dgf">SL</th>
-                <th class="tg-8dgf">Event Name</th>
-                <th class="tg-8dgf">Event Organizer</th>
-                <th class="tg-hkgo">Event Date</th>
-                <th class="tg-hkgo">Event Category</th>
-                <th class="tg-hkgo">Action</th>
-              </tr>
+            <div class="table-responsive">
+              <table class="tg">
+                <tr>
+                  <th class="tg-8dgf">SL</th>
+                  <th class="tg-8dgf">Event Name</th>
+                  <th class="tg-8dgf">Event Organizer</th>
+                  <th class="tg-hkgo">Event Date</th>
+                  <th class="tg-hkgo">Event Category</th>
+                  <th class="tg-hkgo">Action</th>
+                </tr>
 
-              <?php 
-              $sl = 0;        
-              foreach ($results as $row):
-                $sl++;
-                $group_verify = event_verify_status($row->verify_group);
-                $upazila_verify = event_verify_status($row->verify_upazila);
+                <?php 
+                $sl = 0;        
+                foreach ($results as $row):
+                  $sl++;
+                  $group_verify = event_verify_status($row->verify_group);
+                  $upazila_verify = event_verify_status($row->verify_upazila);
 
-              if($row->created_office_by == 1){ //NHQ
-                $district_verify = event_verify_status($row->verify_district);
-                $region_verify = event_verify_status($row->verify_region);
-                $nhq_verify = event_verify_status($row->verify_nhq);
+                if($row->created_office_by == 1){ //NHQ
+                  $district_verify = event_verify_status($row->verify_district);
+                  $region_verify = event_verify_status($row->verify_region);
+                  $nhq_verify = event_verify_status($row->verify_nhq);
 
-              }elseif($row->created_office_by == 2){ //Region
-                $district_verify = event_verify_status($row->verify_district);
-                $region_verify = event_verify_status($row->verify_region);
-                $nhq_verify = 'Not Applicable';
+                }elseif($row->created_office_by == 2){ //Region
+                  $district_verify = event_verify_status($row->verify_district);
+                  $region_verify = event_verify_status($row->verify_region);
+                  $nhq_verify = 'Not Applicable';
 
-              }elseif($row->created_office_by == 3){ //District
-                $district_verify = event_verify_status($row->verify_district);
-                $region_verify = 'Not Applicable';
-                $nhq_verify = 'Not Applicable';
+                }elseif($row->created_office_by == 3){ //District
+                  $district_verify = event_verify_status($row->verify_district);
+                  $region_verify = 'Not Applicable';
+                  $nhq_verify = 'Not Applicable';
 
-              }elseif($row->created_office_by == 4){ //Upazila                
-                $district_verify = 'Not Applicable';
-                $region_verify = 'Not Applicable';
-                $nhq_verify = 'Not Applicable';
-              }
+                }elseif($row->created_office_by == 4){ //Upazila                
+                  $district_verify = 'Not Applicable';
+                  $region_verify = 'Not Applicable';
+                  $nhq_verify = 'Not Applicable';
+                }
 
-              ?>
-              <tr>
-                <td class="tg-9qvm" rowspan="2" style="border-bottom: 3px solid black;"><?=$sl?></td>
-                <td class="tg-9qvm"><a href="<?=base_url('events/details/'.encrypt_url($row->id));?>"><strong><?=$row->event_title?></strong></a></td>
-                <td class="tg-9qvm"><?=$row->event_organizer?></td>
-                <td class="tg-2bev"><?=date('d M, y', strtotime($row->event_start_date))?> to <?=date('d M, y', strtotime($row->event_end_date))?></td>
-                <td class="tg-2bev"><?php echo $row->event_cate_name;?></td>
-                <td class="tg-2bev"><a href="<?=base_url('events/my_app_cancle/'.$row->app_id);?>" onclick="return confirm('Are you sure you want to cancle this application?');" class="btn btn-blueviolet btn-mini">Cancle Application</a></td>
-              </tr>
-              <tr>
-                <td class="tg-9qvm" colspan="5" style="border-bottom: 3px solid black;"> 
-                  <table width="100%">
-                    <tr>
-                      <th class="tg-8dgf2">App. Date</th>
-                      <th class="tg-8dgf2">Apply As</th>
-                      <th class="tg-8dgf2">Group Verify</th>
-                      <th class="tg-8dgf2">Upazila Verify</th>
-                      <th class="tg-8dgf2">District Verify</th>
-                      <th class="tg-8dgf2">Region Verify</th>
-                      <th class="tg-8dgf2">NHQ Verify</th>
-                    </tr>
-                    <tr>
-                      <td class="tg-2bev2"><?=date('d M, Y', strtotime($row->app_date))?></td>
-                      <td class="tg-2bev2"><?=get_event_participant_type($row->participant_type_id)?></td> 
-                      <td class="tg-2bev2"><?=$group_verify?></td> 
-                      <td class="tg-2bev2"><?=$upazila_verify?></td>
-                      <td class="tg-2bev2"><?=$district_verify?></td>
-                      <td class="tg-2bev2"><?=$region_verify?></td>
-                      <td class="tg-2bev2"><?=$nhq_verify?></td>
-                    </tr>
-                  </table>
-                </td>
-              </tr>
-            <?php endforeach; ?> 
+                ?>
+                <tr>
+                  <td class="tg-9qvm" rowspan="2" style="border-bottom: 3px solid black;"><?=$sl?></td>
+                  <td class="tg-9qvm"><a href="<?=base_url('events/details/'.encrypt_url($row->id));?>"><strong><?=$row->event_title?></strong></a></td>
+                  <td class="tg-9qvm"><?=$row->event_organizer?></td>
+                  <td class="tg-2bev"><?=date('d M, y', strtotime($row->event_start_date))?> to <?=date('d M, y', strtotime($row->event_end_date))?></td>
+                  <td class="tg-2bev"><?php echo $row->event_cate_name;?></td>
+                  <td class="tg-2bev"><a href="<?=base_url('events/my_app_cancle/'.$row->app_id);?>" onclick="return confirm('Are you sure you want to cancle this application?');" class="btn btn-blueviolet btn-mini">Cancel Application</a></td>
+                </tr>
+                <tr>
+                  <td class="tg-9qvm" colspan="5" style="border-bottom: 3px solid black;"> 
+                    <table width="100%">
+                      <tr>
+                        <th class="tg-8dgf2" data-label="Application Date">App. Date</th>
+                        <th class="tg-8dgf2" data-label="Applied As">Apply As</th>
+                        <th class="tg-8dgf2" data-label="Group Verify">Group Verify</th>
+                        <th class="tg-8dgf2" data-label="Upazila Verify">Upazila Verify</th>
+                        <th class="tg-8dgf2" data-label="District Verify">District Verify</th>
+                        <th class="tg-8dgf2" data-label="Region Verify">Region Verify</th>
+                        <th class="tg-8dgf2" data-label="NHQ Verify">NHQ Verify</th>
+                      </tr>
+                      <tr>
+                        <td class="tg-2bev2"><?=date('d M, Y', strtotime($row->app_date))?></td>
+                        <td class="tg-2bev2"><?=get_event_participant_type($row->participant_type_id)?></td> 
+                        <td class="tg-2bev2"><?=$group_verify?></td> 
+                        <td class="tg-2bev2"><?=$upazila_verify?></td>
+                        <td class="tg-2bev2"><?=$district_verify?></td>
+                        <td class="tg-2bev2"><?=$region_verify?></td>
+                        <td class="tg-2bev2"><?=$nhq_verify?></td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              <?php endforeach; ?> 
 
-          </table>
+            </table>
+          </div>
 
           <?php }else{ ?>
           <div class="alert alert-block alert-error fade in">

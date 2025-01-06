@@ -78,273 +78,289 @@
                               <?php endif; ?>    
 
                               <div class="tab-pane active" id="tab_training">
-                                 <div class="row ">
+                                 <div class="row">
                                     <div class="col-md-12">
-                                      <h4 class="pull-left"><span class="semi-bold">Training Record (প্রশিক্ষণ রেকর্ড) </span></h4>
-                                      <div class="pull-right">                
-                                        <a href="<?=base_url('program/training_record_add/'.encrypt_url($info->id))?>" class="btn btn-info btn-xs btn-mini"> Add Training</a>  
+                                      <div class="d-flex justify-content-between align-items-center flex-wrap mb-3">
+                                        <h4 class="mb-2"><span class="semi-bold">Training Record (প্রশিক্ষণ রেকর্ড) </span></h4>
+                                        <div>                
+                                          <a href="<?=base_url('program/training_record_add/'.encrypt_url($info->id))?>" class="btn btn-info btn-xs btn-mini"> Add Training</a>  
+                                        </div>
                                       </div>
-                                      <div class="clearfix"> </div>
 
-                                      <table class="tg">
-                                        <tr>
-                                           <th class="tg-71hr" width="10">SL</th>
-                                           <th class="tg-71hr">Training Name</th>
-                                           <th class="tg-71hr">Course Name</th>
-                                           <th class="tg-71hr">Course Number</th>
-                                           <th class="tg-71hr" width="90">Start Date</th>
-                                           <th class="tg-71hr" width="90">End Date</th>
-                                           <th class="tg-71hr" width="110">Certificate No</th>
-                                           <th class="tg-71hr" width="100">Issue Date</th>
-                                           <th class="tg-71hr" width="60">Action</th>
-                                        </tr>
-                                        <?php  
-                                        $i=0;
-                                        foreach ($trainings as $row) {
-                                          $i++;                                          
-                                         ?>
-                                         <tr>
-                                            <td class="tg-031e" align="center"><?=$i?></td>
-                                            <td class="tg-031e"><?=$row->training_name?></td>
-                                            <td class="tg-031e"><?=$row->course_id == 100 ? $row->other_course_name : $row->course_name?></td>
-                                            <td class="tg-031e"><?=$row->course_number?></td>
-                                            <td class="tg-031e"><?=date_bangla_format($row->start_date)?></td>
-                                            <td class="tg-031e"><?=date_bangla_format($row->end_date)?></td>
-                                            <td class="tg-031e"><?=$row->certificate_no?></td>
-                                            <td class="tg-031e"><?=date_bangla_format($row->issue_date)?></td>
-                                            <td class="tg-031e">
-                                              <a href="<?=base_url('program/training_record_delete/'.encrypt_url($row->id).'/'.encrypt_url($row->scout_id))?>" class="btn btn-danger btn-mini btn-xs" onclick="return confirm('Are you sure to delete this data?')">Delete</a>
-                                            </td>
-                                          </tr>    
-                                          <?php } ?>
-                                        </table>
-                                      </div>
-                                   </div>
+                                      <div class="table-responsive">
+                                        <table class="tg">
+                                          <tr>
+                                             <th class="tg-71hr" width="10">SL</th>
+                                             <th class="tg-71hr">Training Name</th>
+                                             <th class="tg-71hr">Course Name</th>
+                                             <th class="tg-71hr">Course Number</th>
+                                             <th class="tg-71hr" width="90">Start Date</th>
+                                             <th class="tg-71hr" width="90">End Date</th>
+                                             <th class="tg-71hr" width="110">Certificate No</th>
+                                             <th class="tg-71hr" width="100">Issue Date</th>
+                                             <th class="tg-71hr" width="60">Action</th>
+                                          </tr>
+                                          <?php  
+                                          $i=0;
+                                          foreach ($trainings as $row) {
+                                            $i++;                                          
+                                           ?>
+                                           <tr>
+                                              <td class="tg-031e" align="center"><?=$i?></td>
+                                              <td class="tg-031e"><?=$row->training_name?></td>
+                                              <td class="tg-031e"><?=$row->course_id == 100 ? $row->other_course_name : $row->course_name?></td>
+                                              <td class="tg-031e"><?=$row->course_number?></td>
+                                              <td class="tg-031e"><?=date_bangla_format($row->start_date)?></td>
+                                              <td class="tg-031e"><?=date_bangla_format($row->end_date)?></td>
+                                              <td class="tg-031e"><?=$row->certificate_no?></td>
+                                              <td class="tg-031e"><?=date_bangla_format($row->issue_date)?></td>
+                                              <td class="tg-031e">
+                                                <a href="<?=base_url('program/training_record_delete/'.encrypt_url($row->id).'/'.encrypt_url($row->scout_id))?>" class="btn btn-danger btn-mini btn-xs" onclick="return confirm('Are you sure to delete this data?')">Delete</a>
+                                              </td>
+                                            </tr>    
+                                            <?php } ?>
+                                          </table>
+                                        </div>
+                                    </div>
+                                 </div>
                               </div>
 
                               <div class="tab-pane" id="tab_progress">
-                                 <div class="row ">
+                                 <div class="row">
                                     <div class="col-md-12">
-                                       <h4 class="pull-left"><span class="semi-bold">Progress (ক্রমোন্নতি) </span></h4>
-                                       <div class="pull-right">                
-                                          <a href="<?=base_url('program/achievement_add/'.encrypt_url($info->id))?>" class="btn btn-info btn-xs btn-mini"> Add Achivement</a>  
-                                          <a href="<?=base_url('program/award_add/'.encrypt_url($info->id))?>" class="btn btn-info btn-xs btn-mini"> Add Award</a>  
+                                       <div class="d-flex justify-content-between align-items-center flex-wrap mb-3">
+                                         <h4 class="mb-2"><span class="semi-bold">Progress (ক্রমোন্নতি) </span></h4>
+                                         <div>                
+                                            <a href="<?=base_url('program/achievement_add/'.encrypt_url($info->id))?>" class="btn btn-info btn-xs btn-mini"> Add Achivement</a>  
+                                            <a href="<?=base_url('program/award_add/'.encrypt_url($info->id))?>" class="btn btn-info btn-xs btn-mini"> Add Award</a>  
+                                         </div>
                                        </div>
-                                       <div class="clearfix"> </div>
 
                                        <div class="row">
-                                          <div class="col-md-12">
+                                          <div class="col-md-12 mb-4">
                                              <h5><span class="semi-bold">Achievements</span></h5>
-                                             <table class="tg">
-                                                <tr>
-                                                   <th class="tg-71hr" width="10">SL</th>
-                                                   <th class="tg-71hr">Efficiency Stage</th>
-                                                   <th class="tg-71hr" width="120">Achieved Date</th>
-                                                   <th class="tg-71hr">Evaluated By</th>
-                                                   <th class="tg-71hr" width="110">Action</th>
-                                                </tr>
-                                                <?php  
-                                                $i=0;
-                                                foreach ($achievements as $row) {
-                                                 $i++;
-                                                 ?>
-                                                 <tr>
-                                                    <td class="tg-031e" align="center"><?=$i?></td>
-                                                    <td class="tg-031e"><?=$row->badge_type_name_en?></td>
-                                                    <td class="tg-031e"><?=date_bangla_format($row->achive_date)?></td>
-                                                    <td class="tg-031e"><?php                             
-                                                    if($row->examiner_id != NULL){
-                                                      echo $row->first_name.' ('.$row->examiner_id.')';
-                                                    }
-                                                    ?></td>
-                                                    <td class="tg-031e">
-                                                      <a href="<?=base_url('program/achievement_edit/'.encrypt_url($row->id).'/'.encrypt_url($row->scout_id))?>" class="btn btn-success btn-mini btn-xs">Edit</a>
-                                                      <a href="<?=base_url('program/achievement_delete/'.encrypt_url($row->id).'/'.encrypt_url($row->scout_id))?>" class="btn btn-danger btn-mini btn-xs" onclick="return confirm('Are you sure to delete this data?')">Delete</a>
-                                                    </td>
-                                                  </tr>    
-                                                  <?php } ?>
-                                                </table>
-                                               </div>   
-
-
-                                               <div class="col-md-12">
-                                                  <h5><span class="semi-bold">Awards</span></h5>
-                                                  <table class="tg">
-                                                    <tr>
+                                             <div class="table-responsive">
+                                               <table class="tg">
+                                                  <tr>
                                                      <th class="tg-71hr" width="10">SL</th>
-                                                     <th class="tg-71hr">Award name</th>
-                                                     <th class="tg-71hr">Certificate No</th>
-                                                     <th class="tg-71hr" width="120">Issue Date</th>
+                                                     <th class="tg-71hr">Efficiency Stage</th>
+                                                     <th class="tg-71hr" width="120">Achieved Date</th>
+                                                     <th class="tg-71hr">Evaluated By</th>
                                                      <th class="tg-71hr" width="110">Action</th>
-                                                   </tr>
-                                                   <?php  
-                                                    $i=0;
-                                                    foreach ($awards as $row) {
-                                                     $i++;
-                                                     ?>
-                                                     <tr>
+                                                  </tr>
+                                                  <?php  
+                                                  $i=0;
+                                                  foreach ($achievements as $row) {
+                                                   $i++;
+                                                   ?>
+                                                   <tr>
                                                       <td class="tg-031e" align="center"><?=$i?></td>
-                                                      <td class="tg-031e"><?=$row->award_name?></td>
-                                                      <td class="tg-031e"><?=$row->certificate_no?></td>
-                                                      <td class="tg-031e"><?=date_bangla_format($row->issue_date)?></td>                                                    
+                                                      <td class="tg-031e"><?=$row->badge_type_name_en?></td>
+                                                      <td class="tg-031e"><?=date_bangla_format($row->achive_date)?></td>
+                                                      <td class="tg-031e"><?php                             
+                                                      if($row->examiner_id != NULL){
+                                                        echo $row->first_name.' ('.$row->examiner_id.')';
+                                                      }
+                                                      ?></td>
                                                       <td class="tg-031e">
-                                                        <a href="<?=base_url('program/award_edit/'.encrypt_url($row->id).'/'.encrypt_url($row->scout_id))?>" class="btn btn-success btn-mini btn-xs">Edit</a>
-                                                        <a href="<?=base_url('program/award_delete/'.encrypt_url($row->id).'/'.encrypt_url($row->scout_id))?>" class="btn btn-danger btn-mini btn-xs" onclick="return confirm('Are you sure to delete this data?')">Delete</a>
+                                                        <a href="<?=base_url('program/achievement_edit/'.encrypt_url($row->id).'/'.encrypt_url($row->scout_id))?>" class="btn btn-success btn-mini btn-xs">Edit</a>
+                                                        <a href="<?=base_url('program/achievement_delete/'.encrypt_url($row->id).'/'.encrypt_url($row->scout_id))?>" class="btn btn-danger btn-mini btn-xs" onclick="return confirm('Are you sure to delete this data?')">Delete</a>
                                                       </td>
                                                     </tr>    
                                                     <?php } ?>
                                                   </table>
-                                                </div>   
-                                            </div>
-                                         </div>                                        
+                                               </div>
+                                          </div>   
+
+                                          <div class="col-md-12">
+                                             <h5><span class="semi-bold">Awards</span></h5>
+                                             <div class="table-responsive">
+                                               <table class="tg">
+                                                 <tr>
+                                                  <th class="tg-71hr" width="10">SL</th>
+                                                  <th class="tg-71hr">Award name</th>
+                                                  <th class="tg-71hr">Certificate No</th>
+                                                  <th class="tg-71hr" width="120">Issue Date</th>
+                                                  <th class="tg-71hr" width="110">Action</th>
+                                                </tr>
+                                                <?php  
+                                                 $i=0;
+                                                 foreach ($awards as $row) {
+                                                  $i++;
+                                                  ?>
+                                                  <tr>
+                                                   <td class="tg-031e" align="center"><?=$i?></td>
+                                                   <td class="tg-031e"><?=$row->award_name?></td>
+                                                   <td class="tg-031e"><?=$row->certificate_no?></td>
+                                                   <td class="tg-031e"><?=date_bangla_format($row->issue_date)?></td>                                                    
+                                                   <td class="tg-031e">
+                                                     <a href="<?=base_url('program/award_edit/'.encrypt_url($row->id).'/'.encrypt_url($row->scout_id))?>" class="btn btn-success btn-mini btn-xs">Edit</a>
+                                                     <a href="<?=base_url('program/award_delete/'.encrypt_url($row->id).'/'.encrypt_url($row->scout_id))?>" class="btn btn-danger btn-mini btn-xs" onclick="return confirm('Are you sure to delete this data?')">Delete</a>
+                                                   </td>
+                                                 </tr>    
+                                                 <?php } ?>
+                                               </table>
+                                             </div>
+                                          </div>   
                                       </div>
-                                   </div>
+                                    </div>                                        
+                                 </div>
+                              </div>
 
-                                   <div class="tab-pane" id="tab_proficiency">
-                                    <div class="row ">
-                                       <div class="col-md-12">
-                                          <h4 class="pull-left"><span class="semi-bold">Proficiency Badge (পারদর্শিতা ব্যাজ) </span></h4>
-                                          <div class="pull-right">                
-                                            <a href="<?=base_url('program/proficiency_add/'.encrypt_url($info->id))?>" class="btn btn-info btn-xs btn-mini"> Add Proficiency Badge</a>  
-                                          </div>
-                                          <div class="clearfix"> </div>
-
-                                          <table class="tg">
-                                            <tr>
-                                               <th class="tg-71hr">SL</th>
-                                               <th class="tg-71hr">Proficiency Badge Group</th>
-                                               <th class="tg-71hr">Proficiency Badge Name</th>
-                                               <th class="tg-71hr" width="120">Achieved Data</th>
-                                               <th class="tg-71hr">Evaluated By </th>
-                                               <th class="tg-71hr">Extra Badge</th>
-                                               <th class="tg-71hr" width="110">Action</th>
-                                            </tr>
-                                            <?php
-                                              $i=0;
-                                              foreach ($proficiency_badges as $row) {
-                                              $i++;
-                                            ?>
-                                              <tr>
-                                                <td class="tg-031e" align="center"><?=$i?></td>
-                                                <td class="tg-031e"><?=$row->prof_badge_group_name?></td>
-                                                <td class="tg-031e"><?=$row->prof_badge_name?></td>
-                                                <td class="tg-031e"><?=date_bangla_format($row->achieved_date)?></td>                                                    
-                                                <td class="tg-031e"><?php                             
-                                                    if($row->evaluated_by != NULL){
-                                                      echo $row->first_name.' ('.$row->evaluat_scout_id.')';
-                                                    }
-                                                    ?></td>
-                                                <td class="tg-031e"><?=$row->extra_badge?></td>
-                                                <td class="tg-031e">
-                                                  <a href="<?=base_url('program/proficiency_edit/'.encrypt_url($row->id).'/'.encrypt_url($row->scout_id))?>" class="btn btn-success btn-mini btn-xs">Edit</a>
-                                                  <a href="<?=base_url('program/proficiency_delete/'.encrypt_url($row->id).'/'.encrypt_url($row->scout_id))?>" class="btn btn-danger btn-mini btn-xs" onclick="return confirm('Are you sure to delete this data?')">Delete</a>
-                                                </td>
-                                              </tr>    
-                                            <?php } ?>
-                                            </table>
+                              <div class="tab-pane" id="tab_proficiency">
+                                <div class="row">
+                                   <div class="col-md-12">
+                                      <div class="d-flex justify-content-between align-items-center flex-wrap mb-3">
+                                        <h4 class="mb-2"><span class="semi-bold">Proficiency Badge (পারদর্শিতা ব্যাজ) </span></h4>
+                                        <div>                
+                                          <a href="<?=base_url('program/proficiency_add/'.encrypt_url($info->id))?>" class="btn btn-info btn-xs btn-mini"> Add Proficiency Badge</a>  
                                         </div>
-                                     </div>
+                                      </div>
+
+                                      <div class="table-responsive">
+                                        <table class="tg">
+                                          <tr>
+                                             <th class="tg-71hr">SL</th>
+                                             <th class="tg-71hr">Proficiency Badge Group</th>
+                                             <th class="tg-71hr">Proficiency Badge Name</th>
+                                             <th class="tg-71hr" width="120">Achieved Data</th>
+                                             <th class="tg-71hr">Evaluated By </th>
+                                             <th class="tg-71hr">Extra Badge</th>
+                                             <th class="tg-71hr" width="110">Action</th>
+                                          </tr>
+                                          <?php
+                                            $i=0;
+                                            foreach ($proficiency_badges as $row) {
+                                            $i++;
+                                          ?>
+                                            <tr>
+                                              <td class="tg-031e" align="center"><?=$i?></td>
+                                              <td class="tg-031e"><?=$row->prof_badge_group_name?></td>
+                                              <td class="tg-031e"><?=$row->prof_badge_name?></td>
+                                              <td class="tg-031e"><?=date_bangla_format($row->achieved_date)?></td>                                                    
+                                              <td class="tg-031e"><?php                             
+                                                  if($row->evaluated_by != NULL){
+                                                    echo $row->first_name.' ('.$row->evaluat_scout_id.')';
+                                                  }
+                                                  ?></td>
+                                              <td class="tg-031e"><?=$row->extra_badge?></td>
+                                              <td class="tg-031e">
+                                                <a href="<?=base_url('program/proficiency_edit/'.encrypt_url($row->id).'/'.encrypt_url($row->scout_id))?>" class="btn btn-success btn-mini btn-xs">Edit</a>
+                                                <a href="<?=base_url('program/proficiency_delete/'.encrypt_url($row->id).'/'.encrypt_url($row->scout_id))?>" class="btn btn-danger btn-mini btn-xs" onclick="return confirm('Are you sure to delete this data?')">Delete</a>
+                                              </td>
+                                            </tr>    
+                                          <?php } ?>
+                                          </table>
+                                      </div>
                                   </div>
+                               </div>
+                            </div>
 
                               <div class="tab-pane" id="tab_promotions">
-                                 <div class="row ">
+                                 <div class="row">
                                     <div class="col-md-12">
-                                       <h4 class="pull-left"><span class="semi-bold">Promotions (পদোন্নতি) </span></h4>
-                                      <div class="pull-right">                
-                                        <a href="<?=base_url('program/promotion_add/'.encrypt_url($info->id))?>" class="btn btn-info btn-xs btn-mini"> Add Promotions</a>  
-                                      </div>
-                                      <div class="clearfix"> </div>
+                                       <div class="d-flex justify-content-between align-items-center flex-wrap mb-3">
+                                         <h4 class="mb-2"><span class="semi-bold">Promotions (পদোন্নতি) </span></h4>
+                                         <div>                
+                                           <a href="<?=base_url('program/promotion_add/'.encrypt_url($info->id))?>" class="btn btn-info btn-xs btn-mini"> Add Promotions</a>  
+                                         </div>
+                                       </div>
 
-                                      <table class="tg">
-                                        <tr>
-                                           <th class="tg-71hr" width="10">SL</th>
-                                           <th class="tg-71hr">Office</th>
-                                           <th class="tg-71hr">Section</th>
-                                           <th class="tg-71hr">Role</th>
-                                           <th class="tg-71hr">Department</th>
-                                           <th class="tg-71hr" width="90">Start Date</th>
-                                           <th class="tg-71hr" width="90">End Date</th>
-                                           <th class="tg-71hr" width="110">Action</th>
-                                        </tr>
-                                        <?php  
-                                        $i=0;
-                                        foreach ($promotions as $row) {
-                                          $i++;
-                                          if($row->promo_office_type ==1){
-                                            $officeName = 'National Headquarter';
-                                          }else{
-                                            $officeName = $row->grp_name;
-                                          }
-                                          $roleName = $row->role_type_name_en.' ('.$row->role_type_name_bn.')';
-                                         ?>
-                                         <tr>
-                                            <td class="tg-031e" align="center"><?=$i?></td>
-                                            <td class="tg-031e"><?=$officeName?></td>
-                                            <td class="tg-031e"><?=get_scout_section($row->promo_section_id)?></td>
-                                            <td class="tg-031e"><?=$roleName?></td>
-                                            <td class="tg-031e"><?php
-                                              if($row->promo_department_id != NULL){                            
-                                                $deptIds = explode(',', $row->promo_department_id);
-                                                foreach ($deptIds as $value) {
-                                                  echo '-'.$this->Common_model->get_department_single($value);
-                                                  echo '<br>';
+                                      <div class="table-responsive">
+                                        <table class="tg">
+                                          <tr>
+                                             <th class="tg-71hr" width="10">SL</th>
+                                             <th class="tg-71hr">Office</th>
+                                             <th class="tg-71hr">Section</th>
+                                             <th class="tg-71hr">Role</th>
+                                             <th class="tg-71hr">Department</th>
+                                             <th class="tg-71hr" width="90">Start Date</th>
+                                             <th class="tg-71hr" width="90">End Date</th>
+                                             <th class="tg-71hr" width="110">Action</th>
+                                          </tr>
+                                          <?php  
+                                          $i=0;
+                                          foreach ($promotions as $row) {
+                                            $i++;
+                                            if($row->promo_office_type ==1){
+                                              $officeName = 'National Headquarter';
+                                            }else{
+                                              $officeName = $row->grp_name;
+                                            }
+                                            $roleName = $row->role_type_name_en.' ('.$row->role_type_name_bn.')';
+                                           ?>
+                                           <tr>
+                                              <td class="tg-031e" align="center"><?=$i?></td>
+                                              <td class="tg-031e"><?=$officeName?></td>
+                                              <td class="tg-031e"><?=get_scout_section($row->promo_section_id)?></td>
+                                              <td class="tg-031e"><?=$roleName?></td>
+                                              <td class="tg-031e"><?php
+                                                if($row->promo_department_id != NULL){                            
+                                                  $deptIds = explode(',', $row->promo_department_id);
+                                                  foreach ($deptIds as $value) {
+                                                    echo '-'.$this->Common_model->get_department_single($value);
+                                                    echo '<br>';
+                                                  }
                                                 }
-                                              }
-                                            ?></td>
-                                            <td class="tg-031e"><?=date_bangla_format($row->promo_start_date)?></td>
-                                            <td class="tg-031e"><?=date_bangla_format($row->promo_end_date)?></td>
-                                            <td class="tg-031e">
-                                              <a href="<?=base_url('program/promotion_edit/'.encrypt_url($row->id).'/'.encrypt_url($row->scout_id))?>" class="btn btn-success btn-mini btn-xs">Edit</a>
-                                              <a href="<?=base_url('program/promotion_delete/'.encrypt_url($row->id).'/'.encrypt_url($row->scout_id))?>" class="btn btn-danger btn-mini btn-xs" onclick="return confirm('Are you sure to delete this data?')">Delete</a>
-                                            </td>
-                                          </tr>    
-                                          <?php } ?>
-                                        </table>
-                                      </div>
-                                   </div>
+                                              ?></td>
+                                              <td class="tg-031e"><?=date_bangla_format($row->promo_start_date)?></td>
+                                              <td class="tg-031e"><?=date_bangla_format($row->promo_end_date)?></td>
+                                              <td class="tg-031e">
+                                                <a href="<?=base_url('program/promotion_edit/'.encrypt_url($row->id).'/'.encrypt_url($row->scout_id))?>" class="btn btn-success btn-mini btn-xs">Edit</a>
+                                                <a href="<?=base_url('program/promotion_delete/'.encrypt_url($row->id).'/'.encrypt_url($row->scout_id))?>" class="btn btn-danger btn-mini btn-xs" onclick="return confirm('Are you sure to delete this data?')">Delete</a>
+                                              </td>
+                                            </tr>    
+                                            <?php } ?>
+                                          </table>
+                                        </div>
+                                    </div>
+                                 </div>
                               </div>
                               
                               <div class="tab-pane" id="tab_activities">
-                                 <div class="row ">
+                                 <div class="row">
                                     <div class="col-md-12">                                    
-                                      <h4 class="pull-left"><span class="semi-bold">Activities (কার্যক্রম) </span></h4>
-                                      <div class="pull-right">                
-                                        <a href="<?=base_url('program/activities_add/'.encrypt_url($info->id))?>" class="btn btn-info btn-xs btn-mini"> Add Activities</a>  
+                                      <div class="d-flex justify-content-between align-items-center flex-wrap mb-3">
+                                        <h4 class="mb-2"><span class="semi-bold">Activities (কার্যক্রম) </span></h4>
+                                        <div>                
+                                          <a href="<?=base_url('program/activities_add/'.encrypt_url($info->id))?>" class="btn btn-info btn-xs btn-mini"> Add Activities</a>  
+                                        </div>
                                       </div>
-                                      <div class="clearfix"> </div>
 
-                                      <table class="tg">
-                                        <tr>
-                                           <th class="tg-71hr" width="10">SL</th>
-                                           <th class="tg-71hr">Activity Type</th>
-                                           <th class="tg-71hr">Activity Name</th>
-                                           <th class="tg-71hr" width="90">Start Date</th>
-                                           <th class="tg-71hr" width="90">End Date</th>
-                                           <th class="tg-71hr" width="120">Certificate No</th>
-                                           <th class="tg-71hr" width="100">Issue Date</th>
-                                           <th class="tg-71hr" width="60">Action</th>
-                                        </tr>
-                                        <?php  
-                                        $i=0;
-                                        foreach ($activities as $row) {
-                                          $i++;                                          
-                                         ?>
-                                         <tr>
-                                            <td class="tg-031e" align="center"><?=$i?></td>
-                                            <td class="tg-031e"><?=$row->event_cate_name?></td>
-                                            <td class="tg-031e"><?=$row->activity_name ?></td>
-                                            <td class="tg-031e"><?=date_bangla_format($row->start_date)?></td>
-                                            <td class="tg-031e"><?=date_bangla_format($row->end_date)?></td>
-                                            <td class="tg-031e"><?=$row->certificate_no?></td>
-                                            <td class="tg-031e"><?=date_bangla_format($row->issue_date)?></td>
-                                            <td class="tg-031e">
-                                              <a href="<?=base_url('program/activities_delete/'.encrypt_url($row->id).'/'.encrypt_url($row->scout_id))?>" class="btn btn-danger btn-mini btn-xs" onclick="return confirm('Are you sure to delete this data?')">Delete</a>
-                                            </td>
-                                          </tr>    
-                                          <?php } ?>
-                                        </table>
-                                      </div>
-                                   </div>
+                                      <div class="table-responsive">
+                                        <table class="tg">
+                                          <tr>
+                                             <th class="tg-71hr" width="10">SL</th>
+                                             <th class="tg-71hr">Activity Type</th>
+                                             <th class="tg-71hr">Activity Name</th>
+                                             <th class="tg-71hr" width="90">Start Date</th>
+                                             <th class="tg-71hr" width="90">End Date</th>
+                                             <th class="tg-71hr" width="120">Certificate No</th>
+                                             <th class="tg-71hr" width="100">Issue Date</th>
+                                             <th class="tg-71hr" width="60">Action</th>
+                                          </tr>
+                                          <?php  
+                                          $i=0;
+                                          foreach ($activities as $row) {
+                                            $i++;                                          
+                                           ?>
+                                           <tr>
+                                              <td class="tg-031e" align="center"><?=$i?></td>
+                                              <td class="tg-031e"><?=$row->event_cate_name?></td>
+                                              <td class="tg-031e"><?=$row->activity_name ?></td>
+                                              <td class="tg-031e"><?=date_bangla_format($row->start_date)?></td>
+                                              <td class="tg-031e"><?=date_bangla_format($row->end_date)?></td>
+                                              <td class="tg-031e"><?=$row->certificate_no?></td>
+                                              <td class="tg-031e"><?=date_bangla_format($row->issue_date)?></td>
+                                              <td class="tg-031e">
+                                                <a href="<?=base_url('program/activities_delete/'.encrypt_url($row->id).'/'.encrypt_url($row->scout_id))?>" class="btn btn-danger btn-mini btn-xs" onclick="return confirm('Are you sure to delete this data?')">Delete</a>
+                                              </td>
+                                            </tr>    
+                                            <?php } ?>
+                                          </table>
+                                        </div>
+                                    </div>
+                                 </div>
                               </div>                                 
 
                                 

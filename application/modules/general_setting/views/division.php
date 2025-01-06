@@ -6,6 +6,51 @@
       <li><?=$meta_title; ?> </li>
     </ul>
 
+    <style type="text/css">
+      .table-responsive {
+        width: 100%;
+        margin-bottom: 15px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .btn-group-responsive {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+      }
+
+      @media screen and (max-width: 767px) {
+        .grid-title {
+          flex-direction: column;
+          align-items: stretch;
+        }
+        
+        .grid-title .pull-right {
+          margin-top: 10px;
+          width: 100%;
+        }
+
+        .grid-title .pull-right .btn {
+          width: 100%;
+          margin-bottom: 5px;
+        }
+
+        .table th,
+        .table td {
+          white-space: nowrap;
+          min-width: 120px;
+        }
+
+        .btn-mini {
+          width: 100%;
+          margin-bottom: 5px;
+          display: block;
+          text-align: center;
+        }
+      }
+    </style>
+
     <div class="row-fluid">
       <div class="span12">
         <div class="grid simple ">
@@ -24,34 +69,36 @@
                     <?php echo $this->session->flashdata('success');?>
                 </div>
             <?php endif; ?>
-            <table class="table table-hover table-condensed" id="">
-              <thead>
-                <tr>
-                  <th style="width:2%">SL</th>
-                  <th style="width:25%">Division Name</th>
-                  <th style="width:25%">Name Bangla</th>
-                  <th style="width:15%">GEO Code</th>
-                  <th style="width:15%">Status</th>
-                  <th style="width:18%">Action</th>
-                </tr>
-              </thead>
-              <tbody>
-              <?php 
-                $sl=0;
-                foreach ($results as $row):
-                  $sl++;
-              ?>
-                <tr>
-                  <td class="v-align-middle"><?=$sl.'.'?></td>
-                  <td class="v-align-middle"><?=$row->div_name?></td>
-                  <td class="v-align-middle"><?=$row->div_name_bn; ?></td>
-                  <td class="v-align-middle"><?=$row->div_geo; ?></td>
-                  <td> <?php echo ($row->status) ?'<span class="btn btn-primary btn-xs btn-mini">Enable </span>': '<span class="btn btn-danger btn-xs btn-mini">Disable</span>';?> </td>
-				          <td><?php echo anchor(base_url()."general_setting/division_edit/".$row->id, 'Edit', 'class="btn btn-mini btn-primary"') ;?>&nbsp;<a class="btn btn-mini btn-primary" href="<?=base_url()?>general_setting/division_delete/<?=$row->id?>" onclick="return confirm('Are you sure you want to delete this Division?');">Delete</a></td>
-                </tr>
-                <?php endforeach;?>                      
-              </tbody>
-            </table>
+            <div class="table-responsive">
+              <table class="table table-hover table-condensed" id="">
+                <thead>
+                  <tr>
+                    <th style="width:2%">SL</th>
+                    <th style="width:25%">Division Name</th>
+                    <th style="width:25%">Name Bangla</th>
+                    <th style="width:15%">GEO Code</th>
+                    <th style="width:15%">Status</th>
+                    <th style="width:18%">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                <?php 
+                  $sl=0;
+                  foreach ($results as $row):
+                    $sl++;
+                ?>
+                  <tr>
+                    <td class="v-align-middle"><?=$sl.'.'?></td>
+                    <td class="v-align-middle"><?=$row->div_name?></td>
+                    <td class="v-align-middle"><?=$row->div_name_bn; ?></td>
+                    <td class="v-align-middle"><?=$row->div_geo; ?></td>
+                    <td> <?php echo ($row->status) ?'<span class="btn btn-primary btn-xs btn-mini">Enable </span>': '<span class="btn btn-danger btn-xs btn-mini">Disable</span>';?> </td>
+                    <td class="btn-group-responsive"><?php echo anchor(base_url()."general_setting/division_edit/".$row->id, 'Edit', 'class="btn btn-mini btn-primary"') ;?>&nbsp;<a class="btn btn-mini btn-primary" href="<?=base_url()?>general_setting/division_delete/<?=$row->id?>" onclick="return confirm('Are you sure you want to delete this Division?');">Delete</a></td>
+                  </tr>
+                  <?php endforeach;?>                      
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>

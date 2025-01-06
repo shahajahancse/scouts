@@ -6,6 +6,81 @@
          <li><?=$meta_title; ?> </li>
       </ul>
 
+      <style>
+         .table-responsive {
+            width: 100%;
+            margin-bottom: 15px;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+         }
+
+         .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1rem;
+         }
+
+         .table th,
+         .table td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #dee2e6;
+            vertical-align: middle;
+         }
+
+         .table th {
+            background: #f8f9fa;
+            font-weight: 600;
+            white-space: nowrap;
+         }
+
+         .table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+         }
+
+         .table tbody tr:hover {
+            background-color: #f5f5f5;
+         }
+
+         .btn-group {
+            display: inline-flex;
+            gap: 4px;
+         }
+
+       
+
+         @media screen and (max-width: 767px) {
+            .table th, 
+            .table td {
+               white-space: nowrap;
+               min-width: 120px;
+               font-size: 14px;
+            }
+
+            .btn-group {
+               display: flex;
+               flex-direction: column;
+            }
+
+            .btn {
+               padding: 4px 8px;
+               font-size: 12px;
+               width: 100%;
+               margin: 2px 0;
+            }
+
+            .grid-title {
+               display: flex;
+               flex-direction: column;
+               gap: 10px;
+            }
+
+            .grid-title .pull-right {
+               float: none !important;
+            }
+         }
+      </style>
+
       <div class="row">
          <div class="col-md-12">
             <div class="grid simple ">
@@ -27,76 +102,78 @@
 
                   <?php $this->load->view('search_view')?>
 
-                  <table class="table table-hover table-condensed" border="0">
-                     <thead>
-                        <tr>
-                           <th style="width:2%"> SL </th>
-                           <th style="width:20%">Scouts Designation</th>
-                           <th style="width:5%">Image</th>
-                           <th style="width:18%">Name</th>
-                           <th style="width:18%">Phone </th>
-                           <th style="width:7%">Email</th>
-                           <th style="width:7%">Status</th>
-                           <th style="width:7%; text-align: right;">Action</th>
-                        </tr>
-                     </thead>
-                     <tbody>
-                        <?php 
-                        $sl=$pagination['current_page'];
-                        foreach ($results as $row):
-                           $sl++;
+                  <div class="table-responsive">
+                     <table class="table table-hover table-condensed">
+                        <thead>
+                           <tr>
+                              <th style="width:2%"> SL </th>
+                              <th style="width:20%">Scouts Designation</th>
+                              <th style="width:5%">Image</th>
+                              <th style="width:18%">Name</th>
+                              <th style="width:18%">Phone </th>
+                              <th style="width:7%">Email</th>
+                              <th style="width:7%">Status</th>
+                              <th style="width:7%; text-align: right;">Action</th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <?php 
+                           $sl=$pagination['current_page'];
+                           foreach ($results as $row):
+                              $sl++;
 
-                        // Profile Image
-                        if($row->scout_id != NULL){
-                           $img_url = '<img src="'.base_url('profile_img/'.$row->profile_img).'" height="20">';
-                        }elseif($row->image_file != NULL){
-                           $img_url = '<img src="'.base_url('uploads/edirectory_img/'.$row->image_file).'" height="20">';
-                        }else{
-                           $img_url = '<img src="'.base_url('uploads/edirectory_img/no-image.jpg').'" height="20">';
-                        }
+                           // Profile Image
+                           if($row->scout_id != NULL){
+                              $img_url = '<img src="'.base_url('profile_img/'.$row->profile_img).'" height="20">';
+                           }elseif($row->image_file != NULL){
+                              $img_url = '<img src="'.base_url('uploads/edirectory_img/'.$row->image_file).'" height="20">';
+                           }else{
+                              $img_url = '<img src="'.base_url('uploads/edirectory_img/no-image.jpg').'" height="20">';
+                           }
 
-                        if($row->status == 1) {
-                           $status = '<button class="btn btn-mini btn-info">Enable</button>';
-                        }else{
-                           $status = '<button class="btn btn-mini btn-danger">Disable</button>';
-                        }
-                        ?>
-                        <tr>
-                           <td class="v-align-left"><?=$sl.'.'?></td>
-                           <td> <strong><?=$row->scout_desig_id == 100 ? $row->other_desig_name : $row->committee_designation_name_en?></strong> </td>
-                           <td> <?=$img_url?> </td>
-                           <td> <?=$row->name?> </td>
-                           <td> <?=$row->phone?> </td>
-                           <td> <?=$row->email?> </td>
-                           <td> <?=$status?></td>
-                           <td align="right">
-                              <div class="btn-group"> <a class="btn btn-primary dropdown-toggle btn-mini" data-toggle="dropdown" href="#"> Action <span class="caret"></span> </a>
-                                 <ul class="dropdown-menu pull-right">
-                                    <li><?=anchor("edirectory/details/".encrypt_url($row->id), 'Details')?></li>
-                                    <li><?=anchor("edirectory/edit/".encrypt_url($row->id), 'Edit')?></li>
-                                    <?php if($this->ion_auth->is_admin()){ ?> 
-                                    <li><?=anchor("edirectory/delete_contact/".encrypt_url($row->id), 'Delete', 'onclick="return confirm(\'Be careful! Are you sure you want to delete this contact?\');"')?></li>
-                                    <?php } ?>
-                                 </ul>
-                              </div>
-                           </td>
-                        </tr>
-                     <?php endforeach;?>                      
-                  </tbody>
-               </table>
+                           if($row->status == 1) {
+                              $status = '<button class="btn btn-mini btn-info">Enable</button>';
+                           }else{
+                              $status = '<button class="btn btn-mini btn-danger">Disable</button>';
+                           }
+                           ?>
+                           <tr>
+                              <td class="v-align-left"><?=$sl.'.'?></td>
+                              <td> <strong><?=$row->scout_desig_id == 100 ? $row->other_desig_name : $row->committee_designation_name_en?></strong> </td>
+                              <td> <?=$img_url?> </td>
+                              <td> <?=$row->name?> </td>
+                              <td> <?=$row->phone?> </td>
+                              <td> <?=$row->email?> </td>
+                              <td> <?=$status?></td>
+                              <td align="right">
+                                 <div class="btn-group"> <a class="btn btn-primary dropdown-toggle btn-mini" data-toggle="dropdown" href="#"> Action <span class="caret"></span> </a>
+                                    <ul class="dropdown-menu pull-right">
+                                       <li><?=anchor("edirectory/details/".encrypt_url($row->id), 'Details')?></li>
+                                       <li><?=anchor("edirectory/edit/".encrypt_url($row->id), 'Edit')?></li>
+                                       <?php if($this->ion_auth->is_admin()){ ?> 
+                                       <li><?=anchor("edirectory/delete_contact/".encrypt_url($row->id), 'Delete', 'onclick="return confirm(\'Be careful! Are you sure you want to delete this contact?\');"')?></li>
+                                       <?php } ?>
+                                    </ul>
+                                 </div>
+                              </td>
+                           </tr>
+                        <?php endforeach;?>                      
+                        </tbody>
+                     </table>
+                  </div>
 
-               <div class="row">
-                  <div class="col-sm-4 col-md-4 text-left" style="margin-top: 20px;"> Total <span style="color: green; font-weight: bold;"><?php echo $total_rows; ?> Directory Contact </span></div>
-                  <div class="col-sm-8 col-md-8 text-right">
-                     <?php echo $pagination['links']; ?>
+                  <div class="row">
+                     <div class="col-sm-4 col-md-4 text-left" style="margin-top: 20px;"> Total <span style="color: green; font-weight: bold;"><?php echo $total_rows; ?> Directory Contact </span></div>
+                     <div class="col-sm-8 col-md-8 text-right">
+                        <?php echo $pagination['links']; ?>
+                     </div>
                   </div>
                </div>
-            </div>
 
+            </div>
          </div>
       </div>
-   </div>
 
-</div> <!-- END Content -->
+   </div> <!-- END Content -->
 
 </div>
