@@ -51,7 +51,7 @@ class Scouts_member extends Backend_Controller {
 
    public function all($offset=0){
       $limit = 25;
-      
+
       //Check authentication
       if($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin() || $this->ion_auth->in_group(array('award', 'event', 'training'))){
          // Superadmin
@@ -1664,6 +1664,10 @@ class Scouts_member extends Backend_Controller {
          if(decrypt_url($this->input->post('dataID')) != $scoutID){
             show_404('scouts_member - edit - submit check request post data', TRUE);
          }
+         $dol = null;
+         if (!empty($this->input->post('dol'))) {
+            $dol = date('Y-m-d',strtotime($this->input->post('dol')));
+         }
          $dob = $this->input->post('year').'-'.$this->input->post('month').'-'.$this->input->post('day');
          $form_data = array(
             'first_name'        =>  $this->input->post('first_name'),
@@ -1673,6 +1677,7 @@ class Scouts_member extends Backend_Controller {
             'mother_name'       => $this->input->post('mother_name'),
             'mother_name_bn'    => $this->input->post('mother_name_bn'),
             'dob'               =>  $dob,
+            'dol'               =>  $dol,
             'gender'            =>  $this->input->post('gender'),
             'blood_group'       =>  $this->input->post('blood_group'),
             'phone'             =>  $this->input->post('phone'),
@@ -1706,7 +1711,7 @@ class Scouts_member extends Backend_Controller {
             'sc_section_id'     =>  $this->input->post('sc_section_id'),
             'sc_badge_id'       =>  $this->input->post('sc_badge_id'),
             'sc_role_id'        =>  $this->input->post('sc_role_id')
-            );
+         );
 
          // Scout office update by access level
          if($this->ion_auth->is_group_admin()){
@@ -1806,9 +1811,6 @@ class Scouts_member extends Backend_Controller {
                      @unlink($this->img_orginal_path.'\\'.$tmp[0].'-original.jpg');
                      @unlink($this->img_orginal_path.'\\'.$tmp[0].'-original.jpeg');
                      @unlink($this->img_thumb_path.'\\'.$file_name);
-
-	                  //$this->session->set_flashdata('success', 'Image update successfully.');
-	                  //redirect('my_profile');
                   }
                }
             }
@@ -1817,10 +1819,9 @@ class Scouts_member extends Backend_Controller {
             // redirect them back to the admin page if admin, or to the base url if non admin
             $this->session->set_flashdata('success', 'Information update successfully.');
             redirect('scouts_member/all');
-          }
+         }
+      }
 
-
-       }
 
       //Dropdown
        $this->data['religions'] = $this->Common_model->set_religion();
@@ -1840,7 +1841,7 @@ class Scouts_member extends Backend_Controller {
        $this->data['meta_title'] = 'Edit Scouts Member Infomation';
        $this->data['subview'] = 'edit';
        $this->load->view('backend/_layout_main', $this->data);
-    }
+   }
 
 
 

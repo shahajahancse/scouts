@@ -27,16 +27,16 @@ class Offices extends Backend_Controller {
       $this->img_path_gallery = realpath(APPPATH . '../uploads');
    }
 
-   public function index(){      
+   public function index(){
       redirect('deshboard');
-   }   
+   }
 
 
    /********************** Scout Group Office *********************
    ****************************************************************/
    public function scout_group($offset=0){
       $limit = 100;
-      if($this->ion_auth->is_admin()){ 
+      if($this->ion_auth->is_admin()){
          // Superadmin
          //Result
          $results = $this->Offices_model->get_scout_group($limit, $offset);
@@ -44,14 +44,14 @@ class Offices extends Backend_Controller {
          $this->data['regions'] = $this->Common_model->get_regions();
 
          if(isset($_GET['region'])){
-            $this->data['scout_district'] = $this->Common_model->get_scout_districts($_GET['region']);   
-            
-         } 
+            $this->data['scout_district'] = $this->Common_model->get_scout_districts($_GET['region']);
+
+         }
          if(isset($_GET['district'])){
             $this->data['scout_upazila'] = $this->Common_model->get_scout_upazila_thana($_GET['district']);
-         } 
+         }
 
-      }elseif($this->ion_auth->is_vendor()){ 
+      }elseif($this->ion_auth->is_vendor()){
          // Superadmin
          //Result
          $results = $this->Offices_model->get_scout_group($limit, $offset);
@@ -59,30 +59,30 @@ class Offices extends Backend_Controller {
          $this->data['regions'] = $this->Common_model->get_regions();
 
          if(isset($_GET['region'])){
-            $this->data['scout_district'] = $this->Common_model->get_scout_districts($_GET['region']);   
-            
-         } 
+            $this->data['scout_district'] = $this->Common_model->get_scout_districts($_GET['region']);
+
+         }
          if(isset($_GET['district'])){
             $this->data['scout_upazila'] = $this->Common_model->get_scout_upazila_thana($_GET['district']);
-         }       
+         }
 
       }elseif($this->ion_auth->is_region_admin()){
          // Region Admin
          $regionInfo = $this->Offices_model->get_region_office_by_user_id($this->userSessID);
-         
-                 
+
+
          // Results
-         $results = $this->Offices_model->get_scout_group($limit, $offset, $regionInfo->id);  
-         //Dropdown  
-         $this->data['scout_district'] = $this->Common_model->get_scout_districts($regionInfo->id); 
+         $results = $this->Offices_model->get_scout_group($limit, $offset, $regionInfo->id);
+         //Dropdown
+         $this->data['scout_district'] = $this->Common_model->get_scout_districts($regionInfo->id);
 
          if(isset($_GET['district'])){
             $this->data['scout_upazila'] = $this->Common_model->get_scout_upazila_thana($_GET['district']);
-         }  
+         }
 
-      }elseif($this->ion_auth->is_district_admin()){ 
-         // District Admin        
-         $districtInfo = $this->Offices_model->get_district_office_by_user_id($this->userSessID);        
+      }elseif($this->ion_auth->is_district_admin()){
+         // District Admin
+         $districtInfo = $this->Offices_model->get_district_office_by_user_id($this->userSessID);
          // Results
          $results = $this->Offices_model->get_scout_group($limit, $offset, '', $districtInfo->id);
          //Dropdown
@@ -93,7 +93,7 @@ class Offices extends Backend_Controller {
          $upazilaInfo = $this->Offices_model->get_upazila_office_by_user_id($this->userSessID);
          // Results
          $results = $this->Offices_model->get_scout_group($limit, $offset, '', '', $upazilaInfo->id);
-         
+
       }else{
          redirect('dashboard');
       }
@@ -114,7 +114,7 @@ class Offices extends Backend_Controller {
    /*************scout_group_pdf function pdf start**************/
    public function scout_group_pdf($offset=0){
       // $limit = 100;
-      if($this->ion_auth->is_admin()){ 
+      if($this->ion_auth->is_admin()){
          // Superadmin
          //Result
          $results = $this->Offices_model->get_scout_group_pdf();
@@ -122,30 +122,30 @@ class Offices extends Backend_Controller {
          $this->data['regions'] = $this->Common_model->get_regions();
 
          if(isset($_GET['region'])){
-            $this->data['scout_district'] = $this->Common_model->get_scout_districts($_GET['region']);   
-            
-         } 
+            $this->data['scout_district'] = $this->Common_model->get_scout_districts($_GET['region']);
+
+         }
          if(isset($_GET['district'])){
             $this->data['scout_upazila'] = $this->Common_model->get_scout_upazila_thana($_GET['district']);
-         }       
+         }
 
       }elseif($this->ion_auth->is_region_admin()){
          // Region Admin
          $regionInfo = $this->Offices_model->get_region_office_by_user_id($this->userSessID);
-         
-                 
+
+
          // Results
-         $results = $this->Offices_model->get_scout_group_pdf($regionInfo->id);  
-         //Dropdown  
-         $this->data['scout_district'] = $this->Common_model->get_scout_districts($regionInfo->id); 
+         $results = $this->Offices_model->get_scout_group_pdf($regionInfo->id);
+         //Dropdown
+         $this->data['scout_district'] = $this->Common_model->get_scout_districts($regionInfo->id);
 
          if(isset($_GET['district'])){
             $this->data['scout_upazila'] = $this->Common_model->get_scout_upazila_thana($_GET['district']);
-         }  
+         }
 
-      }elseif($this->ion_auth->is_district_admin()){ 
-         // District Admin        
-         $districtInfo = $this->Offices_model->get_district_office_by_user_id($this->userSessID);        
+      }elseif($this->ion_auth->is_district_admin()){
+         // District Admin
+         $districtInfo = $this->Offices_model->get_district_office_by_user_id($this->userSessID);
          // Results
          $results = $this->Offices_model->get_scout_group_pdf('', $districtInfo->id);
          //Dropdown
@@ -156,7 +156,7 @@ class Offices extends Backend_Controller {
          $upazilaInfo = $this->Offices_model->get_upazila_office_by_user_id($this->userSessID);
          // Results
          $results = $this->Offices_model->get_scout_group_pdf('', '', $upazilaInfo->id);
-         
+
       }else{
          redirect('dashboard');
       }
@@ -165,10 +165,10 @@ class Offices extends Backend_Controller {
       $this->data['results'] = $results['rows'];
       $this->data['total_rows'] = $results['num_rows'];
 
-      
+
       //...............................................................................
       $this->data['meta_title'] = "Scout Group List";
-      $html = $this->load->view('scout_group_pdf', $this->data, true);   
+      $html = $this->load->view('scout_group_pdf', $this->data, true);
       $file_name ="scout_group_pdf.pdf";
 
       //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
@@ -177,32 +177,32 @@ class Offices extends Backend_Controller {
       //generate the PDF from the given html
       $mpdf->WriteHTML($html);
 
-      //download it for 'D'. 
+      //download it for 'D'.
       $mpdf->Output($file_name, "D");
    }
    /*************scout_group_pdf function pdf End**************/
 
-   function scout_group_change_username($id){  
+   function scout_group_change_username($id){
       $groupID = (int) decrypt_url($id); //exit;
-      if (!$this->Common_model->exists('office_groups', 'id', $groupID)) { 
+      if (!$this->Common_model->exists('office_groups', 'id', $groupID)) {
          show_404('office - scout_group_change_username - exitsts', TRUE);
-      }  
+      }
 
       //Check authentication
       if($this->ion_auth->is_admin()){
          //Superadmin
-         //go to next  
+         //go to next
       }elseif($this->ion_auth->is_region_admin()){
          //Region Admin
-         $region = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id; 
+         $region = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
          //Cross Check
          if(!$this->Offices_model->check_access_scouts_group($groupID, $region)){
             show_404('office - scout_group_change_username - RA', TRUE);
-         } 
+         }
 
       }elseif($this->ion_auth->is_district_admin()){
          //District Admin
-         $office = $this->Offices_model->get_district_office_by_user_id($this->userSessID);  
+         $office = $this->Offices_model->get_district_office_by_user_id($this->userSessID);
          $region     = $office->dis_scout_region_id;
          $district   = $office->id;
          //Cross Check
@@ -225,7 +225,7 @@ class Offices extends Backend_Controller {
       }
 
       //Results
-      $this->data['info'] = $this->Offices_model->get_scout_group_info($groupID); 
+      $this->data['info'] = $this->Offices_model->get_scout_group_info($groupID);
       // print_r($this->data['info']);
 
       // Validation
@@ -259,29 +259,29 @@ class Offices extends Backend_Controller {
       $this->data['meta_title'] = 'Scout Group Change Username';
       $this->data['subview'] = 'scout_group_change_username';
       $this->load->view('backend/_layout_main', $this->data);
-   }   
+   }
 
    public function scout_group_change_password($id){
       $groupID = (int) decrypt_url($id); //exit;
-      if (!$this->Common_model->exists('office_groups', 'id', $groupID)) { 
+      if (!$this->Common_model->exists('office_groups', 'id', $groupID)) {
          show_404('office - scout_group_change_password - exitsts', TRUE);
-      }  
+      }
 
       //Check authentication
       if($this->ion_auth->is_admin()){
          //Superadmin
-         //go to next  
+         //go to next
       }elseif($this->ion_auth->is_region_admin()){
          //Region Admin
-         $region = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id; 
+         $region = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
          //Cross Check
          if(!$this->Offices_model->check_access_scouts_group($groupID, $region)){
             show_404('office - scout_group_change_password - RA', TRUE);
-         } 
+         }
 
       }elseif($this->ion_auth->is_district_admin()){
          //District Admin
-         $office = $this->Offices_model->get_district_office_by_user_id($this->userSessID);  
+         $office = $this->Offices_model->get_district_office_by_user_id($this->userSessID);
          $region     = $office->dis_scout_region_id;
          $district   = $office->id;
          //Cross Check
@@ -304,7 +304,7 @@ class Offices extends Backend_Controller {
       }
 
       //Result
-      $this->data['info'] = $this->Offices_model->get_scout_group_info($groupID); 
+      $this->data['info'] = $this->Offices_model->get_scout_group_info($groupID);
 
       //validation
       $this->form_validation->set_rules('new', $this->lang->line('reset_password_validation_new_password_label'), 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|max_length[' . $this->config->item('max_password_length', 'ion_auth') . ']|matches[new_confirm]');
@@ -355,7 +355,7 @@ class Offices extends Backend_Controller {
          'value' => $this->data['info']->user_id,
          );
 
-      //Load page       
+      //Load page
       $this->data['meta_title'] = 'Scout Group Change Password';
       $this->data['subview'] = 'scout_group_change_password';
       $this->load->view('backend/_layout_main', $this->data);
@@ -364,19 +364,19 @@ class Offices extends Backend_Controller {
 
    public function scout_group_create(){
       //Check authentication
-      if($this->ion_auth->is_admin()){ 
+      if($this->ion_auth->is_admin()){
          //Superadmin
          //Goto next
       }elseif($this->ion_auth->is_region_admin()){
          //Region admin
-         $region = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;    
+         $region = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
          //Dropdown
          $this->data['region_info'] = $this->Common_model->get_office_info('office_region', $region);
          $this->data['district_dd'] = $this->Common_model->get_dropdown_office('office_district', 'dis_name', 'dis_scout_region_id', $region);
 
-      }elseif($this->ion_auth->is_district_admin()){    
-         //District Admin     
-         $office = $this->Offices_model->get_district_office_by_user_id($this->userSessID);           
+      }elseif($this->ion_auth->is_district_admin()){
+         //District Admin
+         $office = $this->Offices_model->get_district_office_by_user_id($this->userSessID);
          $region     = $office->dis_scout_region_id;
          $district   = $office->id;
          //Dropdown
@@ -416,13 +416,13 @@ class Offices extends Backend_Controller {
          $this->form_validation->set_rules('email', $this->lang->line('create_user_validation_email_label'), 'required|valid_email|is_unique[' . $tables['users'] . '.email]');
       }
       $this->form_validation->set_rules('password', $this->lang->line('create_user_validation_password_label'), 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|max_length[' . $this->config->item('max_password_length', 'ion_auth') . ']');
-      $this->form_validation->set_rules('phone', $this->lang->line('create_user_validation_phone_label'), 'trim');      
+      $this->form_validation->set_rules('phone', $this->lang->line('create_user_validation_phone_label'), 'trim');
 
-      $this->form_validation->set_rules('grp_type', 'group type', 'required|trim'); 
+      $this->form_validation->set_rules('grp_type', 'group type', 'required|trim');
       // if($this->input->post('grp_type') == '1'){
-      //    $this->form_validation->set_rules('grp_institute_id', 'institute ', 'required|trim');          
+      //    $this->form_validation->set_rules('grp_institute_id', 'institute ', 'required|trim');
       // }
-      $this->form_validation->set_rules('grp_name', 'group name', 'required|trim|max_length[255]');      
+      $this->form_validation->set_rules('grp_name', 'group name', 'required|trim|max_length[255]');
       $this->form_validation->set_rules('grp_remarks', 'scout region', 'trim');
       $this->form_validation->set_rules('grp_region_id', 'scout region', 'required|trim');
       $this->form_validation->set_rules('grp_scout_dis_id', 'scout district', 'required|trim');
@@ -431,7 +431,7 @@ class Offices extends Backend_Controller {
       $this->form_validation->set_rules('grp_reg_num_dis', 'district registration no', 'trim');
       $this->form_validation->set_rules('grp_reg_dis_date', 'district registration no date', 'trim');
       $this->form_validation->set_rules('grp_reg_num_upa', 'upazila registration no', 'trim');
-      $this->form_validation->set_rules('grp_reg_upa_date', 'upazila registration date', 'trim');      
+      $this->form_validation->set_rules('grp_reg_upa_date', 'upazila registration date', 'trim');
 
       $email    = strtolower($this->input->post('email'));
       $identity = ($identity_column==='email') ? $email : $this->input->post('identity');
@@ -439,20 +439,20 @@ class Offices extends Backend_Controller {
       $groups = array('7');
       $additional_data = array(
          'is_office'    => 1
-         );  
+         );
 
       //Validate and input fiekds
       if ($this->form_validation->run() == true){
-         $lastID = $this->ion_auth->register($identity, $password, $email, $additional_data, $groups); 
+         $lastID = $this->ion_auth->register($identity, $password, $email, $additional_data, $groups);
 
          $form_data = array(
             'user_id'         => $lastID,
             'grp_type'        => $this->input->post('grp_type'),
             'grp_leader'      => $this->input->post('grp_leader'),
             'grp_institute_id'=> $this->input->post('grp_institute_id'),
-            'grp_name'        => $this->input->post('grp_name'),   
-            'grp_name_bn'     => $this->input->post('grp_name_bn'),   
-            'grp_remarks'     => $this->input->post('grp_remarks'),            
+            'grp_name'        => $this->input->post('grp_name'),
+            'grp_name_bn'     => $this->input->post('grp_name_bn'),
+            'grp_remarks'     => $this->input->post('grp_remarks'),
             'grp_mobile'      => $this->input->post('grp_mobile')?$this->input->post('grp_mobile'):NULL,
             'grp_email'       => $this->input->post('grp_email')?$this->input->post('grp_email'):NULL,
             'grp_address'     => $this->input->post('grp_address')?$this->input->post('grp_address'):NULL,
@@ -472,11 +472,11 @@ class Offices extends Backend_Controller {
             $insert_id = $this->db->insert_id();
 
             // Insert Scout Unit under a group
-            for ($i=0; $i<sizeof($_POST['unit_name']); $i++) { 
+            for ($i=0; $i<sizeof($_POST['unit_name']); $i++) {
                $form_data2 = array(
                   'unit_name'          => $_POST['unit_name'][$i],
                   'unit_name_bn'       => $_POST['unit_name_bn'][$i],
-                  'unit_type'          => $_POST['unit_type'][$i],           
+                  'unit_type'          => $_POST['unit_type'][$i],
                   'unit_region_id'     => $region != NULL ? $region:$this->input->post('grp_region_id'),
                   'unit_scout_dis_id'  => $district != NULL ? $district:$this->input->post('grp_scout_dis_id'),
                   'unit_scout_upa_id'  => $upazila != NULL ? $upazila:$this->input->post('grp_scout_upa_id'),
@@ -493,7 +493,7 @@ class Offices extends Backend_Controller {
             $this->session->set_flashdata('success', 'Scout group and unit create successfully.');
             redirect("offices/scout_group");
          }
-      }                  
+      }
 
       //Input fields
       $this->data['identity'] = array(
@@ -513,8 +513,8 @@ class Offices extends Backend_Controller {
          );
 
       //Dropdown
-      $this->data['regions'] = $this->Common_model->get_regions();      
-      $this->data['sc_unit_types'] = $this->Common_model->set_scout_unit_type(); 
+      $this->data['regions'] = $this->Common_model->get_regions();
+      $this->data['sc_unit_types'] = $this->Common_model->set_scout_unit_type();
 
       // Load view
       $this->data['meta_title'] = 'Create Scout Group Office';
@@ -524,13 +524,13 @@ class Offices extends Backend_Controller {
 
    public function scout_group_update($id){
       $groupID = (int) decrypt_url($id); //exit;
-      if (!$this->Common_model->exists('office_groups', 'id', $groupID)) { 
+      if (!$this->Common_model->exists('office_groups', 'id', $groupID)) {
          show_404('office - scout_group_update - exists', TRUE);
-      } 
+      }
 
       //Result
       $this->data['info'] = $this->Offices_model->get_scout_group_info($groupID);
-      $this->data['scout_units'] = $this->Offices_model->get_scout_unit_by_group_office_id($groupID);      
+      $this->data['scout_units'] = $this->Offices_model->get_scout_unit_by_group_office_id($groupID);
 
       //Check authentication
       if($this->ion_auth->is_admin()){
@@ -540,9 +540,9 @@ class Offices extends Backend_Controller {
          $this->data['district_dd'] = $this->Common_model->get_dropdown_office('office_district', 'dis_name', 'dis_scout_region_id', $this->data['info']->grp_region_id);
          $this->data['upazila_dd'] = $this->Common_model->get_dropdown_office('office_upazila', 'upa_name', 'upa_scout_dis_id', $this->data['info']->grp_scout_dis_id);
 
-      }elseif($this->ion_auth->is_region_admin()){         
+      }elseif($this->ion_auth->is_region_admin()){
          //Region Admin
-         $office = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;    
+         $office = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
          //Cross Check
          if(!$this->Offices_model->check_access_scouts_group($groupID, $office)){
             show_404('office - scout_group_update - RA', TRUE);
@@ -550,11 +550,11 @@ class Offices extends Backend_Controller {
          //Dropdown
          $this->data['region_info'] = $this->Common_model->get_office_info('office_region', $office);
          $this->data['district_dd'] = $this->Common_model->get_dropdown_office('office_district', 'dis_name', 'dis_scout_region_id', $office);
-         $this->data['upazila_dd'] = $this->Common_model->get_dropdown_office('office_upazila', 'upa_name', 'upa_scout_dis_id', $this->data['info']->grp_scout_dis_id);         
+         $this->data['upazila_dd'] = $this->Common_model->get_dropdown_office('office_upazila', 'upa_name', 'upa_scout_dis_id', $this->data['info']->grp_scout_dis_id);
 
       }elseif($this->ion_auth->is_district_admin()){
          //District Admin
-         $office = $this->Offices_model->get_district_office_by_user_id($this->userSessID);  
+         $office = $this->Offices_model->get_district_office_by_user_id($this->userSessID);
          $region     = $office->dis_scout_region_id;
          $district   = $office->id;
          //Cross Check
@@ -592,8 +592,8 @@ class Offices extends Backend_Controller {
       // $group = NULL;
 
       //validation
-      $this->form_validation->set_rules('grp_type', 'group type', 'required|trim');       
-      $this->form_validation->set_rules('grp_name', 'group name', 'required|trim|max_length[255]');      
+      $this->form_validation->set_rules('grp_type', 'group type', 'required|trim');
+      $this->form_validation->set_rules('grp_name', 'group name', 'required|trim|max_length[255]');
       $this->form_validation->set_rules('grp_remarks', 'scout region', 'trim');
       $this->form_validation->set_rules('grp_region_id', 'scout region', 'required|trim');
       $this->form_validation->set_rules('grp_scout_dis_id', 'scout district', 'required|trim');
@@ -610,9 +610,9 @@ class Offices extends Backend_Controller {
             'grp_type'        => $this->input->post('grp_type'),
             'grp_leader'      => $this->input->post('grp_leader'),
             'grp_institute_id'=> $this->input->post('grp_institute_id'),
-            'grp_name'        => $this->input->post('grp_name'), 
-            'grp_name_bn'     => $this->input->post('grp_name_bn'),              
-            'grp_remarks'     => $this->input->post('grp_remarks'),            
+            'grp_name'        => $this->input->post('grp_name'),
+            'grp_name_bn'     => $this->input->post('grp_name_bn'),
+            'grp_remarks'     => $this->input->post('grp_remarks'),
             'grp_mobile'      => $this->input->post('grp_mobile')?$this->input->post('grp_mobile'):NULL,
             'grp_email'       => $this->input->post('grp_email')?$this->input->post('grp_email'):NULL,
             'grp_address'     => $this->input->post('grp_address')?$this->input->post('grp_address'):NULL,
@@ -625,11 +625,11 @@ class Offices extends Backend_Controller {
             'grp_reg_dis_date'=> date_db_format($this->input->post('grp_reg_dis_date')),
             'grp_reg_num_upa' => $this->input->post('grp_reg_num_upa'),
             'grp_reg_upa_date'=> date_db_format($this->input->post('grp_reg_upa_date'))
-            );         
-         
+            );
+
          if($this->Common_model->edit('office_groups', $groupID, 'id', $form_data)){
 
-            for ($i=0; $i<sizeof($_POST['unit_name']); $i++) { 
+            for ($i=0; $i<sizeof($_POST['unit_name']); $i++) {
                //check exists data
                $data_exists = $this->Common_model->exists('office_unit', 'id', decrypt_url($_POST['hide_unit_id'][$i]));
                if($data_exists){
@@ -637,13 +637,13 @@ class Offices extends Backend_Controller {
                      'unit_name'          => $_POST['unit_name'][$i],
                      'unit_name_bn'       => $_POST['unit_name_bn'][$i],
                      'unit_type'          => $_POST['unit_type'][$i]
-                     ); 
+                     );
                   $this->Common_model->edit('office_unit', decrypt_url($_POST['hide_unit_id'][$i]), 'id', $form_data2);
                }else{
                   $form_data2 = array(
                      'unit_name'          => $_POST['unit_name'][$i],
                      'unit_name_bn'       => $_POST['unit_name_bn'][$i],
-                     'unit_type'          => $_POST['unit_type'][$i],           
+                     'unit_type'          => $_POST['unit_type'][$i],
                      'unit_region_id'     => $region != NULL ? $region:$this->input->post('grp_region_id'),
                      'unit_scout_dis_id'  => $district != NULL ? $district:$this->input->post('grp_scout_dis_id'),
                      'unit_scout_upa_id'  => $upazila != NULL ? $upazila:$this->input->post('grp_scout_upa_id'),
@@ -659,26 +659,26 @@ class Offices extends Backend_Controller {
             redirect("offices/scout_group");
             // redirect("offices/scout_group_details/".encrypt_url($groupID));
          }
-                  
-      }      
+
+      }
 
       //Dropdown
-      $this->data['regions'] = $this->Common_model->get_regions(); 
-      // $this->data['scout_districts'] = $this->Common_model->get_scout_districts(); 
-      // $this->data['scout_upazila_thana'] = $this->Common_model->get_scout_upazila_thana(); 
-      $this->data['sc_unit_types'] = $this->Common_model->set_scout_unit_type(); 
+      $this->data['regions'] = $this->Common_model->get_regions();
+      // $this->data['scout_districts'] = $this->Common_model->get_scout_districts();
+      // $this->data['scout_upazila_thana'] = $this->Common_model->get_scout_upazila_thana();
+      $this->data['sc_unit_types'] = $this->Common_model->set_scout_unit_type();
 
       // Load view
       $this->data['meta_title'] = 'Edit Scout Group Office';
       $this->data['subview'] = 'scout_group_update';
       $this->load->view('backend/_layout_main', $this->data);
-   }   
+   }
 
    public function scout_group_details($id){
       $groupID = (int) decrypt_url($id); //exit;
-      if (!$this->Common_model->exists('office_groups', 'id', $groupID)) { 
+      if (!$this->Common_model->exists('office_groups', 'id', $groupID)) {
          show_404('office - scout_group_details - exists', TRUE);
-      }           
+      }
 
       //Check authentication
       if($this->ion_auth->is_admin() || $this->ion_auth->is_vendor()){
@@ -687,15 +687,15 @@ class Offices extends Backend_Controller {
 
       }elseif($this->ion_auth->is_region_admin()){
          //Region Admin
-         $region = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id; 
+         $region = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
          //Cross Check
          if(!$this->Offices_model->check_access_scouts_group($groupID, $region)){
             show_404('office - scout_group_details - RA', TRUE);
-         } 
+         }
 
       }elseif($this->ion_auth->is_district_admin()){
          //District Admin
-         $office = $this->Offices_model->get_district_office_by_user_id($this->userSessID);  
+         $office = $this->Offices_model->get_district_office_by_user_id($this->userSessID);
          $region     = $office->dis_scout_region_id;
          $district   = $office->id;
          //Cross Check
@@ -718,13 +718,13 @@ class Offices extends Backend_Controller {
       }
 
       // Results
-      $this->data['groupID'] = $groupID; 
-      $this->data['info'] = $this->Offices_model->get_scout_group_info($groupID); 
+      $this->data['groupID'] = $groupID;
+      $this->data['info'] = $this->Offices_model->get_scout_group_info($groupID);
       $this->data['scout_units'] = $this->Offices_model->get_scout_unit_by_group_office_id($groupID);
 
-      // $this->data['committees'] = $this->Offices_model->get_committee_by_scout_group_office_id($id);      
+      // $this->data['committees'] = $this->Offices_model->get_committee_by_scout_group_office_id($id);
       // if($this->data['committees']){
-      //    $results = $this->Committee_model->get_scout_group_committee_info($this->data['committees'][0]->id); 
+      //    $results = $this->Committee_model->get_scout_group_committee_info($this->data['committees'][0]->id);
       //    // $this->data['committee_info'] = $results['info'];
       //    $this->data['committee_members'] = $results['members'];
       //    foreach ($results['members'] as $k => $members){
@@ -741,9 +741,9 @@ class Offices extends Backend_Controller {
    /*************scout_group_details_pdf function pdf start**************/
    public function scout_group_details_pdf($id=0){
       $groupID = (int) decrypt_url($id); //exit;
-      if (!$this->Common_model->exists('office_groups', 'id', $groupID)) { 
+      if (!$this->Common_model->exists('office_groups', 'id', $groupID)) {
          show_404('office - scout_group_details - exists', TRUE);
-      }           
+      }
 
       //Check authentication
       if($this->ion_auth->is_admin()){
@@ -752,15 +752,15 @@ class Offices extends Backend_Controller {
 
       }elseif($this->ion_auth->is_region_admin()){
          //Region Admin
-         $region = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id; 
+         $region = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
          //Cross Check
          if(!$this->Offices_model->check_access_scouts_group($groupID, $region)){
             show_404('office - scout_group_details - RA', TRUE);
-         } 
+         }
 
       }elseif($this->ion_auth->is_district_admin()){
          //District Admin
-         $office = $this->Offices_model->get_district_office_by_user_id($this->userSessID);  
+         $office = $this->Offices_model->get_district_office_by_user_id($this->userSessID);
          $region     = $office->dis_scout_region_id;
          $district   = $office->id;
          //Cross Check
@@ -783,12 +783,12 @@ class Offices extends Backend_Controller {
       }
 
       // Results
-      $this->data['info'] = $this->Offices_model->get_scout_group_info($groupID); 
+      $this->data['info'] = $this->Offices_model->get_scout_group_info($groupID);
       $this->data['scout_units'] = $this->Offices_model->get_scout_unit_by_group_office_id($groupID);
-      
+
       //...............................................................................
       $this->data['meta_title'] = "Scout Group Details";
-      $html = $this->load->view('scout_group_details_pdf', $this->data, true);   
+      $html = $this->load->view('scout_group_details_pdf', $this->data, true);
       $file_name ="scout_group_details_pdf.pdf";
 
       //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
@@ -797,19 +797,19 @@ class Offices extends Backend_Controller {
       //generate the PDF from the given html
       $mpdf->WriteHTML($html);
 
-      //download it for 'D'. 
+      //download it for 'D'.
       $mpdf->Output($file_name, "D");
    }
    /*************scout_group_details_pdf function pdf End**************/
 
-   public function scout_group_delete($id){  
+   public function scout_group_delete($id){
       //Check Authentication
       if(!($this->ion_auth->is_admin() || $this->ion_auth->is_region_admin() || $this->ion_auth->is_district_admin() || $this->ion_auth->is_upazila_admin())){
          redirect('dashboard');
       }
 
       $groupID = (int) decrypt_url($id); //exit;
-      if (!$this->Common_model->exists('office_groups', 'id', $groupID)) { 
+      if (!$this->Common_model->exists('office_groups', 'id', $groupID)) {
          show_404('office - scout_group_delete - exists', TRUE);
       }
 
@@ -821,14 +821,14 @@ class Offices extends Backend_Controller {
             /***********Activity Logs End**********/
 
          $this->session->set_flashdata('warning', 'Scout group could not be deleted because scouts member existed under this group.');
-         redirect("offices/scout_group");   
+         redirect("offices/scout_group");
       }else{
          // Delete Scouts Group, Unit and User from database
-         $this->Offices_model->scout_group_destroy($groupID); 
+         $this->Offices_model->scout_group_destroy($groupID);
          $this->session->set_flashdata('success', 'Scout group and all related information delete successfully.');
-         redirect("offices/scout_group");   
+         redirect("offices/scout_group");
       }
-   }   
+   }
 
    public function scout_unit_delete($groupID, $unitID){
       if($this->ion_auth->is_admin() || $this->ion_auth->is_region_admin()){
@@ -867,7 +867,7 @@ class Offices extends Backend_Controller {
          redirect('dashboard');
       }
 
-      $this->data['info'] = $this->Offices_model->get_scout_unit_info($unitID); 
+      $this->data['info'] = $this->Offices_model->get_scout_unit_info($unitID);
       $this->data['results'] = $this->Scouts_member_model->get_scout_member_by_unit($unitID);
       // foreach ($this->data['results'] as $k => $user){
       //    $this->data['results'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
@@ -876,7 +876,7 @@ class Offices extends Backend_Controller {
       // ZIP file Root Directory
       $rootPath = realpath(APPPATH . '../temp_dir/zip_file/'.$this->data['info']->id);
 
-      // Delete Files and Folder 
+      // Delete Files and Folder
       //@$this->delete_directory($rootPath);
       //@unlink($rootPath.'.zip');
 
@@ -893,17 +893,17 @@ class Offices extends Backend_Controller {
       }
       $unitID = (int) decrypt_url($id); //exit;
       // $unitID = $id; //exit;
-      if (!$this->Common_model->exists('office_unit', 'id', $unitID)) { 
+      if (!$this->Common_model->exists('office_unit', 'id', $unitID)) {
          show_404('office - scout_unit_idcard_pdf - exists', TRUE);
-      }           
+      }
 
       // Unit information
-      $unitInfo = $this->Offices_model->get_scout_unit_info($unitID); 
+      $unitInfo = $this->Offices_model->get_scout_unit_info($unitID);
       // print_r($this->data['info']); exit;
       $this->data['results'] = $this->Scouts_member_model->get_scout_member_by_unit($unitID);
 
       // ZIP file Root Directory
-      $rootPath = realpath(APPPATH . '../temp_dir/zip_file/'.$unitInfo->id);      
+      $rootPath = realpath(APPPATH . '../temp_dir/zip_file/'.$unitInfo->id);
 
       // Create Dirrectory
       if (!file_exists($rootPath)) {
@@ -911,7 +911,7 @@ class Offices extends Backend_Controller {
       }
 
       // Generate PDF into Created Directory
-      for ($i=0; $i < count($this->data['results']); $i++) { 
+      for ($i=0; $i < count($this->data['results']); $i++) {
          $this->data['info'] = $this->My_profile_model->get_info($this->data['results'][$i]->id);
          $scoutID = $this->data['info']->scout_id;
 
@@ -920,7 +920,7 @@ class Offices extends Backend_Controller {
 
          // Generate ID Card
          $html = $this->load->view('my_profile/pdf_id_card_front', $this->data, true);
-         $html2 = $this->load->view('my_profile/pdf_id_card_back', $this->data, true);    
+         $html2 = $this->load->view('my_profile/pdf_id_card_back', $this->data, true);
 
          $mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
          $file_name = $scoutID.".pdf";
@@ -931,10 +931,10 @@ class Offices extends Backend_Controller {
          $mpdf->WriteHTML($html2);
 
          // Output
-         $mpdf->Output('temp_dir/zip_file/'.$unitInfo->id.'/'.$file_name, 'F');         
+         $mpdf->Output('temp_dir/zip_file/'.$unitInfo->id.'/'.$file_name, 'F');
       }
 
-      
+
       // Initialize archive object
       $zip = new ZipArchive();
       $zip->open($rootPath.'.zip', ZipArchive::CREATE | ZipArchive::OVERWRITE);
@@ -963,21 +963,21 @@ class Offices extends Backend_Controller {
       // Zip archive will be created only after closing object
       $zip->close();
 
-      // Delete Files and Folder 
+      // Delete Files and Folder
       $this->delete_directory($rootPath);
 
       // Auto download by browser
       $downloadFileName = $unitInfo->unit_name != NULL ? $unitInfo->unit_name : $unitInfo->id;
       $archfilename = $downloadFileName.'.zip';
-      header("Content-type: application/zip"); 
-      header("Content-Disposition: attachment; filename = $archfilename"); 
-      header("Pragma: no-cache"); 
-      header("Expires: 0"); 
+      header("Content-type: application/zip");
+      header("Content-Disposition: attachment; filename = $archfilename");
+      header("Pragma: no-cache");
+      header("Expires: 0");
       readfile($rootPath.".zip");
 
       // Delete ZIP file
       @unlink($rootPath.'.zip');
-      exit;     
+      exit;
    }
    /*************scout_group_details_pdf function pdf End**************/
 
@@ -1001,7 +1001,7 @@ class Offices extends Backend_Controller {
       return true;
    }
 
-   /* 
+   /*
    * php delete function that deals with directories recursively
    */
    // function delete_files($target) {
@@ -1016,7 +1016,7 @@ class Offices extends Backend_Controller {
    //       rmdir( $target );
 
    //    } elseif(is_file($target)) {
-   //       unlink( $target );  
+   //       unlink( $target );
    //    }
    // }
 
@@ -1027,8 +1027,8 @@ class Offices extends Backend_Controller {
       //print_r($info); exit;
       $scout_id   = $info->scout_id;
       $url        = base_url("user/").$scout_id;
- 
-      $codeContents = 'URL: '.$url."\n"; 
+
+      $codeContents = 'URL: '.$url."\n";
 
       $data['img_url']="";
       $this->load->library('ciqrcode');
@@ -1062,12 +1062,12 @@ class Offices extends Backend_Controller {
 
 
    public function scout_group_set_username($id){
-      // if(!($this->ion_auth->is_admin() || $this->ion_auth->is_region_admin() || $this->ion_auth->is_district_admin() || $this->ion_auth->is_upazila_admin())){         
+      // if(!($this->ion_auth->is_admin() || $this->ion_auth->is_region_admin() || $this->ion_auth->is_district_admin() || $this->ion_auth->is_upazila_admin())){
       //    redirect('dashboard');
       // }
 
      $groupID = (int) decrypt_url($id); //exit;
-      if (!$this->Common_model->exists('office_groups', 'id', $groupID)) { 
+      if (!$this->Common_model->exists('office_groups', 'id', $groupID)) {
          show_404('offices - scout_group_set_username - exitsts', TRUE);
       }
 
@@ -1078,15 +1078,15 @@ class Offices extends Backend_Controller {
 
       }elseif($this->ion_auth->is_region_admin()){
          //Region Admin
-         $region = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id; 
+         $region = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
          //Cross Check
          if(!$this->Offices_model->check_access_scouts_group($groupID, $region)){
             show_404('office - scout_group_details - RA', TRUE);
-         } 
+         }
 
       }elseif($this->ion_auth->is_district_admin()){
          //District Admin
-         $office = $this->Offices_model->get_district_office_by_user_id($this->userSessID);  
+         $office = $this->Offices_model->get_district_office_by_user_id($this->userSessID);
          $region     = $office->dis_scout_region_id;
          $district   = $office->id;
          //Cross Check
@@ -1109,7 +1109,7 @@ class Offices extends Backend_Controller {
       }
 
       //Result
-      $this->data['info'] = $this->Offices_model->get_scout_group_info($officeID); 
+      $this->data['info'] = $this->Offices_model->get_scout_group_info($officeID);
 
       $tables = $this->config->item('tables','ion_auth');
       $identity_column = $this->config->item('identity','ion_auth');
@@ -1130,9 +1130,9 @@ class Offices extends Backend_Controller {
       $password = $this->input->post('password');
       $groups = array('7');
       $additional_data = array(
-         'is_office'    => 1,    
+         'is_office'    => 1,
          'phone'        => $this->input->post('phone')
-         );      
+         );
 
       //Validate and input data
       if ($this->form_validation->run() == true) {
@@ -1165,8 +1165,8 @@ class Offices extends Backend_Controller {
       if($this->ion_auth->is_admin()){
          //Superadmin
          //Dropdown
-         $this->data['regions'] = $this->Common_model->get_regions(); 
-         //Result 
+         $this->data['regions'] = $this->Common_model->get_regions();
+         //Result
          $this->data['results'] = $this->Offices_model->get_scout_upazila();
          if(isset($_GET['region'])){
             $this->data['scout_district'] = $this->Common_model->get_scout_districts($_GET['region']);
@@ -1174,16 +1174,16 @@ class Offices extends Backend_Controller {
 
       }elseif($this->ion_auth->is_region_admin()){
          // Region Admin
-         $regionInfo = $this->Offices_model->get_region_office_by_user_id($this->userSessID);         
+         $regionInfo = $this->Offices_model->get_region_office_by_user_id($this->userSessID);
          //Dropdown
-         $this->data['scout_district'] = $this->Common_model->get_scout_districts($regionInfo->id); 
+         $this->data['scout_district'] = $this->Common_model->get_scout_districts($regionInfo->id);
          // Result
-         $this->data['results'] = $this->Offices_model->get_scout_upazila($regionInfo->id); 
+         $this->data['results'] = $this->Offices_model->get_scout_upazila($regionInfo->id);
 
       }elseif($this->ion_auth->is_district_admin()){
-         // District Admin        
-         $districtInfo = $this->Offices_model->get_district_office_by_user_id($this->userSessID);         
-         //Result         
+         // District Admin
+         $districtInfo = $this->Offices_model->get_district_office_by_user_id($this->userSessID);
+         //Result
          $this->data['results'] = $this->Offices_model->get_scout_upazila('', $districtInfo->id);
 
       }else{
@@ -1201,8 +1201,8 @@ class Offices extends Backend_Controller {
       if($this->ion_auth->is_admin()){
          //Superadmin
          //Dropdown
-         $this->data['regions'] = $this->Common_model->get_regions(); 
-         //Result 
+         $this->data['regions'] = $this->Common_model->get_regions();
+         //Result
          $this->data['results'] = $this->Offices_model->get_scout_upazila();
          if(isset($_GET['region'])){
             $this->data['scout_district'] = $this->Common_model->get_scout_districts($_GET['region']);
@@ -1210,16 +1210,16 @@ class Offices extends Backend_Controller {
 
       }elseif($this->ion_auth->is_region_admin()){
          // Region Admin
-         $regionInfo = $this->Offices_model->get_region_office_by_user_id($this->userSessID);         
+         $regionInfo = $this->Offices_model->get_region_office_by_user_id($this->userSessID);
          //Dropdown
-         $this->data['scout_district'] = $this->Common_model->get_scout_districts($regionInfo->id); 
+         $this->data['scout_district'] = $this->Common_model->get_scout_districts($regionInfo->id);
          // Result
-         $this->data['results'] = $this->Offices_model->get_scout_upazila($regionInfo->id); 
+         $this->data['results'] = $this->Offices_model->get_scout_upazila($regionInfo->id);
 
       }elseif($this->ion_auth->is_district_admin()){
-         // District Admin        
-         $districtInfo = $this->Offices_model->get_district_office_by_user_id($this->userSessID);         
-         //Result         
+         // District Admin
+         $districtInfo = $this->Offices_model->get_district_office_by_user_id($this->userSessID);
+         //Result
          $this->data['results'] = $this->Offices_model->get_scout_upazila('', $districtInfo->id);
 
       }else{
@@ -1228,7 +1228,7 @@ class Offices extends Backend_Controller {
 
       //...............................................................................
       $this->data['meta_title'] = "All Scouts Upazila Office";
-      $html = $this->load->view('upazila_pdf', $this->data, true);   
+      $html = $this->load->view('upazila_pdf', $this->data, true);
       $file_name ="upazila_pdf.pdf";
 
       //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
@@ -1237,7 +1237,7 @@ class Offices extends Backend_Controller {
       //generate the PDF from the given html
       $mpdf->WriteHTML($html);
 
-      //download it for 'D'. 
+      //download it for 'D'.
       $mpdf->Output($file_name, "D");
    }
 
@@ -1245,24 +1245,24 @@ class Offices extends Backend_Controller {
 
    public function upazila_set_username($id){
       $officeID = (int) decrypt_url($id); //exit;
-      if (!$this->Common_model->exists('office_upazila', 'id', $officeID)) { 
+      if (!$this->Common_model->exists('office_upazila', 'id', $officeID)) {
          show_404('offices - upazila_set_username - exitsts', TRUE);
       }
 
       if($this->ion_auth->is_admin()){
          //Superadmin
          //Goto next
-      }elseif($this->ion_auth->is_region_admin()){         
+      }elseif($this->ion_auth->is_region_admin()){
          //Region Admin
-         $region = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;             
+         $region = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
          //Cross Check
          if(!$this->Offices_model->check_office_access_upazila($officeID, $region)){
             show_404('offices - upazila_set_username - RA', TRUE);
-         }         
+         }
 
       }elseif($this->ion_auth->is_district_admin()){
          //District Admin
-         $office = $this->Offices_model->get_district_office_by_user_id($this->userSessID);  
+         $office = $this->Offices_model->get_district_office_by_user_id($this->userSessID);
          $region     = $office->dis_scout_region_id;
          $district   = $office->id;
          //Cross Check
@@ -1274,7 +1274,7 @@ class Offices extends Backend_Controller {
       }
 
       //Result
-      $this->data['info'] = $this->Offices_model->get_scout_upazila_info($officeID); 
+      $this->data['info'] = $this->Offices_model->get_scout_upazila_info($officeID);
 
       $tables = $this->config->item('tables','ion_auth');
       $identity_column = $this->config->item('identity','ion_auth');
@@ -1296,7 +1296,7 @@ class Offices extends Backend_Controller {
       $groups = array('6');
       $additional_data = array(
          'is_office'    => 1
-         );      
+         );
 
       //Validate and input data
       if ($this->form_validation->run() == true) {
@@ -1326,24 +1326,24 @@ class Offices extends Backend_Controller {
 
    public function upazila_change_password($id){
       $officeID = (int) decrypt_url($id); //exit;
-      if (!$this->Common_model->exists('office_upazila', 'id', $officeID)) { 
+      if (!$this->Common_model->exists('office_upazila', 'id', $officeID)) {
          show_404('offices - upazila_change_password - exitsts', TRUE);
       }
 
       if($this->ion_auth->is_admin()){
          //Superadmin
          //Goto next
-      }elseif($this->ion_auth->is_region_admin()){         
+      }elseif($this->ion_auth->is_region_admin()){
          //Region Admin
-         $region = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;             
+         $region = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
          //Cross Check
          if(!$this->Offices_model->check_office_access_upazila($officeID, $region)){
             show_404('offices - upazila_change_password - RA', TRUE);
-         }         
+         }
 
       }elseif($this->ion_auth->is_district_admin()){
          //District Admin
-         $office = $this->Offices_model->get_district_office_by_user_id($this->userSessID);  
+         $office = $this->Offices_model->get_district_office_by_user_id($this->userSessID);
          $region     = $office->dis_scout_region_id;
          $district   = $office->id;
          //Cross Check
@@ -1355,7 +1355,7 @@ class Offices extends Backend_Controller {
       }
 
       //Result
-      $this->data['info'] = $this->Offices_model->get_scout_upazila_info($officeID); 
+      $this->data['info'] = $this->Offices_model->get_scout_upazila_info($officeID);
 
       if($this->data['info']->user_id){
          //validation
@@ -1401,7 +1401,7 @@ class Offices extends Backend_Controller {
             'value' => $this->data['info']->user_id,
             );
 
-         //Load view       
+         //Load view
          $this->data['meta_title'] = 'Change Scouts Upazila Password';
          $this->data['subview'] = 'upazila_change_password';
          $this->load->view('backend/_layout_main', $this->data);
@@ -1411,7 +1411,7 @@ class Offices extends Backend_Controller {
    }
 
    public function upazila_create(){
-      if(!$this->ion_auth->is_admin()){         
+      if(!$this->ion_auth->is_admin()){
          redirect('dashboard');
       }
 
@@ -1429,10 +1429,10 @@ class Offices extends Backend_Controller {
       $this->form_validation->set_rules('password', $this->lang->line('create_user_validation_password_label'), 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|max_length[' . $this->config->item('max_password_length', 'ion_auth') . ']');
       $this->form_validation->set_rules('phone', $this->lang->line('create_user_validation_phone_label'), 'trim');
 
-      $this->form_validation->set_rules('upa_div_id', 'division', 'trim'); 
-      $this->form_validation->set_rules('upa_dis_id', 'district', 'trim');     
-      $this->form_validation->set_rules('upa_upa_id', 'upazila/thana', 'trim');     
-      $this->form_validation->set_rules('upa_scout_dis_id', 'scout district', 'required|trim');  
+      $this->form_validation->set_rules('upa_div_id', 'division', 'trim');
+      $this->form_validation->set_rules('upa_dis_id', 'district', 'trim');
+      $this->form_validation->set_rules('upa_upa_id', 'upazila/thana', 'trim');
+      $this->form_validation->set_rules('upa_scout_dis_id', 'scout district', 'required|trim');
       $this->form_validation->set_rules('upa_name', 'upazila name bangla', 'required|trim|max_length[255]');
       $this->form_validation->set_rules('upa_name_en', 'upazila name english', 'required|trim|max_length[255]');
 
@@ -1442,7 +1442,7 @@ class Offices extends Backend_Controller {
       $groups = array('6');
       $additional_data = array(
          'is_office'    => 1
-         ); 
+         );
 
       //Validate and input data
       if ($this->form_validation->run() == true){
@@ -1476,10 +1476,10 @@ class Offices extends Backend_Controller {
       }
 
       //Dropdown
-      $this->data['divisions'] = $this->Common_model->get_division(); 
-      $this->data['districts'] = $this->Common_model->get_district(); 
-      $this->data['upazilas'] = $this->Common_model->get_upazila_thana(); 
-      $this->data['regions'] = $this->Common_model->get_regions(); 
+      $this->data['divisions'] = $this->Common_model->get_division();
+      $this->data['districts'] = $this->Common_model->get_district();
+      $this->data['upazilas'] = $this->Common_model->get_upazila_thana();
+      $this->data['regions'] = $this->Common_model->get_regions();
 
       // Load view
       $this->data['meta_title'] = 'Create Scouts Upazila Office';
@@ -1489,32 +1489,32 @@ class Offices extends Backend_Controller {
 
    public function upazila_update($id){
       $officeID = (int) decrypt_url($id); //exit;
-      if (!$this->Common_model->exists('office_upazila', 'id', $officeID)) { 
+      if (!$this->Common_model->exists('office_upazila', 'id', $officeID)) {
          show_404('offices - upazila_update - exitsts', TRUE);
-      }      
+      }
 
       if($this->ion_auth->is_admin()){
          //Superadmin
          //Validation
-         $this->form_validation->set_rules('upa_scout_dis_id', 'scout district', 'required|trim');  
-         //Dropdown         
-         $this->data['divisions'] = $this->Common_model->get_division(); 
-         $this->data['districts'] = $this->Common_model->get_district(); 
-         $this->data['upazilas'] = $this->Common_model->get_upazila_thana(); 
-         $this->data['regions'] = $this->Common_model->get_regions(); 
-         $this->data['scout_districts'] = $this->Common_model->get_scout_districts(); 
+         $this->form_validation->set_rules('upa_scout_dis_id', 'scout district', 'required|trim');
+         //Dropdown
+         $this->data['divisions'] = $this->Common_model->get_division();
+         $this->data['districts'] = $this->Common_model->get_district();
+         $this->data['upazilas'] = $this->Common_model->get_upazila_thana();
+         $this->data['regions'] = $this->Common_model->get_regions();
+         $this->data['scout_districts'] = $this->Common_model->get_scout_districts();
 
-      }elseif($this->ion_auth->is_region_admin()){         
+      }elseif($this->ion_auth->is_region_admin()){
          //Region Admin
-         $region = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;             
+         $region = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
          //Cross Check
          if(!$this->Offices_model->check_office_access_upazila($officeID, $region)){
            show_404('offices - upazila_update - RA', TRUE);
-         }         
+         }
 
       }elseif($this->ion_auth->is_district_admin()){
          //District Admin
-         $office = $this->Offices_model->get_district_office_by_user_id($this->userSessID);  
+         $office = $this->Offices_model->get_district_office_by_user_id($this->userSessID);
          $region     = $office->dis_scout_region_id;
          $district   = $office->id;
          //Cross Check
@@ -1526,15 +1526,15 @@ class Offices extends Backend_Controller {
       }
 
       //Validation
-      $this->form_validation->set_rules('upa_div_id', 'division', 'trim'); 
-      $this->form_validation->set_rules('upa_dis_id', 'district', 'trim');     
-      $this->form_validation->set_rules('upa_upa_id', 'upazila', 'trim');           
+      $this->form_validation->set_rules('upa_div_id', 'division', 'trim');
+      $this->form_validation->set_rules('upa_dis_id', 'district', 'trim');
+      $this->form_validation->set_rules('upa_upa_id', 'upazila', 'trim');
       $this->form_validation->set_rules('upa_name', 'upazila name', 'required|trim|max_length[255]');
-      $this->form_validation->set_rules('upa_name_en', 'upazila name english', 'required|trim|max_length[255]');      
+      $this->form_validation->set_rules('upa_name_en', 'upazila name english', 'required|trim|max_length[255]');
 
       //Validation and input data
       if($this->form_validation->run() == true){
-         $form_data = array(            
+         $form_data = array(
             'upa_name' => $this->input->post('upa_name'),
             'upa_name_en' => $this->input->post('upa_name_en'),
             'upa_description' => $this->input->post('upa_description'),
@@ -1563,8 +1563,8 @@ class Offices extends Backend_Controller {
       }
 
       //Result
-      $this->data['info'] = $this->Offices_model->get_scout_upazila_info($officeID); 
-      
+      $this->data['info'] = $this->Offices_model->get_scout_upazila_info($officeID);
+
       // Load view
       $this->data['meta_title'] = 'Update Scouts Upazila Office';
       $this->data['subview'] = 'upazila_update';
@@ -1581,14 +1581,14 @@ class Offices extends Backend_Controller {
       if($this->ion_auth->is_admin()){
          //Go to next
       }elseif($this->ion_auth->is_region_admin()){
-         $region = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id; 
+         $region = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
          //Cross Check
          if(!$this->Offices_model->check_office_access_upazila($officeID, $region)){
-            show_404('offices - upazila_details - RA', TRUE); 
-         } 
+            show_404('offices - upazila_details - RA', TRUE);
+         }
 
       }elseif($this->ion_auth->is_district_admin()){
-         $office = $this->Offices_model->get_district_office_by_user_id($this->userSessID);  
+         $office = $this->Offices_model->get_district_office_by_user_id($this->userSessID);
          $region     = $office->dis_scout_region_id;
          $district   = $office->id;
          //Cross Check
@@ -1600,7 +1600,7 @@ class Offices extends Backend_Controller {
          redirect('dashboard');
       }
 
-      $this->data['info'] = $this->Offices_model->get_scout_upazila_info($officeID); 
+      $this->data['info'] = $this->Offices_model->get_scout_upazila_info($officeID);
 
       // Load view
       $this->data['meta_title'] = 'Details Scouts Upazila Office';
@@ -1608,33 +1608,33 @@ class Offices extends Backend_Controller {
       $this->load->view('backend/_layout_main', $this->data);
    }
 
-   public function upazila_delete($id){  
+   public function upazila_delete($id){
       //Check Authentication
       if(!$this->ion_auth->is_admin()){
          redirect('dashboard');
       }
 
       $officeID = (int) decrypt_url($id); //exit;
-      if (!$this->Common_model->exists('office_upazila', 'id', $officeID)) { 
+      if (!$this->Common_model->exists('office_upazila', 'id', $officeID)) {
          show_404('office - upazila_delete - exitsts', TRUE);
       }
 
       //Count Scouts District
       if($this->Offices_model->get_count_scouts_group_by_district($officeID)){
          $this->session->set_flashdata('warning', 'Scouts upazila could not be deleted because scouts group exists under this upazila.');
-         redirect("offices/upazila");   
+         redirect("offices/upazila");
       }
 
       if($this->Offices_model->upazila_destroy($officeID)){
          //$insert_id = $this->db->insert_id();
             func_activity_log(3, 'delete upazila office information data ID :'.$officeID); //1=C, 2=U, 3=D, 4=V, 5=G ,A = 6
             /***********Activity Logs End**********/
-         // Delete Scouts Region from database         
+         // Delete Scouts Region from database
          $this->session->set_flashdata('success', 'Scouts upazila delete successfully.');
-         redirect("offices/upazila");   
+         redirect("offices/upazila");
       }else{
          $this->session->set_flashdata('warning', 'Something is wrong.');
-         redirect("offices/upazila");   
+         redirect("offices/upazila");
       }
    }
 
@@ -1645,45 +1645,45 @@ class Offices extends Backend_Controller {
    public function district(){
       if($this->ion_auth->is_admin()){
          //Superadmin
-         //Result         
-         $this->data['results'] = $this->Offices_model->get_scout_district(); 
+         //Result
+         $this->data['results'] = $this->Offices_model->get_scout_district();
          // Dropdown
-         $this->data['regions'] = $this->Common_model->get_regions(); 
+         $this->data['regions'] = $this->Common_model->get_regions();
       }elseif($this->ion_auth->is_region_admin()){
          // Region Admin
-         $regionInfo = $this->Offices_model->get_region_office_by_user_id($this->userSessID);                  
+         $regionInfo = $this->Offices_model->get_region_office_by_user_id($this->userSessID);
          // Result
-         $this->data['results'] = $this->Offices_model->get_scout_district($regionInfo->id); 
+         $this->data['results'] = $this->Offices_model->get_scout_district($regionInfo->id);
       }else{
          redirect('dashboard');
-      }      
+      }
 
       // Load page
       $this->data['meta_title'] = 'All Scouts District Office';
       $this->data['subview'] = 'district';
       $this->load->view('backend/_layout_main', $this->data);
-   }   
+   }
 
    /*************district_pdf function pdf start**************/
    public function district_pdf(){
       if($this->ion_auth->is_admin()){
          //Superadmin
-         //Result         
-         $this->data['results'] = $this->Offices_model->get_scout_district(); 
+         //Result
+         $this->data['results'] = $this->Offices_model->get_scout_district();
          // Dropdown
-         $this->data['regions'] = $this->Common_model->get_regions(); 
+         $this->data['regions'] = $this->Common_model->get_regions();
       }elseif($this->ion_auth->is_region_admin()){
          // Region Admin
-         $regionInfo = $this->Offices_model->get_region_office_by_user_id($this->userSessID);                  
+         $regionInfo = $this->Offices_model->get_region_office_by_user_id($this->userSessID);
          // Result
-         $this->data['results'] = $this->Offices_model->get_scout_district($regionInfo->id); 
+         $this->data['results'] = $this->Offices_model->get_scout_district($regionInfo->id);
       }else{
          redirect('dashboard');
       }
 
       //...............................................................................
       $this->data['meta_title'] = "All Scouts District Office";
-      $html = $this->load->view('district_pdf', $this->data, true);   
+      $html = $this->load->view('district_pdf', $this->data, true);
       $file_name ="district_pdf.pdf";
 
       //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
@@ -1692,7 +1692,7 @@ class Offices extends Backend_Controller {
       //generate the PDF from the given html
       $mpdf->WriteHTML($html);
 
-      //download it for 'D'. 
+      //download it for 'D'.
       $mpdf->Output($file_name, "D");
    }
 
@@ -1710,24 +1710,24 @@ class Offices extends Backend_Controller {
          //Go to next
       }elseif($this->ion_auth->is_region_admin()){
          //Region Admin
-         $region = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id; 
+         $region = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
          //Cross Check
          if(!$this->Offices_model->check_office_access_district($officeID, $region)){
             show_404('office - district_change_password - RA', TRUE);
-         } 
+         }
       }else{
          redirect('dashboard');
       }
 
-      //Result 
-      $this->data['info'] = $this->Offices_model->get_scout_district_info($officeID); 
+      //Result
+      $this->data['info'] = $this->Offices_model->get_scout_district_info($officeID);
 
       if($this->data['info']->user_id){
          //validation
          $this->form_validation->set_rules('new', $this->lang->line('reset_password_validation_new_password_label'), 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|max_length[' . $this->config->item('max_password_length', 'ion_auth') . ']|matches[new_confirm]');
          $this->form_validation->set_rules('new_confirm', $this->lang->line('reset_password_validation_new_password_confirm_label'), 'required');
 
-         //Validation 
+         //Validation
          if ($this->form_validation->run() === TRUE){
             // finally change the password
             $identity = $this->data['info']->{$this->config->item('identity', 'ion_auth')}; //exit;
@@ -1771,7 +1771,7 @@ class Offices extends Backend_Controller {
             'value' => $this->data['info']->user_id,
             );
 
-         //Load View       
+         //Load View
          $this->data['meta_title'] = 'District Change Password';
          $this->data['subview'] = 'district_change_password';
          $this->load->view('backend/_layout_main', $this->data);
@@ -1781,7 +1781,7 @@ class Offices extends Backend_Controller {
    }
 
    public function district_create(){
-      if(!$this->ion_auth->is_admin()){         
+      if(!$this->ion_auth->is_admin()){
          redirect('dashboard');
       }
 
@@ -1801,10 +1801,10 @@ class Offices extends Backend_Controller {
 
 
       //Validation
-      $this->form_validation->set_rules('dis_div_id', 'scout district division', 'trim'); 
+      $this->form_validation->set_rules('dis_div_id', 'scout district division', 'trim');
       $this->form_validation->set_rules('dis_dis_id', 'scout district district', 'trim');
       $this->form_validation->set_rules('dis_scout_region_id', 'scout region', 'required|trim');
-      $this->form_validation->set_rules('dis_type', 'district type', 'required|trim');          
+      $this->form_validation->set_rules('dis_type', 'district type', 'required|trim');
       $this->form_validation->set_rules('dis_name', 'district name bangla', 'required|trim|max_length[255]');
       $this->form_validation->set_rules('dis_name_en', 'district name english', 'required|trim|max_length[255]');
 
@@ -1846,10 +1846,10 @@ class Offices extends Backend_Controller {
       }
 
       //Dropdown
-      $this->data['divisions'] = $this->Common_model->get_division(); 
-      $this->data['districts'] = $this->Common_model->get_district(); 
+      $this->data['divisions'] = $this->Common_model->get_division();
+      $this->data['districts'] = $this->Common_model->get_district();
       $this->data['dis_type'] = $this->Common_model->get_scout_district_type();
-      $this->data['regions'] = $this->Common_model->get_regions();       
+      $this->data['regions'] = $this->Common_model->get_regions();
 
       //Load View
       $this->data['meta_title'] = 'Create Scouts District Office';
@@ -1867,34 +1867,34 @@ class Offices extends Backend_Controller {
       if($this->ion_auth->is_admin()){
          //Go to next
          //Validation
-         $this->form_validation->set_rules('dis_div_id', 'district division', 'trim'); 
+         $this->form_validation->set_rules('dis_div_id', 'district division', 'trim');
          $this->form_validation->set_rules('dis_dis_id', 'district district', 'trim');
          $this->form_validation->set_rules('dis_scout_region_id', 'scout region', 'required|trim');
          $this->form_validation->set_rules('dis_type', 'district type', 'required|trim');
 
          //Dropdown
-         $this->data['divisions'] = $this->Common_model->get_division(); 
+         $this->data['divisions'] = $this->Common_model->get_division();
          $this->data['districts'] = $this->Common_model->get_district();
          $this->data['dis_type'] = $this->Common_model->get_scout_district_type();
-         $this->data['regions'] = $this->Common_model->get_regions(); 
+         $this->data['regions'] = $this->Common_model->get_regions();
 
       }elseif($this->ion_auth->is_region_admin()){
-         $region = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id; 
+         $region = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
          //Cross Check
          if(!$this->Offices_model->check_office_access_district($officeID, $region)){
             show_404('office - district_update - RA', TRUE);
-         } 
+         }
       }else{
          redirect('dashboard');
       }
 
       //Validation
       $this->form_validation->set_rules('dis_name', 'district name bangla', 'required|trim|max_length[255]');
-      $this->form_validation->set_rules('dis_name_en', 'district name english', 'required|trim|max_length[255]');      
+      $this->form_validation->set_rules('dis_name_en', 'district name english', 'required|trim|max_length[255]');
 
       //Validate and update data
       if ($this->form_validation->run() == true){
-         $form_data = array(            
+         $form_data = array(
             'dis_name'   => $this->input->post('dis_name'),
             'dis_name_en'=> $this->input->post('dis_name_en'),
             'dis_description'   => $this->input->post('dis_description'),
@@ -1923,7 +1923,7 @@ class Offices extends Backend_Controller {
       }
 
       //Result
-      $this->data['info'] = $this->Offices_model->get_scout_district_info($officeID); 
+      $this->data['info'] = $this->Offices_model->get_scout_district_info($officeID);
       // print_r($this->data['info']); exit;
 
       //Load View
@@ -1944,17 +1944,17 @@ class Offices extends Backend_Controller {
          //Go to next
       }elseif($this->ion_auth->is_region_admin()){
          //Region Admin
-         $region = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id; 
+         $region = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
          //Cross Check
          if(!$this->Offices_model->check_office_access_district($officeID, $region)){
             show_404('office - district_details - RA', TRUE);
-         } 
+         }
       }else{
          redirect('dashboard');
       }
 
       //Result
-      $this->data['info'] = $this->Offices_model->get_scout_district_info($officeID); 
+      $this->data['info'] = $this->Offices_model->get_scout_district_info($officeID);
 
       // Load view
       $this->data['meta_title'] = 'Scouts District Details';
@@ -1975,21 +1975,21 @@ class Offices extends Backend_Controller {
          //Go to next
       }elseif($this->ion_auth->is_region_admin()){
          //Region Admin
-         $region = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id; 
+         $region = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
          //Cross Check
          if(!$this->Offices_model->check_office_access_district($officeID, $region)){
             show_404('office - district_details - RA', TRUE);
-         } 
+         }
       }else{
          redirect('dashboard');
       }
 
       //Result
       $this->data['info'] = $this->Offices_model->get_scout_district_info($officeID);
-      
+
       //...............................................................................
       $this->data['meta_title'] = "Scouts District Details";
-      $html = $this->load->view('district_details_pdf', $this->data, true);   
+      $html = $this->load->view('district_details_pdf', $this->data, true);
       $file_name ="district_details_pdf.pdf";
 
       //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
@@ -1998,31 +1998,31 @@ class Offices extends Backend_Controller {
       //generate the PDF from the given html
       $mpdf->WriteHTML($html);
 
-      //download it for 'D'. 
+      //download it for 'D'.
       $mpdf->Output($file_name, "D");
    }
    /*************district_details_pdf function pdf End**************/
 
-   public function district_delete($id){  
+   public function district_delete($id){
       //Check Authentication
       if(!$this->ion_auth->is_admin()){
          redirect('dashboard');
       }
 
       $officeID = (int) decrypt_url($id); //exit;
-      if (!$this->Common_model->exists('office_district', 'id', $officeID)) { 
+      if (!$this->Common_model->exists('office_district', 'id', $officeID)) {
          show_404('office - district_delete - exitsts', TRUE);
       }
 
       //Count Scouts District
       if($this->Offices_model->get_count_scouts_group_by_district($officeID)){
          $this->session->set_flashdata('warning', 'Scouts district could not be deleted because scouts group exists under this district.');
-         redirect("offices/district");   
+         redirect("offices/district");
       }
 
       //Delete
       if($this->Offices_model->district_destroy($officeID)){
-         // Delete Scouts Region from database 
+         // Delete Scouts Region from database
 
             /***********Activity Logs Start**********/
             //$insert_id = $this->db->insert_id();
@@ -2030,10 +2030,10 @@ class Offices extends Backend_Controller {
             /***********Activity Logs End**********/
 
          $this->session->set_flashdata('success', 'Scouts district delete successfully.');
-         redirect("offices/district");   
+         redirect("offices/district");
       }else{
          $this->session->set_flashdata('warning', 'Something is wrong.');
-         redirect("offices/district");   
+         redirect("offices/district");
       }
    }
 
@@ -2042,12 +2042,12 @@ class Offices extends Backend_Controller {
    ****************************************************************/
 
    public function region(){
-      if(!$this->ion_auth->is_admin()){         
+      if(!$this->ion_auth->is_admin()){
          redirect('dashboard');
       }
 
       //Result
-      $this->data['results'] = $this->Offices_model->get_region(); 
+      $this->data['results'] = $this->Offices_model->get_region();
 
       // Load view
       $this->data['meta_title'] = 'All Scouts Region ';
@@ -2061,7 +2061,7 @@ class Offices extends Backend_Controller {
 
       //...............................................................................
       $this->data['meta_title'] = "All Scouts Region ";
-      $html = $this->load->view('region_pdf', $this->data, true);   
+      $html = $this->load->view('region_pdf', $this->data, true);
       $file_name ="region_pdf.pdf";
 
       //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
@@ -2070,7 +2070,7 @@ class Offices extends Backend_Controller {
       //generate the PDF from the given html
       $mpdf->WriteHTML($html);
 
-      //download it for 'D'. 
+      //download it for 'D'.
       $mpdf->Output($file_name, "D");
    }
 
@@ -2084,7 +2084,7 @@ class Offices extends Backend_Controller {
       }
 
       //Result
-      $this->data['info'] = $this->Offices_model->get_region_info($officeID); 
+      $this->data['info'] = $this->Offices_model->get_region_info($officeID);
       //$this->data['info']->region_user_id;
 
       if($this->data['info']->region_user_id){
@@ -2137,7 +2137,7 @@ class Offices extends Backend_Controller {
             'value' => $this->data['info']->region_user_id,
             );
 
-         //Load page       
+         //Load page
          $this->data['meta_title'] = 'Scouts Region Change Password';
          $this->data['subview'] = 'region_change_password';
          $this->load->view('backend/_layout_main', $this->data);
@@ -2147,7 +2147,7 @@ class Offices extends Backend_Controller {
    }
 
    public function region_create(){
-      if(!$this->ion_auth->is_admin()){         
+      if(!$this->ion_auth->is_admin()){
          redirect('dashboard');
       }
 
@@ -2164,9 +2164,9 @@ class Offices extends Backend_Controller {
       }
       $this->form_validation->set_rules('password', $this->lang->line('create_user_validation_password_label'), 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|max_length[' . $this->config->item('max_password_length', 'ion_auth') . ']');
       $this->form_validation->set_rules('phone', $this->lang->line('create_user_validation_phone_label'), 'trim');
-      
-      $this->form_validation->set_rules('region_div_id', 'region division', 'trim'); 
-      $this->form_validation->set_rules('region_type', 'region type', 'required|trim');          
+
+      $this->form_validation->set_rules('region_div_id', 'region division', 'trim');
+      $this->form_validation->set_rules('region_type', 'region type', 'required|trim');
       $this->form_validation->set_rules('region_name', 'region name', 'required|trim|max_length[255]');
       $uploadedFile='';
       if(@$_FILES['userfile']['size'] > 0){
@@ -2178,13 +2178,13 @@ class Offices extends Backend_Controller {
       $password = $this->input->post('password');
       $groups = array('4');
       $additional_data = array(
-         'is_office'    => 1,    
+         'is_office'    => 1,
          'phone'         => $this->input->post('phone')
-         );      
-      
+         );
+
       //Validate and input data
       if ($this->form_validation->run() == true) {
-         $lastID = $this->ion_auth->register($identity, $password, $email, $additional_data, $groups);   
+         $lastID = $this->ion_auth->register($identity, $password, $email, $additional_data, $groups);
 
          $form_data = array(
             'region_div_id' => $this->input->post('region_div_id'),
@@ -2215,7 +2215,7 @@ class Offices extends Backend_Controller {
             }else{
                $this->data['message'] = $this->upload->display_errors();
             }
-         }         
+         }
 
          if($_FILES['userfile']['size'] > 0){
             $form_data['region_logo'] = $uploadedFile;
@@ -2234,17 +2234,17 @@ class Offices extends Backend_Controller {
       }
 
       //Dropdown
-      $this->data['divisions'] = $this->Common_model->get_division(); 
+      $this->data['divisions'] = $this->Common_model->get_division();
       $this->data['region_type'] = $this->Common_model->get_region_type();
 
       //Load View
       $this->data['meta_title'] = 'Create Scouts Region Office';
       $this->data['subview'] = 'region_create';
       $this->load->view('backend/_layout_main', $this->data);
-   }   
+   }
 
    public function region_update($id){
-      if(!$this->ion_auth->is_admin()){         
+      if(!$this->ion_auth->is_admin()){
          redirect('dashboard');
       }
       $officeID = (int) decrypt_url($id);
@@ -2253,12 +2253,12 @@ class Offices extends Backend_Controller {
       }
 
       //validation
-      $this->form_validation->set_rules('region_div_id', 'region division', 'trim'); 
-      $this->form_validation->set_rules('region_type', 'region type', 'required|trim');          
+      $this->form_validation->set_rules('region_div_id', 'region division', 'trim');
+      $this->form_validation->set_rules('region_type', 'region type', 'required|trim');
       $this->form_validation->set_rules('region_name', 'region name bangla', 'required|trim|max_length[255]');
       $this->form_validation->set_rules('region_name_en', 'region name english', 'required|trim|max_length[255]');
 
-      $this->data['info'] = $this->Offices_model->get_region_info($officeID); 
+      $this->data['info'] = $this->Offices_model->get_region_info($officeID);
       // print_r($this->data['info']); exit;
 
       $uploadedFile='';
@@ -2304,7 +2304,7 @@ class Offices extends Backend_Controller {
          // print_r($form_data); exit;
 
          if($this->Common_model->edit('office_region', $officeID, 'id', $form_data)){
-            
+
             /***********Activity Logs Start**********/
             //$insert_id = $this->db->insert_id();
             func_activity_log(2, 'Update scouts region ID :'.$officeID); //1=C, 2=U, 3=D, 4=V, 5=G ,A = 6
@@ -2316,7 +2316,7 @@ class Offices extends Backend_Controller {
       }
 
       //Dropdown
-      $this->data['divisions'] = $this->Common_model->get_division(); 
+      $this->data['divisions'] = $this->Common_model->get_division();
       $this->data['region_type'] = $this->Common_model->get_region_type();
 
       //Load View
@@ -2326,7 +2326,7 @@ class Offices extends Backend_Controller {
    }
 
    public function region_details($id){
-      if(!$this->ion_auth->is_admin()){         
+      if(!$this->ion_auth->is_admin()){
          redirect('dashboard');
       }
       $officeID = (int) decrypt_url($id);
@@ -2335,7 +2335,7 @@ class Offices extends Backend_Controller {
       }
 
       //Result
-      $this->data['info'] = $this->Offices_model->get_region_info($officeID); 
+      $this->data['info'] = $this->Offices_model->get_region_info($officeID);
       // print_r($this->data['info']); exit;
 
       // Load view
@@ -2343,9 +2343,9 @@ class Offices extends Backend_Controller {
       $this->data['subview'] = 'region_details';
       $this->load->view('backend/_layout_main', $this->data);
    }
-   
+
    public function region_details_pdf($id){
-      if(!$this->ion_auth->is_admin()){         
+      if(!$this->ion_auth->is_admin()){
          redirect('dashboard');
       }
       $officeID = (int) decrypt_url($id);
@@ -2358,7 +2358,7 @@ class Offices extends Backend_Controller {
 
       //...............................................................................
       $this->data['meta_title'] = "Details Scouts Region Office";
-      $html = $this->load->view('region_details_pdf', $this->data, true);   
+      $html = $this->load->view('region_details_pdf', $this->data, true);
       $file_name ="region_details_pdf.pdf";
 
       //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
@@ -2367,9 +2367,9 @@ class Offices extends Backend_Controller {
       //generate the PDF from the given html
       $mpdf->WriteHTML($html);
 
-      //download it for 'D'. 
+      //download it for 'D'.
       $mpdf->Output($file_name, "D");
-   }   
+   }
 
    public function region_delete($id){
       //Check Authentication
@@ -2378,14 +2378,14 @@ class Offices extends Backend_Controller {
       }
 
       $officeID = (int) decrypt_url($id);
-      if (!$this->Common_model->exists('office_region', 'id', $officeID)) { 
+      if (!$this->Common_model->exists('office_region', 'id', $officeID)) {
          show_404('office - region_delete - exists', TRUE);
       }
 
       //Count Scouts District
       if($this->Offices_model->get_count_scouts_district_by_region($officeID)){
          $this->session->set_flashdata('warning', 'Scouts region could not be deleted because scouts district exists under this region.');
-         redirect("offices/region");   
+         redirect("offices/region");
       }
 
       //Delete
@@ -2395,14 +2395,14 @@ class Offices extends Backend_Controller {
          func_activity_log(3, 'Scouts region delete ID :'.$officeID); //1=C, 2=U, 3=D, 4=V, 5=G ,A = 6
          /***********Activity Logs End**********/
 
-         // Delete Scouts Region from database         
+         // Delete Scouts Region from database
          $this->session->set_flashdata('success', 'Scouts region delete successfully.');
-         redirect("offices/region");   
+         redirect("offices/region");
       }else{
          $this->session->set_flashdata('warning', 'Something is wrong.');
-         redirect("offices/region");   
+         redirect("offices/region");
       }
-   }   
+   }
 
 
    /*********************** Scouts NHQ Office *********************
@@ -2410,7 +2410,7 @@ class Offices extends Backend_Controller {
 
    public function nhq(){
       if($this->ion_auth->is_admin()){
-         $this->data['results'] = $this->Offices_model->get_nhq();          
+         $this->data['results'] = $this->Offices_model->get_nhq();
          foreach ($this->data['results'] as $k => $user){
             $this->data['results'][$k]->groups = $this->ion_auth->get_users_groups($user->userid)->result();
          }
@@ -2426,9 +2426,9 @@ class Offices extends Backend_Controller {
 
    /*************nhq_pdf function pdf start**************/
     public function nhq_pdf(){
-        
+
          if($this->ion_auth->is_admin()){
-         $this->data['results'] = $this->Offices_model->get_nhq();          
+         $this->data['results'] = $this->Offices_model->get_nhq();
          foreach ($this->data['results'] as $k => $user){
             $this->data['results'][$k]->groups = $this->ion_auth->get_users_groups($user->userid)->result();
          }
@@ -2438,7 +2438,7 @@ class Offices extends Backend_Controller {
 
         //...............................................................................
         $this->data['meta_title'] = "Scouts NHQ Office Users";
-        $html = $this->load->view('nhq_pdf', $this->data, true);   
+        $html = $this->load->view('nhq_pdf', $this->data, true);
         $file_name ="nhq_pdf.pdf";
 
         //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
@@ -2447,7 +2447,7 @@ class Offices extends Backend_Controller {
         //generate the PDF from the given html
         $mpdf->WriteHTML($html);
 
-        //download it for 'D'. 
+        //download it for 'D'.
         $mpdf->Output($file_name, "D");
     }
 
@@ -2463,7 +2463,7 @@ class Offices extends Backend_Controller {
       }
 
       //Result
-      $this->data['info'] = $this->Offices_model->get_nhq_user_info($officeID); 
+      $this->data['info'] = $this->Offices_model->get_nhq_user_info($officeID);
 
       // Validate field
       if($this->input->post('identity') != $this->data['info']->username) {
@@ -2502,7 +2502,7 @@ class Offices extends Backend_Controller {
 
 
    public function nhq_create(){
-      if(!$this->ion_auth->is_admin()){         
+      if(!$this->ion_auth->is_admin()){
          redirect('dashboard');
       }
 
@@ -2530,14 +2530,14 @@ class Offices extends Backend_Controller {
       $password = $this->input->post('password');
       // $groups = array('4');
       $additional_data = array(
-         'is_office'    => 1,    
+         'is_office'    => 1,
          'first_name'   => $this->input->post('nhq_office_name')
-         );      
-      
+         );
+
       //Validata and input data
       if ($this->form_validation->run() == true) {
          // print_r($this->input->post('groups')); exit;
-         $lastID = $this->ion_auth->register($identity, $password, $email, $additional_data, $this->input->post('groups'));   
+         $lastID = $this->ion_auth->register($identity, $password, $email, $additional_data, $this->input->post('groups'));
 
          $form_data = array(
             'nhq_office_name' => $this->input->post('nhq_office_name'),
@@ -2554,7 +2554,7 @@ class Offices extends Backend_Controller {
             redirect("offices/nhq");
          }
       }
-      
+
       //$groups;
       $gIDs = array('1','2','3','11', '13', '14', '15');
       $this->data['groups'] = $this->Offices_model->get_user_group($gIDs)->result_array();
@@ -2605,8 +2605,8 @@ class Offices extends Backend_Controller {
       // print_r($userID); exit;
 
       $user = $this->ion_auth->user($userID)->row();
-      //$groups=$this->ion_auth->groups()->result_array();         
-      
+      //$groups=$this->ion_auth->groups()->result_array();
+
       $currentGroups = $this->ion_auth->get_users_groups($userID)->result();
 
       // validate form input
@@ -2684,7 +2684,7 @@ class Offices extends Backend_Controller {
 
       // pass the user to the view
       $this->data['user'] = $user;
-      
+
       //$this->data['groups'] = $groups;
       $gIDs = array('1','2','3','11');
       $this->data['groups'] = $this->Offices_model->get_user_group($gIDs)->result_array();
@@ -2736,12 +2736,12 @@ class Offices extends Backend_Controller {
          func_activity_log(3, 'nhq delete user ID :'.$officeID); //1=C, 2=U, 3=D, 4=V, 5=G ,A = 6
          /***********Activity Logs End**********/
 
-         // Delete Scouts Region from database         
+         // Delete Scouts Region from database
          $this->session->set_flashdata('success', 'Delete NHQ user successfully.');
-         redirect("offices/nhq");   
+         redirect("offices/nhq");
       }else{
          $this->session->set_flashdata('warning', 'Something is wrong.');
-         redirect("offices/nhq");   
+         redirect("offices/nhq");
       }
    }
 
@@ -2753,22 +2753,22 @@ class Offices extends Backend_Controller {
    /************************ Region Office ************************/
 
    public function region_user_pdf($id){
-      if(!$this->ion_auth->is_admin()){         
+      if(!$this->ion_auth->is_admin()){
          redirect('dashboard');
       }
 
       $officeID = (int) decrypt_url($id);
       if(!$this->Common_model->exists('office_region', 'id', $officeID)){
          show_404('office - region_user_pdf - exists', TRUE);
-      }      
+      }
 
       // Results
-      $this->data['info'] = $this->Offices_model->get_region_info($officeID); 
+      $this->data['info'] = $this->Offices_model->get_region_info($officeID);
       $this->data['user_list'] = $this->Offices_model->get_office_users(2, $officeID);
-      
+
       //...............................................................................
       $this->data['meta_title'] = "Region Admin User List";
-      $html = $this->load->view('admin_user/region_user_pdf', $this->data, true);   
+      $html = $this->load->view('admin_user/region_user_pdf', $this->data, true);
       $file_name = $this->data['info']->region_name_en."_user_list.pdf";
 
       //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
@@ -2777,22 +2777,22 @@ class Offices extends Backend_Controller {
       //generate the PDF from the given html
       $mpdf->WriteHTML($html);
 
-      //download it for 'D'. 
+      //download it for 'D'.
       $mpdf->Output($file_name, "I");
    }
 
    public function region_user($id){
-      if(!$this->ion_auth->is_admin()){         
+      if(!$this->ion_auth->is_admin()){
          redirect('dashboard');
       }
       $officeID = (int) decrypt_url($id);
       if(!$this->Common_model->exists('office_region', 'id', $officeID)){
          show_404('office - region_user - exists', TRUE);
-      }      
+      }
 
       // Results
-      $this->data['info'] = $this->Offices_model->get_region_info($officeID); 
-      $this->data['user_list'] = $this->Offices_model->get_office_users(2, $officeID); 
+      $this->data['info'] = $this->Offices_model->get_region_info($officeID);
+      $this->data['user_list'] = $this->Offices_model->get_office_users(2, $officeID);
       // print_r($this->data['info']); exit;
 
       //Load View
@@ -2802,7 +2802,7 @@ class Offices extends Backend_Controller {
    }
 
    public function region_user_add($id){
-      if(!$this->ion_auth->is_admin()){         
+      if(!$this->ion_auth->is_admin()){
          redirect('dashboard');
       }
       $officeID = (int) decrypt_url($id);
@@ -2812,25 +2812,25 @@ class Offices extends Backend_Controller {
 
       //validation
       if($this->input->post('member_type') == 1){
-         $this->form_validation->set_rules('scout_member_id', 'select scout id', 'required|trim'); 
+         $this->form_validation->set_rules('scout_member_id', 'select scout id', 'required|trim');
       }else{
-         $this->form_validation->set_rules('user_name', 'name', 'required|trim');          
-         $this->form_validation->set_rules('user_phone', 'phone', 'required|trim');          
-         $this->form_validation->set_rules('user_designation', 'designation', 'trim');   
+         $this->form_validation->set_rules('user_name', 'name', 'required|trim');
+         $this->form_validation->set_rules('user_phone', 'phone', 'required|trim');
+         $this->form_validation->set_rules('user_designation', 'designation', 'trim');
       }
-      
 
-      $this->data['info'] = $this->Offices_model->get_region_info($officeID); 
+
+      $this->data['info'] = $this->Offices_model->get_region_info($officeID);
       // print_r($this->data['info']); exit;
 
       //validata and input data
       if ($this->form_validation->run() == true){
-  
+
          $form_data = array(
             'office_type_id'  => 2,
             'member_type'     => $this->input->post('member_type'),
-            'sc_region_id'    => $this->data['info']->id, 
-            'scout_member_id' => $this->input->post('scout_member_id')!= NULL?$this->input->post('scout_member_id'):NULL, 
+            'sc_region_id'    => $this->data['info']->id,
+            'scout_member_id' => $this->input->post('scout_member_id')!= NULL?$this->input->post('scout_member_id'):NULL,
             'user_name'       => $this->input->post('user_name'),
             'user_phone'      => $this->input->post('user_phone'),
             'user_email'      => $this->input->post('user_email'),
@@ -2839,8 +2839,8 @@ class Offices extends Backend_Controller {
             );
          // print_r($form_data); exit;
 
-         if($this->Common_model->save('office_users', $form_data)){ 
-            
+         if($this->Common_model->save('office_users', $form_data)){
+
             /***********Activity Logs Start**********/
             //$insert_id = $this->db->insert_id();
             func_activity_log(1, 'Add admin user :'.$officeID); //1=C, 2=U, 3=D, 4=V, 5=G ,A = 6
@@ -2861,8 +2861,8 @@ class Offices extends Backend_Controller {
       $this->load->view('backend/_layout_main', $this->data);
    }
 
-   public function region_user_edit($id){      
-      if(!$this->ion_auth->is_admin()){         
+   public function region_user_edit($id){
+      if(!$this->ion_auth->is_admin()){
          redirect('dashboard');
       }
       $dataID = (int) decrypt_url($id);
@@ -2872,24 +2872,24 @@ class Offices extends Backend_Controller {
 
       //validation
       if($this->input->post('member_type') == 1){
-         $this->form_validation->set_rules('scout_member_id', 'select scout id', 'required|trim'); 
+         $this->form_validation->set_rules('scout_member_id', 'select scout id', 'required|trim');
       }else{
-         $this->form_validation->set_rules('user_name', 'name', 'required|trim');          
-         $this->form_validation->set_rules('user_phone', 'phone', 'required|trim');          
-         $this->form_validation->set_rules('user_designation', 'designation', 'trim');   
+         $this->form_validation->set_rules('user_name', 'name', 'required|trim');
+         $this->form_validation->set_rules('user_phone', 'phone', 'required|trim');
+         $this->form_validation->set_rules('user_designation', 'designation', 'trim');
       }
 
-      $this->data['info'] = $this->Offices_model->get_office_user_info($dataID); 
-      // $this->data['user_info'] = $this->Offices_model->get_region_user_info($officeID); 
+      $this->data['info'] = $this->Offices_model->get_office_user_info($dataID);
+      // $this->data['user_info'] = $this->Offices_model->get_region_user_info($officeID);
       // echo '<pre>';
       // print_r($this->data['info']); exit;
 
       //validata and input data
       if ($this->form_validation->run() == true){
-  
-         $form_data = array(            
+
+         $form_data = array(
             'member_type'     => $this->input->post('member_type'),
-            'scout_member_id' => $this->input->post('scout_member_id')!= NULL?$this->input->post('scout_member_id'):NULL, 
+            'scout_member_id' => $this->input->post('scout_member_id')!= NULL?$this->input->post('scout_member_id'):NULL,
             'user_name'       => $this->input->post('user_name'),
             'user_phone'      => $this->input->post('user_phone'),
             'user_email'      => $this->input->post('user_email'),
@@ -2897,9 +2897,9 @@ class Offices extends Backend_Controller {
             'user_remarks'    => $this->input->post('user_remarks')
             );
          // print_r($form_data); exit;
-         
+
          if($this->Common_model->edit('office_users', $dataID, 'id', $form_data)){
-            
+
             /***********Activity Logs Start**********/
             //$insert_id = $this->db->insert_id();
             func_activity_log(2, 'Update system user :'.$dataID); //1=C, 2=U, 3=D, 4=V, 5=G ,A = 6
@@ -2923,7 +2923,7 @@ class Offices extends Backend_Controller {
       }
 
       $dataID = (int) decrypt_url($id);
-      if (!$this->Common_model->exists('office_users', 'id', $dataID)) { 
+      if (!$this->Common_model->exists('office_users', 'id', $dataID)) {
          show_404('office - region_user_delete - exists', TRUE);
       }
 
@@ -2934,8 +2934,8 @@ class Offices extends Backend_Controller {
          func_activity_log(3, 'Office admin user delete ID :'.$dataID); //1=C, 2=U, 3=D, 4=V, 5=G ,A = 6
          /***********Activity Logs End**********/
 
-         // Delete Scouts Region from database         
-         $this->session->set_flashdata('success', 'Admin user delete successfully.');         
+         // Delete Scouts Region from database
+         $this->session->set_flashdata('success', 'Admin user delete successfully.');
       }else{
          $this->session->set_flashdata('warning', 'Something is wrong.');
       }
@@ -2954,15 +2954,15 @@ class Offices extends Backend_Controller {
       $officeID = (int) decrypt_url($id);
       if(!$this->Common_model->exists('office_district', 'id', $officeID)){
          show_404('office - district_user_pdf - exists', TRUE);
-      }      
+      }
 
       // Results
-      $this->data['info'] = $this->Offices_model->get_scout_district_info($officeID); 
+      $this->data['info'] = $this->Offices_model->get_scout_district_info($officeID);
       $this->data['user_list'] = $this->Offices_model->get_office_users(3, $officeID);
-      
+
       //...............................................................................
       $this->data['meta_title'] = "District Admin User List";
-      $html = $this->load->view('admin_user/district_user_pdf', $this->data, true);   
+      $html = $this->load->view('admin_user/district_user_pdf', $this->data, true);
       $file_name = $this->data['info']->dis_name_en."_user_list.pdf";
 
       //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
@@ -2971,7 +2971,7 @@ class Offices extends Backend_Controller {
       //generate the PDF from the given html
       $mpdf->WriteHTML($html);
 
-      //download it for 'D'. 
+      //download it for 'D'.
       $mpdf->Output($file_name, "I");
    }
 
@@ -2983,11 +2983,11 @@ class Offices extends Backend_Controller {
       $officeID = (int) decrypt_url($id);
       if(!$this->Common_model->exists('office_district', 'id', $officeID)){
          show_404('office - district_user - exists', TRUE);
-      }   
+      }
 
       // Results
-      $this->data['info'] = $this->Offices_model->get_scout_district_info($officeID); 
-      $this->data['user_list'] = $this->Offices_model->get_office_users(3, $officeID); 
+      $this->data['info'] = $this->Offices_model->get_scout_district_info($officeID);
+      $this->data['user_list'] = $this->Offices_model->get_office_users(3, $officeID);
       // print_r($this->data['info']); exit;
 
       //Load View
@@ -3007,25 +3007,25 @@ class Offices extends Backend_Controller {
 
       //validation
       if($this->input->post('member_type') == 1){
-         $this->form_validation->set_rules('scout_member_id', 'select scout id', 'required|trim'); 
+         $this->form_validation->set_rules('scout_member_id', 'select scout id', 'required|trim');
       }else{
-         $this->form_validation->set_rules('user_name', 'name', 'required|trim');          
-         $this->form_validation->set_rules('user_phone', 'phone', 'required|trim');          
-         $this->form_validation->set_rules('user_designation', 'designation', 'trim');   
+         $this->form_validation->set_rules('user_name', 'name', 'required|trim');
+         $this->form_validation->set_rules('user_phone', 'phone', 'required|trim');
+         $this->form_validation->set_rules('user_designation', 'designation', 'trim');
       }
-      
 
-      $this->data['info'] = $this->Offices_model->get_scout_district_info($officeID); 
+
+      $this->data['info'] = $this->Offices_model->get_scout_district_info($officeID);
       // print_r($this->data['info']); exit;
 
       //validata and input data
       if ($this->form_validation->run() == true){
-  
+
          $form_data = array(
             'office_type_id'  => 3,
             'member_type'     => $this->input->post('member_type'),
-            'sc_district_id'  => $this->data['info']->id, 
-            'scout_member_id' => $this->input->post('scout_member_id')!= NULL?$this->input->post('scout_member_id'):NULL, 
+            'sc_district_id'  => $this->data['info']->id,
+            'scout_member_id' => $this->input->post('scout_member_id')!= NULL?$this->input->post('scout_member_id'):NULL,
             'user_name'       => $this->input->post('user_name'),
             'user_phone'      => $this->input->post('user_phone'),
             'user_email'      => $this->input->post('user_email'),
@@ -3034,8 +3034,8 @@ class Offices extends Backend_Controller {
             );
          // print_r($form_data); exit;
 
-         if($this->Common_model->save('office_users', $form_data)){ 
-            
+         if($this->Common_model->save('office_users', $form_data)){
+
             /***********Activity Logs Start**********/
             //$insert_id = $this->db->insert_id();
             func_activity_log(1, 'Add admin user :'.$officeID); //1=C, 2=U, 3=D, 4=V, 5=G ,A = 6
@@ -3056,7 +3056,7 @@ class Offices extends Backend_Controller {
       $this->load->view('backend/_layout_main', $this->data);
    }
 
-   public function district_user_edit($id){      
+   public function district_user_edit($id){
       if(!($this->ion_auth->is_admin() || $this->ion_auth->is_region_admin())){
          redirect('dashboard');
       }
@@ -3067,24 +3067,24 @@ class Offices extends Backend_Controller {
 
       //validation
       if($this->input->post('member_type') == 1){
-         $this->form_validation->set_rules('scout_member_id', 'select scout id', 'required|trim'); 
+         $this->form_validation->set_rules('scout_member_id', 'select scout id', 'required|trim');
       }else{
-         $this->form_validation->set_rules('user_name', 'name', 'required|trim');          
-         $this->form_validation->set_rules('user_phone', 'phone', 'required|trim');          
-         $this->form_validation->set_rules('user_designation', 'designation', 'trim');   
+         $this->form_validation->set_rules('user_name', 'name', 'required|trim');
+         $this->form_validation->set_rules('user_phone', 'phone', 'required|trim');
+         $this->form_validation->set_rules('user_designation', 'designation', 'trim');
       }
 
-      $this->data['info'] = $this->Offices_model->get_office_user_info($dataID); 
-      // $this->data['user_info'] = $this->Offices_model->get_region_user_info($officeID); 
+      $this->data['info'] = $this->Offices_model->get_office_user_info($dataID);
+      // $this->data['user_info'] = $this->Offices_model->get_region_user_info($officeID);
       // echo '<pre>';
       // print_r($this->data['info']); exit;
 
       //validata and input data
       if ($this->form_validation->run() == true){
-  
-         $form_data = array(            
+
+         $form_data = array(
             'member_type'     => $this->input->post('member_type'),
-            'scout_member_id' => $this->input->post('scout_member_id')!= NULL?$this->input->post('scout_member_id'):NULL, 
+            'scout_member_id' => $this->input->post('scout_member_id')!= NULL?$this->input->post('scout_member_id'):NULL,
             'user_name'       => $this->input->post('user_name'),
             'user_phone'      => $this->input->post('user_phone'),
             'user_email'      => $this->input->post('user_email'),
@@ -3092,9 +3092,9 @@ class Offices extends Backend_Controller {
             'user_remarks'    => $this->input->post('user_remarks')
             );
          // print_r($form_data); exit;
-         
+
          if($this->Common_model->edit('office_users', $dataID, 'id', $form_data)){
-            
+
             /***********Activity Logs Start**********/
             //$insert_id = $this->db->insert_id();
             func_activity_log(2, 'Update admin user :'.$dataID); //1=C, 2=U, 3=D, 4=V, 5=G ,A = 6
@@ -3118,7 +3118,7 @@ class Offices extends Backend_Controller {
       }
 
       $dataID = (int) decrypt_url($id);
-      if (!$this->Common_model->exists('office_users', 'id', $dataID)) { 
+      if (!$this->Common_model->exists('office_users', 'id', $dataID)) {
          show_404('office - district_user_delete - exists', TRUE);
       }
 
@@ -3129,8 +3129,8 @@ class Offices extends Backend_Controller {
          func_activity_log(3, 'Office admin user delete ID :'.$dataID); //1=C, 2=U, 3=D, 4=V, 5=G ,A = 6
          /***********Activity Logs End**********/
 
-         // Delete Scouts Region from database         
-         $this->session->set_flashdata('success', 'Admin user delete successfully.');         
+         // Delete Scouts Region from database
+         $this->session->set_flashdata('success', 'Admin user delete successfully.');
       }else{
          $this->session->set_flashdata('warning', 'Something is wrong.');
       }
@@ -3149,15 +3149,15 @@ class Offices extends Backend_Controller {
       $officeID = (int) decrypt_url($id);
       if(!$this->Common_model->exists('office_upazila', 'id', $officeID)){
          show_404('office - district_user_pdf - exists', TRUE);
-      }      
+      }
 
       // Results
-      $this->data['info'] = $this->Offices_model->get_scout_upazila_info($officeID); 
+      $this->data['info'] = $this->Offices_model->get_scout_upazila_info($officeID);
       $this->data['user_list'] = $this->Offices_model->get_office_users(4, $officeID);
-      
+
       //...............................................................................
       $this->data['meta_title'] = "Upazila Admin User List";
-      $html = $this->load->view('admin_user/upazila_user_pdf', $this->data, true);   
+      $html = $this->load->view('admin_user/upazila_user_pdf', $this->data, true);
       $file_name = $this->data['info']->upa_name_en."_user_list.pdf";
 
       //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
@@ -3166,7 +3166,7 @@ class Offices extends Backend_Controller {
       //generate the PDF from the given html
       $mpdf->WriteHTML($html);
 
-      //download it for 'D'. 
+      //download it for 'D'.
       $mpdf->Output($file_name, "I");
    }
 
@@ -3178,11 +3178,11 @@ class Offices extends Backend_Controller {
       $officeID = (int) decrypt_url($id);
       if(!$this->Common_model->exists('office_upazila', 'id', $officeID)){
          show_404('office - upazila_user - exists', TRUE);
-      }   
+      }
 
       // Results
-      $this->data['info'] = $this->Offices_model->get_scout_upazila_info($officeID); 
-      $this->data['user_list'] = $this->Offices_model->get_office_users(4, $officeID); 
+      $this->data['info'] = $this->Offices_model->get_scout_upazila_info($officeID);
+      $this->data['user_list'] = $this->Offices_model->get_office_users(4, $officeID);
       // print_r($this->data['info']); exit;
 
       //Load View
@@ -3202,25 +3202,25 @@ class Offices extends Backend_Controller {
 
       //validation
       if($this->input->post('member_type') == 1){
-         $this->form_validation->set_rules('scout_member_id', 'select scout id', 'required|trim'); 
+         $this->form_validation->set_rules('scout_member_id', 'select scout id', 'required|trim');
       }else{
-         $this->form_validation->set_rules('user_name', 'name', 'required|trim');          
-         $this->form_validation->set_rules('user_phone', 'phone', 'required|trim');          
-         $this->form_validation->set_rules('user_designation', 'designation', 'trim');   
+         $this->form_validation->set_rules('user_name', 'name', 'required|trim');
+         $this->form_validation->set_rules('user_phone', 'phone', 'required|trim');
+         $this->form_validation->set_rules('user_designation', 'designation', 'trim');
       }
-      
 
-      $this->data['info'] = $this->Offices_model->get_scout_upazila_info($officeID); 
+
+      $this->data['info'] = $this->Offices_model->get_scout_upazila_info($officeID);
       // print_r($this->data['info']); exit;
 
       //validata and input data
       if ($this->form_validation->run() == true){
-  
+
          $form_data = array(
             'office_type_id'  => 4,
             'member_type'     => $this->input->post('member_type'),
-            'sc_upazila_id'  => $this->data['info']->id, 
-            'scout_member_id' => $this->input->post('scout_member_id')!= NULL?$this->input->post('scout_member_id'):NULL, 
+            'sc_upazila_id'  => $this->data['info']->id,
+            'scout_member_id' => $this->input->post('scout_member_id')!= NULL?$this->input->post('scout_member_id'):NULL,
             'user_name'       => $this->input->post('user_name'),
             'user_phone'      => $this->input->post('user_phone'),
             'user_email'      => $this->input->post('user_email'),
@@ -3229,8 +3229,8 @@ class Offices extends Backend_Controller {
             );
          // print_r($form_data); exit;
 
-         if($this->Common_model->save('office_users', $form_data)){ 
-            
+         if($this->Common_model->save('office_users', $form_data)){
+
             /***********Activity Logs Start**********/
             //$insert_id = $this->db->insert_id();
             func_activity_log(1, 'Add admin user :'.$officeID); //1=C, 2=U, 3=D, 4=V, 5=G ,A = 6
@@ -3251,7 +3251,7 @@ class Offices extends Backend_Controller {
       $this->load->view('backend/_layout_main', $this->data);
    }
 
-   public function upazila_user_edit($id){      
+   public function upazila_user_edit($id){
       if(!($this->ion_auth->is_admin() || $this->ion_auth->is_region_admin() || $this->ion_auth->is_district_admin() || $this->ion_auth->is_upazila_admin())){
          redirect('dashboard');
       }
@@ -3262,24 +3262,24 @@ class Offices extends Backend_Controller {
 
       //validation
       if($this->input->post('member_type') == 1){
-         $this->form_validation->set_rules('scout_member_id', 'select scout id', 'required|trim'); 
+         $this->form_validation->set_rules('scout_member_id', 'select scout id', 'required|trim');
       }else{
-         $this->form_validation->set_rules('user_name', 'name', 'required|trim');          
-         $this->form_validation->set_rules('user_phone', 'phone', 'required|trim');          
-         $this->form_validation->set_rules('user_designation', 'designation', 'trim');   
+         $this->form_validation->set_rules('user_name', 'name', 'required|trim');
+         $this->form_validation->set_rules('user_phone', 'phone', 'required|trim');
+         $this->form_validation->set_rules('user_designation', 'designation', 'trim');
       }
 
-      $this->data['info'] = $this->Offices_model->get_office_user_info($dataID); 
-      // $this->data['user_info'] = $this->Offices_model->get_region_user_info($officeID); 
+      $this->data['info'] = $this->Offices_model->get_office_user_info($dataID);
+      // $this->data['user_info'] = $this->Offices_model->get_region_user_info($officeID);
       // echo '<pre>';
       // print_r($this->data['info']); exit;
 
       //validata and input data
       if ($this->form_validation->run() == true){
-  
-         $form_data = array(            
+
+         $form_data = array(
             'member_type'     => $this->input->post('member_type'),
-            'scout_member_id' => $this->input->post('scout_member_id')!= NULL?$this->input->post('scout_member_id'):NULL, 
+            'scout_member_id' => $this->input->post('scout_member_id')!= NULL?$this->input->post('scout_member_id'):NULL,
             'user_name'       => $this->input->post('user_name'),
             'user_phone'      => $this->input->post('user_phone'),
             'user_email'      => $this->input->post('user_email'),
@@ -3287,9 +3287,9 @@ class Offices extends Backend_Controller {
             'user_remarks'    => $this->input->post('user_remarks')
             );
          // print_r($form_data); exit;
-         
+
          if($this->Common_model->edit('office_users', $dataID, 'id', $form_data)){
-            
+
             /***********Activity Logs Start**********/
             //$insert_id = $this->db->insert_id();
             func_activity_log(2, 'Update admin user :'.$dataID); //1=C, 2=U, 3=D, 4=V, 5=G ,A = 6
@@ -3313,7 +3313,7 @@ class Offices extends Backend_Controller {
       }
 
       $dataID = (int) decrypt_url($id);
-      if (!$this->Common_model->exists('office_users', 'id', $dataID)) { 
+      if (!$this->Common_model->exists('office_users', 'id', $dataID)) {
          show_404('office - upazila_user_delete - exists', TRUE);
       }
 
@@ -3324,8 +3324,8 @@ class Offices extends Backend_Controller {
          func_activity_log(3, 'Office admin user delete ID :'.$dataID); //1=C, 2=U, 3=D, 4=V, 5=G ,A = 6
          /***********Activity Logs End**********/
 
-         // Delete Scouts Region from database         
-         $this->session->set_flashdata('success', 'Admin user delete successfully.');         
+         // Delete Scouts Region from database
+         $this->session->set_flashdata('success', 'Admin user delete successfully.');
       }else{
          $this->session->set_flashdata('warning', 'Something is wrong.');
       }
@@ -3344,15 +3344,15 @@ class Offices extends Backend_Controller {
       $officeID = (int) decrypt_url($id);
       if(!$this->Common_model->exists('office_groups', 'id', $officeID)){
          show_404('office - scout_group_user_pdf - exists', TRUE);
-      }      
+      }
 
       // Results
-      $this->data['info'] = $this->Offices_model->get_scout_group_info($officeID); 
+      $this->data['info'] = $this->Offices_model->get_scout_group_info($officeID);
       $this->data['user_list'] = $this->Offices_model->get_office_users(5, $officeID);
-      
+
       //...............................................................................
       $this->data['meta_title'] = "Scout Group Admin User List";
-      $html = $this->load->view('admin_user/scout_group_user_pdf', $this->data, true);   
+      $html = $this->load->view('admin_user/scout_group_user_pdf', $this->data, true);
       $file_name = $this->data['info']->upa_name_en."_user_list.pdf";
 
       //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
@@ -3361,7 +3361,7 @@ class Offices extends Backend_Controller {
       //generate the PDF from the given html
       $mpdf->WriteHTML($html);
 
-      //download it for 'D'. 
+      //download it for 'D'.
       $mpdf->Output($file_name, "I");
    }
 
@@ -3373,11 +3373,11 @@ class Offices extends Backend_Controller {
       $officeID = (int) decrypt_url($id);
       if(!$this->Common_model->exists('office_groups', 'id', $officeID)){
          show_404('office - scout_group_user - exists', TRUE);
-      }   
+      }
 
       // Results
-      $this->data['info'] = $this->Offices_model->get_scout_group_info($officeID); 
-      $this->data['user_list'] = $this->Offices_model->get_office_users(5, $officeID); 
+      $this->data['info'] = $this->Offices_model->get_scout_group_info($officeID);
+      $this->data['user_list'] = $this->Offices_model->get_office_users(5, $officeID);
       // print_r($this->data['info']); exit;
 
       //Load View
@@ -3398,25 +3398,25 @@ class Offices extends Backend_Controller {
 
       //validation
       if($this->input->post('member_type') == 1){
-         $this->form_validation->set_rules('scout_member_id', 'select scout id', 'required|trim'); 
+         $this->form_validation->set_rules('scout_member_id', 'select scout id', 'required|trim');
       }else{
-         $this->form_validation->set_rules('user_name', 'name', 'required|trim');          
-         $this->form_validation->set_rules('user_phone', 'phone', 'required|trim');          
-         $this->form_validation->set_rules('user_designation', 'designation', 'trim');   
+         $this->form_validation->set_rules('user_name', 'name', 'required|trim');
+         $this->form_validation->set_rules('user_phone', 'phone', 'required|trim');
+         $this->form_validation->set_rules('user_designation', 'designation', 'trim');
       }
-      
 
-      $this->data['info'] = $this->Offices_model->get_scout_group_info($officeID); 
+
+      $this->data['info'] = $this->Offices_model->get_scout_group_info($officeID);
       // print_r($this->data['info']); exit;
 
       //validata and input data
       if ($this->form_validation->run() == true){
-  
+
          $form_data = array(
             'office_type_id'  => 5,
             'member_type'     => $this->input->post('member_type'),
             'sc_group_id'     => $this->data['info']->id,
-            'scout_member_id' => $this->input->post('scout_member_id')!= NULL?$this->input->post('scout_member_id'):NULL, 
+            'scout_member_id' => $this->input->post('scout_member_id')!= NULL?$this->input->post('scout_member_id'):NULL,
             'user_name'       => $this->input->post('user_name'),
             'user_phone'      => $this->input->post('user_phone'),
             'user_email'      => $this->input->post('user_email'),
@@ -3425,8 +3425,8 @@ class Offices extends Backend_Controller {
             );
          // print_r($form_data); exit;
 
-         if($this->Common_model->save('office_users', $form_data)){ 
-            
+         if($this->Common_model->save('office_users', $form_data)){
+
             /***********Activity Logs Start**********/
             //$insert_id = $this->db->insert_id();
             func_activity_log(1, 'Add admin user :'.$officeID); //1=C, 2=U, 3=D, 4=V, 5=G ,A = 6
@@ -3447,7 +3447,7 @@ class Offices extends Backend_Controller {
       $this->load->view('backend/_layout_main', $this->data);
    }
 
-   public function scout_group_user_edit($id){      
+   public function scout_group_user_edit($id){
       if(!($this->ion_auth->is_admin() || $this->ion_auth->is_region_admin() || $this->ion_auth->is_district_admin() || $this->ion_auth->is_upazila_admin() || $this->ion_auth->is_group_admin())){
          redirect('dashboard');
       }
@@ -3459,24 +3459,24 @@ class Offices extends Backend_Controller {
 
       //validation
       if($this->input->post('member_type') == 1){
-         $this->form_validation->set_rules('scout_member_id', 'select scout id', 'required|trim'); 
+         $this->form_validation->set_rules('scout_member_id', 'select scout id', 'required|trim');
       }else{
-         $this->form_validation->set_rules('user_name', 'name', 'required|trim');          
-         $this->form_validation->set_rules('user_phone', 'phone', 'required|trim');          
-         $this->form_validation->set_rules('user_designation', 'designation', 'trim');   
+         $this->form_validation->set_rules('user_name', 'name', 'required|trim');
+         $this->form_validation->set_rules('user_phone', 'phone', 'required|trim');
+         $this->form_validation->set_rules('user_designation', 'designation', 'trim');
       }
 
-      $this->data['info'] = $this->Offices_model->get_office_user_info($dataID); 
-      // $this->data['user_info'] = $this->Offices_model->get_region_user_info($officeID); 
+      $this->data['info'] = $this->Offices_model->get_office_user_info($dataID);
+      // $this->data['user_info'] = $this->Offices_model->get_region_user_info($officeID);
       // echo '<pre>';
       // print_r($this->data['info']); exit;
 
       //validata and input data
       if ($this->form_validation->run() == true){
-  
-         $form_data = array(            
+
+         $form_data = array(
             'member_type'     => $this->input->post('member_type'),
-            'scout_member_id' => $this->input->post('scout_member_id')!= NULL?$this->input->post('scout_member_id'):NULL, 
+            'scout_member_id' => $this->input->post('scout_member_id')!= NULL?$this->input->post('scout_member_id'):NULL,
             'user_name'       => $this->input->post('user_name'),
             'user_phone'      => $this->input->post('user_phone'),
             'user_email'      => $this->input->post('user_email'),
@@ -3484,9 +3484,9 @@ class Offices extends Backend_Controller {
             'user_remarks'    => $this->input->post('user_remarks')
             );
          // print_r($form_data); exit;
-         
+
          if($this->Common_model->edit('office_users', $dataID, 'id', $form_data)){
-            
+
             /***********Activity Logs Start**********/
             //$insert_id = $this->db->insert_id();
             func_activity_log(2, 'Update admin user :'.$dataID); //1=C, 2=U, 3=D, 4=V, 5=G ,A = 6
@@ -3510,7 +3510,7 @@ class Offices extends Backend_Controller {
       }
 
       $dataID = (int) decrypt_url($id);
-      if (!$this->Common_model->exists('office_users', 'id', $dataID)) { 
+      if (!$this->Common_model->exists('office_users', 'id', $dataID)) {
          show_404('office - scout_group_user_delete - exists', TRUE);
       }
 
@@ -3521,8 +3521,8 @@ class Offices extends Backend_Controller {
          func_activity_log(3, 'Office admin user delete ID :'.$dataID); //1=C, 2=U, 3=D, 4=V, 5=G ,A = 6
          /***********Activity Logs End**********/
 
-         // Delete Scouts Region from database         
-         $this->session->set_flashdata('success', 'Admin user delete successfully.');         
+         // Delete Scouts Region from database
+         $this->session->set_flashdata('success', 'Admin user delete successfully.');
       }else{
          $this->session->set_flashdata('warning', 'Something is wrong.');
       }
@@ -3530,20 +3530,20 @@ class Offices extends Backend_Controller {
       redirect("offices/scout_group_user/".$officeID);
    }
 
-   public function registration_charter_pdf($id){ 
+   public function registration_charter_pdf($id){
 
         $dataID = (int) decrypt_url($id); //exit;
-        if (!$this->Common_model->exists('office_groups', 'id', $dataID)) { 
+        if (!$this->Common_model->exists('office_groups', 'id', $dataID)) {
             show_404('offices - registration_charter_pdf - exitsts', TRUE);
         }
 
         //Results
-        $this->data['info'] = $this->Offices_model->get_scout_group_info($dataID); 
+        $this->data['info'] = $this->Offices_model->get_scout_group_info($dataID);
         // $this->data['info'] = $this->Site_model->get_scout_application($dataID);
         // echo '<pre>';
         // print_r($this->data['info']); exit;
         $this->data['meta_title'] = "স্কাউটস গ্রুপের আবেদন";
-        $html = $this->load->view('registration_charter_pdf', $this->data, true);   
+        $html = $this->load->view('registration_charter_pdf', $this->data, true);
         $file_name = $dataID."-registration_charter.pdf";
 
         //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
@@ -3552,7 +3552,7 @@ class Offices extends Backend_Controller {
         //generate the PDF from the given html
         $mpdf->WriteHTML($html);
 
-        //download it for 'D'. 
+        //download it for 'D'.
         $mpdf->Output($file_name, "I");
     }
 
@@ -3569,11 +3569,11 @@ class Offices extends Backend_Controller {
       $this->load->helper('file');
       $allowed_mime_type_arr = array('image/gif','image/jpeg','image/png','image/x-png');
       $mime = get_mime_by_extension($_FILES['userfile']['name']);
-      $file_size = 1050000; 
+      $file_size = 1050000;
       $size_kb = '1 MB';
 
       if(isset($_FILES['userfile']['name']) && $_FILES['userfile']['name']!=""){
-         if(!in_array($mime, $allowed_mime_type_arr)){                
+         if(!in_array($mime, $allowed_mime_type_arr)){
             $this->form_validation->set_message('file_check', 'Please select only jpg, jpeg, png, gif file.');
             return false;
          }elseif($_FILES["userfile"]["size"] > $file_size){
@@ -3605,8 +3605,29 @@ class Offices extends Backend_Controller {
       }
    }
 
+   function ajax_exists_birth_id(){
+      $item = $_POST['inputData'];
+      $result = $this->Common_model->exists('users', 'birth_id', $item);
+
+      if ($result == 0) {
+         echo 'true';
+      }else{
+         echo 'false';
+      }
+   }
+
+   function ajax_exists_nid(){
+      $item = $_POST['inputData'];
+      $result = $this->Common_model->exists('users', 'nid', $item);
+
+      if ($result == 0) {
+         echo 'true';
+      }else{
+         echo 'false';
+      }
+   }
+
    function ajax_exists_identity(){
-      // echo 'true';
       $item = $_POST['inputData'];
       $result = $this->Common_model->exists('users', 'username', $item);
 
@@ -3639,8 +3660,8 @@ class Offices extends Backend_Controller {
    }
 
    public function imageUploadPost(){
-      $config['upload_path']   = $this->img_path_gallery; 
-      $config['allowed_types'] = 'gif|jpg|png'; 
+      $config['upload_path']   = $this->img_path_gallery;
+      $config['allowed_types'] = 'gif|jpg|png';
       $config['max_size']      = 1024;
 
       $this->load->library('upload', $config);
@@ -3667,7 +3688,7 @@ class Offices extends Backend_Controller {
    public function scout_bulk_group_create(){
       if(!($this->ion_auth->is_admin() || $this->ion_auth->is_region_admin() || $this->ion_auth->is_district_admin() || $this->ion_auth->is_upazila_admin())){
          redirect('dashboard');
-      }      
+      }
 
       $tables = $this->config->item('tables','ion_auth');
       $identity_column = $this->config->item('identity','ion_auth');
@@ -3681,16 +3702,16 @@ class Offices extends Backend_Controller {
          $this->form_validation->set_rules('email', $this->lang->line('create_user_validation_email_label'), 'required|valid_email|is_unique[' . $tables['users'] . '.email]');
       }
       $this->form_validation->set_rules('password[]', $this->lang->line('create_user_validation_password_label'), 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|max_length[' . $this->config->item('max_password_length', 'ion_auth') . ']');
-      $this->form_validation->set_rules('phone', $this->lang->line('create_user_validation_phone_label'), 'trim');      
+      $this->form_validation->set_rules('phone', $this->lang->line('create_user_validation_phone_label'), 'trim');
 
-      $this->form_validation->set_rules('grp_type[]', 'group type'); 
+      $this->form_validation->set_rules('grp_type[]', 'group type');
       // if($this->input->post('grp_type') == '1'){
-      //    $this->form_validation->set_rules('grp_institute_id', 'institute ', 'required|trim');          
+      //    $this->form_validation->set_rules('grp_institute_id', 'institute ', 'required|trim');
       // }
-      $this->form_validation->set_rules('grp_name[]', 'group name', 'required|max_length[255]');      
-      // $this->form_validation->set_rules('grp_div_id', 'division', 'required|trim'); 
-      // $this->form_validation->set_rules('grp_dis_id', 'district', 'required|trim');     
-      // $this->form_validation->set_rules('grp_upa_id', 'upazila/thana', 'trim');       
+      $this->form_validation->set_rules('grp_name[]', 'group name', 'required|max_length[255]');
+      // $this->form_validation->set_rules('grp_div_id', 'division', 'required|trim');
+      // $this->form_validation->set_rules('grp_dis_id', 'district', 'required|trim');
+      // $this->form_validation->set_rules('grp_upa_id', 'upazila/thana', 'trim');
       // $this->form_validation->set_rules('grp_remarks', 'scout region', 'trim');
       // $this->form_validation->set_rules('grp_region_id', 'scout region', 'required|trim');
       // $this->form_validation->set_rules('grp_scout_dis_id', 'scout district', 'required|trim');
@@ -3704,7 +3725,7 @@ class Offices extends Backend_Controller {
       //scout office
       $region = NULL;
       $district = NULL;
-      $upazila = NULL; 
+      $upazila = NULL;
 
       $region = $region != NULL ? $region:$this->input->post('grp_region_id');
       $district = $district != NULL ? $district:$this->input->post('grp_scout_dis_id');
@@ -3714,16 +3735,16 @@ class Offices extends Backend_Controller {
 
       // Offices Access
       if($this->ion_auth->is_region_admin()){
-         // $result = $this->Committee_model->get_current_region_from_committee($this->userSessID);         
-         $officeID = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;    
+         // $result = $this->Committee_model->get_current_region_from_committee($this->userSessID);
+         $officeID = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
          $region = $officeID;
          $this->data['region_info'] = $this->Common_model->get_office_info('office_region', $officeID);
          $this->data['district_dd'] = $this->Common_model->get_dropdown_office('office_district', 'dis_name', 'dis_scout_region_id', $officeID);
 
       }elseif($this->ion_auth->is_district_admin()){
          // $result = $this->Committee_model->get_current_district_from_committee($this->userSessID);
-         $officeID = $this->Offices_model->get_district_office_by_user_id($this->userSessID);  
-         // print_r($officeID); exit;   
+         $officeID = $this->Offices_model->get_district_office_by_user_id($this->userSessID);
+         // print_r($officeID); exit;
          $region     = $officeID->dis_scout_region_id;
          $district   = $officeID->id;
 
@@ -3747,17 +3768,17 @@ class Offices extends Backend_Controller {
 
       if ($this->form_validation->run() == true){
 
-         for ($i=0; $i<sizeof($_POST['identity']); $i++) { 
+         for ($i=0; $i<sizeof($_POST['identity']); $i++) {
             $email    = strtolower($this->input->post('email'));
             $identity = $_POST['identity'][$i];
             $password = $_POST['password'][$i];
             $groups = array('7');
             $additional_data = array(
                'is_office'    => 1
-               ); 
+               );
 
-            $lastID = $this->ion_auth->register($identity, $password, $email, $additional_data, $groups); 
-            // $lastID = $this->db->insert_id();            
+            $lastID = $this->ion_auth->register($identity, $password, $email, $additional_data, $groups);
+            // $lastID = $this->db->insert_id();
 
             $form_data = array(
                'user_id' => $lastID,
@@ -3775,12 +3796,12 @@ class Offices extends Backend_Controller {
 
          $this->session->set_flashdata('success', 'Scouts group create successfully.');
          redirect("offices/scout_group");
-      }            
+      }
 
-      // $this->data['divisions'] = $this->Common_model->get_division(); 
-      // $this->data['districts'] = $this->Common_model->get_district(); 
-      // $this->data['upazilas'] = $this->Common_model->get_upazila_thana(); 
-      $this->data['regions'] = $this->Common_model->get_regions();      
+      // $this->data['divisions'] = $this->Common_model->get_division();
+      // $this->data['districts'] = $this->Common_model->get_district();
+      // $this->data['upazilas'] = $this->Common_model->get_upazila_thana();
+      $this->data['regions'] = $this->Common_model->get_regions();
       // $this->data['institute'] = $this->Common_model->get_scout_institute();
 
       // Load page
@@ -3802,7 +3823,7 @@ class Offices extends Backend_Controller {
 
 
 
-   
+
 
    // function security_test($param){
 
@@ -3814,11 +3835,11 @@ class Offices extends Backend_Controller {
 
 
    //    echo $encId = encrypt_url($param);
-   //    echo '<br>'; 
+   //    echo '<br>';
    //    echo decrypt_url($encId);
    // }
 
-   // function sha1_test($param){      
+   // function sha1_test($param){
    //    echo sha1($param);
    // }
 
@@ -3845,7 +3866,7 @@ class Offices extends Backend_Controller {
     // public function scout_bulk_group_create(){
    //    if(!($this->ion_auth->is_admin() || $this->ion_auth->is_region_admin() || $this->ion_auth->is_district_admin() || $this->ion_auth->is_upazila_admin())){
    //       redirect('dashboard');
-   //    }      
+   //    }
 
    //    $tables = $this->config->item('tables','ion_auth');
    //    $identity_column = $this->config->item('identity','ion_auth');
@@ -3859,16 +3880,16 @@ class Offices extends Backend_Controller {
    //       $this->form_validation->set_rules('email', $this->lang->line('create_user_validation_email_label'), 'required|valid_email|is_unique[' . $tables['users'] . '.email]');
    //    }
    //    $this->form_validation->set_rules('password[]', $this->lang->line('create_user_validation_password_label'), 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|max_length[' . $this->config->item('max_password_length', 'ion_auth') . ']');
-   //    $this->form_validation->set_rules('phone', $this->lang->line('create_user_validation_phone_label'), 'trim');      
+   //    $this->form_validation->set_rules('phone', $this->lang->line('create_user_validation_phone_label'), 'trim');
 
-   //    $this->form_validation->set_rules('grp_type[]', 'group type'); 
+   //    $this->form_validation->set_rules('grp_type[]', 'group type');
    //    // if($this->input->post('grp_type') == '1'){
-   //    //    $this->form_validation->set_rules('grp_institute_id', 'institute ', 'required|trim');          
+   //    //    $this->form_validation->set_rules('grp_institute_id', 'institute ', 'required|trim');
    //    // }
-   //    $this->form_validation->set_rules('grp_name[]', 'group name', 'required|max_length[255]');      
-   //    // $this->form_validation->set_rules('grp_div_id', 'division', 'required|trim'); 
-   //    // $this->form_validation->set_rules('grp_dis_id', 'district', 'required|trim');     
-   //    // $this->form_validation->set_rules('grp_upa_id', 'upazila/thana', 'trim');       
+   //    $this->form_validation->set_rules('grp_name[]', 'group name', 'required|max_length[255]');
+   //    // $this->form_validation->set_rules('grp_div_id', 'division', 'required|trim');
+   //    // $this->form_validation->set_rules('grp_dis_id', 'district', 'required|trim');
+   //    // $this->form_validation->set_rules('grp_upa_id', 'upazila/thana', 'trim');
    //    // $this->form_validation->set_rules('grp_remarks', 'scout region', 'trim');
    //    // $this->form_validation->set_rules('grp_region_id', 'scout region', 'required|trim');
    //    // $this->form_validation->set_rules('grp_scout_dis_id', 'scout district', 'required|trim');
@@ -3882,7 +3903,7 @@ class Offices extends Backend_Controller {
    //    //scout office
    //    $region = NULL;
    //    $district = NULL;
-   //    $upazila = NULL; 
+   //    $upazila = NULL;
 
    //    $region = $region != NULL ? $region:$this->input->post('grp_region_id');
    //    $district = $district != NULL ? $district:$this->input->post('grp_scout_dis_id');
@@ -3892,16 +3913,16 @@ class Offices extends Backend_Controller {
 
    //    // Offices Access
    //    if($this->ion_auth->is_region_admin()){
-   //       // $result = $this->Committee_model->get_current_region_from_committee($this->userSessID);         
-   //       $officeID = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;    
+   //       // $result = $this->Committee_model->get_current_region_from_committee($this->userSessID);
+   //       $officeID = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
    //       $region = $officeID;
    //       $this->data['region_info'] = $this->Common_model->get_office_info('office_region', $officeID);
    //       $this->data['district_dd'] = $this->Common_model->get_dropdown_office('office_district', 'dis_name', 'dis_scout_region_id', $officeID);
 
    //    }elseif($this->ion_auth->is_district_admin()){
    //       // $result = $this->Committee_model->get_current_district_from_committee($this->userSessID);
-   //       $officeID = $this->Offices_model->get_district_office_by_user_id($this->userSessID);  
-   //       // print_r($officeID); exit;   
+   //       $officeID = $this->Offices_model->get_district_office_by_user_id($this->userSessID);
+   //       // print_r($officeID); exit;
    //       $region     = $officeID->dis_scout_region_id;
    //       $district   = $officeID->id;
 
@@ -3925,17 +3946,17 @@ class Offices extends Backend_Controller {
 
    //    if ($this->form_validation->run() == true){
 
-   //       for ($i=0; $i<sizeof($_POST['identity']); $i++) { 
+   //       for ($i=0; $i<sizeof($_POST['identity']); $i++) {
    //          $email    = strtolower($this->input->post('email'));
    //          $identity = $_POST['identity'][$i];
    //          $password = $_POST['password'][$i];
    //          $groups = array('7');
    //          $additional_data = array(
    //             'is_office'    => 1
-   //             ); 
+   //             );
 
-   //          $lastID = $this->ion_auth->register($identity, $password, $email, $additional_data, $groups); 
-   //          // $lastID = $this->db->insert_id();            
+   //          $lastID = $this->ion_auth->register($identity, $password, $email, $additional_data, $groups);
+   //          // $lastID = $this->db->insert_id();
 
    //          $form_data = array(
    //             'user_id' => $lastID,
@@ -3953,19 +3974,19 @@ class Offices extends Backend_Controller {
 
    //       $this->session->set_flashdata('success', 'Scouts group create successfully.');
    //       redirect("offices/scout_group");
-   //    }            
+   //    }
 
-   //    // $this->data['divisions'] = $this->Common_model->get_division(); 
-   //    // $this->data['districts'] = $this->Common_model->get_district(); 
-   //    // $this->data['upazilas'] = $this->Common_model->get_upazila_thana(); 
-   //    $this->data['regions'] = $this->Common_model->get_regions();      
+   //    // $this->data['divisions'] = $this->Common_model->get_division();
+   //    // $this->data['districts'] = $this->Common_model->get_district();
+   //    // $this->data['upazilas'] = $this->Common_model->get_upazila_thana();
+   //    $this->data['regions'] = $this->Common_model->get_regions();
    //    // $this->data['institute'] = $this->Common_model->get_scout_institute();
 
    //    // Load page
    //    $this->data['meta_title'] = 'Create Bulk Scout Group Office';
    //    $this->data['subview'] = 'scout_bulk_group_create';
    //    $this->load->view('backend/_layout_main', $this->data);
-   // }   
+   // }
 
 
 
@@ -3975,13 +3996,13 @@ class Offices extends Backend_Controller {
    /********************** Scout Unit Office *********************
    ****************************************************************/
    // public function scout_unit(){
-   //    if($this->ion_auth->is_admin()){         
+   //    if($this->ion_auth->is_admin()){
    //       $this->data['results'] = $this->Offices_model->get_scout_unit();
 
    //    }elseif($this->ion_auth->is_region_admin()){
    //       $result = $this->Committee_model->get_current_region_from_committee($this->session->userdata('user_id'));
    //       $officeRegionID = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
-   //       $this->data['results'] = $this->Offices_model->get_scout_unit($officeRegionID);      
+   //       $this->data['results'] = $this->Offices_model->get_scout_unit($officeRegionID);
 
    //    }elseif($this->ion_auth->is_district_admin()){
    //       $result = $this->Committee_model->get_current_district_from_committee($this->session->userdata('user_id'));
@@ -3992,7 +4013,7 @@ class Offices extends Backend_Controller {
    //       $this->data['results'] = $this->Offices_model->get_scout_unit('', '', $result->office_upa_tha_id);
 
    //    }elseif($this->ion_auth->is_group_admin()){
-   //       $result = $this->Committee_model->get_current_scout_group_from_committee($this->session->userdata('user_id'));         
+   //       $result = $this->Committee_model->get_current_scout_group_from_committee($this->session->userdata('user_id'));
    //       if($result){
    //          $this->data['results'] = $this->Offices_model->get_scout_unit('', '', '', $result->office_sc_group_id);
    //       }else{
@@ -4015,10 +4036,10 @@ class Offices extends Backend_Controller {
    //       redirect('dashboard');
    //    }
 
-   //    $this->form_validation->set_rules('unit_type', 'unit type', 'required|trim'); 
-   //    // $this->form_validation->set_rules('unit_div_id', 'division', 'required|trim'); 
-   //    // $this->form_validation->set_rules('unit_dis_id', 'district', 'required|trim');     
-   //    // $this->form_validation->set_rules('unit_upa_id', 'upazila/thana', 'trim'); 
+   //    $this->form_validation->set_rules('unit_type', 'unit type', 'required|trim');
+   //    // $this->form_validation->set_rules('unit_div_id', 'division', 'required|trim');
+   //    // $this->form_validation->set_rules('unit_dis_id', 'district', 'required|trim');
+   //    // $this->form_validation->set_rules('unit_upa_id', 'upazila/thana', 'trim');
    //    // $this->form_validation->set_rules('unit_region_id', 'scout region', 'required|trim');
    //    // $this->form_validation->set_rules('unit_scout_dis_id', 'scout district', 'required|trim');
    //    // $this->form_validation->set_rules('unit_scout_upa_id', 'scout upazila', 'trim');
@@ -4027,7 +4048,7 @@ class Offices extends Backend_Controller {
    //    $this->form_validation->set_rules('unit_number', 'number', 'numeric|trim');
    //    // $this->form_validation->set_rules('unit_section', 'scout section', 'required|trim');
 
-   //    $this->data['info'] = $this->Offices_model->get_scout_group_info($groupID);      
+   //    $this->data['info'] = $this->Offices_model->get_scout_group_info($groupID);
    //    $region     = $this->data['info']->grp_region_id;
    //    $district   = $this->data['info']->grp_scout_dis_id;
    //    $upazila    = $this->data['info']->grp_scout_upa_id;
@@ -4035,8 +4056,8 @@ class Offices extends Backend_Controller {
 
    //    if ($this->form_validation->run() == true){
    //       $form_data = array(
-   //          'unit_leader'     => $this->input->post('unit_leader'),  
-   //          'unit_type'       => $this->input->post('unit_type'),           
+   //          'unit_leader'     => $this->input->post('unit_leader'),
+   //          'unit_type'       => $this->input->post('unit_type'),
    //          'unit_region_id'  => $region,
    //          'unit_scout_dis_id' => $district,
    //          'unit_scout_upa_id' => $upazila,
@@ -4055,12 +4076,12 @@ class Offices extends Backend_Controller {
    //       }
    //    }
 
-   //    // $this->data['divisions'] = $this->Common_model->get_division(); 
-   //    // $this->data['districts'] = $this->Common_model->get_district(); 
-   //    // $this->data['upazilas'] = $this->Common_model->get_upazila_thana(); 
-   //    // $this->data['regions'] = $this->Common_model->get_regions(); 
-   //    // $this->data['scout_section'] = $this->Common_model->set_scout_section(); 
-   //    $this->data['sc_unit_types'] = $this->Common_model->set_scout_unit_type(); 
+   //    // $this->data['divisions'] = $this->Common_model->get_division();
+   //    // $this->data['districts'] = $this->Common_model->get_district();
+   //    // $this->data['upazilas'] = $this->Common_model->get_upazila_thana();
+   //    // $this->data['regions'] = $this->Common_model->get_regions();
+   //    // $this->data['scout_section'] = $this->Common_model->set_scout_section();
+   //    $this->data['sc_unit_types'] = $this->Common_model->set_scout_unit_type();
 
    //    // Office Info
    //    $this->data['region_info'] = $this->Common_model->get_office_info('office_region', $region);
@@ -4085,10 +4106,10 @@ class Offices extends Backend_Controller {
 
    //    $this->data['info'] = $this->Offices_model->get_scout_unit_info($unitID);
 
-   //    $this->form_validation->set_rules('unit_type', 'unit type', 'required|trim'); 
-   //    // $this->form_validation->set_rules('unit_div_id', 'division', 'required|trim'); 
-   //    // $this->form_validation->set_rules('unit_dis_id', 'district', 'required|trim');     
-   //    // $this->form_validation->set_rules('unit_upa_id', 'upazila/thana', 'required|trim'); 
+   //    $this->form_validation->set_rules('unit_type', 'unit type', 'required|trim');
+   //    // $this->form_validation->set_rules('unit_div_id', 'division', 'required|trim');
+   //    // $this->form_validation->set_rules('unit_dis_id', 'district', 'required|trim');
+   //    // $this->form_validation->set_rules('unit_upa_id', 'upazila/thana', 'required|trim');
    //    // $this->form_validation->set_rules('unit_region_id', 'scout region', 'required|trim');
    //    // $this->form_validation->set_rules('unit_scout_dis_id', 'scout district', 'required|trim');
    //    // $this->form_validation->set_rules('unit_scout_upa_id', 'scout upazila/thana', 'required|trim');
@@ -4099,8 +4120,8 @@ class Offices extends Backend_Controller {
 
    //    if($this->form_validation->run() == true){
    //       $form_data = array(
-   //          'unit_leader'        => $this->input->post('unit_leader'),             
-   //          'unit_type'          => $this->input->post('unit_type'),            
+   //          'unit_leader'        => $this->input->post('unit_leader'),
+   //          'unit_type'          => $this->input->post('unit_type'),
    //          'unit_name'          => $this->input->post('unit_name'),
    //          'unit_created'       => date_db_format($this->input->post('unit_created')),
    //          'unit_number'        => $this->input->post('unit_number'),
@@ -4115,19 +4136,19 @@ class Offices extends Backend_Controller {
    //       }
    //    }
 
-   //    // $this->data['divisions'] = $this->Common_model->get_division(); 
-   //    // $this->data['districts'] = $this->Common_model->get_district(); 
-   //    // $this->data['upazilas'] = $this->Common_model->get_upazila_thana(); 
-   //    // $this->data['regions'] = $this->Common_model->get_regions(); 
-   //    // $this->data['scout_districts'] = $this->Common_model->get_scout_districts(); 
-   //    // $this->data['scout_upazila_thana'] = $this->Common_model->get_scout_upazila_thana(); 
-   //    // $this->data['scout_group'] = $this->Common_model->get_scout_group_office(); 
-   //    // $this->data['scout_unit'] = $this->Common_model->get_scout_unit_office(); 
+   //    // $this->data['divisions'] = $this->Common_model->get_division();
+   //    // $this->data['districts'] = $this->Common_model->get_district();
+   //    // $this->data['upazilas'] = $this->Common_model->get_upazila_thana();
+   //    // $this->data['regions'] = $this->Common_model->get_regions();
+   //    // $this->data['scout_districts'] = $this->Common_model->get_scout_districts();
+   //    // $this->data['scout_upazila_thana'] = $this->Common_model->get_scout_upazila_thana();
+   //    // $this->data['scout_group'] = $this->Common_model->get_scout_group_office();
+   //    // $this->data['scout_unit'] = $this->Common_model->get_scout_unit_office();
    //    //should be change get_scout_group_office to set_scout_section
-   //    // $this->data['scout_section'] = $this->Common_model->set_scout_section(); 
-   //    $this->data['sc_unit_types'] = $this->Common_model->set_scout_unit_type(); 
+   //    // $this->data['scout_section'] = $this->Common_model->set_scout_section();
+   //    $this->data['sc_unit_types'] = $this->Common_model->set_scout_unit_type();
 
-   //    // $this->data['info'] = $this->Offices_model->get_scout_unit_info($id);      
+   //    // $this->data['info'] = $this->Offices_model->get_scout_unit_info($id);
    //    $region     = $this->data['info']->unit_region_id;
    //    $district   = $this->data['info']->unit_scout_dis_id;
    //    $upazila    = $this->data['info']->unit_scout_upa_id;
@@ -4154,7 +4175,7 @@ class Offices extends Backend_Controller {
    //       redirect('dashboard');
    //    }
 
-   //    $this->data['info'] = $this->Offices_model->get_scout_unit_info($unitID); 
+   //    $this->data['info'] = $this->Offices_model->get_scout_unit_info($unitID);
    //    $this->data['results'] = $this->Scouts_member_model->get_scout_member_by_unit($unitID);
    //    foreach ($this->data['results'] as $k => $user){
    //       $this->data['results'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
@@ -4169,11 +4190,11 @@ class Offices extends Backend_Controller {
 
 
    // public function district_set_username($officeID){
-   //    if(!($this->ion_auth->is_admin() || $this->ion_auth->is_region_admin())){         
+   //    if(!($this->ion_auth->is_admin() || $this->ion_auth->is_region_admin())){
    //       redirect('dashboard');
    //    }
 
-   //    $this->data['info'] = $this->Offices_model->get_scout_district_info($officeID); 
+   //    $this->data['info'] = $this->Offices_model->get_scout_district_info($officeID);
 
    //    $tables = $this->config->item('tables','ion_auth');
    //    $identity_column = $this->config->item('identity','ion_auth');
@@ -4194,9 +4215,9 @@ class Offices extends Backend_Controller {
    //    $password = $this->input->post('password');
    //    $groups = array('5');
    //    $additional_data = array(
-   //       'is_office'    => 1,    
+   //       'is_office'    => 1,
    //       'phone'        => $this->input->post('phone')
-   //       );      
+   //       );
 
    //    if ($this->form_validation->run() == true) {
    //       $lastID = $this->ion_auth->register($identity, $password, $email, $additional_data, $groups);
@@ -4221,7 +4242,7 @@ class Offices extends Backend_Controller {
 
    // public function district_reset($id){
    //    if($this->ion_auth->is_admin()){
-   //       $this->Offices_model->district_reset_username($id); 
+   //       $this->Offices_model->district_reset_username($id);
    //       $this->session->set_flashdata('success', 'Reset district username successfully.');
    //       redirect("offices/district");
    //    }else{
@@ -4233,11 +4254,11 @@ class Offices extends Backend_Controller {
 
 
    //   public function region_set_username($officeID){
-   //    if(!$this->ion_auth->is_admin()){         
+   //    if(!$this->ion_auth->is_admin()){
    //       redirect('dashboard');
    //    }
 
-   //    $this->data['info'] = $this->Offices_model->get_region_info($officeID); 
+   //    $this->data['info'] = $this->Offices_model->get_region_info($officeID);
 
    //    $tables = $this->config->item('tables','ion_auth');
    //    $identity_column = $this->config->item('identity','ion_auth');
@@ -4258,9 +4279,9 @@ class Offices extends Backend_Controller {
    //    $password = $this->input->post('password');
    //    $groups = array('4');
    //    $additional_data = array(
-   //       'is_office'    => 1,    
+   //       'is_office'    => 1,
    //       'phone'         => $this->input->post('phone')
-   //       );      
+   //       );
 
    //    if ($this->form_validation->run() == true) {
    //       $lastID = $this->ion_auth->register($identity, $password, $email, $additional_data, $groups);
@@ -4281,11 +4302,11 @@ class Offices extends Backend_Controller {
    //    $this->data['subview'] = 'region_set_username';
    //    $this->load->view('backend/_layout_main', $this->data);
    // }
-   
+
 
    // public function region_reset($id){
    //    if($this->ion_auth->is_admin()){
-   //       $this->Offices_model->region_reset_username($id); 
+   //       $this->Offices_model->region_reset_username($id);
    //       $this->session->set_flashdata('success', 'Reset region username successfully.');
    //       redirect("offices/region");
    //    }else{
@@ -4295,7 +4316,7 @@ class Offices extends Backend_Controller {
 
    // public function upazila_reset($id){
    //    if($this->ion_auth->is_admin()){
-   //       $this->Offices_model->upazila_reset_username($id); 
+   //       $this->Offices_model->upazila_reset_username($id);
    //       $this->session->set_flashdata('success', 'Reset upazila username successfully.');
    //       redirect("offices/upazila");
    //    }else{
@@ -4305,7 +4326,7 @@ class Offices extends Backend_Controller {
 
 
 
-    // Cross Check Upazila Office Access 
+    // Cross Check Upazila Office Access
    // if($districtInfo->dis_type == 1) {
    //    if(!$this->Offices_model->check_office_access_upazila($districtInfo->dis_scout_region_id, $districtInfo->id, $this->input->get('upazila'))){
    //       $this->access_denied();

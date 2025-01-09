@@ -1,5 +1,5 @@
-<div class="page-content">     
-  <div class="content">  
+<div class="page-content">
+  <div class="content">
     <ul class="breadcrumb" style="margin-bottom: 20px;">
       <li> <a href="<?=base_url('dashboard')?>" class="active"> Dashboard </a> </li>
       <li> <a href="<?=base_url('scouts_member/all')?>" class="active"> <?=$module_title; ?> </a></li>
@@ -26,7 +26,7 @@
       <div class="grid simple horizontal red">
        <div class="grid-title">
         <h4><span class="semi-bold"><?=$meta_title; ?></span></h4>
-        <div class="pull-right"> 
+        <div class="pull-right">
           <?php if($info->member_id == 2){ ?>
             <?php if($info->sc_section_id == '1'){ ?>
               <a href="<?=base_url('program/cub_program/'.encrypt_url($info->id))?>" class="btn btn-blueviolet btn-xs btn-mini"> Cub Program</a>
@@ -35,14 +35,14 @@
             <?php }elseif($info->sc_section_id == '3'){ ?>
               <a href="<?=base_url('program/rover_program/'.encrypt_url($info->id))?>" class="btn btn-blueviolet btn-xs btn-mini"> Rover Scouts Program</a>
             <?php } ?>
-          <?php }elseif($info->member_id == 8 || $info->member_id == 9 || $info->member_id == 10 || $info->member_id == 12){ ?> 
+          <?php }elseif($info->member_id == 8 || $info->member_id == 9 || $info->member_id == 10 || $info->member_id == 12){ ?>
               <a href="<?=base_url('program/leader_progress/'.encrypt_url($info->id))?>" class="btn btn-blueviolet btn-xs btn-mini"> Leader Progress</a>
           <?php } ?>
 
-          <a href="<?=base_url('scouts_member/all')?>" class="btn btn-blueviolet btn-xs btn-mini"> Scouts Member List</a>  
+          <a href="<?=base_url('scouts_member/all')?>" class="btn btn-blueviolet btn-xs btn-mini"> Scouts Member List</a>
       </div>
     </div>
-    
+
     <div class="grid-body">
       <a href="<?=base_url('scouts_member/scout_member_details_pdf'.'/'.encrypt_url($id))?>" class="btn btn-primary btn-xs btn-mini" style="float: right;">PDF Download</a>
       <div class="row">
@@ -55,7 +55,7 @@
                 <td width="45%" valign="top">
                   <table class="tg">
                     <h4 style="font-weight: bold; border-bottom: 1px solid #ccc; margin-right: 20px;">Personal Information</h4>
-                    <!-- <caption>Personal Information</caption> -->                    
+                    <!-- <caption>Personal Information</caption> -->
                     <tr>
                       <th class="tg-9vst">Profile Image:</th>
                       <td class="tg-031e">
@@ -103,6 +103,10 @@
                       <td class="tg-031e"><?=date_detail_format($info->dob)?></td>
                     </tr>
                     <tr>
+                      <th class="tg-9vst">Date of Late:</th>
+                      <td class="tg-031e"><?=date_detail_format($info->dol)?></td>
+                    </tr>
+                    <tr>
                       <th class="tg-9vst">Blood Group:</th>
                       <td class="tg-031e"><?=$info->bg_name_en?></td>
                     </tr>
@@ -142,19 +146,19 @@
                     <tr>
                       <th class="tg-9vst">User Group:</th>
                       <td class="tg-031e">
-                        <?php  
+                        <?php
                         foreach($currentGroups as $group) {
                           // echo $group->description;
                           echo '<span class="btn btn-primary btn-xs btn-mini" style="background-color:#6b64d0;margin-bottom:1px;cursor: auto;">'.htmlspecialchars($group->description,ENT_QUOTES,'UTF-8').'</span>';
                           echo '&nbsp;';
-                        }  
+                        }
                         ?>
                       </td>
-                    </tr>  
+                    </tr>
                     <?php } ?>
                     <tr>
                       <th colspan="2" class="tg-9vst2" style="color: black; font-size: 16px;">Present Address</th>
-                    </tr>                  
+                    </tr>
                     <tr>
                       <th class="tg-9vst">Village/House No or Name (EN):</th>
                       <td class="tg-031e"><?=$info->pre_village_house?></td>
@@ -189,7 +193,7 @@
                     </tr>
                     <tr>
                       <th colspan="2" class="tg-9vst2" style="color: black; font-size: 16px;">Permanent Address</th>
-                    </tr>                  
+                    </tr>
                     <tr>
                       <th class="tg-9vst">Village/House No or Name:</th>
                       <td class="tg-031e"><?=$info->per_village_house?></td>
@@ -214,7 +218,7 @@
                       <th class="tg-9vst">Division:</th>
                       <td class="tg-031e"><?=$info->per_div_name?></td>
                     </tr>
-                  </table>    
+                  </table>
                 </td>
 
                 <td width="45%"  valign="top">
@@ -257,18 +261,6 @@
                       <th class="tg-9vst">Section:</th>
                       <td class="tg-031e"><span class="label label-inverse"><?php echo get_scout_section($info->sc_section_id);?></span></td>
                     </tr>
-                <!-- <tr>
-                  <th class="tg-9vst" width="140">Cub Scouts Experience:</th>
-                  <td class="tg-031e"><?=$sc_cub?></td>
-                </tr>
-                <tr>
-                  <th class="tg-9vst">Scouts Experience:</th>
-                  <td class="tg-031e"><?=$sc_scout?></td>
-                </tr>
-                <tr>
-                  <th class="tg-9vst">Rover Scouts Experience:</th>
-                  <td class="tg-031e"><?=$sc_rover?></td>
-                </tr> -->
                 <tr>
                   <th class="tg-9vst">Scout Badge:</th>
                   <td class="tg-031e"><?=$info->badge_type_name_bn?></td>
@@ -299,8 +291,8 @@
                 </tr>
                 <tr>
                 <th colspan="2" class="tg-9vst2" style="color: black; font-size: 16px;">Other's Information</th>
-                </tr>        
-                <?php if($info->member_id == 1 || $info->member_id == 2){ ?>          
+                </tr>
+                <?php if($info->member_id == 1 || $info->member_id == 2){ ?>
                 <tr>
                   <th class="tg-9vst">Current Institute:</th>
                   <td class="tg-031e"><?=$info->institute_name?></td>
@@ -313,20 +305,36 @@
                   <th class="tg-9vst">Current Roll No:</th>
                   <td class="tg-031e"><?=$info->curr_role_no?></td>
                 </tr>
-                <?php }else{ ?> 
+                <?php }else{ ?>
                 <tr>
                   <th class="tg-9vst">Scout Designation (For Adult Leader):</th>
-                  <td class="tg-031e" valign="top"><?=$info->scout_designation?></td>                
+                  <td class="tg-031e" valign="top"><?=$info->scout_designation?></td>
                 </tr>
                 <tr>
                   <th class="tg-9vst">Present Organization / Office / Business Name:</th>
-                  <td class="tg-031e" valign="top"><?=$info->curr_org?></td>                
+                  <td class="tg-031e" valign="top"><?=$info->curr_org?></td>
                 </tr>
                 <tr>
                   <th class="tg-9vst">Present Designation:</th>
                   <td class="tg-031e" valign="top"><?=$info->curr_desig?></td>
                 </tr>
-                <?php } ?>                
+                <?php } ?>
+                <tr>
+                  <th class="tg-9vst">Facebook :</th>
+                  <td class="tg-031e"><?=$info->facebook?></td>
+                </tr>
+                <tr>
+                  <th class="tg-9vst">Instagram :</th>
+                  <td class="tg-031e"><?=$info->instagram?></td>
+                </tr>
+                <tr>
+                  <th class="tg-9vst">Linkedin :</th>
+                  <td class="tg-031e"><?=$info->linkedin?></td>
+                </tr>
+                <tr>
+                  <th class="tg-9vst">Skype :</th>
+                  <td class="tg-031e"><?=$info->skype?></td>
+                </tr>
               </table>
             </td>
 
@@ -545,7 +553,7 @@
             <td><?=$achievement[$i]->scout_id; ?></td>
 
           </tr>
-          <?php } ?>  
+          <?php } ?>
         </table>
       </br></br>
 
@@ -574,7 +582,7 @@
           <td><?=$expertness[$i]->scout_id; ?></td>
 
         </tr>
-        <?php } ?>  
+        <?php } ?>
       </table>
     </br></br>
 
@@ -603,7 +611,7 @@
         <td><?=$camping[$i]->scout_id; ?></td>
 
       </tr>
-      <?php } ?>  
+      <?php } ?>
     </table>
   </br></br>
 
@@ -632,7 +640,7 @@
       <td><?=$badge_training[$i]->scout_id; ?></td>
 
     </tr>
-    <?php } ?>  
+    <?php } ?>
   </table>
 </br></br>
 
@@ -661,7 +669,7 @@
     <td><?=$promotion[$i]->scout_id; ?></td>
 
   </tr>
-  <?php } ?>  
+  <?php } ?>
 </table>
 </br></br>
 
@@ -686,7 +694,7 @@
     <td><?=$resign[$i]->scout_id; ?></td>
 
   </tr>
-  <?php } ?>  
+  <?php } ?>
 </table>
 <?php } ?>
 
@@ -702,7 +710,7 @@
                             <th>যাচাইকারী</th>
                          </tr>
                          <?php for($i=0;$i<sizeof($badge_details);$i++){ ?>
-                      
+
                           <tr>
                             <td><?=$i+1?></td>
                             <td><?=get_scout_section($badge_details[$i]->section_id); ?></td>
@@ -711,9 +719,9 @@
                             <td><?=date_bangla_format($badge_details[$i]->achive_date); ?></td>
                             <td><?=$badge_details[$i]->examiner_id; ?></td>
                             <td><?=$badge_details[$i]->scout_id; ?></td>
-                            
+
                           </tr>
-                          <?php } ?>  
+                          <?php } ?>
                         </table> -->
                         <!-- </br></br> -->
 
@@ -734,7 +742,7 @@
                             <th>যাচাইকারী</th>
                          </tr>
                          <?php for($i=0;$i<sizeof($health);$i++){ ?>
-                      
+
                           <tr>
                             <td><?=$i+1?></td>
                             <td><?=get_scout_section($health[$i]->section_id); ?></td>
@@ -748,9 +756,9 @@
                             <td><?=$health[$i]->temperature; ?></td>
                             <td><?=$health[$i]->examiner_id; ?></td>
                             <td><?=$health[$i]->scout_id; ?></td>
-                            
+
                           </tr>
-                          <?php } ?>  
+                          <?php } ?>
                     </table>
                   </br></br> -->
 
@@ -767,7 +775,7 @@
                             <th>যাচাইকারী</th>
                          </tr>
                          <?php for($i=0;$i<sizeof($institute);$i++){ ?>
-                      
+
                           <tr>
                             <td><?=$i+1?></td>
                             <td><?=get_scout_section($institute[$i]->section_id); ?></td>
@@ -777,9 +785,9 @@
                             <td><?=$institute[$i]->total_unmber; ?></td>
                             <td><?=$institute[$i]->examiner_id; ?></td>
                             <td><?=$institute[$i]->scout_id; ?></td>
-                            
+
                           </tr>
-                          <?php } ?>  
+                          <?php } ?>
                     </table>
                   </br></br> -->
 
@@ -787,7 +795,7 @@
               </div>
             </div>
 
-          </div>  <!-- END GRID BODY -->              
+          </div>  <!-- END GRID BODY -->
         </div> <!-- END GRID -->
       </div>
 

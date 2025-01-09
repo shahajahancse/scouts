@@ -7,28 +7,28 @@
  </ul>
  <style type="text/css">
    .marTopSearch{margin-top: 10px;}
-   
+
    @media (max-width: 767px) {
      .table-responsive {
        overflow-x: auto;
        -webkit-overflow-scrolling: touch;
      }
-     
+
      .btn-group {
        display: flex;
        flex-direction: column;
      }
-     
+
      .btn-mini {
        margin-bottom: 5px;
      }
-     
+
      .pull-right {
        float: none !important;
        margin-top: 10px;
        text-align: center;
      }
-     
+
      .grid-title h4 {
        text-align: center;
      }
@@ -169,14 +169,14 @@ if(!$this->ion_auth->is_vendor()){
         <td class="v-align-middle"><?=$row->grp_name?></td>
         <td class="v-align-middle"><strong><?=$row->username?></strong></td>
         <td align="right">
-         <div class="btn-group"> 
+         <div class="btn-group">
            <a class="btn btn-primary dropdown-toggle btn-mini" data-toggle="dropdown" href="#"> Action <span class="caret"></span> </a>
            <ul class="dropdown-menu pull-right">
              <li><a href="<?=base_url("scouts_member/details/".encrypt_url($row->id))?>" target="_blank">Details Scouts Member</a></li>
              <?php if($this->ion_auth->is_admin() || $this->ion_auth->is_region_admin() || $this->ion_auth->is_district_admin() || $this->ion_auth->is_upazila_admin() || $this->ion_auth->is_group_admin()){ ?>
              <li><a href="<?=base_url("scouts_member/edit/".encrypt_url($row->id))?>" target="_blank">Edit Scouts Member</a></li>
-
-             <?php if($this->ion_auth->in_group(array('admin', 'scout_admin', 'monitor_team', 'regional_head', 'district_office', 'upazila_office'))){ ?>
+              <!-- 'district_office', 'upazila_office' -->
+             <?php if($this->ion_auth->in_group(array('admin', 'scout_admin', 'monitor_team', 'regional_head'))){ ?>
              <li><a href="<?=base_url("scouts_member/pdf_id_card/".encrypt_url($row->id))?>" target="_blank">ID Card Download</a></li>
              <li class="divider"></li>
              <li><a href="<?=base_url("scouts_member/delete/".encrypt_url($row->id))?>" onclick="return confirm('Be careful! are you sure you want to delete this user?');">Member Delete Request</a></li>

@@ -5,19 +5,19 @@
 </style>
 
 
-<div class="page-content">     
-   <div class="content">  
+<div class="page-content">
+   <div class="content">
       <ul class="breadcrumb" style="margin-bottom: 20px;">
          <li> <a href="<?=base_url('dashboard')?>" class="active"> Dashboard </a> </li>
          <li> <a href="<?=base_url('scouts_member')?>" class="active"> <?=$module_title; ?> </a></li>
          <li><?=$meta_title; ?></li>
       </ul>
-      <?php 
+      <?php
       $display_edu='';
       $display_org='';
       $display_certificate='';
 
-      if($info->member_id == 1 || $info->member_id == 2){ 
+      if($info->member_id == 1 || $info->member_id == 2){
          $display_edu = "display: block;";
          $display_org = "display: none;";
       }else if($info->member_id == 8 || $info->member_id == 12 || $info->member_id == 10 || $info->member_id == 9 || $info->member_id == 13){
@@ -47,8 +47,8 @@
                         <?=$this->session->flashdata('success');;?>
                      </div>
                   <?php endif; ?>
-                  
-                  <?php 
+
+                  <?php
                   $attributes = array('id' => 'scout_member_validation');
                   echo form_open_multipart(uri_string(), $attributes);?>
 
@@ -70,11 +70,11 @@
                               <label class="form-label">Date of Birth <span class='required'>*</span></label>
                               <?php echo form_error('day'); echo form_error('month'); echo form_error('year'); ?>
                               <div class="row form-row">
-                                 <?php 
+                                 <?php
                                  $dob=explode('-', $info->dob);
                                  $day  =$dob[2];
-                                 $month=$dob[1]; 
-                                 $year =$dob[0];  
+                                 $month=$dob[1];
+                                 $year =$dob[0];
                                  ?>
                                  <div class="col-md-4" style="">
                                     <?php echo form_dropdown('day', $days, set_value('day',$day), 'class="form-control input-sm"'); ?>
@@ -90,7 +90,7 @@
                            <div class="col-md-3">
                               <label class="form-label">Gender <span class='required'>*</span></label>
                               <?php echo form_error('gender'); ?>
-                              <input type="radio" name="gender" value="Male" <?=set_value('gender',$info->gender)=='Male'?'checked':'';?>> <span style="color: black; font-size: 14px;">Male</span> 
+                              <input type="radio" name="gender" value="Male" <?=set_value('gender',$info->gender)=='Male'?'checked':'';?>> <span style="color: black; font-size: 14px;">Male</span>
                               <input type="radio" name="gender" value="Female" <?=set_value('gender',$info->gender)=='Female'?'checked':'';?>> <span style="color: black; font-size: 14px;">Female</span>
                               <input type="radio" name="gender" value="Others" <?=set_value('gender',$info->gender)=='Others'?'checked':'';?>> <span style="color: black; font-size: 14px;">Others</span>
                            </div>
@@ -126,7 +126,7 @@
                               <label class="form-label">Mother's Name (English) <span class='required'>*</span></label>
                               <?php echo form_error('mother_name'); ?>
                               <input type="text" name="mother_name"  class="form-control input-sm" value="<?=set_value('mother_name', $info->mother_name)?>">
-                           </div>                           
+                           </div>
                            <div class="col-md-3">
                               <label class="form-label">Mother's Name (Bangla) </label>
                               <?php echo form_error('mother_name_bn'); ?>
@@ -201,7 +201,7 @@
                                  </div>
                               </div>
                            </div>
-                           <div class="col-md-5">      
+                           <div class="col-md-5">
                               <div class="row form-row" style="margin-top: 35px;">
                                  <div class="col-md-12">
                                     <label class="form-label">Change Password</label>
@@ -209,7 +209,7 @@
                                     <input name="password" id="password" type="text" class="form-control input-sm" placeholder="Password minimum 8 character">
                                  </div>
                                  <?php /*
-                                 <div class="col-md-12">  
+                                 <div class="col-md-12">
                                     <?php
                                     if($info->profile_img != NULL){
                                        $url = base_url('profile_img/').$info->profile_img;
@@ -223,17 +223,17 @@
                                     <label>Profile Image</label>
                                     <div><?php echo form_error('userfile'); ?></div>
                                     <input type="file" name="userfile">
-                                    <label>Note:</label>                          
-                                    <ul>                
-                                       <li>Image should be passport size <strong>(Display your ID Card)</strong></li>        
-                                       <li>Image should be scouts uniform </li>             
+                                    <label>Note:</label>
+                                    <ul>
+                                       <li>Image should be passport size <strong>(Display your ID Card)</strong></li>
+                                       <li>Image should be scouts uniform </li>
                                        <li>Allowed file type <strong>jpg</strong>, <strong>png</strong>, <strong>jpeg</strong></li>
-                                       <li>Maximun file size <strong>200 KB</strong></li>         
+                                       <li>Maximun file size <strong>200 KB</strong></li>
                                     </ul>
                                  </div>
                               </div>
                               */ ?>
-                              <div class="col-md-12"> 
+                              <div class="col-md-12">
                                  <div class="form-group">
                                    <input type="hidden" name="hide_img" id="profile-avatar-url" value="">
                                    <?php
@@ -246,13 +246,13 @@
                                   <img src="<?php print $url;?>" alt="image" title="Click on the image for change" data-toggle="modal" data-target="#avatar-modal" id="render-avatar" class="circular-fix has-shadow border marg-top10" data-ussuid="<?php print base64_encode(0);?>" data-backdrop="static" data-keyboard="false" data-upltype="avatar" style="width:80px; height:80px; max-width: 80px; max-height: 80px; border: 2px solid black; padding: 3px;"><br>
                                </div>
                             </div>
-                            <div class="col-md-12"> 
-                              <label>Note:</label>                          
-                              <ul>                
-                                 <li>Image should be passport size <strong>(Display your ID Card)</strong></li>        
-                                 <li>Image should be scouts uniform </li>             
+                            <div class="col-md-12">
+                              <label>Note:</label>
+                              <ul>
+                                 <li>Image should be passport size <strong>(Display your ID Card)</strong></li>
+                                 <li>Image should be scouts uniform </li>
                                  <li>Allowed file type <strong>jpg</strong>, <strong>png</strong>, <strong>jpeg</strong></li>
-                                 <li>Maximun file size <strong>200 KB</strong></li>         
+                                 <li>Maximun file size <strong>200 KB</strong></li>
                               </ul>
                            </div>
 
@@ -269,7 +269,7 @@
                <h4 class="margin_left_15 semi-bold">Scouts & Other's Information</h4>
             </div>
 
-            <div class="row">                     
+            <div class="row">
                <div class="col-md-8">
                   <h5 class="semi-bold" style="font-style: italic;text-decoration: underline;">Scout Information</h5>
                   <div class="row form-row" id="expreance">
@@ -304,7 +304,7 @@
                         $more_attr = 'class="form-control input-sm" id="sc_section"';
                         echo form_dropdown('sc_section_id', $scout_section, set_value('sc_section_id', $info->sc_section_id), $more_attr);
                         ?>
-                     </div> 
+                     </div>
                   </div>
 
                   <div class="row form-row" id="certificate_info" style="<?=$display_certificate?>">
@@ -312,12 +312,12 @@
                      <label class="form-label">30.1 Certificate No</label>
                         <?php echo form_error('certificate_no'); ?>
                         <input name="certificate_no" value="<?=set_value('certificate_no', $info->certificate_no)?>" type="text" class="form-control input-sm" placeholder="">
-                     </div> 
+                     </div>
                      <div class="col-md-6">
                         <label class="form-label">30.2 Certificate Date</label>
                         <?php echo form_error('certificate_date'); ?>
                         <input name="certificate_date" value="<?=set_value('certificate_date', date_browse_format($info->certificate_date))?>" type="text" class="datetime form-control input-sm" placeholder="DD-MM-YYYY">
-                     </div> 
+                     </div>
                   </div>
 
                   <div class="row form-row">
@@ -401,34 +401,34 @@
                      <?php }else{ ?>
                      <input type="hidden" name="unit_id_name" id="unit_id_name" value="<?=$info->sc_unit_id?>">
                      <?php echo form_error('sc_unit_id'); ?>
-                     <div class="unit_list" style=""></div>  
+                     <div class="unit_list" style=""></div>
                      <?php } ?>
                   </div>
                </div>
 
                <div class="col-md-4">
-                  <div class="row form-row"> 
+                  <div class="row form-row">
                      <h5 class="semi-bold margin_left_15" style="font-style: italic;text-decoration: underline;">Other's Information</h5>
                      <div id="eduDiv" style="<?=$display_edu?>">
                         <div class="col-md-12">
-                           <label class="form-label">Present Institute (Search Name or EIIN Number)</label>                              
+                           <label class="form-label">Present Institute (Search Name or EIIN Number)</label>
                            <?php echo form_error('curr_institute_id');?>
                            <select class="instituteSelect2 form-control" name="curr_institute_id" id="curr_institute_id" style="width:100%;"></select>
                            <script>
                              var $newOption = $("<option></option>").val("<?php echo $info->curr_institute_id;?>").text("<?php echo $info->institute_name;?>");
                              $("#curr_institute_id").append($newOption).trigger('change');
                           </script>
-                       </div> 
+                       </div>
                        <div class="col-md-12">
                         <label class="form-label">Present Class</label>
                         <?php echo form_error('curr_class'); ?>
                         <input name="curr_class" value="<?=set_value('curr_class', $info->curr_class)?>" type="text" class="form-control input-sm" placeholder="">
-                     </div> 
+                     </div>
                      <div class="col-md-12">
                         <label class="form-label">Present Roll No</label>
                         <?php echo form_error('curr_role_no'); ?>
                         <input name="curr_role_no" value="<?=set_value('curr_role_no', $info->curr_role_no)?>" type="text" class="form-control input-sm" placeholder="">
-                     </div> 
+                     </div>
                   </div>
 
                   <div id="orgDiv" style="<?=$display_org?>">
@@ -446,28 +446,33 @@
                      </div>
                   </div>
 
-                  <?php if($this->ion_auth->is_admin()){ ?>                  
+                  <?php if($this->ion_auth->is_admin()){ ?>
                   <div class="col-md-12">
                      <label class="form-label">ID Card Expire Date (For ALT & LT)</label>
                      <?php echo form_error('expire_date'); ?>
                      <input name="expire_date" value="<?=set_value('expire_date', date_browse_format($info->expire_date))?>" type="text" class="form-control input-sm datetime pull-left" placeholder="DD-MM-YYYY">
                   </div>
                   <?php } ?>
+                  <div class="col-md-12">
+                     <label class="form-label">Date Of Late</label>
+                     <?php echo form_error('dol'); ?>
+                     <input name="dol" value="<?=set_value('dol', date_browse_format($info->dol))?>" type="text" class="form-control input-sm datetime pull-left" placeholder="DD-MM-YYYY">
+                  </div>
 
                </div>
             </div>
          </div> <!-- //Institute and scout info -->
 
 
-         <div class="form-actions">  
+         <div class="form-actions">
                   <?php /*if($info->scout_id == NULL){  ?>
                   <!-- <div class="pull-left">
                      <div class="checkbox checkbox check-success pull-left" style="margin-top: 13px;">
                         <?php echo form_checkbox('generateID', '1', FALSE, 'id="generateID"');?>
                         <label for="generateID" style="color: black; font-weight: bold;">Generate Scout ID</label>
-                     </div>                     
+                     </div>
                   </div> -->
-                  <?php } */?>               
+                  <?php } */?>
 
                   <div class="pull-right">
                      <?php echo form_hidden('dataID', encrypt_url($info->id)); ?>
@@ -476,7 +481,7 @@
                </div>
                <?php echo form_close();?>
 
-            </div>  <!-- END GRID BODY -->              
+            </div>  <!-- END GRID BODY -->
          </div> <!-- END GRID -->
       </div>
 
@@ -492,7 +497,7 @@
 
 
       $('#scout_member_validation').validate({
-      // focusInvalid: false, 
+      // focusInvalid: false,
       ignore: "",
       rules: {
          first_name: { required: true },
@@ -502,33 +507,33 @@
          year: { required: true },
          gender: { required: true },
          blood_group: { required: false },
-         religion_id: { required: true },         
+         religion_id: { required: true },
          father_name: { required: true },
          father_name_bn: { required: false },
-         mother_name: { required: true }, 
-         mother_name_bn: { required: false },        
+         mother_name: { required: true },
+         mother_name_bn: { required: false },
          phone:{
             required: true,
             number: true,
             minlength: 11,
             maxlength: 11
          },
-         email: { email: true },         
+         email: { email: true },
          password: {
             required: false,
             minlength: 8
-         }, 
+         },
          pre_village_house:{ required: true },
          pre_village_house_bn:{ required: false },
-         pre_road_block:{ required: true },  
-         pre_road_block_bn:{ required: false },           
+         pre_road_block:{ required: true },
+         pre_road_block_bn:{ required: false },
          pre_division_id: { required: true },
          pre_district_id: { required: true },
          pre_upa_tha_id: { required: true },
          pre_post_office: {
             required: false,
             number: true,
-         },  
+         },
 
          join_date: { required: true },
          member_id: { required: true },
@@ -545,7 +550,7 @@
             extension: "jpg|jpeg|png"
          }
       },
-      messages: {         
+      messages: {
          userfile: {
             required: "Image file is required",
             extension: "Allowed file extension jpg, png, jpeg"
@@ -553,18 +558,18 @@
       }
    });
 
-   }); 
+   });
 
    $('#member_id').change(function(){
-      $('#eduDiv').hide(); 
+      $('#eduDiv').hide();
       $("#orgDiv").hide();
       var id = $('#member_id').val();
       // alert(id);
-      
+
       if(id == 1 || id == 2){
          $("#eduDiv").show();
       }else if(id == 8 || id == 12 || id == 10 || id == 9 || id == 13){
-         $("#orgDiv").show();        
+         $("#orgDiv").show();
       }
    });
 </script>

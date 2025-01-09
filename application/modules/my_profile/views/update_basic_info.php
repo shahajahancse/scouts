@@ -149,12 +149,12 @@ if($info->member_id == 1 || $info->member_id == 2){
                   <div class="col-md-2">
                     <label class="form-label">National ID</label>
                     <?php echo form_error('nid'); ?>
-                    <input name="nid" value="<?=set_value('nid', $info->nid)?>" type="text" class="form-control input-sm" placeholder="">
+                    <input id="nid" name="nid" value="<?=set_value('nid', $info->nid)?>" class="form-control input-sm">
                   </div>
                   <div class="col-md-2">
                     <label class="form-label">Birth ID</label>
                     <?php echo form_error('birth_id'); ?>
-                    <input name="birth_id" value="<?=set_value('birth_id', $info->birth_id)?>" type="text" class="form-control input-sm" placeholder="">
+                    <input id="birth_id" name="birth_id" value="<?=set_value('birth_id', $info->birth_id)?>" class="form-control input-sm">
                   </div>
                   <div class="col-md-2">
                     <label class="form-label">Telephone No.</label>
@@ -412,91 +412,124 @@ if($info->member_id == 1 || $info->member_id == 2){
 <script type="text/javascript">
  $(document).ready(function() {
   $('#basic_update_validation').validate({
-      // focusInvalid: false,
-      ignore: "",
-      rules: {
-        first_name: {
-          required: true
-        },
-        full_name_bn: {
-          required: true
-        },
-        day: {
-          required: true
-        },
-        month: {
-          required: true
-        },
-        year: {
-          required: true
-        },
-        gender: {
-          required: true
-        },
-        blood_group: {
-          required: false
-        },
-        religion_id: {
-          required: true
-        },
-        father_name: {
-          required: true
-        },
-        father_name_bn: {
-          required: true
-        },
-        mother_name: {
-          required: true
-        },
-        mother_name_bn: {
-          required: true
-        },
-        nid:{
-          number: true,
-        },
-        birth_id:{
-          number: true,
-        },
-        phone:{
-          required: true,
-          number: true,
-          minlength: 11,
-          maxlength: 11
-        },
-        email: {
-          email:true
-        },
-        pre_village_house:{
-          required: true
-        },
-        pre_village_house_bn:{
-          required: true
-        },
-        pre_road_block:{
-          required: true
-        },
-        pre_road_block_bn:{
-          required: true
-        },
-        pre_road_block:{
-          required: true
-        },
-        pre_division_id: {
-          required: true
-        },
-        pre_district_id: {
-          required: true
-        },
-        pre_up_th_id: {
-          required: true
-        },
-        pre_post_office: {
-          required: true
-        },
-
+    // focusInvalid: false,
+    ignore: "",
+    rules: {
+      first_name: {
+        required: true
       },
+      full_name_bn: {
+        required: true
+      },
+      day: {
+        required: true
+      },
+      month: {
+        required: true
+      },
+      year: {
+        required: true
+      },
+      gender: {
+        required: true
+      },
+      blood_group: {
+        required: false
+      },
+      religion_id: {
+        required: true
+      },
+      father_name: {
+        required: true
+      },
+      father_name_bn: {
+        required: true
+      },
+      mother_name: {
+        required: true
+      },
+      mother_name_bn: {
+        required: true
+      },
+      nid:{
+        required: false,
+        number: true,
+        minlength: 3,
+        remote: {
+          url: hostname +"offices/ajax_exists_nid/",
+          type: "post",
+          data: {
+            inputData: function() {
+              return $( "#nid" ).val();
+            }
+          }
+        }
+      },
+      birth_id:{
+        required: false,
+        number: true,
+        minlength: 3,
+        remote: {
+          url: hostname +"offices/ajax_exists_birth_id/",
+          type: "post",
+          data: {
+            inputData: function() {
+                return $( "#birth_id" ).val();
+            }
+          }
+        }
+      },
+      phone:{
+        required: true,
+        number: true,
+        minlength: 11,
+        maxlength: 11
+      },
+      email: {
+        email:true
+      },
+      pre_village_house:{
+        required: true
+      },
+      pre_village_house_bn:{
+        required: true
+      },
+      pre_road_block:{
+        required: true
+      },
+      pre_road_block_bn:{
+        required: true
+      },
+      pre_road_block:{
+        required: true
+      },
+      pre_division_id: {
+        required: true
+      },
+      pre_district_id: {
+        required: true
+      },
+      pre_up_th_id: {
+        required: true
+      },
+      pre_post_office: {
+        required: true
+      },
+    },
+    messages: {
+      nid: {
+        remote: jQuery.format("Already use in this!")
+      },
+      birth_id: {
+        remote: jQuery.format("Already use in this!")
+      },
+    },
+  });
 
-    });
+  $('#nid').keyup(function(){
+    // $('#mask_username').html($('#identity').val());
+    $('#mask_username').html($('#nid').val().toLowerCase());
+  });
 });
 
  $(document).ready(function(){
