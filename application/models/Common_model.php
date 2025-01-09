@@ -16,12 +16,12 @@ class Common_model extends CI_Model {
          $data[$rows['id']] = $rows['category_name_en'];
       }
       return $data;
-   } 
+   }
 
    // Convert English to Bangla Number
    public static $bn = array("১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯", "০");
    public static $en = array("1", "2", "3", "4", "5", "6", "7", "8", "9", "0");
-   
+
    public static function bn2en($number) {
       return str_replace(self::$bn, self::$en, $number);
    }
@@ -221,7 +221,7 @@ class Common_model extends CI_Model {
       }
 
       return $data;
-   }   
+   }
 
    public function get_dropdown_office($table, $field, $where, $id){
       $data[''] = '-- Select One --';
@@ -251,7 +251,7 @@ class Common_model extends CI_Model {
 
 
    public function get_latest_news($limit){
-   
+
       $this->db->select('id, news_title');
       $this->db->from('scout_news');
       $this->db->where('status', 1);
@@ -272,7 +272,7 @@ class Common_model extends CI_Model {
          $data[$rows['id']] = $rows['office_rules_name'];
       }
       return $data;
-   }   
+   }
 
    public function get_event_category(){
       $data[''] = '-- Select Type --';
@@ -285,7 +285,7 @@ class Common_model extends CI_Model {
          $data[$rows['id']] = $rows['event_cate_name'];
       }
       return $data;
-   }   
+   }
 
    public function get_adult_leader_badges(){
       $data[''] = '-- Select Badge --';
@@ -296,10 +296,10 @@ class Common_model extends CI_Model {
       $this->db->where('b.status', 1);
       $this->db->where('b.member_id', 8);
 
-      $this->db->order_by('b.id ASC');      
+      $this->db->order_by('b.id ASC');
       // $this->db->order_by('bt.id ASC');
       // $this->db->order_by('b.section_id', 'DESC');
-      // $this->db->order_by("name", "asc"); 
+      // $this->db->order_by("name", "asc");
       $query = $this->db->get();
       $result = $query->result_array();
 
@@ -314,12 +314,12 @@ class Common_model extends CI_Model {
 
       $this->db->where('event_reg_end >', date('Y-m-d'));
       if($region != NULL){
-         $this->db->where('sc_region_id', $region);         
+         $this->db->where('sc_region_id', $region);
       }
       if($district != NULL){
-         $this->db->where('sc_district_id', $district);         
+         $this->db->where('sc_district_id', $district);
       }
-      $this->db->or_where('event_level', 'nhq');         
+      $this->db->or_where('event_level', 'nhq');
       $this->db->order_by('id', 'DESC');
       $query = $this->db->get()->result();
 
@@ -338,9 +338,9 @@ class Common_model extends CI_Model {
 
       foreach ($query->result_array() AS $rows) {
          $data[$rows['id']] = $rows[$lan_region_name];
-      }        
+      }
       return $data;
-   }   
+   }
 
    public function get_scout_districts($id=NULL){
       $lang_field=$this->session->userdata('site_lang')=='bangla'?'dis_name':'dis_name_en';
@@ -423,7 +423,7 @@ class Common_model extends CI_Model {
 
       foreach ($query->result_array() AS $rows) {
          $data[$rows['id']] = $rows[$lan_region_name];
-      }        
+      }
       return $data;
    }
 
@@ -436,7 +436,7 @@ class Common_model extends CI_Model {
 
    //    foreach ($query->result_array() AS $rows) {
    //       $data[$rows['id']] = $rows['committee_session_name'];
-   //    }        
+   //    }
    //    return $data;
    // }
 
@@ -450,9 +450,9 @@ class Common_model extends CI_Model {
 
       foreach ($query->result_array() AS $rows) {
          $data[$rows['id']] = $rows['scout_id'].' - '.$rows['first_name'];
-      }        
+      }
       return $data;
-   }    
+   }
 
    public function get_upazila_thana($id=NULL){
       $field= $this->session->userdata('site_lang')=='bangla'?'up_th_name_bn':'up_th_name';
@@ -511,7 +511,7 @@ class Common_model extends CI_Model {
    public function get_office_type(){
       $data[''] = '-- Select Office --';
       $this->db->select('id, office_type_name');
-      $this->db->from('office_type');      
+      $this->db->from('office_type');
       $this->db->order_by('id', 'ASC');
       $query = $this->db->get();
 
@@ -602,7 +602,7 @@ class Common_model extends CI_Model {
          $data[$rows['id']] = $rows['role_type_name_bn'];
       }
       return $data;
-   }   
+   }
 
    public function get_occupations(){
       $district[''] = 'Select Occupation';
@@ -685,7 +685,7 @@ class Common_model extends CI_Model {
    public function get_scout_district_type(){
       $data[''] = 'Select District Type';
       $this->db->select('id, district_type_name');
-      $this->db->from('scout_district_type');        
+      $this->db->from('scout_district_type');
       $query = $this->db->get();
 
       foreach ($query->result_array() AS $rows) {
@@ -706,7 +706,7 @@ class Common_model extends CI_Model {
 
       foreach ($query->result_array() AS $rows) {
          $data[$rows['id']] = $rows["$field"];
-         
+
 
       }
       return $data;
@@ -726,7 +726,7 @@ class Common_model extends CI_Model {
          // $data[$rows['id']] = $rows["$field"];
          $data[$rows['id']] = $rows["$field"] != '' ? $rows["$field"]:$rows["up_th_name"];
       }
-      
+
       return $data;
    }
 
@@ -932,7 +932,7 @@ class Common_model extends CI_Model {
 
       foreach ($query->result_array() AS $rows) {
          $data[$rows['id']] = $rows['region_name_en'];
-      }        
+      }
       return $data;
    }
 
@@ -967,13 +967,13 @@ class Common_model extends CI_Model {
       $this->db->select("id, upa_name_en");
       $this->db->from('office_upazila');
       if(!$ids){
-         $this->db->where_in('upa_scout_dis_id', $ids);         
+         $this->db->where_in('upa_scout_dis_id', $ids);
       }
       if($regionId != NULL){
-         $this->db->where('upa_region_id', $regionId);  
+         $this->db->where('upa_region_id', $regionId);
       }
       if($districtId != NULL){
-         $this->db->where('upa_scout_dis_id', $districtId);  
+         $this->db->where('upa_scout_dis_id', $districtId);
       }
 
       $this->db->order_by('id', 'ASC');
@@ -1066,8 +1066,8 @@ class Common_model extends CI_Model {
       $data[''] = '-- Select Designation --';
       $this->db->select('id, committee_designation_name');
       $this->db->from('committee_designation');
-      $where = "FIND_IN_SET('".$officeID."', office_level)";  
-      $this->db->where( $where ); 
+      $where = "FIND_IN_SET('".$officeID."', office_level)";
+      $this->db->where( $where );
       $query = $this->db->get();
 
       foreach ($query->result_array() AS $rows) {
@@ -1081,8 +1081,8 @@ class Common_model extends CI_Model {
       $data[''] = '-- Select Designation --';
       $this->db->select('id, committee_designation_name_en');
       $this->db->from('edirectory_designation');
-      $where = "FIND_IN_SET('".$officeID."', office_level)";  
-      $this->db->where( $where ); 
+      $where = "FIND_IN_SET('".$officeID."', office_level)";
+      $this->db->where( $where );
       $this->db->order_by('short_order', 'ASC');
       $query = $this->db->get();
 
@@ -1097,8 +1097,8 @@ class Common_model extends CI_Model {
       $data[''] = '-- Select Designation --';
       $this->db->select('id, committee_designation_name_en');
       $this->db->from('edirectory_designation');
-      $where = "FIND_IN_SET('".$officeID."', office_level)";  
-      $this->db->where( $where ); 
+      $where = "FIND_IN_SET('".$officeID."', office_level)";
+      $this->db->where( $where );
       $this->db->order_by('short_order', 'ASC');
       $query = $this->db->get()->result();
 
@@ -1160,7 +1160,7 @@ class Common_model extends CI_Model {
 
       foreach ($query->result_array() AS $rows) {
          $data[$rows['id']] = $rows["archive_award_name"];
-         
+
 
       }
       return $data;
@@ -1305,14 +1305,14 @@ class Common_model extends CI_Model {
       $this->db->order_by('id', 'ASC');
       $query = $this->db->get();
 
-      if(sizeof($query->result()) > 0 ){       
+      if(sizeof($query->result()) > 0 ){
          $str = '<h5 style="text-align: center; margin-bottom: 10px; font-weight: bold;"> Choose your scout unit </h5>
          <table class="table table-hover table-striped" border="1"> ';
             foreach ($query->result() as $row) {
                $selected = '';
                if($sele == $row->id){
                   $selected = 'checked';
-               } 
+               }
                $str .= '<tr>
                <td>
                   <label>
@@ -1320,10 +1320,10 @@ class Common_model extends CI_Model {
                  </label>
               </td>
            </tr>';
-        }     
+        }
         $str .= '</table>';
      }else{
-      $str = '<h5 style="text-align: center; margin-bottom: 10px; font-weight: bold;">Data is not available.</5>'; 
+      $str = '<h5 style="text-align: center; margin-bottom: 10px; font-weight: bold;">Data is not available.</5>';
    }
    return $str;
       // return $query;
@@ -1335,7 +1335,7 @@ public function get_region_type(){
 
 public function get_days(){
    $data[''] = 'Day';
-   for ($i=1; $i <= 31; $i++) { 
+   for ($i=1; $i <= 31; $i++) {
       $value = sprintf('%02d', $i);
       $data[$value] = $value;
    }
@@ -1348,7 +1348,7 @@ public function get_months(){
 
 public function get_years(){
    $data[''] = 'Year';
-   for ($i=date('Y', strtotime('-5 years')); $i >= 1910; $i--) {             
+   for ($i=date('Y', strtotime('-5 years')); $i >= 1910; $i--) {
       $data[$i] = $i;
    }
    return $data;
@@ -1356,7 +1356,7 @@ public function get_years(){
 
 public function get_archive_award_years(){
    $data[''] = '-- Select Year --';
-   for ($i=date('Y'); $i >= 1971; $i--) {             
+   for ($i=date('Y'); $i >= 1971; $i--) {
       $data[$i] = $i;
    }
    return $data;
@@ -1419,7 +1419,7 @@ public function set_archive_member_type(){
 }
 
 public function set_gender(){
-   return array('Male'=>'Male', 'Female'=>'Female', 'Others'=>'Others'); 
+   return array('Male'=>'Male', 'Female'=>'Female', 'Others'=>'Others');
 }
 
    // public function set_member_status(){
@@ -1433,7 +1433,7 @@ public function set_gender(){
 
 public function set_scout_section_basic(){
    return array(''=>'-- Select Section --', '1' => 'Cub Scout', '2'=> 'Scout', '3'=>'Rover Scout');
-} 
+}
 
 
 
@@ -1451,7 +1451,7 @@ public function set_scout_section_checkbox(){
 
 public function set_scout_unit_type(){
    return array('' => 'Select Type', '1' => 'কাব দল', '2' => 'স্কাউট দল', '3' => 'রোভার স্কাউট দল', '4' => 'গার্ল-ইন কাব', '5' => 'গার্ল-ইন স্কাউট', '6' => 'গার্ল-ইন রোভার স্কাউট');
-}   
+}
 
 public function set_scout_event_type(){
    return array('' => '-- Select One --', '1' => 'National', '2' => 'International');
@@ -1466,7 +1466,7 @@ public function explote_array($array, $id){
    foreach ($array as $key => $value) {
      if($key==$id){
       return $value;
-   } 
+   }
 }
 return 'No Data';
 }
@@ -1478,10 +1478,10 @@ return 'No Data';
    //    $this->db->join('office_groups og', 'og.id = u.sc_group_id', 'LEFT');
    //    $this->db->join('office_upazila ou', 'ou.id = u.sc_upa_tha_id', 'LEFT');
    //    $this->db->join('office_district od', 'od.id = u.sc_district_id', 'LEFT');
-   //    $this->db->join('office_region or', 'or.id = u.sc_region_id', 'LEFT');  
+   //    $this->db->join('office_region or', 'or.id = u.sc_region_id', 'LEFT');
    //    $this->db->where('u.id', $this->session->userdata('user_id'));
    //    $this->db->limit(1);
-   //    $query = $this->db->get()->row();  
+   //    $query = $this->db->get()->row();
 
    //    return $query;
    // }
@@ -1531,11 +1531,11 @@ public function get_user_details() {
    if($query->pre_upa_tha_id != 0){ $point += 1; }
    if($query->scout_id != NULL){ $point += 1; }
    if($query->sc_section_id != NULL){ $point += 1; }
-   if($query->sc_badge_id != NULL){ $point += 1; }      
+   if($query->sc_badge_id != NULL){ $point += 1; }
    if($query->profile_img != NULL){ $point += 1; }
 
       //echo $total_field = count((array) $query);  exit;
-   $total_field = 20;      
+   $total_field = 20;
    $percentage = $point/$total_field;
    $result['profile_score'] = $percentage * 100;
    $result['user_info'] = $query;
@@ -1572,11 +1572,11 @@ public function get_user_details() {
 //    if($query->pre_upa_tha_id != 0){ $point += 1; }
 //    if($query->scout_id != NULL){ $point += 1; }
 //    if($query->sc_section_id != NULL){ $point += 1; }
-//    if($query->sc_badge_id != NULL){ $point += 1; }      
+//    if($query->sc_badge_id != NULL){ $point += 1; }
 //    if($query->profile_img != NULL){ $point += 1; }
 
 //       //echo $total_field = count((array) $query);  exit;
-//    $total_field = 20;      
+//    $total_field = 20;
 //    $percentage = $point/$total_field;
 //    $result['profile_score'] = $percentage * 100;
 //    $result['user_info'] = $query;

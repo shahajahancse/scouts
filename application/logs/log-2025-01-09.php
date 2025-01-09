@@ -6708,3 +6708,2852 @@ DEBUG - 2025-01-09 16:01:56 --> File loaded: I:\xampp\htdocs\scouts\application\
 DEBUG - 2025-01-09 16:01:56 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
 DEBUG - 2025-01-09 16:01:56 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
 DEBUG - 2025-01-09 16:01:59 --> Total execution time: 7.6189
+DEBUG - 2025-01-09 16:24:06 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:24:06 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:24:06 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:24:06 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:24:06 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 16:24:06 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:24:06 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 16:24:06 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 16:24:06 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:24:06 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:24:06 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:24:06 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:24:06 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 16:24:06 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:24:06 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 16:24:06 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 16:24:06 --> File loaded: I:\xampp\htdocs\scouts\application\modules/e_filing/models/E_filing_model.php
+DEBUG - 2025-01-09 16:24:06 --> File loaded: I:\xampp\htdocs\scouts\application\modules/e_nathi/models/E_nathi_model.php
+DEBUG - 2025-01-09 16:24:07 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:24:07 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:24:07 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:24:07 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:24:07 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 16:24:07 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:24:07 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 16:24:07 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 16:24:07 --> File loaded: I:\xampp\htdocs\scouts\application\modules/employee/models/Employee_model.php
+DEBUG - 2025-01-09 16:24:07 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 16:24:07 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/views/index.php
+DEBUG - 2025-01-09 16:24:07 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 16:24:07 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 16:24:07 --> Total execution time: 0.5295
+DEBUG - 2025-01-09 16:24:07 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:24:07 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:24:07 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:24:07 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:24:07 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 16:24:08 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:24:08 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:24:08 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:24:08 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 16:24:08 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:24:08 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 16:24:08 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 16:24:08 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 16:24:08 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 16:24:08 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 16:24:08 --> Total execution time: 1.0088
+DEBUG - 2025-01-09 16:24:08 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:24:08 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 16:24:08 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:24:08 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 16:24:09 --> File loaded: I:\xampp\htdocs\scouts\application\modules/general_setting/models/General_setting_model.php
+DEBUG - 2025-01-09 16:24:09 --> Total execution time: 0.9672
+DEBUG - 2025-01-09 16:24:16 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:24:16 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:24:16 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:24:16 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:24:16 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 16:24:16 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:24:16 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 16:24:16 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 16:24:16 --> File loaded: I:\xampp\htdocs\scouts\application\modules/employee/models/Employee_model.php
+DEBUG - 2025-01-09 16:24:16 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 16:24:16 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/views/index.php
+DEBUG - 2025-01-09 16:24:16 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 16:24:16 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 16:24:16 --> Total execution time: 0.4769
+DEBUG - 2025-01-09 16:24:16 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:24:16 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:24:16 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:24:16 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:24:16 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 16:24:16 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:24:16 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:24:16 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:24:17 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 16:24:17 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:24:17 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 16:24:17 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 16:24:17 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 16:24:17 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 16:24:17 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 16:24:17 --> Total execution time: 0.9765
+DEBUG - 2025-01-09 16:24:17 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:24:17 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 16:24:17 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:24:17 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 16:24:17 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:24:17 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:24:17 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:24:17 --> File loaded: I:\xampp\htdocs\scouts\application\modules/general_setting/models/General_setting_model.php
+DEBUG - 2025-01-09 16:24:17 --> Total execution time: 0.9864
+DEBUG - 2025-01-09 16:24:17 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:24:17 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 16:24:17 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:24:17 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 16:24:17 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 16:24:17 --> File loaded: I:\xampp\htdocs\scouts\application\modules/employee/models/Employee_model.php
+DEBUG - 2025-01-09 16:24:18 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 16:24:18 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/views/index.php
+DEBUG - 2025-01-09 16:24:18 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 16:24:18 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 16:24:18 --> Total execution time: 0.7976
+DEBUG - 2025-01-09 16:24:18 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:24:18 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:24:18 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:24:18 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:24:18 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 16:24:18 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:24:18 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:24:19 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:24:19 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:24:19 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:24:19 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:24:20 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 16:24:20 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:24:20 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 16:24:20 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 16:24:20 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 16:24:20 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 16:24:20 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 16:24:20 --> Total execution time: 1.2335
+DEBUG - 2025-01-09 16:24:20 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:24:20 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 16:24:20 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:24:20 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 16:24:20 --> File loaded: I:\xampp\htdocs\scouts\application\modules/general_setting/models/General_setting_model.php
+DEBUG - 2025-01-09 16:24:20 --> Total execution time: 1.2819
+DEBUG - 2025-01-09 16:24:20 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:24:20 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 16:24:20 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:24:20 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 16:24:20 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 16:24:20 --> File loaded: I:\xampp\htdocs\scouts\application\modules/employee/models/Employee_model.php
+DEBUG - 2025-01-09 16:24:20 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 16:24:20 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/views/index.php
+DEBUG - 2025-01-09 16:24:20 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 16:24:20 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 16:24:20 --> Total execution time: 1.5457
+DEBUG - 2025-01-09 16:24:20 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:24:20 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:24:20 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:24:20 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:24:20 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 16:24:21 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:24:21 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:24:21 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:24:21 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 16:24:21 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:24:21 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 16:24:21 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 16:24:21 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 16:24:21 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 16:24:21 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 16:24:21 --> Total execution time: 0.7033
+DEBUG - 2025-01-09 16:24:21 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:24:21 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 16:24:21 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:24:21 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 16:24:22 --> File loaded: I:\xampp\htdocs\scouts\application\modules/general_setting/models/General_setting_model.php
+DEBUG - 2025-01-09 16:24:22 --> Total execution time: 0.9747
+DEBUG - 2025-01-09 16:24:27 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:24:27 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:24:27 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:24:27 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:24:27 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 16:24:27 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:24:27 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 16:24:27 --> File loaded: I:\xampp\htdocs\scouts\application\modules/migration/models/Migration_model.php
+DEBUG - 2025-01-09 16:24:27 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 16:24:27 --> File loaded: I:\xampp\htdocs\scouts\application\modules/migration/views/my_group_migration_list.php
+DEBUG - 2025-01-09 16:24:27 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 16:24:27 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 16:24:27 --> Total execution time: 0.2914
+DEBUG - 2025-01-09 16:24:28 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:24:28 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:24:28 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:24:28 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:24:28 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 16:24:28 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:24:28 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:24:28 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:24:28 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 16:24:28 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:24:28 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 16:24:28 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 16:24:28 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 16:24:28 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 16:24:28 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 16:24:28 --> Total execution time: 0.7417
+DEBUG - 2025-01-09 16:24:28 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:24:28 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 16:24:28 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:24:28 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 16:24:29 --> File loaded: I:\xampp\htdocs\scouts\application\modules/general_setting/models/General_setting_model.php
+DEBUG - 2025-01-09 16:24:29 --> Total execution time: 0.8929
+DEBUG - 2025-01-09 16:24:32 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:24:32 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:24:32 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:24:32 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:24:32 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 16:24:32 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:24:32 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 16:24:32 --> File loaded: I:\xampp\htdocs\scouts\application\modules/migration/models/Migration_model.php
+DEBUG - 2025-01-09 16:24:32 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 16:24:32 --> File loaded: I:\xampp\htdocs\scouts\application\modules/migration/views/group_migration_application.php
+DEBUG - 2025-01-09 16:24:32 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 16:24:32 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 16:24:32 --> Total execution time: 0.3448
+DEBUG - 2025-01-09 16:24:32 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:24:32 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:24:32 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:24:32 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:24:32 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 16:24:32 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:24:32 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:24:32 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:24:33 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 16:24:33 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:24:33 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 16:24:33 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 16:24:33 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 16:24:33 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 16:24:33 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 16:24:33 --> Total execution time: 0.8087
+DEBUG - 2025-01-09 16:24:33 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:24:33 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 16:24:33 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:24:33 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 16:24:33 --> File loaded: I:\xampp\htdocs\scouts\application\modules/general_setting/models/General_setting_model.php
+DEBUG - 2025-01-09 16:24:33 --> Total execution time: 0.9019
+DEBUG - 2025-01-09 16:24:37 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:24:37 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:24:37 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:24:37 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:24:37 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 16:24:37 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:24:37 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 16:24:38 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:24:38 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:24:38 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:24:38 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:24:38 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 16:24:38 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:24:38 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 16:24:38 --> File loaded: I:\xampp\htdocs\scouts\application\views\login/page_header.php
+DEBUG - 2025-01-09 16:24:38 --> File loaded: I:\xampp\htdocs\scouts\application\modules/login/views/index.php
+DEBUG - 2025-01-09 16:24:38 --> File loaded: I:\xampp\htdocs\scouts\application\views\login/page_footer.php
+DEBUG - 2025-01-09 16:24:38 --> File loaded: I:\xampp\htdocs\scouts\application\views\login/_layout_main.php
+DEBUG - 2025-01-09 16:24:38 --> Total execution time: 0.0890
+DEBUG - 2025-01-09 16:24:45 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:24:45 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:24:45 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:24:45 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:24:45 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 16:24:45 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:24:45 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 16:24:53 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:24:53 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:24:53 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:24:53 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:24:53 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 16:24:53 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:24:53 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 16:24:53 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 16:24:53 --> File loaded: I:\xampp\htdocs\scouts\application\modules/e_filing/models/E_filing_model.php
+DEBUG - 2025-01-09 16:24:53 --> File loaded: I:\xampp\htdocs\scouts\application\modules/e_nathi/models/E_nathi_model.php
+DEBUG - 2025-01-09 16:25:01 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 16:25:01 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/views/superadmin_dashboard.php
+DEBUG - 2025-01-09 16:25:01 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 16:25:01 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 16:25:01 --> Total execution time: 7.3105
+DEBUG - 2025-01-09 16:25:01 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:25:01 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:25:01 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:25:01 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:25:01 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 16:25:01 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:25:01 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:25:01 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:25:02 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 16:25:02 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:25:02 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 16:25:02 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 16:25:02 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 16:25:02 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 16:25:02 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 16:25:02 --> Total execution time: 0.9456
+DEBUG - 2025-01-09 16:25:02 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:25:02 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 16:25:02 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:25:02 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 16:25:02 --> File loaded: I:\xampp\htdocs\scouts\application\modules/general_setting/models/General_setting_model.php
+DEBUG - 2025-01-09 16:25:02 --> Total execution time: 0.8242
+DEBUG - 2025-01-09 16:25:27 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:25:27 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:25:27 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:25:27 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:25:27 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 16:25:27 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:25:27 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 16:25:27 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 16:25:28 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 16:25:28 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 16:25:28 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/create.php
+DEBUG - 2025-01-09 16:25:28 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 16:25:28 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 16:25:28 --> Total execution time: 1.0204
+DEBUG - 2025-01-09 16:25:28 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:25:28 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:25:28 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:25:28 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:25:28 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 16:25:28 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:25:28 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:25:28 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:25:29 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 16:25:29 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:25:29 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 16:25:29 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 16:25:29 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 16:25:29 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 16:25:29 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 16:25:29 --> Total execution time: 0.9458
+DEBUG - 2025-01-09 16:25:29 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:25:29 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 16:25:29 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:25:29 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 16:25:29 --> File loaded: I:\xampp\htdocs\scouts\application\modules/general_setting/models/General_setting_model.php
+DEBUG - 2025-01-09 16:25:29 --> Total execution time: 0.9544
+DEBUG - 2025-01-09 16:29:30 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:29:30 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:29:30 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:29:30 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:29:30 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 16:29:30 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:29:30 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 16:29:30 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 16:29:32 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 16:29:32 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/search_view.php
+DEBUG - 2025-01-09 16:29:32 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/all.php
+DEBUG - 2025-01-09 16:29:32 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 16:29:32 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 16:29:32 --> Total execution time: 2.3983
+DEBUG - 2025-01-09 16:29:32 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:29:32 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:29:32 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:29:32 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:29:33 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:29:33 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:29:33 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:29:33 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:29:33 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:29:33 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:29:33 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:29:33 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:29:33 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:29:33 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 16:29:33 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:29:33 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:29:33 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:29:33 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:29:33 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:29:33 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:29:33 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 16:29:33 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:29:33 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 16:29:33 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 16:29:33 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 16:29:33 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 16:29:33 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 16:29:33 --> Total execution time: 1.0281
+DEBUG - 2025-01-09 16:29:34 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:29:34 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 16:29:34 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:29:34 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:29:34 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:29:34 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 16:29:34 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:29:34 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 16:29:34 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 16:29:34 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 16:29:34 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 16:29:34 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 16:29:34 --> Total execution time: 2.0262
+DEBUG - 2025-01-09 16:29:35 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:29:35 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 16:29:35 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:29:35 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:29:35 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:29:35 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 16:29:35 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:29:35 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 16:29:35 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 16:29:35 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 16:29:35 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 16:29:35 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 16:29:35 --> Total execution time: 2.8238
+DEBUG - 2025-01-09 16:29:35 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:29:35 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 16:29:35 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:29:35 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:29:35 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:29:36 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 16:29:36 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:29:36 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 16:29:36 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 16:29:36 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 16:29:36 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 16:29:36 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 16:29:36 --> Total execution time: 3.5990
+DEBUG - 2025-01-09 16:29:36 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:29:36 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 16:29:36 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:29:36 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:29:36 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:29:37 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 16:29:37 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:29:37 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 16:29:37 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 16:29:37 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 16:29:37 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 16:29:37 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 16:29:37 --> Total execution time: 4.3372
+DEBUG - 2025-01-09 16:29:37 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:29:37 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 16:29:37 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:29:37 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:29:37 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:29:38 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 16:29:38 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:29:38 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 16:29:38 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 16:29:38 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 16:29:38 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 16:29:38 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 16:29:38 --> Total execution time: 5.4230
+DEBUG - 2025-01-09 16:29:38 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:29:38 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 16:29:38 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:29:38 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 16:29:38 --> File loaded: I:\xampp\htdocs\scouts\application\modules/general_setting/models/General_setting_model.php
+DEBUG - 2025-01-09 16:29:38 --> Total execution time: 4.7195
+DEBUG - 2025-01-09 16:29:38 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:29:39 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 16:29:39 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 16:29:39 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:29:39 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 16:29:39 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 16:29:39 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 16:29:39 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 16:29:39 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 16:29:39 --> Total execution time: 4.5947
+DEBUG - 2025-01-09 16:29:39 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:29:39 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 16:29:40 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 16:29:40 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:29:40 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 16:29:40 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 16:29:40 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 16:29:40 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 16:29:40 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 16:29:40 --> Total execution time: 4.6477
+DEBUG - 2025-01-09 16:29:40 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:29:40 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 16:29:41 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 16:29:41 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:29:41 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 16:29:41 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 16:29:41 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 16:29:41 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 16:29:41 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 16:29:41 --> Total execution time: 4.6714
+DEBUG - 2025-01-09 16:29:41 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:29:41 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 16:29:41 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:29:41 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 16:29:41 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 16:29:41 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 16:29:41 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 16:29:41 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 16:29:41 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 16:29:41 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 16:29:41 --> Total execution time: 4.2428
+DEBUG - 2025-01-09 16:29:42 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:29:42 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:29:42 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:29:42 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:29:42 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:29:42 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:29:42 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:29:42 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 16:29:42 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:29:42 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:29:42 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:29:43 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 16:29:43 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:29:43 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 16:29:43 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 16:29:43 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 16:29:43 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 16:29:43 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 16:29:43 --> Total execution time: 0.9320
+DEBUG - 2025-01-09 16:29:43 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:29:43 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 16:29:44 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 16:29:44 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:29:44 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 16:29:44 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 16:29:44 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 16:29:44 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 16:29:44 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 16:29:44 --> Total execution time: 1.7787
+DEBUG - 2025-01-09 16:29:44 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:29:44 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 16:29:44 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:29:44 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 16:29:44 --> File loaded: I:\xampp\htdocs\scouts\application\modules/general_setting/models/General_setting_model.php
+DEBUG - 2025-01-09 16:29:44 --> Total execution time: 1.6267
+DEBUG - 2025-01-09 16:31:47 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:31:47 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:31:47 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:31:47 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:31:47 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 16:31:47 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:31:47 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+ERROR - 2025-01-09 16:31:48 --> Severity: Warning --> move_uploaded_file(I:/xampp/htdocs/temp_dir/20250109163148-original.jpeg): failed to open stream: No such file or directory I:\xampp\htdocs\scouts\application\models\Cropper_model.php 67
+ERROR - 2025-01-09 16:31:48 --> Severity: Warning --> move_uploaded_file(): Unable to move 'I:\xampp\tmp\phpFFE5.tmp' to 'I:/xampp/htdocs/temp_dir/20250109163148-original.jpeg' I:\xampp\htdocs\scouts\application\models\Cropper_model.php 67
+DEBUG - 2025-01-09 16:31:48 --> Total execution time: 0.3578
+DEBUG - 2025-01-09 16:33:06 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:33:06 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:33:06 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:33:06 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:33:06 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 16:33:06 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:33:06 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+ERROR - 2025-01-09 16:33:06 --> Severity: Warning --> imagepng(I:/xampp/htdocs/temp_dir/_thumb/20250109163306.png): failed to open stream: No such file or directory I:\xampp\htdocs\scouts\application\models\Cropper_model.php 183
+DEBUG - 2025-01-09 16:33:06 --> Total execution time: 0.1752
+DEBUG - 2025-01-09 16:34:15 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:34:15 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:34:15 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:34:15 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:34:15 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 16:34:15 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:34:15 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 16:34:15 --> Total execution time: 0.1484
+DEBUG - 2025-01-09 16:34:15 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:34:15 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:34:15 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:34:15 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:34:15 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:34:15 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:34:15 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:34:15 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 16:34:15 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:34:15 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 16:34:15 --> Total execution time: 0.1013
+DEBUG - 2025-01-09 16:34:15 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:34:15 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 16:34:16 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 16:34:16 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:34:16 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 16:34:16 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 16:34:16 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 16:34:16 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 16:34:16 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 16:34:16 --> Total execution time: 0.9706
+DEBUG - 2025-01-09 16:34:57 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:34:57 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:34:57 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:34:57 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:34:57 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 16:34:58 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 16:34:58 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:34:58 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 16:34:58 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 16:34:58 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 16:34:58 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 16:34:58 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 16:34:58 --> Total execution time: 0.6867
+DEBUG - 2025-01-09 16:36:04 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:36:04 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:36:04 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:36:04 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:36:04 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 16:36:04 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:36:04 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 16:36:04 --> Total execution time: 0.1817
+DEBUG - 2025-01-09 16:37:16 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:37:16 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:37:16 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:37:16 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:37:16 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 16:37:16 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:37:16 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+ERROR - 2025-01-09 16:37:16 --> Severity: Warning --> move_uploaded_file(I:/xampp/htdocs/temp_dir/20250109163716-original.jpeg): failed to open stream: No such file or directory I:\xampp\htdocs\scouts\application\models\Cropper_model.php 67
+ERROR - 2025-01-09 16:37:16 --> Severity: Warning --> move_uploaded_file(): Unable to move 'I:\xampp\tmp\php3E7.tmp' to 'I:/xampp/htdocs/temp_dir/20250109163716-original.jpeg' I:\xampp\htdocs\scouts\application\models\Cropper_model.php 67
+DEBUG - 2025-01-09 16:37:16 --> Total execution time: 0.1147
+DEBUG - 2025-01-09 16:48:20 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:48:20 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:48:20 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:48:20 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:48:20 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 16:48:20 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:48:20 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 16:48:20 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+ERROR - 2025-01-09 16:48:20 --> Severity: Warning --> copy(I:\xampp\htdocs\scouts\temp_dir\_thumb/20250109163415.png): failed to open stream: No such file or directory I:\xampp\htdocs\scouts\application\modules\scouts_member\controllers\Scouts_member.php 1808
+DEBUG - 2025-01-09 16:48:21 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:48:21 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:48:21 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:48:21 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:48:21 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 16:48:21 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:48:21 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 16:48:21 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 16:48:23 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 16:48:23 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/search_view.php
+DEBUG - 2025-01-09 16:48:23 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/all.php
+DEBUG - 2025-01-09 16:48:23 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 16:48:23 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 16:48:23 --> Total execution time: 2.6817
+DEBUG - 2025-01-09 16:48:24 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:48:24 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:48:24 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:48:24 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:48:24 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:48:24 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:48:24 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:48:24 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:48:24 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:48:24 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:48:24 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:48:24 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:48:24 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:48:24 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 16:48:24 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:48:24 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:48:24 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:48:24 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:48:24 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:48:24 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:48:25 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 16:48:25 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:48:25 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 16:48:25 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 16:48:25 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 16:48:25 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 16:48:25 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 16:48:25 --> Total execution time: 1.5508
+DEBUG - 2025-01-09 16:48:26 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:48:26 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:48:26 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 16:48:26 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:48:26 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:48:27 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 16:48:27 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:48:27 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 16:48:27 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 16:48:27 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 16:48:27 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 16:48:27 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 16:48:27 --> Total execution time: 2.5722
+DEBUG - 2025-01-09 16:48:27 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:48:27 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 16:48:27 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:48:27 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:48:27 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:48:27 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 16:48:27 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:48:28 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 16:48:28 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 16:48:28 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 16:48:28 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 16:48:28 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 16:48:28 --> Total execution time: 3.5678
+DEBUG - 2025-01-09 16:48:28 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:48:28 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:48:28 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:48:28 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:48:28 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 16:48:28 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 16:48:28 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:48:28 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 16:48:28 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 16:48:28 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 16:48:28 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 16:48:28 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 16:48:28 --> Total execution time: 4.5386
+DEBUG - 2025-01-09 16:48:29 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:48:29 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 16:48:29 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:48:29 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:48:29 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:48:29 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 16:48:29 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:48:29 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 16:48:29 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 16:48:29 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 16:48:29 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 16:48:29 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 16:48:29 --> Total execution time: 5.0644
+DEBUG - 2025-01-09 16:48:30 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:48:30 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 16:48:30 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 16:48:30 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:48:30 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 16:48:30 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 16:48:30 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 16:48:30 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 16:48:30 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 16:48:30 --> Total execution time: 5.8745
+DEBUG - 2025-01-09 16:48:30 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:48:30 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 16:48:30 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:48:30 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 16:48:31 --> File loaded: I:\xampp\htdocs\scouts\application\modules/general_setting/models/General_setting_model.php
+DEBUG - 2025-01-09 16:48:31 --> Total execution time: 4.9703
+DEBUG - 2025-01-09 16:48:31 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:48:31 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 16:48:32 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 16:48:32 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:48:32 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 16:48:32 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 16:48:32 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 16:48:32 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 16:48:32 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 16:48:32 --> Total execution time: 4.8365
+DEBUG - 2025-01-09 16:48:32 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:48:32 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 16:48:32 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 16:48:32 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:48:32 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 16:48:32 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 16:48:32 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 16:48:32 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 16:48:32 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 16:48:32 --> Total execution time: 4.8232
+DEBUG - 2025-01-09 16:48:33 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:48:33 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 16:48:33 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 16:48:33 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:48:33 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 16:48:33 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 16:48:33 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 16:48:33 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 16:48:33 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 16:48:33 --> Total execution time: 4.7762
+DEBUG - 2025-01-09 16:53:49 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:53:50 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:53:50 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:53:51 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:53:52 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 16:53:52 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:53:52 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 16:53:52 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 16:53:53 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 16:53:54 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 16:53:54 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 16:53:54 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 16:53:54 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 16:53:54 --> Total execution time: 4.4937
+DEBUG - 2025-01-09 16:53:54 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:53:54 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:53:54 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:53:54 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:53:54 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:53:54 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:53:54 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:53:54 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 16:53:55 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:53:55 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:53:55 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:53:55 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 16:53:55 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:53:56 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 16:53:56 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 16:53:56 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 16:53:56 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 16:53:56 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 16:53:56 --> Total execution time: 1.7121
+DEBUG - 2025-01-09 16:53:56 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:53:56 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 16:53:57 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 16:53:57 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:53:57 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 16:53:57 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 16:53:57 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 16:53:57 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 16:53:57 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 16:53:57 --> Total execution time: 2.5858
+DEBUG - 2025-01-09 16:53:57 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:53:57 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 16:53:57 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:53:57 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 16:53:57 --> File loaded: I:\xampp\htdocs\scouts\application\modules/general_setting/models/General_setting_model.php
+DEBUG - 2025-01-09 16:53:57 --> Total execution time: 2.3112
+DEBUG - 2025-01-09 16:57:22 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 16:57:22 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 16:57:22 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 16:57:22 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 16:57:22 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 16:57:22 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 16:57:22 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 16:57:22 --> Total execution time: 0.2253
+DEBUG - 2025-01-09 17:17:45 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:17:45 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:17:45 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:17:45 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:17:45 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 17:17:45 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:17:45 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 17:17:45 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 17:17:46 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 17:17:46 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 17:17:46 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 17:17:46 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 17:17:46 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 17:17:46 --> Total execution time: 0.5081
+DEBUG - 2025-01-09 17:17:46 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:17:46 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:17:46 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:17:46 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:17:46 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:17:46 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:17:46 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:17:46 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 17:17:47 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:17:47 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:17:47 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:17:47 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:17:47 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:17:47 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:17:48 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:17:48 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:17:48 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:17:48 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 17:17:48 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:17:48 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 17:17:48 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 17:17:48 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 17:17:48 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 17:17:48 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 17:17:48 --> Total execution time: 1.3720
+DEBUG - 2025-01-09 17:17:48 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:17:48 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:17:48 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:17:48 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:17:48 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 17:17:48 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:17:48 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:17:48 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:17:48 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:17:48 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:17:48 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:17:49 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:17:49 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:17:49 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:17:49 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:17:49 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:17:49 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:17:49 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 17:17:49 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:17:49 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 17:17:49 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 17:17:49 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 17:17:49 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 17:17:49 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 17:17:49 --> Total execution time: 2.6221
+DEBUG - 2025-01-09 17:17:49 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:17:49 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 17:17:49 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:17:49 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 17:17:49 --> File loaded: I:\xampp\htdocs\scouts\application\modules/general_setting/models/General_setting_model.php
+DEBUG - 2025-01-09 17:17:49 --> Total execution time: 2.1518
+DEBUG - 2025-01-09 17:17:49 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:17:49 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 17:17:49 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:17:49 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 17:17:49 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 17:17:50 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 17:17:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 17:17:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 17:17:50 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 17:17:50 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 17:17:50 --> Total execution time: 2.3953
+DEBUG - 2025-01-09 17:17:50 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:17:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 17:17:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:17:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 17:17:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 17:17:50 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 17:17:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 17:17:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 17:17:50 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 17:17:50 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 17:17:50 --> Total execution time: 2.3032
+DEBUG - 2025-01-09 17:17:50 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:17:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 17:17:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:17:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 17:17:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 17:17:50 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 17:17:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 17:17:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 17:17:50 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 17:17:50 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 17:17:50 --> Total execution time: 2.2611
+DEBUG - 2025-01-09 17:17:50 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:17:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 17:17:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:17:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 17:17:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 17:17:50 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 17:17:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 17:17:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 17:17:50 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 17:17:50 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 17:17:50 --> Total execution time: 2.0302
+DEBUG - 2025-01-09 17:17:50 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:17:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 17:17:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:17:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 17:17:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 17:17:50 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 17:17:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 17:17:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 17:17:50 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 17:17:50 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 17:17:50 --> Total execution time: 2.0629
+DEBUG - 2025-01-09 17:17:50 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:17:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 17:17:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:17:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 17:17:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 17:17:50 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 17:17:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 17:17:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 17:17:50 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 17:17:50 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 17:17:50 --> Total execution time: 1.8857
+DEBUG - 2025-01-09 17:17:50 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:17:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 17:17:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:17:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 17:17:51 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 17:17:51 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 17:17:51 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 17:17:51 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 17:17:51 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 17:17:51 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 17:17:51 --> Total execution time: 1.7604
+DEBUG - 2025-01-09 17:17:51 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:17:51 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:17:51 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:17:51 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:17:51 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:17:51 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:17:51 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:17:51 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 17:17:52 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:17:52 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:17:52 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:17:53 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 17:17:53 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:17:53 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 17:17:53 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 17:17:53 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 17:17:53 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 17:17:53 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 17:17:53 --> Total execution time: 1.4431
+DEBUG - 2025-01-09 17:17:53 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:17:53 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 17:17:54 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 17:17:54 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:17:54 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 17:17:54 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 17:17:54 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 17:17:54 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 17:17:54 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 17:17:54 --> Total execution time: 2.4263
+DEBUG - 2025-01-09 17:17:54 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:17:54 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 17:17:54 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:17:54 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 17:17:54 --> File loaded: I:\xampp\htdocs\scouts\application\modules/general_setting/models/General_setting_model.php
+DEBUG - 2025-01-09 17:17:54 --> Total execution time: 1.9599
+DEBUG - 2025-01-09 17:18:17 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:18:17 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:18:17 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:18:17 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:18:17 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 17:18:17 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:18:17 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 17:18:17 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 17:18:17 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 17:18:17 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 17:18:17 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 17:18:17 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 17:18:17 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 17:18:17 --> Total execution time: 0.5537
+DEBUG - 2025-01-09 17:18:18 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:18:18 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:18:18 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:18:18 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:18:18 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:18:18 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:18:18 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:18:18 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 17:18:18 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:18:18 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:18:18 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:18:19 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:18:19 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:18:19 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:18:19 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:18:19 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:18:19 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:18:19 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:18:19 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:18:19 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:18:19 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:18:19 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:18:19 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:18:20 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 17:18:20 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:18:20 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 17:18:20 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 17:18:20 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 17:18:20 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 17:18:20 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 17:18:20 --> Total execution time: 2.0821
+DEBUG - 2025-01-09 17:18:20 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:18:20 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 17:18:21 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 17:18:21 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:18:21 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 17:18:21 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 17:18:21 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 17:18:21 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 17:18:21 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 17:18:21 --> Total execution time: 2.8419
+DEBUG - 2025-01-09 17:18:21 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:18:21 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 17:18:21 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:18:21 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 17:18:21 --> File loaded: I:\xampp\htdocs\scouts\application\modules/general_setting/models/General_setting_model.php
+DEBUG - 2025-01-09 17:18:21 --> Total execution time: 2.5574
+DEBUG - 2025-01-09 17:18:21 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:18:21 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 17:18:21 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:18:21 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 17:18:21 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 17:18:21 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 17:18:21 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 17:18:21 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 17:18:21 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 17:18:21 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 17:18:21 --> Total execution time: 2.7894
+DEBUG - 2025-01-09 17:18:21 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:18:22 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 17:18:22 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:18:22 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 17:18:22 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 17:18:22 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 17:18:22 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 17:18:22 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 17:18:22 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 17:18:22 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 17:18:22 --> Total execution time: 2.7621
+DEBUG - 2025-01-09 17:18:22 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:18:22 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 17:18:22 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:18:22 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 17:18:22 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 17:18:22 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 17:18:22 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 17:18:22 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 17:18:22 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 17:18:22 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 17:18:22 --> Total execution time: 2.8214
+DEBUG - 2025-01-09 17:18:22 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:18:22 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 17:18:22 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:18:22 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 17:18:22 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 17:18:23 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 17:18:23 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 17:18:23 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 17:18:23 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 17:18:23 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 17:18:23 --> Total execution time: 3.4301
+DEBUG - 2025-01-09 17:18:23 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:18:23 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:18:23 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:18:23 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:18:23 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:18:23 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:18:24 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:18:24 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 17:18:24 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:18:24 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:18:24 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:18:25 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 17:18:25 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:18:25 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 17:18:25 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 17:18:25 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 17:18:25 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 17:18:25 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 17:18:25 --> Total execution time: 1.5560
+DEBUG - 2025-01-09 17:18:25 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:18:25 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 17:18:26 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 17:18:26 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:18:26 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 17:18:26 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 17:18:26 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 17:18:26 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 17:18:26 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 17:18:26 --> Total execution time: 2.7466
+DEBUG - 2025-01-09 17:18:26 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:18:26 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 17:18:26 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:18:26 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 17:18:26 --> File loaded: I:\xampp\htdocs\scouts\application\modules/general_setting/models/General_setting_model.php
+DEBUG - 2025-01-09 17:18:26 --> Total execution time: 2.5743
+DEBUG - 2025-01-09 17:19:04 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:19:04 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:19:04 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:19:04 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:19:04 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 17:19:04 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:19:04 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 17:19:04 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 17:19:05 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 17:19:05 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 17:19:05 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 17:19:05 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 17:19:05 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 17:19:05 --> Total execution time: 0.4670
+DEBUG - 2025-01-09 17:19:05 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:19:05 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:19:05 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:19:05 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:19:05 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:19:05 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:19:05 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:19:05 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 17:19:06 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:19:06 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:19:06 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:19:07 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 17:19:07 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:19:07 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 17:19:07 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 17:19:07 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 17:19:07 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 17:19:07 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 17:19:07 --> Total execution time: 1.4156
+DEBUG - 2025-01-09 17:19:07 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:19:07 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 17:19:07 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 17:19:07 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:19:07 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 17:19:07 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 17:19:07 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 17:19:07 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 17:19:07 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 17:19:07 --> Total execution time: 2.2048
+DEBUG - 2025-01-09 17:19:08 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:19:08 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 17:19:08 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:19:08 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 17:19:08 --> File loaded: I:\xampp\htdocs\scouts\application\modules/general_setting/models/General_setting_model.php
+DEBUG - 2025-01-09 17:19:08 --> Total execution time: 1.7451
+DEBUG - 2025-01-09 17:19:54 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:19:54 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:19:54 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:19:54 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:19:54 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 17:19:54 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:19:54 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 17:19:54 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 17:19:54 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:19:54 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:19:54 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:19:54 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 17:19:54 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 17:19:54 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 17:19:54 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 17:19:54 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 17:19:54 --> Total execution time: 0.4276
+DEBUG - 2025-01-09 17:19:54 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:19:54 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 17:19:55 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:19:55 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 17:19:55 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 17:19:55 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 17:19:55 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 17:19:55 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 17:19:55 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 17:19:55 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 17:19:55 --> Total execution time: 0.3037
+DEBUG - 2025-01-09 17:19:55 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:19:55 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:19:55 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:19:55 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:19:55 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 17:19:55 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:19:55 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 17:19:55 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 17:19:55 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 17:19:55 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 17:19:55 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 17:19:55 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 17:19:55 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 17:19:55 --> Total execution time: 0.1723
+DEBUG - 2025-01-09 17:19:55 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:19:55 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:19:55 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:19:55 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:19:55 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:19:55 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:19:55 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:19:55 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 17:19:56 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:19:56 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:19:56 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:19:56 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 17:19:56 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:19:56 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 17:19:56 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 17:19:56 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 17:19:56 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 17:19:56 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 17:19:56 --> Total execution time: 1.4421
+DEBUG - 2025-01-09 17:19:57 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:19:57 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 17:19:57 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 17:19:57 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:19:57 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 17:19:57 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 17:19:57 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 17:19:57 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 17:19:57 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 17:19:57 --> Total execution time: 2.3296
+DEBUG - 2025-01-09 17:19:58 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:19:58 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 17:19:58 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:19:58 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 17:19:58 --> File loaded: I:\xampp\htdocs\scouts\application\modules/general_setting/models/General_setting_model.php
+DEBUG - 2025-01-09 17:19:58 --> Total execution time: 2.0230
+DEBUG - 2025-01-09 17:25:24 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:25:24 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:25:24 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:25:24 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:25:24 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 17:25:24 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:25:24 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+ERROR - 2025-01-09 17:25:24 --> Severity: Warning --> move_uploaded_file(I:/xampp/htdocs/temp_dir/20250109172524-original.jpeg): failed to open stream: No such file or directory I:\xampp\htdocs\scouts\application\models\Cropper_model.php 67
+ERROR - 2025-01-09 17:25:24 --> Severity: Warning --> move_uploaded_file(): Unable to move 'I:\xampp\tmp\php1364.tmp' to 'I:/xampp/htdocs/temp_dir/20250109172524-original.jpeg' I:\xampp\htdocs\scouts\application\models\Cropper_model.php 67
+DEBUG - 2025-01-09 17:25:24 --> Total execution time: 0.1105
+DEBUG - 2025-01-09 17:30:45 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:30:45 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:30:45 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:30:45 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:30:45 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 17:30:45 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:30:45 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+ERROR - 2025-01-09 17:30:45 --> Severity: Warning --> move_uploaded_file(I:/xampp/htdocs/temp_dir/20250109173045-original.jpeg): failed to open stream: No such file or directory I:\xampp\htdocs\scouts\application\models\Cropper_model.php 67
+ERROR - 2025-01-09 17:30:45 --> Severity: Warning --> move_uploaded_file(): Unable to move 'I:\xampp\tmp\phpFAA5.tmp' to 'I:/xampp/htdocs/temp_dir/20250109173045-original.jpeg' I:\xampp\htdocs\scouts\application\models\Cropper_model.php 67
+DEBUG - 2025-01-09 17:33:52 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:33:52 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:33:52 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:33:52 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:33:53 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 17:33:53 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:33:53 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 17:34:04 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:34:04 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:34:04 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:34:04 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:34:04 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 17:34:04 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:34:04 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 17:34:18 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:34:18 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:34:18 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:34:19 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:34:19 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 17:34:19 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:34:19 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 17:35:06 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:35:06 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:35:06 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:35:06 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:35:06 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 17:35:06 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:35:06 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 17:35:26 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:35:26 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:35:26 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:35:26 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:35:26 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 17:35:26 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:35:26 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 17:36:05 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:36:05 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:36:05 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:36:05 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:36:05 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 17:36:05 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:36:05 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 17:37:19 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:37:19 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:37:19 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:37:19 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:37:19 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 17:37:19 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:37:19 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 17:37:29 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:37:29 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:37:29 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:37:29 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:37:29 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 17:37:29 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:37:29 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 17:37:29 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 17:37:30 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 17:37:30 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 17:37:30 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 17:37:30 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 17:37:30 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 17:37:30 --> Total execution time: 0.5299
+DEBUG - 2025-01-09 17:37:30 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:37:30 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:37:30 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:37:30 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:37:30 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 17:37:31 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:37:31 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:37:31 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:37:31 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:37:31 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:37:31 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:37:31 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 17:37:31 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:37:31 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 17:37:31 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 17:37:31 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 17:37:31 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 17:37:31 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 17:37:31 --> Total execution time: 1.1391
+DEBUG - 2025-01-09 17:37:32 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:37:32 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 17:37:32 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 17:37:33 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:37:33 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 17:37:33 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 17:37:33 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 17:37:33 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 17:37:33 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 17:37:33 --> Total execution time: 1.8952
+DEBUG - 2025-01-09 17:37:33 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:37:33 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 17:37:33 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:37:33 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 17:37:33 --> File loaded: I:\xampp\htdocs\scouts\application\modules/general_setting/models/General_setting_model.php
+DEBUG - 2025-01-09 17:37:33 --> Total execution time: 1.5136
+DEBUG - 2025-01-09 17:37:51 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:37:51 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:37:51 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:37:51 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:37:51 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 17:37:51 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:37:51 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 17:37:51 --> Total execution time: 0.1560
+DEBUG - 2025-01-09 17:49:24 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:49:24 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:49:24 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:49:24 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:49:24 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 17:49:24 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:49:24 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 17:49:24 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 17:49:24 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:49:24 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:49:24 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:49:24 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 17:49:24 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 17:49:24 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 17:49:24 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 17:49:24 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 17:49:24 --> Total execution time: 0.4862
+DEBUG - 2025-01-09 17:49:24 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:49:24 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 17:49:24 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:49:24 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 17:49:24 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 17:49:24 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 17:49:24 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 17:49:24 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 17:49:24 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 17:49:24 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 17:49:24 --> Total execution time: 0.3215
+DEBUG - 2025-01-09 17:49:24 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:49:24 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:49:24 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:49:24 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:49:24 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 17:49:24 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:49:24 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 17:49:24 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 17:49:24 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 17:49:24 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 17:49:24 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 17:49:24 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 17:49:24 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 17:49:24 --> Total execution time: 0.1338
+DEBUG - 2025-01-09 17:49:24 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:49:24 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:49:24 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:49:25 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:49:25 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 17:49:25 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:49:25 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 17:49:25 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 17:49:25 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 17:49:25 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 17:49:25 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 17:49:25 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 17:49:25 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 17:49:25 --> Total execution time: 0.1350
+DEBUG - 2025-01-09 17:49:25 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:49:25 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:49:25 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:49:25 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:49:25 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 17:49:27 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:49:27 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:49:27 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:49:27 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:49:27 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:49:27 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:49:27 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:49:27 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:49:27 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:49:27 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:49:27 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:49:27 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:49:27 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:49:27 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:49:27 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:49:27 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:49:27 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:49:27 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:49:27 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:49:27 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:49:27 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:49:28 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:49:28 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:49:28 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:49:28 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 17:49:28 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:49:28 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 17:49:28 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 17:49:28 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 17:49:28 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 17:49:28 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 17:49:28 --> Total execution time: 3.0058
+DEBUG - 2025-01-09 17:49:28 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:49:28 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:49:28 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:49:28 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:49:28 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 17:49:29 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 17:49:29 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:49:29 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 17:49:29 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 17:49:29 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 17:49:29 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 17:49:29 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 17:49:29 --> Total execution time: 2.4837
+DEBUG - 2025-01-09 17:49:29 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:49:29 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 17:49:29 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:49:29 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 17:49:29 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 17:49:30 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 17:49:30 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 17:49:30 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 17:49:30 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 17:49:30 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 17:49:30 --> Total execution time: 3.0762
+DEBUG - 2025-01-09 17:49:30 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:49:30 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 17:49:30 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:49:30 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 17:49:30 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 17:49:30 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 17:49:30 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 17:49:30 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 17:49:30 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 17:49:30 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 17:49:30 --> Total execution time: 2.9831
+DEBUG - 2025-01-09 17:49:30 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:49:30 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 17:49:30 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:49:30 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 17:49:30 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 17:49:30 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 17:49:30 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 17:49:30 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 17:49:30 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 17:49:30 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 17:49:30 --> Total execution time: 3.4317
+DEBUG - 2025-01-09 17:49:30 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:49:30 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 17:49:30 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:49:30 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 17:49:30 --> File loaded: I:\xampp\htdocs\scouts\application\modules/general_setting/models/General_setting_model.php
+DEBUG - 2025-01-09 17:49:30 --> Total execution time: 3.1091
+DEBUG - 2025-01-09 17:49:30 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:49:30 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 17:49:30 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:49:30 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 17:49:30 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 17:49:30 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 17:49:30 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 17:49:30 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 17:49:30 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 17:49:30 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 17:49:30 --> Total execution time: 3.2942
+DEBUG - 2025-01-09 17:49:30 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:49:30 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 17:49:30 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:49:30 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 17:49:30 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 17:49:31 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 17:49:31 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 17:49:31 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 17:49:31 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 17:49:31 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 17:49:31 --> Total execution time: 3.2474
+DEBUG - 2025-01-09 17:49:31 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:49:31 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 17:49:31 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:49:31 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 17:49:31 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 17:49:31 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 17:49:31 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 17:49:31 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 17:49:31 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 17:49:31 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 17:49:31 --> Total execution time: 3.2076
+DEBUG - 2025-01-09 17:49:31 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:49:31 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 17:49:31 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:49:31 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 17:49:31 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 17:49:31 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 17:49:31 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 17:49:31 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 17:49:31 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 17:49:31 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 17:49:31 --> Total execution time: 2.8753
+DEBUG - 2025-01-09 17:49:31 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:49:31 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:49:31 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:49:31 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:49:31 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 17:49:32 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 17:49:32 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:49:32 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 17:49:32 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 17:49:32 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 17:49:32 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 17:49:32 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 17:49:32 --> Total execution time: 0.9236
+DEBUG - 2025-01-09 17:49:32 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:49:32 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:49:32 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:49:32 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:49:32 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 17:49:34 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 17:49:34 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:49:34 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 17:49:34 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 17:49:34 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 17:49:34 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 17:49:34 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 17:49:34 --> Total execution time: 1.4501
+DEBUG - 2025-01-09 17:49:34 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:49:34 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:49:34 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:49:34 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:49:34 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 17:49:34 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:49:34 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 17:49:34 --> File loaded: I:\xampp\htdocs\scouts\application\modules/general_setting/models/General_setting_model.php
+DEBUG - 2025-01-09 17:49:34 --> Total execution time: 0.1707
+DEBUG - 2025-01-09 17:51:44 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:51:44 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:51:44 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:51:44 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:51:44 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 17:51:44 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:51:44 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 17:51:44 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 17:51:44 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:51:44 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:51:44 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:51:44 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 17:51:45 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 17:51:45 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 17:51:45 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 17:51:45 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 17:51:45 --> Total execution time: 0.4085
+DEBUG - 2025-01-09 17:51:45 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:51:45 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:51:45 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:51:45 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:51:45 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 17:51:45 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:51:45 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 17:51:45 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 17:51:45 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 17:51:45 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 17:51:45 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 17:51:45 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 17:51:45 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 17:51:45 --> Total execution time: 0.3667
+DEBUG - 2025-01-09 17:51:45 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:51:45 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:51:45 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:51:45 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:51:45 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 17:51:45 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:51:45 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 17:51:45 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 17:51:45 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 17:51:45 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 17:51:45 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 17:51:45 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 17:51:45 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 17:51:45 --> Total execution time: 0.2867
+DEBUG - 2025-01-09 17:51:45 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:51:45 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 17:51:45 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:51:45 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 17:51:45 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 17:51:45 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:51:45 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:51:45 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:51:45 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 17:51:45 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 17:51:45 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 17:51:45 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 17:51:45 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 17:51:45 --> Total execution time: 0.2252
+DEBUG - 2025-01-09 17:51:45 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:51:45 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 17:51:45 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:51:45 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 17:51:45 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 17:51:45 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 17:51:45 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 17:51:45 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 17:51:45 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 17:51:45 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 17:51:45 --> Total execution time: 0.1951
+DEBUG - 2025-01-09 17:51:46 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:51:46 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:51:46 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:51:46 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:51:46 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:51:46 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:51:46 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:51:46 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 17:51:46 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:51:46 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:51:46 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:51:46 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:51:46 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:51:46 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:51:46 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:51:46 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:51:46 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:51:47 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:51:47 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:51:47 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:51:47 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:51:47 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:51:47 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:51:47 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:51:47 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:51:47 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:51:48 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:51:48 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:51:48 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:51:48 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:51:48 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:51:48 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:51:48 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 17:51:48 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:51:48 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 17:51:48 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 17:51:48 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 17:51:48 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 17:51:48 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 17:51:48 --> Total execution time: 2.5003
+DEBUG - 2025-01-09 17:51:48 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:51:48 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 17:51:49 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:51:49 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:51:49 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:51:49 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 17:51:49 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:51:49 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 17:51:49 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 17:51:49 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 17:51:49 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 17:51:49 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 17:51:49 --> Total execution time: 3.3734
+DEBUG - 2025-01-09 17:51:49 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:51:49 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 17:51:49 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:51:49 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 17:51:49 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:51:49 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:51:49 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:51:49 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 17:51:50 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 17:51:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 17:51:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 17:51:50 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 17:51:50 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 17:51:50 --> Total execution time: 3.6812
+DEBUG - 2025-01-09 17:51:50 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:51:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 17:51:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:51:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 17:51:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 17:51:50 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 17:51:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 17:51:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 17:51:50 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 17:51:50 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 17:51:50 --> Total execution time: 3.6904
+DEBUG - 2025-01-09 17:51:50 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:51:50 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:51:50 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:51:50 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:51:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 17:51:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:51:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 17:51:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/general_setting/models/General_setting_model.php
+DEBUG - 2025-01-09 17:51:50 --> Total execution time: 3.6536
+DEBUG - 2025-01-09 17:51:50 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:51:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 17:51:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:51:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 17:51:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 17:51:50 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 17:51:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 17:51:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 17:51:50 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 17:51:50 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 17:51:50 --> Total execution time: 3.5654
+DEBUG - 2025-01-09 17:51:50 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:51:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 17:51:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:51:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 17:51:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 17:51:50 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 17:51:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 17:51:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 17:51:50 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 17:51:50 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 17:51:50 --> Total execution time: 3.5591
+DEBUG - 2025-01-09 17:51:50 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:51:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 17:51:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:51:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 17:51:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 17:51:50 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 17:51:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 17:51:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 17:51:50 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 17:51:50 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 17:51:50 --> Total execution time: 3.1761
+DEBUG - 2025-01-09 17:51:50 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:51:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 17:51:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:51:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 17:51:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 17:51:51 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 17:51:51 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 17:51:51 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 17:51:51 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 17:51:51 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 17:51:51 --> Total execution time: 2.9896
+DEBUG - 2025-01-09 17:51:51 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:51:51 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 17:51:51 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:51:51 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 17:51:51 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 17:51:51 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 17:51:51 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 17:51:51 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 17:51:51 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 17:51:51 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 17:51:51 --> Total execution time: 2.8768
+DEBUG - 2025-01-09 17:51:51 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:51:51 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 17:51:51 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:51:51 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 17:51:51 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 17:51:51 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 17:51:51 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 17:51:51 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 17:51:51 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 17:51:51 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 17:51:51 --> Total execution time: 2.4485
+DEBUG - 2025-01-09 17:51:51 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:51:51 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 17:51:51 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:51:51 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 17:51:51 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 17:51:51 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 17:51:51 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 17:51:51 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 17:51:51 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 17:51:51 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 17:51:51 --> Total execution time: 2.0530
+DEBUG - 2025-01-09 17:51:51 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:51:51 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 17:51:51 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:51:51 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 17:51:51 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 17:51:51 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 17:51:51 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 17:51:51 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 17:51:51 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 17:51:51 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 17:51:51 --> Total execution time: 1.5371
+DEBUG - 2025-01-09 17:51:52 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:51:52 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:51:52 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:51:52 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:51:52 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:51:52 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:51:52 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:51:52 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 17:51:53 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:51:53 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:51:53 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:51:54 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 17:51:54 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:51:54 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 17:51:54 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 17:51:54 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 17:51:54 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 17:51:54 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 17:51:54 --> Total execution time: 1.8293
+DEBUG - 2025-01-09 17:51:54 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:51:54 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 17:51:55 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 17:51:55 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:51:55 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 17:51:55 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 17:51:55 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 17:51:55 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 17:51:55 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 17:51:55 --> Total execution time: 2.9031
+DEBUG - 2025-01-09 17:51:55 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:51:55 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 17:51:55 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:51:55 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 17:51:55 --> File loaded: I:\xampp\htdocs\scouts\application\modules/general_setting/models/General_setting_model.php
+DEBUG - 2025-01-09 17:51:55 --> Total execution time: 2.5421
+DEBUG - 2025-01-09 17:55:07 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:55:07 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:55:07 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:55:08 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:55:08 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 17:55:08 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:55:08 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 17:55:08 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 17:55:08 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 17:55:08 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 17:55:08 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 17:55:08 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 17:55:08 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 17:55:08 --> Total execution time: 0.5223
+DEBUG - 2025-01-09 17:55:08 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:55:09 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:55:09 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:55:09 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:55:09 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:55:09 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:55:09 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:55:09 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 17:55:09 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 17:55:09 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 17:55:09 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 17:55:10 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 17:55:10 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:55:10 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 17:55:10 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 17:55:10 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 17:55:10 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 17:55:10 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 17:55:10 --> Total execution time: 1.5126
+DEBUG - 2025-01-09 17:55:10 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:55:10 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 17:55:11 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 17:55:11 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:55:11 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 17:55:11 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 17:55:11 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 17:55:11 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 17:55:11 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 17:55:11 --> Total execution time: 2.7979
+DEBUG - 2025-01-09 17:55:11 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 17:55:11 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 17:55:11 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 17:55:11 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 17:55:11 --> File loaded: I:\xampp\htdocs\scouts\application\modules/general_setting/models/General_setting_model.php
+DEBUG - 2025-01-09 17:55:12 --> Total execution time: 2.4506
+DEBUG - 2025-01-09 18:02:47 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:02:47 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:02:47 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:02:47 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:02:47 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 18:02:47 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:02:47 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 18:02:47 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 18:02:47 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:02:47 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:02:47 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:02:48 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:02:48 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:02:48 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:02:48 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 18:02:48 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 18:02:48 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 18:02:48 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 18:02:48 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 18:02:48 --> Total execution time: 0.4439
+DEBUG - 2025-01-09 18:02:48 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:02:48 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 18:02:48 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:02:48 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 18:02:48 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 18:02:48 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 18:02:48 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 18:02:48 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 18:02:48 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 18:02:48 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 18:02:48 --> Total execution time: 0.3876
+DEBUG - 2025-01-09 18:02:48 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:02:48 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:02:48 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:02:48 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:02:48 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 18:02:48 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:02:48 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 18:02:48 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 18:02:48 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 18:02:48 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 18:02:48 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 18:02:48 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 18:02:48 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 18:02:48 --> Total execution time: 0.3195
+DEBUG - 2025-01-09 18:02:48 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:02:48 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 18:02:48 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:02:48 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 18:02:48 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:02:48 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:02:48 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 18:02:48 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:02:48 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 18:02:48 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 18:02:48 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 18:02:48 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 18:02:48 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 18:02:48 --> Total execution time: 0.2231
+DEBUG - 2025-01-09 18:02:48 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:02:48 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 18:02:48 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:02:48 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 18:02:48 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 18:02:48 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 18:02:48 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 18:02:48 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 18:02:48 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 18:02:48 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 18:02:48 --> Total execution time: 0.1663
+DEBUG - 2025-01-09 18:02:48 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:02:48 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:02:48 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:02:48 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:02:48 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 18:02:48 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:02:48 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 18:02:48 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 18:02:48 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 18:02:48 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 18:02:48 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 18:02:48 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 18:02:48 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 18:02:48 --> Total execution time: 0.1223
+DEBUG - 2025-01-09 18:02:49 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:02:49 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:02:49 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:02:49 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:02:49 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:02:49 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:02:49 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:02:49 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 18:02:49 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:02:49 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:02:49 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:02:50 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:02:50 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:02:50 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:02:50 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:02:50 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:02:50 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:02:50 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:02:50 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:02:50 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:02:50 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:02:50 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:02:50 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:02:51 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 18:02:51 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:02:51 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 18:02:51 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 18:02:51 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 18:02:51 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 18:02:51 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 18:02:51 --> Total execution time: 1.7826
+DEBUG - 2025-01-09 18:02:51 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:02:51 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:02:51 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:02:51 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:02:51 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 18:02:51 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:02:51 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:02:51 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:02:52 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 18:02:52 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:02:52 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 18:02:52 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 18:02:52 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 18:02:52 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 18:02:52 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 18:02:52 --> Total execution time: 2.7536
+DEBUG - 2025-01-09 18:02:52 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:02:52 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 18:02:52 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:02:52 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 18:02:52 --> File loaded: I:\xampp\htdocs\scouts\application\modules/general_setting/models/General_setting_model.php
+DEBUG - 2025-01-09 18:02:52 --> Total execution time: 2.7239
+DEBUG - 2025-01-09 18:02:52 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:02:52 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 18:02:52 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:02:52 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 18:02:52 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 18:02:53 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 18:02:53 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 18:02:53 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 18:02:53 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 18:02:53 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 18:02:53 --> Total execution time: 3.1151
+DEBUG - 2025-01-09 18:02:53 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:02:53 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 18:02:53 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:02:53 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 18:02:53 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 18:02:53 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 18:02:53 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 18:02:53 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 18:02:53 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 18:02:53 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 18:02:53 --> Total execution time: 3.0309
+DEBUG - 2025-01-09 18:02:53 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:02:53 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 18:02:53 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:02:53 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 18:02:53 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 18:02:53 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 18:02:53 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 18:02:53 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 18:02:53 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 18:02:53 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 18:02:53 --> Total execution time: 3.0457
+DEBUG - 2025-01-09 18:02:53 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:02:53 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 18:02:53 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:02:53 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 18:02:53 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 18:02:53 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 18:02:53 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 18:02:53 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 18:02:53 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 18:02:53 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 18:02:53 --> Total execution time: 2.9275
+DEBUG - 2025-01-09 18:02:53 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:02:53 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 18:02:53 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:02:53 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 18:02:53 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 18:02:53 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 18:02:54 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 18:02:54 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 18:02:54 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 18:02:54 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 18:02:54 --> Total execution time: 2.7472
+DEBUG - 2025-01-09 18:02:54 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:02:54 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 18:02:54 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:02:54 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 18:02:54 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 18:02:54 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 18:02:54 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 18:02:54 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 18:02:54 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 18:02:54 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 18:02:54 --> Total execution time: 2.5219
+DEBUG - 2025-01-09 18:02:54 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:02:54 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:02:54 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:02:54 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:02:54 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:02:54 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:02:54 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:02:54 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 18:02:55 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:02:55 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:02:55 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:02:56 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 18:02:56 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:02:56 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 18:02:56 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 18:02:56 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 18:02:56 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 18:02:56 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 18:02:56 --> Total execution time: 1.2710
+DEBUG - 2025-01-09 18:02:56 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:02:56 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 18:02:56 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 18:02:56 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:02:56 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 18:02:56 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 18:02:56 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 18:02:56 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 18:02:56 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 18:02:56 --> Total execution time: 2.1331
+DEBUG - 2025-01-09 18:02:56 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:02:57 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 18:02:57 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:02:57 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 18:02:57 --> File loaded: I:\xampp\htdocs\scouts\application\modules/general_setting/models/General_setting_model.php
+DEBUG - 2025-01-09 18:02:57 --> Total execution time: 1.9941
+DEBUG - 2025-01-09 18:04:36 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:04:36 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:04:36 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:04:36 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:04:36 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 18:04:36 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:04:36 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 18:04:36 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 18:04:37 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 18:04:37 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 18:04:37 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 18:04:37 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 18:04:37 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 18:04:37 --> Total execution time: 0.5787
+DEBUG - 2025-01-09 18:04:37 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:04:37 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:04:37 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:04:37 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:04:37 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:04:37 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:04:37 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:04:37 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:04:37 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:04:37 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:04:37 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:04:37 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:04:37 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:04:37 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 18:04:37 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:04:37 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 18:04:37 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 18:04:37 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 18:04:37 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 18:04:37 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 18:04:37 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 18:04:37 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 18:04:37 --> Total execution time: 0.1640
+DEBUG - 2025-01-09 18:04:37 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:04:37 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 18:04:37 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:04:37 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 18:04:37 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 18:04:37 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 18:04:37 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 18:04:37 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 18:04:37 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 18:04:37 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 18:04:37 --> Total execution time: 0.2862
+DEBUG - 2025-01-09 18:04:37 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:04:37 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 18:04:37 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:04:37 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 18:04:37 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 18:04:38 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:04:38 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:04:38 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:04:38 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:04:38 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:04:38 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:04:38 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 18:04:38 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 18:04:38 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 18:04:38 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 18:04:38 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 18:04:38 --> Total execution time: 1.1380
+DEBUG - 2025-01-09 18:04:38 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:04:38 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 18:04:38 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:04:38 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 18:04:38 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 18:04:39 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 18:04:39 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 18:04:39 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 18:04:39 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 18:04:39 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 18:04:39 --> Total execution time: 1.6487
+DEBUG - 2025-01-09 18:04:39 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:04:39 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:04:39 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:04:39 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:04:39 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 18:04:40 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 18:04:40 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:04:40 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 18:04:40 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 18:04:40 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 18:04:40 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 18:04:40 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 18:04:40 --> Total execution time: 2.5279
+DEBUG - 2025-01-09 18:04:40 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:04:40 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 18:04:41 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 18:04:41 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:04:41 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 18:04:41 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 18:04:41 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 18:04:41 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 18:04:41 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 18:04:41 --> Total execution time: 3.6061
+DEBUG - 2025-01-09 18:04:41 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:04:42 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 18:04:42 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:04:42 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 18:04:42 --> File loaded: I:\xampp\htdocs\scouts\application\modules/general_setting/models/General_setting_model.php
+DEBUG - 2025-01-09 18:04:42 --> Total execution time: 3.0686
+DEBUG - 2025-01-09 18:05:42 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:05:42 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:05:42 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:05:42 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:05:42 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 18:05:42 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:05:42 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 18:05:42 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 18:05:42 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:05:42 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:05:42 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:05:42 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 18:05:42 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 18:05:42 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 18:05:42 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 18:05:42 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 18:05:42 --> Total execution time: 0.4402
+DEBUG - 2025-01-09 18:05:42 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:05:42 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 18:05:42 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:05:42 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 18:05:42 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 18:05:42 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:05:42 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:05:42 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:05:42 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 18:05:42 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 18:05:42 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 18:05:42 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 18:05:42 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 18:05:42 --> Total execution time: 0.4805
+DEBUG - 2025-01-09 18:05:43 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:05:43 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 18:05:43 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:05:43 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 18:05:43 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 18:05:43 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:05:43 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:05:43 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:05:43 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 18:05:43 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 18:05:43 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 18:05:43 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 18:05:43 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 18:05:43 --> Total execution time: 0.2812
+DEBUG - 2025-01-09 18:05:43 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:05:43 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 18:05:43 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:05:43 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 18:05:43 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 18:05:43 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 18:05:43 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 18:05:43 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 18:05:43 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 18:05:43 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 18:05:43 --> Total execution time: 0.1709
+DEBUG - 2025-01-09 18:05:43 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:05:43 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:05:43 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:05:43 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:05:43 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 18:05:43 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:05:43 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 18:05:43 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 18:05:43 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 18:05:43 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 18:05:43 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 18:05:43 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 18:05:43 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 18:05:43 --> Total execution time: 0.1189
+DEBUG - 2025-01-09 18:05:43 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:05:43 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:05:43 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:05:44 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:05:44 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:05:44 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:05:44 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:05:44 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:05:44 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:05:44 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:05:44 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 18:05:44 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:05:44 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 18:05:44 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:05:44 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:05:44 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 18:05:44 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:05:44 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 18:05:44 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 18:05:44 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 18:05:44 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 18:05:44 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 18:05:44 --> Total execution time: 0.5799
+DEBUG - 2025-01-09 18:05:44 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:05:44 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 18:05:44 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:05:44 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 18:05:44 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 18:05:44 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:05:44 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:05:44 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:05:44 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 18:05:44 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 18:05:44 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 18:05:44 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 18:05:44 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 18:05:44 --> Total execution time: 0.6209
+DEBUG - 2025-01-09 18:05:44 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:05:44 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 18:05:45 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:05:45 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:05:45 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:05:45 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:05:45 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:05:45 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:05:46 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:05:46 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:05:46 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:05:47 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 18:05:47 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:05:47 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 18:05:47 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 18:05:47 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 18:05:47 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 18:05:47 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 18:05:47 --> Total execution time: 3.3494
+DEBUG - 2025-01-09 18:05:47 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:05:47 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 18:05:48 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 18:05:48 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:05:48 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 18:05:48 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 18:05:48 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 18:05:48 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 18:05:48 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 18:05:48 --> Total execution time: 4.2762
+DEBUG - 2025-01-09 18:05:48 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:05:48 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 18:05:48 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:05:48 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 18:05:48 --> File loaded: I:\xampp\htdocs\scouts\application\modules/general_setting/models/General_setting_model.php
+DEBUG - 2025-01-09 18:05:48 --> Total execution time: 4.2600
+DEBUG - 2025-01-09 18:05:48 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:05:48 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 18:05:49 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 18:05:49 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:05:49 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 18:05:49 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 18:05:49 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 18:05:49 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 18:05:49 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 18:05:49 --> Total execution time: 4.2416
+DEBUG - 2025-01-09 18:05:49 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:05:49 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 18:05:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 18:05:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:05:50 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 18:05:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 18:05:50 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 18:05:50 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 18:05:50 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 18:05:50 --> Total execution time: 4.9903
+DEBUG - 2025-01-09 18:05:50 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:05:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 18:05:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:05:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 18:05:50 --> File loaded: I:\xampp\htdocs\scouts\application\modules/general_setting/models/General_setting_model.php
+DEBUG - 2025-01-09 18:05:50 --> Total execution time: 4.1013
+DEBUG - 2025-01-09 18:16:34 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:16:34 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:16:34 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:16:34 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:16:34 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 18:16:34 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:16:34 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 18:16:34 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 18:16:34 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 18:16:34 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 18:16:34 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 18:16:34 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 18:16:34 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 18:16:34 --> Total execution time: 0.4545
+DEBUG - 2025-01-09 18:16:35 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:16:35 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:16:35 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:16:35 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:16:35 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:16:35 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:16:35 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:16:35 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 18:16:35 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:16:35 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:16:35 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:16:36 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 18:16:36 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:16:36 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 18:16:36 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 18:16:36 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 18:16:36 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 18:16:36 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 18:16:36 --> Total execution time: 1.5159
+DEBUG - 2025-01-09 18:16:36 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:16:36 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 18:16:37 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 18:16:37 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:16:37 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 18:16:37 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 18:16:37 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 18:16:37 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 18:16:37 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 18:16:37 --> Total execution time: 2.4308
+DEBUG - 2025-01-09 18:16:37 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:16:37 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 18:16:37 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:16:37 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 18:16:37 --> File loaded: I:\xampp\htdocs\scouts\application\modules/general_setting/models/General_setting_model.php
+DEBUG - 2025-01-09 18:16:37 --> Total execution time: 1.9739
+DEBUG - 2025-01-09 18:17:56 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:17:56 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:17:56 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:17:56 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:17:56 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 18:17:56 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:17:56 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 18:17:56 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 18:17:57 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:17:57 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:17:57 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:17:57 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 18:17:57 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 18:17:57 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 18:17:57 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 18:17:57 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 18:17:57 --> Total execution time: 0.4046
+DEBUG - 2025-01-09 18:17:57 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:17:57 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:17:57 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:17:57 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:17:57 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 18:17:57 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:17:57 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 18:17:57 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 18:17:57 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 18:17:57 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 18:17:57 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 18:17:57 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 18:17:57 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 18:17:57 --> Total execution time: 0.3693
+DEBUG - 2025-01-09 18:17:57 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:17:57 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:17:57 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:17:57 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:17:57 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 18:17:57 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:17:57 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 18:17:57 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 18:17:57 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 18:17:57 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 18:17:57 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 18:17:57 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 18:17:57 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 18:17:57 --> Total execution time: 0.2799
+DEBUG - 2025-01-09 18:17:57 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:17:57 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 18:17:57 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:17:57 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 18:17:57 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 18:17:57 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 18:17:57 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 18:17:57 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 18:17:57 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 18:17:57 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 18:17:57 --> Total execution time: 0.2239
+DEBUG - 2025-01-09 18:17:58 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:17:58 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:17:58 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:17:58 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:17:58 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:17:58 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:17:58 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:17:58 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:17:58 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:17:58 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:17:58 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:17:58 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 18:17:58 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:17:58 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:17:58 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:17:58 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:17:58 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:17:58 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:17:58 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:17:59 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:17:59 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 18:17:59 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:17:59 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 18:17:59 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 18:17:59 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 18:17:59 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 18:17:59 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 18:17:59 --> Total execution time: 1.4811
+DEBUG - 2025-01-09 18:17:59 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:17:59 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 18:18:00 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 18:18:00 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:18:00 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 18:18:00 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 18:18:00 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 18:18:00 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 18:18:00 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 18:18:00 --> Total execution time: 2.3564
+DEBUG - 2025-01-09 18:18:00 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:18:00 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 18:18:00 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:18:00 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 18:18:01 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 18:18:01 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 18:18:01 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 18:18:01 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 18:18:01 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 18:18:01 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 18:18:01 --> Total execution time: 3.0742
+DEBUG - 2025-01-09 18:18:01 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:18:01 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 18:18:01 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:18:01 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 18:18:01 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 18:18:01 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 18:18:01 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 18:18:01 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 18:18:01 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 18:18:01 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 18:18:01 --> Total execution time: 3.0155
+DEBUG - 2025-01-09 18:18:01 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:18:01 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 18:18:01 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:18:01 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 18:18:01 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 18:18:01 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 18:18:01 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 18:18:01 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 18:18:01 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 18:18:01 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 18:18:01 --> Total execution time: 2.7809
+DEBUG - 2025-01-09 18:18:01 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:18:01 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 18:18:01 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:18:01 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 18:18:01 --> File loaded: I:\xampp\htdocs\scouts\application\modules/general_setting/models/General_setting_model.php
+DEBUG - 2025-01-09 18:18:02 --> Total execution time: 3.1130
+DEBUG - 2025-01-09 18:18:02 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:18:02 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:18:02 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:18:02 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:18:02 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:18:02 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:18:02 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:18:02 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 18:18:02 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:18:02 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:18:02 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:18:04 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 18:18:04 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:18:04 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 18:18:04 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 18:18:04 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 18:18:04 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 18:18:04 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 18:18:04 --> Total execution time: 2.2905
+DEBUG - 2025-01-09 18:18:04 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:18:04 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 18:18:05 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 18:18:05 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:18:05 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 18:18:05 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 18:18:05 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 18:18:05 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 18:18:05 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 18:18:05 --> Total execution time: 3.7842
+DEBUG - 2025-01-09 18:18:05 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:18:06 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 18:18:06 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:18:06 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 18:18:06 --> File loaded: I:\xampp\htdocs\scouts\application\modules/general_setting/models/General_setting_model.php
+DEBUG - 2025-01-09 18:18:06 --> Total execution time: 3.4205
+DEBUG - 2025-01-09 18:19:04 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:19:04 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:19:04 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:19:04 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:19:04 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 18:19:04 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:19:04 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 18:19:04 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 18:19:05 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 18:19:05 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 18:19:05 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 18:19:05 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 18:19:05 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 18:19:05 --> Total execution time: 0.4908
+DEBUG - 2025-01-09 18:19:05 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:19:05 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:19:05 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:19:05 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:19:05 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:19:06 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:19:06 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:19:06 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:19:06 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:19:06 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:19:06 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 18:19:06 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:19:06 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:19:06 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:19:07 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 18:19:07 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:19:07 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 18:19:07 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 18:19:07 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 18:19:07 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 18:19:07 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 18:19:07 --> Total execution time: 1.3083
+DEBUG - 2025-01-09 18:19:07 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:19:07 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 18:19:07 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:19:07 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:19:07 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:19:08 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:19:08 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:19:08 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:19:08 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 18:19:08 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:19:08 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 18:19:08 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 18:19:08 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 18:19:08 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 18:19:08 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 18:19:08 --> Total execution time: 2.6753
+DEBUG - 2025-01-09 18:19:08 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:19:08 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:19:08 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:19:08 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 18:19:08 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:19:08 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:19:08 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 18:19:08 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:19:08 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:19:08 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:19:08 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 18:19:09 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 18:19:09 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 18:19:09 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 18:19:09 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 18:19:09 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 18:19:09 --> Total execution time: 3.2418
+DEBUG - 2025-01-09 18:19:09 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:19:09 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 18:19:09 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:19:09 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 18:19:10 --> File loaded: I:\xampp\htdocs\scouts\application\modules/general_setting/models/General_setting_model.php
+DEBUG - 2025-01-09 18:19:10 --> Total execution time: 3.4928
+DEBUG - 2025-01-09 18:19:10 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:19:10 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 18:19:10 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:19:10 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 18:19:10 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 18:19:10 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 18:19:10 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 18:19:10 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 18:19:10 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 18:19:10 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 18:19:10 --> Total execution time: 2.6187
+DEBUG - 2025-01-09 18:19:10 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:19:10 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 18:19:10 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:19:10 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 18:19:10 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 18:19:10 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 18:19:10 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 18:19:10 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 18:19:10 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 18:19:10 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 18:19:10 --> Total execution time: 2.6142
+DEBUG - 2025-01-09 18:19:10 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:19:10 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 18:19:10 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:19:10 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 18:19:10 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 18:19:10 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 18:19:10 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 18:19:10 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 18:19:10 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 18:19:10 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 18:19:10 --> Total execution time: 2.2960
+DEBUG - 2025-01-09 18:19:11 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:19:11 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 18:19:11 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:19:11 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 18:19:11 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 18:19:11 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 18:19:11 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 18:19:11 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 18:19:11 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 18:19:11 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 18:19:11 --> Total execution time: 2.3352
+DEBUG - 2025-01-09 18:19:11 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:19:11 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:19:11 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:19:11 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:19:11 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 18:19:12 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:19:12 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:19:12 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:19:12 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:19:12 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:19:12 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:19:14 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 18:19:14 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:19:14 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 18:19:14 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 18:19:14 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 18:19:14 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 18:19:14 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 18:19:14 --> Total execution time: 2.6154
+DEBUG - 2025-01-09 18:19:14 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:19:14 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 18:19:15 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 18:19:15 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:19:15 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 18:19:15 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 18:19:15 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 18:19:15 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 18:19:15 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 18:19:15 --> Total execution time: 3.2490
+DEBUG - 2025-01-09 18:19:15 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:19:15 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 18:19:15 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:19:15 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 18:19:15 --> File loaded: I:\xampp\htdocs\scouts\application\modules/general_setting/models/General_setting_model.php
+DEBUG - 2025-01-09 18:19:15 --> Total execution time: 2.7461
+DEBUG - 2025-01-09 18:24:46 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:24:46 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:24:46 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:24:46 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:24:46 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 18:24:46 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:24:46 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 18:24:46 --> File loaded: I:\xampp\htdocs\scouts\application\modules/my_profile/models/My_profile_model.php
+DEBUG - 2025-01-09 18:24:46 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_header.php
+DEBUG - 2025-01-09 18:24:46 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/profileAvatar.php
+DEBUG - 2025-01-09 18:24:46 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/views/edit.php
+DEBUG - 2025-01-09 18:24:46 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/page_footer.php
+DEBUG - 2025-01-09 18:24:46 --> File loaded: I:\xampp\htdocs\scouts\application\views\backend/_layout_main.php
+DEBUG - 2025-01-09 18:24:46 --> Total execution time: 0.4880
+DEBUG - 2025-01-09 18:24:47 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:24:47 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:24:47 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:24:47 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:24:47 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/models/Site_model.php
+DEBUG - 2025-01-09 18:24:47 --> Accessing maintenance hook!
+DEBUG - 2025-01-09 18:24:47 --> UTF-8 Support Enabled
+DEBUG - 2025-01-09 18:24:47 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-01-09 18:24:48 --> File loaded: I:\xampp\htdocs\scouts\application\modules/dashboard/models/Dashboard_model.php
+DEBUG - 2025-01-09 18:24:48 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:24:48 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_header.php
+DEBUG - 2025-01-09 18:24:48 --> File loaded: I:\xampp\htdocs\scouts\application\modules/site/views/not_found.php
+DEBUG - 2025-01-09 18:24:48 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_right.php
+DEBUG - 2025-01-09 18:24:48 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/page_footer.php
+DEBUG - 2025-01-09 18:24:48 --> File loaded: I:\xampp\htdocs\scouts\application\views\frontend/_layout_main.php
+DEBUG - 2025-01-09 18:24:48 --> Total execution time: 1.3006
+DEBUG - 2025-01-09 18:24:48 --> Config file loaded: I:\xampp\htdocs\scouts\application\config/ion_auth.php
+DEBUG - 2025-01-09 18:24:48 --> File loaded: I:\xampp\htdocs\scouts\application\modules/scouts_member/models/Scouts_member_model.php
+DEBUG - 2025-01-09 18:24:48 --> File loaded: I:\xampp\htdocs\scouts\application\modules/offices/models/Offices_model.php
+DEBUG - 2025-01-09 18:24:48 --> File loaded: I:\xampp\htdocs\scouts\application\modules/committee/models/Committee_model.php
+DEBUG - 2025-01-09 18:24:48 --> File loaded: I:\xampp\htdocs\scouts\application\modules/general_setting/models/General_setting_model.php
+DEBUG - 2025-01-09 18:24:48 --> Total execution time: 0.8441
