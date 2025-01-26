@@ -146,17 +146,18 @@ if($info->member_id == 1 || $info->member_id == 2){
                 </div>
 
                 <div class="row form-row">
-                  <div class="col-md-2">
-                    <label class="form-label">National ID</label>
+                  <div class="col-md-3">
+                    <label class="form-label">Type <span class="require">*</span></label>
+                    <?php echo form_error('nid_dob_type'); ?>
+                    <input type="radio" class="type" checked="<?= ($info->nid_dob_type==1)? 'checked':''?>" name="nid_dob_type" value="1"><span style="color: black; font-size: 15px;"> NID </span>
+                    <input type="radio" class="type" checked="<?= ($info->nid_dob_type==2)? 'checked':''?>" name="nid_dob_type" value="2"><span style="color: black; font-size: 15px;"> Date Of Birth</span>
+                  </div>
+                  <div class="col-md-3">
+                    <label class="form-label">NID/DOB ID</label>
                     <?php echo form_error('nid'); ?>
                     <input id="nid" name="nid" value="<?=set_value('nid', $info->nid)?>" class="form-control input-sm">
                   </div>
-                  <div class="col-md-2">
-                    <label class="form-label">Birth ID</label>
-                    <?php echo form_error('birth_id'); ?>
-                    <input id="birth_id" name="birth_id" value="<?=set_value('birth_id', $info->birth_id)?>" class="form-control input-sm">
-                  </div>
-                  <div class="col-md-2">
+                  <div class="col-md-3">
                     <label class="form-label">Telephone No.</label>
                     <?php echo form_error('phone2'); ?>
                     <input name="phone2" value="<?=set_value('phone2', $info->phone2)?>" type="text" class="form-control input-sm" placeholder="">
@@ -166,36 +167,38 @@ if($info->member_id == 1 || $info->member_id == 2){
                     <?php echo form_error('phone_emergency'); ?>
                     <input name="phone_emergency" value="<?=set_value('phone_emergency', $info->phone_emergency)?>" type="text" class="form-control input-sm" placeholder="">
                   </div>
-                  <div class="col-md-3">
+                </div>
+
+                <div class="row form-row">
+                  <div class="col-md-4">
                     <label class="form-label">Occupation</label>
                     <?php echo form_error('occupation_id');
                     $more_attr = 'class="form-control input-sm" id="occupation"';
                     echo form_dropdown('occupation_id', $occupation, set_value('occupation_id', $info->occupation_id), $more_attr); ?>
                   </div>
-                </div>
-
-                <div class="row form-row">
-                  <div class="col-md-3">
+                  <div class="col-md-4">
                     <label class="form-label">Scout Join Date</label>
                     <?php echo form_error('join_date'); ?>
                     <input name="join_date" value="<?=set_value('join_date', $info->join_date != NULL ? date_bangla_format($info->join_date):'')?>" type="text" class="form-control input-sm datetime" placeholder="DD-MM-YYYY">
                   </div>
-                  <div class="col-md-5">
+                  <div class="col-md-4">
                     <label class="form-label">Facebook</label>
                     <?php echo form_error('facebook'); ?>
                     <input name="facebook" value="<?=set_value('facebook', $info->facebook)?>" type="text" class="form-control input-sm" placeholder="https://www.facebook.com/profile">
                   </div>
+                </div>
+                <div class="row form-row">
                   <div class="col-md-4">
                     <label class="form-label">Skype</label>
                     <?php echo form_error('skype'); ?>
                     <input name="skype" value="<?=set_value('skype', $info->skype)?>" type="text" class="form-control input-sm" placeholder="skype">
                   </div>
-                  <div class="col-md-6">
+                  <div class="col-md-4">
                     <label class="form-label">Linkedin</label>
                     <?php echo form_error('linkedin'); ?>
                     <input name="linkedin" value="<?=set_value('linkedin', $info->linkedin)?>" type="text" class="form-control input-sm" placeholder="https://bd.linkedin.com/">
                   </div>
-                  <div class="col-md-6">
+                  <div class="col-md-4">
                     <label class="form-label">Instagram</label>
                     <?php echo form_error('instagram'); ?>
                     <input name="instagram" value="<?=set_value('instagram', $info->instagram)?>" type="text" class="form-control input-sm" placeholder="https://www.instagram.com/">
@@ -451,8 +454,11 @@ if($info->member_id == 1 || $info->member_id == 2){
       mother_name_bn: {
         required: true
       },
+      nid_dob_type: {
+        required: true
+      },
       nid:{
-        required: false,
+        required: true,
         number: true,
         minlength: 3,
         remote: {
@@ -461,21 +467,7 @@ if($info->member_id == 1 || $info->member_id == 2){
           data: {
             inputData: function() {
               return $( "#nid" ).val();
-            }
-          }
-        }
-      },
-      birth_id:{
-        required: false,
-        number: true,
-        minlength: 3,
-        remote: {
-          url: hostname +"offices/ajax_exists_birth_id/",
-          type: "post",
-          data: {
-            inputData: function() {
-                return $( "#birth_id" ).val();
-            }
+            },
           }
         }
       },
@@ -520,9 +512,9 @@ if($info->member_id == 1 || $info->member_id == 2){
       nid: {
         remote: jQuery.format("Already use in this!")
       },
-      birth_id: {
+      /* birth_id: {
         remote: jQuery.format("Already use in this!")
-      },
+      }, */
     },
   });
 

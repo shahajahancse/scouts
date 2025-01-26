@@ -4,16 +4,16 @@
   }
 </style>
 
-<div class="page-content"> 
- <div class="content">  
+<div class="page-content">
+ <div class="content">
    <div class="row">
 
     <div class="col-md-12 col-sm-12" style="margin-top: 20px;">
      <div class="grid simple horizontal red">
       <div class="grid-title">
        <h4><span class="semi-bold"><?=$meta_title; ?></span></h4>
-       <div class="pull-right">                
-        <a href="<?=base_url('my_profile')?>" class="btn btn-blueviolet btn-xs btn-mini"> My Profile</a> 
+       <div class="pull-right">
+        <a href="<?=base_url('my_profile')?>" class="btn btn-blueviolet btn-xs btn-mini"> My Profile</a>
       </div>
     </div>
     <div class="grid-body">
@@ -35,12 +35,12 @@
           $url = HTTP_IMAGES_PATH .'no-img.png';
         }
         ?>
-        <img src="<?php print $url;?>" alt="image" title="Click on the image for change" data-toggle="modal" data-target="#avatar-modal" id="render-avatar" class="circular-fix has-shadow border marg-top10" data-ussuid="<?php print base64_encode(0);?>" data-backdrop="static" data-keyboard="false" data-upltype="avatar" style="width:150px; height:150px; max-width: 150px; max-height: 150px; border: 2px solid black; padding: 3px;"><br>
+        <img accept="image/*" src="<?php print $url;?>" alt="image" title="Click on the image for change" data-toggle="modal" data-target="#avatar-modal" id="render-avatar" class="circular-fix has-shadow border marg-top10" data-ussuid="<?php print base64_encode(0);?>" data-backdrop="static" data-keyboard="false" data-upltype="avatar" style="width:150px; height:150px; max-width: 150px; max-height: 150px; border: 2px solid black; padding: 3px;"><br>
     </div>
   </div>
   <div class="col-md-6">
    <div class="form-group">
-    <label>Note:</label>                          
+    <label>Note:</label>
     <ul>
       <li>Click on the image</li>
       <li>Choose image file (Allowed file type <strong>png</strong>, <strong>jpg</strong>, <strong>jpeg</strong>)</li>
@@ -54,16 +54,16 @@
 
 
 
-<div class="form-actions">  
+<div class="form-actions">
   <div class="pull-right">
    <?php echo form_submit('submit', 'Upload', "class='btn btn-primary btn-small btn-cons'"); ?>
    <a href="<?=base_url('my_profile')?>" class="btn btn-white btn-small btn-cons">Cancel</a>
  </div>
 </div>
 <?php echo form_close();?>
-</div>  <!-- END GRID BODY -->              
+</div>  <!-- END GRID BODY -->
 </div> <!-- END GRID -->
-</div> <!-- </end col 9> --> 
+</div> <!-- </end col 9> -->
 </div> <!-- </end row> -->
 </div>
 </div>

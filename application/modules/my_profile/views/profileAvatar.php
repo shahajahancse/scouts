@@ -13,19 +13,19 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <input type="file" class="filestyle avatar-input" id="avatarInput" name="avatar_file">
+                                    <input type="file" class="filestyle avatar-input" id="avatarInput" name="avatar_file" accept="image/*">
                                 </div>
                             </div>
-                            <!-- Crop and preview -->                                
+                            <!-- Crop and preview -->
                             <div class="col-md-12">
                                 <div class="avatar-wrapper"></div>
-                            </div> 
+                            </div>
                             <div class="avatar-upload">
-                                <input type="hidden" id="upltypeid" class="upltypecls" name="upltype">    
+                                <input type="hidden" id="upltypeid" class="upltypecls" name="upltype">
                                 <!-- <input type="hidden" id="ussmid" class="uss-id" name="ussid">   -->
                                 <input type="hidden" class="avatar-src" name="avatar_src">
                                 <input type="hidden" class="avatar-data" name="avatar_data">
-                            </div>                                                 
+                            </div>
                         </div>
 
                     </div>
@@ -34,7 +34,7 @@
                         <button type="button" class="avatar-btns btn btn-primary" data-method="rotate" data-option="-90" title="Rotate the image 9 degree to the right"><i class="fa fa-rotate-right"></i> Rotate</button>
                         <button type="submit" class="btn btn-primary avatar-save">Crop & Save</button>
                         <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
-                    </div> 
+                    </div>
                 </form>
             </div>
         </div>

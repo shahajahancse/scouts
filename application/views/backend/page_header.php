@@ -229,7 +229,7 @@
                               <li> <a href="<?=base_url('scouts_member/create');?>"> Add Scout Member </a> </li>
                               <?php } ?>
 
-                              <?php if($this->ion_auth->is_group_admin()){ ?>
+                              <?php if($this->ion_auth->is_admin() || $this->ion_auth->is_group_admin()){ ?>
                               <li> <a href="<?=base_url('scouts_member/request');?>"> Member Request List
                                  <?php
                                  if($count_member_req > 0){
@@ -237,6 +237,7 @@
                                  }
                                  ?>
                               </a> </li>
+                              <li> <a href="<?=base_url('scouts_member/gone_home');?>"> Gone Home</a></li>
                               <li> <a href="<?=base_url('scouts_member/verified_list');?>"> Verified Member List</a></li>
                               <li> <a href="<?=base_url('scouts_member/cancel_request');?>"> Cancel Request List</a></li>
                               <?php } ?>

@@ -104,7 +104,7 @@
                     </tr>
                     <tr>
                       <th class="tg-9vst">Date of Late:</th>
-                      <td class="tg-031e"><?=date_detail_format($info->dol)?></td>
+                      <td class="tg-031e"><?= !empty($info->dol)? date_detail_format($info->dol):''?></td>
                     </tr>
                     <tr>
                       <th class="tg-9vst">Blood Group:</th>
@@ -321,19 +321,19 @@
                 <?php } ?>
                 <tr>
                   <th class="tg-9vst">Facebook :</th>
-                  <td class="tg-031e"><?=$info->facebook?></td>
+                  <td class="tg-031e"><?=($info->facebook)?$info->facebook:''?></td>
                 </tr>
                 <tr>
                   <th class="tg-9vst">Instagram :</th>
-                  <td class="tg-031e"><?=$info->instagram?></td>
+                  <td class="tg-031e"><?=($info->instagram)?$info->instagram:''?></td>
                 </tr>
                 <tr>
                   <th class="tg-9vst">Linkedin :</th>
-                  <td class="tg-031e"><?=$info->linkedin?></td>
+                  <td class="tg-031e"><?=($info->linkedin)?$info->linkedin:''?></td>
                 </tr>
                 <tr>
                   <th class="tg-9vst">Skype :</th>
-                  <td class="tg-031e"><?=$info->skype?></td>
+                  <td class="tg-031e"><?=($info->skype)?$info->skype:''?></td>
                 </tr>
               </table>
             </td>

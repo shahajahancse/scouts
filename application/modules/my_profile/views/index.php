@@ -331,7 +331,11 @@
                 <div class="tab-pane active" id="tab_basic">
                   <div class="row column-seperation">
                     <div class="col-md-12" style="margin-bottom: 20px;">
-                      <h3><span class="semi-bold pull-left">Basic Information</span> </h3>
+                        <?php if ($info->nid_dob_type == 0) { ?>
+                          <h3 class="pull-left" style="width:50%; color: #f90a0a; font-weight: 900;">Please Update Profile here --> </h3>
+                        <?php  } else { ?>
+                          <h3><span class="semi-bold pull-left">Basic Information</span> </h3>
+                        <?php } ?>
                       <div class="pull-right">
                          <a href="<?=base_url( 'my_profile/update_basic_info' )?>" class="btn btn-primary btn-xs btn-mini"><i class="fa fa-edit"></i> Update Basic Info</a>
                       </div>
@@ -360,12 +364,13 @@
 
                       <p> <span class="dt_label">Blood Group </span>
                         <span class="dt_data"><?=$blood_group?></span> </p>
-                      <p> <span class="dt_label">National ID</span>
+                        <!-- <p> <span class="dt_label">National ID</span> -->
+                      <p> <span class="dt_label">Nid / Dob Id</span>
                         <span class="dt_data"><?=$nid?></span> </p>
                       <p> <span class="dt_label">Passport No</span>
                         <span class="dt_data"><?=$passport_no?></span> </p>
-                      <p> <span class="dt_label">Birth ID</span>
-                        <span class="dt_data"><?=$birth_id?></span> </p>
+                      <!-- <p> <span class="dt_label">Birth ID</span>
+                        <span class="dt_data"><?=$birth_id?></span> </p> -->
 
                       <p> <span class="dt_label">Mobile Number</span>
                         <span class="dt_data"><?=$phone?></span> </p>
@@ -433,13 +438,13 @@
                         <span class="dt_data"><?=$per_po?></span> </p>
 
                       <p> <span class="dt_label">Facebook</span>
-                        <span class="dt_data"><?=$info->facebook?></span> </p>
+                        <span class="dt_data"><?=($info->facebook)?$info->facebook:''?></span> </p>
                       <p> <span class="dt_label">Instagram</span>
-                        <span class="dt_data"><?=$info->instagram?></span> </p>
+                        <span class="dt_data"><?=($info->instagram)?$info->instagram:''?></span> </p>
                       <p> <span class="dt_label">Linkedin </span>
-                        <span class="dt_data"><?=$info->linkedin?></span> </p>
+                        <span class="dt_data"><?=($info->linkedin)?$info->linkedin:''?></span> </p>
                       <p> <span class="dt_label">Skype</span>
-                        <span class="dt_data"><?=$info->skype?></span> </p>
+                        <span class="dt_data"><?=($info->skype)?$info->skype:''?></span> </p>
 
                       <p> <span class="dt_label">Created Date</span>
                         <span class="dt_data"><?=$created_date?></span> </p>

@@ -18,6 +18,7 @@ class Offices extends Backend_Controller {
          redirect('login');
       endif;
 
+      $this->userID = $this->session->userdata('user_id');
       $this->load->model('Offices_model');
       $this->load->model('committee/Committee_model');
       $this->load->model('my_profile/My_profile_model');
@@ -3618,9 +3619,12 @@ class Offices extends Backend_Controller {
 
    function ajax_exists_nid(){
       $item = $_POST['inputData'];
-      $result = $this->Common_model->exists('users', 'nid', $item);
+      $this->db->from('users');
+      $this->db->where('nid', $item);
+      $this->db->where('id !=', $this->userID);
+      $query = $this->db->get()->row();
 
-      if ($result == 0) {
+      if (empty($query)) {
          echo 'true';
       }else{
          echo 'false';

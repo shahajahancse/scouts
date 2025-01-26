@@ -1256,6 +1256,74 @@ class Scouts_member extends Backend_Controller {
       $this->load->view('backend/_layout_main', $this->data);
    }
 
+   public function gone_home($offset=0){
+      $limit = 25;
+
+      if($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin()){
+         //Super Admin
+         $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', '', '', '', 4);
+         //Dropdown
+         $this->data['regions'] = $this->Common_model->get_regions();
+         $this->data['scouts_district'] = array(''=>'Scouts District');
+         $this->data['scouts_upazila'] = array(''=>'Scouts Upazila');
+         $this->data['scouts_group'] = array(''=>'Scouts Group');
+      }elseif($this->ion_auth->is_region_admin()){
+         //Region Admin
+         $office = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
+         $results = $this->Scouts_member_model->get_scout_member($limit, $offset, $office, '', '', '', 4);
+         //Dropdown
+         $this->data['scouts_district'] =  $this->Common_model->get_scout_districts($office);
+         $this->data['scouts_upazila'] = array(''=>'Scouts Upazila');
+         $this->data['scouts_group'] = array(''=>'Scouts Group');
+      }elseif($this->ion_auth->is_district_admin()){
+         //District Admin
+         $office = $this->Offices_model->get_district_office_by_user_id($this->userSessID)->id;
+         $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', $office, '', '', 4);
+
+         $this->data['scouts_upazila'] =  $this->Common_model->get_scout_upazila_thana($office);
+         $this->data['scouts_group'] = array(''=>'Scouts Group');
+      }elseif($this->ion_auth->is_upazila_admin()){
+         //Upazila Admin
+         $office = $this->Offices_model->get_upazila_office_by_user_id($this->userSessID)->id;
+         $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', '', $office, '', 4);
+
+         $this->data['scouts_group'] =  $this->Common_model->get_scout_group_office('', $office);
+      }elseif($this->ion_auth->is_group_admin()){
+         //Group Admin
+         $office = $this->Offices_model->get_scout_group_by_user_id($this->userSessID)->id;
+         $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', '', '', $office, 4);
+      }else{
+         redirect('dashboard');
+      }
+
+      if($_GET['region']>0 && $_GET['region'] !=NULL){
+         $this->data['scouts_district'] =  $this->Common_model->get_scout_districts($_GET['region']);
+      }
+
+      if($_GET['district']>0 && $_GET['district'] !=NULL){
+         $this->data['scouts_upazila'] =  $this->Common_model->get_scout_upazila_thana($_GET['district']);
+      }
+
+      if($_GET['upazila']>0 && $_GET['upazila'] !=NULL){
+         $this->data['scouts_group'] =  $this->Common_model->get_scout_group_office('', $_GET['upazila']);
+      }
+
+      //Results
+      $this->data['results'] = $results['rows'];
+      $this->data['total_rows'] = $results['num_rows'];
+
+      //pagination
+      $this->data['pagination'] = create_pagination('scouts_member/gone_home/', $this->data['total_rows'], $limit, 3, $full_tag_wrap = true);
+
+      $this->data['member_type'] = $this->Common_model->get_member_type();
+      $this->data['scout_section'] = $this->Common_model->set_scout_section();
+
+      // Load page
+      $this->data['meta_title'] = 'Scouts Member Gone List';
+      $this->data['subview'] = 'gone_home';
+      $this->load->view('backend/_layout_main', $this->data);
+   }
+
    public function verified_member_generate_scout_id($id){
       $scoutID = (int) decrypt_url($id);
          // Check Exists
@@ -1515,8 +1583,6 @@ class Scouts_member extends Backend_Controller {
 
       //Get information
       $this->data['info'] = $this->Scouts_member_model->get_info($scoutID);
-      /*echo '<pre>';
-      print_r($this->data['info']->sc_group_id); exit;*/
 
       //Check authentication
       if($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin()){
@@ -1654,10 +1720,6 @@ class Scouts_member extends Backend_Controller {
          $this->form_validation->set_rules('password', $this->lang->line('edit_user_validation_password_label'), 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|max_length[' . $this->config->item('max_password_length', 'ion_auth') . ']');
       }
 
-      // if(@$_FILES['userfile']['size'] > 0){
-      //    $this->form_validation->set_rules('userfile', '', 'callback_file_check');
-      // }
-
       // Run after validation and input data
       if ($this->form_validation->run() == true){
          //check request
@@ -1665,8 +1727,10 @@ class Scouts_member extends Backend_Controller {
             show_404('scouts_member - edit - submit check request post data', TRUE);
          }
          $dol = null;
+         $status = $this->data['info']->status;
          if (!empty($this->input->post('dol'))) {
             $dol = date('Y-m-d',strtotime($this->input->post('dol')));
+            $status = 4;
          }
          $dob = $this->input->post('year').'-'.$this->input->post('month').'-'.$this->input->post('day');
          $form_data = array(
@@ -1686,6 +1750,7 @@ class Scouts_member extends Backend_Controller {
             'religion_id'       =>  $this->input->post('religion_id'),
             'is_request'        =>  '0',
             'is_verify'         =>  '1',
+            'status'            =>  $status,
             'pre_village_house' =>  $this->input->post('pre_village_house'),
             'pre_village_house_bn' => $this->input->post('pre_village_house_bn'),
             'pre_road_block'    => $this->input->post('pre_road_block'),
@@ -1740,53 +1805,6 @@ class Scouts_member extends Backend_Controller {
          if ($this->input->post('password')){
             $form_data['password'] = $this->input->post('password');
          }
-
-         // Find last scout ID like AA1003 and generate next ID AA1004
-         // if($this->input->post('generateID')){
-         //    $last_scout_id = $this->Scouts_member_model->get_last_scout_id(); // exit;
-         //    $scout_id = $this->generateScoutID($last_scout_id);
-         //    $form_data['scout_id'] = $this->input->post('generateID')?$scout_id:NULL;
-         //    //$this->qrcode_generator($last_scout_id);
-         // }
-
-         // Image Upload
-         // if($_FILES['userfile']['size'] > 0){
-         //    $new_file_name = time().'-'.$_FILES["userfile"]['name'];
-         //    $config['allowed_types']= 'jpg|png|jpeg';
-         //    $config['upload_path']  = $this->img_path;
-         //    $config['file_name']    = $new_file_name;
-         //    $config['max_size']     = 600;
-
-         //    $this->load->library('upload', $config);
-         //    //upload file to directory
-         //    if($this->upload->do_upload()){
-         //       $uploadData = $this->upload->data();
-         //       $config = array(
-         //          'source_image' => $uploadData['full_path'],
-         //          'new_image' => $this->img_path,
-         //          'maintain_ratio' => TRUE,
-         //          'width' => 300,
-         //          'height' => 300
-         //          );
-         //       $this->load->library('image_lib',$config);
-         //       $this->image_lib->initialize($config);
-         //       $this->image_lib->resize();
-
-         //       $uploadedFile = $uploadData['file_name'];
-         //            // print_r($uploadedFile);
-         //    }else{
-         //       $this->data['message'] = $this->upload->display_errors();
-         //    }
-         // }
-
-         // if($_FILES['userfile']['size'] > 0){
-         //    $form_data['profile_img'] = $uploadedFile;
-         // }
-
-         // if($scoutID == '1910'){
-         // echo '<pre>';
-         // print_r($form_data); exit;
-         // }
 
          if($this->ion_auth->update($scoutID, $form_data)){
             $id = $this->data['info']->id;
@@ -2277,7 +2295,7 @@ class Scouts_member extends Backend_Controller {
 
       // Change 'status' field to archive/delete request list
       if ($scoutID){
-         $data = array('status' => '1');
+         $data = array('status' => '1', 'dol' => NULL);
          if($this->Common_model->edit('users', $scoutID, 'id', $data)){
             $this->session->set_flashdata('success', 'Scouts member restored successfully.');
          }

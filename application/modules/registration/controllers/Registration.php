@@ -3,7 +3,7 @@
 class Registration extends Backend_Controller {
 
 	public function __construct(){
-		parent::__construct();	
+		parent::__construct();
 	}
 
 	public function index(){
@@ -23,14 +23,13 @@ class Registration extends Backend_Controller {
         $this->form_validation->set_rules('month', 'month', 'required|trim');
         $this->form_validation->set_rules('year', 'year', 'required|trim');
         $this->form_validation->set_rules('gender', 'gender', 'required|trim');
+        $this->form_validation->set_rules('nid', 'NID or DOB Number', 'required|trim');
         $this->form_validation->set_rules('phone', $this->lang->line('create_user_validation_phone_label'), 'required|trim');
         $this->form_validation->set_rules('password', $this->lang->line('create_user_validation_password_label'), 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|max_length[' . $this->config->item('max_password_length', 'ion_auth') . ']');
 
         $dob = $this->input->post('year').'-'.$this->input->post('month').'-'.$this->input->post('day');
 
         if ($this->form_validation->run() == true){
-            // print_r($this->input->post()); 
-            // exit;
             $email    = strtolower($this->input->post('email'));
             $identity = ($identity_column==='email') ? $email : strtolower($this->input->post('identity'));
             $password = $this->input->post('password');
@@ -39,10 +38,10 @@ class Registration extends Backend_Controller {
                 'first_name'    => $this->input->post('full_name'),
                 'dob'           => $dob,
                 'gender'        => $this->input->post('gender'),
+                'nid_dob_type'  => $this->input->post('nid_dob_type'),
+                'nid'           => $this->input->post('nid'),
                 'phone'         => $this->input->post('phone')
-                );
-            // echo '<pre>';
-            // print_r($this->input->post()); exit;
+            );
         }
 
         if ($this->form_validation->run() == true && $this->ion_auth->register($identity, $password, $email, $additional_data)){
@@ -71,7 +70,14 @@ class Registration extends Backend_Controller {
                 'placeholder' => 'Email address or username',
                 'value' => $this->form_validation->set_value('identity'),
                 'style' => 'text-transform: lowercase;'
-            );  
+            );
+            $this->data['nid'] = array('name' => 'nid',
+                'type'  => 'text',
+                'class' => 'form-control',
+                'id'    => 'nid',
+                'placeholder' => 'NID or DOB Number',
+                'value' => $this->form_validation->set_value('nid'),
+            );
             $this->data['phone'] = array('name' => 'phone',
                 'type'  => 'text',
                 'class' => 'form-control',
@@ -93,18 +99,9 @@ class Registration extends Backend_Controller {
                 'value' => $this->form_validation->set_value('password_confirm'),
             );
 
-            //dropdown
-            // $this->data['district'] = $this->Common_model->get_district();
-            // $this->data['upazila'] = $this->Common_model->get_upazila_thana();
-            // $this->data['blood_group'] = $this->Common_model->get_blood_group(); 
-            // $this->data['scout_group'] = $this->Common_model->get_scout_group(); 
-
-            $this->data['days'] = $this->Common_model->get_days(); 
-            $this->data['months'] = $this->Common_model->get_months(); 
-            $this->data['years'] = $this->Common_model->get_years(); 
-                        // echo '<pre>';
-            // print_r($this->data['district']); exit;
-
+            $this->data['days'] = $this->Common_model->get_days();
+            $this->data['months'] = $this->Common_model->get_months();
+            $this->data['years'] = $this->Common_model->get_years();
 
             $this->data['meta_title'] = 'Registration';
             $this->data['subview'] = 'index';
@@ -121,12 +118,23 @@ class Registration extends Backend_Controller {
         } else {
             return TRUE;
         }
-    } 
+    }
+
+    function ajax_exists_nid(){
+        $item = $_POST['inputData'];
+        $result = $this->Common_model->exists('users', 'nid', $item);
+
+        if ($result == 0) {
+            echo 'true';
+        }else{
+            echo 'false';
+        }
+    }
 
     function ajax_exists_identity(){
         // echo 'true';
         $item = $_POST['inputData'];
-        $result = $this->Common_model->exists('users', 'username', $item);        
+        $result = $this->Common_model->exists('users', 'username', $item);
 
         if ($result == 0) {
             echo 'true';

@@ -743,8 +743,7 @@ class My_profile extends Backend_Controller {
       // if(@$_FILES['userfile']['size'] > 0){
       //    $this->form_validation->set_rules('userfile', '', 'callback_file_check');
       // }
-
-        // Run after validation
+      // Run after validation
       if ($this->form_validation->run() == true){
          $dob = $this->input->post('year').'-'.$this->input->post('month').'-'.$this->input->post('day');
          $form_data = array(
@@ -790,7 +789,7 @@ class My_profile extends Backend_Controller {
             'sc_upa_tha_id'     => $this->input->post('sc_upa_tha_id'),
             'sc_group_id'       => $this->input->post('sc_group_id'),
             'sc_unit_id'        => $this->input->post('sc_unit_id')
-            );
+         );
          /*
          // Image Upload
          if($_FILES['userfile']['size'] > 0){
@@ -1190,7 +1189,7 @@ class My_profile extends Backend_Controller {
             'pass_place_birth'  => $this->input->post('pass_place_birth'),
             'phone_emergency'   => $this->input->post('phone_emergency'),
             'nid'               => $this->input->post('nid'),
-            'birth_id'          => $this->input->post('birth_id'),
+            'nid_dob_type'      => $this->input->post('nid_dob_type'),
             'email'             => $this->input->post('email'),
             'occupation_id'     => $this->input->post('occupation_id'),
             'occp_others'       => $this->input->post('occupation_id')=='Other'?$this->input->post('occp_others'):NULL,

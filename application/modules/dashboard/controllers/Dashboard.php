@@ -853,7 +853,7 @@ class Dashboard extends Backend_Controller {
 			}
 
 		}elseif($this->ion_auth->is_employee()){
-         //Load page
+         	//Load page
 			$this->data['user'] = $this->ion_auth->user()->row();
 
 			$this->data['results2']=$this->E_filing_model->get_file_list1('file_copy', $this->data['user']->emp_designation);
