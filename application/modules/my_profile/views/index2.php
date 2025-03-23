@@ -136,14 +136,14 @@ $qr_code_text = 'Name: ' . $info->first_name . ' ('. $info->scout_id .')';
 // Other's Information
 $display_edu='';
 $display_org='';
-if($info->member_id == 1 || $info->member_id == 2){ 
+if($info->member_id == 1 || $info->member_id == 2){
    $display_edu = "display: block;";
    $display_org = "display: none;";
 }else if($info->member_id == 8 || $info->member_id == 12 || $info->member_id == 10 || $info->member_id == 9 || $info->member_id == 13){
    $display_edu = "display: none;";
    $display_org = "display: block;";
 }
-?>     
+?>
 <style type="text/css">
   .info{margin-left: 25px; color: black;}
   .dt_label{margin-left: 10px; width: 150px; display: block; float: left; color: #796b6b;}
@@ -169,8 +169,8 @@ if($info->member_id == 1 || $info->member_id == 2){
   .id_card td{padding-left: 10px;padding-bottom: 6px; }*/
 </style>
 
-<div class="page-content"> 
-  <div class="content">  
+<div class="page-content">
+  <div class="content">
 
     <!-- <div class="row">
       <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -193,16 +193,16 @@ if($info->member_id == 1 || $info->member_id == 2){
       <div class="col-md-12">
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
           <div class="carousel-inner">
-          <?php 
-            $slid = 0; 
-            foreach ($slider as $slide) { 
+          <?php
+            $slid = 0;
+            foreach ($slider as $slide) {
               $slid++;
               $img_path = base_url().'slider_img/';
               if($slide->image_file != NULL){
                 $src= $img_path.$slide->image_file;
                 // echo "<img src='$src'>";
               }
-            ?>          
+            ?>
             <div class="item <?=$slid == 1?'active':''?>">
               <img src="<?=$src?>" alt="Slider" style="width:100%;">
               <!-- <div class="carousel-caption">
@@ -210,7 +210,7 @@ if($info->member_id == 1 || $info->member_id == 2){
                 <p>LA is always so much fun!</p>
               </div> -->
             </div>
-          <?php } ?>            
+          <?php } ?>
           </div>
 
           <!-- Left and right controls -->
@@ -224,7 +224,7 @@ if($info->member_id == 1 || $info->member_id == 2){
           </a>
         </div> <!-- /carousel -->
         <!-- <div class=" tiles white col-md-12 no-padding">
-          <div class="tiles green cover-pic-wrapper">           
+          <div class="tiles green cover-pic-wrapper">
             <div class="overlayer bottom-right"> </div>
             <img src="<?=base_url('awedget/assets/img/cover_pic.png')?>" alt="">
           </div>
@@ -233,7 +233,7 @@ if($info->member_id == 1 || $info->member_id == 2){
     </div>
 
     <div class="row">
-      <div class="col-md-12">      
+      <div class="col-md-12">
         <div class="tiles white">
           <div class="row">
             <div class="col-md-2 col-sm-2" style="margin:0 20px;">
@@ -254,11 +254,11 @@ if($info->member_id == 1 || $info->member_id == 2){
               <div class="row">
                 <div class="pull-left" style="width: 60%; border:0px solid red;">
                   <h4 class="semi-bold no-margin" ><?=$name;?></h4>
-                  <h6 class="no-margin" style="font-weight: bold;"><?=$info->member_type_name;?></h6>  
-                </div>              
+                  <h6 class="no-margin" style="font-weight: bold;"><?=$info->member_type_name;?></h6>
+                </div>
 
-                <div class="pull-right">    
-                    <a href="<?=base_url('my_profile/id_card2/'.$info->id)?>" class="btn btn-blueviolet btn-xs btn-mini" target="_blank"><i class="fa fa-download"></i> আইডি কার্ড ডাউনলোড করুন </a>   
+                <div class="pull-right">
+                    <a href="<?=base_url('my_profile/id_card2/'.$info->id)?>" class="btn btn-blueviolet btn-xs btn-mini" target="_blank"><i class="fa fa-download"></i> আইডি কার্ড ডাউনলোড করুন </a>
                     <a href="<?=base_url('my_profile/change_image')?>" class="btn btn-blueviolet btn-xs btn-mini"><i class="fa fa-user"></i> ছবি পরিবর্তন করুন</a>
                     <!-- <a href="<?=base_url('my_profile/change_username')?>" class="btn btn-blueviolet btn-xs btn-mini"><i class="fa fa-refresh"></i> Change Username</a> -->
                     <a href="<?=base_url('my_profile/change_password')?>" class="btn btn-blueviolet btn-xs btn-mini"><i class="fa fa-key"></i> পাসওয়ার্ড পরিবর্তন করুন</a>
@@ -266,29 +266,29 @@ if($info->member_id == 1 || $info->member_id == 2){
                     <a href="<?=base_url('my_profile/change_department')?>" class="btn btn-blueviolet btn-xs btn-mini"><i class="fa fa-home"></i> বিভাগ পরিবর্তন করুন</a>
                 </div>
               </div>
-                            
+
               <div class="row" style="margin-top: 20px;">
                 <div class="col-md-6">
                   <p><i class="fa fa-circle"></i>ব্যবহারকারী নাম বা ইমেল লগইন করুন <br>
-                    <span class="info"><?=$username?></span> </p>                  
+                    <span class="info"><?=$username?></span> </p>
                   <p><i class="fa fa-circle"></i> জন্ম তারিখ <br>
                     <span class="info"><?=date_bangla_calender_format($dob)?></span> </p>
-                  <p><i class="fa fa-circle"></i>শেষ লগইন <br> 
+                  <p><i class="fa fa-circle"></i>শেষ লগইন <br>
                     <span class="info"><?=date_bangla_calender_format($last_update)?></span> </p>
                 </div>
                 <div class="col-md-6">
-                  <p><i class="fa fa-globe"></i>অনলাইন যোগদানের তারিখ <br> 
+                  <p><i class="fa fa-globe"></i>অনলাইন যোগদানের তারিখ <br>
                     <span class="info"><?=date_bangla_calender_format($created_date)?></span> </p>
                   <p><i class="fa fa-globe"></i>পদবি <br>
                     <span class="info"><?=$designation->designation_name?></span> </p>
                   <p><i class="fa fa-globe"></i>বিভাগ<br>
-                    <span class="info"><?=$department->department_name?></span> </p>                  
+                    <span class="info"><?=$department->department_name?></span> </p>
                 </div>
               </div>
-            </div>            
+            </div>
 
           </div> <!--/row -->
-          
+
           <?php if(!$this->ion_auth->is_guest()){ ?>
           <div class="row">
             <div class="col-md-12">
@@ -302,33 +302,33 @@ if($info->member_id == 1 || $info->member_id == 2){
               <div class="tab-content">
                 <div class="tab-pane active" id="tab_basic">
                   <div class="row column-seperation">
-                    <div class="col-md-12" style="margin-bottom: 20px;"> 
+                    <div class="col-md-12" style="margin-bottom: 20px;">
                       <div class="pull-right">
-                         <a href="<?=('my_profile/emp_update/'.$info->id)?>" class="btn btn-primary btn-xs btn-mini"><i class="fa fa-edit"></i>বেসিক তথ্য আপডেট করুন</a> 
+                         <a href="<?=('my_profile/emp_update/'.$info->id)?>" class="btn btn-primary btn-xs btn-mini"><i class="fa fa-edit"></i>বেসিক তথ্য আপডেট করুন</a>
                       </div>
                     </div>
-                    
+
                     <div class="col-md-8">
                       <p> <span class="dt_label">নাম (ইংরেজি)</span>
                         <span class="dt_data"><?=$name?></span> </p>
                       <p> <span class="dt_label">name (Bangla)</span>
                         <span class="dt_data"><?=$name_bn?></span> </p>
-                     
+
                       <p> <span class="dt_label">লিঙ্গ </span>
                         <span class="dt_data"><?=$info->gender?></span> </p>
 
                       <p> <span class="dt_label">ধর্ম </span>
                         <span class="dt_data"><?=get_religion($info->religion_id)?></span> </p>
-                      
+
                       <p> <span class="dt_label">জন্ম তারিখ </span>
                         <span class="dt_data"><?=date_bangla_calender_format($dob)?></span> </p>
-                      
+
                       <p> <span class="dt_label">রক্তের গ্রুপ </span>
                         <span class="dt_data"><?=$blood_group?></span> </p>
-                      <p> <span class="dt_label">জাতীয় পরিচয়পত্র</span> 
+                      <p> <span class="dt_label">জাতীয় পরিচয়পত্র</span>
                         <span class="dt_data"><?=$this->Common_model->en2bn($nid)?></span> </p>
-                      
-                      <p> <span class="dt_label">মোবাইল নম্বর</span> 
+
+                      <p> <span class="dt_label">মোবাইল নম্বর</span>
                         <span class="dt_data"><?=$this->Common_model->en2bn($phone)?></span> </p>
 
                       <p> <span class="dt_label">ইমেইল</span>
@@ -337,8 +337,8 @@ if($info->member_id == 1 || $info->member_id == 2){
 
                       <p> <span class="dt_label">পদবি </span>
                         <span class="dt_data"><?=$designation->designation_name?></span> </p>
-                      
-                      <h5> <span class="dt_label"><b>বিভাগ</b></span> 
+
+                      <h5> <span class="dt_label"><b>বিভাগ</b></span>
                         <span class="dt_data"><?=$department->department_name?></span></h5>
                     </div>
                     <div class="col-md-4">
@@ -348,20 +348,20 @@ if($info->member_id == 1 || $info->member_id == 2){
                           <?php if(!empty($info->emp_singature)){ ?>
                             <img src="<?=base_url('employee_img/'.$info->emp_singature)?>" width="100px">
                           <?php } ?>
-                        </span></h5> 
-                     
+                        </span></h5>
+
                     </div>
                   </div>
                 </div>
 
                 <!-- <div class="tab-pane active" id="tab_edu">
                   <div class="row column-seperation">
-                      <div class="col-md-12" style="margin-bottom: 20px;"> 
+                      <div class="col-md-12" style="margin-bottom: 20px;">
                         <div class="pull-right">
-                           <a href="#" class="btn btn-primary btn-xs btn-mini"><i class="fa fa-edit"></i>আপডেট করুন</a> 
+                           <a href="#" class="btn btn-primary btn-xs btn-mini"><i class="fa fa-edit"></i>আপডেট করুন</a>
                         </div>
                       </div>
-                    
+
                       <div class="col-md-12">
                         <h4 class="semi-bold">শিক্ষাগত তথ্য</h4>
                         <table width="100%" border="1" id="memberDiv">
@@ -369,11 +369,11 @@ if($info->member_id == 1 || $info->member_id == 2){
                               <td width="20%">শিক্ষা / পরীক্ষা</td>
                               <td width="50%">ইনস্টিটিউট / বিশ্ববিদ্যালয় / বোর্ড</td>
                               <td width="15%">ফলাফল</td>
-                              <td width="15%">পাসের সন</td> 
+                              <td width="15%">পাসের সন</td>
                            </tr>
                            <tr></tr>
                         </table>
-                       
+
                       </div>
                   </div>
 
@@ -381,12 +381,12 @@ if($info->member_id == 1 || $info->member_id == 2){
 
                   <div class="tab-pane active" id="tab_work">
                   <div class="row column-seperation">
-                      <div class="col-md-12" style="margin-bottom: 20px;"> 
+                      <div class="col-md-12" style="margin-bottom: 20px;">
                         <div class="pull-right">
-                           <a href="#" class="btn btn-primary btn-xs btn-mini"><i class="fa fa-edit"></i>আপডেট করুন</a> 
+                           <a href="#" class="btn btn-primary btn-xs btn-mini"><i class="fa fa-edit"></i>আপডেট করুন</a>
                         </div>
                       </div>
-                    
+
                       <div class="col-md-12">
                          <h4 class="semi-bold">ওয়ার্কিং স্টেশন সম্পর্কিত তথ্য</h4>
                         <table width="100%" border="1" id="workStationDiv">
@@ -394,16 +394,16 @@ if($info->member_id == 1 || $info->member_id == 2){
                               <td width="50%">ওয়ার্কিং প্লেস</td>
                               <td width="20%">হিসেবে দায়িত্ব পালন</td>
                               <td width="15%">তারিখ হইতে</td>
-                              <td width="15%">এখন পর্যন্ত</td> 
+                              <td width="15%">এখন পর্যন্ত</td>
                            </tr>
                            <tr></tr>
                         </table>
-                       
+
                       </div>
                   </div>
 
                   </div> -->
-              </div>                
+              </div>
 
 
 

@@ -2190,10 +2190,11 @@ class Scouts_member extends Backend_Controller {
          );
          // Count user nit number
 
-         $this->db->select('COUNT(id) as cnt')->where('sc_unit_id',$this->data['info']->sc_unit_id);
-         $check = $this->db->where('status', 1)->where('is_verify', 1)->group_by('sc_unit_id')->get('users')->row();
+         // $this->db->select('COUNT(id) as cnt')->where('sc_unit_id',$this->data['info']->sc_unit_id);
+         // $check = $this->db->where('status', 1)->where('is_verify', 1)->group_by('sc_unit_id')->get('users')->row();
 
          // Check Max 40 member per unit
+         $check->cnt = 0;
          if($check->cnt >= 40){
             $this->session->set_flashdata('error', 'Max 40 member per unit.');
             // redirect('scouts_member/verify/'.encrypt_url($scoutID));

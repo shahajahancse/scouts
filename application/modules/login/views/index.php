@@ -3,18 +3,19 @@
   -o-background-size: cover;
   background-size: cover;">
   <div class="container">
-    <div class="row login-container login_register column-seperation">  
-      <?php 
+    <div class="row login-container login_register column-seperation">
+      <?php
       $attributes = array('id' => 'login_validate');
       echo form_open("login/index", $attributes);
       ?>
-      <div class="col-md-4 col-sm-6 col-sm-offset-3 col-md-offset-4 box_reg"> 
+      <div class="col-md-4 col-sm-6 col-sm-offset-3 col-md-offset-4 box_reg">
         <img src="<?=base_url('fwedget/assets/images/scout_logo_small.png');?>" class="box_img img-responsive">
         <h4 class="box_title">Login to you account</h4>
         <div id="infoMessage"><?php echo $message;?></div>
-        
+
+        <!-- Email or Username or Scout ID to login -->
         <div class="row">
-          <div class="col-md-12" style="margin-top: 15px; margin-bottom: 10px;">
+          <div class="col-md-12" style="margin-top: 15px;">
             <label>Email or Username or Scout ID</label>
             <?php echo form_error('identity')?>
             <div class="input-group">
@@ -24,8 +25,9 @@
           </div>
         </div>
 
+        <!-- Login Password -->
         <div class="row">
-          <div class="col-md-12" style=" margin-bottom: 15px;">
+          <div class="col-md-12" style="">
             <label>Login Password</label>
             <?php echo form_error('password')?>
             <div class="input-group">
@@ -36,9 +38,10 @@
           </div>
         </div>
 
+        <!-- Remember Me and Login Button -->
         <div class="row">
           <div class="col-md-6 hidden-sm hidden-xs">
-            <div class="input-group">
+            <div class="input-group" style="margin-bottom: 0px;">
               <div class="checkbox checkbox check-success pull-left">
                 <?php echo form_checkbox('remember', '1', FALSE, 'id="remember"');?>
                 <label for="remember" style="color: black; font-weight: bold;">Remember Me</label>
@@ -46,12 +49,13 @@
             </div>
           </div>
           <div class="col-md-6">
-            <div class="input-group">
+            <div class="input-group" style="margin-bottom: 0px;">
               <?php echo form_submit('submitBtn', 'Login', "class='btn btn-primary btn-cons pull-right'"); ?>
             </div>
           </div>
         </div>
 
+        <!-- Register and Forget Password -->
         <div class="row" style="margin-bottom: 0px;">
           <div class="col-md-6">
             <a href="<?=base_url('registration')?>" class="register">Register new account  </a>
@@ -61,6 +65,24 @@
           </div>
         </div>
 
+        <!-- Support Request -->
+        <style>
+          .support_request {
+              color: #037a37;
+              text-decoration: underline;
+              margin-top: 15px;
+              text-align: center;
+              display: block;
+              font-weight: bold;
+          }
+        </style>
+        <div class="row">
+          <div class="col-md-12" style="margin-bottom: 0px;">
+            <a href="<?=base_url('support')?>" class="support_request">Support Request ( সাহায্যের অনুরোধ)</a>
+          </div>
+        </div>
+
+        <!-- Public Service -->
         <div class="row">
           <div class="col-md-12" style="margin-bottom: 0px;">
             <a href="<?=base_url()?>" class="public_service">Scout Portal (Public Corner)</a>
@@ -69,33 +91,33 @@
 
         <div class="clearfix"></div>
         <div class="a2i">
-          <span style="text-decoration: underline;">সহযোগীতায়</span> 
+          <span style="text-decoration: underline;">সহযোগীতায়</span>
 
           <div class="row">
             <div class="col-md-6 text-left" style="font-size: 10px;">
-              
+
               <a href="https://a2i.gov.bd/" target="_blank">
               <img src="<?php echo base_url('fwedget/assets/images/a2i_logo.png')?>" height="20" style="margin-top: 05px;"></a>
               <a href="https://ictd.gov.bd/" target="_blank">
               <img src="<?php echo base_url('fwedget/assets/images/logo_ict.png')?>" width="55" style="margin-top: 05px;"></a><br>
-              <strong>এটুআই প্রোগ্রাম <br>তথ্য ও যোগাযোগ প্রযুক্তি বিভাগ</strong> 
+              <strong>এটুআই প্রোগ্রাম <br>তথ্য ও যোগাযোগ প্রযুক্তি বিভাগ</strong>
             </div>
 
             <div class="col-md-6 text-right" style="font-size: 10px;">
               <a href="http://www.scouts.gov.bd/" target="_blank">
               <img src="<?php echo base_url('fwedget/assets/images/bd_scout_logo.png')?>" height="20" style="margin-top: 05px;"></a><br>
-              <strong>আইসিটি বিভাগ <br>বাংলাদেশ স্কাউটস</strong> 
+              <strong>আইসিটি বিভাগ <br>বাংলাদেশ স্কাউটস</strong>
             </div>
           </div>
 
           <div class="row">
             <div class="col-md-12 text-center" style="font-size: 10px; margin-top: 10px;">
-              <strong>Developed By |  <a href="http://mysoftheaven.com/" target="_blank">Mysoftheaven (BD) Ltd.</a></strong>             
+              <strong>Developed By |  <a href="http://mysoftheaven.com/" target="_blank">Mysoftheaven (BD) Ltd.</a></strong>
               <a href="http://mysoftheaven.com/" target="_blank"><img src="<?php echo base_url('fwedget/assets/images/mysoft-logo.png')?>" height="15"></a>
             </div>
-          </div>          
+          </div>
         </div>
-        
+
       </div>
 
     </form>

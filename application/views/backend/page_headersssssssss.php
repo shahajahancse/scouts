@@ -132,30 +132,26 @@
                            $img_url = $path.'no-img.png';
                         }
                         ?>
-                        <div class="profile-pic">
-                           <img fetchpriority="high" loading="eager" src="<?=$img_url?>?version=<?php echo time();?>"  alt="Profile Image" width="35" height="35" />
-                        </div>
+                        <div class="profile-pic"> <img src="<?=$img_url?>"  alt="Profile Image" data-src="<?=$img_url?>" data-src-retina="<?=$img_url?>" width="35" height="35" /> </div>
                         <?php } ?>
                      </div>
 
                      <ul class="nav quick-section ">
-                        <li class="quicklinks"> <a data-toggle="dropdown" class="dropdown-toggle  pull-right " href="javascript:;" id="user-options">
-                           <i class="fa fa-cog" style="font-size: 22px; color: #8dc641 !important;"></i>
-                        </a>
-                        <ul class="dropdown-menu  pull-right" role="menu" aria-labelledby="user-options">
-                           <?php if(!$this->officeSess){ ?>
-                           <?php if($userDetails['user_info']->is_request != 2){ ?>
-                           <li><a href="<?=base_url('my_profile')?>"> <i class="fa fa-user"></i>  <?=$this->ion_auth->is_employee()?'প্রোফাইল':'My Profile'?></a> </li>
-                           <?php } ?>
-                           <?php }else{ ?>
-                           <li><a href="<?=base_url('my_office')?>"> <i class="fa fa-user"></i>  My Office</a> </li>
-                           <?php } ?>
+                        <li class="quicklinks"> <a data-toggle="dropdown" class="dropdown-toggle  pull-right " href="javascript:;" id="user-options"> <i class="fa fa-cog" style="font-size: 22px; color: #8dc641 !important;"></i>  </a>
+                           <ul class="dropdown-menu  pull-right" role="menu" aria-labelledby="user-options">
+                              <?php if(!$this->officeSess){ ?>
+                              <?php if($userDetails['user_info']->is_request != 2){ ?>
+                              <li><a href="<?=base_url('my_profile')?>"> <i class="fa fa-user"></i>  <?=$this->ion_auth->is_employee()?'প্রোফাইল':'My Profile'?></a> </li>
+                              <?php } ?>
+                              <?php }else{ ?>
+                              <li><a href="<?=base_url('my_office')?>"> <i class="fa fa-user"></i>  My Office</a> </li>
+                              <?php } ?>
 
-                           <li class="divider"></li>
-                           <li><a href="<?=base_url('logout')?>"><i class="fa fa-power-off"></i> <?=$this->ion_auth->is_employee()?'লগ আউট':'Log Out'?></a></li>
-                        </ul>
-                     </li>
-                  </ul>
+                              <li class="divider"></li>
+                              <li><a href="<?=base_url('logout')?>"><i class="fa fa-power-off"></i> <?=$this->ion_auth->is_employee()?'লগ আউট':'Log Out'?></a></li>
+                           </ul>
+                        </li>
+                     </ul>
                </div> <!-- END CHAT TOGGLER -->
 
             </div> <!-- END TOP NAVIGATION MENU -->
@@ -188,6 +184,7 @@
 
                      <!-- BEGIN SIDEBAR MENU -->
                      <ul class="pull-left">
+                        <!-- dashboard -->
                         <li class="start <?=backend_activate_menu_class('dashboard')?>">
                            <a href="<?=base_url('dashboard');?>"> <i class="icon-custom-home"></i>  <span class="title"><?=$this->ion_auth->is_employee()?'ড্যাশবোর্ড':'Dashboard'?></span></a>
                         </li>
@@ -201,10 +198,12 @@
 
                         <?php if(!$this->officeSess){ ?>
                         <?php if($userDetails['user_info']->is_request != 2){ ?>
-                        <li class="start <?=backend_activate_menu_class('my_profile')?>">
-                           <a href="<?=base_url('my_profile');?>"> <i class="fa fa-user"></i> <span class="title"><?=$this->ion_auth->is_employee()?'প্রোফাইল':'My Profile'?></span></a>
-                        </li>
+                           <li class="start <?=backend_activate_menu_class('my_profile')?>">
+                              <a href="<?=base_url('my_profile');?>"> <i class="fa fa-user"></i> <span class="title"><?=$this->ion_auth->is_employee()?'প্রোফাইল':'My Profile'?></span></a>
+                           </li>
+                           <li class="start <?=backend_activate_menu_class('my_profile')?>"><a href="<?=base_url('my_profile/cbox')?>"><i class="fa fa-user"></i> Complain or Feedback </a> </li>
                         <?php } ?>
+
                         <?php }else{ ?>
                         <li class="start <?=backend_activate_menu_class('my_office')?>">
                            <a href="<?=base_url('my_office');?>"> <i class="fa fa-user"></i> <span class="title">My Office</span></a>

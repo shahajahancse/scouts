@@ -35,7 +35,7 @@
           $url = HTTP_IMAGES_PATH .'no-img.png';
         }
         ?>
-        <img accept="image/*" src="<?php print $url;?>" alt="image" title="Click on the image for change" data-toggle="modal" data-target="#avatar-modal" id="render-avatar" class="circular-fix has-shadow border marg-top10" data-ussuid="<?php print base64_encode(0);?>" data-backdrop="static" data-keyboard="false" data-upltype="avatar" style="width:150px; height:150px; max-width: 150px; max-height: 150px; border: 2px solid black; padding: 3px;"><br>
+        <img fetchpriority="high" loading="eager" accept="image/*" src="<?php print $url;?>?version=<?php echo time();?>" alt="image" title="Click on the image for change" data-toggle="modal" data-target="#avatar-modal" id="render-avatar" class="circular-fix has-shadow border marg-top10" data-ussuid="<?php print base64_encode(0);?>" data-backdrop="static" data-keyboard="false" data-upltype="avatar" style="width:150px; height:150px; max-width: 150px; max-height: 150px; border: 2px solid black; padding: 3px;"><br>
     </div>
   </div>
   <div class="col-md-6">

@@ -1,5 +1,5 @@
-<div class="page-content">     
-  <div class="content">  
+<div class="page-content">
+  <div class="content">
     <ul class="breadcrumb" style="margin-bottom: 20px;">
       <li> <a href="<?=base_url('dashboard')?>" class="active"> Dashboard </a> </li>
       <li> <a href="<?=base_url('slider')?>" class="active"> <?=$module_title; ?> </a></li>
@@ -13,11 +13,11 @@
             <h4><span class="semi-bold"><?=$meta_title; ?></span></h4>
               <div class="pull-right">
                 <a href="<?=base_url('slider/create')?>" class="btn btn-blueviolet btn-xs btn-mini"> Add Slider </a>
-              </div> 
+              </div>
           </div>
 
           <div class="grid-body ">
-            <div id="infoMessage"><?php //echo $message;?></div>            
+            <div id="infoMessage"><?php //echo $message;?></div>
             <?php if($this->session->flashdata('success')):?>
                 <div class="alert alert-success">
                     <?php echo $this->session->flashdata('success');?>
@@ -40,9 +40,9 @@
 
                     $path = base_url('slider_img/');
                     if($row->image_file != NULL){
-                      $img_url = '<img src="'.$path.$row->image_file.'" height="30">';
+                      $img_url = '<img fetchpriority="high" loading="eager" src="'.$path.$row->image_file.'?version='.time().'" height="30">';
                     }else{
-                      $img_url = '<img src="'.$path.'cover_pic.png" height="30">';
+                      $img_url = '<img fetchpriority="high" loading="eager" src="'.$path.'cover_pic.png?version='.time().'" height="30">';
                     }
 
 
@@ -58,16 +58,16 @@
                     <td class="v-align-middle"><?=$img_url?></td>
                     <td class="v-align-middle"><?=$status?></td>
                     <td class="text-center">
-                      <a href="<?=base_url('slider/details/'.$row->id);?>" class="btn btn-primary btn-xs btn-mini">Details</a>     
+                      <a href="<?=base_url('slider/details/'.$row->id);?>" class="btn btn-primary btn-xs btn-mini">Details</a>
                         <a href="<?=base_url('slider/edit/'.$row->id);?>" class="btn btn-success btn-xs btn-mini">Edit</a>
-                      <?php if($this->ion_auth->is_admin()){ ?> 
+                      <?php if($this->ion_auth->is_admin()){ ?>
                         <a href="<?=base_url('slider/delete/'.$row->id);?>" class="btn btn-info btn-xs btn-mini"  onclick="return confirm('Are you sure you want to delete this Slider?');">Delete</a>
                       <?php } ?>
                     </td>
                   </tr>
                     <?php
                   }
-                }?>              
+                }?>
               </tbody>
             </table>
           </div>

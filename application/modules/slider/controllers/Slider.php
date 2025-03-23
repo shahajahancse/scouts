@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Slider extends Backend_Controller {	
+class Slider extends Backend_Controller {
 
     var $img_path;
 
@@ -11,8 +11,8 @@ class Slider extends Backend_Controller {
         endif;
 
         $this->data['module_title'] = 'Slider';
-        $this->load->model('Common_model'); 
-        $this->load->model('Slider_model');     
+        $this->load->model('Common_model');
+        $this->load->model('Slider_model');
         $this->img_path = realpath(APPPATH . '../slider_img');
     }
 
@@ -41,7 +41,7 @@ class Slider extends Backend_Controller {
         }
 
         $uploadedFile = '';
-        if ($this->form_validation->run() == true){                        
+        if ($this->form_validation->run() == true){
 
             // Image Upload
             if($_FILES['userfile']['size'] > 0){
@@ -75,10 +75,10 @@ class Slider extends Backend_Controller {
                 );
             // print_r($form_data);exit();
 
-            if($this->Common_model->save('slider', $form_data)){                
+            if($this->Common_model->save('slider', $form_data)){
                 $this->session->set_flashdata('success', 'New slider insert successfully.');
                 redirect("slider");
-            } 
+            }
         }
 
         // Load page
@@ -114,7 +114,7 @@ class Slider extends Backend_Controller {
             $form_data = array(
                 'title'       => $this->input->post('title'),
                 'status'        => $this->input->post('status')
-                );
+            );
 
             if($_FILES['userfile']['size'] > 0){
                 $new_file_name = $_FILES["userfile"]['name'];
@@ -142,19 +142,19 @@ class Slider extends Backend_Controller {
 
             //print_r($form_data);exit();
 
-            if($this->Common_model->edit('slider', $id, 'id', $form_data)){                
+            if($this->Common_model->edit('slider', $id, 'id', $form_data)){
                 $this->session->set_flashdata('success', 'Slider Update successfully.');
                 redirect("slider");
             }
         }
 
-        $this->data['info'] = $this->Slider_model->get_info($id);    
+        $this->data['info'] = $this->Slider_model->get_info($id);
 
         // Load page
         $this->data['meta_title'] = 'Edit Slider';
         $this->data['subview'] = 'edit';
         $this->load->view('backend/_layout_main', $this->data);
-    }    
+    }
 
     function delete($id) {
         if(!($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin())){
@@ -170,11 +170,11 @@ class Slider extends Backend_Controller {
         $this->load->helper('file');
         $allowed_mime_type_arr = array('image/gif','image/jpeg','image/png','image/x-png');
         $mime = get_mime_by_extension($_FILES['userfile']['name']);
-        $file_size = 1050000; 
+        $file_size = 1050000;
         $size_kb = '1 MB';
 
         if(isset($_FILES['userfile']['name']) && $_FILES['userfile']['name']!=""){
-            if(!in_array($mime, $allowed_mime_type_arr)){                
+            if(!in_array($mime, $allowed_mime_type_arr)){
                 $this->form_validation->set_message('file_check', 'Please select only jpg, jpeg, png, gif file.');
                 return false;
             }elseif($_FILES["userfile"]["size"] > $file_size){

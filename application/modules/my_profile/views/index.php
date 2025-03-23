@@ -184,46 +184,24 @@
 <div class="page-content">
   <div class="content">
 
-    <!-- <div class="row">
-      <div id="myCarousel" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-          <div class="item active">
-            <img src="https://www.w3schools.com/bootstrap/chicago.jpg" alt="Los Angeles" style="width:100%;">
-          </div>
-          <div class="item">
-            <img src="https://www.w3schools.com/bootstrap/ny.jpg" alt="Chicago" style="width:100%;">
-          </div>
-          <div class="item">
-            <img src="https://www.w3schools.com/bootstrap/la.jpg" alt="New York" style="width:100%;">
-          </div>
-        </div>
-      </div>
-    </div> -->
-
-
+    <!-- slider section -->
     <div class="row">
       <div class="col-md-12">
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
           <div class="carousel-inner">
-          <?php
+            <?php
               $slid = 0;
               foreach ( $slider as $slide ) {
                   $slid++;
                   $img_path = base_url() . 'slider_img/';
                   if ( $slide->image_file != null ) {
-                      $src = $img_path . $slide->image_file;
-                      // echo "<img src='$src'>";
+                    $src = $img_path . $slide->image_file;
                   }
               ?>
-            <div class="item <?=$slid == 1 ? 'active' : ''?>">
-              <img src="<?=$src?>" alt="Slider" style="width:100%;">
-              <!-- <div class="carousel-caption">
-                <h3>Los Angeles</h3>
-                <p>LA is always so much fun!</p>
-              </div> -->
-            </div>
-          <?php
-          }?>
+              <div class="item <?=$slid == 1 ? 'active' : ''?>">
+                <img fetchpriority="high" loading="eager" src="<?=$src?>?version=<?php echo time();?>" alt="Slider" style="width:100%;">
+              </div>
+            <?php } ?>
           </div>
 
           <!-- Left and right controls -->
@@ -236,26 +214,27 @@
             <span class="sr-only">Next</span>
           </a>
         </div> <!-- /carousel -->
-        <!-- <div class=" tiles white col-md-12 no-padding">
-          <div class="tiles green cover-pic-wrapper">
-            <div class="overlayer bottom-right"> </div>
-            <img src="<?=base_url( 'awedget/assets/img/cover_pic.png' )?>" alt="">
-          </div>
-        </div> -->
       </div>
     </div>
+    <!-- /slider section -->
 
+
+    <!-- user profile -->
     <div class="row">
       <div class="col-md-12">
         <div class="tiles white">
           <div class="row">
             <div class="col-md-2 col-sm-2" style="margin:0 20px;">
-              <div class="user-profile-pic"> <img style="max-height:150px; max-width: 150px; height: auto; " data-src-retina="<?=$img_url?>" data-src="<?=$img_url?>" src="<?=$img_url?>" alt=""></div>
+              <div class="user-profile-pic">
+                <img fetchpriority="high" loading="eager" style="max-height:150px; max-width: 150px; height: auto;" src="<?=$img_url?>?version=<?php echo time();?>" alt="image" class="profile-pic">
+              </div>
+
               <?php if ( $scout_id != null ) {?>
               <div class="user-mini-description"  style="font-size: 150%;"><h2 class="text-success semi-bold"> BS ID</h2></div>
               <div class="user-mini-description" style="font-size: 150%;"><h2 class="text-success semi-bold" ><?=$scout_id;?> </h2></div>
               <?php }?>
             </div>
+
             <div class="col-md-9 user-description-box col-sm-9">
               <div class="row">
                 <?php if ( $this->session->flashdata( 'success' ) ): ?>
@@ -264,6 +243,7 @@
                   </div>
                 <?php endif;?>
               </div>
+
               <div class="row">
                 <div class="pull-left" style="width: 60%; border:0px solid red;">
                   <h4 class="semi-bold no-margin" ><?=$name;?></h4>
@@ -271,9 +251,6 @@
                 </div>
 
                 <div class="pull-right">
-                    <?php /*if($scout_id != NULL){ ?>
-                        <a href="<?=base_url('my_profile/id_card')?>" class="btn btn-blueviolet btn-xs btn-mini"><i class="fa fa-download"></i> Scout ID Card</a>
-                    <?php }*/?>
                     <a href="<?=base_url( 'my_profile/change_image' )?>" class="btn btn-blueviolet btn-xs btn-mini"><i class="fa fa-user"></i> Change Image</a>
                     <a href="<?=base_url( 'my_profile/change_username' )?>" class="btn btn-blueviolet btn-xs btn-mini"><i class="fa fa-refresh"></i> Change Username</a>
                     <a href="<?=base_url( 'my_profile/change_password' )?>" class="btn btn-blueviolet btn-xs btn-mini"><i class="fa fa-key"></i> Change Password</a>
@@ -299,7 +276,6 @@
                 </div>
               </div>
             </div>
-
           </div> <!--/row -->
 
           <?php if ( !$this->ion_auth->is_guest() ) {?>
@@ -553,7 +529,7 @@
                     </div>
 
                 <?php }?>
-<?php if ( $info->sc_scout == 'Yes' ) {?>
+                <?php if ( $info->sc_scout == 'Yes' ) {?>
                      <div class="col-md-12" style="margin-bottom: 20px;">
                       <h3><span class="semi-bold pull-left">Scouts Experience</span> </h3>
                       <?php if ( $sc_scout == 'Yes' ) {?>
@@ -561,7 +537,6 @@
                       <?php }?>
 
                     </div>
-
                     <div class="col-md-12">
                       <p> <span class="dt_label">Scout Section</span>
                         <span class="dt_data">Scout</span> </p>
@@ -586,9 +561,9 @@
                         <span class="dt_data"><?=$scout_info->region_name?></span> </p>
                       <?php }?>
                     </div>
-
                 <?php }?>
-<?php if ( $info->sc_rover == 'Yes' ) {?>
+
+                <?php if ( $info->sc_rover == 'Yes' ) {?>
 
                      <div class="col-md-12" style="margin-bottom: 20px;">
                       <h3><span class="semi-bold pull-left">Rover Scouts Experience</span> </h3>
@@ -1053,7 +1028,6 @@
               </div> <!-- /tab-content -->
             </div> <!-- /end tab col -->
           </div>
-
           <?php }?>
 
         </div> <!-- /tiles -->
@@ -1077,287 +1051,3 @@
 </script>
 
 
-
-
-
-
-
-<?php /*
-    <!-- <div class="tab-pane" id="tab_progress">
-    <div class="row">
-    <div class="col-md-12">
-    <h3><span class="semi-bold">My Progress</span></h5>
-
-    </br></br>
-
-    <table class="profile_table" width="100%">
-    <caption>ব্যাজ অর্জনের বিবরণ</caption>
-    <tr class="bg-success">
-    <th>ক্রম</th>
-    <th>সেকসন</th>
-    <th>ব্যাজ</th>
-    <th>বিবরণ</th>
-    <th>অর্জনের তারিখ</th>
-    <th>মূল্যায়নকারী</th>
-    <th>যাচাইকারী</th>
-    </tr>
-    <?php for($i=0;$i<sizeof($badge_details);$i++){ ?>
-
-    <tr>
-    <td><?=$i+1?></td>
-    <td><?=get_scout_section($badge_details[$i]->section_id); ?></td>
-    <td><?=$badge_details[$i]->badge_type_name_bn; ?></td>
-    <td><?=$badge_details[$i]->questions; ?></td>
-    <td><?=date_bangla_format($badge_details[$i]->achive_date); ?></td>
-    <td><?=$badge_details[$i]->examiner_id; ?></td>
-    <td><?=$badge_details[$i]->scout_id; ?></td>
-
-    </tr>
-    <?php } ?>
-    </table>
-
-    </br></br>
-
-    <table class="profile_table" width="100%">
-    <caption>পারদর্শিতা ব্যাজ অর্জনের বিবরণ</caption>
-    <tr class="bg-success">
-    <th>ক্রম</th>
-    <th>সেকসন</th>
-    <th>ব্যাজ</th>
-    <th>গ্রউপ</th>
-    <th>অর্জনের তারিখ</th>
-    <th>অতিরিক্ত ব্যাজ </th>
-    <th>মূল্যায়নকারী</th>
-    <th>যাচাইকারী</th>
-    </tr>
-    <?php for($i=0;$i<sizeof($expertness);$i++){ ?>
-
-    <tr>
-    <td><?=$i+1?></td>
-    <td><?=get_scout_section($expertness[$i]->section_id); ?></td>
-    <td><?=$expertness[$i]->badge_type_name_bn; ?></td>
-    <td><?=$expertness[$i]->expert_group_name; ?></td>
-    <td><?=date_bangla_format($expertness[$i]->achive_date); ?></td>
-    <td><?=$expertness[$i]->extra_badge; ?></td>
-    <td><?=$expertness[$i]->examiner_id; ?></td>
-    <td><?=$expertness[$i]->scout_id; ?></td>
-
-    </tr>
-    <?php } ?>
-    </table>
-
-    </br></br>
-
-    <table class="profile_table" width="100%">
-    <caption>দীক্ষা / ব্যাজ অর্জনের তারিখ ও বিবরণ</caption>
-    <tr class="bg-success">
-    <th>ক্রম</th>
-    <th>সেকসন</th>
-    <th>ব্যাজ</th>
-    <th>গ্রহণের তারিখ</th>
-    <th>মূল্যায়নকারী</th>
-    <th>যাচাইকারী</th>
-    </tr>
-    <?php for($i=0;$i<sizeof($achievement);$i++){ ?>
-
-    <tr>
-    <td><?=$i+1?></td>
-    <td><?=get_scout_section($achievement[$i]->section_id); ?></td>
-    <td><?=$achievement[$i]->badge_type_name_bn; ?></td>
-    <td><?=date_bangla_format($achievement[$i]->achive_date); ?></td>
-    <td><?=$achievement[$i]->examiner_id; ?></td>
-    <td><?=$achievement[$i]->scout_id; ?></td>
-
-    </tr>
-    <?php } ?>
-    </table>
-
-    </br></br>
-
-    <table class="profile_table" width="100%">
-    <caption>ক্যাম্প রেকর্ডের বিবরণ</caption>
-    <tr class="bg-success">
-    <th>ক্রম</th>
-    <th>সেকসন</th>
-    <th>ক্যাম্পের নাম</th>
-    <th>স্থান</th>
-    <th>সনদ নং</th>
-    <th>ক্যাম্প তারিখ</th>
-    <th>মূল্যায়নকারী</th>
-    <th>যাচাইকারী</th>
-    </tr>
-    <?php for($i=0;$i<sizeof($camping);$i++){ ?>
-
-    <tr>
-    <td><?=$i+1?></td>
-    <td><?=get_scout_section($camping[$i]->section_id); ?></td>
-    <td><?=$camping[$i]->camp_name; ?></td>
-    <td><?=$camping[$i]->area; ?></td>
-    <td><?=$camping[$i]->certificate_no; ?></td>
-    <td><?=date_bangla_format($camping[$i]->camp_date); ?></td>
-    <td><?=$camping[$i]->examiner_id; ?></td>
-    <td><?=$camping[$i]->scout_id; ?></td>
-
-    </tr>
-    <?php } ?>
-    </table>
-
-    </br></br>
-
-    <table class="profile_table" width="100%">
-    <caption>প্রশিক্ষণ রেকর্ডের বিবরণ</caption>
-    <tr class="bg-success">
-    <th>ক্রম</th>
-    <th>সেকসন</th>
-    <th>ব্যাজ</th>
-    <th>প্রশিক্ষণের নাম</th>
-    <th>সনদ নং</th>
-    <th>প্রশিক্ষণের তারিখ</th>
-    <th>মূল্যায়নকারী</th>
-    <th>যাচাইকারী</th>
-    </tr>
-    <?php for($i=0;$i<sizeof($badge_training);$i++){ ?>
-
-    <tr>
-    <td><?=$i+1?></td>
-    <td><?=get_scout_section($badge_training[$i]->section_id); ?></td>
-    <td><?=$badge_training[$i]->badge_type_name_bn; ?></td>
-    <td><?=$badge_training[$i]->training_name; ?></td>
-    <td><?=$badge_training[$i]->certificate_no; ?></td>
-    <td><?=date_bangla_format($badge_training[$i]->training_date); ?></td>
-    <td><?=$badge_training[$i]->examiner_id; ?></td>
-    <td><?=$badge_training[$i]->scout_id; ?></td>
-
-    </tr>
-    <?php } ?>
-    </table>
-
-    </br></br>
-
-    <table class="profile_table" width="100%">
-    <caption>দৈহিক ও স্বাস্থ্যগত রেকর্ডের বিবরণ</caption>
-    <tr class="bg-success">
-    <th>ক্রম</th>
-    <th>সেকসন</th>
-    <th>বর্ষ</th>
-    <th>উচ্চতা</th>
-    <th>ওজন</th>
-    <th>বুকের মাপ</th>
-    <th>বিঘত</th>
-    <th>হাতের মাপ</th>
-    <th>হৃদ স্পন্দন</th>
-    <th>তাপমাত্রা</th>
-    <th>মূল্যায়নকারী</th>
-    <th>যাচাইকারী</th>
-    </tr>
-    <?php for($i=0;$i<sizeof($health);$i++){ ?>
-
-    <tr>
-    <td><?=$i+1?></td>
-    <td><?=get_scout_section($health[$i]->section_id); ?></td>
-    <td><?=$health[$i]->years; ?></td>
-    <td><?=$health[$i]->height; ?></td>
-    <td><?=$health[$i]->weight; ?></td>
-    <td><?=$health[$i]->chest_size; ?></td>
-    <td><?=$health[$i]->span; ?></td>
-    <td><?=$health[$i]->hand_size; ?></td>
-    <td><?=$health[$i]->heartbeat; ?></td>
-    <td><?=$health[$i]->temperature; ?></td>
-    <td><?=$health[$i]->examiner_id; ?></td>
-    <td><?=$health[$i]->scout_id; ?></td>
-
-    </tr>
-    <?php } ?>
-    </table>
-
-    </br></br>
-
-    <table class="profile_table" width="100%">
-    <caption>বিদ্যালয়ের ক্রমোন্নতি তথ্য বিবরণ</caption>
-    <tr class="bg-success">
-    <th>ক্রম</th>
-    <th>সেকসন</th>
-    <th>বর্ষ</th>
-    <th>শ্রেণী</th>
-    <th>রোল নং</th>
-    <th>প্রাপ্ত নম্বর</th>
-    <th>মূল্যায়নকারী</th>
-    <th>যাচাইকারী</th>
-    </tr>
-    <?php for($i=0;$i<sizeof($institute);$i++){ ?>
-
-    <tr>
-    <td><?=$i+1?></td>
-    <td><?=get_scout_section($institute[$i]->section_id); ?></td>
-    <td><?=$institute[$i]->years; ?></td>
-    <td><?=$institute[$i]->class_name; ?></td>
-    <td><?=$institute[$i]->roll_no; ?></td>
-    <td><?=$institute[$i]->total_unmber; ?></td>
-    <td><?=$institute[$i]->examiner_id; ?></td>
-    <td><?=$institute[$i]->scout_id; ?></td>
-
-    </tr>
-    <?php } ?>
-    </table>
-
-    </br></br>
-
-    <table class="profile_table" width="100%">
-    <caption>পদোন্নতির বিবরণ</caption>
-    <tr class="bg-success">
-    <th>ক্রম</th>
-    <th>সেকসন</th>
-    <th>রোল</th>
-    <th>পদোন্নতির শুরুর তারিখ</th>
-    <th>পদোন্নতির শেষ তারিখ</th>
-    <th>ব্যাজ</th>
-    <th>মূল্যায়নকারী</th>
-    <th>যাচাইকারী</th>
-    </tr>
-    <?php for($i=0;$i<sizeof($promotion);$i++){ ?>
-
-    <tr>
-    <td><?=$i+1?></td>
-    <td><?=get_scout_section($promotion[$i]->section_id); ?></td>
-    <td><?=$promotion[$i]->role_type_name_bn; ?></td>
-    <td><?=date_bangla_format($promotion[$i]->from_date); ?></td>
-    <td><?=date_bangla_format($promotion[$i]->to_date); ?></td>
-    <td><?=$promotion[$i]->badge_type_name_bn; ?></td>
-    <td><?=$promotion[$i]->examiner_id; ?></td>
-    <td><?=$promotion[$i]->scout_id; ?></td>
-
-    </tr>
-    <?php } ?>
-    </table>
-
-    </br></br>
-
-    <table class="profile_table" width="100%">
-    <caption>গ্রুপ ত্যাগের বিবরণ</caption>
-    <tr class="bg-success">
-    <th>ক্রম</th>
-    <th>সেকসন</th>
-    <th>গ্রুপ ত্যাগের তারিখ</th>
-    <th>গ্রুপ ত্যাগের কারণ</th>
-    <th>মূল্যায়নকারী</th>
-    <th>যাচাইকারী</th>
-    </tr>
-    <?php for($i=0;$i<sizeof($resign);$i++){ ?>
-
-    <tr>
-    <td><?=$i+1?></td>
-    <td><?=get_scout_section($resign[$i]->section_id); ?></td>
-    <td><?=$resign[$i]->resign_date; ?></td>
-    <td><?=$resign[$i]->resign_reason; ?></td>
-    <td><?=$resign[$i]->examiner_id; ?></td>
-    <td><?=$resign[$i]->scout_id; ?></td>
-
-    </tr>
-    <?php } ?>
-    </table>
-
-    </div>
-    </div>
-    </div> -->
-
- */?>

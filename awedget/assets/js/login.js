@@ -173,6 +173,4 @@ $(document).ready(function() {
          input.attr("type", "password");
       }
    });
-
-
 });
