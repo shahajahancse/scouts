@@ -64,6 +64,9 @@
                     <th> SL </th>
                     <th>Name</th>
                     <th>Scout ID</th>
+                    <th>Mobile</th>
+                    <th>Email</th>
+                    <th>Unit Name</th>
                     <th>Description</th>
                     <th>Date</th>
                   </tr>
@@ -74,8 +77,11 @@
                     foreach ($results as $row) { $sl++; ?>
                       <tr>
                         <td><?=$sl?></td>
-                        <td><?=$row->first_name?></td>
+                        <td><?=$row->name?></td>
                         <td><?=$row->scout_id?></td>
+                        <td><?=$row->mobile?></td>
+                        <td><?=$row->email?></td>
+                        <td><?=$row->unit_name?></td>
                         <td><?=$row->complain?></td>
                         <td><?=date_bangla_format($row->created_at)?></td>
                       </tr>

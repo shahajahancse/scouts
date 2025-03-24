@@ -192,6 +192,10 @@
                            <a href="<?=base_url('dashboard');?>"> <i class="icon-custom-home"></i>  <span class="title"><?=$this->ion_auth->is_employee()?'ড্যাশবোর্ড':'Dashboard'?></span></a>
                         </li>
 
+                        <?php if ($this->ion_auth->is_admin()) { ?>
+                        <li class="start <?=backend_activate_menu_class('support')?>"><a href="<?=base_url('support/cbox')?>"><i class="fa fa-user"></i> Complain or Feedback </a> </li>
+                        <?php } ?>
+
                         <?php
                         // Vendor role (Third Party)
                         if($this->ion_auth->is_vendor()){ ?>

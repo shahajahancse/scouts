@@ -11,7 +11,12 @@
       <div class="col-md-4 col-sm-6 col-sm-offset-3 col-md-offset-4 box_reg">
         <img src="<?=base_url('fwedget/assets/images/scout_logo_small.png');?>" class="box_img img-responsive">
         <h4 class="box_title">Login to you account</h4>
-        <div id="infoMessage"><?php echo $message;?></div>
+
+        <?php if($this->session->flashdata('success')):?>
+          <div class="alert alert-success">
+            <?php echo $this->session->flashdata('success');?>
+          </div>
+        <?php endif; ?>
 
         <!-- Email or Username or Scout ID to login -->
         <div class="row">

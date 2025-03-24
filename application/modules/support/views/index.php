@@ -18,19 +18,34 @@
       <div class="col-md-6 col-md-offset-3 box_reg">
         <img src="<?=base_url('fwedget/assets/images/scout_logo_small.png');?>" class="box_img img-responsive">
         <h4 class="box_title">Support Request ( সাহায্যের অনুরোধ )</h4>
-        <div id="infoMessage"><?php echo $message;?></div>
+          <?php if($this->session->flashdata('success')):?>
+              <div class="alert alert-success">
+                  <?php echo $this->session->flashdata('success');?>
+              </div>
+          <?php endif; ?>
         <br>
 
         <div class="row">
           <div class="col-md-6">
-            <label>Scout ID <span class="require">*</span></label>
+            <label>Name</label>
+            <?php echo form_error('name')?>
+            <div class="input-group">
+              <span class="input-group-addon addonExtra"> <i class="fa fa-mobile"></i> </span>
+              <input type="text" class="form-control" name="name" id="name" placeholder="Your Name">
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <label>Scout ID</label>
             <?php echo form_error('scout_id')?>
             <div class="input-group">
               <span class="input-group-addon addonExtra"> <i class="fa fa-mobile"></i> </span>
               <input type="text" class="form-control" name="scout_id" id="scout_id" placeholder="Scout ID">
             </div>
           </div>
+        </div>
 
+        <div class="row">
           <div class="col-md-6">
             <label>Mobile Number <span class="require">*</span></label>
             <?php echo form_error('mobile')?>
@@ -39,10 +54,7 @@
               <input type="text" class="form-control" name="mobile" id="mobile" placeholder="Mobile Number">
             </div>
           </div>
-        </div>
-
-        <div class="row">
-          <div class="col-md-12">
+          <div class="col-md-6">
             <label>Email Address </label>
             <?php echo form_error('email')?>
             <div class="input-group">
@@ -54,11 +66,22 @@
 
         <div class="row">
           <div class="col-md-12">
+            <label>Unit Name <span class="require">*</span></label>
+            <?php echo form_error('unit_name')?>
+            <div class="input-group">
+              <span class="input-group-addon addonExtra"> <i class="fa fa-mobile"></i> </span>
+              <input type="text" class="form-control" name="unit_name" id="unit_name" placeholder="Unit Name">
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
             <label>Description <span class="require">*</span></label>
             <?php echo form_error('complain')?>
             <div class="input-group">
               <span class="input-group-addon addonExtra"> <i class="fa fa-mobile"></i> </span>
-              <textarea name="complain" class="form-control" id="complain" placeholder="Description"></textarea>
+              <textarea type="text" name="complain" class="form-control" id="complain" placeholder="Description"></textarea>
             </div>
           </div>
         </div>
@@ -95,37 +118,18 @@
       // focusInvalid: false,
       ignore: "",
       rules: {
-        scout_id: {
-          required: true,
-          noSpace: true,
-          minlength: 4,
-          remote: {
-              url: hostname +"support/ajax_exists_scout_id/",
-              type: "post",
-              data: {
-                inputData: function() {
-                  return $( "#scout_id" ).val();
-                }
-              }
-          }
-        },
         mobile:{
           required: true,
           number: true,
           minlength: 11,
           maxlength: 11
         },
+        unit_name:{
+          required: true,
+        },
         complain:{
           required: true,
         },
-      },
-
-      messages: {
-        scout_id: {
-          required: "Enter Scout ID.",
-          minlength: jQuery.format("Enter at least {4} characters"),
-          remote: jQuery.format("Sorry, this ID is not Found! Please try again.")
-        }
       },
 
       invalidHandler: function (event, validator) {
