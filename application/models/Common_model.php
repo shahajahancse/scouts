@@ -332,7 +332,9 @@ class Common_model extends CI_Model {
       $data[''] = lang('site_select_scout_region');
       $this->db->select("id, $lan_region_name");
       $this->db->from('office_region');
-      // $this->db->where('is_current',1);
+      if(!$this->ion_auth->is_admin()){
+         $this->db->where('id !=',14);
+      }
       $this->db->order_by('id', 'ASC');
       $query = $this->db->get();
 

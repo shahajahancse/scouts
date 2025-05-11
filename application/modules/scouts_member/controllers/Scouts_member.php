@@ -1977,21 +1977,10 @@ class Scouts_member extends Backend_Controller {
       $this->form_validation->set_rules('sc_region_id', 'scout region', 'trim');
       $this->form_validation->set_rules('sc_district_id', 'scout district', 'trim');
       $this->form_validation->set_rules('sc_upa_tha_id', 'scout upazila/thana', 'trim');
+      $this->form_validation->set_rules('sc_group_id', 'scout group', 'trim');
       // $this->form_validation->set_rules('sc_group_id', 'scout group', 'required|trim');
       // $this->form_validation->set_rules('sc_unit_id', 'scout unit', 'trim');
-
-      if($this->ion_auth->is_group_admin()){
-         $this->form_validation->set_rules('sc_group_id', 'scout group', 'trim');
-      }else{
-         $this->form_validation->set_rules('sc_group_id', 'scout group', 'required|trim');
-      }
       $this->form_validation->set_rules('sc_unit_id', 'scout unit', 'trim');
-
-      // $this->form_validation->set_rules('userfile', 'profile image required', '');
-
-      // if(@$_FILES['userfile']['size'] > 0){
-      //    $this->form_validation->set_rules('userfile', '', 'callback_file_check');
-      // }
 
       //Validate and input data
       if ($this->form_validation->run() == true) {
@@ -2059,8 +2048,6 @@ class Scouts_member extends Backend_Controller {
             'sc_group_id'       =>  $group != NULL ? $group:$this->input->post('sc_group_id'),
             'sc_unit_id'        =>  $this->input->post('sc_unit_id'),
          );
-         // echo '<pre>';
-         // print_r($additional_data); exit;
 
 
          $user_group = array('9');

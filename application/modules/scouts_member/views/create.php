@@ -378,12 +378,20 @@
                               <?php }else{ ?>
                               <label class="form-label">33. Select Scouts Region <span class='required'>*</span></label>
                               <?php echo form_error('sc_region_id');
-                              $more_attr = 'class="form-control input-sm" id="region"';
+                              $more_attr = 'class="form-control input-sm" id="region" onchange="hide_region(this.value)"';
                               echo form_dropdown('sc_region_id', $regions, set_value('sc_region_id'), $more_attr);
                               ?>
                               <?php } ?>
                            </div>
                            <div class="col-md-6">
+                              <label class="form-label">Petrol Name</label>
+                              <?php echo form_error('petrol_name'); ?>
+                              <input name="petrol_name" id="petrol_name" value="<?=set_value('petrol_name')?>" type="text" class="form-control input-sm" placeholder="Ex. Deer / Horse">
+                           </div>
+                        </div>
+
+                        <div class="row form-row" id="sc_district_hidden">
+                           <div class="col-md-4">
                               <?php if($this->ion_auth->is_region_admin()){ ?>
                               <label class="form-label">34. Select Scouts District <span class="required">*</span></label>
                               <?php echo form_error('sc_district_id');
@@ -394,17 +402,14 @@
                               <label class="form-label">34. Scouts District</label>
                               <h5 class="semi-bold-black"><?=$district_info->dis_name?></h5>
                               <?php }else{ ?>
-                              <label class="form-label">34. Select Scouts District <span class="required">*</span></label>
+                              <label class="form-label">34. Select Scouts District</label>
                               <?php echo form_error('sc_district_id'); ?>
                               <select name="sc_district_id" class="sc_district_val form-control input-sm" id="sc_district">
                                  <option value="">-- Select One --</option>
                               </select>
                               <?php } ?>
                            </div>
-                        </div>
-
-                        <div class="row form-row">
-                           <div class="col-md-6">
+                           <div class="col-md-4">
                               <?php if($this->ion_auth->is_district_admin()){ ?>
                               <label class="form-label">35. Select Scouts Upazila</label>
                               <?php echo form_error('sc_upa_tha_id');
@@ -423,8 +428,7 @@
                               </select>
                               <?php } ?>
                            </div>
-
-                           <div class="col-md-6">
+                           <div class="col-md-4">
                               <?php if($this->ion_auth->is_district_admin() || $this->ion_auth->is_upazila_admin()){ ?>
                               <label class="form-label">36. Select Scouts Group</label>
                               <?php echo form_error('sc_group_id');
@@ -436,7 +440,7 @@
                               <h5 class="semi-bold-black" ><?=$group_info->grp_name?></h5>
 
                               <?php }else{ ?>
-                              <label class="form-label">36. Select Scouts Group<span class='required'>*</span></label>
+                              <label class="form-label">36. Select Scouts Group</label>
                               <?php echo form_error('sc_group_id'); ?>
                               <select name="sc_group_id" class="sc_group_val form-control input-sm basic-select2" id="sc_unit">
                                  <option value="">-- Select One --</option>
@@ -444,15 +448,6 @@
                               <?php } ?>
                            </div>
                         </div>
-
-                        <div class="row form-row">
-                           <div class="col-md-6">
-                              <label class="form-label">Petrol Name</label>
-                              <?php echo form_error('petrol_name'); ?>
-                              <input name="petrol_name" id="petrol_name" value="<?=set_value('petrol_name')?>" type="text" class="form-control input-sm" placeholder="Ex. Deer / Horse">
-                           </div>
-                        </div>
-
 
                         <div class="row form-row">
                            <div class="col-md-12">
@@ -543,6 +538,15 @@
 <script src="<?php print HTTP_CROP_PATH; ?>js/cropper.js"></script>
 <script src="<?php print HTTP_CROP_PATH; ?>js/main.js"></script>
 
+<script>
+   function hide_region(id) {
+      if (id == '14') {
+         document.getElementById('sc_district_hidden').style.display = 'none';
+      } else {
+         document.getElementById('sc_district_hidden').style.display = 'block';
+      }
+   }
+</script>
 
 <script type="text/javascript">
    $(document).ready(function() {
