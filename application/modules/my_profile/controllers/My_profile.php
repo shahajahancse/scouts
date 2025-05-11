@@ -783,6 +783,7 @@ class My_profile extends Backend_Controller {
             'sc_section_id'     => $this->input->post('sc_section_id'),
             'member_id'         => $this->input->post('member_id'),
             'sc_badge_id'       => $this->input->post('is_interested')==0?$this->input->post('sc_badge_id'):NULL,
+            'petrol_name'       => $this->input->post('petrol_name'),
             'sc_role_id'        => $this->input->post('is_interested')==0?$this->input->post('sc_role_id'):NULL,
             'sc_region_id'      => $this->input->post('sc_region_id'),
             'sc_district_id'    => $this->input->post('sc_district_id'),

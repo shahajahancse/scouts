@@ -1,14 +1,14 @@
 <link rel="stylesheet" href="<?php print HTTP_CROP_PATH;?>css/cropper.css">
 <style type="text/css">
-   .edit-pen{ 
-      position: absolute; 
-      color: #01579B; 
-      background: #fff; 
-      padding: 5px; 
-      box-shadow: 1px 1px 1px 1px #eee; 
-      border-radius: 17px; 
-      right: 65px; 
-      bottom: 10px; 
+   .edit-pen{
+      position: absolute;
+      color: #01579B;
+      background: #fff;
+      padding: 5px;
+      box-shadow: 1px 1px 1px 1px #eee;
+      border-radius: 17px;
+      right: 65px;
+      bottom: 10px;
       border: 1px solid #f1f1f1;
    }
 
@@ -444,6 +444,15 @@
                               <?php } ?>
                            </div>
                         </div>
+
+                        <div class="row form-row">
+                           <div class="col-md-6">
+                              <label class="form-label">Petrol Name</label>
+                              <?php echo form_error('petrol_name'); ?>
+                              <input name="petrol_name" id="petrol_name" value="<?=set_value('petrol_name')?>" type="text" class="form-control input-sm" placeholder="Ex. Deer / Horse">
+                           </div>
+                        </div>
+
 
                         <div class="row form-row">
                            <div class="col-md-12">

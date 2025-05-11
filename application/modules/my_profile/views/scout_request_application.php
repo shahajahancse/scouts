@@ -4,8 +4,8 @@
    }
 </style>
 
-<div class="page-content">     
-   <div class="content">  
+<div class="page-content">
+   <div class="content">
       <ul class="breadcrumb" style="margin-bottom: 20px;">
          <li> <a href="<?=base_url('dashboard')?>" class="active"> Dashboard </a> </li>
          <li><?=$meta_title; ?></li>
@@ -24,19 +24,19 @@
                         <?=$this->session->flashdata('success');?>
                      </div>
                   <?php endif; ?>
-                  <?php 
+                  <?php
                   $attributes = array('id' => 'scout_request_validation');
                   echo form_open_multipart("scout-application-request", $attributes);
                   echo validation_errors();
                   ?>
 
                   <div class="row">
-                     <div class="col-md-12">   
-                        <div class="alert alert-info alert-block fade in">        
+                     <div class="col-md-12">
+                        <div class="alert alert-info alert-block fade in">
                            <h4 class="alert-heading semi-bold"><i class="icon-warning-sign"></i> Thank you for registration.</h4>
                            <p class="semi-bold"> To be an online scout member please provide your personal and scout information below.</p>
-                        </div>                        
-                     </div>          
+                        </div>
+                     </div>
                   </div>
 
                   <div class="row">
@@ -58,11 +58,11 @@
                               <label class="form-label">Date of Birth <span class='required'>*</span></label>
                               <?php echo form_error('day'); echo form_error('month'); echo form_error('year'); ?>
                               <div class="row form-row">
-                                 <?php 
+                                 <?php
                                  $dob=explode('-', $info->dob);
                                  $day  =$dob[2];
-                                 $month=$dob[1]; 
-                                 $year =$dob[0];  
+                                 $month=$dob[1];
+                                 $year =$dob[0];
                                  ?>
                                  <div class="col-md-4" style="">
                                     <?php echo form_dropdown('day', $days, set_value('day',$day), 'class="form-control input-sm"'); ?>
@@ -74,16 +74,16 @@
                                     <?php echo form_dropdown('year', $years, set_value('year',$year), 'class="form-control input-sm"'); ?>
                                  </div>
                               </div>
-                           </div> 
+                           </div>
                            <div class="col-md-3">
                               <label class="form-label">Gender <span class='required'>*</span></label>
                               <?php echo form_error('gender'); ?>
-                              <input type="radio" name="gender" value="Male" <?=set_value('gender',$info->gender)=='Male'?'checked':'';?>> <span style="color: black; font-size: 14px;">Male</span> 
+                              <input type="radio" name="gender" value="Male" <?=set_value('gender',$info->gender)=='Male'?'checked':'';?>> <span style="color: black; font-size: 14px;">Male</span>
                               <input type="radio" name="gender" value="Female" <?=set_value('gender',$info->gender)=='Female'?'checked':'';?>> <span style="color: black; font-size: 14px;">Female</span>
                               <input type="radio" name="gender" value="Others" <?=set_value('gender',$info->gender)=='Others'?'checked':'';?>> <span style="color: black; font-size: 14px;">Others</span>
-                           </div>                          
-                        </div>    
-                                            
+                           </div>
+                        </div>
+
                         <div class="row form-row">
                            <div class="col-md-3">
                               <label class="form-label">Father's Name (English) <span class='required'>*</span></label>
@@ -94,7 +94,7 @@
                               <label class="form-label">Father's Name (Bangla) </label>
                               <?php echo form_error('father_name_bn'); ?>
                               <input type="text" name="father_name_bn" class="bangla form-control input-sm" value="<?=set_value('father_name_bn')?>" contenteditable="TRUE">
-                           </div>                           
+                           </div>
                            <div class="col-md-3">
                               <label class="form-label">Mobile No. (Self/Parents)<span class='required'>*</span></label>
                               <?php echo form_error('phone'); ?>
@@ -108,7 +108,7 @@
                               ?>
                            </div>
                         </div>
-                        
+
                         <div class="row form-row">
                            <div class="col-md-3">
                               <label class="form-label">Mother's Name (English) <span class='required'>*</span></label>
@@ -137,7 +137,7 @@
 
                      <div class="col-md-12">
                         <div class="row">
-                           <div class="col-md-7">      
+                           <div class="col-md-7">
                               <h5 class="semi-bold" style="font-style: italic;text-decoration: underline;">Present Address</h5>
                               <div class="row form-row">
                                  <div class="col-md-6">
@@ -187,11 +187,11 @@
                                     <input type="text" name="pre_post_office" class="form-control input-sm" value="<?=set_value('pre_post_office', $info->pre_post_office)?>">
                                  </div>
                               </div>
-                           </div> 
+                           </div>
 
                            <div class="col-md-5">
                               <div class="row">
-                                 <div class="col-md-12" style="margin-top: 25px;">  
+                                 <div class="col-md-12" style="margin-top: 25px;">
                                     <?php /*
                                     <img width="50" height="50" data-src-retina="<?php //$img_url?>" data-src="<?php //$img_url?>" src="<?php //$img_url?>" alt="">
                                     <input type="file" name="userfile"><br> */ ?>
@@ -212,13 +212,13 @@
                                           <img src="<?php print $url;?>" alt="image" title="avatar" data-toggle="modal" data-target="#avatar-modal" id="render-avatar" class="circular-fix has-shadow border marg-top10" data-ussuid="<?php print base64_encode(0);?>" data-backdrop="static" data-keyboard="false" data-upltype="avatar" style="width:80px; height:80px; max-width: 80px; max-height: 80px; border: 2px solid black; padding: 3px;"><br>
                                           <!-- <a href="javascript:void();" data-toggle="modal" data-target="#avatar-modal"><i class="fa fa-pencil edit-pen"></i> </a> -->
                                        </div>
-                                       
-                                       <label>Note:</label>                          
+
+                                       <label>Note:</label>
                                        <ul>
-                                          <li>Image should be passport size <strong>(Display your ID Card)</strong></li>        
-                                          <li>Image should be scouts uniform </li>             
+                                          <li>Image should be passport size <strong>(Display your ID Card)</strong></li>
+                                          <li>Image should be scouts uniform </li>
                                           <li>Allowed file type <strong>jpg</strong>, <strong>png</strong>, <strong>jpeg</strong></li>
-                                          <li>Maximun file size <strong>200 KB</strong></li>           
+                                          <li>Maximun file size <strong>200 KB</strong></li>
                                        </ul>
                                     </div>
                                  </div>
@@ -230,7 +230,7 @@
 
                      <h4 class="margin_left_15 semi-bold">Scouts & Other's Information</h4>
                      <div class="col-md-12">
-                        <input type="radio" class="is_interested" name="is_interested" value="0" checked> <span style="color: black; font-size: 14px;">For Scouts member</span>  &nbsp; &nbsp;  
+                        <input type="radio" class="is_interested" name="is_interested" value="0" checked> <span style="color: black; font-size: 14px;">For Scouts member</span>  &nbsp; &nbsp;
                         <input type="radio" class="is_interested" name="is_interested" value="1"> <span style="color: black; font-size: 14px;">For interested to be scouts member</span>
                      </div>
 
@@ -266,7 +266,7 @@
                               $more_attr = 'class="form-control input-sm" id="sc_section"';
                               echo form_dropdown('sc_section_id', $scout_section, set_value('sc_section_id'), $more_attr);
                               ?>
-                           </div> 
+                           </div>
                         </div>
 
                         <div class="row form-row">
@@ -289,7 +289,7 @@
                         <div class="row form-row">
                            <div class="col-md-6">
                               <label class="form-label">Select Scout Region <span class='required'>*</span></label>
-                              <?php 
+                              <?php
                               echo form_error('sc_region_id');
                               $more_attr = 'class="form-control input-sm" id="region"';
                               echo form_dropdown('sc_region_id', $regions, set_value('sc_region_id'), $more_attr);
@@ -313,7 +313,7 @@
                               </select>
                            </div>
                            <div class="col-md-6">
-                              <label class="form-label">Select Scout Group <span class='required'>*</span></label>    
+                              <label class="form-label">Select Scout Group <span class='required'>*</span></label>
                               <?php echo form_error('sc_group_id'); ?>
                               <select name="sc_group_id" class="sc_group_val form-control input-sm basic-select2" id="sc_unit">
                                  <option value="">-- Select One --</option>
@@ -322,33 +322,41 @@
                         </div>
 
                         <div class="row form-row">
+                           <div class="col-md-6">
+                              <label class="form-label">Petrol Name</label>
+                              <?php echo form_error('petrol_name'); ?>
+                              <input name="petrol_name" id="petrol_name" value="<?=set_value('petrol_name')?>" type="text" class="form-control input-sm" placeholder="Ex. Deer / Horse">
+                           </div>
+                        </div>
+
+                        <div class="row form-row">
                            <div class="col-md-12">
                               <input type="hidden" name="unit_id_name" id="unit_id_name" value="">
                               <?php echo form_error('sc_unit_id'); ?>
-                              <div class="unit_list" style=""></div>  
+                              <div class="unit_list" style=""></div>
                            </div>
                         </div>
                      </div>
 
                      <div class="col-md-4">
-                        <div class="row form-row"> 
+                        <div class="row form-row">
                            <h5 class="semi-bold margin_left_15" style="font-style: italic;text-decoration: underline;">Other's Information</h5>
                            <div id="eduDiv" style="display: none;">
                               <div class="col-md-12">
                                  <label class="form-label">Present Institute</label>
                                  <?php echo form_error('curr_institute_id');?>
                                  <select class="instituteSelect2 form-control" name="curr_institute_id" style="width:100%;"></select>
-                              </div> 
+                              </div>
                               <div class="col-md-12">
                                  <label class="form-label">Present Class</label>
                                  <?php echo form_error('curr_class'); ?>
                                  <input name="curr_class" value="<?=set_value('curr_class', $info->curr_class)?>" type="text" class="form-control input-sm" placeholder="">
-                              </div> 
+                              </div>
                               <div class="col-md-12">
                                  <label class="form-label">Present Roll No</label>
                                  <?php echo form_error('curr_role_no'); ?>
                                  <input name="curr_role_no" value="<?=set_value('curr_role_no', $info->curr_role_no)?>" type="text" class="form-control input-sm" placeholder="">
-                              </div> 
+                              </div>
                            </div>
 
                            <div id="orgDiv" style="display: none;">
@@ -366,14 +374,14 @@
                   </div> <!-- //Institute and scout info -->
 
 
-                  <div class="form-actions">  
+                  <div class="form-actions">
                      <div class="pull-right">
                         <button type="submit" class="btn btn-primary btn-cons" onclick="return confirm('Are you sure all information is correct?')"><i class="icon-ok"></i> Save and Send Request </button>
                      </div>
                   </div>
                   <?php echo form_close();?>
 
-               </div>  <!-- END GRID BODY -->              
+               </div>  <!-- END GRID BODY -->
             </div> <!-- END GRID -->
          </div>
 
@@ -396,11 +404,11 @@
          var sg_val = $("#sc_unit").val();
          if(sg_val>0){
             return sg_val>0;
-         } 
+         }
       }, "Select scout group");
 
       $('#scout_request_validation').validate({
-   // focusInvalid: false, 
+   // focusInvalid: false,
    ignore: "",
    rules: {
       first_name: {
@@ -426,7 +434,7 @@
       },
       religion_id: {
          required: true
-      },         
+      },
       father_name: {
          required: true
       },
@@ -435,16 +443,16 @@
       },
       mother_name: {
          required: true
-      }, 
+      },
       mother_name_bn: {
          required: false
-      },          
+      },
       phone:{
          required: true,
          number: true,
          minlength: 11,
          maxlength: 11
-      },         
+      },
       email: {
          email: true
       },
@@ -456,10 +464,10 @@
       },
       pre_road_block:{
          required: true
-      },  
+      },
       pre_road_block_bn:{
          required: false
-      },      
+      },
       pre_division_id: {
          required: true
       },
@@ -472,7 +480,7 @@
       pre_post_office: {
          required: false,
          number: true,
-      },  
+      },
 
       join_date: {
          required: true
@@ -519,7 +527,7 @@
 
 
 
-   }); 
+   });
 
    $('.is_interested').change(function(){
       var value=document.querySelector("input[name=is_interested]:checked").value;
@@ -535,7 +543,7 @@
   });
 
    $('#member_id').change(function(){
-      $('#eduDiv').hide(); 
+      $('#eduDiv').hide();
       $("#orgDiv").hide();
       var id = $('#member_id').val();
       // alert(id);
@@ -543,7 +551,7 @@
       if(id == 1 || id == 2){
          $("#eduDiv").show();
       }else if(id == 8 || id == 12 || id == 10 || id == 9 || id == 13){
-         $("#orgDiv").show();        
+         $("#orgDiv").show();
       }
    });
 </script>

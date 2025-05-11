@@ -1,17 +1,17 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 if (!function_exists('date_db_format')) {
-   function date_db_format($item) {  
+   function date_db_format($item) {
       if($item != NULL){
          return date('Y-m-d', strtotime($item));
       }else{
          return '0000-00-00';
-      }      
+      }
    }
 }
 
 if (!function_exists('date_bangla_format')) {
-   function date_bangla_format($item) {  
+   function date_bangla_format($item) {
       if($item == NULL){
          return '';
       }elseif($item != '0000-00-00'){
@@ -23,10 +23,10 @@ if (!function_exists('date_bangla_format')) {
 }
 
 if (!function_exists('date_browse_format')) {
-   function date_browse_format($item) {      
-      
+   function date_browse_format($item) {
+
       if($item == NULL){
-         return '';         
+         return '';
       }elseif($item != '0000-00-00'){
          return date('d-m-Y', strtotime($item));
       }elseif($item == '00-00-0000'){
@@ -38,22 +38,22 @@ if (!function_exists('date_browse_format')) {
 }
 
 if (!function_exists('date_detail_format')) {
-   function date_detail_format($item) {   
+   function date_detail_format($item) {
       if($item != '0000-00-00'){
          return date('d F, Y', strtotime($item));
       }else{
          return '';
-      }         
+      }
    }
 }
 
 if (!function_exists('date_sort_form')) {
-   function date_sort_form($item) {   
+   function date_sort_form($item) {
       if($item != '0000-00-00'){
          return date('d M, Y', strtotime($item));
       }else{
          return '';
-      }         
+      }
    }
 }
 
@@ -66,11 +66,32 @@ if (!function_exists('get_scout_section')) {
       }else if($type == 3){
          $data = "Rover Scout";
       }else if($type == 4){
-         $data = "Not Applicable";      
+         $data = "Not Applicable";
       }else{
          $data = "";
       }
       return $data;
+   }
+}
+
+if (!function_exists('get_scout_badge')) {
+   function get_scout_badge($id) {
+      $CI =& get_instance();
+      $CI->db->select('bt.badge_type_name_bn as badge_name');
+      $CI->db->from('scout_badge sb');
+      $CI->db->join('badge_type bt','bt.id=sb.badge_type_id', 'LEFT');
+      $CI->db->where('sb.id', $id);
+      $query = $CI->db->get()->row()->badge_name;
+      return $query;
+   }
+}
+
+if (!function_exists('get_age')) {
+   function get_age($dob) {
+      $now = new DateTime();
+      $interval = $now->diff(new DateTime($dob));
+      $query = $interval->format('%y');
+      return $query;
    }
 }
 
@@ -83,7 +104,7 @@ if (!function_exists('get_scout_progress')) {
       }else if($type == 3){
          $data = "Rover Scout Progress";
       }else if($type == 4){
-         $data = "Adult Leader Progress";      
+         $data = "Adult Leader Progress";
       }else{
          $data = "";
       }
@@ -119,7 +140,7 @@ if (!function_exists('func_region_type')) {
       if($item == 'divisional'){
          $data = "Divisional Region";
       }elseif($item == 'special'){
-         $data = "Special Region";  
+         $data = "Special Region";
       }else{
          $data = "";
       }
@@ -140,7 +161,7 @@ if (!function_exists('get_scout_unit_type')) {
       }else if($type == 5){
          $data = "গার্ল-ইন স্কাউট";
       }else if($type == 6){
-         $data = "গার্ল-ইন রোভার স্কাউট";      
+         $data = "গার্ল-ইন রোভার স্কাউট";
       }else{
          $data = "";
       }
@@ -160,7 +181,7 @@ if (!function_exists('get_scout_unit_type_en')) {
       }else if($type == 5){
          $data = "Girl-in Scout";
       }else if($type == 6){
-         $data = "Girl-in-Rover Scout";      
+         $data = "Girl-in-Rover Scout";
       }else{
          $data = "";
       }
@@ -180,10 +201,10 @@ if (!function_exists('scout_group_office_type')) {
 }
 
 if (!function_exists('migrate_verify_status')) {
-   function migrate_verify_status($item) {      
+   function migrate_verify_status($item) {
       if($item == 'Approved'){
          $result = "<span class='label label-success'>Accept</span>";
-      }elseif($item == 'Reject'){      
+      }elseif($item == 'Reject'){
          $result = "<span class='label label-important'>Reject</span>";
       }else{
          $result = "<span class='label label-warning'>Pending</span>";
@@ -193,10 +214,10 @@ if (!function_exists('migrate_verify_status')) {
 }
 
 if (!function_exists('award_status')) {
-   function award_status($item) {      
+   function award_status($item) {
       if($item == 'Approved'){
          $result = "<span class='label label-success'>Accept</span>";
-      }elseif($item == 'Reject'){      
+      }elseif($item == 'Reject'){
          $result = "<span class='label label-important'>Reject</span>";
       }else{
          $result = "<span class='label label-warning'>Pending</span>";
@@ -206,7 +227,7 @@ if (!function_exists('award_status')) {
 }
 
 if (!function_exists('get_member_type')) {
-   function get_member_type($item) {      
+   function get_member_type($item) {
       if($item == '1'){
          $result = "New Applicant";
       }elseif($item == '2'){
@@ -220,7 +241,7 @@ if (!function_exists('get_member_type')) {
       }elseif($item == '6'){
          $result = "Non-Warrant";
       }elseif($item == '7'){
-         $result = "Support Staff";          
+         $result = "Support Staff";
       }else{
          $result = '';
       }
@@ -230,7 +251,7 @@ if (!function_exists('get_member_type')) {
 }
 
 if (!function_exists('set_office_type')) {
-   function set_office_type($item) {      
+   function set_office_type($item) {
       if($item == '1'){
          $result = "National";
       }elseif($item == '2'){
@@ -240,7 +261,7 @@ if (!function_exists('set_office_type')) {
       }elseif($item == '4'){
          $result = "Upazila";
       }elseif($item == '5'){
-         $result = "Scout Group";    
+         $result = "Scout Group";
       }else{
          $result = '';
       }
@@ -250,7 +271,7 @@ if (!function_exists('set_office_type')) {
 }
 
 if (!function_exists('get_event_level')) {
-   function get_event_level($item) {      
+   function get_event_level($item) {
       if($item == '1'){
          $result = "National";
       }elseif($item == '2'){
@@ -258,7 +279,7 @@ if (!function_exists('get_event_level')) {
       }elseif($item == '3'){
          $result = "Region";
       }elseif($item == '4'){
-         $result = "District";      
+         $result = "District";
       }else{
          $result = '';
       }
@@ -268,7 +289,7 @@ if (!function_exists('get_event_level')) {
 }
 
 if (!function_exists('get_event_participant_type')) {
-   function get_event_participant_type($item) {      
+   function get_event_participant_type($item) {
       if($item == '1'){
          $result = "Participant";
       }elseif($item == '2'){
@@ -276,9 +297,9 @@ if (!function_exists('get_event_participant_type')) {
       }elseif($item == '3'){
          $result = "Official";
       }elseif($item == '4'){
-         $result = "Leader"; 
+         $result = "Leader";
       }elseif($item == '5'){
-         $result = "Not Allowed";     
+         $result = "Not Allowed";
       }else{
          $result = '';
       }
@@ -289,7 +310,7 @@ if (!function_exists('get_event_participant_type')) {
 
 
 // if (!function_exists('get_member_status')) {
-//    function get_member_status($item) {      
+//    function get_member_status($item) {
 //       if($item == '1'){
 //          $result = "Current";
 //       }elseif($item == '2'){
@@ -304,10 +325,10 @@ if (!function_exists('get_event_participant_type')) {
 //    }
 // }
 
-function event_verify_status($item) {      
+function event_verify_status($item) {
    if($item == 'Approved'){
       $result = "<span class='label label-success'>Accept</span>";
-   }elseif($item == 'Reject'){      
+   }elseif($item == 'Reject'){
       $result = "<span class='label label-important'>Reject</span>";
    }else{
       $result = "<span class='label label-warning'>Pending</span>";
@@ -315,21 +336,21 @@ function event_verify_status($item) {
    return $result;
 }
 
-function service_request_status($item) {      
+function service_request_status($item) {
    if($item == 'Complete'){
       $result = "<span class='label label-success'>Complete</span>";
-   }elseif($item == 'Processing'){      
+   }elseif($item == 'Processing'){
       $result = "<span class='label label-important'>On Process</span>";
-   }elseif($item == 'Reject'){      
+   }elseif($item == 'Reject'){
       $result = "<span class='label'>Cancel</span>";
    }elseif($item == 'Pending'){
       $result = "<span class='label label-warning'>Pending</span>";
    }
-   
+
    return $result;
 }
 
-function func_service_assign_office_type($item) {      
+function func_service_assign_office_type($item) {
    if($item == '1'){
       $result = "Scouts Region";
    }elseif($item == '2'){
@@ -337,15 +358,15 @@ function func_service_assign_office_type($item) {
    }elseif($item == '3'){
       $result = "Scouts Upazila";
    }elseif($item == '4'){
-      $result = "Scouts Group";     
+      $result = "Scouts Group";
    }else{
       $result = '';
    }
-   
+
    return $result;
 }
 
-// function func_custom_adult_badge($item) {      
+// function func_custom_adult_badge($item) {
 //    if($item == '86,95,104'){
 //       $result = "েসিক কোর্স সম্পন্ন";
 //    }elseif($item == '87,96,105'){
@@ -361,11 +382,11 @@ function func_service_assign_office_type($item) {
 //    }elseif($item == '92,101,110'){
 //       $result = "সিএলটি সম্পন্ন";
 //    }elseif($item == '93,102,111'){
-//       $result = "লিডার ট্রেনার";     
+//       $result = "লিডার ট্রেনার";
 //    }else{
 //       $result = '';
 //    }
-   
+
 //    return $result;
 // }
 
@@ -379,14 +400,14 @@ if (!function_exists('func_activity_log')) {
       $CI =& get_instance();
 
       $ip = $_SERVER['REMOTE_ADDR']?:($_SERVER['HTTP_X_FORWARDED_FOR']?:$_SERVER['HTTP_CLIENT_IP']);
-      $data = array('user_id' => $CI->session->userdata('user_id'), 
-         'activity_type_id' => $act_id, 
-         'message' => $msg,                      
-         'sc_nhq_id' => $CI->session->userdata('sc_nhq_id'), 
-         'sc_region_id' => $CI->session->userdata('sc_region_id'), 
-         'sc_district_id' => $CI->session->userdata('sc_district_id'), 
-         'sc_upazila_id' => $CI->session->userdata('sc_upazila_id'), 
-         'sc_group_id' => $CI->session->userdata('sc_group_id'), 
+      $data = array('user_id' => $CI->session->userdata('user_id'),
+         'activity_type_id' => $act_id,
+         'message' => $msg,
+         'sc_nhq_id' => $CI->session->userdata('sc_nhq_id'),
+         'sc_region_id' => $CI->session->userdata('sc_region_id'),
+         'sc_district_id' => $CI->session->userdata('sc_district_id'),
+         'sc_upazila_id' => $CI->session->userdata('sc_upazila_id'),
+         'sc_group_id' => $CI->session->userdata('sc_group_id'),
          'ip_address' => $ip,
          'created' => date('Y-m-d H:i:s'),
          'user_agent' => $_SERVER['HTTP_USER_AGENT']
@@ -421,7 +442,7 @@ if (!function_exists('func_activity_log')) {
 
 
 if (!function_exists('date_dayname_format')) {
-   function date_dayname_format($item) {      
+   function date_dayname_format($item) {
       if($item != '0000-00-00'){
          // return date('d M Y', strtotime($item));
          return date_format(date_create($item), "d M Y");
@@ -432,7 +453,7 @@ if (!function_exists('date_dayname_format')) {
 }
 
 if (!function_exists('date_bangla_calender_format')) {
-   function date_bangla_calender_format($item) {      
+   function date_bangla_calender_format($item) {
       $currentDate = date_dayname_format($item);
       $engDATE = array('1','2','3','4','5','6','7','8','9','0','Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec','Saturday','Sunday','Monday','Tuesday','Wednesday','Thursday','Friday');
       $bangDATE = array('১','২','৩','৪','৫','৬','৭','৮','৯','০','জানুয়ারী','ফেব্রুয়ারী','মার্চ','এপ্রিল','মে','জুন','জুলাই','আগস্ট','সেপ্টেম্বর','অক্টোবর','নভেম্বর','ডিসেম্বর','শনিবার','রবিবার','সোমবার','মঙ্গলবার','বুধবার','বৃহস্পতিবার','শুক্রবার' );
@@ -441,10 +462,10 @@ if (!function_exists('date_bangla_calender_format')) {
    }
 }
 
-function eng2bng($item) {      
+function eng2bng($item) {
    return BanglaConverter::en2bn($item);
 }
 
-function bng2eng($item) {      
+function bng2eng($item) {
    return BanglaConverter::bn2en($item);
 }

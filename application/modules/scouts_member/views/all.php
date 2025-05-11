@@ -135,6 +135,10 @@ if(!$this->ion_auth->is_vendor()){
        <th width="10%">Scout ID</th>
        <th width="12%">Member Type</th>
        <th width="10%">Section</th>
+       <th width="10%">Badge</th>
+       <th width="10%">Petrol Name</th>
+       <th width="10%">Age Number</th>
+       <th width="10%">Last Login</th>
        <th width="25%">Group Name</th>
        <th width="10%">Username</th>
        <th width="10%">Action</th>
@@ -145,19 +149,18 @@ if(!$this->ion_auth->is_vendor()){
     $sl=$pagination['current_page'];
     foreach ($results as $row):
       $sl++;
-    $printed = '';
-    // Profile Image
-    $path = base_url().'profile_img/';
-    if($row->profile_img != NULL){
-      $img_url = '<img src="'.$path.$row->profile_img.'" height="20">';
-    }else{
-      $img_url = '<img src="'.$path.'no-img.png" height="20">';
-    }
-    $cont = 'Some content <br> <strong>inside</strong> the popover';
+      $printed = '';
+      $path = base_url().'profile_img/';
+      if($row->profile_img != NULL){
+        $img_url = '<img src="'.$path.$row->profile_img.'" height="20">';
+      }else{
+        $img_url = '<img src="'.$path.'no-img.png" height="20">';
+      }
+      $cont = 'Some content <br> <strong>inside</strong> the popover';
 
-    if($row->is_printed){
-      $printed = '<span style="color: red">Printed</span>';
-    }
+      if($row->is_printed){
+        $printed = '<span style="color: red">Printed</span>';
+      }
     ?>
     <tr>
       <td class="v-align-middle"><?=$sl.'.'?></td>
@@ -166,6 +169,10 @@ if(!$this->ion_auth->is_vendor()){
       <td class="v-align-middle"><strong><span class="trigger-scout-id"><?=$row->scout_id?> </span></strong> <?=$printed?>
         <td class="v-align-middle"><?=$row->member_type_name?></td>
         <td class="v-align-middle"><span class="label label-green"><?=get_scout_section($row->sc_section_id);?></span></td>
+        <td class="v-align-middle"><span class="label label-green"><?=get_scout_badge($row->sc_badge_id);?></span></td>
+        <td class="v-align-middle"><?=$row->petrol_name?></td>
+        <td class="v-align-middle"><?=$row->dob ? get_age($row->dob) : '' ?></td>
+        <td class="v-align-middle"><?=$row->last_login ? date('d-m-Y', $row->last_login) : '' ?></td>
         <td class="v-align-middle"><?=$row->grp_name?></td>
         <td class="v-align-middle"><strong><?=$row->username?></strong></td>
         <td align="right">

@@ -395,6 +395,14 @@
                      </div>
                   </div>
 
+                  <div class="row form-row">
+                     <div class="col-md-6">
+                        <label class="form-label">Petrol Name</label>
+                        <?php echo form_error('petrol_name'); ?>
+                        <input name="petrol_name" id="petrol_name" value="<?=set_value('petrol_name', $info->petrol_name)?>" type="text" class="form-control input-sm" placeholder="Ex. Deer / Horse">
+                     </div>
+                  </div>
+
                   <div class="col-md-12">
                      <?php if($this->ion_auth->is_region_admin() || $this->ion_auth->is_district_admin() || $this->ion_auth->is_upazila_admin() || $this->ion_auth->is_group_admin()){ ?>
                      <?php print_r($unit_info);  ?>
@@ -465,15 +473,6 @@
 
 
          <div class="form-actions">
-                  <?php /*if($info->scout_id == NULL){  ?>
-                  <!-- <div class="pull-left">
-                     <div class="checkbox checkbox check-success pull-left" style="margin-top: 13px;">
-                        <?php echo form_checkbox('generateID', '1', FALSE, 'id="generateID"');?>
-                        <label for="generateID" style="color: black; font-weight: bold;">Generate Scout ID</label>
-                     </div>
-                  </div> -->
-                  <?php } */?>
-
                   <div class="pull-right">
                      <?php echo form_hidden('dataID', encrypt_url($info->id)); ?>
                      <button type="submit" class="btn btn-primary btn-cons" onclick="return confirm('Are you sure all information is correct?')"><i class="icon-ok"></i> Update Scouts Member </button>

@@ -120,7 +120,6 @@ class Scouts_member extends Backend_Controller {
          redirect('dashboard');
       }
 
-
       if($_GET['region']>0 && $_GET['region'] !=NULL){
          $this->data['scouts_district'] =  $this->Common_model->get_scout_districts($_GET['region']);
       }
@@ -132,12 +131,6 @@ class Scouts_member extends Backend_Controller {
       if($_GET['upazila']>0 && $_GET['upazila'] !=NULL){
          $this->data['scouts_group'] =  $this->Common_model->get_scout_group_office('', $_GET['upazila']);
       }
-
-      // echo $this->db->last_query();
-      // Fethch User Group
-      // foreach ($results['rows'] as $k => $user){
-      //    $results['rows'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
-      // }
 
       //Results
       $this->data['results'] = $results['rows'];
@@ -1775,7 +1768,8 @@ class Scouts_member extends Backend_Controller {
             'expire_date'       =>  date_db_format($this->input->post('expire_date')),
             'sc_section_id'     =>  $this->input->post('sc_section_id'),
             'sc_badge_id'       =>  $this->input->post('sc_badge_id'),
-            'sc_role_id'        =>  $this->input->post('sc_role_id')
+            'sc_role_id'        =>  $this->input->post('sc_role_id'),
+            'petrol_name'       =>  $this->input->post('petrol_name')
          );
 
          // Scout office update by access level
@@ -1867,12 +1861,6 @@ class Scouts_member extends Backend_Controller {
    ***************************************************************************/
 
    public function create(){
-      // scout office
-      // $region = NULL;
-      // $district = NULL;
-      // $upazila = NULL;
-      // $group = NULL;
-
       //Check authentication
       if($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin()){
          // Superadmin
@@ -2064,13 +2052,13 @@ class Scouts_member extends Backend_Controller {
             'sc_section_id'     =>  $this->input->post('sc_section_id'),
             'sc_badge_id'       =>  $this->input->post('sc_badge_id'),
             'sc_role_id'        =>  $this->input->post('sc_role_id'),
+            'petrol_name'       =>  $this->input->post('petrol_name'),
             'sc_region_id'      =>  $region != NULL ? $region:$this->input->post('sc_region_id'),
             'sc_district_id'    =>  $district != NULL ? $district:$this->input->post('sc_district_id'),
             'sc_upa_tha_id'     =>  $upazila != NULL ? $upazila:$this->input->post('sc_upa_tha_id'),
             'sc_group_id'       =>  $group != NULL ? $group:$this->input->post('sc_group_id'),
             'sc_unit_id'        =>  $this->input->post('sc_unit_id'),
-            );
-
+         );
          // echo '<pre>';
          // print_r($additional_data); exit;
 

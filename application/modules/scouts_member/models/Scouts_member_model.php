@@ -18,7 +18,7 @@ class Scouts_member_model extends CI_Model {
 
     public function get_scout_member($limit=1000, $offset=0, $region_id=NULL, $sc_district_id=NULL, $sc_upa_tha_id=NULL, $sc_scout_group_id=NULL, $status=NULL) {
         // echo 'hello'; exit;
-        $this->db->select('u.id, u.username, u.scout_id, u.first_name, u.phone, u.email, u.active, u.sc_section_id, u.profile_img, u.is_printed, mt.member_type_name, og.grp_name');
+        $this->db->select('u.id, u.username, u.scout_id, u.first_name, u.phone, u.email, u.active, u.sc_badge_id, u.sc_section_id, u.petrol_name, u.last_login, u.dob, u.profile_img, u.is_printed, mt.member_type_name, og.grp_name');
         $this->db->from('users u');
         $this->db->join('member_type mt', 'mt.id = u.member_id', 'LEFT');
         $this->db->join('office_groups og', 'og.id = u.sc_group_id', 'LEFT');
