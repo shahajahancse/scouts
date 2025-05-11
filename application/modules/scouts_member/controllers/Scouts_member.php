@@ -1697,12 +1697,7 @@ class Scouts_member extends Backend_Controller {
       $this->form_validation->set_rules('sc_region_id', 'scout region', 'trim');
       $this->form_validation->set_rules('sc_district_id', 'scout district', 'trim');
       $this->form_validation->set_rules('sc_upa_tha_id', 'scout upazila', 'trim');
-
-      if($this->ion_auth->is_group_admin()){
-         $this->form_validation->set_rules('sc_group_id', 'scout group', 'trim');
-      }else{
-         $this->form_validation->set_rules('sc_group_id', 'scout group', 'required|trim');
-      }
+      $this->form_validation->set_rules('sc_group_id', 'scout group', 'trim');
 
       $this->form_validation->set_rules('sc_unit_id', 'scout unit', 'trim');
       $this->form_validation->set_rules('userfile', 'profile image required', '');

@@ -345,13 +345,21 @@
                         <?php }else{ ?>
                         <label class="form-label">Select Scouts Region <span class='required'>*</span></label>
                         <?php echo form_error('sc_region_id');
-                        $more_attr = 'class="form-control input-sm" id="region"';
+                        $more_attr = 'class="form-control input-sm" id="region" onchange="hide_region(this.value)"';
                         echo form_dropdown('sc_region_id', $regions, set_value('sc_region_id', $info->sc_region_id), $more_attr);
                         ?>
                         <?php } ?>
                      </div>
 
                      <div class="col-md-6">
+                        <label class="form-label">Petrol Name</label>
+                        <?php echo form_error('petrol_name'); ?>
+                        <input name="petrol_name" id="petrol_name" value="<?=set_value('petrol_name', $info->petrol_name)?>" type="text" class="form-control input-sm" placeholder="Ex. Deer / Horse">
+                     </div>
+                  </div>
+
+                  <div class="row form-row" id="sc_district_hidden">
+                     <div class="col-md-4">
                         <?php if($this->ion_auth->is_district_admin() || $this->ion_auth->is_upazila_admin() || $this->ion_auth->is_group_admin()){ ?>
                         <label class="form-label">Scouts District</label>
                         <h5 class="semi-bold-black"><?=$district_info->dis_name?></h5>
@@ -363,10 +371,8 @@
                         ?>
                         <?php } ?>
                      </div>
-                  </div>
 
-                  <div class="row form-row">
-                     <div class="col-md-6">
+                     <div class="col-md-4">
                         <?php if($this->ion_auth->is_upazila_admin() || $this->ion_auth->is_group_admin()){ ?>
                         <label class="form-label">Scouts Upazila</label>
                         <h5 class="semi-bold-black"><?=$upazila_info->upa_name?></h5>
@@ -380,7 +386,7 @@
                         <?php } ?>
                      </div>
 
-                     <div class="col-md-6">
+                     <div class="col-md-4">
                         <?php if($this->ion_auth->is_group_admin()){ ?>
                         <label class="form-label">Scouts Group </label>
                         <h5 class="semi-bold-black" ><?=$group_info->grp_name?></h5>
@@ -392,14 +398,6 @@
                         echo form_dropdown('sc_group_id', $scout_group, set_value('sc_group_id', $info->sc_group_id), $more_attr);
                         ?>
                         <?php } ?>
-                     </div>
-                  </div>
-
-                  <div class="row form-row">
-                     <div class="col-md-6">
-                        <label class="form-label">Petrol Name</label>
-                        <?php echo form_error('petrol_name'); ?>
-                        <input name="petrol_name" id="petrol_name" value="<?=set_value('petrol_name', $info->petrol_name)?>" type="text" class="form-control input-sm" placeholder="Ex. Deer / Horse">
                      </div>
                   </div>
 
@@ -488,6 +486,15 @@
 </div>
 </div>
 
+<script>
+   function hide_region(id) {
+      if (id == '14') {
+         document.getElementById('sc_district_hidden').style.display = 'none';
+      } else {
+         document.getElementById('sc_district_hidden').style.display = 'block';
+      }
+   }
+</script>
 
 <script type="text/javascript">
    $(document).ready(function() {
