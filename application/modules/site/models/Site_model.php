@@ -11,7 +11,7 @@ class Site_model extends CI_Model {
         $this->db->select('*');
         $this->db->from($table);
         $this->db->where('status', 1);
-        $query = $this->db->get()->result();        
+        $query = $this->db->get()->result();
 
         return $query;
     }
@@ -19,7 +19,7 @@ class Site_model extends CI_Model {
         $this->db->select('*');
         $this->db->where('id', $id);
         $this->db->from($table);
-        $query = $this->db->get()->row();        
+        $query = $this->db->get()->row();
 
         return $query;
     }
@@ -39,7 +39,7 @@ class Site_model extends CI_Model {
         }
 
         return $books;
-    } 
+    }
 
     public function get_ebook_details($id){
         $this->db->select('id, book_title, description, image_file, pdf_file, total_page');
@@ -60,7 +60,7 @@ class Site_model extends CI_Model {
         $query = $this->db->get()->result_array();
 
         return $query;
-    }    
+    }
 
 
 
@@ -72,11 +72,11 @@ class Site_model extends CI_Model {
         $query = $this->db->get()->result();
 
         return $query;
-    }    
+    }
 
     public function get_news_details($id) {
         $this->db->select('id, news_title, news_details, attachment_file, created, status');
-        $this->db->from('scout_news');        
+        $this->db->from('scout_news');
         $this->db->where('id', $id);
         $query = $this->db->get();
 
@@ -112,7 +112,7 @@ class Site_model extends CI_Model {
         $query = $this->db->get()->result();
 
         return $query;
-    } 
+    }
 
 
     public function get_event_details($id) {
@@ -129,7 +129,7 @@ class Site_model extends CI_Model {
         $query = $this->db->get()->row();
 
         return $query;
-    }  
+    }
 
     public function get_attachment($id){
         $this->db->select('id, event_id, file_name');
@@ -172,10 +172,10 @@ class Site_model extends CI_Model {
         $this->db->from('users u');
         $this->db->where('u.pre_division_id', $div);
         if($dis != NULL){
-           $this->db->where('u.pre_district_id', $dis); 
+           $this->db->where('u.pre_district_id', $dis);
         }
         if($up != NULL){
-          $this->db->where('u.pre_upa_tha_id', $up); 
+          $this->db->where('u.pre_upa_tha_id', $up);
         }
         $this->db->where('u.scout_id IS NOT NULL', NULL);
         // $this->db->where('scout_id', 'IS NOT NULL');
@@ -186,8 +186,8 @@ class Site_model extends CI_Model {
         $this->db->join('upazila_thana ut', 'ut.id=u.pre_upa_tha_id', 'LEFT');
         $this->db->join('district ds', 'ds.id=u.pre_district_id', 'LEFT');
         $this->db->limit(500);
-        $query = $this->db->get()->result();  
-        // echo $this->db->last_query(); exit;      
+        $query = $this->db->get()->result();
+        // echo $this->db->last_query(); exit;
 
         return $query;
     }
@@ -199,8 +199,8 @@ class Site_model extends CI_Model {
         $this->db->join('service_list sl', 'sl.id=sr.service_id', 'LEFT');
         $this->db->join('office_region r', 'r.id=sr.serv_region_id', 'LEFT');
         $this->db->order_by('sr.id', 'DESC');
-        $query = $this->db->get()->result();  
-        // echo $this->db->last_query(); exit;      
+        $query = $this->db->get()->result();
+        // echo $this->db->last_query(); exit;
 
         return $query;
     }
@@ -238,7 +238,7 @@ class Site_model extends CI_Model {
         $this->db->join('office_region r', 'r.id = u.sc_region_id', 'LEFT');
         $this->db->join('institute it', 'it.id = u.curr_institute_id', 'LEFT');
         $this->db->join('scout_badge sb', 'sb.id = u.sc_badge_id', 'LEFT');
-        $this->db->join('badge_type bt', 'bt.id = sb.badge_type_id', 'LEFT');        
+        $this->db->join('badge_type bt', 'bt.id = sb.badge_type_id', 'LEFT');
         $this->db->join('member_type mt', 'mt.id = u.member_id', 'LEFT');
         $this->db->join('scout_role so', 'so.id = u.sc_role_id', 'LEFT');
         $this->db->join('role_type rt', 'rt.id = so.role_type_id', 'LEFT');
@@ -254,8 +254,8 @@ class Site_model extends CI_Model {
         $this->db->select('u.*, bg.bg_name_en, bg.bg_name_bn, dp.department_name, dg.designation_name, dg.designation_name_en');
         $this->db->from('users u');
         $this->db->join('blood_group bg', 'bg.id = u.blood_group', 'LEFT');
-        $this->db->join('department dp', 'dp.id = u.emp_department', 'LEFT'); 
-        $this->db->join('designation dg', 'dg.id = u.emp_designation', 'LEFT'); 
+        $this->db->join('department dp', 'dp.id = u.emp_department', 'LEFT');
+        $this->db->join('designation dg', 'dg.id = u.emp_designation', 'LEFT');
         $this->db->where('u.pds_id', $id);
         $query = $this->db->get()->row();
 
@@ -275,12 +275,12 @@ class Site_model extends CI_Model {
     public function search_scout_groups($div, $dis) {
 
         $this->db->select('id, grp_name, grp_name_bn');
-        $this->db->where('grp_region_id', $div); 
+        $this->db->where('grp_region_id', $div);
         if(!empty($dis)){
-          $this->db->where('grp_scout_dis_id', $dis); 
+          $this->db->where('grp_scout_dis_id', $dis);
         }
         $this->db->from('office_groups');
-        $query = $this->db->get()->result();        
+        $query = $this->db->get()->result();
 
         return $query;
     }
@@ -288,12 +288,12 @@ class Site_model extends CI_Model {
     public function search_upa_thana($div, $dis) {
 
         $this->db->select('id, upa_name');
-        $this->db->where('upa_region_id', $div); 
+        $this->db->where('upa_region_id', $div);
         if(!empty($dis)){
-          $this->db->where('upa_scout_dis_id', $dis); 
+          $this->db->where('upa_scout_dis_id', $dis);
         }
         $this->db->from('office_upazila');
-        $query = $this->db->get()->result();        
+        $query = $this->db->get()->result();
 
         return $query;
     }
@@ -303,14 +303,14 @@ class Site_model extends CI_Model {
         $this->db->select('*');
         $this->db->from($table);
         $this->db->limit($limit);
-        $this->db->offset($offset);        
+        $this->db->offset($offset);
         $this->db->order_by('id', 'DESC');;
         $result['rows'] = $this->db->get()->result();
 
         // count query
         $q = $this->db->select('COUNT(*) as count');
         $this->db->from($table);
-        
+
         $tmp = $this->db->get()->result();
         $result['num_rows'] = $tmp[0]->count;
 
@@ -322,7 +322,7 @@ class Site_model extends CI_Model {
         $this->db->select('*');
         $this->db->from('office_district');
         $this->db->limit($limit);
-        $this->db->offset($offset);        
+        $this->db->offset($offset);
         $this->db->order_by('id', 'DESC');
         if($region){
             $this->db->where('dis_scout_region_id', $region);
@@ -344,22 +344,22 @@ class Site_model extends CI_Model {
 
     public function get_scout_upazila($limit = 1000, $offset = 0, $region=NULL, $sc_district=NULL) {
         // result query
-        $this->db->select('*');
+        $this->db->select('office_upazila.*');
         $this->db->from('office_upazila');
         $this->db->limit($limit);
-        $this->db->offset($offset);        
-        $this->db->order_by('id', 'DESC');
+        $this->db->offset($offset);
+        $this->db->order_by('office_upazila.id', 'DESC');
         if($region){
-            $this->db->where('upa_region_id', $region);
+            $this->db->where('office_upazila.upa_region_id', $region);
         }
         if($sc_district){
-            $this->db->where('upa_scout_dis_id', $sc_district);
+            $this->db->where('office_upazila.upa_scout_dis_id', $sc_district);
         }
-        $result['rows'] = $this->db->get()->result();        
+        $result['rows'] = $this->db->get()->result();
         // echo $this->db->last_query(); exit;
 
         // count query
-        $q = $this->db->select('COUNT(*) as count');
+        $q = $this->db->select('COUNT(office_upazila.id) as count');
         $this->db->from('office_upazila');
         if($region){
             $this->db->where('upa_region_id', $region);
@@ -378,7 +378,7 @@ class Site_model extends CI_Model {
         $this->db->select('*');
         $this->db->from('office_groups');
         $this->db->limit($limit);
-        $this->db->offset($offset);        
+        $this->db->offset($offset);
         $this->db->order_by('id', 'DESC');
         if($region){
             $this->db->where('grp_region_id', $region);
@@ -392,7 +392,7 @@ class Site_model extends CI_Model {
         if($name != NULL){
             $this->db->like('grp_name', $name);
         }
-        $result['rows'] = $this->db->get()->result();        
+        $result['rows'] = $this->db->get()->result();
         // echo $this->db->last_query(); exit;
 
         // count query
@@ -421,7 +421,7 @@ class Site_model extends CI_Model {
         $this->db->select('*');
         $this->db->from('office_unit');
         $this->db->limit($limit);
-        $this->db->offset($offset);        
+        $this->db->offset($offset);
         $this->db->order_by('id', 'DESC');
         if($region){
             $this->db->where('unit_region_id', $region);
@@ -435,7 +435,7 @@ class Site_model extends CI_Model {
         if($sc_group){
             $this->db->where('unit_sc_grp_id', $sc_group);
         }
-        $result['rows'] = $this->db->get()->result();        
+        $result['rows'] = $this->db->get()->result();
         // echo $this->db->last_query(); exit;
 
         // count query
@@ -464,8 +464,8 @@ class Site_model extends CI_Model {
         $this->db->from('office_groups og');
         $this->db->join('office_region r', 'r.id = og.grp_region_id', 'LEFT');
         $this->db->join('office_district od', 'od.id = og.grp_scout_dis_id', 'LEFT');
-        $this->db->join('office_upazila ou', 'ou.id = og.grp_scout_upa_id', 'LEFT');        
-        $this->db->join('institute i', 'i.id = og.grp_institute_id', 'LEFT');        
+        $this->db->join('office_upazila ou', 'ou.id = og.grp_scout_upa_id', 'LEFT');
+        $this->db->join('institute i', 'i.id = og.grp_institute_id', 'LEFT');
         $this->db->where('og.id', $id);
         $this->db->where('og.grp_status', 1);
         $query = $this->db->get();
@@ -485,7 +485,7 @@ class Site_model extends CI_Model {
         $this->db->join('office_groups og', 'og.id = u.unit_sc_grp_id', 'LEFT');
         $this->db->join('office_region r', 'r.id = u.unit_region_id', 'LEFT');
         $this->db->join('office_district od', 'od.id = u.unit_scout_dis_id', 'LEFT');
-        $this->db->join('office_upazila ou', 'ou.id = u.unit_scout_upa_id', 'LEFT');        
+        $this->db->join('office_upazila ou', 'ou.id = u.unit_scout_upa_id', 'LEFT');
         $this->db->where('u.id', $id);
         $this->db->where('u.unit_status', 1);
         $query = $this->db->get();
@@ -552,36 +552,36 @@ class Site_model extends CI_Model {
     public function get_region_image_gallery($id) {
         $this->db->select('id, ig_file_name');
         $this->db->from('image_gallery');
-        $this->db->where('ig_region_id', $id);        
+        $this->db->where('ig_region_id', $id);
         $query = $this->db->get()->result();
-        
+
         return $query;
     }
 
     public function get_district_image_gallery($id) {
         $this->db->select('id, ig_file_name');
         $this->db->from('image_gallery');
-        $this->db->where('ig_district_id', $id);        
+        $this->db->where('ig_district_id', $id);
         $query = $this->db->get()->result();
-        
+
         return $query;
     }
 
     public function get_upazila_image_gallery($id) {
         $this->db->select('id, ig_file_name');
         $this->db->from('image_gallery');
-        $this->db->where('ig_upazila_id', $id);        
+        $this->db->where('ig_upazila_id', $id);
         $query = $this->db->get()->result();
-        
+
         return $query;
     }
 
     public function get_group_image_gallery($id) {
         $this->db->select('id, ig_file_name');
         $this->db->from('image_gallery');
-        $this->db->where('ig_group_id', $id);        
+        $this->db->where('ig_group_id', $id);
         $query = $this->db->get()->result();
-        
+
         return $query;
     }
 
@@ -598,28 +598,28 @@ class Site_model extends CI_Model {
         // $this->db->order_by('id', 'DESC');
 
         if($office_level){
-            $this->db->where('e.office_level', $office_level);            
+            $this->db->where('e.office_level', $office_level);
         }
         if($designation){
-            $this->db->where('e.scout_desig_id', $designation);            
+            $this->db->where('e.scout_desig_id', $designation);
         }
         if($region){
-            $this->db->where('e.sc_region_id', $region);            
+            $this->db->where('e.sc_region_id', $region);
         }
         if($sc_district){
-            $this->db->where('e.sc_district_id', $sc_district);            
+            $this->db->where('e.sc_district_id', $sc_district);
         }
         if($sc_upazila){
-            $this->db->where('e.sc_upzaila_id', $sc_upazila);            
+            $this->db->where('e.sc_upzaila_id', $sc_upazila);
         }
         if($sc_group){
-            $this->db->where('e.sc_group_id', $sc_group);            
-        } 
+            $this->db->where('e.sc_group_id', $sc_group);
+        }
         if($tc_id){
-            $this->db->where('e.tc_id', $tc_id);            
-        }        
+            $this->db->where('e.tc_id', $tc_id);
+        }
 
-        $result = $this->db->get()->result();        
+        $result = $this->db->get()->result();
         // echo $this->db->last_query(); exit;
 
         return $result;
@@ -648,22 +648,22 @@ class Site_model extends CI_Model {
 
 
         if($this->input->get('group') > 0){
-            $this->db->where('e.sc_group_id', $this->input->get('group'));       
-            $this->db->where('e.office_level', 5);        
+            $this->db->where('e.sc_group_id', $this->input->get('group'));
+            $this->db->where('e.office_level', 5);
         }elseif($this->input->get('upazila') > 0){
-            $this->db->where('e.sc_upzaila_id', $this->input->get('upazila'));  
-            $this->db->where('e.office_level', 4);             
+            $this->db->where('e.sc_upzaila_id', $this->input->get('upazila'));
+            $this->db->where('e.office_level', 4);
         }elseif($this->input->get('district') > 0){
             $this->db->where('e.sc_district_id', $this->input->get('district'));
-            $this->db->where('e.office_level', 3);               
+            $this->db->where('e.office_level', 3);
         }elseif($this->input->get('region') != NULL){
-            $this->db->where('e.sc_region_id', $this->input->get('region'));   
-            $this->db->where('e.office_level', 2);   
+            $this->db->where('e.sc_region_id', $this->input->get('region'));
+            $this->db->where('e.office_level', 2);
         }
-        
+
 
         $this->db->where('e.status', 1);
-        $result = $this->db->get()->result();        
+        $result = $this->db->get()->result();
         // echo $this->db->last_query(); exit;
 
         return $result;

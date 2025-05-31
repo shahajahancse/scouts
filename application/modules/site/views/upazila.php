@@ -3,7 +3,7 @@
     border-color: #904097 !important;
     border-radius: 0px !important;
   }
-  <?php 
+  <?php
   $lan=$this->session->userdata('site_lang')=='bangla'?'upa_name':'upa_name_en';
 
   $region_data=isset($_GET['uRegion'])?$_GET['uRegion']:'';
@@ -25,17 +25,18 @@
                 <div class="row form-row">
                   <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12 col-xs-12 text-center">
                     <div class="form-group">
-                      <?php 
+                      <?php
                       $css=array( 'class' =>'form-control', 'id' =>'region' );
-                      echo form_dropdown('uRegion', $regions, $region_data, $css) 
+                      echo form_dropdown('uRegion', $regions, $region_data, $css)
                       ?>
                     </div>
                   </div>
+
                   <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12 col-xs-12 text-center">
                     <div class="form-group">
-                      <?php 
+                      <?php
                       $css=array( 'class' =>'sc_district_val form-control input-sm');
-                      echo form_dropdown('uDistrict', $districts, $district_data, $css) 
+                      echo form_dropdown('uDistrict', $districts, $district_data, $css)
                       ?>
                       <!-- <label for="exampleSelect1">Select District</label> -->
                     <!-- <select name="sc_district_id" class="sc_district_val form-control input-sm">
@@ -45,13 +46,13 @@
                   </div>
                   <div class="col-xl-2 col-lg-2 col-md-2 col-sm-12 col-xs-12 text-center">
                     <div class="form-group">
-                      <button type="submit" class="btn text-white btn-block" style="background-color: #1aa326;border-radius:0px;"><?=lang('site_common_go')?></button> 
+                      <button type="submit" class="btn text-white btn-block" style="background-color: #1aa326;border-radius:0px;"><?=lang('site_common_go')?></button>
                     </div>
                   </div>
                 </div>
               </form>
 
-              <table class="table table-bordered">                  
+              <table class="table table-bordered">
                 <tbody>
                   <?php if(!empty($info)){
                     $i=$pagination['current_page'];
@@ -78,7 +79,7 @@
               </div>
             </div>
 
-          </div> 
+          </div>
         </div>
       </div><!-- main row -->
 
@@ -89,7 +90,7 @@
   <script type="text/javascript">
     $(document).ready(function() {
       $('#validation').validate({
-      // focusInvalid: false, 
+      // focusInvalid: false,
       ignore: "",
       rules: {
         uRegion: {
@@ -101,10 +102,10 @@
       },
 
     invalidHandler: function (event, validator) {
-      //display error alert on form submit    
+      //display error alert on form submit
     },
 
-      errorPlacement: function (label, element) { // render error placement for each input type   
+      errorPlacement: function (label, element) { // render error placement for each input type
        $('<span class="error"></span>').insertAfter(element).append(label)
        var parent = $(element).parent('.input-with-icon');
        parent.removeClass('success-control').addClass('error-control');
@@ -112,7 +113,7 @@
 
       highlight: function (element) { // hightlight error inputs
        var parent = $(element).parent();
-       parent.removeClass('success-control').addClass('error-control'); 
+       parent.removeClass('success-control').addClass('error-control');
      },
 
       unhighlight: function (element) { // revert the change done by hightlight
@@ -121,12 +122,12 @@
 
       success: function (label, element) {
        var parent = $(element).parent('.input-with-icon');
-       parent.removeClass('error-control').addClass('success-control'); 
+       parent.removeClass('error-control').addClass('success-control');
      },
 
      submitHandler: function (form) {
-       form.submit(); 
+       form.submit();
      }
    });
-    });   
+    });
   </script>

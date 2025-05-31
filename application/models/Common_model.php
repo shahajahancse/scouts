@@ -128,6 +128,19 @@ class Common_model extends CI_Model {
       }
    }
 
+   public function get_region_data($table) {
+      $this->db->select('*');
+      $this->db->from($table);
+      $this->db->where('id !=', 14);
+      $query =  $this->db->get();
+
+      if($query->num_rows() > 0){
+         return $query->result();
+      }else{
+         return FALSE;
+      }
+   }
+
    public function get_data($table) {
       $this->db->select('*');
       $this->db->from($table);
@@ -152,12 +165,14 @@ class Common_model extends CI_Model {
       }
    }
 
-   public function get_count($table) {
+   public function get_count($table, $type = null) {
       $this->db->select('*');
       $this->db->from($table);
+      if (!empty($type) && $table == 'office_region') {
+         $this->db->where('id !=', 14);
+      }
       $query =  $this->db->get();
       return $query->num_rows();
-
    }
 
    public function save($table, $data) {
@@ -327,15 +342,16 @@ class Common_model extends CI_Model {
       return $query[0]->count;
    }
 
-   public function get_regions(){
+   public function get_regions($type=NULL){
       $lan_region_name=$this->session->userdata('site_lang')=='bangla'?'region_name':'region_name_en';
       $data[''] = lang('site_select_scout_region');
-      $this->db->select("id, $lan_region_name");
+
+      $this->db->select('office_region.id, office_region.'.$lan_region_name);
       $this->db->from('office_region');
-      if(!$this->ion_auth->is_admin()){
-         $this->db->where('id !=',14);
+      if (empty($type)) {
+         $this->db->where('office_region.id !=',14);
       }
-      $this->db->order_by('id', 'ASC');
+      $this->db->order_by('office_region.id', 'ASC');
       $query = $this->db->get();
 
       foreach ($query->result_array() AS $rows) {

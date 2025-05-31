@@ -1859,7 +1859,7 @@ class Scouts_member extends Backend_Controller {
       //Check authentication
       if($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin()){
          // Superadmin
-         $this->data['regions'] = $this->Common_model->get_regions();
+         $this->data['regions'] = $this->Common_model->get_regions(1);
          $this->data['scout_districts'] = $this->Common_model->get_scout_districts();
          $this->data['scout_upazila'] = $this->Common_model->get_scout_upazila_thana();
          $this->data['scout_group'] = $this->Common_model->get_scout_group_office();

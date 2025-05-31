@@ -1,4 +1,4 @@
-<?php 
+<?php
 class Frontend_Controller extends MY_Controller
 {
 	function __construct ()
@@ -11,14 +11,14 @@ class Frontend_Controller extends MY_Controller
 			$this->lang->load('scouts', $this->session->userdata('site_lang'));
 		} else {
 			$this->session->set_userdata('site_lang', 'bangla');
-			$this->lang->load('scouts', 'bangla'); 
+			$this->lang->load('scouts', 'bangla');
 		}
-		
-		$this->form_validation->set_error_delimiters('<div class="alert alert-warning"> <i class="fa fa-warning"></i> ', '</div>');   
+
+		$this->form_validation->set_error_delimiters('<div class="alert alert-warning"> <i class="fa fa-warning"></i> ', '</div>');
 		$this->load->model('Site_model');
 		$this->load->model('Common_model');
 		$this->data['service_list'] = $this->Common_model->get_data('service_list');
-		$this->data['region'] = $this->Common_model->get_count('office_region');
+		$this->data['region'] = $this->Common_model->get_count('office_region', 1);
 		$this->data['district1'] = $this->Common_model->get_count('office_district');
 		$this->data['upazila'] = $this->Common_model->get_count('office_upazila');
 		$this->data['groups'] = $this->Common_model->get_count('office_groups');
@@ -28,7 +28,7 @@ class Frontend_Controller extends MY_Controller
 		$this->data['regions'] = $this->Common_model->get_site_regions();
 
 		$this->data['latest_news'] = $this->Common_model->get_latest_news(5);
-		
+
 		$this->data['meta_title'] = 'Scout BD';
 		$this->data['meta_keywords'] = 'bangladesh scouts, bd scouts, scout, scout registration, scout portal, scout login';
 		$this->data['meta_description'] = 'Online Digital Record & Scout Service System for Bangladesh scouts. ';

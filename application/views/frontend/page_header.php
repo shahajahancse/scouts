@@ -29,7 +29,7 @@
                <div class="mr-auto p-2 text-white font-weight-bold d-none d-sm-block"><?=$this->lang->line('site_title');?></div>
                <?php if($this->session->userdata('site_lang') == 'english' ){ ?>
                <div class="p-2 text-white"><a href="<?=base_url()?>switchlang/bangla" class="badge badge-warning text-white card-link py-2 px-2" style="border-radius: 0;">Bangla</a></div>
-               <?php }else{ ?> 
+               <?php }else{ ?>
                <div class="p-2 text-white"><a href="<?=base_url()?>switchlang/english" class="badge badge-warning text-white card-link py-2 px-2" style="border-radius: 0;">English</a></div>
                <?php } ?>
 
@@ -58,51 +58,76 @@
             <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-xs-12">
                <div class="d-flex justify-content-end text-white">
                   <div class="p  shape"></div>
-                  <div class="p-2 px-3 badge-success" style="border-right: 1px solid #ffffff; "> <a href="<?=base_url()?>region" class="text-white card-link"><?=lang('site_common_region')?> <span class="h3">
-                     <?php
-                     if($this->session->userdata('site_lang') == 'english' ){
-                        echo BanglaConverter::bn2en($region);
-                     }else{
-                        echo BanglaConverter::en2bn($region);
-                     }
-                     ?>
-                  </span></a></div>
-                  <div class="p-2 px-3 badge-success" style="border-right: 1px solid #ffffff"><a href="<?=base_url()?>district" class="text-white card-link"><?=lang('site_common_district')?> <span class="h3">
-                     <?php
-                     if($this->session->userdata('site_lang') == 'english' ){
-                        echo BanglaConverter::bn2en($district1);
-                     }else{
-                        echo BanglaConverter::en2bn($district1);
-                     }
-                     ?>
-                  </span></a></div>
-                  <div class="p-2 px-3 badge-success" style="border-right: 1px solid #ffffff"><a href="<?=base_url()?>upazila" class="text-white card-link"><?=lang('site_common_upazila')?> <span class="h3">
-                     <?php
-                     if($this->session->userdata('site_lang') == 'english' ){
-                        echo BanglaConverter::bn2en($upazila);
-                     }else{
-                        echo BanglaConverter::en2bn($upazila);
-                     }
-                     ?>
-                  </span></a></div>
-                  <div class="p-2 px-3 badge-success" style="border-right: 1px solid #ffffff"><a href="<?=base_url()?>groups" class="text-white card-link"><?=lang('site_common_group')?> <span class="h3">
-                     <?php
-                     if($this->session->userdata('site_lang') == 'english' ){
-                        echo BanglaConverter::bn2en($groups);
-                     }else{
-                        echo BanglaConverter::en2bn($groups);
-                     }
-                     ?></span></a></div>
-                     <div class="p-2 px-3 badge-success" ><a href="<?=base_url()?>unit" class="text-white card-link"><?=lang('site_common_unit')?> <span class="h3">
-                        <?php
-                        if($this->session->userdata('site_lang') == 'english' ){
-                           echo BanglaConverter::bn2en($unit);
-                        }else{
-                           echo BanglaConverter::en2bn($unit);
-                        }
-                        ?>
-                     </span></a> </div>
+                  <div class="p-2 px-3 badge-success" style="border-right: 1px solid #ffffff; ">
+                     <a href="<?=base_url()?>region" class="text-white card-link"><?=lang('site_common_region')?>
+                        <span class="h3">
+                           <?php
+                              if($this->session->userdata('site_lang') == 'english' ){
+                                 echo BanglaConverter::bn2en($region);
+                              }else{
+                                 echo BanglaConverter::en2bn($region);
+                              }
+                           ?>
+                        </span>
+                     </a>
                   </div>
+
+                  <div class="p-2 px-3 badge-success" style="border-right: 1px solid #ffffff">
+                     <a href="<?=base_url()?>district" class="text-white card-link"><?=lang('site_common_district')?>
+                     <span class="h3">
+                        <?php
+                           if($this->session->userdata('site_lang') == 'english' ){
+                              echo BanglaConverter::bn2en($district1);
+                           }else{
+                              echo BanglaConverter::en2bn($district1);
+                           }
+                           ?>
+                        </span>
+                     </a>
+                  </div>
+
+                  <div class="p-2 px-3 badge-success" style="border-right: 1px solid #ffffff">
+                     <a href="<?=base_url()?>upazila" class="text-white card-link"><?=lang('site_common_upazila')?>
+                        <span class="h3">
+                           <?php
+                              if($this->session->userdata('site_lang') == 'english' ){
+                                 echo BanglaConverter::bn2en($upazila);
+                              }else{
+                                 echo BanglaConverter::en2bn($upazila);
+                              }
+                           ?>
+                        </span>
+                     </a>
+                  </div>
+
+                  <div class="p-2 px-3 badge-success" style="border-right: 1px solid #ffffff">
+                     <a href="<?=base_url()?>groups" class="text-white card-link"><?=lang('site_common_group')?>
+                        <span class="h3">
+                           <?php
+                              if($this->session->userdata('site_lang') == 'english' ){
+                                 echo BanglaConverter::bn2en($groups);
+                              }else{
+                                 echo BanglaConverter::en2bn($groups);
+                              }
+                           ?>
+                        </span>
+                     </a>
+                  </div>
+
+                  <div class="p-2 px-3 badge-success" >
+                     <a href="<?=base_url()?>unit" class="text-white card-link"><?=lang('site_common_unit')?>
+                        <span class="h3">
+                           <?php
+                           if($this->session->userdata('site_lang') == 'english' ){
+                              echo BanglaConverter::bn2en($unit);
+                           }else{
+                              echo BanglaConverter::en2bn($unit);
+                           }
+                           ?>
+                        </span>
+                     </a>
+                  </div>
+               </div>
 
 
 
@@ -110,10 +135,10 @@
                   <!-- <form action="<?=base_url()?>search" method="get" style="border:1px solid red; overflow: hidden;" >
                      <div class="d-flex justify-content-around text-white pull-right py-2">
                         <div class="form-group" style="margin-right: 10px;">
-                           <a href="<?=base_url()?>" class="btn text-white btn-block" style="background-color: #4cb865;border-radius:0px;"><?=lang('site_common_home')?></a>   
-                        </div> 
+                           <a href="<?=base_url()?>" class="btn text-white btn-block" style="background-color: #4cb865;border-radius:0px;"><?=lang('site_common_home')?></a>
+                        </div>
                         <div class="form-group">
-                           <?php 
+                           <?php
                            $css=array(
                               'class' =>'form-control',
                               'id'  =>'region2',
@@ -121,7 +146,7 @@
                               'required'=>'required'
                               );
                            $region_data=isset($_GET['region'])?$_GET['region']:'';
-                           echo form_dropdown('region', $regions, $region_data ,$css) 
+                           echo form_dropdown('region', $regions, $region_data ,$css)
                            ?>
                         </div>
 
@@ -133,7 +158,7 @@
                               );
                            $district_data=isset($_GET['district'])?$_GET['district']:'';
                            echo form_dropdown('district', $district, $district_data ,$css);
-                        }else{ ?> 
+                        }else{ ?>
                         <div class="form-group">
                            <select name="district" class="sc_district_val2 form-control input-sm" style="width:100%; border-radius:0px; margin-right:10px;">
                               <option value=""> <?=lang('site_select_scout_district')?></option>
@@ -141,13 +166,13 @@
                         </div>
                         <?php } ?>
                         <div class="form-group">
-                           <button type="submit" class="btn text-white btn-block" style="background-color: #1aa326;border-radius:0px;"><?=lang('site_common_go')?></button>   
+                           <button type="submit" class="btn text-white btn-block" style="background-color: #1aa326;border-radius:0px;"><?=lang('site_common_go')?></button>
                         </div>
                      </div>
                   </form> -->
 
-               </div>
             </div>
+         </div>
 
             <div class="row news_notice">
                <div class="col-xl-2 col-lg-1 col-md-1 col-sm-3 col-xs-1">
@@ -157,26 +182,26 @@
                   <span style="float: left; margin-right: 10px;"><?=lang('site_common_news')?>: </span>
                   <div id="example">
                      <ul style="border:0px solid red">
-                        <?php foreach ($latest_news as $row) { 
+                        <?php foreach ($latest_news as $row) {
                            $lenth = strlen($row->news_title);
                            if($lenth > 80){
                               $news = mb_substr($row->news_title,0,80).'...';
                            }else{
                               $news = $row->news_title;
                            }
-                           ?>                           
+                           ?>
                         <li><a href="<?=base_url('scout-news-details/'.$row->id)?>"><?=$news?></a></li>
                         <?php } ?>
                      </ul>
                   </div>
                </div>
-               <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-xs-2">                  
+               <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-xs-2">
                   <a href="<?=base_url('scout-news')?>" class="btn text-white btn-sm float-right" style="background-color: #4cb865;border-radius:0px;"><?=lang('site_common_all_news')?></a>
                </div>
             </div>
          </div>
 
          <div class="container w-75">
-               <div class="row secondary_sc_content px-2 py-4">  
+               <div class="row secondary_sc_content px-2 py-4">
             <!-- <div class=" px-4 py-4"> -->
 
