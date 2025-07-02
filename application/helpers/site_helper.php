@@ -127,7 +127,7 @@ if (!function_exists('get_religion')) {
       }else if($type == 6){
          $data = "Jainism";
       }else if($type == 7){
-         $data = "Judaism";
+         $data = "Baha'i";
       }else{
          $data = "";
       }

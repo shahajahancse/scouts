@@ -1401,7 +1401,7 @@ public function set_event_participant_type(){
 }
 
 public function set_religion(){
-   return array(''=>'-- Select Religion --', '1' => 'Islam', '2'=> 'Hinduism', '3'=>'Christianity', '4'=>'Buddhism', '5'=>'Sikhism', '6'=>'Jainism', '7'=>'Judaism');
+   return array(''=>'-- Select Religion --', '1' => 'Islam', '2'=> 'Hinduism', '3'=>'Christianity', '4'=>'Buddhism', '5'=>'Sikhism', '6'=>'Jainism', '7' => "Baha'i");
 }
 
 public function set_office_type(){
