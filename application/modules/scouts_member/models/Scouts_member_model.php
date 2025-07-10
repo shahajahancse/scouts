@@ -17,14 +17,15 @@ class Scouts_member_model extends CI_Model {
     *****************************************************************************/
 
     public function get_scout_member($limit=1000, $offset=0, $region_id=NULL, $sc_district_id=NULL, $sc_upa_tha_id=NULL, $sc_scout_group_id=NULL, $status=NULL) {
+        // dd($this->input->get());
         // echo 'hello'; exit;
         $this->db->select('u.id, u.username, u.scout_id, u.first_name, u.phone, u.email, u.active, u.sc_badge_id, u.sc_section_id, u.petrol_name, u.last_login, u.dob, u.profile_img, u.is_printed, mt.member_type_name, og.grp_name');
         $this->db->from('users u');
         $this->db->join('member_type mt', 'mt.id = u.member_id', 'LEFT');
         $this->db->join('office_groups og', 'og.id = u.sc_group_id', 'LEFT');
-        $this->db->where('u.scout_id IS NOT NULL', NULL);
-        $this->db->where('u.member_id !=', 0);
-        $this->db->where('u.is_verify', 1);
+        // $this->db->where('u.scout_id IS NOT NULL', NULL);   // commented on 02-07-2025
+        // $this->db->where('u.member_id !=', 0);           // commented on 02-07-2025
+        // $this->db->where('u.is_verify', 1);              // commented on 02-07-2025
         $this->db->where('u.status', $status);
         // $this->db->where('u.is_request', '0');
         // $this->db->where('u.is_office', 0);
