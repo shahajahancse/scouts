@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Events extends Backend_Controller {	
+class Events extends Backend_Controller {
     var $userSessID;
     var $file_path;
 
@@ -8,14 +8,14 @@ class Events extends Backend_Controller {
         parent::__construct();
         if (!$this->ion_auth->logged_in()):
             redirect('login');
-        endif;        
+        endif;
 
         $this->data['module_title'] = 'Events';
         $this->userSessID = $this->session->userdata('user_id');
         $this->file_path = realpath(APPPATH . '../event_docs/');
 
-        $this->load->model('Common_model'); 
-        $this->load->model('Event_model');     
+        $this->load->model('Common_model');
+        $this->load->model('Event_model');
     }
 
     public function index(){
@@ -25,14 +25,14 @@ class Events extends Backend_Controller {
     public function event_list($offset=0){
         $limit = 25;
 
-        if($this->ion_auth->is_admin() || $this->ion_auth->in_group('event')){ 
+        if($this->ion_auth->is_admin() || $this->ion_auth->in_group('event')){
             $results = $this->Event_model->get_data($limit, $offset, '1');
 
         }elseif($this->ion_auth->is_region_admin()){
             $officeRegionID = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
             $results = $this->Event_model->get_data($limit, $offset, '2', $officeRegionID);
-            // $this->data['scout_district'] = $this->Common_model->get_scout_districts($officeRegionID);   
-        }elseif($this->ion_auth->is_district_admin()){         
+            // $this->data['scout_district'] = $this->Common_model->get_scout_districts($officeRegionID);
+        }elseif($this->ion_auth->is_district_admin()){
             $officeDistrictID = $this->Offices_model->get_district_office_by_user_id($this->userSessID)->id;
             $results = $this->Event_model->get_data($limit, $offset, '3', '', $officeDistrictID);
 
@@ -63,12 +63,12 @@ class Events extends Backend_Controller {
     public function event_list_pdf(){
         $limit = 25;
 
-        if($this->ion_auth->is_admin() || $this->ion_auth->in_group('event')){ 
+        if($this->ion_auth->is_admin() || $this->ion_auth->in_group('event')){
             $results = $this->Event_model->get_data($limit, $offset, '1');
         }elseif($this->ion_auth->is_region_admin()){
             $officeRegionID = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
             $results = $this->Event_model->get_data($limit, $offset, 'region', $officeRegionID);
-        }elseif($this->ion_auth->is_district_admin()){         
+        }elseif($this->ion_auth->is_district_admin()){
             $officeDistrictID = $this->Offices_model->get_district_office_by_user_id($this->userSessID)->id;
             $results = $this->Event_model->get_data($limit, $offset, 'district', '', $officeDistrictID);
         }
@@ -78,7 +78,7 @@ class Events extends Backend_Controller {
 
         //...............................................................................
         $this->data['meta_title'] = 'Event List';
-        $html = $this->load->view('event_list_pdf', $this->data, true);   
+        $html = $this->load->view('event_list_pdf', $this->data, true);
         $file_name ="event_list_pdf.pdf";
 
         //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
@@ -87,7 +87,7 @@ class Events extends Backend_Controller {
         //generate the PDF from the given html
         $mpdf->WriteHTML($html);
 
-        //download it for 'D'. 
+        //download it for 'D'.
         $mpdf->Output($file_name, "D");
     }
 
@@ -108,18 +108,18 @@ class Events extends Backend_Controller {
 
         // Check Auth
         if($this->ion_auth->is_admin() || $this->ion_auth->in_group('event')){
-            $this->data['regions'] = $this->Common_model->get_regions_multi();  
-            $this->data['sc_districts'] = $this->Common_model->get_sc_districts_multi(); 
-            
+            $this->data['regions'] = $this->Common_model->get_regions_multi();
+            $this->data['sc_districts'] = $this->Common_model->get_sc_districts_multi();
+
             // Event type region, district, upazila
             $et_region_ids = $this->input->post('et_region')==1 ? implode(',', $this->input->post('et_region_ids')):NULL;
             $et_district_ids = $this->input->post('et_district')==1 ? implode(',', $this->input->post('et_district_ids')):NULL;
             $et_upazila_ids = $this->input->post('et_upazila')==1 ? implode(',', $this->input->post('et_upazila_ids')):NULL;
             //Event Level
-            $event_created_by = 1;            
+            $event_created_by = 1;
 
         }elseif($this->ion_auth->is_region_admin()){
-            $officeID = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;    
+            $officeID = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
             $region = $officeID;
             $this->data['region_info'] = $this->Common_model->get_office_info('office_region', $region);
             $this->data['sc_districts'] = $this->Common_model->get_sc_districts_multi($region);
@@ -129,11 +129,11 @@ class Events extends Backend_Controller {
             $et_district_ids = $this->input->post('et_district')==1 ? implode(',', $this->input->post('et_district_ids')):NULL;
             $et_upazila_ids = $this->input->post('et_upazila')==1 ? implode(',', $this->input->post('et_upazila_ids')):NULL;
 
-            //Event Level           
+            //Event Level
             $event_created_by = 2;
-            
+
         }elseif($this->ion_auth->is_district_admin()){
-            $officeID = $this->Offices_model->get_district_office_by_user_id($this->userSessID);  
+            $officeID = $this->Offices_model->get_district_office_by_user_id($this->userSessID);
             $region     = $officeID->dis_scout_region_id;
             $district   = $officeID->id;
             $this->data['district_info'] = $this->Common_model->get_office_info('office_district', $district);
@@ -176,8 +176,8 @@ class Events extends Backend_Controller {
         $this->form_validation->set_rules('event_venue', 'Event Venue', 'required|trim');
         $this->form_validation->set_rules('event_details', 'Event Details', 'required|trim');
         $this->form_validation->set_rules('event_start_date', ' To Date', 'required|trim');
-        $this->form_validation->set_rules('event_end_date', 'From Date', 'required|trim');    
-        // $this->form_validation->set_rules('event_end_date', 'From Date', 'required|trim');       
+        $this->form_validation->set_rules('event_end_date', 'From Date', 'required|trim');
+        // $this->form_validation->set_rules('event_end_date', 'From Date', 'required|trim');
         // $this->form_validation->set_rules('event_notify[]', 'Event Notify', 'required|trim');
 
         // Submit form
@@ -196,7 +196,7 @@ class Events extends Backend_Controller {
                 'et_international'  => $this->input->post('et_international'),
                 'et_region'         => $this->input->post('et_region'),
                 'et_district'       => $this->input->post('et_district'),
-                'et_upazila'        => $this->input->post('et_upazila'),                
+                'et_upazila'        => $this->input->post('et_upazila'),
                 'et_region_ids'     => $et_region_ids,
                 'et_district_ids'   => $et_district_ids,
                 'et_upazila_ids'    => $et_upazila_ids,
@@ -227,9 +227,9 @@ class Events extends Backend_Controller {
                 'ep_qty'            => $this->input->post('ep_qty'),
                 'approve_role'      => $this->input->post('approve_role'),
 
-                'created_office_by' => $event_created_by,                
+                'created_office_by' => $event_created_by,
                 'sc_region_id'      => $region != NULL ? $region:NULL,
-                'sc_district_id'    => $district != NULL ? $district:NULL,                
+                'sc_district_id'    => $district != NULL ? $district:NULL,
                 'created'           => date('Y-m-d H:i:s')
                 );
             // print_r($form_data);exit();
@@ -246,15 +246,15 @@ class Events extends Backend_Controller {
                     $count = count($_FILES['userfile']['size']);
                     foreach($_FILES as $key=>$value){
                         for($s=0; $s<=$count-1; $s++) {
-                            $new_file_name = $id.time();  
+                            $new_file_name = $id.time();
 
                             $_FILES['userfile']['name']     = $value['name'][$s];
                             $_FILES['userfile']['type']     = $value['type'][$s];
                             $_FILES['userfile']['tmp_name'] = $value['tmp_name'][$s];
                             $_FILES['userfile']['error']    = $value['error'][$s];
-                            $_FILES['userfile']['size']     = $value['size'][$s]; 
+                            $_FILES['userfile']['size']     = $value['size'][$s];
 
-                            
+
                             $config['upload_path']      = $this->file_path;
                             $config['allowed_types']    = 'gif|jpg|png|doc|docx|xls|xlsx|pdf';
                             $config['max_size']         = '60000';
@@ -266,7 +266,7 @@ class Events extends Backend_Controller {
                                 $uploadData = $this->upload->data();
                                 $uploadedFile = $uploadData['file_name'];
 
-                                $source_path = $this->file_path.'/'.$uploadedFile; 
+                                $source_path = $this->file_path.'/'.$uploadedFile;
                                 // $target_path = $this->img_path.'/thumb_'. $uploadedFile;
                                 //$this->resize($source_path, $target_path);
 
@@ -282,14 +282,14 @@ class Events extends Backend_Controller {
 
                     $this->session->set_flashdata('success', 'New event insert successfully.');
                     redirect("events/event_list");
-                } 
+                }
             // }else{
             //     $this->session->set_flashdata('warning', 'End date less then start date');
-            // }       
+            // }
         }
 
         // Dropdown
-        // $this->data['event_notify'] = $this->Common_model->set_scout_section_checkbox(); 
+        // $this->data['event_notify'] = $this->Common_model->set_scout_section_checkbox();
 
         $this->data['cub_stage'] = $this->Common_model->get_badges(2,1);
         $this->data['scout_stage'] = $this->Common_model->get_badges(2,2);
@@ -299,7 +299,7 @@ class Events extends Backend_Controller {
         $this->data['event_participant_type'] = $this->Common_model->event_participant_type();
         $this->data['event_category'] = $this->Common_model->get_event_category();
         $this->data['event_appr_role'] = $this->Common_model->get_event_approve_role();
-        
+
         // Load page
         $this->data['meta_title'] = 'Create New Event';
         $this->data['subview'] = 'create_event';
@@ -316,8 +316,8 @@ class Events extends Backend_Controller {
         // $et_district_ids = NULL;
 
         if($this->ion_auth->is_admin() || $this->ion_auth->in_group('event')){
-            $this->data['regions'] = $this->Common_model->get_regions_multi();  
-            $this->data['sc_districts'] = $this->Common_model->get_sc_districts_multi(); 
+            $this->data['regions'] = $this->Common_model->get_regions_multi();
+            $this->data['sc_districts'] = $this->Common_model->get_sc_districts_multi();
 
             // Event type region, district, upazila
             $et_region_ids = $this->input->post('et_region')==1 ? implode(',', $this->input->post('et_region_ids')):NULL;
@@ -325,10 +325,10 @@ class Events extends Backend_Controller {
             $et_upazila_ids = $this->input->post('et_upazila')==1 ? implode(',', $this->input->post('et_upazila_ids')):NULL;
 
         }elseif($this->ion_auth->is_region_admin()){
-            $officeID = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;    
+            $officeID = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
             $this->data['region_info'] = $this->Common_model->get_office_info('office_region', $officeID);
             $this->data['sc_districts'] = $this->Common_model->get_sc_districts_multi($officeID);
-            $this->data['sc_upazilas'] = $this->Common_model->get_sc_upazila_multi('', $officeID);  
+            $this->data['sc_upazilas'] = $this->Common_model->get_sc_upazila_multi('', $officeID);
 
             // Event type region, district, upazila
             $et_region_ids = $this->input->post('et_region')==1 ? $officeID:NULL;
@@ -336,7 +336,7 @@ class Events extends Backend_Controller {
             $et_upazila_ids = $this->input->post('et_upazila')==1 ? implode(',', $this->input->post('et_upazila_ids')):NULL;
 
         }elseif($this->ion_auth->is_district_admin()){
-            $officeID = $this->Offices_model->get_district_office_by_user_id($this->userSessID);  
+            $officeID = $this->Offices_model->get_district_office_by_user_id($this->userSessID);
             $region     = $officeID->dis_scout_region_id;
             $district   = $officeID->id;
             // $this->data['region_info'] = $this->Common_model->get_office_info('office_region', $region);
@@ -366,14 +366,14 @@ class Events extends Backend_Controller {
 
         }else{
             redirect('dashboard');
-        }        
+        }
 
         // Validation
         $this->form_validation->set_rules('event_title', 'Event Title', 'required|trim');
         $this->form_validation->set_rules('event_venue', 'Event Venue', 'required|trim');
         $this->form_validation->set_rules('event_details', 'Event Details', 'required|trim');
         $this->form_validation->set_rules('event_start_date', ' To Date', 'required|trim');
-        $this->form_validation->set_rules('event_end_date', 'From Date', 'required|trim');   
+        $this->form_validation->set_rules('event_end_date', 'From Date', 'required|trim');
 
         // Form Validation
         if ($this->form_validation->run() == true){
@@ -393,7 +393,7 @@ class Events extends Backend_Controller {
                 'et_international'  => $this->input->post('et_international'),
                 'et_region'         => $this->input->post('et_region'),
                 'et_district'       => $this->input->post('et_district'),
-                'et_upazila'        => $this->input->post('et_upazila'),                
+                'et_upazila'        => $this->input->post('et_upazila'),
                 'et_region_ids'     => $et_region_ids != NULL ? $et_region_ids:NULL,
                 'et_district_ids'   => $et_district_ids !=NULL ? $et_district_ids:NULL,
                 'et_upazila_ids'    => $et_upazila_ids != NULL ? $et_upazila_ids:NULL,
@@ -435,20 +435,20 @@ class Events extends Backend_Controller {
                     /***********Activity Logs Start**********/
                     $insert_id = $this->db->insert_id();
                     func_activity_log(2, 'Update event Data ID :'.$id); //1=C, 2=U, 3=D, 4=V, 5=G ,A = 6
-                    /***********Activity Logs End**********/  
+                    /***********Activity Logs End**********/
 
                     $count = count($_FILES['userfile']['size']);
                     foreach($_FILES as $key=>$value){
                         for($s=0; $s<=$count-1; $s++) {
-                            $new_file_name = $id.time();  
+                            $new_file_name = $id.time();
 
                             $_FILES['userfile']['name']     = $value['name'][$s];
                             $_FILES['userfile']['type']     = $value['type'][$s];
                             $_FILES['userfile']['tmp_name'] = $value['tmp_name'][$s];
                             $_FILES['userfile']['error']    = $value['error'][$s];
-                            $_FILES['userfile']['size']     = $value['size'][$s]; 
+                            $_FILES['userfile']['size']     = $value['size'][$s];
 
-                            
+
                             $config['upload_path']      = $this->file_path;
                             $config['allowed_types']    = 'gif|jpg|png|doc|docx|xls|xlsx|pdf';
                             $config['max_size']         = '6000';
@@ -460,7 +460,7 @@ class Events extends Backend_Controller {
                                 $uploadData = $this->upload->data();
                                 $uploadedFile = $uploadData['file_name'];
 
-                                $source_path = $this->file_path.'/'.$uploadedFile; 
+                                $source_path = $this->file_path.'/'.$uploadedFile;
                                 // $target_path = $this->img_path.'/thumb_'. $uploadedFile;
                                 //$this->resize($source_path, $target_path);
 
@@ -476,10 +476,10 @@ class Events extends Backend_Controller {
 
                     $this->session->set_flashdata('success', 'Event update successfully.');
                     redirect("events/event_list");
-                } 
+                }
             // }else{
             //     $this->session->set_flashdata('warning', 'End date Less then start date');
-            // }       
+            // }
         }
 
         $this->data['info'] = $this->Event_model->get_info($id);
@@ -541,7 +541,7 @@ class Events extends Backend_Controller {
 
     /************************* Scouts Group **************************/
     /*****************************************************************/
-    public function upcomming_group_event(){   
+    public function upcomming_group_event(){
         if($this->ion_auth->is_group_admin()){
             // Group Admin
             $groupInfo = $this->Offices_model->get_scout_group_by_user_id($this->userSessID);
@@ -648,15 +648,12 @@ class Events extends Backend_Controller {
         $this->load->view('backend/_layout_main', $this->data);
     }
 
-    public function my_group_application(){   
+    public function my_group_application(){
         if($this->ion_auth->is_group_admin()){
             // Group Admin
             $groupInfo = $this->Offices_model->get_scout_group_by_user_id($this->userSessID);
             // Results
             $this->data['results'] = $this->Event_model->get_my_group_application($groupInfo->id);
-            // print_r($this->data['results']); 
-            //echo $this->data['results']->id; 
-            // exit;
         }else{
             redirect('dashboard');
         }
@@ -668,7 +665,7 @@ class Events extends Backend_Controller {
         $this->load->view('backend/_layout_main', $this->data);
     }
 
-    public function group_application($id){   
+    public function group_application($id){
         $id = (int) decrypt_url($id);
 
         if(!($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin() || $this->ion_auth->in_group('event') || $this->ion_auth->is_region_admin() || $this->ion_auth->is_district_admin() || $this->ion_auth->is_upazila_admin())){
@@ -686,8 +683,8 @@ class Events extends Backend_Controller {
         $this->load->view('backend/_layout_main', $this->data);
     }
 
-    public function group_application_details($id){   
-        // if(!$this->ion_auth->is_group_admin()){            
+    public function group_application_details($id){
+        // if(!$this->ion_auth->is_group_admin()){
         //     redirect('dashboard');
         // }
         $id = (int) decrypt_url($id);
@@ -713,7 +710,7 @@ class Events extends Backend_Controller {
     /************************* Scouts Member *************************/
     /*****************************************************************/
 
-    public function upcomming_event(){   
+    public function upcomming_event(){
         if(!$this->ion_auth->is_scout_member()){
             redirect('dashboard');
         }
@@ -729,19 +726,19 @@ class Events extends Backend_Controller {
         $this->data['meta_title'] = 'Upcomming Event List';
         $this->data['subview'] = 'upcoming_events';
         $this->load->view('backend/_layout_main', $this->data);
-    }    
+    }
 
     public function join_event($id, $type){
         // $this->data['users'] = $this->ion_auth->user()->row();
         // $this->data['scout_member_list'] = $this->Event_model->get_scout_member_list($id);
         // $this->data['scout_member'] = $this->Event_model->get_scout_member($id, $this->data['users']->id);
-        // $user = $this->ion_auth->user()->row();    
+        // $user = $this->ion_auth->user()->row();
 
         $info = $this->data['userDetails']['user_info'];
         if (($type == 1) || ($type == 2) || ($type == 3)){
             $form_data = array(
                 'event_id'          => $id,
-                'app_date'          => date('Y-m-d'), 
+                'app_date'          => date('Y-m-d'),
                 'participant_type_id' => $type,
                 'scout_id'          => $info->id,
                 'curr_region_id'    => $info->sc_region_id,
@@ -751,10 +748,10 @@ class Events extends Backend_Controller {
                 );
             // print_r($form_data);exit();
 
-            if($this->Common_model->save('event_participant', $form_data)){                 
+            if($this->Common_model->save('event_participant', $form_data)){
                 $this->session->set_flashdata('success', 'Apply event successfully.');
                 redirect("events/my_application");
-            } 
+            }
         }else{
             $this->session->set_flashdata('warning', 'Something is wrong.');
             redirect("events/upcomming_event");
@@ -762,7 +759,7 @@ class Events extends Backend_Controller {
 
     }
 
-    public function my_application(){   
+    public function my_application(){
         // $region = $this->data['userDetails']['user_info']->sc_region_id;
         // $district = $this->data['userDetails']['user_info']->sc_district_id;
 
@@ -785,21 +782,21 @@ class Events extends Backend_Controller {
     /************* Application Verification By Office ****************/
     /*****************************************************************/
 
-    public function application_list($offset=0){  
+    public function application_list($offset=0){
 
         if(!($this->ion_auth->is_admin() || $this->ion_auth->is_region_admin() || $this->ion_auth->in_group('event') || $this->ion_auth->is_district_admin() || $this->ion_auth->is_upazila_admin() || $this->ion_auth->is_group_admin())){
             redirect('dashboard');
         }
         $limit = 25;
 
-        if($this->ion_auth->is_admin() || $this->ion_auth->in_group('event')){ 
+        if($this->ion_auth->is_admin() || $this->ion_auth->in_group('event')){
             $results = $this->Event_model->get_applicant_data($limit, $offset, '');
 
         }elseif($this->ion_auth->is_region_admin()){
             $officeRegionID = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
-            $results = $this->Event_model->get_applicant_data($limit, $offset, '', $officeRegionID); 
+            $results = $this->Event_model->get_applicant_data($limit, $offset, '', $officeRegionID);
 
-        }elseif($this->ion_auth->is_district_admin()){         
+        }elseif($this->ion_auth->is_district_admin()){
             $officeDistrictID = $this->Offices_model->get_district_office_by_user_id($this->userSessID)->id;
             $results = $this->Event_model->get_applicant_data($limit, $offset, '', '', $officeDistrictID);
 
@@ -832,19 +829,19 @@ class Events extends Backend_Controller {
 
     public function participant_verify($id){
         $id = (int) decrypt_url($id);
-        
-        //$user = $this->ion_auth->user()->row();       
+
+        //$user = $this->ion_auth->user()->row();
         // $id = $this->input->post('event_status');
         $this->form_validation->set_rules('event_status', 'select verify status ', 'required|trim');
         // $this->form_validation->set_rules('participant_type_app', 'select participant type ', 'required|trim');
         if ($this->form_validation->run() == true){
             //$form_data = array('participant_type_app' => $this->input->post('participant_type_app'));
 
-            if($this->ion_auth->is_admin() || $this->ion_auth->in_group('event')){ 
+            if($this->ion_auth->is_admin() || $this->ion_auth->in_group('event')){
                 $form_data['verify_nhq'] = $this->input->post('event_status');
             }elseif($this->ion_auth->is_region_admin()){
                 $form_data['verify_region'] = $this->input->post('event_status');
-            }elseif($this->ion_auth->is_district_admin()){ 
+            }elseif($this->ion_auth->is_district_admin()){
                 $form_data['verify_district'] = $this->input->post('event_status');
             }elseif($this->ion_auth->is_upazila_admin()){
                 $form_data['verify_upazila'] = $this->input->post('event_status');
@@ -858,8 +855,8 @@ class Events extends Backend_Controller {
                 $this->session->set_flashdata('success', 'Applicant event verify successfully.');
 
                 /***********Activity Logs Start**********/
-                $activity_data['user_id'] = $this->userSessID; 
-                $activity_data['message'] = 'Participant Verify ID: '.$id; 
+                $activity_data['user_id'] = $this->userSessID;
+                $activity_data['message'] = 'Participant Verify ID: '.$id;
                 $activity_data['activity_type_id'] = 2; //For Update Activity log
                 $activity_data['ip_address'] = $this->Common_model->get_client_ip();
                 $activity_data['created'] = date('Y-m-d H:i:s');
@@ -881,7 +878,7 @@ class Events extends Backend_Controller {
         $this->load->view('backend/_layout_main', $this->data);
     }
 
-    public function event_applicant_list($id){   
+    public function event_applicant_list($id){
         $id = (int) decrypt_url($id);
         if(!$id){
             redirect('dashboard');
@@ -897,7 +894,7 @@ class Events extends Backend_Controller {
         $this->load->view('backend/_layout_main', $this->data);
     }
 
-    public function event_participant_list($id){ 
+    public function event_participant_list($id){
         $id = (int) decrypt_url($id);
 
         if(!$id){
@@ -922,18 +919,18 @@ class Events extends Backend_Controller {
       }
 
       // $dataID = (int) decrypt_url($id); //exit;
-      // if (!$this->Common_model->exists('award_cub_recommendation', 'id', $dataID)) { 
+      // if (!$this->Common_model->exists('award_cub_recommendation', 'id', $dataID)) {
       //    show_404('award - president_scout_certificate_pdf - exitsts', TRUE);
       // }
 
       //Results
       $this->data['info'] = $this->Event_model->get_event_certificate($id);
       // print_r($this->data['info']); exit;
-      
-      
+
+
       //...............................................................................
       $this->data['meta_title'] = "Event Certificate";
-      $html = $this->load->view('event_certificate_pdf', $this->data, true);   
+      $html = $this->load->view('event_certificate_pdf', $this->data, true);
       $file_name = $id.".pdf";
 
       //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
@@ -943,7 +940,7 @@ class Events extends Backend_Controller {
       //generate the PDF from the given html
       $mpdf->WriteHTML($html);
 
-      //download it for 'D'. 
+      //download it for 'D'.
       $mpdf->Output($file_name, "I");
    }
 
@@ -974,7 +971,7 @@ class Events extends Backend_Controller {
 
         //...............................................................................
         $this->data['meta_title'] = 'Upcomming Event List';
-        $html = $this->load->view('upcomming_event_pdf', $this->data, true);   
+        $html = $this->load->view('upcomming_event_pdf', $this->data, true);
         $file_name ="upcomming_event_pdf.pdf";
 
         //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
@@ -983,11 +980,11 @@ class Events extends Backend_Controller {
         //generate the PDF from the given html
         $mpdf->WriteHTML($html);
 
-        //download it for 'D'. 
+        //download it for 'D'.
         $mpdf->Output($file_name, "D");
     }
 
-    /*************upcomming_event_pdf function pdf End**************/    
+    /*************upcomming_event_pdf function pdf End**************/
 
 
     /*************application_list function pdf start**************/
@@ -997,12 +994,12 @@ class Events extends Backend_Controller {
     }
     $limit = 25;
 
-    if($this->ion_auth->is_admin() || $this->ion_auth->in_group('event')){ 
+    if($this->ion_auth->is_admin() || $this->ion_auth->in_group('event')){
         $results = $this->Event_model->get_applicant_data($limit, $offset, '');
     }elseif($this->ion_auth->is_region_admin()){
         $officeRegionID = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
-        $results = $this->Event_model->get_applicant_data($limit, $offset, '', $officeRegionID); 
-    }elseif($this->ion_auth->is_district_admin()){         
+        $results = $this->Event_model->get_applicant_data($limit, $offset, '', $officeRegionID);
+    }elseif($this->ion_auth->is_district_admin()){
         $officeDistrictID = $this->Offices_model->get_district_office_by_user_id($this->userSessID)->id;
         $results = $this->Event_model->get_applicant_data($limit, $offset, '', '', $officeDistrictID);
     }elseif($this->ion_auth->is_upazila_admin()){
@@ -1019,7 +1016,7 @@ class Events extends Backend_Controller {
 
         //...............................................................................
    $this->data['meta_title'] = 'UApplication List';
-   $html = $this->load->view('application_list_pdf', $this->data, true);   
+   $html = $this->load->view('application_list_pdf', $this->data, true);
    $file_name ="application_list_pdf.pdf";
 
         //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
@@ -1028,7 +1025,7 @@ class Events extends Backend_Controller {
         //generate the PDF from the given html
    $mpdf->WriteHTML($html);
 
-        //download it for 'D'. 
+        //download it for 'D'.
    $mpdf->Output($file_name, "D");
 }
 
@@ -1047,7 +1044,7 @@ class Events extends Backend_Controller {
 
 
 
-public function my_event(){       
+public function my_event(){
     $this->data['event'] = $this->Event_model->get_scout_member_approved();
         // Load page
     $this->data['meta_title'] = 'My Event List';
@@ -1077,11 +1074,11 @@ public function comments($id){
             );
             //print_r($form_data);exit();
 
-        if($this->Event_model->edit('event_to_scouts', $this->data['users']->id, $id,  $form_data)){                
+        if($this->Event_model->edit('event_to_scouts', $this->data['users']->id, $id,  $form_data)){
             $this->session->set_flashdata('success', 'Successfully send your comments.');
-            redirect('events/my_event'); 
-        } 
-        redirect('events/my_event');     
+            redirect('events/my_event');
+        }
+        redirect('events/my_event');
     }
 
     $this->data['meta_title'] = 'Event Comments';
@@ -1131,13 +1128,13 @@ function status($scout_id, $event_id, $status) {
     if(empty($this->Event_model->get_scout_member($event_id, $scout_id))){
 
         if($this->Common_model->save('event_to_scouts', $form_data2)){
-            $this->session->set_flashdata('success', 'Information update successfully.'); 
+            $this->session->set_flashdata('success', 'Information update successfully.');
         }else{
             $this->session->set_flashdata('warning', 'Information update unsuccessfully.');
         }
     }else{
         if($this->Event_model->edit('event_to_scouts', $scout_id, $event_id, $form_data)){
-            $this->session->set_flashdata('success', 'Information update successfully.'); 
+            $this->session->set_flashdata('success', 'Information update successfully.');
         }else{
             $this->session->set_flashdata('warning', 'Information update unsuccessfully.');
         }

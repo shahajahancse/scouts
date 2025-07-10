@@ -1,5 +1,5 @@
-<div class="page-content">     
-  <div class="content">  
+<div class="page-content">
+  <div class="content">
     <ul class="breadcrumb" style="margin-bottom: 20px;">
       <li> <a href="<?=base_url('dashboard')?>" class="active"> Dashboard </a> </li>
       <li> <a href="<?=base_url('application_list')?>" class="active"> <?=$module_title; ?> </a></li>
@@ -25,7 +25,7 @@
           </div>
 
           <div class="grid-body ">
-            <div id="infoMessage"><?php //echo $message;?></div>            
+            <div id="infoMessage"><?php //echo $message;?></div>
             <?php if($this->session->flashdata('success')):?>
               <div class="alert alert-success">
                 <?php echo $this->session->flashdata('success');?>
@@ -53,7 +53,7 @@
                       <td class="tg-jz97">
                       <?php
                         echo $results['info']->event_organizer;
-                        // if($results['info']->event_level == 'nhq'){                        
+                        // if($results['info']->event_level == 'nhq'){
                         //   echo 'National Headquarter';
                         // }elseif($results['info']->event_level == 'region'){
                         //   echo $results['info']->region_name;
@@ -80,13 +80,14 @@
                   <th style="width:5%">Image</th>
                   <th style="width:10%">Scout ID</th>
                   <th style="width:20%">Full Name</th>
-                  <th style="width:15%">Member Type</th>                  
+                  <th style="width:15%">Member Type</th>
                   <th style="width:10%">Apply As</th>
-                  <th style="width:10%" class="text-center">Details</th>
+                  <th style="width:10%">Status</th>
+                  <th style="width:10%" class="text-center">Action</th>
                 </tr>
               </thead>
               <tbody>
-                <?php 
+                <?php
                 $sl = 0;
                 foreach ($results['member_list'] as $row):
                   $sl++;
@@ -96,6 +97,19 @@
                   }else{
                     $img_url = '<img src="'.$path.'no-img.png" height="20">';
                   }
+
+                  $status = '';
+                  if($this->ion_auth->is_admin()){
+                    $status = event_verify_status($row->verify_nhq);
+                  }elseif($this->ion_auth->is_region_admin()){
+                    $status = event_verify_status($row->verify_region);
+                  }elseif($this->ion_auth->is_district_admin()){
+                    $status = event_verify_status($row->verify_district);
+                  }elseif($this->ion_auth->is_upazila_admin()){
+                    $status = event_verify_status($row->verify_upazila);
+                  }elseif($this->ion_auth->is_group_admin()){
+                    $status = event_verify_status($row->verify_group);
+                  }
                 ?>
                 <tr>
                   <td class="v-align-middle"><?=$sl?></td>
@@ -104,9 +118,20 @@
                   <td class="v-align-middle"><?=$row->first_name;?></td>
                   <td class="v-align-middle"><?=$row->member_type_name?></td>
                   <td class="v-align-middle"><?=get_event_participant_type($row->participant_type_id)?></td>
-                  <td><a target="_blank" href="<?=base_url("scouts_member/details/".$row->user_id)?>"  class="btn btn-primary btn-mini">Details</a></td>
+                  <td class="v-align-middle"><?=$status?></td>
+                  <td data-label="Action" class="text-right">
+                      <div class="btn-group">
+                        <a class="btn btn-primary dropdown-toggle btn-mini" data-toggle="dropdown" href="#">
+                          Action <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu pull-right">
+                          <li><a target="_blank" href="<?=base_url("scouts_member/details/".encrypt_url($row->user_id))?>"  class="btn btn-primary btn-mini">Details</a></li>
+                          <li><a href="<?=base_url('events/participant_verify/'.encrypt_url($row->id));?>">Verify</a></li>
+                        </ul>
+                      </div>
+                    </td>
                 </tr>
-              <?php endforeach; ?> 
+              <?php endforeach; ?>
 
             </tbody>
           </table>

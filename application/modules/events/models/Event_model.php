@@ -13,12 +13,12 @@ class Event_model extends CI_Model {
     public function get_scout_member_by_group($groupID){
         $data[''] = '-- Select One --';
         $this->db->select('u.id, u.scout_id, u.first_name, u.sc_section_id, u.profile_img, bt.badge_type_name_bn');
-        $this->db->from('users u'); 
+        $this->db->from('users u');
         $this->db->join('member_type mt', 'mt.id = u.member_id', 'LEFT');
         $this->db->join('scout_badge sb', 'sb.id = u.sc_badge_id', 'LEFT');
         $this->db->join('badge_type bt','bt.id = sb.badge_type_id', 'LEFT');
         $this->db->where('u.scout_id IS NOT NULL', NULL);
-        $this->db->where('u.sc_group_id', $groupID);        
+        $this->db->where('u.sc_group_id', $groupID);
         $this->db->order_by('u.scout_id', 'DESC');
         $query = $this->db->get();
         // echo $this->db->last_query(); exit;
@@ -34,10 +34,10 @@ class Event_model extends CI_Model {
         $this->db->limit($limit);
         $this->db->offset($offset);
         $this->db->order_by('id', 'DESC');
-        
+
         if($officeLevel){
             $this->db->where('created_office_by', $officeLevel);
-        }        
+        }
         if($region){
             $this->db->where('sc_region_id', $region);
         }
@@ -52,7 +52,7 @@ class Event_model extends CI_Model {
 
         // count query
         $q = $this->db->select('COUNT(*) as count');
-        $this->db->from('events');  
+        $this->db->from('events');
         if($officeLevel){
             $this->db->where('created_office_by', $officeLevel);
         }
@@ -68,7 +68,7 @@ class Event_model extends CI_Model {
         // echo $this->db->last_query(); exit;
 
         return $result;
-    }  
+    }
 
     public function get_info($id) {
         $this->db->select('e.*, ec.event_cate_name, ear.office_rules_name, r.region_name, od.dis_name, ou.upa_name, og.grp_name');
@@ -84,7 +84,7 @@ class Event_model extends CI_Model {
         $query = $this->db->get()->row();
 
         return $query;
-    }  
+    }
 
     public function get_attachment($id){
         $this->db->select('id, event_id, file_name');
@@ -117,22 +117,22 @@ class Event_model extends CI_Model {
         $this->db->select('e.*');
         $this->db->from('events e');
         // $this->db->join('event_participant ep', 'ep.event_id = e.id', 'LEFT');
-        $this->db->where('e.ept_category', 1);         
-        $this->db->where('e.published', 'Yes');  
+        $this->db->where('e.ept_category', 1);
+        $this->db->where('e.published', 'Yes');
         $this->db->where('e.event_reg_end <=', date('Y-m-d'));
-        
-        // Event type 
+
+        // Event type
         if($this->db->where('e.et_national', 1)){
             $this->db->or_where_in('e.et_region_ids', $info->sc_region_id);
-            $this->db->or_where_in('e.et_district_ids', $info->sc_district_id);         
-            $this->db->or_where_in('e.et_upazila_ids', $info->sc_upa_tha_id);             
+            $this->db->or_where_in('e.et_district_ids', $info->sc_district_id);
+            $this->db->or_where_in('e.et_upazila_ids', $info->sc_upa_tha_id);
         }
         if($this->db->where('e.et_international', 1)){
             $this->db->or_where_in('e.et_region_ids', $info->sc_region_id);
-            $this->db->or_where_in('e.et_district_ids', $info->sc_district_id);         
-            $this->db->or_where_in('e.et_upazila_ids', $info->sc_upa_tha_id);                      
+            $this->db->or_where_in('e.et_district_ids', $info->sc_district_id);
+            $this->db->or_where_in('e.et_upazila_ids', $info->sc_upa_tha_id);
         }
-     
+
         // Event Participants Type
         if($info->member_id == 2 && $info->sc_section_id == 1){
             if($this->db->where('e.ept_cub', 1)){
@@ -162,22 +162,22 @@ class Event_model extends CI_Model {
             if($this->db->where('e.ept_leader', 1)){
                 if($info->sc_section_id == 1){
                     $this->db->where('e.leader_stage_id >=', $info->sc_badge_id);
-                    $this->db->where('e.leader_stage_id <=', 111);    
+                    $this->db->where('e.leader_stage_id <=', 111);
                 }elseif($info->sc_section_id == 2){
                     $this->db->where('e.leader_stage_id >=', $info->sc_badge_id);
-                    $this->db->where('e.leader_stage_id <=', 102);    
+                    $this->db->where('e.leader_stage_id <=', 102);
                 }elseif($info->sc_section_id == 3){
                     $this->db->where('e.leader_stage_id >=', $info->sc_badge_id);
-                    $this->db->where('e.leader_stage_id <=', 93);    
+                    $this->db->where('e.leader_stage_id <=', 93);
                 }elseif($info->sc_section_id == 4){
                     $this->db->where('e.leader_stage_id >=', $info->sc_badge_id);
-                    $this->db->where('e.leader_stage_id <=', 84);    
+                    $this->db->where('e.leader_stage_id <=', 84);
                 }
                 $this->db->where('e.event_reg_end >=', date('Y-m-d'));
             }
         }
 
-        
+
         $this->db->order_by('e.id', 'DESC');
         $query = $this->db->get()->result();
         // echo $this->db->last_query(); exit;
@@ -191,12 +191,12 @@ class Event_model extends CI_Model {
         $this->db->select('e.*');
         $this->db->from('events e');
         $this->db->or_where_in('e.et_region_ids', $info->grp_region_id);
-        $this->db->or_where_in('e.et_district_ids', $info->grp_scout_dis_id);         
-        $this->db->or_where_in('e.et_upazila_ids', $info->grp_scout_upa_id); 
-        $this->db->where('e.event_reg_end >=', date('Y-m-d'));      
-        $this->db->where('e.ept_category', 2);   
+        $this->db->or_where_in('e.et_district_ids', $info->grp_scout_dis_id);
+        $this->db->or_where_in('e.et_upazila_ids', $info->grp_scout_upa_id);
+        $this->db->where('e.event_reg_end >=', date('Y-m-d'));
+        $this->db->where('e.ept_category', 2);
         $this->db->where('e.published', 'Yes');
-        
+
         $this->db->order_by('e.id', 'DESC');
         $query = $this->db->get()->result();
         // echo $this->db->last_query(); exit;
@@ -264,7 +264,7 @@ class Event_model extends CI_Model {
         $this->db->where('scout_id', $scout_id);
         $query = $this->db->get()->row();
 
-        return $query; 
+        return $query;
         // print_r($query); exit;
     }
 
@@ -285,12 +285,12 @@ class Event_model extends CI_Model {
             $this->db->where('ep.curr_district_id', $district);
         }
         $query = $this->db->get()->result();
-        // echo $this->db->last_query(); exit;        
+        // echo $this->db->last_query(); exit;
         $result['rows'] = $query;
 
         // count query
         $q = $this->db->select('COUNT(*) as count');
-        $this->db->from('event_participant');  
+        $this->db->from('event_participant');
         if($region){
             $this->db->where('curr_region_id', $region);
         }
@@ -336,15 +336,15 @@ class Event_model extends CI_Model {
         $this->db->where('e.id', $id);
         $query['info'] = $this->db->get()->row();
         // echo $this->db->last_query(); exit;
-        // print_r($query['info']); 
-        
-        $this->db->select('ep.*, u.id as user_id, u.scout_id, u.first_name, u.profile_img, mt.member_type_name, e.created_office_by');        
+        // dd($query['info']);
+
+        $this->db->select('ep.*, u.id as user_id, u.scout_id, u.first_name, u.profile_img, mt.member_type_name, e.created_office_by');
         $this->db->from('event_participant ep');
         $this->db->join('events e', 'e.id = ep.event_id', 'LEFT');
         $this->db->join('users u', 'u.id = ep.scout_id', 'LEFT');
         $this->db->join('member_type mt', 'mt.id = u.member_id', 'LEFT');
         $this->db->where('ep.event_id', $id);
-        $this->db->where('e.published', 'Yes');
+        // $this->db->where('e.published', 'Yes');   // comment on 10-07-2025
 
         if($query['info']->created_office_by == 1){
             $this->db->where('ep.verify_nhq', 'Approved');
@@ -355,8 +355,8 @@ class Event_model extends CI_Model {
         }elseif($query['info']->created_office_by == 4){
             $this->db->where('ep.verify_upazila', 'Approved');
         }
-        
         $query['member_list'] = $this->db->get()->result();
+        // dd($query['member_list']);
 
         return $query;
     }
@@ -369,9 +369,9 @@ class Event_model extends CI_Model {
         $this->db->join('office_groups og', 'og.id = u.sc_group_id', 'LEFT');
         $this->db->where('e.verify_nhq', 'Approved');
         $this->db->where('e.id', $id);
-        $result = $this->db->get()->row();  
+        $result = $this->db->get()->row();
 
-        // echo $this->db->last_query(); exit;  
+        // echo $this->db->last_query(); exit;
 
         return $result;
     }
@@ -395,12 +395,12 @@ class Event_model extends CI_Model {
 
 
 
-    
 
-    
 
-    
-    
+
+
+
+
 
     public function get_region_office_single($id){
         return $query = $this->db->select('region_name_en')->where('id', $id)->get('office_region')->row()->region_name_en;
@@ -460,13 +460,13 @@ class Event_model extends CI_Model {
         $this->db->where('e.event_reg_end >=', date('Y-m-d'));
 
         if($region != NULL){
-            $this->db->where('e.sc_region_id', $region);         
+            $this->db->where('e.sc_region_id', $region);
         }
         if($district != NULL){
-            $this->db->where('e.sc_district_id', $district);         
+            $this->db->where('e.sc_district_id', $district);
         }
 
-        // $this->db->or_where('e.event_level', 'nhq');         
+        // $this->db->or_where('e.event_level', 'nhq');
         $this->db->order_by('e.id', 'DESC');
         $query = $this->db->get()->result();
 
@@ -519,7 +519,7 @@ class Event_model extends CI_Model {
    //      foreach ($query as  $item) {
    //          $notify=explode(',', $item->event_notify);
    //          if(!empty(in_array('All', $notify)) OR !empty(in_array($this->users->sc_section_id, $notify))){
-   //             $results_arr[]=$item; 
+   //             $results_arr[]=$item;
    //         }
    //     }
 

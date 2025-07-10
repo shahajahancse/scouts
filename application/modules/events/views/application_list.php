@@ -1,5 +1,5 @@
-<div class="page-content">     
-  <div class="content">  
+<div class="page-content">
+  <div class="content">
     <ul class="breadcrumb" style="margin-bottom: 20px;">
       <li> <a href="<?=base_url()?>" class="active"> Dashboard </a> </li>
       <li> <a href="<?=base_url()?>" class="active"> <?=$module_title; ?> </a></li>
@@ -162,7 +162,7 @@
           </div>
 
           <div class="grid-body ">
-            <div id="infoMessage"><?php //echo $message;?></div>            
+            <div id="infoMessage"><?php //echo $message;?></div>
             <?php if($this->session->flashdata('success')):?>
               <div class="alert alert-success">
                 <?php echo $this->session->flashdata('success');?>
@@ -184,11 +184,11 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <?php 
+                  <?php
                   $sl = $pagination['current_page'];
                   foreach ($results as $row):
                     $sl++;
-                    
+
                   $status = '';
                   if($this->ion_auth->is_admin()){
                     $status = event_verify_status($row->verify_nhq);
@@ -207,27 +207,27 @@
                     <td data-label="Event Details">
                       <a href="<?=base_url('events/details/'.$row->eventid);?>" target="_blank" >
                         <strong><?=$row->event_title?></strong>
-                      </a> 
-                      <br> 
+                      </a>
+                      <br>
                       <small><?=date('d M, Y', strtotime($row->event_start_date))?> to <?=date('d M, Y', strtotime($row->event_end_date))?></small>
                     </td>
                     <td data-label="Scout Details">
                       <a href="<?=base_url('scouts_member/details/'.encrypt_url($row->user_id));?>" target="_blank">
                         <strong><?=$row->scout_id?></strong>
-                      </a> 
-                      <br> 
+                      </a>
+                      <br>
                       <small><?=$row->first_name?></small>
                     </td>
                     <td data-label="Application Details">
                       <?=get_event_participant_type($row->participant_type_id)?>
                       <br>
                       <small><?=date('d M, Y', strtotime($row->app_date))?></small>
-                    </td>          
+                    </td>
                     <td data-label="Status"><?=$status?></td>
                     <td data-label="Action" class="text-right">
-                      <div class="btn-group"> 
-                        <a class="btn btn-primary dropdown-toggle btn-mini" data-toggle="dropdown" href="#"> 
-                          Action <span class="caret"></span> 
+                      <div class="btn-group">
+                        <a class="btn btn-primary dropdown-toggle btn-mini" data-toggle="dropdown" href="#">
+                          Action <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu pull-right">
                           <li><a href="<?=base_url('events/participant_verify/'.encrypt_url($row->id));?>">Verify</a></li>
@@ -235,13 +235,13 @@
                       </div>
                     </td>
                   </tr>
-                <?php endforeach; ?> 
+                <?php endforeach; ?>
               </tbody>
             </table>
             </div>
 
             <div class="row">
-              <div class="col-sm-4 col-md-4 text-left" style="margin-top: 20px;"> 
+              <div class="col-sm-4 col-md-4 text-left" style="margin-top: 20px;">
                 Total <span style="color: green; font-weight: bold;"><?php echo $total_rows; ?> Total Application </span>
               </div>
               <div class="col-sm-8 col-md-8 text-right">
