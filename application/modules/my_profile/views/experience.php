@@ -1,8 +1,8 @@
 <?php
 	if(!empty($info)){
 		$join_date = $info->join_date;
-    $member_id = $info->member_id;
-    $section_id = $info->section_id;
+      $member_id = $info->member_id;
+      $section_id = $info->section_id;
 		$sc_badge_id = $info->sc_badge_id;
 		$sc_role_id = $info->sc_role_id;
 		$sc_upa_tha_id = $info->sc_upa_tha_id;
@@ -12,8 +12,8 @@
 		$sc_unit_id = $info->sc_unit_id;
 	}else{
 		$join_date = date('d-m-Y');
-    $member_id = NULL;
-    $section_id = NULL;
+      $member_id = NULL;
+      $section_id = NULL;
 		$sc_badge_id = NULL;
 		$sc_role_id = NULL;
 		$sc_upa_tha_id = NULL;
@@ -22,10 +22,10 @@
 		$sc_group_id = NULL;
 		$sc_unit_id = NULL;
 	}
- ?>
+?>
 
-<div class="page-content">     
-   <div class="content">  
+<div class="page-content">
+   <div class="content">
       <ul class="breadcrumb" style="margin-bottom: 20px;">
          <li> <a href="<?=base_url()?>" class="active"> Dashboard </a> </li>
          <li> <a href="<?=base_url('scouts_member')?>" class="active">  </a></li>
@@ -44,7 +44,7 @@
                         <?=$this->session->flashdata('success');;?>
                      </div>
                   <?php endif; ?>
-                  <?php 
+                  <?php
                   $attributes = array('id' => 'scout_member_validation');
                   echo form_open_multipart(uri_string(),$attributes);
                   ?>
@@ -53,7 +53,7 @@
                   <div class="row">
                      <div class="col-md-12">
                         <h5 style="font-weight: bold;">Scout Information</h5>
-                       
+
                         <div class="row form-row">
                            <div class="col-md-4">
                               <label class="form-label">Scout Join Date <span class="required">*</span></label>
@@ -65,17 +65,17 @@
                              <label class="form-label">Member Type</label>
                              <?php echo form_error('member_id'); ?>
                              <?php echo form_dropdown('member_id',$member_type, set_value('member_id', $member_id), 'id="member_id" class="form-control input-sm"');?>
-                           </div>    
+                           </div>
                         </div>
-                        <div class="row form-row">              
+                        <div class="row form-row">
                            <div class="col-md-4">
                               <label class="form-label">Scout Section Type <span class="required">*</span></label>
                               <?php echo form_error('sc_section_id');
                               $more_attr = 'class="form-control input-sm" id="sc_section"';
                               echo form_dropdown('sc_section_id', $scout_section, set_value('sc_section_id', $section_id), $more_attr);
                               ?>
-                           </div> 
-                                                      
+                           </div>
+
                            <div class="col-md-4">
                               <label class="form-label">Scout Badge</label>
                               <?php echo form_error('sc_badge_id');
@@ -92,18 +92,20 @@
                            </div>
                         </div>
 
+                        <!-- resign and district -->
                         <div class="row form-row">
                            <div class="col-md-6">
                               <label class="form-label">Select Scout Region</label>
-                              <?php 
+                              <?php
                               echo form_error('sc_region_id');
                               $more_attr = 'class="form-control input-sm" id="region"';
                               echo form_dropdown('sc_region_id', $regions, set_value('sc_region_id', $sc_region_id), $more_attr);
                               ?>
                            </div>
+
                            <div class="col-md-6">
                               <label class="form-label">Select Scout District</label>
-                              <?php 
+                              <?php
                               echo form_error('sc_district_id');
                               $more_attr = 'class="sc_district_val form-control input-sm" id="sc_district"';
                               echo form_dropdown('sc_district_id', $scout_districts, set_value('sc_district_id', $sc_district_id), $more_attr);
@@ -111,22 +113,22 @@
                            </div>
                         </div>
 
+                        <!-- upazila and group -->
                         <div class="row form-row">
                            <div class="col-md-6">
                               <label class="form-label">Select Scout Upazila/Thana</label>
-                              <?php 
+                              <?php
                               echo form_error('sc_upa_tha_id');
-                              $more_attr = 'class="sc_upazila_thana_val form-control input-sm"  id="sc_upazila_thana"';
+                              $more_attr = 'class="sc_upazila_thana_val form-control input-sm basic-select2"  id="sc_upazila_thana"';
                               echo form_dropdown('sc_upa_tha_id', $scout_upazila_thana, set_value('sc_upa_tha_id', $sc_upa_tha_id), $more_attr);
                               ?>
                            </div>
                            <div class="col-md-6">
                               <label class="form-label">Select Scout Group</label>
-                              <?php echo form_error('sc_group_id'); ?>
-                              <?php 
+                              <?php
                               echo form_error('sc_group_id');
-                              $more_attr = 'class="sc_group_val form-control input-sm" id="sc_unit"';
-                              echo form_dropdown('sc_group_id', $scout_group, set_value('sc_group_id', $sc_group_id), $more_attr);
+                              $more_attr = 'class="sc_group_val form-control input-sm scoutsGroupSelect2" id="sc_unit"';
+                           echo form_dropdown('sc_group_id', array('0' => 'Search Scout Group'), set_value('sc_group_id', $sc_group_id), $more_attr);
                               ?>
                            </div>
                         </div>
@@ -134,7 +136,7 @@
                         <div class="col-md-12">
                            <input type="hidden" name="unit_id_name" id="unit_id_name" value="<?=$sc_unit_id?>">
                            <?php echo form_error('sc_unit_id'); ?>
-                           <div class="unit_list" style=""></div>  
+                           <div class="unit_list" style=""></div>
                         </div>
                      </div>
                   </div>
@@ -142,50 +144,49 @@
                </div>
             </div>
 
-            <div class="form-actions">  
+            <div class="form-actions">
                <div class="pull-right">
                   <button type="submit" class="btn btn-primary btn-cons"><i class="icon-ok"></i> Update</button>
                </div>
             </div>
             <?php echo form_close();?>
 
-         </div>  <!-- END GRID BODY -->              
+         </div>  <!-- END GRID BODY -->
       </div> <!-- END GRID -->
    </div>
 
 </div> <!-- END ROW -->
 
 <script type="text/javascript">
- $(document).ready(function() {
-  $('#scout_member_validation').validate({
-      // focusInvalid: false, 
-      ignore: "",
-      rules: {
-      
-     join_date: {
-        required: true
-     },
-    
-     sc_badge_id: {
-        required: false
-     },
-     sc_role_id: {
-        required: false
-     },
-     sc_region_id: {
-        required: false
-     },
-     sc_district_id: {
-        required: false
-     },
-     sc_upa_tha_id: {
-        required: false
-     },
-     sc_group_id: {
-        required: false
-     }
-  },
-});
-}); 
+   $(document).ready(function() {
+      $('#scout_member_validation').validate({
+         // focusInvalid: false,
+         ignore: "",
+         rules: {
 
+            join_date: {
+               required: true
+            },
+
+            sc_badge_id: {
+               required: false
+            },
+            sc_role_id: {
+               required: false
+            },
+            sc_region_id: {
+               required: false
+            },
+            sc_district_id: {
+               required: false
+            },
+            sc_upa_tha_id: {
+               required: false
+            },
+            sc_group_id: {
+               required: false
+            }
+         },
+      });
+   });
 </script>

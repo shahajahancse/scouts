@@ -387,7 +387,7 @@ class My_profile extends Backend_Controller {
       $this->data['regions'] = $this->Common_model->get_regions();
       $this->data['scout_districts'] = $this->Common_model->get_scout_districts();
       $this->data['scout_upazila_thana'] = $this->Common_model->get_scout_upazila_thana();
-      $this->data['scout_group'] = $this->Common_model->get_scout_group_office();
+      // $this->data['scout_group'] = $this->Common_model->get_scout_group_office();
       $this->data['scout_unit'] = $this->Common_model->get_scout_unit_office();
       $this->data['member_type'] = $this->Common_model->get_member_type();
       $this->data['scout_section'] = $this->Common_model->set_scout_section();
@@ -402,7 +402,7 @@ class My_profile extends Backend_Controller {
    public function scout_experience($id){
       $this->data['info'] = $this->My_profile_model->get_expreance_info($id,2);
 
-      if(!empty($info)){
+      if(!empty($this->data['info'])){
          $memberID = $this->data['info']->member_id;
          $sectionID = $this->data['info']->section_id;
       }else{
@@ -433,8 +433,7 @@ class My_profile extends Backend_Controller {
             'sc_upa_tha_id'     => $this->input->post('sc_upa_tha_id'),
             'sc_group_id'       => $this->input->post('sc_group_id'),
             'sc_unit_id'        => $this->input->post('sc_unit_id')
-            );
-
+         );
          if(!empty($this->data['info'])){
             if($this->Common_model->edit('scout_experience', $this->data['info']->id, 'id', $form_data)){
                $this->session->set_flashdata('message', $this->ion_auth->messages() );
@@ -448,12 +447,11 @@ class My_profile extends Backend_Controller {
          }
       }
 
-        //dropdown
+      //dropdown
       $this->data['regions'] = $this->Common_model->get_regions();
       $this->data['scout_districts'] = $this->Common_model->get_scout_districts();
       $this->data['scout_upazila_thana'] = $this->Common_model->get_scout_upazila_thana();
-      $this->data['scout_group'] = $this->Common_model->get_scout_group_office();
-      $this->data['scout_unit'] = $this->Common_model->get_scout_unit_office();
+      // $this->data['scout_group'] = $this->Common_model->get_scout_group_office();
       $this->data['member_type'] = $this->Common_model->get_member_type();
       $this->data['scout_section'] = $this->Common_model->set_scout_section();
       $this->data['scout_badges'] = $this->Common_model->get_badges($memberID, $sectionID);
@@ -498,7 +496,7 @@ class My_profile extends Backend_Controller {
             'sc_upa_tha_id'     => $this->input->post('sc_upa_tha_id'),
             'sc_group_id'       => $this->input->post('sc_group_id'),
             'sc_unit_id'        => $this->input->post('sc_unit_id')
-            );
+         );
 
          if(!empty($this->data['info'])){
             if($this->Common_model->edit('scout_experience', $this->data['info']->id, 'id', $form_data)){
@@ -517,7 +515,7 @@ class My_profile extends Backend_Controller {
       $this->data['regions'] = $this->Common_model->get_regions();
       $this->data['scout_districts'] = $this->Common_model->get_scout_districts();
       $this->data['scout_upazila_thana'] = $this->Common_model->get_scout_upazila_thana();
-      $this->data['scout_group'] = $this->Common_model->get_scout_group_office();
+      // $this->data['scout_group'] = $this->Common_model->get_scout_group_office();
       $this->data['scout_unit'] = $this->Common_model->get_scout_unit_office();
       $this->data['member_type'] = $this->Common_model->get_member_type();
       $this->data['scout_section'] = $this->Common_model->set_scout_section();

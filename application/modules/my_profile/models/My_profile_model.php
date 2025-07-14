@@ -48,7 +48,7 @@ class My_profile_model extends CI_Model {
         return $query;
     }
 
-    public function get_expreance_info($id, $section) {
+    public function get_expreance_info($id, $section = NULL) {
         $this->db->select('se.*, r.region_name, od.dis_name, ou.upa_name, og.grp_name, unit.unit_name, bt.badge_type_name_bn, rt.role_type_name_bn');
         $this->db->from('scout_experience se');
         $this->db->join('office_unit unit', 'unit.id = se.sc_unit_id', 'LEFT');
@@ -61,9 +61,11 @@ class My_profile_model extends CI_Model {
         $this->db->join('role_type rt', 'rt.id = so.role_type_id', 'LEFT');
         $this->db->join('office_region r', 'r.id = se.sc_region_id', 'LEFT');
         $this->db->where('se.scout_id', $id);
-        $this->db->where('se.section_id', $section);
+        if (!empty($section)) {
+            $this->db->where('se.section_id', $section);
+        }
         $query = $this->db->get()->row();
-
+        // dd($this->db->last_query());
         return $query;
     }
 

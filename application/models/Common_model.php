@@ -858,7 +858,6 @@ class Common_model extends CI_Model {
       $this->db->where('grp_scout_upa_id', $id);
       $this->db->order_by('id', 'ASC');
       $query = $this->db->get();
-
       foreach ($query->result_array() AS $rows) {
          $data[$rows['id']] = $rows[$lan_grp_name];
       }
