@@ -1215,7 +1215,7 @@ class Scouts_member extends Backend_Controller {
    }
    /****************Scout delete_request_doc doc FIle Function end******************/
 
-   public function request(){
+   public function request_copy_14_07_2025(){
       if(!$this->ion_auth->is_group_admin()){
          redirect('dashboard');
       }
@@ -1232,7 +1232,63 @@ class Scouts_member extends Backend_Controller {
       $this->load->view('backend/_layout_main', $this->data);
    }
 
-   public function verified_list(){
+   public function request($offset=0){
+      $limit = 25;
+
+      if($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin()){
+         //Super Admin
+         $results = $this->Scouts_member_model->get_request_member($limit, $offset, '', '', '', '', 4);
+         //Dropdown
+         $this->data['regions'] = $this->Common_model->get_regions();
+         $this->data['scouts_district'] = array(''=>'Scouts District');
+         $this->data['scouts_upazila'] = array(''=>'Scouts Upazila');
+      }elseif($this->ion_auth->is_region_admin()){
+         //Region Admin
+         $office = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
+         $results = $this->Scouts_member_model->get_request_member($limit, $offset, $office);
+         //Dropdown
+         $this->data['scouts_district'] =  $this->Common_model->get_scout_districts($office);
+         $this->data['scouts_upazila'] = array(''=>'Scouts Upazila');
+      }elseif($this->ion_auth->is_district_admin()){
+         //District Admin
+         $office = $this->Offices_model->get_district_office_by_user_id($this->userSessID)->id;
+         $results = $this->Scouts_member_model->get_request_member($limit, $offset, '', $office);
+         $this->data['scouts_upazila'] =  $this->Common_model->get_scout_upazila_thana($office);
+      }elseif($this->ion_auth->is_upazila_admin()){
+         //Upazila Admin
+         $office = $this->Offices_model->get_upazila_office_by_user_id($this->userSessID)->id;
+         $results = $this->Scouts_member_model->get_request_member($limit, $offset, '', '', $office);
+      }elseif($this->ion_auth->is_group_admin()){
+         //Group Admin
+         $office = $this->Offices_model->get_scout_group_by_user_id($this->userSessID)->id;
+         $results = $this->Scouts_member_model->get_request_member($limit, $offset, '', '', '', $office);
+      }else{
+         redirect('dashboard');
+      }
+
+      if($_GET['region']>0 && $_GET['region'] !=NULL){
+         $this->data['scouts_district'] =  $this->Common_model->get_scout_districts($_GET['region']);
+      }
+
+      if($_GET['district']>0 && $_GET['district'] !=NULL){
+         $this->data['scouts_upazila'] =  $this->Common_model->get_scout_upazila_thana($_GET['district']);
+      }
+
+
+      //Results
+      $this->data['results'] = $results['rows'];
+      $this->data['total_rows'] = $results['num_rows'];
+
+      //pagination
+      $this->data['pagination'] = create_pagination('scouts_member/request/', $this->data['total_rows'], $limit, 3, $full_tag_wrap = true);
+
+      // Load page
+      $this->data['meta_title'] = 'Scouts Member Request';
+      $this->data['subview'] = 'request';
+      $this->load->view('backend/_layout_main', $this->data);
+   }
+
+   public function verified_list_copy_14_07_2025(){
       if(!$this->ion_auth->is_group_admin()){
          redirect('dashboard');
       }
@@ -1244,6 +1300,62 @@ class Scouts_member extends Backend_Controller {
       $this->data['results'] = $this->Scouts_member_model->get_verified_member($office);
 
          // Load page
+      $this->data['meta_title'] = 'Scouts Member Verified List';
+      $this->data['subview'] = 'verified_list';
+      $this->load->view('backend/_layout_main', $this->data);
+   }
+
+   public function verified_list($offset=0){
+      $limit = 25;
+
+      if($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin()){
+         //Super Admin
+         $results = $this->Scouts_member_model->get_verified_member($limit, $offset);
+         //Dropdown
+         $this->data['regions'] = $this->Common_model->get_regions();
+         $this->data['scouts_district'] = array(''=>'Scouts District');
+         $this->data['scouts_upazila'] = array(''=>'Scouts Upazila');
+      }elseif($this->ion_auth->is_region_admin()){
+         //Region Admin
+         $office = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
+         $results = $this->Scouts_member_model->get_verified_member($limit, $offset, $office);
+         //Dropdown
+         $this->data['scouts_district'] =  $this->Common_model->get_scout_districts($office);
+         $this->data['scouts_upazila'] = array(''=>'Scouts Upazila');
+      }elseif($this->ion_auth->is_district_admin()){
+         //District Admin
+         $office = $this->Offices_model->get_district_office_by_user_id($this->userSessID)->id;
+         $results = $this->Scouts_member_model->get_verified_member($limit, $offset, '', $office);
+         $this->data['scouts_upazila'] =  $this->Common_model->get_scout_upazila_thana($office);
+      }elseif($this->ion_auth->is_upazila_admin()){
+         //Upazila Admin
+         $office = $this->Offices_model->get_upazila_office_by_user_id($this->userSessID)->id;
+         $results = $this->Scouts_member_model->get_verified_member($limit, $offset, '', '', $office);
+      }elseif($this->ion_auth->is_group_admin()){
+         //Group Admin
+         $office = $this->Offices_model->get_scout_group_by_user_id($this->userSessID)->id;
+         $results = $this->Scouts_member_model->get_verified_member($limit, $offset, '', '', '', $office);
+      }else{
+         redirect('dashboard');
+      }
+
+      if($_GET['region']>0 && $_GET['region'] !=NULL){
+         $this->data['scouts_district'] =  $this->Common_model->get_scout_districts($_GET['region']);
+      }
+
+      if($_GET['district']>0 && $_GET['district'] !=NULL){
+         $this->data['scouts_upazila'] =  $this->Common_model->get_scout_upazila_thana($_GET['district']);
+      }
+
+
+      //Results
+      $this->data['results'] = $results['rows'];
+      $this->data['total_rows'] = $results['num_rows'];
+
+      //pagination
+      $this->data['pagination'] = create_pagination('scouts_member/verified_list/', $this->data['total_rows'], $limit, 3, $full_tag_wrap = true);
+
+      // Load page
       $this->data['meta_title'] = 'Scouts Member Verified List';
       $this->data['subview'] = 'verified_list';
       $this->load->view('backend/_layout_main', $this->data);
@@ -1319,43 +1431,45 @@ class Scouts_member extends Backend_Controller {
 
    public function verified_member_generate_scout_id($id){
       $scoutID = (int) decrypt_url($id);
-         // Check Exists
+      // Check Exists
       if(!$this->Common_model->exists('users', 'id', $scoutID)){
          show_404('scouts_member - verified_member_generate_scout_id - exists', TRUE);
       }
+      // Cross check
 
-         // Cross check
-      if($this->ion_auth->is_group_admin()){
-            // Group Admin
-         $groupInfo = $this->Offices_model->get_scout_group_by_user_id($this->userSessID);
-         $group      = $groupInfo->id;
-            //Cross check for group
-         if(!$this->Offices_model->cross_check_scouts_member($scoutID, '', '', '', $group)){
-            show_404('scouts_member - verified_member_generate_scout_id - GA', TRUE);
-         }
+      if($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin() || $this->ion_auth->is_group_admin()){
+         // Group Admin
+         // 14-07-2025
+         // $groupInfo = $this->Offices_model->get_scout_group_by_user_id($this->userSessID);
+         // $group      = $groupInfo->id;
+         //Cross check for group
+         // if(!$this->Offices_model->cross_check_scouts_member($scoutID, '', '', '', $group)){
+         //    show_404('scouts_member - verified_member_generate_scout_id - GA', TRUE);
+         // }
+         // 14-07-2025
 
-            //Get information
+         //Get information
          $info = $this->Scouts_member_model->get_info($scoutID);
 
             //Generate Scout ID and Save
          if($info->scout_id == NULL){
-               $last_scout_id = $this->Scouts_member_model->get_last_scout_id(); //exit;
-               $generate_scout_id = $this->generateScoutID($last_scout_id);
-               if($this->Scouts_member_model->set_scout_id($info->id, $generate_scout_id)){
+            $last_scout_id = $this->Scouts_member_model->get_last_scout_id(); //exit;
+            $generate_scout_id = $this->generateScoutID($last_scout_id);
+            if($this->Scouts_member_model->set_scout_id($info->id, $generate_scout_id)){
                func_activity_log(5, 'Genterate scout ID :'.$scoutID); //1=C, 2=U, 3=D, 4=V, 5=G
                $this->session->set_flashdata('success', 'Scout ID generate successfully.');
-               redirect('scouts_member/all');
+               redirect('scouts_member/verified_list');
+            }else{
+               show_404('scouts_member - scout id already generated - GA', TRUE);
             }
-         }else{
-            show_404('scouts_member - scout id already generated - GA', TRUE);
          }
-
+         redirect('scouts_member/verified_list');
       }else{
          redirect('dashboard');
       }
    }
 
-   public function cancel_request(){
+   public function cancel_request_copy_14_07_2025(){
       if(!$this->ion_auth->is_group_admin()){
          redirect('dashboard');
       }
@@ -1372,7 +1486,61 @@ class Scouts_member extends Backend_Controller {
       $this->load->view('backend/_layout_main', $this->data);
    }
 
+   public function cancel_request($offset=0){
+      $limit = 25;
 
+      if($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin()){
+         //Super Admin
+         $results = $this->Scouts_member_model->get_request_member_cancel($limit, $offset, '', '', '', '', 4);
+         //Dropdown
+         $this->data['regions'] = $this->Common_model->get_regions();
+         $this->data['scouts_district'] = array(''=>'Scouts District');
+         $this->data['scouts_upazila'] = array(''=>'Scouts Upazila');
+      }elseif($this->ion_auth->is_region_admin()){
+         //Region Admin
+         $office = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
+         $results = $this->Scouts_member_model->get_request_member_cancel($limit, $offset, $office);
+         //Dropdown
+         $this->data['scouts_district'] =  $this->Common_model->get_scout_districts($office);
+         $this->data['scouts_upazila'] = array(''=>'Scouts Upazila');
+      }elseif($this->ion_auth->is_district_admin()){
+         //District Admin
+         $office = $this->Offices_model->get_district_office_by_user_id($this->userSessID)->id;
+         $results = $this->Scouts_member_model->get_request_member_cancel($limit, $offset, '', $office);
+         $this->data['scouts_upazila'] =  $this->Common_model->get_scout_upazila_thana($office);
+      }elseif($this->ion_auth->is_upazila_admin()){
+         //Upazila Admin
+         $office = $this->Offices_model->get_upazila_office_by_user_id($this->userSessID)->id;
+         $results = $this->Scouts_member_model->get_request_member_cancel($limit, $offset, '', '', $office);
+      }elseif($this->ion_auth->is_group_admin()){
+         //Group Admin
+         $office = $this->Offices_model->get_scout_group_by_user_id($this->userSessID)->id;
+         $results = $this->Scouts_member_model->get_request_member_cancel($limit, $offset, '', '', '', $office);
+      }else{
+         redirect('dashboard');
+      }
+
+      if($_GET['region']>0 && $_GET['region'] !=NULL){
+         $this->data['scouts_district'] =  $this->Common_model->get_scout_districts($_GET['region']);
+      }
+
+      if($_GET['district']>0 && $_GET['district'] !=NULL){
+         $this->data['scouts_upazila'] =  $this->Common_model->get_scout_upazila_thana($_GET['district']);
+      }
+
+
+      //Results
+      $this->data['results'] = $results['rows'];
+      $this->data['total_rows'] = $results['num_rows'];
+
+      //pagination
+      $this->data['pagination'] = create_pagination('scouts_member/request/', $this->data['total_rows'], $limit, 3, $full_tag_wrap = true);
+
+      // Load page
+      $this->data['meta_title'] = 'Scouts Member Request Cancel';
+      $this->data['subview'] = 'cancel_request';
+      $this->load->view('backend/_layout_main', $this->data);
+   }
 
    /************************* Details Scouts Member **************************
    ***************************************************************************/
