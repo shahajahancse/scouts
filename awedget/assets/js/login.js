@@ -73,7 +73,7 @@ $(document).ready(function() {
       messages: {
          full_name: "Enter you full name required.",
          nid: {
-            required: "Enter NID or Date Of Birth required",
+            required: "Enter NID or Birth Registration Number",
             minlength: jQuery.format("Enter at least {10} digit"),
             maxlength: jQuery.format("Enter at Max {17} digit"),
             remote: jQuery.format("Already in use! Please try again.")

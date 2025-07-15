@@ -39,7 +39,7 @@
             </div>
 
             <div class="col-md-6">
-               <label>Date of Birth <span class="require">*</span></label>
+               <label> <span class="require">*</span></label>
                <?php echo form_error('day'); echo form_error('month'); echo form_error('year'); ?>
                <div class="input-group">
                   <?php echo form_dropdown('day', $days, set_value('day'), 'style="width:25%;"'); ?>
@@ -54,10 +54,10 @@
                <label class="form-label">Type <span class="require">*</span></label>
                <?php echo form_error('nid_dob_type'); ?>
                <input type="radio" class="type" name="nid_dob_type" value="1" <?=set_radio('nid_dob_type', '1', TRUE); ?>><span style="color: black; font-size: 15px;"> NID </span>
-               <input type="radio" class="type" name="nid_dob_type" value="2" <?=set_radio('nid_dob_type', '2'); ?>><span style="color: black; font-size: 15px;">Date Of Birth</span>
+               <input type="radio" class="type" name="nid_dob_type" value="2" <?=set_radio('nid_dob_type', '2'); ?>><span style="color: black; font-size: 15px;"> Birth Registration No </span>
             </div>
             <div class="col-md-6">
-               <label>NID/Date Of Birth <span class="require">*</span></label>
+               <label>NID/Birth Registration No <span class="require">*</span></label>
                <?php echo form_error('nid')?>
                <div class="input-group">
                   <span class="input-group-addon addonExtra"> <i class="fa fa-mobile"></i> </span>

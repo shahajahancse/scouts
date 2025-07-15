@@ -75,7 +75,7 @@ class Registration extends Backend_Controller {
                 'type'  => 'text',
                 'class' => 'form-control',
                 'id'    => 'nid',
-                'placeholder' => 'NID or DOB Number',
+                'placeholder' => 'NID or Birth Registration Number',
                 'value' => $this->form_validation->set_value('nid'),
             );
             $this->data['phone'] = array('name' => 'phone',
