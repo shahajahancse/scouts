@@ -2290,7 +2290,7 @@ class Scouts_member extends Backend_Controller {
       }
 
       //Check authentication
-     /* if($this->ion_auth->is_group_admin()){
+     /* if($this->ion_auth->is_group_admin()){  // 16-07-2025  start
          // Group Admin
          $groupInfo = $this->Offices_model->get_scout_group_by_user_id($this->userSessID);
          $group      = $groupInfo->id;
@@ -2300,7 +2300,7 @@ class Scouts_member extends Backend_Controller {
          }
       }else{
          redirect('dashboard');
-      } */
+      } */    // 16-07-2025 end
 
       // validation
       $this->form_validation->set_rules('scout_section', 'approved scout section', 'trim');
