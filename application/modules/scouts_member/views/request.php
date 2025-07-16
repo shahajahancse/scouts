@@ -125,7 +125,7 @@
                         <a class="btn btn-primary dropdown-toggle btn-mini" data-toggle="dropdown" href="#"> Action <span class="caret"></span> </a>
                         <ul class="dropdown-menu pull-right">
                           <li><a href="<?=base_url("scouts_member/details/".encrypt_url($row->id))?>" target="_blank">Details Scout Member</a></li>
-                          <li><a href="<?=base_url("scouts_member/restore/".encrypt_url($row->id))?>" onclick="return confirm('Are you sure you want to restore to scouts member list?');">Restore to Scout Member</a></li>
+                          <li><a href="<?=base_url("scouts_member/verify/".encrypt_url($row->id))?>" target="_blank">Verify</a></li>
                         </ul>
                       </div>
                     </td>

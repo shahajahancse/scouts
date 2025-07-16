@@ -2290,7 +2290,7 @@ class Scouts_member extends Backend_Controller {
       }
 
       //Check authentication
-      if($this->ion_auth->is_group_admin()){
+     /* if($this->ion_auth->is_group_admin()){
          // Group Admin
          $groupInfo = $this->Offices_model->get_scout_group_by_user_id($this->userSessID);
          $group      = $groupInfo->id;
@@ -2300,17 +2300,17 @@ class Scouts_member extends Backend_Controller {
          }
       }else{
          redirect('dashboard');
-      }
+      } */
 
       // validation
       $this->form_validation->set_rules('scout_section', 'approved scout section', 'trim');
       $this->data['info'] = $this->Scouts_member_model->get_verify($scoutID);
-
       //Validate and input data
       if ($this->form_validation->run() == true){
          //check request
          if(decrypt_url($this->input->post('dataID')) != $scoutID){
             show_404('scouts_member - verify - post submit check request ', TRUE);
+            return false;
          }
 
          //Generate Scout ID
