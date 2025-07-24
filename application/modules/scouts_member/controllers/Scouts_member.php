@@ -1278,6 +1278,7 @@ class Scouts_member extends Backend_Controller {
       //Results
       $this->data['results'] = $results['rows'];
       $this->data['total_rows'] = $results['num_rows'];
+      $this->data['count_member_req'] = $results['num_rows'];
 
       //pagination
       $this->data['pagination'] = create_pagination('scouts_member/request/', $this->data['total_rows'], $limit, 3, $full_tag_wrap = true);
