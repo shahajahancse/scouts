@@ -1237,7 +1237,7 @@ class Scouts_member extends Backend_Controller {
 
       if($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin()){
          //Super Admin
-         $results = $this->Scouts_member_model->get_request_member($limit, $offset, '', '', '', '', 4);
+         $results = $this->Scouts_member_model->get_request_member($limit, $offset, '', '', '', '');
          //Dropdown
          $this->data['regions'] = $this->Common_model->get_regions();
          $this->data['scouts_district'] = array(''=>'Scouts District');
@@ -1278,7 +1278,6 @@ class Scouts_member extends Backend_Controller {
       //Results
       $this->data['results'] = $results['rows'];
       $this->data['total_rows'] = $results['num_rows'];
-      $this->data['count_member_req'] = $results['num_rows'];
 
       //pagination
       $this->data['pagination'] = create_pagination('scouts_member/request/', $this->data['total_rows'], $limit, 3, $full_tag_wrap = true);

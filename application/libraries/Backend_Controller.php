@@ -26,7 +26,7 @@ class Backend_Controller extends MY_Controller{
 		$this->load->model('committee/Committee_model');
 		$this->userSessID = $this->session->userdata('user_id');
 		$this->officeSess = $this->session->userdata('is_office');
-		$this->data['count_member_req'] = 0;   // 24-07-2025  // new added
+		$this->data['count_member_req'] = 0;
 
 		if($this->ion_auth->logged_in()){
 			// echo '<pre>';
@@ -48,6 +48,9 @@ class Backend_Controller extends MY_Controller{
 					'sc_group_id' 		=> $this->data['userDetails']['user_info']->sc_group_id
 					);
 				$this->session->set_userdata($newSessData);
+
+				$results = $this->Scouts_member_model->get_request_member();
+				$this->data['count_member_req'] = $results['num_rows'];
 
 			}elseif($this->ion_auth->is_admin() || $this->ion_auth->in_group('monitor_team')){
 				$officeID = $this->Offices_model->get_nhq_office_by_user_id($this->userSessID)->id;
@@ -185,9 +188,8 @@ class Backend_Controller extends MY_Controller{
 
 
 				// Scout new member request
-				// $this->data['count_member_req'] = 0;   // 24-07-2025 comment
-				// $results = $this->Scouts_member_model->get_request_member($officeID);   // 24-07-2025 comment
-				// $this->data['count_member_req'] = count($results);   // 24-07-2025 comment
+				$results = $this->Scouts_member_model->get_request_member('', '', '', '', '', $officeID);
+				$this->data['count_member_req'] = $results['num_rows'];
 
 				// Release Group Request List
 				$release_grp_mig_results = $this->Scouts_member_model->get_release_group_migration_request($officeID);
