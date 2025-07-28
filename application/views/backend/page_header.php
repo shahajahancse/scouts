@@ -188,6 +188,9 @@
 
                      <!-- BEGIN SIDEBAR MENU -->
                      <ul class="pull-left">
+
+                        <li class="start <?=backend_activate_menu_class('welcome')?>"><a href="<?=base_url('welcome')?>"><i class="fa fa-hand-o-right" aria-hidden="true"></i>Welcome </a> </li>
+
                         <li class="start <?=backend_activate_menu_class('dashboard')?>">
                            <a href="<?=base_url('dashboard');?>"> <i class="icon-custom-home"></i>  <span class="title"><?=$this->ion_auth->is_employee()?'ড্যাশবোর্ড':'Dashboard'?></span></a>
                         </li>

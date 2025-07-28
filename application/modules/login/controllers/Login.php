@@ -3,16 +3,16 @@
 class Login extends Backend_Controller {
 
 	public function __construct(){
-		parent::__construct();	
+		parent::__construct();
 		//$this->load->model('Common_model');
 		// $this->load->model('Shop_model');
-		
+
 		// print_r($this->session->all_userdata());
 	}
 
 	public function index(){
 		if ($this->ion_auth->logged_in()){
-			redirect('dashboard');
+			redirect('welcome');
 		}
 		//validate form input
 		$this->form_validation->set_rules('identity', str_replace(':', '', $this->lang->line('login_identity_label')), 'required');
@@ -27,7 +27,7 @@ class Login extends Backend_Controller {
 				//if the login is successful
 				//redirect them back to the home page
 				$this->session->set_flashdata('message', $this->ion_auth->messages());
-				redirect('dashboard');
+				redirect('welcome');
 			}else{
 				// if the login was un-successful
 				// redirect them back to the login page
@@ -45,14 +45,14 @@ class Login extends Backend_Controller {
 				'class' => 'form-control',
 				'placeholder' => 'Registered email or username or scout ID',
 				'value' => $this->form_validation->set_value('identity'),
-			);			
+			);
 			$this->data['password'] = array('name' => 'password',
 				'type' => 'password',
 				'id'   => 'password-field',
 				'class' => 'form-control',
 				'placeholder' => 'Password',
 			);
-			
+
 			$this->data['meta_title'] = 'Login';
 			$this->data['subview'] = 'index';
 	    	$this->load->view('login/_layout_main', $this->data);
@@ -64,7 +64,7 @@ class Login extends Backend_Controller {
 	{
 		// log the user out
 		$logout = $this->ion_auth->logout();
-		
+
 		// redirect them to the login page
 		$this->session->set_flashdata('message', $this->ion_auth->messages());
 		redirect('login');
@@ -88,5 +88,5 @@ class Login extends Backend_Controller {
 			redirect("forgot_password");
 		}
 	}
-	
+
 }
