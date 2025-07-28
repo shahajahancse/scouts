@@ -34,6 +34,12 @@ class My_profile extends Backend_Controller {
 
    public function index(){
       //E-Filing
+      if($this->ion_auth->is_guest() && in_array($this->userData['user_info']->is_request, [1, 2])){
+			redirect('dashboard');
+		}else if($this->ion_auth->is_guest()){
+			redirect('scout-application-request');
+		}
+
       $this->data['info'] = $this->My_profile_model->get_info($this->userID);
       $this->data['department'] = $this->Common_model->get_single_ingo('department','id',$this->data['info']->emp_department);
       $this->data['designation'] = $this->Common_model->get_single_ingo('designation','id',$this->data['info']->emp_designation);

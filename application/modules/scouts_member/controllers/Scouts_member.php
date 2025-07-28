@@ -1547,7 +1547,6 @@ class Scouts_member extends Backend_Controller {
 
    public function details($id){
       $scoutID = (int) decrypt_url($id); //exit;
-
       if(!$this->Common_model->exists('users', 'id', $scoutID)){
          show_404('scouts_member - details - exists', TRUE);
       }
@@ -1569,9 +1568,9 @@ class Scouts_member extends Backend_Controller {
          // Region Admin
          $region = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
          //Cross check for region admin
-         if(!$this->Offices_model->cross_check_scouts_member($scoutID, $region, '', '', '')){
-            show_404('scouts_member - details - RA', TRUE);
-         }
+         // if(!$this->Offices_model->cross_check_scouts_member($scoutID, $region, '', '', '')){
+         //    show_404('scouts_member - details - RA', TRUE);
+         // }
 
       }elseif($this->ion_auth->is_district_admin()){
          // District Admin
@@ -1579,9 +1578,9 @@ class Scouts_member extends Backend_Controller {
          $region     = $districtInfo->dis_scout_region_id;
          $district   = $districtInfo->id;
          //Cross check for district admin
-         if(!$this->Offices_model->cross_check_scouts_member($scoutID, '', $district, '', '')){
-            show_404('scouts_member - details - DA', TRUE);
-         }
+         // if(!$this->Offices_model->cross_check_scouts_member($scoutID, '', $district, '', '')){
+         //    show_404('scouts_member - details - DA', TRUE);
+         // }
 
       }elseif($this->ion_auth->is_upazila_admin()){
          // Upazila Admin
@@ -1590,18 +1589,18 @@ class Scouts_member extends Backend_Controller {
          $district   = $upazilaInfo->upa_scout_dis_id;
          $upazila    = $upazilaInfo->id;
          //Cross check for upazila admin
-         if(!$this->Offices_model->cross_check_scouts_member($scoutID, '', '', $upazila, '')){
-            show_404('scouts_member - details - UA', TRUE);
-         }
+         // if(!$this->Offices_model->cross_check_scouts_member($scoutID, '', '', $upazila, '')){
+         //    show_404('scouts_member - details - UA', TRUE);
+         // }
 
       }elseif($this->ion_auth->is_group_admin()){
          // Group Admin
          $groupInfo = $this->Offices_model->get_scout_group_by_user_id($this->userSessID);
          $group      = $groupInfo->id;
          //Cross check for group admin
-         if(!$this->Offices_model->cross_check_scouts_member($scoutID, '', '', '', $group)){
-            show_404('scouts_member - details - GA', TRUE);
-         }
+         // if(!$this->Offices_model->cross_check_scouts_member($scoutID, '', '', '', $group)){
+         //    show_404('scouts_member - details - GA', TRUE);
+         // }
       }else{
          redirect('dashboard');
       }
@@ -1617,7 +1616,7 @@ class Scouts_member extends Backend_Controller {
       $form_data = array(
          'scout_id'        => $scoutID,
          'section_id'      => $this->data['info']->sc_section_id
-         );
+      );
 
       $this->data['badge_details']  = $this->Scouts_member_model->get_badge_details($form_data);
       $this->data['expertness']     = $this->Scouts_member_model->get_badge_details_expertness($form_data);

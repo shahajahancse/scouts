@@ -315,7 +315,7 @@
                            <div class="col-md-6">
                               <label class="form-label">Select Scout Group <span class='required'>*</span></label>
                               <?php echo form_error('sc_group_id'); ?>
-                              <select name="sc_group_id" class="sc_group_val form-control input-sm basic-select2" id="sc_unit">
+                              <select name="sc_group_id" class="sc_group_val form-control input-sm scoutsGroupSelect2" id="sc_unit">
                                  <option value="">-- Select One --</option>
                               </select>
                            </div>
