@@ -96,27 +96,19 @@
   gtag('config', 'G-KJS3N7B2XV');
 </script>
 
-<?php /*
-<!-- END CORE TEMPLATE JS -->
-<!-- <script src="<?=base_url();?>awedget/assets/js/dashboard_v2.js" type="text/javascript"></script> -->
-<!-- <script type="text/javascript">
-  $(document).ready(function () {
-      $(".live-tile,.flip-list").liveTile();
-  });
-</script> -->
-*/ ?>
-
-<script>
-  $(function() {
-    // Call SuperBox - that's it!
-    $('.superbox').SuperBox();
-  });
-
-  <?php if($this->router->fetch_class('e_nathi') == 'e_nathi'){ ?>
-    $(function () {
-      CKEDITOR.replace('editor1');
+  <!-- modify the code 31-07-2025, just modify the search controller start here -->
+  <!-- modify the code 31-07-2025, just modify the search controller -->
+  <script>
+    $(function() {
+      // Call SuperBox - that's it!
+      $('.superbox').SuperBox();
     });
-  <?php } ?>
+
+    <?php if($this->router->fetch_class('e_nathi') == 'e_nathi'){ ?>
+      $(function () {
+        CKEDITOR.replace('editor1');
+      });
+    <?php } ?>
 
     //e-filing service / designation dropdown
     $('#service').change(function(){
@@ -124,12 +116,9 @@
       $(".designation_val > option").remove();
       var id = $('#service').val();
 
-      // var  full_url = hostname +"general_setting/ajax_get_designation_by_service/" + id;
-      //alert(full_url);
-
       $.ajax({
         type: "POST",
-        url: hostname +"general_setting/ajax_get_designation_by_service/" + id,
+        url: hostname +"search_controller/ajax_get_designation_by_service/" + id,
         success: function(func_data)
         {
           $.each(func_data,function(id,name)
@@ -143,32 +132,27 @@
       });
     });
 
-
     //district dropdown
     $('#division').change(function(){
       $('.distirict_val').addClass('form-control input-sm');
       $(".distirict_val > option").remove();
       var id = $('#division').val();
 
-      var  full_url = hostname +"general_setting/ajax_get_district_by_div/" + id;
-      //alert(full_url);
-
       $.ajax({
         type: "POST",
-        url: hostname +"general_setting/ajax_get_district_by_div/" + id,
+        url: hostname +"search_controller/ajax_get_district_by_div/" + id,
         success: function(func_data)
         {
-          $.each(func_data,function(id,name)
+          $.each(func_data,function(key,value)
           {
             var opt = $('<option />');
-            opt.val(id);
-            opt.text(name);
+            opt.val(key);
+            opt.text(value);
             $('.distirict_val').append(opt);
           });
         }
       });
     });
-
     // Upazila / Thana dropdown
     $('#district').change(function(){
       $('.upazila_thana_val').addClass('form-control input-sm');
@@ -176,7 +160,7 @@
       var dis_id = $('#district').val();
       $.ajax({
         type: "POST",
-        url: hostname +"general_setting/ajax_get_upa_tha_by_dis/" + dis_id,
+        url: hostname +"search_controller/ajax_get_upa_tha_by_dis/" + dis_id,
         success: function(upazilaThanas)
         {
           $.each(upazilaThanas,function(id,ut_name)
@@ -190,6 +174,7 @@
       });
     });
 
+
     //district2 dropdown
     $('#division2').change(function(){
       $('.distirict_val2').addClass('form-control input-sm');
@@ -197,7 +182,7 @@
       var id = $('#division2').val();
       $.ajax({
         type: "POST",
-        url: hostname +"general_setting/ajax_get_district_by_div/" + id,
+        url: hostname +"search_controller/ajax_get_district_by_div/" + id,
         success: function(func_data)
         {
           $.each(func_data,function(id,name)
@@ -218,7 +203,7 @@
       var dis_id = $('#district2').val();
       $.ajax({
         type: "POST",
-        url: hostname +"general_setting/ajax_get_upa_tha_by_dis/" + dis_id,
+        url: hostname +"search_controller/ajax_get_upa_tha_by_dis/" + dis_id,
         success: function(upazilaThanas)
         {
           $.each(upazilaThanas,function(id,ut_name)
@@ -231,7 +216,174 @@
         }
       });
     });
+  </script>
 
+  <script>
+    // Member Type change
+    $('#member_id').change(function(){
+      $('.sc_rsection_val').addClass('form-control input-sm');
+      $(".sc_rsection_val > option").remove();
+      $.ajax({
+        type: "POST",
+        url: hostname +"search_controller/ajax_get_scout_section",
+        success: function(func_data)
+        {
+          $('.sc_rsection_val').append('<option>-- Select Section --</option>');
+          $.each(func_data,function(id,name)
+          {
+            var opt = $('<option />');
+            opt.val(id);
+            opt.text(name);
+            $('.sc_rsection_val').append(opt);
+          });
+        }
+      });
+    });
+  </script>
+
+  <script>
+    // Scouts Badge change
+    $('#sc_section').change(function(){
+      $('.sc_badge_val').addClass('form-control input-sm');
+      $(".sc_badge_val > option").remove();
+      var memberID = $('#member_id').val();
+      var sectionID = $('#sc_section').val();
+
+      //Check select for member ID
+      if(memberID == ''){
+        $('#sc_section').val('');
+        alert('Please select member type');
+        return false;
+      }
+
+      $.ajax({
+        type: "POST",
+        url: hostname +"search_controller/ajax_get_scout_badge_by_section/" + memberID + "/" + sectionID,
+        success: function(func_data)
+        {
+          $.each(func_data,function(id,name)
+          {
+            var opt = $('<option />');
+            opt.val(id);
+            opt.text(name);
+            $('.sc_badge_val').append(opt);
+          });
+        }
+      });
+    });
+  </script>
+
+  <script>
+    // Scout Role change
+    $('#sc_section').change(function(){
+      // group
+      $('.sc_role_val').addClass('form-control input-sm');
+      $(".sc_role_val > option").remove();
+      var memberID = $('#member_id').val();
+      var sectionID = $('#sc_section').val();
+
+      if(memberID == ''){
+        $('#sc_section').val('');
+        return false;
+      }
+
+      $.ajax({
+        type: "POST",
+        url: hostname +"search_controller/ajax_get_scout_role_by_section/" + memberID + "/" + sectionID,
+        success: function(func_data)
+        {
+          $.each(func_data,function(id,name)
+          {
+            var opt = $('<option />');
+            opt.val(id);
+            opt.text(name);
+            $('.sc_role_val').append(opt);
+          });
+        }
+      });
+    });
+  </script>
+
+  <script>
+    // Scouts Region change
+    $('#region').change(function(){
+      $('.sc_district_val').addClass('form-control input-sm');
+      $(".sc_district_val > option").remove();
+      $('.sc_upazila_thana_val').val(0);
+      $('.sc_group_val ').val(0);
+      var id = $('#region').val();
+
+      $.ajax({
+        type: "POST",
+        url: hostname +"search_controller/ajax_get_scout_dis_by_region/" + id,
+        success: function(func_data) {
+          $.each(func_data,function(id,name) {
+          var opt = $('<option />');
+          opt.val(id);
+          opt.text(name);
+          $('.sc_district_val').append(opt);
+          });
+        }
+      });
+    });
+  </script>
+
+  <script>
+    // Scouts Upazila / Thana dropdown
+    $('#sc_district').change(function(){
+      $('.sc_upazila_thana_val').addClass('form-control input-sm');
+      $(".sc_upazila_thana_val > option").remove();
+      $('.sc_group_val').val(0);
+      var id = $('#sc_district').val();
+      $.ajax({
+        type: "POST",
+        url: hostname +"search_controller/ajax_get_scout_upazila_thana_by_district/" + id,
+        success: function(func_data)
+        {
+          $.each(func_data,function(id,name)
+          {
+            var opt = $('<option />');
+            opt.val(id);
+            opt.text(name);
+            $('.sc_upazila_thana_val').append(opt);
+          });
+        }
+      });
+    });
+  </script>
+
+  <script>
+    // Scout unit radio style
+    function selected_unit(){
+      $('.sc_unit_val').addClass('form-control input-sm');
+      $(".sc_unit_val > option").remove();
+      var group_id = $('#sc_unit').val();
+      var selected = $('#unit_id_name').val();
+      $.ajax({
+        type: "POST",
+        url: hostname +"search_controller/ajax_get_scout_unit_by_scout_group/" + group_id + '/' + selected,
+        success: function(data)
+        {
+          $(".unit_list").html(data);
+          $('.unit_list').show();
+        }
+      });
+    }
+    // Scouts Unit
+    $('#sc_unit').change(function(){
+      selected_unit();
+    });
+  </script>
+  <!-- modify the code 31-07-2025 end here -->
+
+
+
+
+
+
+
+
+  <script>
     function scout_badge_details_select(qid)
     {
       $('.badge_question_val').addClass('form-control input-sm');
@@ -258,22 +410,22 @@
     // $('#scout_badge').change(function(){
     $('#scout_badge').change(function(){
       $('.badge_question_val').addClass('form-control input-sm');
-		  $(".badge_question_val > option").remove();
-		  var id = $('#scout_badge').val();
-		  $.ajax({
-			type: "POST",
-			url: hostname +"general_setting/ajax_get_badge_question_by_badge/" + id,
-			success: function(func_data)
-			{
-			  $.each(func_data,function(id,name)
-			  {
-				var opt = $('<option />');
-				opt.val(id);
-				opt.text(name);
-				$('.badge_question_val').append(opt);
-			  });
-			}
-		  });
+      $(".badge_question_val > option").remove();
+      var id = $('#scout_badge').val();
+      $.ajax({
+      type: "POST",
+      url: hostname +"general_setting/ajax_get_badge_question_by_badge/" + id,
+      success: function(func_data)
+      {
+        $.each(func_data,function(id,name)
+        {
+        var opt = $('<option />');
+        opt.val(id);
+        opt.text(name);
+        $('.badge_question_val').append(opt);
+        });
+      }
+      });
     });
 
     //scout expert Group dropdown
@@ -320,137 +472,8 @@
       }
       });
     });
-    </script>
+  </script>
 
-    <script>
-    // Member Type change
-    $('#member_id').change(function(){
-      $('.sc_rsection_val').addClass('form-control input-sm');
-      $(".sc_rsection_val > option").remove();
-      $.ajax({
-        type: "POST",
-        url: hostname +"general_setting/ajax_get_scout_section",
-        success: function(func_data)
-        {
-          $('.sc_rsection_val').append('<option>-- Select Section --</option>');
-          $.each(func_data,function(id,name)
-          {
-            var opt = $('<option />');
-            opt.val(id);
-            opt.text(name);
-            $('.sc_rsection_val').append(opt);
-          });
-        }
-      });
-    });
-    </script>
-    <script>
-    // Scouts Badge change
-    $('#sc_section').change(function(){
-      $('.sc_badge_val').addClass('form-control input-sm');
-      $(".sc_badge_val > option").remove();
-      var memberID = $('#member_id').val();
-      var sectionID = $('#sc_section').val();
-
-      //Check select for member ID
-      if(memberID == ''){
-        $('#sc_section').val('');
-        alert('Please select member type');
-        return false;
-      }
-
-      $.ajax({
-        type: "POST",
-        url: hostname +"general_setting/ajax_get_scout_badge_by_section/" + memberID + "/" + sectionID,
-        success: function(func_data)
-        {
-          $.each(func_data,function(id,name)
-          {
-            var opt = $('<option />');
-            opt.val(id);
-            opt.text(name);
-            $('.sc_badge_val').append(opt);
-          });
-        }
-      });
-    });
-    </script>
-    <script>
-    // Scout Role change
-    $('#sc_section').change(function(){
-      // group
-      $('.sc_role_val').addClass('form-control input-sm');
-      $(".sc_role_val > option").remove();
-      var memberID = $('#member_id').val();
-      var sectionID = $('#sc_section').val();
-
-      if(memberID == ''){
-        $('#sc_section').val('');
-        return false;
-      }
-
-      $.ajax({
-        type: "POST",
-        url: hostname +"general_setting/ajax_get_scout_role_by_section/" + memberID + "/" + sectionID,
-        success: function(func_data)
-        {
-          $.each(func_data,function(id,name)
-          {
-            var opt = $('<option />');
-            opt.val(id);
-            opt.text(name);
-            $('.sc_role_val').append(opt);
-          });
-        }
-      });
-    });
-    </script>
-    <script>
-    // Scouts Region change
-    $('#region').change(function(){
-      $('.sc_district_val').addClass('form-control input-sm');
-      $(".sc_district_val > option").remove();
-      $('.sc_upazila_thana_val').val(0);
-      $('.sc_group_val ').val(0);
-      var id = $('#region').val();
-
-      $.ajax({
-        type: "POST",
-        url: hostname +"general_setting/ajax_get_scout_dis_by_region/" + id,
-        success: function(func_data) {
-          $.each(func_data,function(id,name) {
-          var opt = $('<option />');
-          opt.val(id);
-          opt.text(name);
-          $('.sc_district_val').append(opt);
-          });
-        }
-      });
-    });
-    </script>
-    <script>
-    // Scouts Upazila / Thana dropdown
-    $('#sc_district').change(function(){
-      $('.sc_upazila_thana_val').addClass('form-control input-sm');
-      $(".sc_upazila_thana_val > option").remove();
-      $('.sc_group_val').val(0);
-      var id = $('#sc_district').val();
-      $.ajax({
-        type: "POST",
-        url: hostname +"general_setting/ajax_get_scout_upazila_thana_by_district/" + id,
-        success: function(func_data)
-        {
-          $.each(func_data,function(id,name)
-          {
-            var opt = $('<option />');
-            opt.val(id);
-            opt.text(name);
-            $('.sc_upazila_thana_val').append(opt);
-          });
-        }
-      });
-    });
-    </script>
 
     <script>
     // Scouts Group dropdown
@@ -504,27 +527,6 @@
           });
         }
       });
-    });
-
-    // Scout unit radio style
-    function selected_unit(){
-      $('.sc_unit_val').addClass('form-control input-sm');
-      $(".sc_unit_val > option").remove();
-      var group_id = $('#sc_unit').val();
-      var selected = $('#unit_id_name').val();
-      $.ajax({
-        type: "POST",
-        url: hostname +"general_setting/ajax_get_scout_unit_by_scout_group/" + group_id + '/' + selected,
-        success: function(data)
-        {
-          $(".unit_list").html(data);
-          $('.unit_list').show();
-        }
-      });
-    }
-    // Scouts Unit
-    $('#sc_unit').change(function(){
-      selected_unit();
     });
 
 
@@ -743,7 +745,7 @@
       $('.scoutsGroupSelect2').select2({
         placeholder: '-- Search Scouts Group --',
         ajax: {
-          url: '<?php echo base_url()?>general_setting/sc_group_select2_search',
+          url: '<?php echo base_url("search_controller/sc_group_select2_search")?>',
           dataType: 'json',
           delay: 250,
           processResults: function (data) {
@@ -761,9 +763,6 @@
       $('.award_val').addClass('form-control input-sm');
       $(".award_val > option").remove();
       var id = $('#award_member_type').val();
-
-      // var  full_url = hostname +"general_setting/ajax_get_district_by_div/" + id;
-      //alert(full_url);
 
       $.ajax({
         type: "POST",

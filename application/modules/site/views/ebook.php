@@ -12,7 +12,7 @@
 <div class="container w-75">
 	<div class="secondary_sc_content">
 		<p class="lead font-weight-bold py-2 text-white" style="background-color: #1aa326; padding-left:10px">E-Book</p>
-		<div class="container">     
+		<div class="container">
 
 			<!-- Nav tabs -->
 			<ul class="nav nav-tabs">
@@ -38,7 +38,7 @@
 				<div class="tab-pane container active" id="cub_scout">
 					<h6 class="tab_heading"> Cub Scout E-Book</h6>
 					<div class="row">       <!-- onclick="bookDetails(id)"  -->
-						<?php foreach ($ebook_cub_list as $row) { ?>      
+						<?php foreach ($ebook_cub_list as $row) { ?>
 						<div class="col-md-3 book<?=$row->id?>">
 							<img class="center" src="<?=base_url('uploads/ebook/thumbs/'.$row->image_file)?>">
 							<div class="title"><?=$row->book_title?></div>
@@ -49,64 +49,64 @@
 						</div>
 						<?php } ?>
 					</div>
-					<div class="pt-3"></div>  
+					<div class="pt-3"></div>
 				</div>
 
 				<div class="tab-pane container fade" id="scouts">
 					<h5 class="tab_heading"> Scout E-Book </h5>
-					<div class="row">       
-						<?php foreach ($ebook_scout_list as $row) { ?>      
+					<div class="row">
+						<?php foreach ($ebook_scout_list as $row) { ?>
 						<div class="col-md-3 book<?=$row->id?>">
 							<img class="center" src="<?=base_url('uploads/ebook/thumbs/'.$row->image_file)?>">
 							<div class="title"><?=$row->book_title?></div>
 						</div>
 						<?php } ?>
 					</div>
-					<div class="pt-3"></div>  
+					<div class="pt-3"></div>
 				</div>
 
 				<div class="tab-pane container fade" id="rover_scout">
 					<h5 class="tab_heading"> Rover Scout E-Book</h5>
-					<div class="row">       
-						<?php foreach ($ebook_rover_list as $row) { ?>      
+					<div class="row">
+						<?php foreach ($ebook_rover_list as $row) { ?>
 						<div class="col-md-3 book<?=$row->id?>">
 							<img class="center" src="<?=base_url('uploads/ebook/thumbs/'.$row->image_file)?>">
 							<div class="title"><?=$row->book_title?></div>
 						</div>
 						<?php } ?>
 					</div>
-					<div class="pt-3"></div>  
+					<div class="pt-3"></div>
 				</div>
 
 				<div class="tab-pane container fade" id="adult_leader">
 					<h5 class="tab_heading"> Adult Leader E-Book</h5>
-					<div class="row">       
-						<?php foreach ($ebook_adult_list as $row) { ?>      
+					<div class="row">
+						<?php foreach ($ebook_adult_list as $row) { ?>
 						<div class="col-md-3 book<?=$row->id?>">
 							<img class="center" src="<?=base_url('uploads/ebook/thumbs/'.$row->image_file)?>">
 							<div class="title"><?=$row->book_title?></div>
 						</div>
 						<?php } ?>
 					</div>
-					<div class="pt-3"></div>  
+					<div class="pt-3"></div>
 				</div>
 
 				<div class="tab-pane container fade" id="others">
 					<h5 class="tab_heading"> Other's E-Book</h5>
-					<div class="row">       
-						<?php foreach ($ebook_other_list as $row) { ?>      
+					<div class="row">
+						<?php foreach ($ebook_other_list as $row) { ?>
 						<div class="col-md-3 book<?=$row->id?>">
 							<img class="center" src="<?=base_url('uploads/ebook/thumbs/'.$row->image_file)?>">
 							<div class="title"><?=$row->book_title?></div>
 						</div>
 						<?php } ?>
 					</div>
-					<div class="pt-3"></div>  
+					<div class="pt-3"></div>
 				</div>
-			</div>     
+			</div>
 
          <?php /*
-         <div class="row">            
+         <div class="row">
             <div class="col-md-3 book2">
                <img class="center" src="<?=base_url('uploads/ebook/thumbs/CUB_Membership_Badge.jpg')?>">
                <div class="title">CUB Membership Badge</div>
@@ -135,7 +135,7 @@
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
-<script src="<?=base_url('fwedget/assets/plugins/flipbook/')?>js/flipbook.min.js"></script>
+<!-- <script src="<?=base_url('fwedget/assets/plugins/flipbook/')?>js/flipbook.min.js"></script> -->
 
 <script type="text/javascript">
 
@@ -159,12 +159,12 @@
 
 				$("#expert_group_id").val(qid);*/
 
-			/*	
+			/*
 			}
 		});
 */
 		/*$(".book"+"bookID").flipBook({
-         pdfUrl:"<?=base_url('uploads/ebook/pdf/'.$row->pdf_file)?>",            
+         pdfUrl:"<?=base_url('uploads/ebook/pdf/'.$row->pdf_file)?>",
          lightBox:true,
          pages:[
          <?php
@@ -184,7 +184,7 @@
 
       <?php foreach ($ebook_cub_list as $row) { ?>
          $(".book<?=$row->id?>").flipBook({
-            pdfUrl:"<?=base_url('uploads/ebook/pdf/'.$row->pdf_file)?>",            
+            pdfUrl:"<?=base_url('uploads/ebook/pdf/'.$row->pdf_file)?>",
             lightBox:true,
             pages:[
             <?php
@@ -200,7 +200,7 @@
          });
          <?php } ?>
 
-         <?php foreach ($ebook_scout_list as $row) { ?>      
+         <?php foreach ($ebook_scout_list as $row) { ?>
          	$(".book<?=$row->id?>").flipBook({
          		pdfUrl:"<?=base_url('uploads/ebook/pdf/'.$row->pdf_file)?>",
          		lightBox:true,
@@ -218,7 +218,7 @@
          	});
          	<?php } ?>
 
-         	<?php foreach ($ebook_rover_list as $row) { ?>      
+         	<?php foreach ($ebook_rover_list as $row) { ?>
          		$(".book<?=$row->id?>").flipBook({
          			pdfUrl:"<?=base_url('uploads/ebook/pdf/'.$row->pdf_file)?>",
          			lightBox:true,
@@ -236,7 +236,7 @@
          		});
          		<?php } ?>
 
-         		<?php foreach ($ebook_adult_list as $row) { ?>      
+         		<?php foreach ($ebook_adult_list as $row) { ?>
          			$(".book<?=$row->id?>").flipBook({
          				pdfUrl:"<?=base_url('uploads/ebook/pdf/'.$row->pdf_file)?>",
          				lightBox:true,
@@ -254,7 +254,7 @@
          			});
          			<?php } ?>
 
-         			<?php foreach ($ebook_other_list as $row) { ?>      
+         			<?php foreach ($ebook_other_list as $row) { ?>
          				$(".book<?=$row->id?>").flipBook({
          					pdfUrl:"<?=base_url('uploads/ebook/pdf/'.$row->pdf_file)?>",
          					lightBox:true,
