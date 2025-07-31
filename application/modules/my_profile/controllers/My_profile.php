@@ -1115,7 +1115,7 @@ class My_profile extends Backend_Controller {
       $this->data['regions'] = $this->Common_model->get_regions();
       $this->data['scout_districts'] = $this->Common_model->get_scout_districts();
       $this->data['scout_upazila'] = $this->Common_model->get_scout_upazila_thana();
-      $this->data['scout_group'] = $this->Common_model->get_scout_group_office();
+      // $this->data['scout_group'] = $this->Common_model->get_scout_group_office();
       $this->data['scout_unit'] = $this->Common_model->get_scout_unit_office();
 
       //Load view
