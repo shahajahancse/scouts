@@ -376,6 +376,61 @@
   </script>
   <!-- modify the code 31-07-2025 end here -->
 
+  <!-- modify the code 31-07-2025 start here -->
+  <!-- this section for event -->
+  <script>
+    // Multi Select Scout Region Dropdown
+    $('#region_multi').change(function(){
+      multi_select_resign();
+    });
+
+    function multi_select_resign() {
+      $('.sc_district_multi_val').addClass('form-control input-sm');
+      $(".sc_district_multi_val > option").remove();
+      var id = $('#region_multi').val();
+      $.ajax({
+        type: "POST",
+        url: hostname +"search_controller/ajax_get_scout_dis_by_region_multi/",
+        data: { ids:id },
+        success: function(func_data) {
+          $.each(func_data,function(id,name) {
+            var opt = $('<option />');
+            opt.val(id);
+            opt.text(name);
+            $('.sc_district_multi_val').append(opt);
+          });
+        }
+      });
+    }
+
+    // Multi Select Scout Upazila Dropdown
+    $('#sc_district_multi').change(function(){
+      multi_select_district();
+    });
+
+    function multi_select_district() {
+      $('.sc_upazila_multi_val').addClass('form-control input-sm');
+      $(".sc_upazila_multi_val > option").remove();
+      var id = $('#sc_district_multi').val();
+      $.ajax({
+        type: "POST",
+        url: hostname +"search_controller/ajax_get_scout_upazila_by_district_multi/",
+        data: { ids:id },
+        success: function(func_data)
+        {
+          $.each(func_data,function(id,name)
+          {
+            var opt = $('<option />');
+            opt.val(id);
+            opt.text(name);
+            $('.sc_upazila_multi_val').append(opt);
+          });
+        }
+      });
+    }
+  </script>
+  <!-- modify the code 31-07-2025 end here -->
+
 
 
 
@@ -528,53 +583,6 @@
         }
       });
     });
-
-
-    // Multi Select Scout Region Dropdown
-  $('#region_multi').change(function(){
-      $('.sc_district_multi_val').addClass('form-control input-sm');
-      $(".sc_district_multi_val > option").remove();
-      var id = $('#region_multi').val();
-      // alert(id);
-
-      $.ajax({
-       type: "POST",
-       url: hostname +"general_setting/ajax_get_scout_dis_by_region_multi/",
-       data: { ids:id },
-       success: function(func_data)
-       {
-        $.each(func_data,function(id,name)
-        {
-         var opt = $('<option />');
-         opt.val(id);
-         opt.text(name);
-         $('.sc_district_multi_val').append(opt);
-       });
-      }
-    });
-  });
-
-  // Multi Select Scout Upazila Dropdown
-   $('#sc_district_multi').change(function(){
-    $('.sc_upazila_multi_val').addClass('form-control input-sm');
-    $(".sc_upazila_multi_val > option").remove();
-    var id = $('#sc_district_multi').val();
-    $.ajax({
-      type: "POST",
-      url: hostname +"general_setting/ajax_get_scout_upazila_by_district_multi/",
-      data: { ids:id },
-      success: function(func_data)
-      {
-        $.each(func_data,function(id,name)
-        {
-          var opt = $('<option />');
-          opt.val(id);
-          opt.text(name);
-          $('.sc_upazila_multi_val').append(opt);
-        });
-      }
-    });
-  });
 
     // Select2 AJAX autocomplete for Scout ID
     function scout_id_select2_dd(){

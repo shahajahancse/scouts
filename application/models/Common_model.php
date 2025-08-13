@@ -1524,7 +1524,7 @@ public function get_user_details() {
    $id = $this->session->userdata('user_id');
    $result = array();
 
-   $this->db->select('id, member_id, scout_id, username, first_name, father_name, mother_name, gender, dob, blood_group, nid, birth_id, phone, email, profile_img, occupation_id, is_request, is_verify, join_date, sc_section_id, sc_cub, sc_scout, sc_rover, sc_region_id, sc_district_id, sc_upa_tha_id, sc_group_id, sc_unit_id, sc_badge_id, sc_role_id, pre_division_id, pre_district_id, pre_upa_tha_id, pre_post_office, created_on, last_login, active,emp_designation,emp_department,desk_officer');
+   $this->db->select('id, member_id, scout_id, username, first_name, father_name, mother_name, gender, dob, blood_group, nid, birth_id, phone, email, profile_img, occupation_id, is_request, is_verify, join_date, sc_section_id, sc_cub, sc_scout, sc_rover, sc_adult, sc_region_id, sc_district_id, sc_upa_tha_id, sc_group_id, sc_unit_id, sc_badge_id, sc_role_id, pre_division_id, pre_district_id, pre_upa_tha_id, pre_post_office, created_on, last_login, active,emp_designation,emp_department,desk_officer');
    $this->db->from('users');
    $this->db->where('id', $id);
    $query = $this->db->get()->row();

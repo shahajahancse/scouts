@@ -167,6 +167,38 @@ class Search_controller extends CI_Controller
         echo json_encode($json);
     }
 
+    // start event multi search here
+    function ajax_get_scout_dis_by_region_multi(){
+        $ids = $this->input->post('ids');
+        $this->db->select("id, dis_name_en");
+        $this->db->from('office_district');
+        $this->db->where_in('dis_scout_region_id', $ids);
+        $this->db->order_by('id', 'ASC');
+        $query = $this->db->get();
+        $data = [];
+        foreach ($query->result_array() AS $rows) {
+            $data[$rows['id']] = $rows['dis_name_en'];
+        }
+        header('Content-Type: application/x-json; charset=utf-8');
+        echo (json_encode($data));
+    }
+
+    function ajax_get_scout_upazila_by_district_multi(){
+        $ids = $this->input->post('ids');
+        $this->db->select("id, upa_name_en");
+        $this->db->from('office_upazila');
+        $this->db->where_in('upa_scout_dis_id', $ids);
+        $this->db->order_by('id', 'ASC');
+        $query = $this->db->get();
+
+        $data = [];
+        foreach ($query->result_array() AS $rows) {
+            $data[$rows['id']] = $rows['upa_name_en'];
+        }
+        header('Content-Type: application/x-json; charset=utf-8');
+        echo (json_encode($data));
+    }
+
 }
 
 

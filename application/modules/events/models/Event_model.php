@@ -6,9 +6,38 @@ class Event_model extends CI_Model {
         parent::__construct();
     }
 
-    // public function get_user_id_from_scout_id($scoutID){
-    //     return $this->db->select('id, scout_id')->where('scout_id', $scoutID)->get('users')->row()->id;
-    // }
+    public function get_event_data($limit = 1000, $offset = 0, $pb=NULL, $office_id=NULL, $type=null) {
+        $this->db->select('*');
+        $this->db->from('events');
+        $this->db->join('events_details', 'events_details.event_id = events.id', 'LEFT');
+        if($pb){
+            $this->db->where('events.published', $pb);
+        }
+        if($office_id){
+            $this->db->where('events_details.office_id', $office_id);
+            $this->db->where('events_details.event_type', $type);
+        }
+        $this->db->limit($limit);
+        $this->db->offset($offset);
+        $this->db->order_by('events.created', 'DESC');
+        $query = $this->db->get()->result();
+        $result['rows'] = $query;
+
+        // count query
+        $this->db->select('COUNT(*) as count');
+        $this->db->from('events');
+        $this->db->join('events_details', 'events_details.event_id = events.id', 'LEFT');
+        if($pb){
+            $this->db->where('events.published', $pb);
+        }
+        if($office_id){
+            $this->db->where('events_details.office_id', $office_id);
+            $this->db->where('events_details.event_type', $type);
+        }
+        $query = $this->db->get()->row();
+        $result['num_rows'] = $query->count;
+        return $result;
+    }
 
     public function get_scout_member_by_group($groupID){
         $data[''] = '-- Select One --';
@@ -33,7 +62,7 @@ class Event_model extends CI_Model {
         $this->db->from('events');
         $this->db->limit($limit);
         $this->db->offset($offset);
-        $this->db->order_by('id', 'DESC');
+        $this->db->order_by('created', 'DESC');
 
         if($officeLevel){
             $this->db->where('created_office_by', $officeLevel);

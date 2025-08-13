@@ -405,7 +405,8 @@
 
                               <?php if($this->ion_auth->is_admin() || $this->ion_auth->in_group('event') || $this->ion_auth->is_region_admin() || $this->ion_auth->is_district_admin() || $this->ion_auth->is_upazila_admin()){ ?>
                               <li> <a href="<?=base_url('events/create_event');?>"> Create Event</a></li>
-                              <li> <a href="<?=base_url('events/event_list');?>"> All Event List </a> </li>
+                              <li> <a href="<?=base_url('events/event_list');?>"> Created Event List </a> </li>
+                              <li> <a href="<?=base_url('events/get_event_list');?>"> All Event List </a> </li>
                               <?php } ?>
 
                               <?php if($this->ion_auth->is_group_admin()){ ?>

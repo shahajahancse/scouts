@@ -22,26 +22,54 @@ class Events extends Backend_Controller {
         redirect('events/event_list');
     }
 
+    public function get_event_list($offset=0){
+        $limit = 25;
+
+        if($this->ion_auth->is_admin() || $this->ion_auth->in_group('event')){
+            $results = $this->Event_model->get_data($limit, $offset);
+        }elseif($this->ion_auth->is_region_admin()){
+            $office_id = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
+            $results = $this->Event_model->get_event_data($limit, $offset, 'Yes', $office_id,1);
+        }elseif($this->ion_auth->is_district_admin()){
+            $office_id = $this->Offices_model->get_district_office_by_user_id($this->userSessID)->id;
+            $results = $this->Event_model->get_event_data($limit, $offset, 'Yes', $office_id,2);
+        }elseif($this->ion_auth->is_upazila_admin()){
+            //Upazila Admin
+            $office_id = $this->Offices_model->get_upazila_office_by_user_id($this->userSessID)->upa_scout_dis_id;
+            $results = $this->Event_model->get_event_data($limit, $offset, 'Yes', $office_id,3);
+        }else{
+            redirect('dashboard');
+        }
+
+        //Result
+        $this->data['results'] = $results['rows'];
+        $this->data['total_rows'] = $results['num_rows'];
+
+        //pagination
+        $this->data['pagination'] = create_pagination('events/get_event_list/', $this->data['total_rows'], $limit, 3, $full_tag_wrap = true);
+
+        // Load page
+        $this->data['meta_title'] = 'Event List';
+        $this->data['subview'] = 'get_event_list';
+        $this->load->view('backend/_layout_main', $this->data);
+    }
+
     public function event_list($offset=0){
         $limit = 25;
 
         if($this->ion_auth->is_admin() || $this->ion_auth->in_group('event')){
             $results = $this->Event_model->get_data($limit, $offset, '1');
-
         }elseif($this->ion_auth->is_region_admin()){
             $officeRegionID = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
             $results = $this->Event_model->get_data($limit, $offset, '2', $officeRegionID);
-            // $this->data['scout_district'] = $this->Common_model->get_scout_districts($officeRegionID);
         }elseif($this->ion_auth->is_district_admin()){
             $officeDistrictID = $this->Offices_model->get_district_office_by_user_id($this->userSessID)->id;
             $results = $this->Event_model->get_data($limit, $offset, '3', '', $officeDistrictID);
-
         }elseif($this->ion_auth->is_upazila_admin()){
             //Upazila Admin
             $office = $this->Offices_model->get_upazila_office_by_user_id($this->userSessID)->id;
             // $upazila    = $office->id;
             $results = $this->Event_model->get_data($limit, $offset, '4', '', '', $office);
-
         }else{
             redirect('dashboard');
         }
@@ -95,17 +123,6 @@ class Events extends Backend_Controller {
 
 
     public function create_event(){
-        // if(!($this->ion_auth->is_admin() || $this->ion_auth->is_region_admin() || $this->ion_auth->is_district_admin())){
-        //     redirect('dashboard');
-        // }
-        // $region = NULL;
-        // $district = NULL;
-        // $event_type = NULL;
-        // $event_level = NULL;
-        //$et_region_ids = NULL;
-        //$et_district_ids = NULL;
-        //$et_upazila_ids = NULL;
-
         // Check Auth
         if($this->ion_auth->is_admin() || $this->ion_auth->in_group('event')){
             $this->data['regions'] = $this->Common_model->get_regions_multi();
@@ -154,8 +171,6 @@ class Events extends Backend_Controller {
             $district   = $office->upa_scout_dis_id;
             $upazila    = $office->id;
             //Dropdown
-            //$this->data['region_info'] = $this->Common_model->get_office_info('office_region', $region);
-            //$this->data['district_info'] = $this->Common_model->get_office_info('office_district', $district);
             $this->data['upazila_info'] = $this->Common_model->get_office_info('office_upazila', $upazila);
 
             // Event type region, district, upazila
@@ -177,15 +192,9 @@ class Events extends Backend_Controller {
         $this->form_validation->set_rules('event_details', 'Event Details', 'required|trim');
         $this->form_validation->set_rules('event_start_date', ' To Date', 'required|trim');
         $this->form_validation->set_rules('event_end_date', 'From Date', 'required|trim');
-        // $this->form_validation->set_rules('event_end_date', 'From Date', 'required|trim');
-        // $this->form_validation->set_rules('event_notify[]', 'Event Notify', 'required|trim');
-
+        $lstage_id = $this->input->post('ept_leader')==1 ? implode(',', $this->input->post('leader_stage_id')):NULL;
         // Submit form
         if ($this->form_validation->run() == true){
-            // $this->data['event_notify'] = implode(',', $this->input->post('event_notify'));
-            // $et_district_ids = implode(',', $this->input->post('et_district_ids'));
-            // $et_upazila_ids = implode(',', $this->input->post('et_upazila_ids'));
-
             $form_data = array(
                 'event_title'       => $this->input->post('event_title'),
                 'event_venue'        => $this->input->post('event_venue'),
@@ -208,7 +217,7 @@ class Events extends Backend_Controller {
                 'cub_stage_id'      => $this->input->post('cub_stage_id'),
                 'scout_stage_id'    => $this->input->post('scout_stage_id'),
                 'rover_stage_id'    => $this->input->post('rover_stage_id'),
-                'leader_stage_id'   => $this->input->post('leader_stage_id'),
+                'leader_stage_id'   => $lstage_id,
 
                 'need_office'       => $this->input->post('need_office'),
                 'need_office_qty'   => $this->input->post('need_office_qty'),
@@ -231,61 +240,120 @@ class Events extends Backend_Controller {
                 'sc_region_id'      => $region != NULL ? $region:NULL,
                 'sc_district_id'    => $district != NULL ? $district:NULL,
                 'created'           => date('Y-m-d H:i:s')
-                );
-            // print_r($form_data);exit();
+            );
 
-            // if($this->input->post('event_end_date') >= $this->input->post('event_start_date')){
-                if($this->Common_model->save('events', $form_data)){
-                    $insert_id = $this->db->insert_id();
+            if($this->Common_model->save('events', $form_data)){
+                $insert_id = $this->db->insert_id();
+                $lstadge_id = $this->input->post('leader_stage_id');
+                $region_ids = $this->input->post('et_region_ids');
+                $district_ids = $this->input->post('et_district_ids');
+                $upazila_ids = $this->input->post('et_upazila_ids');
 
-                    /***********Activity Logs Start**********/
-                    $insert_id = $this->db->insert_id();
-                    func_activity_log(1, 'Create event create ID :'.$insert_id); //1=C, 2=U, 3=D, 4=V, 5=G ,A = 6
-                    /***********Activity Logs End**********/
+                if (!empty($lstadge_id)) {
+                    $lsd_data = array();
+                    foreach ($lstadge_id as $region_id) {
+                        $lsd_data[] = array(
+                            'event_id' => $insert_id,
+                            'adult_leader_id' => $region_id,
+                            'created_at' => date('Y-m-d H:i:s'),
+                        );
+                    }
+                    $this->db->insert_batch('events_adult_details', $lsd_data);
+                }
 
-                    $count = count($_FILES['userfile']['size']);
-                    foreach($_FILES as $key=>$value){
-                        for($s=0; $s<=$count-1; $s++) {
-                            $new_file_name = $id.time();
+                if (!empty($region_ids)) {
+                    $region_data = array();
+                    foreach ($region_ids as $region_id) {
+                        $region_data[] = array(
+                            'event_id' => $insert_id,
+                            'event_type' => 1,   // Region
+                            'office_id' => $region_id,
+                            'cub_scout' => $this->input->post('ept_cub') ? 1 : 0,
+                            'scout' => $this->input->post('ept_scout') ? 1 : 0,
+                            'rover_scout' => $this->input->post('ept_rover') ? 1 : 0,
+                            'adult_leader' => $this->input->post('ept_leader') ? 1 : 0,
+                            'created_at' => date('Y-m-d H:i:s'),
+                        );
+                    }
+                    $this->db->insert_batch('events_details', $region_data);
+                }
 
-                            $_FILES['userfile']['name']     = $value['name'][$s];
-                            $_FILES['userfile']['type']     = $value['type'][$s];
-                            $_FILES['userfile']['tmp_name'] = $value['tmp_name'][$s];
-                            $_FILES['userfile']['error']    = $value['error'][$s];
-                            $_FILES['userfile']['size']     = $value['size'][$s];
+                if (!empty($district_ids)) {
+                    $district_data = array();
+                    foreach ($district_ids as $region_id) {
+                        $district_data[] = array(
+                            'event_id' => $insert_id,
+                            'event_type' => 2,  // District
+                            'office_id' => $region_id,
+                            'cub_scout' => $this->input->post('ept_cub') ? 1 : 0,
+                            'scout' => $this->input->post('ept_scout') ? 1 : 0,
+                            'rover_scout' => $this->input->post('ept_rover') ? 1 : 0,
+                            'adult_leader' => $this->input->post('ept_leader') ? 1 : 0,
+                            'created_at' => date('Y-m-d H:i:s'),
+                        );
+                    }
+                    $this->db->insert_batch('events_details', $district_data);
+                }
+
+                if (!empty($upazila_ids)) {
+                    $upazila_data = array();
+                    foreach ($upazila_ids as $region_id) {
+                        $upazila_data[] = array(
+                            'event_id' => $insert_id,
+                            'event_type' => 3,  // Upazila
+                            'office_id' => $region_id,
+                            'cub_scout' => $this->input->post('ept_cub') ? 1 : 0,
+                            'scout' => $this->input->post('ept_scout') ? 1 : 0,
+                            'rover_scout' => $this->input->post('ept_rover') ? 1 : 0,
+                            'adult_leader' => $this->input->post('ept_leader') ? 1 : 0,
+                            'created_at' => date('Y-m-d H:i:s'),
+                        );
+                    }
+                    $this->db->insert_batch('events_details', $upazila_data);
+                }
+
+                /***********Activity Logs Start**********/
+                func_activity_log(1, 'Create event create ID :'.$insert_id); //1=C, 2=U, 3=D, 4=V, 5=G ,A = 6
+                /***********Activity Logs End**********/
+                $count = count($_FILES['userfile']['size']);
+                foreach($_FILES as $key=>$value){
+                    for($s=0; $s<=$count-1; $s++) {
+                        $new_file_name = $id.time();
+
+                        $_FILES['userfile']['name']     = $value['name'][$s];
+                        $_FILES['userfile']['type']     = $value['type'][$s];
+                        $_FILES['userfile']['tmp_name'] = $value['tmp_name'][$s];
+                        $_FILES['userfile']['error']    = $value['error'][$s];
+                        $_FILES['userfile']['size']     = $value['size'][$s];
 
 
-                            $config['upload_path']      = $this->file_path;
-                            $config['allowed_types']    = 'gif|jpg|png|doc|docx|xls|xlsx|pdf';
-                            $config['max_size']         = '60000';
-                            $config['file_name']        = $new_file_name;
-                            //$config['max_width']        = '3000';
-                            //$config['max_height']       = '3000';
-                            $this->load->library('upload', $config);
-                            if($this->upload->do_upload()){
-                                $uploadData = $this->upload->data();
-                                $uploadedFile = $uploadData['file_name'];
+                        $config['upload_path']      = $this->file_path;
+                        $config['allowed_types']    = 'gif|jpg|png|doc|docx|xls|xlsx|pdf';
+                        $config['max_size']         = '60000';
+                        $config['file_name']        = $new_file_name;
+                        //$config['max_width']        = '3000';
+                        //$config['max_height']       = '3000';
+                        $this->load->library('upload', $config);
+                        if($this->upload->do_upload()){
+                            $uploadData = $this->upload->data();
+                            $uploadedFile = $uploadData['file_name'];
 
-                                $source_path = $this->file_path.'/'.$uploadedFile;
-                                // $target_path = $this->img_path.'/thumb_'. $uploadedFile;
-                                //$this->resize($source_path, $target_path);
+                            $source_path = $this->file_path.'/'.$uploadedFile;
+                            // $target_path = $this->img_path.'/thumb_'. $uploadedFile;
+                            //$this->resize($source_path, $target_path);
 
-                                $file_data = array(
-                                    'event_id'   => $insert_id,
-                                    'file_name'  => $uploadedFile
-                                    );
-
-                                $this->Common_model->save('event_attachment', $file_data);
-                            }
+                            $file_data = array(
+                                'event_id'   => $insert_id,
+                                'file_name'  => $uploadedFile
+                            );
+                            $this->Common_model->save('event_attachment', $file_data);
                         }
                     }
-
-                    $this->session->set_flashdata('success', 'New event insert successfully.');
-                    redirect("events/event_list");
                 }
-            // }else{
-            //     $this->session->set_flashdata('warning', 'End date less then start date');
-            // }
+
+                $this->session->set_flashdata('success', 'New event insert successfully.');
+                redirect("events/event_list");
+            }
         }
 
         // Dropdown
@@ -309,15 +377,10 @@ class Events extends Backend_Controller {
     public function edit($id){
         $id = (int) decrypt_url($id);
 
-        // if(!($this->ion_auth->is_admin() || $this->ion_auth->is_region_admin() || $this->ion_auth->is_district_admin())){
-        //     redirect('dashboard');
-        // }
-        // $et_region_ids = NULL;
-        // $et_district_ids = NULL;
-
         if($this->ion_auth->is_admin() || $this->ion_auth->in_group('event')){
             $this->data['regions'] = $this->Common_model->get_regions_multi();
             $this->data['sc_districts'] = $this->Common_model->get_sc_districts_multi();
+            $this->data['sc_upazilas'] = $this->Common_model->get_sc_upazila_multi();
 
             // Event type region, district, upazila
             $et_region_ids = $this->input->post('et_region')==1 ? implode(',', $this->input->post('et_region_ids')):NULL;
@@ -374,15 +437,9 @@ class Events extends Backend_Controller {
         $this->form_validation->set_rules('event_details', 'Event Details', 'required|trim');
         $this->form_validation->set_rules('event_start_date', ' To Date', 'required|trim');
         $this->form_validation->set_rules('event_end_date', 'From Date', 'required|trim');
-
+        $lstage_id = $this->input->post('ept_leader')==1 ? implode(',', $this->input->post('leader_stage_id')):NULL;
         // Form Validation
         if ($this->form_validation->run() == true){
-            // $this->data['event_notify']=implode(',', $this->input->post('event_notify'));
-            // 'event_notify'      => $this->data['event_notify'],
-            // $et_region_ids = implode(',', $this->input->post('et_region_ids'));
-            // $et_district_ids = implode(',', $this->input->post('et_district_ids'));
-            // $et_upazila_ids = implode(',', $this->input->post('et_upazila_ids'));
-
             $form_data = array(
                 'event_title'       => $this->input->post('event_title'),
                 'event_venue'       => $this->input->post('event_venue'),
@@ -405,7 +462,7 @@ class Events extends Backend_Controller {
                 'cub_stage_id'      => $this->input->post('cub_stage_id'),
                 'scout_stage_id'    => $this->input->post('scout_stage_id'),
                 'rover_stage_id'    => $this->input->post('rover_stage_id'),
-                'leader_stage_id'   => $this->input->post('leader_stage_id'),
+                'leader_stage_id'   => $lstage_id,
 
                 'need_office'       => $this->input->post('need_office'),
                 'need_office_qty'   => $this->input->post('need_office_qty'),
@@ -426,60 +483,124 @@ class Events extends Backend_Controller {
 
                 'published'         => $this->input->post('published'),
                 'updated'           => date('Y-m-d H:i:s')
-                );
-            //print_r($form_data);exit();
+            );
 
-            // if($this->input->post('event_end_date') >= $this->input->post('event_start_date')){
-                if($this->Common_model->edit('events', $id, 'id', $form_data)){
+            if($this->Common_model->edit('events', $id, 'id', $form_data)){
+                $insert_id = $id;
+                $region_ids = $this->input->post('et_region_ids');
+                $district_ids = $this->input->post('et_district_ids');
+                $upazila_ids = $this->input->post('et_upazila_ids');
 
-                    /***********Activity Logs Start**********/
-                    $insert_id = $this->db->insert_id();
-                    func_activity_log(2, 'Update event Data ID :'.$id); //1=C, 2=U, 3=D, 4=V, 5=G ,A = 6
-                    /***********Activity Logs End**********/
+                $lstadge_id = $this->input->post('leader_stage_id');
+                if (!empty($lstadge_id)) {
+                    $this->db->where('event_id', $insert_id)->delete('events_adult_details');
+                    $lsd_data = array();
+                    foreach ($lstadge_id as $region_id) {
+                        $lsd_data[] = array(
+                            'event_id' => $insert_id,
+                            'adult_leader_id' => $region_id,
+                            'created_at' => date('Y-m-d H:i:s'),
+                        );
+                    }
+                    $this->db->insert_batch('events_adult_details', $lsd_data);
+                }
 
-                    $count = count($_FILES['userfile']['size']);
-                    foreach($_FILES as $key=>$value){
-                        for($s=0; $s<=$count-1; $s++) {
-                            $new_file_name = $id.time();
+                if (!empty($region_ids)) {
+                    $this->db->where('event_id', $insert_id)->delete('events_details');
+                    $region_data = array();
+                    foreach ($region_ids as $region_id) {
+                        $region_data[] = array(
+                            'event_id' => $insert_id,
+                            'event_type' => 1,   // Region
+                            'office_id' => $region_id,
+                            'cub_scout' => $this->input->post('ept_cub') ? 1 : 0,
+                            'scout' => $this->input->post('ept_scout') ? 1 : 0,
+                            'rover_scout' => $this->input->post('ept_rover') ? 1 : 0,
+                            'adult_leader' => $this->input->post('ept_leader') ? 1 : 0,
+                            'created_at' => date('Y-m-d H:i:s'),
+                        );
+                    }
+                    $this->db->insert_batch('events_details', $region_data);
+                }
 
-                            $_FILES['userfile']['name']     = $value['name'][$s];
-                            $_FILES['userfile']['type']     = $value['type'][$s];
-                            $_FILES['userfile']['tmp_name'] = $value['tmp_name'][$s];
-                            $_FILES['userfile']['error']    = $value['error'][$s];
-                            $_FILES['userfile']['size']     = $value['size'][$s];
+                if (!empty($district_ids)) {
+                    $district_data = array();
+                    foreach ($district_ids as $region_id) {
+                        $district_data[] = array(
+                            'event_id' => $insert_id,
+                            'event_type' => 2,  // District
+                            'office_id' => $region_id,
+                            'cub_scout' => $this->input->post('ept_cub') ? 1 : 0,
+                            'scout' => $this->input->post('ept_scout') ? 1 : 0,
+                            'rover_scout' => $this->input->post('ept_rover') ? 1 : 0,
+                            'adult_leader' => $this->input->post('ept_leader') ? 1 : 0,
+                            'created_at' => date('Y-m-d H:i:s'),
+                        );
+                    }
+                    $this->db->insert_batch('events_details', $district_data);
+                }
+
+                if (!empty($upazila_ids)) {
+                    $upazila_data = array();
+                    foreach ($upazila_ids as $region_id) {
+                        $upazila_data[] = array(
+                            'event_id' => $insert_id,
+                            'event_type' => 3,  // Upazila
+                            'office_id' => $region_id,
+                            'cub_scout' => $this->input->post('ept_cub') ? 1 : 0,
+                            'scout' => $this->input->post('ept_scout') ? 1 : 0,
+                            'rover_scout' => $this->input->post('ept_rover') ? 1 : 0,
+                            'adult_leader' => $this->input->post('ept_leader') ? 1 : 0,
+                            'created_at' => date('Y-m-d H:i:s'),
+                        );
+                    }
+                    $this->db->insert_batch('events_details', $upazila_data);
+                }
+
+                /***********Activity Logs Start**********/
+                func_activity_log(2, 'Update event Data ID :'.$id); //1=C, 2=U, 3=D, 4=V, 5=G ,A = 6
+                /***********Activity Logs End**********/
+
+                $count = count($_FILES['userfile']['size']);
+                foreach($_FILES as $key=>$value){
+                    for($s=0; $s<=$count-1; $s++) {
+                        $new_file_name = $id.time();
+
+                        $_FILES['userfile']['name']     = $value['name'][$s];
+                        $_FILES['userfile']['type']     = $value['type'][$s];
+                        $_FILES['userfile']['tmp_name'] = $value['tmp_name'][$s];
+                        $_FILES['userfile']['error']    = $value['error'][$s];
+                        $_FILES['userfile']['size']     = $value['size'][$s];
 
 
-                            $config['upload_path']      = $this->file_path;
-                            $config['allowed_types']    = 'gif|jpg|png|doc|docx|xls|xlsx|pdf';
-                            $config['max_size']         = '6000';
-                            $config['file_name']        = $new_file_name;
-                            //$config['max_width']        = '3000';
-                            //$config['max_height']       = '3000';
-                            $this->load->library('upload', $config);
-                            if($this->upload->do_upload()){
-                                $uploadData = $this->upload->data();
-                                $uploadedFile = $uploadData['file_name'];
+                        $config['upload_path']      = $this->file_path;
+                        $config['allowed_types']    = 'gif|jpg|png|doc|docx|xls|xlsx|pdf';
+                        $config['max_size']         = '6000';
+                        $config['file_name']        = $new_file_name;
+                        //$config['max_width']        = '3000';
+                        //$config['max_height']       = '3000';
+                        $this->load->library('upload', $config);
+                        if($this->upload->do_upload()){
+                            $uploadData = $this->upload->data();
+                            $uploadedFile = $uploadData['file_name'];
 
-                                $source_path = $this->file_path.'/'.$uploadedFile;
-                                // $target_path = $this->img_path.'/thumb_'. $uploadedFile;
-                                //$this->resize($source_path, $target_path);
+                            $source_path = $this->file_path.'/'.$uploadedFile;
+                            // $target_path = $this->img_path.'/thumb_'. $uploadedFile;
+                            //$this->resize($source_path, $target_path);
 
-                                $file_data = array(
-                                    'event_id'   => $id,
-                                    'file_name'  => $uploadedFile
-                                    );
+                            $file_data = array(
+                                'event_id'   => $id,
+                                'file_name'  => $uploadedFile
+                                );
 
-                                $this->Common_model->save('event_attachment', $file_data);
-                            }
+                            $this->Common_model->save('event_attachment', $file_data);
                         }
                     }
-
-                    $this->session->set_flashdata('success', 'Event update successfully.');
-                    redirect("events/event_list");
                 }
-            // }else{
-            //     $this->session->set_flashdata('warning', 'End date Less then start date');
-            // }
+
+                $this->session->set_flashdata('success', 'Event update successfully.');
+                redirect("events/event_list");
+            }
         }
 
         $this->data['info'] = $this->Event_model->get_info($id);
@@ -537,6 +658,20 @@ class Events extends Backend_Controller {
 
         redirect('events/edit/'.encrypt_url($eventID));
     }
+
+    function delete($id) {
+        $id = (int) decrypt_url($id);
+
+        $this->data['info'] = $this->Event_model->delete($id);
+        $this->db->where('event_id', $id)->delete('events_details');
+        $this->db->where('event_id', $id)->delete('events_adult_details');
+        /***********Activity Logs Start**********/
+        func_activity_log(3, 'Delete event Data ID :'.$id); //1=C, 2=U, 3=D, 4=V, 5=G ,A = 6
+        /***********Activity Logs End**********/
+        $this->session->set_flashdata('success', 'Information delete successfully.');
+        redirect('events/event_list');
+    }
+
 
 
     /************************* Scouts Group **************************/
@@ -716,9 +851,7 @@ class Events extends Backend_Controller {
         }
 
         $this->data['info'] = $this->data['userDetails']['user_info'];
-        // echo '<pre>';
-        // print_r($this->data['info']); exit;
-
+        // dd($this->data['info']);
         // Matching result list
         $this->data['results'] = $this->Event_model->upcomming_event_search($this->data['info']);
 
@@ -989,47 +1122,47 @@ class Events extends Backend_Controller {
 
     /*************application_list function pdf start**************/
     public function application_list_pdf(){
-     if(!($this->ion_auth->is_admin() || $this->ion_auth->is_region_admin() || $this->ion_auth->in_group('event') || $this->ion_auth->is_district_admin() || $this->ion_auth->is_upazila_admin() || $this->ion_auth->is_group_admin())){
-        redirect('dashboard');
+        if(!($this->ion_auth->is_admin() || $this->ion_auth->is_region_admin() || $this->ion_auth->in_group('event') || $this->ion_auth->is_district_admin() || $this->ion_auth->is_upazila_admin() || $this->ion_auth->is_group_admin())){
+            redirect('dashboard');
+        }
+        $limit = 25;
+
+        if($this->ion_auth->is_admin() || $this->ion_auth->in_group('event')){
+            $results = $this->Event_model->get_applicant_data($limit, $offset, '');
+        }elseif($this->ion_auth->is_region_admin()){
+            $officeRegionID = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
+            $results = $this->Event_model->get_applicant_data($limit, $offset, '', $officeRegionID);
+        }elseif($this->ion_auth->is_district_admin()){
+            $officeDistrictID = $this->Offices_model->get_district_office_by_user_id($this->userSessID)->id;
+            $results = $this->Event_model->get_applicant_data($limit, $offset, '', '', $officeDistrictID);
+        }elseif($this->ion_auth->is_upazila_admin()){
+            $officeUpazilaID = $this->Offices_model->get_upazila_office_by_user_id($this->userSessID)->id;
+            $results = $this->Event_model->get_applicant_data($limit, $offset, '', '', '', $officeUpazilaID);
+        }elseif($this->ion_auth->is_group_admin()){
+            $officeGroupID = $this->Offices_model->get_scout_group_by_user_id($this->userSessID)->id;
+            $results = $this->Event_model->get_applicant_data($limit, $offset, '', '', '', $officeGroupID);
+        }
+
+
+        $this->data['results'] = $results['rows'];
+        $this->data['total_rows'] = $results['num_rows'];
+
+                //...............................................................................
+        $this->data['meta_title'] = 'UApplication List';
+        $html = $this->load->view('application_list_pdf', $this->data, true);
+        $file_name ="application_list_pdf.pdf";
+
+                //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
+        $mpdf = new mPDF('', 'A4', 10, 'nikosh', 10, 10, 10, 10);
+
+                //generate the PDF from the given html
+        $mpdf->WriteHTML($html);
+
+                //download it for 'D'.
+        $mpdf->Output($file_name, "D");
     }
-    $limit = 25;
 
-    if($this->ion_auth->is_admin() || $this->ion_auth->in_group('event')){
-        $results = $this->Event_model->get_applicant_data($limit, $offset, '');
-    }elseif($this->ion_auth->is_region_admin()){
-        $officeRegionID = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
-        $results = $this->Event_model->get_applicant_data($limit, $offset, '', $officeRegionID);
-    }elseif($this->ion_auth->is_district_admin()){
-        $officeDistrictID = $this->Offices_model->get_district_office_by_user_id($this->userSessID)->id;
-        $results = $this->Event_model->get_applicant_data($limit, $offset, '', '', $officeDistrictID);
-    }elseif($this->ion_auth->is_upazila_admin()){
-       $officeUpazilaID = $this->Offices_model->get_upazila_office_by_user_id($this->userSessID)->id;
-       $results = $this->Event_model->get_applicant_data($limit, $offset, '', '', '', $officeUpazilaID);
-   }elseif($this->ion_auth->is_group_admin()){
-       $officeGroupID = $this->Offices_model->get_scout_group_by_user_id($this->userSessID)->id;
-       $results = $this->Event_model->get_applicant_data($limit, $offset, '', '', '', $officeGroupID);
-   }
-
-
-   $this->data['results'] = $results['rows'];
-   $this->data['total_rows'] = $results['num_rows'];
-
-        //...............................................................................
-   $this->data['meta_title'] = 'UApplication List';
-   $html = $this->load->view('application_list_pdf', $this->data, true);
-   $file_name ="application_list_pdf.pdf";
-
-        //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
-   $mpdf = new mPDF('', 'A4', 10, 'nikosh', 10, 10, 10, 10);
-
-        //generate the PDF from the given html
-   $mpdf->WriteHTML($html);
-
-        //download it for 'D'.
-   $mpdf->Output($file_name, "D");
-}
-
-/*************application_list function pdf End**************/
+    /*************application_list function pdf End**************/
 
 
 
@@ -1142,17 +1275,5 @@ function status($scout_id, $event_id, $status) {
 
     redirect('events/details/'.$event_id);
 }
-
-function delete($id) {
-    $id = (int) decrypt_url($id);
-
-    $this->data['info'] = $this->Event_model->delete($id);
-    /***********Activity Logs Start**********/
-    $insert_id = $this->db->insert_id();
-        func_activity_log(3, 'Delete event Data ID :'.$id); //1=C, 2=U, 3=D, 4=V, 5=G ,A = 6
-        /***********Activity Logs End**********/
-        $this->session->set_flashdata('success', 'Information delete successfully.');
-        redirect('events/event_list');
-    }
 
 }
