@@ -1,5 +1,5 @@
-<div class="page-content">     
-  <div class="content">  
+<div class="page-content">
+  <div class="content">
     <ul class="breadcrumb" style="margin-bottom: 20px;">
       <li> <a href="<?=base_url('dashboard')?>" class="active"> Dashboard </a> </li>
       <li> <a href="<?=base_url('dashboard')?>" class="active"> <?=$module_title; ?> </a></li>
@@ -12,13 +12,13 @@
           overflow-x: auto;
           -webkit-overflow-scrolling: touch;
         }
-        
+
         .btn-group {
           display: flex;
           flex-direction: column;
           gap: 5px;
         }
-        
+
         .btn {
           width: 100%;
           margin-bottom: 5px;
@@ -56,14 +56,14 @@
           </div>
 
           <div class="grid-body ">
-            <div id="infoMessage"><?php //echo $message;?></div>            
+            <div id="infoMessage"><?php //echo $message;?></div>
             <?php if($this->session->flashdata('success')):?>
               <div class="alert alert-success">
                 <?php echo $this->session->flashdata('success');?>
               </div>
             <?php endif; ?>
             <?php if($this->session->flashdata('warning')):?>
-                <div class="alert alert-warning">                      
+                <div class="alert alert-warning">
                     <?php echo $this->session->flashdata('warning');;?>
                 </div>
             <?php endif; ?>
@@ -81,13 +81,15 @@
                     <th style="width:10%">Reg. Start</th>
                     <th style="width:10%">Reg. End</th>
                     <th style="width:10%">Details</th>
+                    <th>Attachment</th>
                     <th style="width:10%" class="text-center">Join Event</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <?php 
+                  <?php
                   $sl = 0;
                   foreach ($results as $row):
+                    $attachments = $this->Event_model->get_attachment($row->id);
                     $sl++;
                   ?>
                   <tr>
@@ -99,6 +101,19 @@
                     <td class="v-align-middle"><?=date('d M, y', strtotime($row->event_reg_start))?></td>
                     <td class="v-align-middle"><?=date('d M, y', strtotime($row->event_reg_end))?></td>
                     <td align="right"><a target="_blank" href="<?=base_url('events/details/'.encrypt_url($row->id));?>" class="btn btn-primary btn-mini">Details</a> </td>
+                    <?php if(!empty($attachments)){ ?>
+                      <td align="right">
+                        <div class="btn-group"> <a class="btn btn-primary dropdown-toggle btn-mini" data-toggle="dropdown" href="#"> Attachment <span class="caret"></span> </a>
+                          <ul class="dropdown-menu pull-right">
+                            <?php foreach($attachments as $key => $attachment){ ?>
+                            <li><a target="_blank" href="<?=base_url('event_docs/'.$attachment->file_name);?>">View Attachment <?= $key+1 ?> </a></li>
+                            <?php } ?>
+                          </ul>
+                        </div>
+                      </td>
+                    <?php }else{ ?>
+                      <td align="right">... </td>
+                    <?php } ?>
                     <?php  if(count($this->Event_model->is_apply_event($row->id, $info->id))){?>
                     <td align="right"><a href="<?=base_url('events/join_event/'.$row->id);?>" class="btn btn-blueviolet btn-mini disabled">Already Applied</a> </td>
                     <?php }else{ ?>
@@ -122,7 +137,7 @@
                     </td>
                     <?php } ?>
                   </tr>
-                <?php endforeach; ?> 
+                <?php endforeach; ?>
 
               </tbody>
             </table>

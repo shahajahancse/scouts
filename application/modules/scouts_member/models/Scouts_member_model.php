@@ -23,12 +23,14 @@ class Scouts_member_model extends CI_Model {
         $this->db->from('users u');
         $this->db->join('member_type mt', 'mt.id = u.member_id', 'LEFT');
         $this->db->join('office_groups og', 'og.id = u.sc_group_id', 'LEFT');
-        // $this->db->where('u.scout_id IS NOT NULL', NULL);   // commented on 02-07-2025
-        // $this->db->where('u.member_id !=', 0);           // commented on 02-07-2025
-        // $this->db->where('u.is_verify', 1);              // commented on 02-07-2025
         $this->db->where('u.status', $status);
+        $this->db->where('u.scout_id IS NOT NULL', NULL);
+        $this->db->where('u.member_id !=', 0);
+        $this->db->where('u.is_verify', 1);
         // $this->db->where('u.is_request', '0');
         // $this->db->where('u.is_office', 0);
+        // $this->db->where('u.status', 1);
+
         $this->db->limit($limit);
         $this->db->offset($offset);
         $this->db->order_by('u.id', 'DESC');
@@ -87,14 +89,10 @@ class Scouts_member_model extends CI_Model {
         // count query
         $q = $this->db->select('COUNT(*) as count');
         $this->db->from('users');
-        // $this->db->where('is_request', '0');
-        // if($this->ion_auth->is_admin()){
+        $this->db->where('status', $status);
         $this->db->where('scout_id IS NOT NULL', NULL);
         $this->db->where('member_id !=', 0);
         $this->db->where('is_verify', 1);
-        $this->db->where('status', $status);
-        // }
-        // $this->db->where('is_office', 0);
 
         // Search Filter
         if($this->input->get('region') != NULL){

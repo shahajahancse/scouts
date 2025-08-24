@@ -400,6 +400,7 @@
                            <ul class="sub-menu">
                               <?php if($this->ion_auth->is_scout_member()){ ?>
                               <li> <a href="<?=base_url('events/upcomming_event');?>"> Upcomming Events </a> </li>
+                              <!-- <li> <a href="<?=base_url('events/member_upcomming_event');?>"> Upcomming Events </a> </li>  // for member (new not used) -->
                               <li> <a href="<?=base_url('events/my_application');?>"> My Application List </a> </li>
                               <?php } ?>
 
@@ -670,6 +671,12 @@
                      */ ?>
                      <?php } ?>
 
+                     <li class="start <?=backend_activate_menu_class('scout_news')?>">
+                        <a href="<?=base_url('scout_news/index');?>"> <i class="fa fa-user"></i>
+                           <span class="title">Scout News</span>
+                        </a>
+                     </li>
+
                      <?php if($this->ion_auth->is_admin()){ ?>
                      <li class="start <?=backend_activate_menu_class('e_book')?>">
                         <a href="<?=base_url('e_book');?>"> <i class="fa fa-book"></i>
@@ -677,11 +684,6 @@
                         </a>
                      </li>
 
-                     <li class="start <?=backend_activate_menu_class('scout_news')?>">
-                        <a href="<?=base_url('scout_news/index');?>"> <i class="fa fa-user"></i>
-                           <span class="title">Scout News</span>
-                        </a>
-                     </li>
                      <li class="start <?=backend_activate_menu_class('slider')?>">
                         <a href="<?=base_url('slider');?>"> <i class="fa fa-user"></i>
                            <span class="title">Slider</span>

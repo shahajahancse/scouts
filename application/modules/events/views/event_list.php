@@ -88,6 +88,7 @@
                     <th style="width:10%">Reg. Start</th>
                     <th style="width:10%">Reg. End</th>
                     <th style="width:10%">Status</th>
+                    <th>Attachment</th>
                     <th style="width:10%" class="text-center">Action</th>
                   </tr>
                 </thead>
@@ -95,6 +96,7 @@
                   <?php
                   $sl = $pagination['current_page'];
                   foreach ($results as $row):
+                    $attachments = $this->Event_model->get_attachment($row->id);
                     $sl++;
 
                     if($row->event_start_date > date('Y-m-d')){
@@ -114,6 +116,19 @@
                     <td class="v-align-middle"><?=date('d M, y', strtotime($row->event_reg_start))?></td>
                     <td class="v-align-middle"><?=date('d M, y', strtotime($row->event_reg_end))?></td>
                     <td class="v-align-middle"><span class="label label-green"><?=$status?> </span></td>
+                    <?php if(!empty($attachments)){ ?>
+                      <td align="right">
+                        <div class="btn-group"> <a class="btn btn-primary dropdown-toggle btn-mini" data-toggle="dropdown" href="#"> Attachment <span class="caret"></span> </a>
+                          <ul class="dropdown-menu pull-right">
+                            <?php foreach($attachments as $key => $attachment){ ?>
+                            <li><a target="_blank" href="<?=base_url('event_docs/'.$attachment->file_name);?>">View Attachment <?= $key+1 ?> </a></li>
+                            <?php } ?>
+                          </ul>
+                        </div>
+                      </td>
+                    <?php }else{ ?>
+                      <td align="right">... </td>
+                    <?php } ?>
                     <td align="right">
                        <div class="btn-group"> <a class="btn btn-primary dropdown-toggle btn-mini" data-toggle="dropdown" href="#"> Action <span class="caret"></span> </a>
                          <ul class="dropdown-menu pull-right">

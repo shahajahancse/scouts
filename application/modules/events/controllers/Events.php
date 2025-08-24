@@ -845,6 +845,20 @@ class Events extends Backend_Controller {
     /************************* Scouts Member *************************/
     /*****************************************************************/
 
+    public function member_upcomming_event(){
+        if(!$this->ion_auth->is_scout_member()){
+            redirect('dashboard');
+        }
+
+        $this->data['info'] = $this->data['userDetails']['user_info'];
+        $this->data['results'] = $this->Event_model->member_upcomming_event($this->data['info']);
+
+        // Load page
+        $this->data['meta_title'] = 'Upcomming Event List';
+        $this->data['subview'] = 'upcoming_events';
+        $this->load->view('backend/_layout_main', $this->data);
+    }
+
     public function upcomming_event(){
         if(!$this->ion_auth->is_scout_member()){
             redirect('dashboard');
@@ -939,7 +953,7 @@ class Events extends Backend_Controller {
 
         }elseif($this->ion_auth->is_group_admin()){
             $officeGroupID = $this->Offices_model->get_scout_group_by_user_id($this->userSessID)->id;
-            $results = $this->Event_model->get_applicant_data($limit, $offset, '', '', '', $officeGroupID);
+            $results = $this->Event_model->get_applicant_data($limit, $offset, '', '', '', '', $officeGroupID);
         }
 
         // Result

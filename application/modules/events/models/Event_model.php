@@ -7,7 +7,7 @@ class Event_model extends CI_Model {
     }
 
     public function get_event_data($limit = 1000, $offset = 0, $pb=NULL, $office_id=NULL, $type=null) {
-        $this->db->select('*');
+        $this->db->select('events.*');
         $this->db->from('events');
         $this->db->join('events_details', 'events_details.event_id = events.id', 'LEFT');
         if($pb){
@@ -37,24 +37,6 @@ class Event_model extends CI_Model {
         $query = $this->db->get()->row();
         $result['num_rows'] = $query->count;
         return $result;
-    }
-
-    public function get_scout_member_by_group($groupID){
-        $data[''] = '-- Select One --';
-        $this->db->select('u.id, u.scout_id, u.first_name, u.sc_section_id, u.profile_img, bt.badge_type_name_bn');
-        $this->db->from('users u');
-        $this->db->join('member_type mt', 'mt.id = u.member_id', 'LEFT');
-        $this->db->join('scout_badge sb', 'sb.id = u.sc_badge_id', 'LEFT');
-        $this->db->join('badge_type bt','bt.id = sb.badge_type_id', 'LEFT');
-        $this->db->where('u.scout_id IS NOT NULL', NULL);
-        $this->db->where('u.sc_group_id', $groupID);
-        $this->db->order_by('u.scout_id', 'DESC');
-        $query = $this->db->get();
-        // echo $this->db->last_query(); exit;
-        foreach ($query->result_array() AS $rows) {
-            $data[$rows['id']] =  $rows['scout_id'].' - '.$rows['first_name'] .' ('.$rows['badge_type_name_bn'].')';
-        }
-        return $data;
     }
 
     public function get_data($limit = 1000, $offset = 0, $officeLevel=NULL, $region=NULL, $district=NULL) {
@@ -99,6 +81,24 @@ class Event_model extends CI_Model {
         return $result;
     }
 
+    public function get_scout_member_by_group($groupID){
+        $data[''] = '-- Select One --';
+        $this->db->select('u.id, u.scout_id, u.first_name, u.sc_section_id, u.profile_img, bt.badge_type_name_bn');
+        $this->db->from('users u');
+        $this->db->join('member_type mt', 'mt.id = u.member_id', 'LEFT');
+        $this->db->join('scout_badge sb', 'sb.id = u.sc_badge_id', 'LEFT');
+        $this->db->join('badge_type bt','bt.id = sb.badge_type_id', 'LEFT');
+        $this->db->where('u.scout_id IS NOT NULL', NULL);
+        $this->db->where('u.sc_group_id', $groupID);
+        $this->db->order_by('u.scout_id', 'DESC');
+        $query = $this->db->get();
+        // echo $this->db->last_query(); exit;
+        foreach ($query->result_array() AS $rows) {
+            $data[$rows['id']] =  $rows['scout_id'].' - '.$rows['first_name'] .' ('.$rows['badge_type_name_bn'].')';
+        }
+        return $data;
+    }
+
     public function get_info($id) {
         $this->db->select('e.*, ec.event_cate_name, ear.office_rules_name, r.region_name, od.dis_name, ou.upa_name, og.grp_name');
         $this->db->from('events e');
@@ -140,6 +140,36 @@ class Event_model extends CI_Model {
         }
     }
 
+
+    public function member_upcomming_event($info) {
+        // dd($info);
+        $this->db->select('e.*');
+        $this->db->from('events e');
+        $this->db->where('e.ept_category', 1);
+        $this->db->where('e.published', 'Yes');
+        $this->db->where('e.event_reg_end >=', date('Y-m-d'));
+
+        // Event Participants Type
+        if($info->member_id == 2 && $info->sc_section_id == 1){
+            $this->db->where('e.ept_cub', 1);
+            $this->db->where('e.cub_stage_id <=', 6);
+            $this->db->where('e.cub_stage_id >=', $info->sc_badge_id);
+        }
+        if($info->member_id == 2 && $info->sc_section_id == 2){
+            $this->db->where('e.ept_scout', 1);
+            $this->db->where('e.scout_stage_id <=', 12);
+            $this->db->where('e.scout_stage_id >=', $info->sc_badge_id);
+        }
+        if($info->member_id == 2 && $info->sc_section_id == 3){
+            $this->db->where('e.ept_rover', 1);
+            $this->db->where('e.rover_stage_id <=', 17);
+            $this->db->where('e.rover_stage_id >=', $info->sc_badge_id);
+        }
+        $this->db->order_by('e.id', 'DESC');
+        $query = $this->db->get()->result();
+
+        return $query;
+    }
 
     public function upcomming_event_search($info) {
         // , ep.event_id, ep.scout_id
@@ -298,7 +328,7 @@ class Event_model extends CI_Model {
     }
 
 
-    public function get_applicant_data($limit = 1000, $offset = 0, $eventLevel=NULL, $region=NULL, $district=NULL){
+    public function get_applicant_data($limit = 1000, $offset = 0, $eventLevel=NULL, $region=NULL, $district=NULL, $upazila=NULL, $group=NULL) {
         $this->db->select('ep.*, e.id as eventid, e.event_title, e.event_start_date, e.event_end_date, e.event_level, u.id as user_id, u.scout_id, u.first_name');
         $this->db->from('event_participant ep');
         $this->db->join('events e', 'e.id = ep.event_id', 'LEFT');
@@ -313,6 +343,12 @@ class Event_model extends CI_Model {
         if($district){
             $this->db->where('ep.curr_district_id', $district);
         }
+        if($upazila){
+            $this->db->where('ep.curr_upazila_id', $upazila);
+        }
+        if($group){
+            $this->db->where('ep.curr_group_id', $group);
+        }
         $query = $this->db->get()->result();
         // echo $this->db->last_query(); exit;
         $result['rows'] = $query;
@@ -325,6 +361,12 @@ class Event_model extends CI_Model {
         }
         if($district){
             $this->db->where('curr_district_id', $district);
+        }
+        if($upazila){
+            $this->db->where('curr_upazila_id', $upazila);
+        }
+        if($group){
+            $this->db->where('curr_group_id', $group);
         }
         $query = $this->db->get()->result();
         $tmp = $query;
