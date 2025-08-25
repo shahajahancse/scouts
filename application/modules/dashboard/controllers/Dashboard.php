@@ -864,6 +864,11 @@ class Dashboard extends Backend_Controller {
 			$this->data['subview'] = 'efile';
 			$this->load->view('backend/_layout_main', $this->data);
 		}
+		//Load page
+		$this->data['meta_title'] = 'Dashboard';
+		$this->data['subview'] = 'employee';
+		$this->load->view('backend/_layout_main', $this->data);
+
 	}
 
 	public function region_overview($regionID){
