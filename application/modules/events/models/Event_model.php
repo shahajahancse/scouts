@@ -175,66 +175,69 @@ class Event_model extends CI_Model {
         // , ep.event_id, ep.scout_id
         $this->db->select('e.*');
         $this->db->from('events e');
-        // $this->db->join('event_participant ep', 'ep.event_id = e.id', 'LEFT');
         $this->db->where('e.ept_category', 1);
         $this->db->where('e.published', 'Yes');
-        $this->db->where('e.event_reg_end <=', date('Y-m-d'));
+        $this->db->where('e.event_end_date >=', date('Y-m-d'));
 
         // Event type
-        if($this->db->where('e.et_national', 1)){
-            $this->db->or_where_in('e.et_region_ids', $info->sc_region_id);
-            $this->db->or_where_in('e.et_district_ids', $info->sc_district_id);
-            $this->db->or_where_in('e.et_upazila_ids', $info->sc_upa_tha_id);
-        }
-        if($this->db->where('e.et_international', 1)){
-            $this->db->or_where_in('e.et_region_ids', $info->sc_region_id);
-            $this->db->or_where_in('e.et_district_ids', $info->sc_district_id);
-            $this->db->or_where_in('e.et_upazila_ids', $info->sc_upa_tha_id);
+        if(!$this->ion_auth->is_admin()){
+            if($this->db->where('e.et_national', 1)){
+                $this->db->or_where_in('e.et_region_ids', $info->sc_region_id);
+                $this->db->or_where_in('e.et_district_ids', $info->sc_district_id);
+                $this->db->or_where_in('e.et_upazila_ids', $info->sc_upa_tha_id);
+            }
+            if($this->db->where('e.et_international', 1)){
+                $this->db->or_where_in('e.et_region_ids', $info->sc_region_id);
+                $this->db->or_where_in('e.et_district_ids', $info->sc_district_id);
+                $this->db->or_where_in('e.et_upazila_ids', $info->sc_upa_tha_id);
+            }
         }
 
+        // comment on 02-09-2025
         // Event Participants Type
-        if($info->member_id == 2 && $info->sc_section_id == 1){
-            if($this->db->where('e.ept_cub', 1)){
-                $this->db->where('e.cub_stage_id >=', $info->sc_badge_id);
-                $this->db->where('e.cub_stage_id <=', 6);
-                $this->db->where('e.event_reg_end >=', date('Y-m-d'));
-            }
-        }
+        // if($info->member_id == 2 && $info->sc_section_id == 1){
+        //     if($this->db->where('e.ept_cub', 1)){
+        //         $this->db->where('e.cub_stage_id >=', $info->sc_badge_id);
+        //         $this->db->where('e.cub_stage_id <=', 6);
+        //         $this->db->where('e.event_reg_end >=', date('Y-m-d'));
+        //     }
+        // }
 
-        if($info->member_id == 2 && $info->sc_section_id == 2){
-            if($this->db->where('e.ept_scout', 1)){
-                $this->db->where('e.scout_stage_id >=', $info->sc_badge_id);
-                $this->db->where('e.scout_stage_id <=', 12);
-                $this->db->where('e.event_reg_end >=', date('Y-m-d'));
-            }
-        }
+        // if($info->member_id == 2 && $info->sc_section_id == 2){
+        //     if($this->db->where('e.ept_scout', 1)){
+        //         $this->db->where('e.scout_stage_id >=', $info->sc_badge_id);
+        //         $this->db->where('e.scout_stage_id <=', 12);
+        //         $this->db->where('e.event_reg_end >=', date('Y-m-d'));
+        //     }
+        // }
 
-        if($info->member_id == 2 && $info->sc_section_id == 3){
-            if($this->db->where('e.ept_rover', 1)){
-                $this->db->where('e.rover_stage_id >=', $info->sc_badge_id);
-                $this->db->where('e.rover_stage_id <=', 17);
-                $this->db->where('e.event_reg_end >=', date('Y-m-d'));
-            }
-        }
+        // if($info->member_id == 2 && $info->sc_section_id == 3){
+        //     if($this->db->where('e.ept_rover', 1)){
+        //         $this->db->where('e.rover_stage_id >=', $info->sc_badge_id);
+        //         $this->db->where('e.rover_stage_id <=', 17);
+        //         $this->db->where('e.event_reg_end >=', date('Y-m-d'));
+        //     }
+        // }
 
-        if($info->member_id == 8){
-            if($this->db->where('e.ept_leader', 1)){
-                if($info->sc_section_id == 1){
-                    $this->db->where('e.leader_stage_id >=', $info->sc_badge_id);
-                    $this->db->where('e.leader_stage_id <=', 111);
-                }elseif($info->sc_section_id == 2){
-                    $this->db->where('e.leader_stage_id >=', $info->sc_badge_id);
-                    $this->db->where('e.leader_stage_id <=', 102);
-                }elseif($info->sc_section_id == 3){
-                    $this->db->where('e.leader_stage_id >=', $info->sc_badge_id);
-                    $this->db->where('e.leader_stage_id <=', 93);
-                }elseif($info->sc_section_id == 4){
-                    $this->db->where('e.leader_stage_id >=', $info->sc_badge_id);
-                    $this->db->where('e.leader_stage_id <=', 84);
-                }
-                $this->db->where('e.event_reg_end >=', date('Y-m-d'));
-            }
-        }
+        // if($info->member_id == 8){
+        //     if($this->db->where('e.ept_leader', 1)){
+        //         if($info->sc_section_id == 1){
+        //             $this->db->where('e.leader_stage_id >=', $info->sc_badge_id);
+        //             $this->db->where('e.leader_stage_id <=', 111);
+        //         }elseif($info->sc_section_id == 2){
+        //             $this->db->where('e.leader_stage_id >=', $info->sc_badge_id);
+        //             $this->db->where('e.leader_stage_id <=', 102);
+        //         }elseif($info->sc_section_id == 3){
+        //             $this->db->where('e.leader_stage_id >=', $info->sc_badge_id);
+        //             $this->db->where('e.leader_stage_id <=', 93);
+        //         }elseif($info->sc_section_id == 4){
+        //             $this->db->where('e.leader_stage_id >=', $info->sc_badge_id);
+        //             $this->db->where('e.leader_stage_id <=', 84);
+        //         }
+        //         $this->db->where('e.event_reg_end >=', date('Y-m-d'));
+        //     }
+        // }
+        // comment on 02-09-2025
 
 
         $this->db->order_by('e.id', 'DESC');
