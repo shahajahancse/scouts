@@ -115,26 +115,28 @@
                       <td align="right">... </td>
                     <?php } ?>
                     <?php  if(count($this->Event_model->is_apply_event($row->id, $info->id))){?>
-                    <td align="right"><a href="<?=base_url('events/join_event/'.$row->id);?>" class="btn btn-blueviolet btn-mini disabled">Already Applied</a> </td>
+                      <td align="right"><a href="<?=base_url('events/join_event/'.$row->id);?>" class="btn btn-blueviolet btn-mini disabled">Already Applied</a> </td>
                     <?php }else{ ?>
-                    <td align="right">
-                      <div class="btn-group"> <a class="btn btn-primary dropdown-toggle btn-mini" data-toggle="dropdown" href="javascript:void(0);"> Apply <span class="caret"></span> </a>
-                        <ul class="dropdown-menu pull-right">
-                        <?php if(($info->member_id == 2 && $info->sc_section_id == 1) || ($info->member_id == 2 && $info->sc_section_id == 2) || ($info->member_id == 2 && $info->sc_section_id == 3) || ($info->member_id == 8) ){ ?>
-                          <li><a href="<?=base_url('events/join_event/'.$row->id.'/1');?>" onclick="return confirm('Are you sure you participate this event?');">Apply As Participaint</a></li>
-                          <?php } ?>
+                      <td align="right">
+                        <div class="btn-group"> <a class="btn btn-primary dropdown-toggle btn-mini" data-toggle="dropdown" href="javascript:void(0);"> Apply <span class="caret"></span> </a>
+                          <ul class="dropdown-menu pull-right">
+                          <?php if(($info->member_id == 2 && $info->sc_section_id == 1) || ($info->member_id == 2 && $info->sc_section_id == 2) || ($info->member_id == 2 && $info->sc_section_id == 3) || ($info->member_id == 8) ){ ?>
+                            <li><a href="<?=base_url('events/join_event/'.$row->id.'/1');?>" onclick="return confirm('Are you sure you participate this event?');">Apply As Participaint</a></li>
+                            <?php } else if ($info->member_id == 9) {  ?>
+                              <li><a href="<?=base_url('events/join_event/'.$row->id.'/1');?>" onclick="return confirm('Are you sure you participate this event?');">Apply As Participaint</a></li>
+                            <?php  } ?>
 
-                          <?php if($info->member_id == 2 && $info->sc_section_id == 3 && $row->need_rover == 'Yes'){ ?>
-                          <li><a href="<?=base_url('events/join_event/'.$row->id.'/2');?>">Apply As Volunteer</a></li>
-                          <?php } ?>
+                            <?php if($info->member_id == 2 && $info->sc_section_id == 3 && $row->need_rover == 'Yes'){ ?>
+                            <li><a href="<?=base_url('events/join_event/'.$row->id.'/2');?>">Apply As Volunteer</a></li>
+                            <?php } ?>
 
-                          <?php if($info->member_id == 8 && $row->need_office == 'Yes'){ ?>
-                          <li><a href="<?=base_url('events/join_event/'.$row->id.'/3');?>">Apply As Official</a></li>
-                          <?php } ?>
+                            <?php if($info->member_id == 8 && $row->need_office == 'Yes'){ ?>
+                            <li><a href="<?=base_url('events/join_event/'.$row->id.'/3');?>">Apply As Official</a></li>
+                            <?php } ?>
 
-                        </ul>
-                      </div>
-                    </td>
+                          </ul>
+                        </div>
+                      </td>
                     <?php } ?>
                   </tr>
                 <?php endforeach; ?>
