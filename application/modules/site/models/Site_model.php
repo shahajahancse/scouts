@@ -165,7 +165,7 @@ class Site_model extends CI_Model {
     //     return $query;
     // }
 
-    public function search_blood_donate($blood, $div=NULL, $dis=NULL, $up=NULL) {
+    public function search_blood_donate_copy($blood, $div=NULL, $dis=NULL, $up=NULL) {
         $date = date('Y-m-d', strtotime('-90 days'));
 
         $this->db->select('u.first_name, u.scout_id, u.profile_img, u.phone, ut.up_th_name, ds.district_name, (YEAR(NOW()) - YEAR(u.dob)) AS age');
@@ -191,6 +191,51 @@ class Site_model extends CI_Model {
 
         return $query;
     }
+
+    public function search_blood_donate($blood, $div = NULL, $dis = NULL, $up = NULL)
+    {
+        // Pre-calc date once
+        // $date = date('Y-m-d', strtotime('-90 days'));
+        $adult_date = date('Y-m-d', strtotime('-18 years')); // <- Faster age check
+
+        $this->db->select("
+            u.first_name,
+            u.scout_id,
+            u.profile_img,
+            u.phone,
+            ut.up_th_name,
+            ds.district_name,
+            TIMESTAMPDIFF(YEAR, u.dob, CURDATE()) AS age
+        ");
+
+        $this->db->from('users u');
+
+        // Apply filters only when provided
+        if (!empty($div)) $this->db->where('u.pre_division_id', $div);
+        if (!empty($dis)) $this->db->where('u.pre_district_id', $dis);
+        if (!empty($up))  $this->db->where('u.pre_upa_tha_id', $up);
+
+        // Scout ID must exist
+        $this->db->where('u.scout_id IS NOT NULL', NULL, FALSE);
+
+        $this->db->where('u.blood_group', $blood);
+        $this->db->where('u.blood_donate_interested', 'yes');
+        // $this->db->where('u.last_donate_date <=', $date);
+
+        // 🚀 FAST AGE CHECK (uses index on dob)
+        $this->db->where('u.dob <=', $adult_date);
+
+        // Joins
+        $this->db->join('upazila_thana ut', 'ut.id = u.pre_upa_tha_id', 'LEFT');
+        $this->db->join('district ds', 'ds.id = u.pre_district_id', 'LEFT');
+
+        // Limit to keep query light
+        $this->db->limit(500);
+        $data = $this->db->get()->result();
+
+        return $data;
+    }
+
 
     public function search_service_traking($mobile) {
         $this->db->select('sr.*, sl.service_name, r.region_name, sl.service_name_bn, r.region_name_en');
