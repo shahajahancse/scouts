@@ -19,10 +19,10 @@ class Reports extends Backend_Controller {
 
    public function index(){
       redirect('reports/scouts_member');
-   }   
+   }
 
-   public function scouts_member(){   
-
+   public function scouts_member(){
+      // dd($this->input->post());
       // Validation
       $this->form_validation->set_rules('division', 'division', 'trim');
 
@@ -33,7 +33,6 @@ class Reports extends Backend_Controller {
       $date_from = date_db_format($this->input->post('date_from'));
       $date_to = date_db_format($this->input->post('date_to'));
 
-
       if($this->form_validation->run() == true){
          // Top Scouts Region Member Registration
          if( $btn_submit == 'smr_region') {
@@ -42,15 +41,17 @@ class Reports extends Backend_Controller {
             $this->data['date_to'] = $this->input->post('date_to');
 
             // Results
-            $this->data['results'] = $this->Reports_model->get_smr_region($date_from, $date_to);
-            // echo '<pre>'; 
+            $this->data['dis_type_info'] = $this->Common_model->get_single_data('scout_district_type', $dis_type);
+            $this->data['results'] = $this->Reports_model->get_smr_region($dis_type, $date_from, $date_to);
+            // echo '<pre>';
             // print_r($this->data['results']); exit;
 
             // Generate PDF
+            $this->data['office_name'] = 'Region Name';
             $this->data['headding'] = 'Top Scouts Member Registration By Region';
             $html = $this->load->view('scouts_member/pdf_smr_region', $this->data, true);
 
-            $mpdf = new mPDF('', 'A4', 10, '', 10, 10, 10, 5);
+            $mpdf = new mPDF('', 'A4', 10, 'Nikosh', 10, 10, 10, 5);
             $mpdf->WriteHtml($html);
             $mpdf->output();
             // $mpdf->output('report.pdf', "D");
@@ -60,22 +61,17 @@ class Reports extends Backend_Controller {
             $this->data['date_from'] = $this->input->post('date_from');
             $this->data['date_to'] = $this->input->post('date_to');
 
-            if($this->input->post('dis_type')){
-               $this->data['dis_type_info'] = $this->Common_model->get_single_data('scout_district_type', $this->input->post('dis_type'));               
-            }else{
-               $this->data['dis_type_info'] = '';
-            }
-            
             // Results
-            $this->data['results'] = $this->Reports_model->get_smr_district($date_from, $date_to, $dis_type);
-            // echo '<pre>'; 
-            // print_r($this->data['results']); exit;
+            $this->data['dis_type_info'] = $this->Common_model->get_single_data('scout_district_type', $dis_type);
+            $this->data['results'] = $this->Reports_model->get_smr_district($dis_type, $date_from, $date_to);
+            // dd($this->data['results']);
 
             // Generate PDF
+            $this->data['office_name'] = 'District Name';
             $this->data['headding'] = 'Top Scouts Member Registration By District';
             $html = $this->load->view('scouts_member/pdf_smr_district', $this->data, true);
 
-            $mpdf = new mPDF('', 'A4', 10, '', 10, 10, 10, 5);
+            $mpdf = new mPDF('', 'A4', 10, 'Nikosh', 10, 10, 10, 5);
             $mpdf->WriteHtml($html);
             $mpdf->output();
             // $mpdf->output('report.pdf', "D");
@@ -86,15 +82,16 @@ class Reports extends Backend_Controller {
             $this->data['date_to'] = $this->input->post('date_to');
 
             // Results
-            $this->data['results'] = $this->Reports_model->get_smr_upazila($date_from, $date_to);
-            // echo '<pre>'; 
-            // print_r($this->data['results']); exit;
+            $this->data['dis_type_info'] = $this->Common_model->get_single_data('scout_district_type', $dis_type);
+            $this->data['results'] = $this->Reports_model->get_smr_upazila($dis_type, $date_from, $date_to);
+            // dd($this->data['results']);
 
             // Generate PDF
+            $this->data['office_name'] = 'Upazila Name';
             $this->data['headding'] = 'Top Scouts Member Registration By Upazila';
             $html = $this->load->view('scouts_member/pdf_smr_upazila', $this->data, true);
 
-            $mpdf = new mPDF('', 'A4', 10, '', 10, 10, 10, 5);
+            $mpdf = new mPDF('', 'A4', 10, 'Nikosh', 10, 10, 10, 5);
             $mpdf->WriteHtml($html);
             $mpdf->output();
             // $mpdf->output('report.pdf', "D");
@@ -104,75 +101,75 @@ class Reports extends Backend_Controller {
       //Dropdown
       $this->data['regions'] = $this->Common_model->get_regions();
       $this->data['member_type'] = $this->Common_model->get_member_type();
-      $this->data['scout_section'] = $this->Common_model->set_scout_section();      
+      $this->data['scout_section'] = $this->Common_model->set_scout_section();
       $this->data['dis_type'] = $this->Common_model->get_scout_district_type();
 
-      // Load View 
+      // Load View
       $this->data['meta_title'] = 'Scouts Member Reports';
       $this->data['subview'] = 'scouts_member';
       $this->load->view('backend/_layout_main', $this->data);
    }
 
-  //  public function scouts_member($offset=0){
-  //     $limit = 10;          
-  //     $results = $this->Reports_model->get_scout_member($limit, $offset);
-  //     $this->data['rows'] = $results['rows'];
-  //     $this->data['total_rows'] = $results['num_rows'];
-  //     $this->data['scout_group'] = $this->Common_model->set_scout_section(); 
-  //     $this->data['pagination'] = create_pagination('reports/scouts_member/', $this->data['total_rows'], $limit, 3, $full_tag_wrap = true);
+   //  public function scouts_member($offset=0){
+   //     $limit = 10;
+   //     $results = $this->Reports_model->get_scout_member($limit, $offset);
+   //     $this->data['rows'] = $results['rows'];
+   //     $this->data['total_rows'] = $results['num_rows'];
+   //     $this->data['scout_group'] = $this->Common_model->set_scout_section();
+   //     $this->data['pagination'] = create_pagination('reports/scouts_member/', $this->data['total_rows'], $limit, 3, $full_tag_wrap = true);
 
 
-  //     $this->data['districts'] = array('-- জেলা নির্বাচন করুন --');
-  //     $this->data['upazilas'] = array('-- উপজেলা নির্বাচন করুন --');
-  //     $this->data['scout_groups'] = array('-- গ্রুপ নির্বাচন করুন --');
-  //     $this->data['region_id'] = NULL;
-  //     $this->data['district_id'] = NULL;
-  //     $this->data['upazila_id'] = NULL;
-  //     $this->data['group_id'] = NULL;
-  //     if($this->input->get('region') != NULL){
-  //       $this->data['region_id'] = $this->input->get('region');
-  //       $districts = $this->Common_model->get_sc_dis_by_region_id($this->input->get('region'));
-  //       $this->data['districts'] = $districts;
-  //    }
-  //    if($this->input->get('district') != NULL){
-  //       $this->data['district_id'] = $this->input->get('district');
+   //     $this->data['districts'] = array('-- জেলা নির্বাচন করুন --');
+   //     $this->data['upazilas'] = array('-- উপজেলা নির্বাচন করুন --');
+   //     $this->data['scout_groups'] = array('-- গ্রুপ নির্বাচন করুন --');
+   //     $this->data['region_id'] = NULL;
+   //     $this->data['district_id'] = NULL;
+   //     $this->data['upazila_id'] = NULL;
+   //     $this->data['group_id'] = NULL;
+   //     if($this->input->get('region') != NULL){
+   //       $this->data['region_id'] = $this->input->get('region');
+   //       $districts = $this->Common_model->get_sc_dis_by_region_id($this->input->get('region'));
+   //       $this->data['districts'] = $districts;
+   //    }
+   //    if($this->input->get('district') != NULL){
+   //       $this->data['district_id'] = $this->input->get('district');
 
-  //       $upazilas = $this->Common_model->get_sc_upazila_by_district_id($this->input->get('district'));
-  //       $this->data['upazilas'] = $upazilas;
+   //       $upazilas = $this->Common_model->get_sc_upazila_by_district_id($this->input->get('district'));
+   //       $this->data['upazilas'] = $upazilas;
 
-  //       $scout_groups = $this->Common_model->get_sc_group_by_district_id($this->input->get('district'));
-  //       $this->data['scout_groups'] = $scout_groups;
-  //    }
-  //    if($this->input->get('upazila') != NULL){
-  //       $this->data['upazila_id'] = $this->input->get('upazila');
+   //       $scout_groups = $this->Common_model->get_sc_group_by_district_id($this->input->get('district'));
+   //       $this->data['scout_groups'] = $scout_groups;
+   //    }
+   //    if($this->input->get('upazila') != NULL){
+   //       $this->data['upazila_id'] = $this->input->get('upazila');
 
-  //       $scout_groups = $this->Common_model->get_sc_group_by_upazila_thana_id($this->input->get('upazila'));
-  //       $this->data['scout_groups'] = $scout_groups;
-  //    }
-  //    if($this->input->get('group') != NULL){
-  //       $this->data['group_id'] = $this->input->get('group');
-  //    }
+   //       $scout_groups = $this->Common_model->get_sc_group_by_upazila_thana_id($this->input->get('upazila'));
+   //       $this->data['scout_groups'] = $scout_groups;
+   //    }
+   //    if($this->input->get('group') != NULL){
+   //       $this->data['group_id'] = $this->input->get('group');
+   //    }
 
-  //     // Dropdown
-  //    $this->data['divisions'] = $this->Common_model->get_division(); 
-  //     //$this->data['districts'] = $this->Common_model->get_district();
+   //     // Dropdown
+   //    $this->data['divisions'] = $this->Common_model->get_division();
+   //     //$this->data['districts'] = $this->Common_model->get_district();
 
-  //     //$this->data['upazilas'] = $this->Common_model->get_upazila_thana(); 
-  //    $this->data['regions'] = $this->Common_model->get_regions(); 
-  //     //$this->data['scout_section'] = $this->Common_model->set_scout_section();
+   //     //$this->data['upazilas'] = $this->Common_model->get_upazila_thana();
+   //    $this->data['regions'] = $this->Common_model->get_regions();
+   //     //$this->data['scout_section'] = $this->Common_model->set_scout_section();
 
-  //    $this->data['download_url'] = base_url('reports/pdf_scouts_member')."?region=".$this->data['region_id']."&district=".$this->data['district_id']."&upazila=".$this->data['upazila_id']."&group=".$this->data['group_id'];
-  //    $this->data['doc_url'] = base_url('reports/doc_scouts_member')."?region=".$this->data['region_id']."&district=".$this->data['district_id']."&upazila=".$this->data['upazila_id']."&group=".$this->data['group_id'];
+   //    $this->data['download_url'] = base_url('reports/pdf_scouts_member')."?region=".$this->data['region_id']."&district=".$this->data['district_id']."&upazila=".$this->data['upazila_id']."&group=".$this->data['group_id'];
+   //    $this->data['doc_url'] = base_url('reports/doc_scouts_member')."?region=".$this->data['region_id']."&district=".$this->data['district_id']."&upazila=".$this->data['upazila_id']."&group=".$this->data['group_id'];
 
-  //    $this->data['meta_title'] = 'All Scouts Member Reports';
-  //    $this->data['subview'] = 'scouts_member';
-  //    $this->load->view('backend/_layout_main', $this->data);
-  // }
+   //    $this->data['meta_title'] = 'All Scouts Member Reports';
+   //    $this->data['subview'] = 'scouts_member';
+   //    $this->load->view('backend/_layout_main', $this->data);
+   // }
 
    public function scouts_regional($offset=0){
       $results = $this->data['results'] = $this->Reports_model->get_region();
 
-     // $this->data['regions'] = $this->Common_model->get_regions(); 
+     // $this->data['regions'] = $this->Common_model->get_regions();
 
       $this->data['meta_title'] = 'All Region Scouts';
       $this->data['subview'] = 'region';
@@ -215,7 +212,7 @@ class Reports extends Backend_Controller {
  $excel_row = 3;
  $sl=0;
  foreach($results as $row)
- {   
+ {
     $sl++;
 
     if($row->region_status == 1) {
@@ -267,12 +264,12 @@ $object_writer->save('php://output');
 
 public function scouts_district_offices($offset=0){
 
-   $this->data['results'] = $this->Reports_model->get_scout_district(); 
+   $this->data['results'] = $this->Reports_model->get_scout_district();
     /* print_r( $this->data['results']);
     exit;*/
-      //dropdown  
+      //dropdown
 
-    $this->data['regions'] = $this->Common_model->get_regions();  
+    $this->data['regions'] = $this->Common_model->get_regions();
 
     $this->data['region_id'] = NULL;
     if($this->input->get('region') != NULL){
@@ -288,11 +285,11 @@ public function scouts_district_offices($offset=0){
  public function scouts_upozila(){
 
    $this->data['results'] = $this->Reports_model->get_scout_upazila();
-       //dropdown  
-   $this->data['divisions'] = $this->Common_model->get_division(); 
-   $this->data['districts'] = $this->Common_model->get_district(); 
-   $this->data['upazilas'] = $this->Common_model->get_upazila_thana(); 
-   $this->data['regions'] = $this->Common_model->get_regions(); 
+       //dropdown
+   $this->data['divisions'] = $this->Common_model->get_division();
+   $this->data['districts'] = $this->Common_model->get_district();
+   $this->data['upazilas'] = $this->Common_model->get_upazila_thana();
+   $this->data['regions'] = $this->Common_model->get_regions();
 
    $this->data['districts'] = array('-- জেলা নির্বাচন করুন --');
    $this->data['region_id'] = NULL;
@@ -315,11 +312,11 @@ public function scouts_district_offices($offset=0){
 public function scouts_groups(){
 
  $this->data['results'] = $this->Reports_model->get_scout_group();
-          //dropdown  
- $this->data['divisions'] = $this->Common_model->get_division(); 
- $this->data['districts'] = $this->Common_model->get_district(); 
- $this->data['upazilas'] = $this->Common_model->get_upazila_thana(); 
- $this->data['regions'] = $this->Common_model->get_regions(); 
+          //dropdown
+ $this->data['divisions'] = $this->Common_model->get_division();
+ $this->data['districts'] = $this->Common_model->get_district();
+ $this->data['upazilas'] = $this->Common_model->get_upazila_thana();
+ $this->data['regions'] = $this->Common_model->get_regions();
  $this->data['scout_section'] = $this->Common_model->set_scout_section();
 
  $this->data['region_id'] = NULL;
@@ -359,10 +356,10 @@ $this->load->view('backend/_layout_main', $this->data);
 
 public function doc_scouts_groups(){
  $results = $this->data['results'] = $this->Reports_model->get_scout_group();
- $this->data['divisions'] = $this->Common_model->get_division(); 
- $this->data['districts'] = $this->Common_model->get_district(); 
- $this->data['upazilas'] = $this->Common_model->get_upazila_thana(); 
- $this->data['regions'] = $this->Common_model->get_regions(); 
+ $this->data['divisions'] = $this->Common_model->get_division();
+ $this->data['districts'] = $this->Common_model->get_district();
+ $this->data['upazilas'] = $this->Common_model->get_upazila_thana();
+ $this->data['regions'] = $this->Common_model->get_regions();
  $this->data['scout_section'] = $this->Common_model->set_scout_section();
 
  $this->data['region_id'] = NULL;
@@ -480,11 +477,11 @@ if($_SERVER['HTTP_HOST'] === 'localhost'){
 
 public function pdf_scouts_groups(){
  $this->data['results'] = $this->Reports_model->get_scout_group();
-          //dropdown  
- $this->data['divisions'] = $this->Common_model->get_division(); 
- $this->data['districts'] = $this->Common_model->get_district(); 
- $this->data['upazilas'] = $this->Common_model->get_upazila_thana(); 
- $this->data['regions'] = $this->Common_model->get_regions(); 
+          //dropdown
+ $this->data['divisions'] = $this->Common_model->get_division();
+ $this->data['districts'] = $this->Common_model->get_district();
+ $this->data['upazilas'] = $this->Common_model->get_upazila_thana();
+ $this->data['regions'] = $this->Common_model->get_regions();
  $this->data['scout_section'] = $this->Common_model->set_scout_section();
 
  $this->data['region_id'] = NULL;
@@ -494,7 +491,7 @@ public function pdf_scouts_groups(){
 
         //...............................................................................
 $this->data['meta_title'] = 'All Upazila/Thana Scouts Office';
-$html = $this->load->view('pdf_scouts_groups', $this->data, true);   
+$html = $this->load->view('pdf_scouts_groups', $this->data, true);
 $file_name ="pdf_scouts_groups.pdf";
 
         //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
@@ -503,7 +500,7 @@ $mpdf = new mPDF('', 'A4', 10, 'nikosh', 10, 10, 10, 10);
         //generate the PDF from the given html
 $mpdf->WriteHTML($html);
 
-        //download it for 'D'. 
+        //download it for 'D'.
 $mpdf->Output($file_name, "D");
 }
 
@@ -511,10 +508,10 @@ $mpdf->Output($file_name, "D");
 public function scouts_units(){
  $this->data['results'] = $this->Reports_model->get_scout_unit();
 
- $this->data['divisions'] = $this->Common_model->get_division(); 
- $this->data['districts'] = $this->Common_model->get_district(); 
- $this->data['upazilas'] = $this->Common_model->get_upazila_thana(); 
- $this->data['regions'] = $this->Common_model->get_regions(); 
+ $this->data['divisions'] = $this->Common_model->get_division();
+ $this->data['districts'] = $this->Common_model->get_district();
+ $this->data['upazilas'] = $this->Common_model->get_upazila_thana();
+ $this->data['regions'] = $this->Common_model->get_regions();
  $this->data['scout_section'] = $this->Common_model->set_scout_section();
 
 
@@ -563,7 +560,7 @@ public function pdf_scouts_units(){
  $this->data['results'] = $this->Reports_model->get_scout_unit();
         //...............................................................................
  $this->data['meta_title'] = 'Scout Unit Office';
- $html = $this->load->view('pdf_scouts_units', $this->data, true);   
+ $html = $this->load->view('pdf_scouts_units', $this->data, true);
  $file_name ="pdf_scouts_units.pdf";
 
         //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
@@ -572,7 +569,7 @@ public function pdf_scouts_units(){
         //generate the PDF from the given html
  $mpdf->WriteHTML($html);
 
-        //download it for 'D'. 
+        //download it for 'D'.
  $mpdf->Output($file_name, "D");
 }
 
@@ -690,7 +687,7 @@ if($_SERVER['HTTP_HOST'] === 'localhost'){
 
 
 public function national(){
- $this->data['results'] = $this->Reports_model->get_national_committee(); 
+ $this->data['results'] = $this->Reports_model->get_national_committee();
         // print_r( $this->data['results']);
         //exit;
         // Load page
@@ -703,7 +700,7 @@ public function region(){
       redirect('dashboard');
    }
 
-   $this->data['results'] = $this->Reports_model->get_region_committee(); 
+   $this->data['results'] = $this->Reports_model->get_region_committee();
 
       // Load page
    $this->data['meta_title'] = 'All Region Scouts Executive Committee';
@@ -714,10 +711,10 @@ public function region(){
 public function district(){
    if($this->ion_auth->is_admin()){
       $this->data['results'] = $this->Reports_model->get_district_committee();
-         // $this->data['results'] = $this->Offices_model->get_scout_district(); 
+         // $this->data['results'] = $this->Offices_model->get_scout_district();
    }elseif($this->ion_auth->is_region_admin()){
       $region_id = $this->Reports_model->get_current_region_from_committee($this->session->userdata('user_id'))->office_region_id;
-      $this->data['results'] = $this->Reports_model->get_district_committee($region_id); 
+      $this->data['results'] = $this->Reports_model->get_district_committee($region_id);
    }
 
       // Load page
@@ -728,11 +725,11 @@ public function district(){
 
 public function upazila(){
    if($this->ion_auth->is_admin()){
-    $this->data['results'] = $this->Reports_model->get_upazila_thana_committee();  
+    $this->data['results'] = $this->Reports_model->get_upazila_thana_committee();
 
  }elseif($this->ion_auth->is_region_admin()){
    $region_id = $this->Reports_model->get_current_region_from_committee($this->session->userdata('user_id'))->office_region_id;
-   $this->data['results'] = $this->Reports_model->get_upazila_thana_committee($region_id); 
+   $this->data['results'] = $this->Reports_model->get_upazila_thana_committee($region_id);
 
 }elseif($this->ion_auth->is_district_admin()){
    $sc_district_id = $this->Reports_model->get_current_district_from_committee($this->session->userdata('user_id'))->office_district_id;
@@ -749,11 +746,11 @@ $this->load->view('backend/_layout_main', $this->data);
 public function pdf_upazila(){
 
  $this->data['results'] = $this->Reports_model->get_scout_upazila();
-       //dropdown  
- $this->data['divisions'] = $this->Common_model->get_division(); 
- $this->data['districts'] = $this->Common_model->get_district(); 
- $this->data['upazilas'] = $this->Common_model->get_upazila_thana(); 
- $this->data['regions'] = $this->Common_model->get_regions(); 
+       //dropdown
+ $this->data['divisions'] = $this->Common_model->get_division();
+ $this->data['districts'] = $this->Common_model->get_district();
+ $this->data['upazilas'] = $this->Common_model->get_upazila_thana();
+ $this->data['regions'] = $this->Common_model->get_regions();
 
  $this->data['districts'] = array('-- জেলা নির্বাচন করুন --');
  $this->data['region_id'] = NULL;
@@ -769,7 +766,7 @@ public function pdf_upazila(){
 
         //...............................................................................
  $this->data['meta_title'] = 'All Upazila/Thana Scouts Office';
- $html = $this->load->view('pdf_upazila', $this->data, true);   
+ $html = $this->load->view('pdf_upazila', $this->data, true);
  $file_name ="pdf_upazila.pdf";
 
         //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
@@ -778,17 +775,17 @@ public function pdf_upazila(){
         //generate the PDF from the given html
  $mpdf->WriteHTML($html);
 
-        //download it for 'D'. 
+        //download it for 'D'.
  $mpdf->Output($file_name, "D");
 }
 public function doc_upazila(){
 
  $results = $this->data['results'] = $this->Reports_model->get_scout_upazila();
-       //dropdown  
- $this->data['divisions'] = $this->Common_model->get_division(); 
- $this->data['districts'] = $this->Common_model->get_district(); 
- $this->data['upazilas'] = $this->Common_model->get_upazila_thana(); 
- $this->data['regions'] = $this->Common_model->get_regions(); 
+       //dropdown
+ $this->data['divisions'] = $this->Common_model->get_division();
+ $this->data['districts'] = $this->Common_model->get_district();
+ $this->data['upazilas'] = $this->Common_model->get_upazila_thana();
+ $this->data['regions'] = $this->Common_model->get_regions();
 
  $this->data['districts'] = array('-- জেলা নির্বাচন করুন --');
  $this->data['region_id'] = NULL;
@@ -911,11 +908,11 @@ if($_SERVER['HTTP_HOST'] === 'localhost'){
 
 public function scout_group(){
    if($this->ion_auth->is_admin()){
-      $this->data['results'] = $this->Reports_model->get_scout_group_committee();  
+      $this->data['results'] = $this->Reports_model->get_scout_group_committee();
 
    }elseif($this->ion_auth->is_region_admin()){
       $region_id = $this->Reports_model->get_current_region_from_committee($this->session->userdata('user_id'))->office_region_id;
-      $this->data['results'] = $this->Reports_model->get_scout_group_committee($region_id); 
+      $this->data['results'] = $this->Reports_model->get_scout_group_committee($region_id);
 
    }elseif($this->ion_auth->is_district_admin()){
       $sc_district_id = $this->Reports_model->get_current_district_from_committee($this->session->userdata('user_id'))->office_district_id;
@@ -999,8 +996,8 @@ public function member_statics(){
       //...............................................................................
 
       //$this->data['meta_title'] = 'Dashboard';
-   $this->data['subview'] = 'member_statics';           
-   $this->load->view('backend/_layout_main', $this->data); 
+   $this->data['subview'] = 'member_statics';
+   $this->load->view('backend/_layout_main', $this->data);
 }
 public function section_wise_report(){
 
@@ -1033,8 +1030,8 @@ public function section_wise_report(){
       //...............................................................................
 
       //$this->data['meta_title'] = 'Dashboard';
-        $this->data['subview'] = 'section_wise_report';           
-        $this->load->view('backend/_layout_main', $this->data); 
+        $this->data['subview'] = 'section_wise_report';
+        $this->load->view('backend/_layout_main', $this->data);
      }
      public function unit_report(){
 
@@ -1054,8 +1051,8 @@ public function section_wise_report(){
       //...............................................................................
 
       //$this->data['meta_title'] = 'Dashboard';
-         $this->data['subview'] = 'unit_report';           
-         $this->load->view('backend/_layout_main', $this->data); 
+         $this->data['subview'] = 'unit_report';
+         $this->load->view('backend/_layout_main', $this->data);
       }
 
       public function doc_unit_report(){
@@ -1124,23 +1121,23 @@ public function section_wise_report(){
        $tableTwo->addCell(2000, $styleCell)->addText("মোট", $fontStyleThree, array('align' => 'center', 'space' => array('before' => 50, 'after' => 0)));
        $tableTwo->addCell(2000, $styleCellTwo)->addText("Growth", $fontStyleThree, array('align' => 'center', 'space' => array('before' => 50, 'after' => 0)));
 
-       foreach ($unit_type as $key => $value) { 
-         foreach ($count_unit_type_wise as $ke => $val) { 
+       foreach ($unit_type as $key => $value) {
+         foreach ($count_unit_type_wise as $ke => $val) {
            if($val->unit_type==$key){
 
              $tableTwo->addRow(10);
              $tableTwo->addCell(5000, $styleCellTwo)->addText($value, $fontStyleFour, array('align' => 'center', 'space' => array('before' => 50, 'after' => 0)));
 
              $tableTwo->addCell(2000, $styleCellTwo)->addText($val->count_total, $fontStyleFour, array('align' => 'center', 'space' => array('before' => 50, 'after' => 0)));
-             foreach ($count_unit_year_wise_type_wise as $key => $v) { 
+             foreach ($count_unit_year_wise_type_wise as $key => $v) {
                if($v->unit_type== $val->unit_type){
                  $sub=$v->count_now- $v->count_prev;
                  if($v->count_prev!=0){
-                    $growth=($sub/$v->count_prev)*100; 
+                    $growth=($sub/$v->count_prev)*100;
                     $tableTwo->addCell(2000, $styleCellTwo)->addText($growth.'%', $fontStyleFour, array('align' => 'center', 'space' => array('before' => 50, 'after' => 0)));
                  } else {
                    $in=$v->count_now*100;
-                   echo  $in.'%'; 
+                   echo  $in.'%';
                 }
 
              }
@@ -1174,12 +1171,12 @@ public function pdf_scouts_member(){
    $results = $this->Reports_model->get_scout_member_pdf();
    $this->data['rows'] = $results['rows'];
    $this->data['total_rows'] = $results['num_rows'];
-   $this->data['scout_group'] = $this->Common_model->set_scout_section(); 
+   $this->data['scout_group'] = $this->Common_model->set_scout_section();
 
 
       //...............................................................................
    $this->data['meta_title'] = 'All Scouts Member Reports';
-   $html = $this->load->view('pdf_scouts_member', $this->data, true);   
+   $html = $this->load->view('pdf_scouts_member', $this->data, true);
    $file_name ="scouts_member.pdf";
 
       //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
@@ -1188,7 +1185,7 @@ public function pdf_scouts_member(){
       //generate the PDF from the given html
    $mpdf->WriteHTML($html);
 
-      //download it for 'D'. 
+      //download it for 'D'.
    $mpdf->Output($file_name, "D");
 }
 
@@ -1199,7 +1196,7 @@ public function doc_scouts_member(){
    $results = $this->Reports_model->get_scout_member_pdf();
       //$this->data['rows'] = $results['rows'];
       //$this->data['total_rows'] = $results['num_rows'];
-   $this->data['scout_group'] = $this->Common_model->set_scout_section(); 
+   $this->data['scout_group'] = $this->Common_model->set_scout_section();
 
 
       //...............................................................................
@@ -1238,7 +1235,7 @@ public function doc_scouts_member(){
 
         // Add table style
    $phpWord->addTableStyle('myOwnTableStyle', $styleTable);
-   
+
         // Add table
    $table = $section->addTable('myOwnTableStyle');
 
@@ -1359,7 +1356,7 @@ public function pdf_member_statics(){
 
       //...............................................................................
 
-   $html = $this->load->view('pdf_member_statics', $this->data, true);   
+   $html = $this->load->view('pdf_member_statics', $this->data, true);
    $file_name ="member_statics.pdf";
 
       //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
@@ -1368,8 +1365,8 @@ public function pdf_member_statics(){
       //generate the PDF from the given html
    $mpdf->WriteHTML($html);
 
-      //download it for 'D'. 
-   $mpdf->Output($file_name, "D"); 
+      //download it for 'D'.
+   $mpdf->Output($file_name, "D");
 }
 
 public function doc_member_statics(){
@@ -1583,7 +1580,7 @@ public function pdf_unit_report(){
    $result = $this->Reports_model->get_unit_count_year_wise_groupby_unit_type();
    $this->data['count_unit_year_wise_type_wise'] = $result;
 
-   $html = $this->load->view('pdf_unit_report', $this->data, true);   
+   $html = $this->load->view('pdf_unit_report', $this->data, true);
    $file_name ="unit_report.pdf";
 
       //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
@@ -1592,7 +1589,7 @@ public function pdf_unit_report(){
       //generate the PDF from the given html
    $mpdf->WriteHTML($html);
 
-      //download it for 'D'. 
+      //download it for 'D'.
    $mpdf->Output($file_name, "D");
 }
 
@@ -1600,7 +1597,7 @@ public function doc_scouts_regional(){
   $results = $this->data['results'] = $this->Reports_model->get_region();
       //$this->data['rows'] = $results['rows'];
       //$this->data['total_rows'] = $results['num_rows'];
-      //$this->data['scout_group'] = $this->Common_model->set_scout_section(); 
+      //$this->data['scout_group'] = $this->Common_model->set_scout_section();
 
 
       //...............................................................................
@@ -1738,22 +1735,22 @@ public function doc_scouts_regional(){
 
       $results = $this->data['results'] = $this->Reports_model->get_region();
 
-      $html = $this->load->view('pdf_region', $this->data, true);   
+      $html = $this->load->view('pdf_region', $this->data, true);
       $file_name ="pdf_scouts_regional.pdf";
-      
+
       //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
       $mpdf = new mPDF('', 'A4', 10, 'nikosh', 10, 10, 10, 10);
 
       //generate the PDF from the given html
       $mpdf->WriteHTML($html);
-      
-      //download it for 'D'. 
+
+      //download it for 'D'.
       $mpdf->Output($file_name, "D");
    }
 
    public function pdf_scouts_district_offices($offset=0){
-    $this->data['results'] = $this->Reports_model->get_scout_district(); 
-    $this->data['regions'] = $this->Common_model->get_regions();  
+    $this->data['results'] = $this->Reports_model->get_scout_district();
+    $this->data['regions'] = $this->Common_model->get_regions();
 
     $this->data['region_id'] = NULL;
     if($this->input->get('region') != NULL){
@@ -1768,7 +1765,7 @@ public function doc_scouts_regional(){
 
       //...............................................................................
       $this->data['meta_title'] = 'District Scouts Office';
-      $html = $this->load->view('pdf_scouts_district_offices', $this->data, true);   
+      $html = $this->load->view('pdf_scouts_district_offices', $this->data, true);
       $file_name ="pdf_scouts_district_offices.pdf";
       /*echo "<pre>";
       print_r($this->data);
@@ -1778,15 +1775,15 @@ public function doc_scouts_regional(){
 
       //generate the PDF from the given html
       $mpdf->WriteHTML($html);
-      
-      //download it for 'D'. 
+
+      //download it for 'D'.
       $mpdf->Output($file_name, "D");
 
    }
 
    public function doc_scouts_district_offices($offset=0){
-      $results = $this->data['results'] = $this->Reports_model->get_scout_district(); 
-      $this->data['regions'] = $this->Common_model->get_regions();  
+      $results = $this->data['results'] = $this->Reports_model->get_scout_district();
+      $this->data['regions'] = $this->Common_model->get_regions();
 
       $this->data['region_id'] = NULL;
       if($this->input->get('region') != NULL){
@@ -1801,7 +1798,7 @@ public function doc_scouts_regional(){
         // 27-08-18
       $phpWord->setDefaultFontName('Courier New');
       $phpWord->setDefaultFontSize(11);
-      
+
         //our docx will have 'lanscape' paper orientation
       $section = $phpWord->createSection(array('marginTop' => 2000));
 

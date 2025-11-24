@@ -6,154 +6,207 @@ class Reports_model extends CI_Model {
       parent::__construct();
    }
 
-   public function get_smr_upazila($startDate=NULL, $endDate=NULL) {
-      $sql = "SELECT `sc_upa_tha_id` AS upazila_id , `count_member` AS total_member, `count_group` AS total_sc_group, `upa_name_en` FROM ( 
-      SELECT * FROM (SELECT `sc_upa_tha_id`, COUNT(scout_id) AS count_member FROM `users` WHERE `scout_id` IS NOT NULL AND DATE(FROM_UNIXTIME(created_on)) >= '$startDate' AND DATE(FROM_UNIXTIME(created_on)) <= '$endDate' GROUP BY `sc_upa_tha_id`) as user_count_tbl 
-      INNER JOIN (SELECT `grp_scout_upa_id`, COUNT(id) AS count_group FROM `office_groups` GROUP BY `grp_scout_upa_id`) AS group_count_tbl ON user_count_tbl.sc_upa_tha_id=group_count_tbl.grp_scout_upa_id ) as new_tbl 
-      INNER JOIN office_upazila as sou ON sou.id = new_tbl.sc_upa_tha_id ORDER BY total_member DESC";
-      
-      $query = $this->db->query($sql)->result();        
+   public function get_smr_upazila($dis_type, $startDate=NULL, $endDate=NULL) {
+      $startTs = strtotime($startDate);
+      $endTs   = strtotime($endDate);
 
-      // count query
-      // $this->db->select('sc_region_id, sc_group_id, COUNT(scout_id) as count, FROM_UNIXTIME(created_on) AS created');
-      // $this->db->where('scout_id IS NOT NULL', NULL);
-      // $this->db->where('member_id !=', 0);, 
-      // $this->db->where('status', 1);
-      // $this->db->where('gender != ', NULL);
-      // if($startDate){
-      //    $this->db->where('DATE(FROM_UNIXTIME(created_on)) >=', $startDate);
-      // }
-      // if($endDate){
-      //    $this->db->where('DATE(FROM_UNIXTIME(created_on)) <=', $endDate);
-      // }
-      // if($region_id != NULL){
-      //    $this->db->where('sc_region_id', $region_id); 
-      // }
-      // if($sc_district_id != NULL){
-      //    $this->db->where('sc_district_id', $sc_district_id);     
-      // }
-      // if($sc_upa_tha_id != NULL){
-      //    $this->db->where('sc_upa_tha_id', $sc_upa_tha_id);     
-      // }
-      // if($sc_group_id != NULL){
-      //    $this->db->where('sc_group_id', $sc_group_id);     
-      // }
-      // $this->db->group_by('sc_region_id');
-      // $q = $this->db->get('users')->result();
+      // Prepare the subquery for counting users
+      $userCountSql = "
+         SELECT sc_upa_tha_id, COUNT(*) AS total_member
+         FROM users
+         WHERE scout_id IS NOT NULL
+         AND member_id != 0
+      ";
 
-      
-      // $tmp = $q;
-      // $ret['count'] = $tmp[0]->count;
-      // echo $this->db->last_query(); exit;
-      return $query;
-   }
-
-   public function get_smr_district($startDate, $endDate, $disType=NULL) {
-      if($disType != NULL){
-         $where = 'WHERE dis_type = '.$disType;
-      }else{
-         $where = 'WHERE 1';
+      if (!empty($startTs) && !empty($endTs)) {
+         $userCountSql .= " AND created_on BETWEEN {$startTs} AND {$endTs}";
       }
-      $sql = "SELECT `sc_district_id` AS district_id , `count_member` AS total_member, `count_group` AS total_sc_group, `dis_name_en`, `dis_type` FROM ( 
-      SELECT * FROM (SELECT `sc_district_id`, COUNT(scout_id) AS count_member FROM `users` WHERE `scout_id` IS NOT NULL AND DATE(FROM_UNIXTIME(created_on)) >= '$startDate' AND DATE(FROM_UNIXTIME(created_on)) <= '$endDate' GROUP BY `sc_district_id`) as user_count_tbl 
-      INNER JOIN (SELECT `grp_scout_dis_id`, COUNT(id) AS count_group FROM `office_groups` GROUP BY `grp_scout_dis_id`) AS group_count_tbl ON user_count_tbl.sc_district_id=group_count_tbl.grp_scout_dis_id ) as new_tbl 
-      INNER JOIN office_district as sod ON sod.id = new_tbl.sc_district_id $where ORDER BY total_member DESC";
-      
-      $query = $this->db->query($sql)->result();        
+      $userCountSql .= " GROUP BY sc_upa_tha_id"; // aggregate by upazila/thana
 
+      // Main query
+      $this->db->select('up.upa_name AS dis_name, IFNULL(uc.total_member, 0) AS total_member');
+      $this->db->from('office_upazila up');
+      $this->db->join('office_district od', 'od.id = up.upa_scout_dis_id', 'LEFT');
+      $this->db->join("({$userCountSql}) uc", 'uc.sc_upa_tha_id = up.id', 'LEFT');
+      $this->db->where('od.dis_type', $dis_type);
+      $this->db->order_by('total_member', 'DESC'); // just order by total_member
+      $query = $this->db->get()->result();
+
+      // dd($query);
+
+      // $sql = "SELECT `sc_upa_tha_id` AS upazila_id , `count_member` AS total_member, `count_group` AS total_sc_group, `upa_name_en` FROM (
+      // SELECT * FROM (SELECT `sc_upa_tha_id`, COUNT(scout_id) AS count_member FROM `users` WHERE `scout_id` IS NOT NULL AND DATE(FROM_UNIXTIME(created_on)) >= '$startDate' AND DATE(FROM_UNIXTIME(created_on)) <= '$endDate' GROUP BY `sc_upa_tha_id`) as user_count_tbl
+      // INNER JOIN (SELECT `grp_scout_upa_id`, COUNT(id) AS count_group FROM `office_groups` GROUP BY `grp_scout_upa_id`) AS group_count_tbl ON user_count_tbl.sc_upa_tha_id=group_count_tbl.grp_scout_upa_id ) as new_tbl
+      // INNER JOIN office_upazila as sou ON sou.id = new_tbl.sc_upa_tha_id ORDER BY total_member DESC";
+
+      // $query = $this->db->query($sql)->result();
+      return $query;
+   }
+
+   public function get_smr_district($dis_type, $startDate, $endDate) {
+      $startTs = strtotime($startDate);
+      $endTs   = strtotime($endDate);
+
+      // Build user count subquery
+      $userCountSql = "
+         SELECT sc_district_id, COUNT(*) AS total_member
+         FROM users
+         WHERE scout_id IS NOT NULL
+         AND member_id != 0
+      ";
+      // Add date filter if needed
+      if (!empty($startTs) && !empty($endTs)) {
+         $userCountSql .= " AND created_on BETWEEN {$startTs} AND {$endTs}";
+      }
+      $userCountSql .= " GROUP BY sc_district_id";
+
+
+      // Final optimized query
+      $this->db->select("
+         od.id,
+         od.dis_name,
+         COALESCE(u.total_member, 0) AS total_member
+      ");
+      $this->db->from('office_district od');
+      // LEFT JOIN on optimized subquery
+      $this->db->join("({$userCountSql}) u", "u.sc_district_id = od.id", "LEFT");
+      $this->db->where('od.dis_type', $dis_type);
+
+      // Sort by member count
+      $this->db->order_by('u.total_member', 'DESC');
+      $query = $this->db->get()->result();
+      // dd($query);
+
+
+      // if($disType != NULL){
+      //    $where = 'WHERE dis_type = '.$disType;
+      // }else{
+      //    $where = 'WHERE 1';
+      // }
+      // $sql = "SELECT `sc_district_id` AS district_id , `count_member` AS total_member, `count_group` AS total_sc_group, `dis_name_en`, `dis_type` FROM (
+      // SELECT * FROM (SELECT `sc_district_id`, COUNT(scout_id) AS count_member FROM `users` WHERE `scout_id` IS NOT NULL AND DATE(FROM_UNIXTIME(created_on)) >= '$startDate' AND DATE(FROM_UNIXTIME(created_on)) <= '$endDate' GROUP BY `sc_district_id`) as user_count_tbl
+      // INNER JOIN (SELECT `grp_scout_dis_id`, COUNT(id) AS count_group FROM `office_groups` GROUP BY `grp_scout_dis_id`) AS group_count_tbl ON user_count_tbl.sc_district_id=group_count_tbl.grp_scout_dis_id ) as new_tbl
+      // INNER JOIN office_district as sod ON sod.id = new_tbl.sc_district_id $where ORDER BY total_member DESC";
+
+      // $query = $this->db->query($sql)->result();
       // echo $this->db->last_query(); exit;
       return $query;
    }
 
-   public function get_smr_region($startDate=NULL, $endDate=NULL) {
+   public function get_smr_region($dis_type = NULL, $startDate=NULL, $endDate=NULL) {
+      $startTs = strtotime($startDate);
+      $endTs   = strtotime($endDate);
 
-      $sql = "SELECT `sc_region_id` AS region_id , `count_member` AS total_member, `count_group` AS total_sc_group, `region_name_en` FROM ( 
-      SELECT * FROM (SELECT `sc_region_id`, COUNT(scout_id) AS count_member FROM `users` WHERE `scout_id` IS NOT NULL AND DATE(FROM_UNIXTIME(created_on)) >= '$startDate' AND DATE(FROM_UNIXTIME(created_on)) <= '$endDate' GROUP BY `sc_region_id`) as user_count_tbl 
-      INNER JOIN (SELECT `grp_region_id`, COUNT(id) AS count_group FROM `office_groups` GROUP BY `grp_region_id`) AS group_count_tbl ON user_count_tbl.sc_region_id=group_count_tbl.grp_region_id ) as new_tbl 
-      INNER JOIN office_region as sor ON sor.id = new_tbl.sc_region_id ORDER BY total_member DESC";    
+      // Build user count subquery
+      $userCountSql = "
+         SELECT sc_region_id, COUNT(*) AS total_member
+         FROM users
+         WHERE scout_id IS NOT NULL
+         AND member_id != 0
+      ";
+      if (!empty($startTs) && !empty($endTs)) {
+         $userCountSql .= " AND created_on >= {$startTs} AND created_on <= {$endTs}";
+      }
+      $userCountSql .= " GROUP BY sc_region_id";
 
-      // $sql = "SELECT `sc_region_id` AS region_id , `count_member` AS total_member, `region_name_en` FROM ( SELECT `sc_region_id`, COUNT(scout_id) AS count_member FROM `users` WHERE `scout_id` IS NOT NULL AND DATE(FROM_UNIXTIME(created_on)) >= '$startDate' AND DATE(FROM_UNIXTIME(created_on)) <= '$endDate' GROUP BY `sc_region_id`) as user_count_tbl 
-      // INNER JOIN office_region as sor ON sor.id = user_count_tbl.sc_region_id ORDER BY total_member DESC";
-      
-      $query = $this->db->query($sql)->result();    
+      $this->db->select('rg.id, rg.region_name AS dis_name, COALESCE(uc.total_member, 0) AS total_member');
+      $this->db->from('office_region rg');
+      $this->db->join("({$userCountSql}) uc", "uc.sc_region_id = rg.id", "LEFT");
 
+      // Replace join with high-speed EXISTS
+      $this->db->where("EXISTS (
+         SELECT 1 FROM office_district od
+         WHERE od.dis_scout_region_id = rg.id
+            AND od.dis_type = {$dis_type}
+      )", NULL, FALSE);
+
+      $this->db->order_by('total_member', 'DESC');
+      $query = $this->db->get()->result();
+
+      // dd($query);
+
+      // $sql = "SELECT `sc_region_id` AS region_id , `count_member` AS total_member, `count_group` AS total_sc_group, `region_name_en` FROM (
+      // SELECT * FROM (SELECT `sc_region_id`, COUNT(scout_id) AS count_member FROM `users` WHERE `scout_id` IS NOT NULL AND DATE(FROM_UNIXTIME(created_on)) >= '$startDate' AND DATE(FROM_UNIXTIME(created_on)) <= '$endDate' GROUP BY `sc_region_id`) as user_count_tbl
+      // INNER JOIN (SELECT `grp_region_id`, COUNT(id) AS count_group FROM `office_groups` GROUP BY `grp_region_id`) AS group_count_tbl ON user_count_tbl.sc_region_id=group_count_tbl.grp_region_id ) as new_tbl
+      // INNER JOIN office_region as sor ON sor.id = new_tbl.sc_region_id ORDER BY total_member DESC";
+      // $query = $this->db->query($sql)->result();
       return $query;
    }
 
    public function get_scout_member($limit=1000, $offset=0) {
-     $this->db->select('id, scout_id, first_name,  phone, email, active, profile_img');
-     $this->db->from('users ');
+      $this->db->select('id, scout_id, first_name,  phone, email, active, profile_img');
+      $this->db->from('users ');
 
-     if($this->input->get('region') != NULL){
-      $this->db->where('sc_region_id', $this->input->get('region'));     
+      if($this->input->get('region') != NULL){
+         $this->db->where('sc_region_id', $this->input->get('region'));
+      }
+      if($this->input->get('district') > '0'){
+         $this->db->where('sc_district_id', $this->input->get('district'));
+      }
+      if($this->input->get('upazila') > '0'){
+         $this->db->where('sc_upa_tha_id', $this->input->get('upazila'));
+      }
+      if($this->input->get('group') > '0'){
+         $this->db->where('sc_group_id', $this->input->get('group'));
+      }
+
+      $this->db->limit($limit);
+      $this->db->offset($offset);
+
+      $result['rows'] = $this->db->get()->result();
+         // count query
+      $this->db->select('COUNT(*) as count');
+      $this->db->from('users');
+      if($this->input->get('region') != NULL){
+         $this->db->where('sc_region_id', $this->input->get('region'));
+      }
+      if($this->input->get('district') > '0'){
+         $this->db->where('sc_district_id', $this->input->get('district'));
+      }
+      if($this->input->get('upazila') > '0'){
+         $this->db->where('sc_upa_tha_id', $this->input->get('upazila'));
+      }
+      if($this->input->get('group') > '0'){
+         $this->db->where('sc_group_id', $this->input->get('group'));
+      }
+
+      $tmp = $this->db->get()->result();
+      $result['num_rows'] = $tmp[0]->count;
+      return $result;
    }
-   if($this->input->get('district') > '0'){
-      $this->db->where('sc_district_id', $this->input->get('district'));     
-   }
-   if($this->input->get('upazila') > '0'){
-      $this->db->where('sc_upa_tha_id', $this->input->get('upazila'));     
-   }
-   if($this->input->get('group') > '0'){
-      $this->db->where('sc_group_id', $this->input->get('group'));     
-   }
 
-   $this->db->limit($limit);
-   $this->db->offset($offset);
+   public function get_scout_member_pdf() {
+      $this->db->select('id, scout_id, first_name,  phone, email, active, profile_img');
+      $this->db->from('users ');
 
-   $result['rows'] = $this->db->get()->result();
-        // count query
-   $this->db->select('COUNT(*) as count');
-   $this->db->from('users');
-   if($this->input->get('region') != NULL){
-      $this->db->where('sc_region_id', $this->input->get('region'));     
-   }
-   if($this->input->get('district') > '0'){
-      $this->db->where('sc_district_id', $this->input->get('district'));     
-   }
-   if($this->input->get('upazila') > '0'){
-      $this->db->where('sc_upa_tha_id', $this->input->get('upazila'));     
-   }
-   if($this->input->get('group') > '0'){
-      $this->db->where('sc_group_id', $this->input->get('group'));     
+      if($this->input->get('region') != NULL){
+         $this->db->where('sc_region_id', $this->input->get('region'));
+      }
+      if($this->input->get('district') > '0'){
+         $this->db->where('sc_district_id', $this->input->get('district'));
+      }
+      if($this->input->get('upazila') > '0'){
+         $this->db->where('sc_upa_tha_id', $this->input->get('upazila'));
+      }
+      if($this->input->get('group') > '0'){
+         $this->db->where('sc_group_id', $this->input->get('group'));
+      }
+
+      $result['rows'] = $this->db->get()->result();
+
+      return $result;
    }
 
-   $tmp = $this->db->get()->result();
-   $result['num_rows'] = $tmp[0]->count;
+   public function get_region() {
+      // result query
+      $this->db->select('r.*, d.div_name');
+      $this->db->from('office_region r');
+      $this->db->join('division d', 'd.id=r.region_div_id', 'LEFT');
+      $query = $this->db->get()->result();
 
-   return $result;
-}
+      return $query;
+   }
 
-public function get_scout_member_pdf() {
-  $this->db->select('id, scout_id, first_name,  phone, email, active, profile_img');
-  $this->db->from('users ');
-
-  if($this->input->get('region') != NULL){
-   $this->db->where('sc_region_id', $this->input->get('region'));     
-}
-if($this->input->get('district') > '0'){
-   $this->db->where('sc_district_id', $this->input->get('district'));     
-}
-if($this->input->get('upazila') > '0'){
-   $this->db->where('sc_upa_tha_id', $this->input->get('upazila'));     
-}
-if($this->input->get('group') > '0'){
-   $this->db->where('sc_group_id', $this->input->get('group'));     
-}
-
-$result['rows'] = $this->db->get()->result();
-
-return $result;
-}
-
-public function get_region() {
-        // result query
-  $this->db->select('r.*, d.div_name');
-  $this->db->from('office_region r');
-  $this->db->join('division d', 'd.id=r.region_div_id', 'LEFT');        
-  $query = $this->db->get()->result();
-
-  return $query;
-}
 public function get_scout_district($region_id=NULL) {
         // result query
   $this->db->select('od.*, d.div_name, ds.district_name, r.region_name');
@@ -163,7 +216,7 @@ public function get_scout_district($region_id=NULL) {
   $this->db->join('office_region r', 'r.id = od.dis_scout_region_id', 'LEFT');
 
   if($this->input->get('region') != NULL){
-   $this->db->where('od.dis_scout_region_id', $this->input->get('region'));     
+   $this->db->where('od.dis_scout_region_id', $this->input->get('region'));
 }
 
 $query = $this->db->get()->result();
@@ -177,10 +230,10 @@ public function get_scout_upazila() {
         $this->db->join('office_district od', 'od.id = ou.upa_scout_dis_id', 'LEFT');       //4-10-17
 
         if($this->input->get('region') != NULL){
-         $this->db->where('ou.upa_region_id', $this->input->get('region'));     
+         $this->db->where('ou.upa_region_id', $this->input->get('region'));
       }
       if($this->input->get('district') > '0'){
-         $this->db->where('ou.upa_scout_dis_id', $this->input->get('district'));     
+         $this->db->where('ou.upa_scout_dis_id', $this->input->get('district'));
       }
       $query = $this->db->get()->result();
       return $query;
@@ -194,13 +247,13 @@ public function get_scout_upazila() {
      $this->db->join('office_upazila ou', 'ou.id = og.grp_scout_upa_id', 'LEFT');
 
      if($this->input->get('region') != NULL){
-      $this->db->where('og.grp_region_id', $this->input->get('region'));     
+      $this->db->where('og.grp_region_id', $this->input->get('region'));
    }
    if($this->input->get('district') > '0'){
-      $this->db->where('og.grp_scout_dis_id', $this->input->get('district'));     
+      $this->db->where('og.grp_scout_dis_id', $this->input->get('district'));
    }
    if($this->input->get('upazila') > '0'){
-      $this->db->where('og.grp_scout_upa_id', $this->input->get('upazila'));     
+      $this->db->where('og.grp_scout_upa_id', $this->input->get('upazila'));
    }
 
 
@@ -217,16 +270,16 @@ public function get_scout_unit( ) {
   $this->db->join('office_district od', 'od.id = u.unit_scout_dis_id', 'LEFT');
   $this->db->join('office_region r', 'r.id = u.unit_region_id', 'LEFT');
   if($this->input->get('region') != NULL){
-   $this->db->where('u.unit_region_id', $this->input->get('region'));     
+   $this->db->where('u.unit_region_id', $this->input->get('region'));
 }
 if($this->input->get('district') > '0'){
-   $this->db->where('u.unit_scout_dis_id', $this->input->get('district'));     
+   $this->db->where('u.unit_scout_dis_id', $this->input->get('district'));
 }
 if($this->input->get('upazila') > '0'){
-   $this->db->where('u.unit_scout_upa_id', $this->input->get('upazila'));     
+   $this->db->where('u.unit_scout_upa_id', $this->input->get('upazila'));
 }
 if($this->input->get('group') > '0'){
-   $this->db->where('u.unit_sc_grp_id', $this->input->get('group'));     
+   $this->db->where('u.unit_sc_grp_id', $this->input->get('group'));
 }
 $query = $this->db->get()->result();
 return $query;
@@ -246,7 +299,7 @@ public function get_region_committee() {
   $this->db->select('cr.*,or.region_name');
   $this->db->from('committee_exe_region cr');
         //$this->db->join('committee_session cs', 'cs.id = cr.comm_session_id', 'LEFT');
-  $this->db->join('office_region or', 'or.id = cr.office_region_id', 'LEFT');        
+  $this->db->join('office_region or', 'or.id = cr.office_region_id', 'LEFT');
   $this->db->order_by('cr.id', 'DESC');
   $query = $this->db->get()->result();
 
@@ -257,8 +310,8 @@ public function get_district_committee($region_id=NULL) {
   $this->db->select('cd.*,  or.region_name, od.dis_name');
   $this->db->from('committee_exe_district cd');
         //$this->db->join('committee_session cs', 'cs.id = cd.comm_session_id', 'LEFT');
-  $this->db->join('office_district od', 'od.id = cd.office_district_id', 'LEFT');        
-  $this->db->join('office_region or', 'or.id = cd.office_region_id', 'LEFT');        
+  $this->db->join('office_district od', 'od.id = cd.office_district_id', 'LEFT');
+  $this->db->join('office_region or', 'or.id = cd.office_region_id', 'LEFT');
   $this->db->order_by('cd.id', 'DESC');
 
   if($region_id){
@@ -277,7 +330,7 @@ public function get_upazila_thana_committee($region_id=NULL, $sc_district_id=NUL
         //$this->db->join('committee_session cs', 'cs.id = cu.comm_session_id', 'LEFT');
   $this->db->join('office_upazila ou', 'ou.id = cu.office_region_id', 'LEFT');
   $this->db->join('office_district od', 'od.id = cu.office_district_id', 'LEFT');
-  $this->db->join('office_region or', 'or.id = cu.office_region_id', 'LEFT');    
+  $this->db->join('office_region or', 'or.id = cu.office_region_id', 'LEFT');
   $this->db->order_by('cu.id', 'DESC');
 
   if($region_id){
@@ -299,7 +352,7 @@ public function get_scout_group_committee($region_id=NULL, $sc_district_id=NULL,
   $this->db->join('office_groups og', 'og.id = csg.office_sc_group_id', 'LEFT');
   $this->db->join('office_upazila ou', 'ou.id = csg.office_upa_tha_id', 'LEFT');
   $this->db->join('office_district od', 'od.id = csg.office_district_id', 'LEFT');
-  $this->db->join('office_region or', 'or.id = csg.office_region_id', 'LEFT');    
+  $this->db->join('office_region or', 'or.id = csg.office_region_id', 'LEFT');
   $this->db->order_by('csg.id', 'DESC');
 
   if($region_id){
@@ -342,7 +395,7 @@ public function get_scout_group_committee($region_id=NULL, $sc_district_id=NULL,
         $query = $this->db->get()->row();
         // echo $this->db->last_query(); exit;
         return $query;
-     }   
+     }
      public function get_current_upazila_thana_from_committee($user_id=null) {
         // result query
         $this->db->select('mu.committee_id, eu.office_region_id, eu.office_district_id, eu.office_upa_tha_id, eu.is_current');
@@ -376,9 +429,9 @@ public function get_scout_group_committee($region_id=NULL, $sc_district_id=NULL,
         $this->db->select('COUNT(*) as count,gender');
         $this->db->from('users');
        // $this->db->group_by('gender');
-        $this->db->where('sc_section_id',$sc_section_id); 
-        $this->db->where('gender',$gender); 
-        //$this->db->where('YEAR(join_date)',$year); 
+        $this->db->where('sc_section_id',$sc_section_id);
+        $this->db->where('gender',$gender);
+        //$this->db->where('YEAR(join_date)',$year);
         $q = $this->db->get()->result();
 
         $result = array();
@@ -397,9 +450,9 @@ public function get_scout_group_committee($region_id=NULL, $sc_district_id=NULL,
         $this->db->select('COUNT(*) as count,gender');
         $this->db->from('users');
        // $this->db->group_by('gender');
-        $this->db->where('sc_section_id',$sc_section_id); 
-        $this->db->where('gender',$gender); 
-        $this->db->where('sc_role_id',$sc_role_id); 
+        $this->db->where('sc_section_id',$sc_section_id);
+        $this->db->where('gender',$gender);
+        $this->db->where('sc_role_id',$sc_role_id);
         $q = $this->db->get()->result();
 
         $result = array();
@@ -421,10 +474,10 @@ public function get_scout_group_committee($region_id=NULL, $sc_district_id=NULL,
 
         $this->db->where('u.sc_section_id',$sc_section_id);
         //$this->db->where('sb.section_id',$sc_section_id);
-        $this->db->group_by('u.sc_badge_id'); 
+        $this->db->group_by('u.sc_badge_id');
         //$this->db->group_by('u.gender');
-        //$this->db->where('gender',$gender); 
-        //$this->db->where('sc_role_id',$sc_role_id); 
+        //$this->db->where('gender',$gender);
+        //$this->db->where('sc_role_id',$sc_role_id);
         $q = $this->db->get()->result();
 
         $result = array();
@@ -441,7 +494,7 @@ public function get_scout_group_committee($region_id=NULL, $sc_district_id=NULL,
         // count query
         $this->db->select('COUNT(u.id) as count_total, u.unit_type');
         $this->db->from('office_unit u');
-        $this->db->group_by('u.unit_type');   
+        $this->db->group_by('u.unit_type');
         $q = $this->db->get()->result();
 
         $result = array();
@@ -458,7 +511,7 @@ public function get_scout_group_committee($region_id=NULL, $sc_district_id=NULL,
         // count query
         $this->db->select('COUNT(CASE WHEN YEAR(u.unit_created)=date("Y") THEN u.id END ) as count_now,COUNT(CASE WHEN YEAR(u.unit_created)="2016" THEN u.id END ) as count_prev, u.unit_type');
         $this->db->from('office_unit u');
-        $this->db->group_by('u.unit_type');   
+        $this->db->group_by('u.unit_type');
         $q = $this->db->get()->result();
 
         $result = array();
@@ -475,14 +528,14 @@ public function get_scout_group_committee($region_id=NULL, $sc_district_id=NULL,
         // count query
         $this->db->select('
          COUNT(CASE WHEN YEAR(u.join_date)=date("Y") THEN u.id END ) as count_now,
-         COUNT(CASE WHEN YEAR(u.join_date)="2016" THEN u.id END ) as count_prev,         
+         COUNT(CASE WHEN YEAR(u.join_date)="2016" THEN u.id END ) as count_prev,
          bt.badge_type_name_bn');
         $this->db->from('users u');
         $this->db->join('scout_badge sb', 'u.sc_badge_id =sb.id', 'LEFT');
         $this->db->join('badge_type bt', 'sb.badge_type_id = bt.id', 'LEFT');
         $this->db->where('u.sc_section_id',$sc_section_id);
         //$this->db->where('sb.section_id',$sc_section_id);
-        $this->db->group_by('u.sc_badge_id'); 
+        $this->db->group_by('u.sc_badge_id');
         $q = $this->db->get()->result();
 
         $result = array();

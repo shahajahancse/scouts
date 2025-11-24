@@ -5,18 +5,18 @@
 			<?php $more_attr = 'class="form-control input-sm" id="region"';
 			echo form_dropdown('region', $regions, $_GET['region'], $more_attr);
 			?>
-		</div>     
+		</div>
 		<div class="col-md-3">
 			<select name="district" class="sc_district_val form-control input-sm" id="sc_district">
 				<option value="">-- Scouts District --</option>
 			</select>
-		</div>     
+		</div>
 		<div class="col-md-3">
 			<select name="upazila" class="sc_upazila_thana_val form-control input-sm" id="sc_upazila_thana">
 				<option value="">-- Scouts Upazila --</option>
 			</select>
-		</div>           
-		<div class="col-md-3"> 
+		</div>
+		<div class="col-md-3">
 			<select name="sgroup" class="sc_group_val form-control input-sm">
 				<option value="">-- Scouts Group --</option>
 			</select>
@@ -28,7 +28,7 @@
 		</div>
       */ ?>
       <div class="col-md-3 m-t-10">
-         <?php $more_attr = 'class="form-control input-sm"';
+         <?php $more_attr = 'class="form-control input-sm" id="dis_type"';
          echo form_dropdown('dis_type', $dis_type, $_GET['dis_type'], $more_attr);
          ?>
       </div>
@@ -56,7 +56,7 @@
       </div>
 
 	</div>
-	
+
 <!-- </form> -->
 
 <div class="clearfix"></div>

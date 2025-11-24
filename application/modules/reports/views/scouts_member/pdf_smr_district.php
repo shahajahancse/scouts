@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<title><?=$headding?></title>
 	<style type="text/css">
-      body{font-family: 'Tahoma'}
+      body{font-family: 'sutonnyMJ'}
       .priview-body{font-size: 16px;color:#000;margin: 25px; }
       .priview-header{margin-bottom: 10px;text-align:center;}
       .priview-header div{font-size: 18px;}
@@ -61,8 +61,8 @@
          <div class="row">
             <div class="col-12 text-center">
                <div style="font-size:18px;"><u><?=$headding?></u></div>
-               <?php !empty($dis_type_info)?'District Type: '.$dis_type_info->district_type_name.'<br>':''?> 
-               <?php if($dis_type_info){ 
+               <?php !empty($dis_type_info)?'District Type: '.$dis_type_info->district_type_name.'<br>':''?>
+               <?php if($dis_type_info){
                   echo "District Type: ".$dis_type_info->district_type_name;
                }else{
                   echo "All Type District";
@@ -80,28 +80,28 @@
             <thead class="headding">
                <tr>
                   <th class="text-center">SL</th>
-                  <th class="text-left">Region Name</th>
-                  <th class="text-right">Total Scout Group</th>
-                  <th class="text-right">Total Scout Member</th>						
+                  <th class="text-left">District Name</th>
+                  <!-- <th class="text-right">Total Scout Group</th> -->
+                  <th class="text-right">Total Scout Member</th>
                </tr>
             </thead>
 
             <tbody>
-               <?php 
+               <?php
                $i=0;
                $total_group=$total_member=$grandTotalGroup=$grandTotalMember=0;
 
-               foreach ($results as $row) { 
+               foreach ($results as $row) {
                   $i++;
-                  $total_group = $row->total_sc_group;
+                  // $total_group = $row->total_sc_group;
                   $total_member = $row->total_member;
-                  $grandTotalGroup += $total_group;
+                  // $grandTotalGroup += $total_group;
                   $grandTotalMember += $total_member;
                   ?>
                   <tr>
                      <td class="text-center"><?=$i?>.</td>
-                     <td class="text-left"><?=$row->dis_name_en?></td>                 
-                     <td class="text-right"><?=$total_group?></td>                 
+                     <td class="text-left" style="font-size: 16px !important;"><?=$row->dis_name?></td>
+                     <!-- <td class="text-right"><?=$total_group?></td> -->
                      <td class="text-right"><?=$total_member?></td>
                   </tr>
                   <?php } ?>
@@ -110,11 +110,11 @@
                <tfoot class="headding">
                   <tr>
                      <th class="text-right" colspan="2">Grand Total</th>
-                     <th class="text-right"><?=$grandTotalGroup?></th>
+                     <!-- <th class="text-right"><?=$grandTotalGroup?></th> -->
                      <th class="text-right"><?=$grandTotalMember?></th>
                   </tr>
                </tfoot>
-            </table>			
+            </table>
          </div>
 
       </div>
