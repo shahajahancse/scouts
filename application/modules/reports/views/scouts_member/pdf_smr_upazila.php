@@ -90,7 +90,7 @@
                   // $total_group = $row->total_sc_group;
                   $total_member = $row->total_member;
                   // $grandTotalGroup += $total_group;
-                  $grandTotalMember += $total_member;
+                  $grandTotalMember = $total_member + $grandTotalMember;
                   ?>
                   <tr>
                      <td class="text-center"><?=$i?>.</td>
