@@ -1,5 +1,5 @@
-<div class="page-content">     
-   <div class="content">  
+<div class="page-content">
+   <div class="content">
       <ul class="breadcrumb" style="margin-bottom: 20px;">
          <li> <a href="<?=base_url('dashboard')?>" class="active"> Dashboard </a> </li>
          <li> <a href="javascript:void()" class="active"><?=$module_name?> </a></li>
@@ -12,17 +12,17 @@
                overflow-x: auto;
                -webkit-overflow-scrolling: touch;
             }
-            
+
             .btn-group {
                display: flex;
                flex-direction: column;
             }
-            
+
             .btn-mini {
                margin-bottom: 5px;
                width: 100%;
             }
-            
+
             .grid-title h4 {
                text-align: center;
             }
@@ -74,19 +74,19 @@
 
                   <form method="get" action="" class="search-form">
                      <div class="row">
-                        <?php if($this->ion_auth->is_admin()){ ?>                     
+                        <?php if($this->ion_auth->is_admin()){ ?>
                         <div class="col-md-3">
                            <?php $more_attr = 'class="form-control input-sm" id="region"';
-                           echo form_dropdown('region', $regions, $_GET['region'], $more_attr);
+                           echo form_dropdown('region', $regions, $_GET['region'] ?? '', $more_attr);
                            ?>
-                        </div>                     
+                        </div>
                         <?php } ?>
 
                         <div class="col-md-3">
-                           <input type="text" name="disName" value="<?=$_GET['disName']?>" class="form-control input-sm" placeholder="District Name">                    
+                           <input type="text" name="disName" value="<?=$_GET['disName'] ?? '' ?>" class="form-control input-sm" placeholder="District Name">
                         </div>
                         <div class="col-md-2">
-                           <input type="text" name="uName" value="<?=$_GET['uName']?>" class="form-control input-sm" placeholder="Username">
+                           <input type="text" name="uName" value="<?=$_GET['uName'] ?? '' ?>" class="form-control input-sm" placeholder="Username">
                         </div>
                         <div class="col-md-2">
                            <div class="pull-right">
@@ -116,7 +116,7 @@
                            </tr>
                         </thead>
                         <tbody>
-                           <?php 
+                           <?php
                            $sl=0;
                            foreach ($results as $row):
                               $sl++;
@@ -144,7 +144,7 @@
                               <td class="v-align-middle"><?=$sl.'.'?></td>
                               <td> <strong> <?=$row->dis_name?> </strong></td>
                               <td class="v-align-middle"><?=$row->region_name; ?></td>
-                              <td class="v-align-left"><?=$row->username; ?></td>                           
+                              <td class="v-align-left"><?=$row->username; ?></td>
                               <td> <?=$district?> </td>
                               <td align="right">
                                  <div class="btn-group"> <a class="btn btn-primary dropdown-toggle btn-mini" data-toggle="dropdown" href="#"> Action <span class="caret"></span> </a>
@@ -157,12 +157,12 @@
                                        <?php if($this->ion_auth->is_admin()){?>
                                        <li class="divider"></li>
                                        <li><a href="<?=base_url("offices/district_delete/".encrypt_url($row->id))?>" onclick="return confirm('Be careful! Are you sure you want to delete this scouts district?');">Delete District</a></li>
-                                       <?php } ?>     
+                                       <?php } ?>
                                     </ul>
                                  </div>
-                              </td>   
+                              </td>
                            </tr>
-                        <?php endforeach;?>                      
+                        <?php endforeach;?>
                      </tbody>
                   </table>
                </div>

@@ -1,5 +1,5 @@
-<div class="page-content">     
-  <div class="content">  
+<div class="page-content">
+  <div class="content">
     <ul class="breadcrumb" style="margin-bottom: 20px;">
       <li> <a href="<?=base_url('dashboard')?>" class="active"> Dashboard </a> </li>
       <li> <a href="<?=base_url('dashboard')?>" class="active"> <?=$module_title; ?> </a></li>
@@ -12,7 +12,7 @@
           overflow-x: auto;
           -webkit-overflow-scrolling: touch;
         }
-        
+
         .btn {
           margin-bottom: 5px;
         }
@@ -40,14 +40,14 @@
           </div>
 
           <div class="grid-body ">
-            <div id="infoMessage"><?php //echo $message;?></div>            
+            <div id="infoMessage"><?php //echo $message;?></div>
             <?php if($this->session->flashdata('success')):?>
               <div class="alert alert-success">
                 <?php echo $this->session->flashdata('success');?>
               </div>
             <?php endif; ?>
             <?php if($this->session->flashdata('warning')):?>
-                <div class="alert alert-warning">                      
+                <div class="alert alert-warning">
                     <?php echo $this->session->flashdata('warning');;?>
                 </div>
             <?php endif; ?>
@@ -69,7 +69,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <?php 
+                  <?php
                   $sl = 0;
                   foreach ($results as $row):
                     $sl++;
@@ -83,7 +83,9 @@
                     <td class="v-align-middle"><?=date('d M, y', strtotime($row->reg_start))?></td>
                     <td class="v-align-middle"><?=date('d M, y', strtotime($row->reg_end))?></td>
                     <td><a target="_blank" href="<?=base_url('training/details/'.encrypt_url($row->id));?>" class="btn btn-primary btn-mini">Details</a></td>
-                    <?php  if(count($this->Training_model->is_apply_training($row->id, $info->id))){?>
+                    <?php
+                    $gdfgf = (array) $this->Training_model->is_apply_training($row->id, $info->id);
+                    if(!empty($gdfgf) && is_array($gdfgf)) { ?>
                     <td><a href="<?=base_url('training/join_training/'.encrypt_url($row->id));?>" class="btn btn-blueviolet btn-mini disabled">Already Applied</a></td>
                     <?php }else{ ?>
                     <td>
@@ -91,7 +93,7 @@
                     </td>
                     <?php } ?>
                   </tr>
-                <?php endforeach; ?> 
+                <?php endforeach; ?>
               </tbody>
             </table>
           </div>

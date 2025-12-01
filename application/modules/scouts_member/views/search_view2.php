@@ -51,27 +51,27 @@
 		<?php if($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin() || $this->ion_auth->in_group('award') || $this->ion_auth->in_group('event') || $this->ion_auth->in_group('training') || $this->ion_auth->is_vendor()){ ?>
 			<div class="col-md-2">
 				<?php $more_attr = 'class="form-control input-sm" id="region"';
-				echo form_dropdown('region', $regions, $_GET['region'], $more_attr);
+				echo form_dropdown('region', $regions, $_GET['region'] ?? '', $more_attr);
 				?>
 			</div>
 			<div class="col-md-2">
 				<?php $more_attr = 'class="sc_district_val form-control input-sm" id="sc_district"';
-				echo form_dropdown('district', $scouts_district, $_GET['district'], $more_attr);
+				echo form_dropdown('district', $scouts_district, $_GET['district'] ?? '', $more_attr);
 				?>
 			</div>
 			<div class="col-md-2">
 				<?php $more_attr = 'class="sc_upazila_thana_val form-control input-sm" id="sc_upazila_thana"';
-				echo form_dropdown('upazila', $scouts_upazila, $_GET['upazila'], $more_attr);
+				echo form_dropdown('upazila', $scouts_upazila, $_GET['upazila'] ?? '', $more_attr);
 				?>
 			</div>
 		<?php } ?>
 
 		<div class="col-md-2">  <!--  //marTopSearch -->
-			<input type="text" name="name" class="form-control input-sm" value="<?=$_GET['name']?>" placeholder="Name">
+			<input type="text" name="name" class="form-control input-sm" value="<?=$_GET['name'] ?? '' ?>" placeholder="Name">
 		</div>
 
 		<div class="col-md-2 ">  <!--  //marTopSearch -->
-			<input type="text" name="username" class="form-control input-sm"  value="<?=$_GET['username']?>"placeholder="Username">
+			<input type="text" name="username" class="form-control input-sm"  value="<?=$_GET['username'] ?? '' ?>"placeholder="Username">
 		</div>
 
 		<div class="col-md-1 ">  <!--  //marTopSearch -->

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Training extends Backend_Controller {	
+class Training extends Backend_Controller {
 
     var $file_path;
 
@@ -14,8 +14,8 @@ class Training extends Backend_Controller {
         $this->file_path = realpath(APPPATH . '../training_docs');
 
         $this->data['module_title'] = 'Training';
-        $this->load->model('Common_model'); 
-        $this->load->model('Training_model');     
+        $this->load->model('Common_model');
+        $this->load->model('Training_model');
     }
 
     public function index(){
@@ -26,15 +26,15 @@ class Training extends Backend_Controller {
     public function training_list($offset=0){
         $limit = 25;
 
-        if($this->ion_auth->is_admin() || $this->ion_auth->in_group('training')){ 
+        if($this->ion_auth->is_admin() || $this->ion_auth->in_group('training')){
             $results = $this->Training_model->get_scout_training_data($limit, $offset, '1');
             // print_r($results); exit;
 
         }elseif($this->ion_auth->is_region_admin()){
             $officeRegionID = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
             $results = $this->Training_model->get_scout_training_data($limit, $offset, '2', $officeRegionID);
-            // $this->data['scout_district'] = $this->Common_model->get_scout_districts($officeRegionID);   
-        }elseif($this->ion_auth->is_district_admin()){         
+            // $this->data['scout_district'] = $this->Common_model->get_scout_districts($officeRegionID);
+        }elseif($this->ion_auth->is_district_admin()){
             $officeDistrictID = $this->Offices_model->get_district_office_by_user_id($this->userSessID)->id;
             $results = $this->Training_model->get_scout_training_data($limit, $offset, '3', '', $officeDistrictID);
 
@@ -61,7 +61,7 @@ class Training extends Backend_Controller {
         $this->load->view('backend/_layout_main', $this->data);
     }
 
-    public function details($id){        
+    public function details($id){
         //$this->data['users'] = $this->ion_auth->user()->row();
         if(!($this->ion_auth->is_admin() || $this->ion_auth->is_region_admin() || $this->ion_auth->in_group('training') || $this->ion_auth->is_district_admin() || $this->ion_auth->is_upazila_admin() || $this->ion_auth->is_group_admin() || $this->ion_auth->is_scout_member())){
             redirect('dashboard');
@@ -78,24 +78,24 @@ class Training extends Backend_Controller {
         $this->data['meta_title'] = 'Training Details';
         $this->data['subview'] = 'details';
         $this->load->view('backend/_layout_main', $this->data);
-    }    
+    }
 
     public function create_training(){
 
         // Check Auth
         if($this->ion_auth->is_admin() || $this->ion_auth->in_group('training')){
-            $this->data['regions'] = $this->Common_model->get_regions_multi();  
-            $this->data['sc_districts'] = $this->Common_model->get_sc_districts_multi(); 
-            
+            $this->data['regions'] = $this->Common_model->get_regions_multi();
+            $this->data['sc_districts'] = $this->Common_model->get_sc_districts_multi();
+
             // Event type region, district, upazila
             $tt_region_ids = $this->input->post('tt_region')==1 ? implode(',', $this->input->post('tt_region_ids')):NULL;
             $tt_district_ids = $this->input->post('tt_district')==1 ? implode(',', $this->input->post('tt_district_ids')):NULL;
             $tt_upazila_ids = $this->input->post('tt_upazila')==1 ? implode(',', $this->input->post('tt_upazila_ids')):NULL;
             //Event Level
-            $training_created_by = 1;            
+            $training_created_by = 1;
 
         }elseif($this->ion_auth->is_region_admin()){
-            $officeID = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;    
+            $officeID = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
             $region = $officeID;
             $this->data['region_info'] = $this->Common_model->get_office_info('office_region', $region);
             $this->data['sc_districts'] = $this->Common_model->get_sc_districts_multi($region);
@@ -105,11 +105,11 @@ class Training extends Backend_Controller {
             $tt_district_ids = $this->input->post('tt_district')==1 ? implode(',', $this->input->post('tt_district_ids')):NULL;
             $tt_upazila_ids = $this->input->post('tt_upazila')==1 ? implode(',', $this->input->post('tt_upazila_ids')):NULL;
 
-            //Event Level           
+            //Event Level
             $training_created_by = 2;
-            
+
         }elseif($this->ion_auth->is_district_admin()){
-            $officeID = $this->Offices_model->get_district_office_by_user_id($this->userSessID);  
+            $officeID = $this->Offices_model->get_district_office_by_user_id($this->userSessID);
             $region     = $officeID->dis_scout_region_id;
             $district   = $officeID->id;
             $this->data['district_info'] = $this->Common_model->get_office_info('office_district', $district);
@@ -154,8 +154,8 @@ class Training extends Backend_Controller {
         $this->form_validation->set_rules('training_title', 'training title', 'required|trim');
         $this->form_validation->set_rules('details', 'training details', 'required|trim');
         $this->form_validation->set_rules('start_date', ' to date', 'required|trim');
-        $this->form_validation->set_rules('end_date', 'from date', 'required|trim'); 
-        $this->form_validation->set_rules('participant_no', 'participant no', 'required|trim'); 
+        $this->form_validation->set_rules('end_date', 'from date', 'required|trim');
+        $this->form_validation->set_rules('participant_no', 'participant no', 'required|trim');
 
 
         // Submit form
@@ -175,7 +175,7 @@ class Training extends Backend_Controller {
                 'tt_international'  => $this->input->post('tt_international'),
                 'tt_region'         => $this->input->post('tt_region'),
                 'tt_district'       => $this->input->post('tt_district'),
-                'tt_upazila'        => $this->input->post('tt_upazila'),                
+                'tt_upazila'        => $this->input->post('tt_upazila'),
                 'tt_region_ids'     => $tt_region_ids,
                 'tt_district_ids'   => $tt_district_ids,
                 'tt_upazila_ids'    => $tt_upazila_ids,
@@ -188,9 +188,9 @@ class Training extends Backend_Controller {
                 'participant_no'    => $this->input->post('participant_no'),
                 'approve_role'      => $this->input->post('approve_role'),
 
-                'created_office_by' => $training_created_by,                
+                'created_office_by' => $training_created_by,
                 'sc_region_id'      => $region != NULL ? $region:NULL,
-                'sc_district_id'    => $district != NULL ? $district:NULL,                
+                'sc_district_id'    => $district != NULL ? $district:NULL,
                 'created'           => date('Y-m-d H:i:s'),
                 'updated'           => date('Y-m-d H:i:s')
                 );
@@ -209,14 +209,14 @@ class Training extends Backend_Controller {
                     $count = count($_FILES['userfile']['size']);
                     foreach($_FILES as $key=>$value){
                         for($s=0; $s<=$count-1; $s++) {
-                            $new_file_name = $id.time();  
+                            $new_file_name = $id.time();
 
                             $_FILES['userfile']['name']     = $value['name'][$s];
                             $_FILES['userfile']['type']     = $value['type'][$s];
                             $_FILES['userfile']['tmp_name'] = $value['tmp_name'][$s];
                             $_FILES['userfile']['error']    = $value['error'][$s];
-                            $_FILES['userfile']['size']     = $value['size'][$s]; 
-                            
+                            $_FILES['userfile']['size']     = $value['size'][$s];
+
                             $config['upload_path']      = $this->file_path;
                             $config['allowed_types']    = 'gif|jpg|png|doc|docx|xls|xlsx|pdf';
                             $config['max_size']         = '60000';
@@ -228,7 +228,7 @@ class Training extends Backend_Controller {
                                 $uploadData = $this->upload->data();
                                 $uploadedFile = $uploadData['file_name'];
 
-                                $source_path = $this->file_path.'/'.$uploadedFile; 
+                                $source_path = $this->file_path.'/'.$uploadedFile;
                                 // $target_path = $this->img_path.'/thumb_'. $uploadedFile;
                                 //$this->resize($source_path, $target_path);
 
@@ -244,10 +244,10 @@ class Training extends Backend_Controller {
 
                     $this->session->set_flashdata('success', 'New training insert successfully.');
                     redirect("training/training_list");
-                } 
+                }
             // }else{
             //     $this->session->set_flashdata('warning', 'End date less then start date');
-            // }       
+            // }
             }
 
         // Dropdown
@@ -256,10 +256,10 @@ class Training extends Backend_Controller {
             $this->data['appr_role'] = $this->Common_model->get_event_approve_role();
         // $this->data['courses'] = $this->Common_model->get_course_by_progress_section($this->data['progressType'], $sectionType);
 
-        // $this->data['divisions'] = $this->Common_model->get_division(); 
-        // $this->data['districts'] = $this->Common_model->get_district(); 
-        // $this->data['upazilas'] = $this->Common_model->get_upazila_thana(); 
-        // $this->data['regions'] = $this->Common_model->get_regions(); 
+        // $this->data['divisions'] = $this->Common_model->get_division();
+        // $this->data['districts'] = $this->Common_model->get_district();
+        // $this->data['upazilas'] = $this->Common_model->get_upazila_thana();
+        // $this->data['regions'] = $this->Common_model->get_regions();
         // $this->data['scout_section'] = $this->Common_model->set_scout_section();
         // $this->data['training'] = $this->Common_model->get_dd_training_list();
         // $this->data['teacher'] = $this->Training_model->get_trainer('trainer');
@@ -274,8 +274,8 @@ class Training extends Backend_Controller {
             $id = (int) decrypt_url($id);
 
             if($this->ion_auth->is_admin() || $this->ion_auth->in_group('training')){
-                $this->data['regions'] = $this->Common_model->get_regions_multi();  
-                $this->data['sc_districts'] = $this->Common_model->get_sc_districts_multi(); 
+                $this->data['regions'] = $this->Common_model->get_regions_multi();
+                $this->data['sc_districts'] = $this->Common_model->get_sc_districts_multi();
 
             // Event type region, district, upazila
                 $tt_region_ids = $this->input->post('tt_region')==1 ? implode(',', $this->input->post('tt_region_ids')):NULL;
@@ -283,10 +283,10 @@ class Training extends Backend_Controller {
                 $tt_upazila_ids = $this->input->post('tt_upazila')==1 ? implode(',', $this->input->post('tt_upazila_ids')):NULL;
 
             }elseif($this->ion_auth->is_region_admin()){
-                $officeID = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;    
+                $officeID = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
                 $this->data['region_info'] = $this->Common_model->get_office_info('office_region', $officeID);
                 $this->data['sc_districts'] = $this->Common_model->get_sc_districts_multi($officeID);
-                $this->data['sc_upazilas'] = $this->Common_model->get_sc_upazila_multi('', $officeID);  
+                $this->data['sc_upazilas'] = $this->Common_model->get_sc_upazila_multi('', $officeID);
 
             // Event type region, district, upazila
                 $tt_region_ids = $this->input->post('tt_region')==1 ? $officeID:NULL;
@@ -294,7 +294,7 @@ class Training extends Backend_Controller {
                 $tt_upazila_ids = $this->input->post('tt_upazila')==1 ? implode(',', $this->input->post('tt_upazila_ids')):NULL;
 
             }elseif($this->ion_auth->is_district_admin()){
-                $officeID = $this->Offices_model->get_district_office_by_user_id($this->userSessID);  
+                $officeID = $this->Offices_model->get_district_office_by_user_id($this->userSessID);
                 $region     = $officeID->dis_scout_region_id;
                 $district   = $officeID->id;
             // $this->data['region_info'] = $this->Common_model->get_office_info('office_region', $region);
@@ -324,7 +324,7 @@ class Training extends Backend_Controller {
 
             }else{
                 redirect('dashboard');
-            }        
+            }
 
         // Validation
             $this->form_validation->set_rules('progress_type', 'member type', 'required|trim');
@@ -332,7 +332,7 @@ class Training extends Backend_Controller {
             $this->form_validation->set_rules('training_title', 'training title', 'required|trim');
             $this->form_validation->set_rules('details', 'training details', 'required|trim');
             $this->form_validation->set_rules('start_date', ' to date', 'required|trim');
-            $this->form_validation->set_rules('end_date', 'from date', 'required|trim');       
+            $this->form_validation->set_rules('end_date', 'from date', 'required|trim');
 
         // Form Validation
             if ($this->form_validation->run() == true){
@@ -351,7 +351,7 @@ class Training extends Backend_Controller {
                     'tt_international'  => $this->input->post('tt_international'),
                     'tt_region'         => $this->input->post('tt_region'),
                     'tt_district'       => $this->input->post('tt_district'),
-                    'tt_upazila'        => $this->input->post('tt_upazila'),                
+                    'tt_upazila'        => $this->input->post('tt_upazila'),
                     'tt_region_ids'     => $tt_region_ids != NULL ? $tt_region_ids:NULL,
                     'tt_district_ids'   => $tt_district_ids != NULL ? $tt_district_ids:NULL,
                     'tt_upazila_ids'    => $tt_upazila_ids != NULL ? $tt_upazila_ids:NULL,
@@ -365,7 +365,7 @@ class Training extends Backend_Controller {
                     'approve_role'      => $this->input->post('approve_role'),
 
                     'sc_region_id'      => $region != NULL ? $region:NULL,
-                    'sc_district_id'    => $district != NULL ? $district:NULL,  
+                    'sc_district_id'    => $district != NULL ? $district:NULL,
 
                     'published'         => $this->input->post('published'),
                     'updated'           => date('Y-m-d H:i:s')
@@ -378,20 +378,20 @@ class Training extends Backend_Controller {
                     /***********Activity Logs Start**********/
                     // $insert_id = $this->db->insert_id();
                     func_activity_log(2, 'Update training Data ID :'.$id); //1=C, 2=U, 3=D, 4=V, 5=G ,A = 6
-                    /***********Activity Logs End**********/  
+                    /***********Activity Logs End**********/
 
                     $count = count($_FILES['userfile']['size']);
                     foreach($_FILES as $key=>$value){
                         for($s=0; $s<=$count-1; $s++) {
-                            $new_file_name = $id.time();  
+                            $new_file_name = $id.time();
 
                             $_FILES['userfile']['name']     = $value['name'][$s];
                             $_FILES['userfile']['type']     = $value['type'][$s];
                             $_FILES['userfile']['tmp_name'] = $value['tmp_name'][$s];
                             $_FILES['userfile']['error']    = $value['error'][$s];
-                            $_FILES['userfile']['size']     = $value['size'][$s]; 
+                            $_FILES['userfile']['size']     = $value['size'][$s];
 
-                            
+
                             $config['upload_path']      = $this->file_path;
                             $config['allowed_types']    = 'gif|jpg|png|doc|docx|xls|xlsx|pdf';
                             $config['max_size']         = '60000';
@@ -403,7 +403,7 @@ class Training extends Backend_Controller {
                                 $uploadData = $this->upload->data();
                                 $uploadedFile = $uploadData['file_name'];
 
-                                $source_path = $this->file_path.'/'.$uploadedFile; 
+                                $source_path = $this->file_path.'/'.$uploadedFile;
                                 // $target_path = $this->img_path.'/thumb_'. $uploadedFile;
                                 //$this->resize($source_path, $target_path);
 
@@ -419,16 +419,16 @@ class Training extends Backend_Controller {
 
                     $this->session->set_flashdata('success', 'Training update successfully.');
                     redirect("training/training_list");
-                } 
+                }
             // }else{
             //     $this->session->set_flashdata('warning', 'End date Less then start date');
-            // }       
+            // }
             }
 
             $this->data['info'] = $this->Training_model->get_scout_training_info($id);
             $this->data['attachments'] = $this->Training_model->get_attachment($id);
 
-        // Dropdown        
+        // Dropdown
             $this->data['progress'] = $this->Common_model->set_scout_progress();
             $this->data['section'] = $this->Common_model->set_scout_section();
             $this->data['appr_role'] = $this->Common_model->get_event_approve_role();
@@ -463,7 +463,7 @@ class Training extends Backend_Controller {
         /************************* Scouts Member *************************/
         /*****************************************************************/
 
-        public function upcomming_training(){   
+        public function upcomming_training(){
             if(!$this->ion_auth->is_scout_member()){
                 redirect('dashboard');
             }
@@ -479,7 +479,7 @@ class Training extends Backend_Controller {
             $this->data['meta_title'] = 'Upcomming Training List';
             $this->data['subview'] = 'upcoming_training';
             $this->load->view('backend/_layout_main', $this->data);
-        }    
+        }
 
         public function join_training($id){
             $id = (int) decrypt_url($id);
@@ -487,7 +487,7 @@ class Training extends Backend_Controller {
             if ($id != NULL){
                 $form_data = array(
                     'training_id'       => $id,
-                    'app_date'          => date('Y-m-d'), 
+                    'app_date'          => date('Y-m-d'),
                     'scout_id'          => $info->id,
                     'curr_region_id'    => $info->sc_region_id,
                     'curr_district_id'  => $info->sc_district_id,
@@ -496,17 +496,17 @@ class Training extends Backend_Controller {
                     );
             // print_r($form_data);exit();
 
-                if($this->Common_model->save('training_participant', $form_data)){                 
+                if($this->Common_model->save('training_participant', $form_data)){
                     $this->session->set_flashdata('success', 'Apply training successfully.');
                     redirect("training/my_application");
-                } 
+                }
             }else{
                 $this->session->set_flashdata('warning', 'Something is wrong.');
                 redirect("training/upcomming_event");
             }
         }
 
-        public function my_application(){   
+        public function my_application(){
         // $region = $this->data['userDetails']['user_info']->sc_region_id;
         // $district = $this->data['userDetails']['user_info']->sc_district_id;
 
@@ -529,20 +529,20 @@ class Training extends Backend_Controller {
         /************* Application Verification By Office ****************/
         /*****************************************************************/
 
-        public function application_list($offset=0){   
+        public function application_list($offset=0){
             if(!($this->ion_auth->is_admin() || $this->ion_auth->in_group('training') || $this->ion_auth->is_region_admin() || $this->ion_auth->is_district_admin() || $this->ion_auth->is_upazila_admin() || $this->ion_auth->is_group_admin())){
                 redirect('dashboard');
             }
             $limit = 25;
 
-            if($this->ion_auth->is_admin() || $this->ion_auth->in_group('training')){ 
+            if($this->ion_auth->is_admin() || $this->ion_auth->in_group('training')){
                 $results = $this->Training_model->get_applicant_data($limit, $offset, '');
 
             }elseif($this->ion_auth->is_region_admin()){
                 $officeRegionID = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
-                $results = $this->Training_model->get_applicant_data($limit, $offset, '', $officeRegionID); 
+                $results = $this->Training_model->get_applicant_data($limit, $offset, '', $officeRegionID);
 
-            }elseif($this->ion_auth->is_district_admin()){         
+            }elseif($this->ion_auth->is_district_admin()){
                 $officeDistrictID = $this->Offices_model->get_district_office_by_user_id($this->userSessID)->id;
                 $results = $this->Training_model->get_applicant_data($limit, $offset, '', '', $officeDistrictID);
 
@@ -574,18 +574,18 @@ class Training extends Backend_Controller {
 
         public function participant_verify($id){
             $id = (int) decrypt_url($id);
-        //$user = $this->ion_auth->user()->row();       
+        //$user = $this->ion_auth->user()->row();
         // $id = $this->input->post('event_status');
             $this->form_validation->set_rules('status', 'select verify status ', 'required|trim');
         // $this->form_validation->set_rules('participant_type_app', 'select participant type ', 'required|trim');
             if ($this->form_validation->run() == true){
             //$form_data = array('participant_type_app' => $this->input->post('participant_type_app'));
 
-                if($this->ion_auth->is_admin() || $this->ion_auth->in_group('training')){ 
+                if($this->ion_auth->is_admin() || $this->ion_auth->in_group('training')){
                     $form_data['verify_nhq'] = $this->input->post('status');
                 }elseif($this->ion_auth->is_region_admin()){
                     $form_data['verify_region'] = $this->input->post('status');
-                }elseif($this->ion_auth->is_district_admin()){ 
+                }elseif($this->ion_auth->is_district_admin()){
                     $form_data['verify_district'] = $this->input->post('status');
                 }elseif($this->ion_auth->is_upazila_admin()){
                     $form_data['verify_upazila'] = $this->input->post('status');
@@ -599,7 +599,7 @@ class Training extends Backend_Controller {
                     /***********Activity Logs Start**********/
                 // $insert_id = $this->db->insert_id();
                 func_activity_log(2, 'Participant Verify ID :'.$id); //1=C, 2=U, 3=D, 4=V, 5=G ,A = 6
-                /***********Activity Logs End**********/  
+                /***********Activity Logs End**********/
 
                 // echo $this->db->last_query(); exit;
                 $this->session->set_flashdata('success', 'Applicant training participant verify successfully.');
@@ -619,7 +619,7 @@ class Training extends Backend_Controller {
         $this->load->view('backend/_layout_main', $this->data);
     }
 
-    public function applicant_list($id){   
+    public function applicant_list($id){
         $id = (int) decrypt_url($id);
 
         if(!$id){
@@ -636,7 +636,7 @@ class Training extends Backend_Controller {
         $this->load->view('backend/_layout_main', $this->data);
     }
 
-    public function participant_list($id){   
+    public function participant_list($id){
        $id = (int) decrypt_url($id);
 
        if(!$id){
@@ -661,7 +661,7 @@ public function training_certificate_pdf($id){
  $id = (int) decrypt_url($id);
 
       // $dataID = (int) decrypt_url($id); //exit;
-      // if (!$this->Common_model->exists('award_cub_recommendation', 'id', $dataID)) { 
+      // if (!$this->Common_model->exists('award_cub_recommendation', 'id', $dataID)) {
       //    show_404('award - president_scout_certificate_pdf - exitsts', TRUE);
       // }
 
@@ -672,7 +672,7 @@ public function training_certificate_pdf($id){
 
       //...............................................................................
  $this->data['meta_title'] = "Training Certificate";
- $html = $this->load->view('training_certificate_pdf', $this->data, true);   
+ $html = $this->load->view('training_certificate_pdf', $this->data, true);
  $file_name = $id.".pdf";
 
       //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
@@ -682,7 +682,7 @@ public function training_certificate_pdf($id){
       //generate the PDF from the given html
  $mpdf->WriteHTML($html);
 
-      //download it for 'D'. 
+      //download it for 'D'.
  $mpdf->Output($file_name, "I");
 }
 
@@ -698,7 +698,7 @@ public function trainer_list(){
     $limit = 10;
 
         // $this->data['trainers'] = $this->Training_model->get_trainers();
-    $results = $this->Training_model->get_trainers($limit, $offset);
+    $results = $this->Training_model->get_trainers($limit, $offset = 0);
 
         //Result
     $this->data['results'] = $results['rows'];
@@ -742,11 +742,11 @@ public function create_trainer(){
             /***********Activity Logs Start**********/
             $insert_id = $this->db->insert_id();
                     func_activity_log(1, 'Create trainer ID :'.$insert_id); //1=C, 2=U, 3=D, 4=V, 5=G ,A = 6
-                    /***********Activity Logs End**********/                   
+                    /***********Activity Logs End**********/
 
                     $this->session->set_flashdata('success', 'New trainer insert successfully.');
                     redirect("training/trainer_list");
-                } 
+                }
 
             }
 
@@ -790,15 +790,15 @@ public function create_trainer(){
                     /***********Activity Logs Start**********/
                 // $insert_id = $this->db->insert_id();
                 func_activity_log(2, 'Update training Data ID :'.$id); //1=C, 2=U, 3=D, 4=V, 5=G ,A = 6
-                /***********Activity Logs End**********/  
+                /***********Activity Logs End**********/
 
                 $this->session->set_flashdata('success', 'Trainer information update successfully.');
                 redirect("training/trainer_list");
-            } 
+            }
 
         }
 
-        $this->data['info'] = $this->Training_model->get_trainer_info($id);        
+        $this->data['info'] = $this->Training_model->get_trainer_info($id);
 
         // Load page
         $this->data['meta_title'] = 'Training Update';
@@ -834,7 +834,7 @@ public function create_trainer(){
 
     //             $this->session->set_flashdata('success', 'training Update successfully.');
     //             redirect("training/trainers_list");
-    //         } 
+    //         }
 
     //     }
 
@@ -856,7 +856,7 @@ public function create_trainer(){
     //     $this->load->view('backend/_layout_main', $this->data);
     // }
 
-    
+
 
 
     /*************training_list_pdf function pdf start**************/
@@ -865,7 +865,7 @@ public function create_trainer(){
         $this->data['training'] = $this->Training_model->get_data();
         //...............................................................................
         $this->data['meta_title'] = 'Training List';
-        $html = $this->load->view('training_list_pdf', $this->data, true);   
+        $html = $this->load->view('training_list_pdf', $this->data, true);
         $file_name ="training_list_pdf.pdf";
 
         //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
@@ -874,7 +874,7 @@ public function create_trainer(){
         //generate the PDF from the given html
         $mpdf->WriteHTML($html);
 
-        //download it for 'D'. 
+        //download it for 'D'.
         $mpdf->Output($file_name, "D");
     }
 
@@ -895,7 +895,7 @@ public function create_trainer(){
         $this->data['trainers'] = $this->Training_model->get_trainers();
         //...............................................................................
         $this->data['meta_title'] = 'Trainer/Trainee List';
-        $html = $this->load->view('trainers_list_pdf', $this->data, true);   
+        $html = $this->load->view('trainers_list_pdf', $this->data, true);
         $file_name ="trainers_list_pdf.pdf";
 
         //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
@@ -904,7 +904,7 @@ public function create_trainer(){
         //generate the PDF from the given html
         $mpdf->WriteHTML($html);
 
-        //download it for 'D'. 
+        //download it for 'D'.
         $mpdf->Output($file_name, "D");
     }
 
@@ -918,7 +918,7 @@ public function create_trainer(){
     //     $this->load->view('backend/_layout_main', $this->data);
     // }
 
-    // public function upcomming_training(){       
+    // public function upcomming_training(){
     //     $this->data['training'] = $this->Training_model->scout_member_training();
     //     // Load page
     //     $this->data['meta_title'] = 'Upcomming Training';
@@ -932,7 +932,7 @@ public function create_trainer(){
     //     $this->data['training'] = $this->Training_model->scout_member_training();
     //     //...............................................................................
     //     $this->data['meta_title'] = 'Upcomming Training';
-    //     $html = $this->load->view('upcomming_training_pdf', $this->data, true);   
+    //     $html = $this->load->view('upcomming_training_pdf', $this->data, true);
     //     $file_name ="upcomming_training_pdf.pdf";
 
     //     //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
@@ -941,14 +941,14 @@ public function create_trainer(){
     //     //generate the PDF from the given html
     //     $mpdf->WriteHTML($html);
 
-    //     //download it for 'D'. 
+    //     //download it for 'D'.
     //     $mpdf->Output($file_name, "D");
     // }
 
     /*************upcomming_training_pdf function pdf End**************/
 
 
-    // public function my_training(){       
+    // public function my_training(){
     //     $this->data['training'] = $this->Training_model->get_scout_member_approved();
     //     // Load page
     //     $this->data['meta_title'] = 'My Training List';
@@ -986,12 +986,12 @@ public function create_trainer(){
                 'comments' => $this->input->post('comments')
                 );
             //print_r($form_data);exit();
-            
-            if($this->Training_model->edit('training_to_scouts', $this->data['users']->id, $id,  $form_data)){                
+
+            if($this->Training_model->edit('training_to_scouts', $this->data['users']->id, $id,  $form_data)){
                 $this->session->set_flashdata('success', 'Successfully send your comments.');
-                redirect('training/my_training'); 
-            } 
-            redirect('training/my_training');     
+                redirect('training/my_training');
+            }
+            redirect('training/my_training');
         }
 
         $this->data['meta_title'] = 'Training Comments';
@@ -1048,25 +1048,25 @@ public function create_trainer(){
    //          //print_r($form_data);exit();
 
    //          if($this->input->post('training_end_date')>=$this->input->post('training_start_date')){
-   //             if($this->Common_model->edit('training', $id, 'id', $form_data)){                
+   //             if($this->Common_model->edit('training', $id, 'id', $form_data)){
    //                  $this->session->set_flashdata('success', 'training Update successfully.');
    //                  redirect("training/training_list");
-   //              } 
+   //              }
    //          }else{
    //              $this->session->set_flashdata('warning', 'End Date Lessthen Start Date');
-   //          }       
+   //          }
    //      }
 
    //      $this->data['training'] = $this->Training_model->get_info($id);
    //      //dropdown
 
-   //      $this->data['divisions'] = $this->Common_model->get_division(); 
-   //      $this->data['districts'] = $this->Common_model->get_district(); 
-   //      $this->data['upazilas'] = $this->Common_model->get_upazila_thana(); 
-   //      $this->data['regions'] = $this->Common_model->get_regions(); 
-   //      $this->data['scout_districts'] = $this->Common_model->get_scout_districts(); 
-   //      $this->data['scout_upazila_thana'] = $this->Common_model->get_scout_upazila_thana(); 
-   //      $this->data['scout_group'] = $this->Common_model->get_scout_group_office(); 
+   //      $this->data['divisions'] = $this->Common_model->get_division();
+   //      $this->data['districts'] = $this->Common_model->get_district();
+   //      $this->data['upazilas'] = $this->Common_model->get_upazila_thana();
+   //      $this->data['regions'] = $this->Common_model->get_regions();
+   //      $this->data['scout_districts'] = $this->Common_model->get_scout_districts();
+   //      $this->data['scout_upazila_thana'] = $this->Common_model->get_scout_upazila_thana();
+   //      $this->data['scout_group'] = $this->Common_model->get_scout_group_office();
    //      $this->data['scout_unit'] = $this->Common_model->get_scout_unit_office();
    //      $this->data['scout_section'] = $this->Common_model->set_scout_section();
    //      $this->data['training_list'] = $this->Common_model->get_dd_training_list();
@@ -1118,13 +1118,13 @@ public function create_trainer(){
         if(empty($this->Training_model->get_scout_member($training_id, $scout_id))){
 
             if($this->Common_model->save('training_to_scouts', $form_data2)){
-                $this->session->set_flashdata('success', 'Information update successfully.'); 
+                $this->session->set_flashdata('success', 'Information update successfully.');
             }else{
                 $this->session->set_flashdata('warning', 'Information update unsuccessfully.');
             }
         }else{
             if($this->Training_model->edit('training_to_scouts', $scout_id, $training_id, $form_data)){
-                $this->session->set_flashdata('success', 'Information update successfully.'); 
+                $this->session->set_flashdata('success', 'Information update successfully.');
             }else{
                 $this->session->set_flashdata('warning', 'Information update unsuccessfully.');
             }

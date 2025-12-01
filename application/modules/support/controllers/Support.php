@@ -6,6 +6,7 @@ class Support extends Backend_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load->model('Support_model');
+		$this->data['module_title'] = 'Support';
 	}
 
 	public function index(){

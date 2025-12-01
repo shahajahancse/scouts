@@ -1,5 +1,5 @@
-<div class="page-content">     
-   <div class="content">  
+<div class="page-content">
+   <div class="content">
       <ul class="breadcrumb" style="margin-bottom: 20px;">
          <li> <a href="<?=base_url('dashboard')?>" class="active"> Dashboard </a> </li>
          <li> <a href="javascript:void()" class="active"><?=$module_name?> </a></li>
@@ -12,17 +12,17 @@
                overflow-x: auto;
                -webkit-overflow-scrolling: touch;
             }
-            
+
             .btn-group {
                display: flex;
                flex-direction: column;
             }
-            
+
             .btn-mini {
                margin-bottom: 5px;
                width: 100%;
             }
-            
+
             .grid-title h4 {
                text-align: center;
             }
@@ -74,16 +74,16 @@
                   <?php endif; ?>
 
                   <form method="get" action="" class="search-form row">
-                     <?php if($this->ion_auth->is_admin()){ ?>                     
+                     <?php if($this->ion_auth->is_admin()){ ?>
                      <div class="col-md-3 col-sm-6 col-xs-12 mb-2">
                         <?php $more_attr = 'class="form-control input-sm" id="region"';
-                        echo form_dropdown('region', $regions, $_GET['region'], $more_attr);
+                        echo form_dropdown('region', $regions, $_GET['region'] ?? '', $more_attr);
                         ?>
-                     </div> 
-                     <?php if(isset($_GET['region'])){ ?>    
+                     </div>
+                     <?php if(isset($_GET['region'])){ ?>
                            <div class="col-md-3 col-sm-6 col-xs-12 mb-2">
                               <?php $more_attr = 'class="form-control input-sm" id="sc_district"';
-                              echo form_dropdown('district', $scout_district, $_GET['district'], $more_attr);
+                              echo form_dropdown('district', $scout_district, $_GET['district'] ?? '', $more_attr);
                               ?>
                            </div>
                         <?php }else{ ?>
@@ -91,22 +91,22 @@
                               <select name="district" class="form-control sc_district_val input-sm" id="sc_district">
                                  <option value="">-- Select One --</option>
                               </select>
-                           </div>  
+                           </div>
                         <?php } ?>
                      <?php } ?>
                      <?php if($this->ion_auth->is_region_admin()){ ?>
                      <div class="col-md-3 col-sm-6 col-xs-12 mb-2">
                         <?php $more_attr = 'class="form-control input-sm" id="sc_district"';
-                        echo form_dropdown('district', $scout_district, $_GET['district'], $more_attr);
+                        echo form_dropdown('district', $scout_district, $_GET['district'] ?? '', $more_attr);
                         ?>
-                     </div>  
+                     </div>
                      <?php } ?>
 
                      <div class="col-md-3 col-sm-6 col-xs-12 mb-2">
-                        <input type="text" name="upaName" value="<?=$_GET['upaName']?>" class="form-control input-sm" placeholder="Upazila Name">
+                        <input type="text" name="upaName" value="<?=$_GET['upaName'] ?? '' ?>" class="form-control input-sm" placeholder="Upazila Name">
                      </div>
                      <div class="col-md-2 col-sm-6 col-xs-12 mb-2">
-                        <input type="text" name="uName" value="<?=$_GET['uName']?>" class="form-control input-sm" placeholder="Username">
+                        <input type="text" name="uName" value="<?=$_GET['uName'] ?? '' ?>" class="form-control input-sm" placeholder="Username">
                      </div>
                      <div class="col-md-1 col-sm-12 col-xs-12">
                         <button type="submit" class="btn btn-blueviolet btn-mini btn-block"><i class="icon-ok"></i> Search</button>
@@ -133,7 +133,7 @@
                            </tr>
                         </thead>
                         <tbody>
-                           <?php 
+                           <?php
                            $sl=0;
                            foreach ($results as $row):
                               $sl++;
@@ -164,12 +164,12 @@
                                        <?php if($this->ion_auth->is_admin()){?>
                                        <li class="divider"></li>
                                        <li><a href="<?=base_url("offices/upazila_delete/".encrypt_url($row->id))?>" onclick="return confirm('Be careful! Are you sure you want to delete this scouts upazila?');">Delete Upazila</a></li>
-                                       <?php } ?>     
+                                       <?php } ?>
                                     </ul>
                                  </div>
                               </td>
                            </tr>
-                        <?php endforeach;?>                      
+                        <?php endforeach;?>
                      </tbody>
                   </table>
                </div>
