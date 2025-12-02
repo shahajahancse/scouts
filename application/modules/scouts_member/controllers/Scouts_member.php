@@ -2675,25 +2675,25 @@ class Scouts_member extends Backend_Controller {
       // Scout Information
       $this->data['info'] = $this->My_profile_model->get_info($scoutID);
       // echo $this->data['info']->scout_id; exit;
-
+      $this->load->library('Mpdf_lib');
       //Generate HTML
       $html = $this->load->view('pdf_id_card_front', $this->data, true);
       $html2 = $this->load->view('pdf_id_card_back', $this->data, true);
-
-      $mpdf = new mPDF('', array(349, 225), 10, 'arial', 0, 0, 0, 0);
       $file_name ="scout-id-".$this->data['info']->scout_id.".pdf";
 
-      // $mpdf->showImageErrors = true;
-      // $mpdf->debug = true;
-      //$mpdf->img_dpi = 72;
-
       //generate the PDF from the given html
+      $mpdf = $this->mpdf_lib->create();
       $mpdf->WriteHTML($html);
       $mpdf->AddPage(); // Adds a new page in Landscape orientation
       $mpdf->WriteHTML($html2);
-
-      //download it for 'D'.
       $mpdf->Output($file_name, 'I');
+
+      // $mpdf->WriteHTML($html);
+      // $mpdf->AddPage(); // Adds a new page in Landscape orientation
+      // $mpdf->WriteHTML($html2);
+
+      // //download it for 'D'.
+      // $mpdf->Output($file_name, 'I');
    }
 
 
