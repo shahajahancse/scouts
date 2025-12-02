@@ -1,5 +1,5 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');?>
-<div class="page-content">     
+<div class="page-content">
   <div class="content">
     <ul class="breadcrumb" style="margin-bottom: 20px;">
       <li> <a href="<?=base_url()?>" class="active"> Dashboard </a> </li>
@@ -34,7 +34,7 @@
           flex-direction: column;
           align-items: stretch;
         }
-        
+
         .grid-title .pull-right {
           margin-top: 10px;
         }
@@ -71,23 +71,23 @@
             <h4><span class="semi-bold"><?=$meta_title; ?></span></h4>
             <div class="pull-right">
               <!-- <a href="<?=base_url('acl/create_user')?>" class="btn btn-blueviolet btn-xs btn-mini"> Create User </a> -->
-            </div>            
+            </div>
           </div>
 
           <div class="grid-body">
-            <div id="infoMessage"><?php echo $message;?></div>   
+            <div id="infoMessage"><?php echo $message;?></div>
             <form method="get" action="" class="search-form">
               <div class="row">
                 <div class="col-md-2">
-                  <input type="text" name="scoutID" value="<?=$_GET['scoutID']?>" class="form-control input-sm uppercaseText" placeholder="Scout ID">
+                  <input type="text" name="scoutID" value="<?=$_GET['scoutID'] ?? '' ?>" class="form-control input-sm uppercaseText" placeholder="Scout ID">
                 </div>
 
-                <div class="col-md-2">     
-                  <input type="text" name="name" value="<?=$_GET['name']?>" class="form-control input-sm" placeholder="Name"> 
+                <div class="col-md-2">
+                  <input type="text" name="name" value="<?=$_GET['name'] ?? '' ?>" class="form-control input-sm" placeholder="Name">
                 </div>
 
-                <div class="col-md-2">     
-                  <input type="text" name="username" value="<?=$_GET['username']?>" class="form-control input-sm" placeholder="Username"> 
+                <div class="col-md-2">
+                  <input type="text" name="username" value="<?=$_GET['username'] ?? '' ?>" class="form-control input-sm" placeholder="Username">
                 </div>
                 <div class="col-md-3">
                     <?php echo form_error('group');
@@ -109,7 +109,7 @@
                   <tr>
                     <th>SL</th>
                     <th>Scout ID</th>
-                    <th>Username</th>                        
+                    <th>Username</th>
                     <th>Full Name</th>
                     <th width="80">Status</th>
                     <th width="150">Group</th>
@@ -117,7 +117,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <?php 
+                  <?php
                   $sl = $pagination['current_page'];
                   foreach ($users as $user):
                     $sl++;
@@ -126,15 +126,15 @@
                     <td><?=$sl.'.'?></td>
                     <td><?php echo $user->scout_id;?></td>
                     <td><?php echo $user->username;?></td>
-                    <td><?php echo htmlspecialchars($user->first_name,ENT_QUOTES,'UTF-8');?></td>                 
-                    <td> 
-                      <?php 
+                    <td><?php echo htmlspecialchars($user->first_name,ENT_QUOTES,'UTF-8');?></td>
+                    <td>
+                      <?php
                       echo ($user->active) ? anchor("acl/deactivate/".$user->id, strtoupper(lang('index_active_link')), array('class' => 'label label-success')) : anchor("acl/activate/". $user->id, strtoupper(lang('index_inactive_link')), array('class' => 'label label-important'));
                       ?>
                     </td>
                     <td>
                       <div class="btn-group-responsive">
-                        <?php 
+                        <?php
                         foreach ($user->groups as $group):
                           echo '<span class="btn btn-primary btn-xs btn-mini" style="background-color:#6b64d0;">'.htmlspecialchars($group->description,ENT_QUOTES,'UTF-8').'</span>';
                         endforeach;

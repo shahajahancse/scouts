@@ -116,8 +116,8 @@
                     <?php } ?>
                     <?php
                       $cvvxcvx = $this->Event_model->is_apply_event($row->id, $info->id);
+                      if(is_array($cvvxcvx) && count($cvvxcvx)>0){
                     ?>
-                    <?php  if(!empty($cvvxcvx) && count($cvvxcvx)){?>
                       <td align="right"><a href="<?=base_url('events/join_event/'.$row->id);?>" class="btn btn-blueviolet btn-mini disabled">Already Applied</a> </td>
                     <?php }else{ ?>
                       <td align="right">

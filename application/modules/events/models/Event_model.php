@@ -477,19 +477,23 @@ class Event_model extends CI_Model {
 
 
     public function get_region_office_single($id){
-        return $query = $this->db->select('region_name_en')->where('id', $id)->get('office_region')->row()->region_name_en;
+        $query = $this->db->select('region_name_en')->where('id', $id)->get('office_region')->row();
+        return isset($query) ? $query->region_name_en : '';
     }
     public function get_district_office_single($id){
-        return $query = $this->db->select('dis_name_en')->where('id', $id)->get('office_district')->row()->dis_name_en;
+        $query = $this->db->select('dis_name_en')->where('id', $id)->get('office_district')->row();
+        return isset($query) ? $query->dis_name_en : '';
     }
     public function get_upazila_office_single($id){
-        return $query = $this->db->select('upa_name_en')->where('id', $id)->get('office_upazila')->row()->upa_name_en;
+        $query = $this->db->select('upa_name_en')->where('id', $id)->get('office_upazila')->row();
+        return isset($query) ? $query->upa_name_en : '';
     }
 
     public function get_badges_single($id){
-        return $query = $this->db->select('b.id, bt.badge_type_name_bn')->join('badge_type bt', 'b.badge_type_id=bt.id', 'LEFT')->where('b.id', $id)->get('scout_badge b')->row()->badge_type_name_bn;
+        $query = $this->db->select('b.id, bt.badge_type_name_bn')->join('badge_type bt', 'b.badge_type_id=bt.id', 'LEFT')->where('b.id', $id)->get('scout_badge b')->row();
+        return isset($query) ? $query->badge_type_name_bn : '';
     }
-
+    
     public function upcomming_event() {
         $this->db->select('*');
         $this->db->where('event_start_date >',date('Y-m-d'));

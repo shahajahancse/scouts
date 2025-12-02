@@ -1,5 +1,5 @@
-<div class="page-content">     
-  <div class="content">  
+<div class="page-content">
+  <div class="content">
     <ul class="breadcrumb" style="margin-bottom: 20px;">
       <li> <a href="<?=base_url('dashboard')?>" class="active"> Dashboard </a> </li>
       <li> <a href="<?=base_url('e_book')?>" class="active"> <?=$module_title; ?> </a></li>
@@ -68,7 +68,7 @@
       }
 
       @media screen and (max-width: 767px) {
-        .table th, 
+        .table th,
         .table td {
           white-space: nowrap;
           min-width: 120px;
@@ -115,19 +115,19 @@
             <h4><span class="semi-bold"><?=$meta_title; ?></span></h4>
             <div class="pull-right">
               <a href="<?=base_url('e_book/create')?>" class="btn btn-blueviolet btn-xs btn-mini"> Add E-Book </a>
-            </div> 
+            </div>
           </div>
 
           <div class="grid-body ">
-            <div id="infoMessage"><?php //echo $message;?></div>            
+            <div id="infoMessage"><?php //echo $message;?></div>
             <?php if($this->session->flashdata('success')):?>
               <div class="alert alert-success">
                 <?php echo $this->session->flashdata('success');?>
               </div>
             <?php endif; ?>
 
-            <?php if($message != NULL):?>
-              <div class="alert alert-danger">                      
+            <?php if(!empty($message)):?>
+              <div class="alert alert-danger">
                 <?php echo $message;?>
               </div>
             <?php endif; ?>
@@ -135,7 +135,7 @@
             <form method="get" action="" class="search-form">
               <div class="col-md-2">
                 <?php $more_attr = 'class="form-control input-sm"';
-                echo form_dropdown('category', $ebook_category, $_GET['category'], $more_attr);
+                echo form_dropdown('category', $ebook_category, $_GET['category'] ?? '', $more_attr);
                 ?>
               </div>
               <div class="col-md-1">
@@ -202,7 +202,7 @@
                     </tr>
                     <?php
                   }
-                }?>              
+                }?>
               </tbody>
             </table>
           </div>

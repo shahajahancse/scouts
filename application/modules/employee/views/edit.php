@@ -1,5 +1,5 @@
-<div class="page-content">     
-   <div class="content">  
+<div class="page-content">
+   <div class="content">
       <ul class="breadcrumb">
          <li><a href="<?=base_url('dashboard')?>" class="active"> Dashboard </a></li>
          <li><a href="<?=base_url('award')?>" class="active"><?=$module_name?></a></li>
@@ -20,8 +20,8 @@
             <div class="grid simple horizontal red">
                <div class="grid-title">
                   <h4><span class="semi-bold"><?=$meta_title; ?></span></h4>
-                  <div class="pull-right">                
-                     <a href="<?=base_url('employee/all')?>" class="btn btn-blueviolet btn-xs btn-mini"> Employee / PDS List</a>  
+                  <div class="pull-right">
+                     <a href="<?=base_url('employee/all')?>" class="btn btn-blueviolet btn-xs btn-mini"> Employee / PDS List</a>
                   </div>
                </div>
                <div class="grid-body">
@@ -31,12 +31,12 @@
                         <?=$this->session->flashdata('success');;?>
                      </div>
                   <?php endif; ?>
-                  
-                  <?php 
+
+                  <?php
                   $attributes = array('id' => 'validate');
                   echo form_open_multipart("employee/edit/".$info->id, $attributes);
                   ?>
-                  
+
                   <div class="row">
                      <h4 class="margin_left_15 semi-bold">Employee / PDS Information</h4>
                      <div class="col-md-12">
@@ -57,7 +57,7 @@
                               <?php echo form_error('emp_identity'); ?>
                               <input type="text" name="emp_identity" class="bangla form-control input-sm" value="<?=set_value('emp_identity')?>" contenteditable="TRUE">
                            </div> -->
-                        
+
                            <div class="col-md-3">
                               <label class="form-label">Mobile No. <span class='required'>*</span></label>
                               <?php echo form_error('phone'); ?>
@@ -82,7 +82,7 @@
                            <div class="col-md-3">
                               <label class="form-label">Gender <span class='required'>*</span></label>
                               <?php echo form_error('gender'); ?>
-                              <input type="radio" name="gender" value="Male" <?=set_value('gender')=='Male'?'checked':'checked';?>> <span style="color: black; font-size: 14px;">Male</span> 
+                              <input type="radio" name="gender" value="Male" <?=set_value('gender')=='Male'?'checked':'checked';?>> <span style="color: black; font-size: 14px;">Male</span>
                               <input type="radio" name="gender" value="Female" <?=set_value('gender')=='Female'?'checked':'';?>> <span style="color: black; font-size: 14px;">Female</span>
                            </div>
 
@@ -106,14 +106,14 @@
                               <label class="form-label">জাতীয় পরিচয়পত্র নম্বর <span class='required'>*</span></label>
                               <?php echo form_error('nid'); ?>
                               <input name="nid" value="<?=set_value('nid',$info->nid)?>" type="text" class="form-control input-sm" placeholder="">
-                              
+
                            </div>
 
                            <div class="col-md-3">
                               <label class="form-label">ক্রমিক নং </label>
                               <?php echo form_error('sl_no'); ?>
                               <input name="sl_no" value="<?=set_value('sl_no',$info->sl_no)?>" type="text" class="form-control input-sm" placeholder="">
-                              
+
                            </div>
 
                            <!-- <div class="col-md-3">
@@ -129,22 +129,22 @@
                            <div class="col-md-3">
                               <label class="form-label">Status <span class='required'>*</span></label>
                               <?php echo form_error('active'); ?>
-                              <input type="radio" name="active" value="1" <?=set_value('active',$info->active)==1?'checked':'checked';?>> <span style="color: black; font-size: 14px;">Active</span> 
+                              <input type="radio" name="active" value="1" <?=set_value('active',$info->active)==1?'checked':'checked';?>> <span style="color: black; font-size: 14px;">Active</span>
                               <input type="radio" name="active" value="0" <?=set_value('active',$info->active)==0?'checked':'';?>> <span style="color: black; font-size: 14px;">Deactivate</span>
                            </div>
 
                            <div class="col-md-3">
                               <label class="form-label">Desk Officer <span class='required'>*</span></label>
                               <?php echo form_error('desk_officer'); ?>
-                              <input type="radio" name="desk_officer" value="1" <?=set_value('desk_officer',$info->desk_officer)==1?'checked':'checked';?>> <span style="color: black; font-size: 14px;">Yes</span> 
+                              <input type="radio" name="desk_officer" value="1" <?=set_value('desk_officer',$info->desk_officer)==1?'checked':'checked';?>> <span style="color: black; font-size: 14px;">Yes</span>
                               <input type="radio" name="desk_officer" value="0" <?=set_value('desk_officer',$info->desk_officer)==0?'checked':'';?>> <span style="color: black; font-size: 14px;">No</span>
                            </div>
 
                           </div>
                           <div class="row form-row">
 
-                               <div class="col-md-4"> 
-                               <div style="height: 100px"> 
+                               <div class="col-md-4">
+                               <div style="height: 100px">
                                  <?php
                                  $path = base_url().'profile_img/';
                                  if($info->profile_img != NULL){
@@ -162,8 +162,8 @@
                                  </div>
                               </div>
 
-                              <div class="col-md-4"> 
-                                 <div style="height: 100px">  
+                              <div class="col-md-4">
+                                 <div style="height: 100px">
                                     <?php
                                     $path = base_url().'employee_img/';
                                     if($info->emp_singature != NULL){
@@ -185,10 +185,10 @@
                            </div>
                            <div>
                               <h3 class="text-center">Multiple Department & Designation</h3>
-                              <table width="100%" border="1" id="memberDiv<?=$para->id?>">
+                              <table width="100%" border="1" id="memberDiv<?php if(isset($para->id)) echo $para->id;?>">
                                   <tr>
                                      <td class="text-center" width="45%" style="padding: 5px">Designation</td>
-                                         <td class="text-center" width="45%" style="padding: 5px">Department</td>
+                                     <td class="text-center" width="45%" style="padding: 5px">Department</td>
                                      <td class="text-center" width="10%" style="padding: 5px"> <a href="javascript:void();" id="addRow" class="label label-success"> <i class="fa fa-plus-circle"></i> Add More</a> </td>
                                   </tr>
                                   <?php foreach ($e_nathi_department as $data) { ?>
@@ -196,10 +196,10 @@
                                           <td>
                                              <?php echo form_dropdown('designation[]', $designation, set_value('designation',$data->emp_designation), 'style="width:100%"'); ?>
                                           </td>
-                                          <td> 
+                                          <td>
                                              <?php echo form_dropdown('department[]', $department, set_value('department',$data->emp_department),  'style="width:100%"'); ?>
                                           </td>
-                                          <td class="text-center"><a href="javascript:void();" class="label label-important" data-id="<?=$file->id?>"  onclick="removeRow2(this)"> <i class="fa fa-minus-circle"></i> Remove </a></td>
+                                          <td class="text-center"><a href="javascript:void();" class="label label-important" data-id="<?=$file->id ?? ''?>"  onclick="removeRow2(this)"> <i class="fa fa-minus-circle"></i> Remove </a></td>
                                       </tr>
                                   <?php } ?>
                                   <tr></tr>
@@ -207,25 +207,25 @@
                            </div>
                      </div>
                      <div class="col-md-12">
-                        
+
                         <!-- <div class="row">
                            <div class="col-md-4">
                               <label class="form-label">Username <span class='required'>*</span></label>
                               <?php echo form_error('identity'); ?>
                               <input name="identity" value="<?=set_value('identity')?>" type="text" class="form-control input-sm" placeholder="">
                            </div>
-                           
+
                         </div>  -->
 
 
-                        <div class="form-actions">  
+                        <div class="form-actions">
                            <div class="pull-right">
                               <button type="submit" class="btn btn-primary btn-cons"><i class="icon-ok"></i> সংশোধন </button>
                            </div>
                         </div>
                      <?php echo form_close();?>
 
-                     </div>  <!-- END GRID BODY -->              
+                     </div>  <!-- END GRID BODY -->
                </div> <!-- END GRID -->
             </div>
       </div> <!-- END ROW -->
@@ -239,7 +239,7 @@
    $(document).ready(function() {
 
       $('#validate').validate({
-         // focusInvalid: false, 
+         // focusInvalid: false,
          ignore: "",
          rules: {
             full_name: { required: true },
@@ -254,18 +254,18 @@
          },
 
          invalidHandler: function (event, validator) {
-            //display error alert on form submit    
+            //display error alert on form submit
          },
 
-         errorPlacement: function (label, element) { // render error placement for each input type   
+         errorPlacement: function (label, element) { // render error placement for each input type
             $('<span class="error"></span>').insertAfter(element).append(label)
             var parent = $(element).parent('.input-with-icon');
-            parent.removeClass('success-control').addClass('error-control');  
+            parent.removeClass('success-control').addClass('error-control');
          },
 
          highlight: function (element) { // hightlight error inputs
             var parent = $(element).parent();
-            parent.removeClass('success-control').addClass('error-control'); 
+            parent.removeClass('success-control').addClass('error-control');
          },
 
          unhighlight: function (element) { // revert the change done by hightlight
@@ -274,7 +274,7 @@
 
          success: function (label, element) {
             var parent = $(element).parent('.input-with-icon');
-            parent.removeClass('error-control').addClass('success-control'); 
+            parent.removeClass('error-control').addClass('success-control');
          },
 
          submitHandler: function (form) {
@@ -282,9 +282,9 @@
          }
       });
 
-   });   
+   });
 
-</script> 
+</script>
 
 <?php
    $designation_data = '';
@@ -299,7 +299,7 @@
 ?>
 
 <script type="text/javascript">
-   
+
    // Education
    $("#addRow").click(function(e) {
       var items = '';
@@ -311,14 +311,14 @@
 
       items+= '<td class="text-center"><a href="javascript:void();" class="label label-important" onclick="removeRow(this)"> <i class="fa fa-minus-circle"></i> Remove </a></td>';
       items+= '</tr>';
-      
+
       $('#memberDiv tr:last').after(items);
    });
 
-   function removeRow(id){ 
+   function removeRow(id){
       $(id).closest("tr").remove();
    }
-  function removeRow2(id){ 
+  function removeRow2(id){
 
       var dataId = $(id).attr("data-id");
       if (confirm("Are you sure you want to delete this information from database?") == true) {

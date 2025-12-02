@@ -1201,13 +1201,16 @@ class Common_model extends CI_Model {
     }
 
    public function get_region_office_single($id){
-        return $query = $this->db->select('region_name_en')->where('id', $id)->get('office_region')->row()->region_name_en;
+      $query = $this->db->select('region_name_en')->where('id', $id)->get('office_region')->row();
+      return isset($query) ? $query->region_name_en : '';
     }
     public function get_district_office_single($id){
-        return $query = $this->db->select('dis_name_en')->where('id', $id)->get('office_district')->row()->dis_name_en;
+        $query = $this->db->select('dis_name_en')->where('id', $id)->get('office_district')->row();
+        return isset($query) ? $query->dis_name_en : '';
     }
     public function get_upazila_office_single($id){
-        return $query = $this->db->select('upa_name_en')->where('id', $id)->get('office_upazila')->row()->upa_name_en;
+        $query = $this->db->select('upa_name_en')->where('id', $id)->get('office_upazila')->row();
+        return isset($query) ? $query->upa_name_en : '';
     }
 
 

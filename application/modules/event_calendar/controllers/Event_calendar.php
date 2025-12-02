@@ -4,27 +4,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Event_calendar extends Backend_Controller {
 
 	public function __construct(){
-        parent::__construct();
-        if (!$this->ion_auth->logged_in()):
-            redirect('login');
-        endif;		
-        $this->data['module_title'] = 'Event Calendar';
-        $this->load->model('Event_calendar_model');
-        $this->load->model('events/Event_model'); 
-    }
+      parent::__construct();
+      if (!$this->ion_auth->logged_in()):
+         redirect('login');
+      endif;
+      $this->data['module_title'] = 'Event Calendar';
+      $this->load->model('Event_calendar_model');
+      $this->load->model('events/Event_model');
+      $this->data['module_name'] = 'Event Calendar';
+   }
 
-	public function index()
+	public function index($offset = 0)
 	{
 		$limit = 25;
 
-		if($this->ion_auth->is_admin() || $this->ion_auth->in_group('event')){ 
+		if($this->ion_auth->is_admin() || $this->ion_auth->in_group('event')){
 		   $results = $this->Event_model->get_data($limit, $offset, '1');
 
 		}elseif($this->ion_auth->is_region_admin()){
 		   $officeRegionID = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
 		   $results = $this->Event_model->get_data($limit, $offset, '2', $officeRegionID);
-		   // $this->data['scout_district'] = $this->Common_model->get_scout_districts($officeRegionID);   
-		}elseif($this->ion_auth->is_district_admin()){         
+		   // $this->data['scout_district'] = $this->Common_model->get_scout_districts($officeRegionID);
+		}elseif($this->ion_auth->is_district_admin()){
 		   $officeDistrictID = $this->Offices_model->get_district_office_by_user_id($this->userSessID)->id;
 		   $results = $this->Event_model->get_data($limit, $offset, '3', '', $officeDistrictID);
 
@@ -45,7 +46,7 @@ class Event_calendar extends Backend_Controller {
 		//pagination
 		$this->data['pagination'] = create_pagination('event_calendar/index/', $this->data['total_rows'], $limit, 3, $full_tag_wrap = true);
 
-       //Load page       
+       //Load page
 		$this->data['meta_title'] = 'Event Calendar';
 		$this->data['subview'] = 'index';
     	$this->load->view('backend/_layout_main', $this->data);
@@ -58,7 +59,7 @@ class Event_calendar extends Backend_Controller {
       $limit = 25;
 
       //Results
-      $results = $this->Event_calendar_model->get_nhq_event($limit, $offset); 
+      $results = $this->Event_calendar_model->get_nhq_event($limit, $offset);
 
       //Result
       $this->data['results'] = $results['rows'];
@@ -104,7 +105,7 @@ class Event_calendar extends Backend_Controller {
       }
 
       //Dropdown
-      // $this->data['committee_type_dd'] = $this->Common_model->get_comm_type_by_office('1'); 
+      // $this->data['committee_type_dd'] = $this->Common_model->get_comm_type_by_office('1');
 
       //Load view
       $this->data['meta_title'] = 'Add To NHQ Event Calender';
@@ -119,7 +120,7 @@ class Event_calendar extends Backend_Controller {
       $limit = 25;
 
       //Results
-      $results = $this->Event_calendar_model->get_nstc_event($limit, $offset); 
+      $results = $this->Event_calendar_model->get_nstc_event($limit, $offset);
 
       //Result
       $this->data['results'] = $results['rows'];
@@ -164,7 +165,7 @@ class Event_calendar extends Backend_Controller {
       }
 
       //Dropdown
-      // $this->data['committee_type_dd'] = $this->Common_model->get_comm_type_by_office('1'); 
+      // $this->data['committee_type_dd'] = $this->Common_model->get_comm_type_by_office('1');
 
       //Load view
       $this->data['meta_title'] = 'Add To NSTC Event Calender';

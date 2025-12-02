@@ -1,5 +1,5 @@
-<div class="page-content">     
-  <div class="content">  
+<div class="page-content">
+  <div class="content">
     <ul class="breadcrumb" style="margin-bottom: 20px;">
       <li> <a href="<?=base_url()?>" class="active"> Dashboard </a> </li>
       <li> <?=$module_title;?> </li>
@@ -14,22 +14,22 @@
             <div class="pull-right">
               <a href="<?=base_url('training/training_list')?>" class="btn btn-blueviolet btn-xs btn-mini"> All Training List</a>
               <!-- <a href="<?=base_url('events/upcomming_event_list')?>" class="btn btn-blueviolet btn-xs btn-mini"> Upcomming Events List </a> -->
-            </div> 
+            </div>
           </div>
 
-          <div class="grid-body"> 
+          <div class="grid-body">
             <?php echo validation_errors();?>
             <?php if($this->session->flashdata('success')):?>
-              <div class="alert alert-success">                      
+              <div class="alert alert-success">
                 <?php echo $this->session->flashdata('success');;?>
               </div>
             <?php endif; ?>
-            <?php 
+            <?php
             $attributes = array('id' => 'validate');
             echo form_open_multipart("training/edit/".$info->id, $attributes);?>
 
             <div class="row">
-              <div class="col-md-12">              
+              <div class="col-md-12">
                 <div class="row form-row">
                   <div class="col-md-3">
                     <label class="form-label">Member Type <span class="required">*</span></label>
@@ -80,11 +80,11 @@
                   </div>
                </div>
 
-              <div class="col-md-12">              
+              <div class="col-md-12">
                 <div class="row form-row">
                   <div class="col-md-12">
                     <h5 class="semi-bold" style="text-decoration: underline;">Training Type </h5>
-                    <?php if($this->ion_auth->is_admin()){ ?> 
+                    <?php if($this->ion_auth->is_admin()){ ?>
                     <div class="row form-row">
                       <div class="col-md-4">
                         <h5 class="semi-bold"><input type="checkbox" name="tt_national" value="1" <?=set_value('tt_national',$info->tt_national)=='1'?'checked':'';?>> National</h5>
@@ -96,10 +96,10 @@
                     <?php } ?>
 
                     <div class="row form-row">
-                      <?php if($this->ion_auth->is_admin()){ ?> 
+                      <?php if($this->ion_auth->is_admin()){ ?>
                       <div class="col-md-4">
                         <h5 class="semi-bold">
-                          <input type="checkbox" name="tt_region" id="checkRegion" class="eventCheck" value="1" <?=set_value('tt_region',$info->tt_region)=='1'?'checked':'';?> onClick="toggleSelectRegion()"/> Regional 
+                          <input type="checkbox" name="tt_region" id="checkRegion" class="eventCheck" value="1" <?=set_value('tt_region',$info->tt_region)=='1'?'checked':'';?> onClick="toggleSelectRegion()"/> Regional
                           <input type="button" id="regionAll" value="Select All" style="font-size: 11px; padding:2;">
                         </h5>
                         <div class="row col-md-12">
@@ -109,7 +109,7 @@
                           ?>
                         </div>
                       </div>
-                      <?php }elseif($this->ion_auth->is_region_admin()){ ?> 
+                      <?php }elseif($this->ion_auth->is_region_admin()){ ?>
                       <div class="col-md-4">
                         <h5 class="semi-bold">
                           <input type="checkbox" name="tt_region" id="checkRegion" class="eventCheck" value="1" <?=set_value('tt_region',$info->tt_region)=='1'?'checked':'';?> onClick="toggleSelectRegion()"/> Regional
@@ -120,51 +120,55 @@
 
 
                       <?php if($this->ion_auth->is_admin()){ ?>
-                      <div class="col-md-4">                        
+                      <div class="col-md-4">
                         <h5 class="semi-bold">
-                          <input type="checkbox" name="tt_district" id="checkDistrict" class="eventCheck" value="1" <?=set_value('tt_district',$info->tt_district)=='1'?'checked':'';?> onClick="toggleSelectDistrict()"/> District 
-                          <input type="button" id="districtAll" value="Select All" style="font-size: 11px; padding:2;"> 
+                          <input type="checkbox" name="tt_district" id="checkDistrict" class="eventCheck" value="1" <?=set_value('tt_district',$info->tt_district)=='1'?'checked':'';?> onClick="toggleSelectDistrict()"/> District
+                          <input type="button" id="districtAll" value="Select All" style="font-size: 11px; padding:2;">
                         </h5>
                         <?php $more_attr = 'class="sc_district_multi_val form-control input-sm" id="sc_district_multi"';
                           $districtIds = explode(',', $info->tt_district_ids);
                           echo form_multiselect('tt_district_ids[]', $sc_districts, $districtIds, $more_attr);
                           ?>
-                        
+
                       </div>
-                      <?php }elseif($this->ion_auth->is_region_admin()){ ?> 
+                      <?php }elseif($this->ion_auth->is_region_admin()){ ?>
                       <div class="col-md-4">
                         <h5 class="semi-bold">
-                          <input type="checkbox" name="tt_district" id="checkDistrict" class="eventCheck" value="1" <?=set_value('tt_district',$info->tt_district)=='1'?'checked':'';?> onClick="toggleSelectDistrict()"/> District 
+                          <input type="checkbox" name="tt_district" id="checkDistrict" class="eventCheck" value="1" <?=set_value('tt_district',$info->tt_district)=='1'?'checked':'';?> onClick="toggleSelectDistrict()"/> District
                         </h5>
                         <?php $more_attr = 'class="sc_district_multi_val form-control input-sm" id="sc_district_multi"';
                           $districtIds = explode(',', $info->tt_district_ids);
                           echo form_multiselect('tt_district_ids[]', $sc_districts, $districtIds, $more_attr);
                         ?>
                       </div>
-                      <?php }elseif($this->ion_auth->is_district_admin()){ ?> 
+                      <?php }elseif($this->ion_auth->is_district_admin()){ ?>
                       <div class="col-md-4">
                         <h5 class="semi-bold">
-                          <input type="checkbox" name="tt_district" id="checkDistrict" class="eventCheck" value="1" <?=set_value('tt_district',$info->tt_district)=='1'?'checked':'';?> onClick="toggleSelectDistrict()"/> District 
+                          <input type="checkbox" name="tt_district" id="checkDistrict" class="eventCheck" value="1" <?=set_value('tt_district',$info->tt_district)=='1'?'checked':'';?> onClick="toggleSelectDistrict()"/> District
                         </h5>
                         <h4 class="semi-bold"><?=$district_info->dis_name_en;?></h4>
                       </div>
                       <?php } ?>
 
                       <?php if($this->ion_auth->is_admin()){ ?>
+
                       <div class="col-md-4">
                         <h5 class="semi-bold">
-                          <input type="checkbox" name="tt_upazila" id="checkUpazila" class="eventCheck" value="1" <?=set_value('tt_upazila',$info->tt_upazila)=='1'?'checked':'';?> onClick="toggleSelectUpazila()"/> Upazila 
+                          <input type="checkbox" name="tt_upazila" id="checkUpazila" class="eventCheck" value="1" <?=set_value('tt_upazila',$info->tt_upazila)=='1'?'checked':'';?> onClick="toggleSelectUpazila()"/> Upazila
                           <input type="button" id="upazilaAll" value="Select All" style="font-size: 11px; padding:2;">
                         </h5>
-                        <?php $more_attr = 'class="sc_upazila_multi_val form-control input-sm" id="sc_upazila_thana"';
+                        <?php
+                          $sc_upazilas = isset($sc_upazilas) ? $sc_upazilas : array();
+                          $more_attr = 'class="sc_upazila_multi_val form-control input-sm" id="sc_upazila_thana"';
                           $upazilaIds = explode(',', $info->tt_upazila_ids);
                           echo form_multiselect('tt_upazila_ids[]', $sc_upazilas, $upazilaIds, $more_attr);
                         ?>
                       </div>
-                      <?php }elseif($this->ion_auth->is_region_admin() || $this->ion_auth->is_district_admin()){ ?> 
+
+                      <?php }elseif($this->ion_auth->is_region_admin() || $this->ion_auth->is_district_admin()){ ?>
                       <div class="col-md-4">
                         <h5 class="semi-bold">
-                          <input type="checkbox" name="tt_upazila" id="checkUpazila" class="eventCheck" value="1" <?=set_value('tt_upazila',$info->tt_upazila)=='1'?'checked':'';?> onClick="toggleSelectUpazila()"/> Upazila 
+                          <input type="checkbox" name="tt_upazila" id="checkUpazila" class="eventCheck" value="1" <?=set_value('tt_upazila',$info->tt_upazila)=='1'?'checked':'';?> onClick="toggleSelectUpazila()"/> Upazila
                           <input type="button" id="upazilaAll" value="Select All" style="font-size: 11px; padding:2;">
                         </h5>
                         <?php $more_attr = 'class="sc_upazila_multi_val form-control input-sm" id="sc_upazila_thana"';
@@ -172,12 +176,12 @@
                         echo form_multiselect('tt_upazila_ids[]', $sc_upazilas, $upazilaIds, $more_attr);
                         ?>
                       </div>
-                      <?php }elseif($this->ion_auth->is_upazila_admin()){ ?> 
+                      <?php }elseif($this->ion_auth->is_upazila_admin()){ ?>
 
                       <div class="col-md-12">
                         <h5 class="semi-bold">
-                          <input type="checkbox" name="tt_upazila" id="checkUpazila" class="eventCheck" value="1" checked="checked" onClick="toggleSelectUpazila()"/> Upazila 
-                        </h5>   
+                          <input type="checkbox" name="tt_upazila" id="checkUpazila" class="eventCheck" value="1" checked="checked" onClick="toggleSelectUpazila()"/> Upazila
+                        </h5>
                         <h4 class="semi-bold"><?=$upazila_info->upa_name;?></h4>
                       </div>
 
@@ -227,13 +231,13 @@
                     <label class="form-label">Number of Participants <span class="required">*</span></label>
                     <input type="text" name="participant_no" value="<?=set_value('reg_end', $info->participant_no)?>" class="form-control input-sm" id="">
                   </div>
-                  <div class="col-md-6">  
-                    <label class="form-label">Approval Role <span class="required">*</span></label> 
+                  <div class="col-md-6">
+                    <label class="form-label">Approval Role <span class="required">*</span></label>
                     <?php $more_attr = 'class="form-control input-sm"';
                     echo form_dropdown('approve_role', $appr_role, set_value('approve_role', $info->approve_role), $more_attr);
-                    ?>   
+                    ?>
                   </div>
-                </div>                
+                </div>
 
                 <div class="row form-row">
                   <div class="col-md-12">
@@ -242,11 +246,11 @@
                     <input type="radio" name="published" class="group_control" value="Yes" <?=set_value('published', $info->published)=='Yes'?'checked':'';?>> Yes &nbsp;&nbsp;
                     <input type="radio" name="published" class="group_control" value="No" <?=set_value('published', $info->published)=='No'?'checked':'';?>> No
                   </div>
-                  <div class="col-md-12">  
+                  <div class="col-md-12">
                     <label class="form-label">File Attachment </label>
                     <input type="file" name="userfile[]" multiple/>
                   </div>
-                  <div class="col-md-12">  
+                  <div class="col-md-12">
                     <?php
                       if($attachments){
                         $sl=0;
@@ -266,7 +270,7 @@
               </div> <!-- /col-md-5 -->
             </div> <!-- /row -->
 
-            <div class="form-actions">  
+            <div class="form-actions">
               <div class="pull-right">
                 <button type="submit" class="btn btn-primary btn-cons"><i class="icon-ok"></i> Save</button>
               </div>
@@ -282,12 +286,12 @@
   </div> <!-- /content -->
 </div> <!-- /page-content -->
 
-<script type="text/javascript">  
+<script type="text/javascript">
 
   $(document).ready(function() {
 
     $('#validate').validate({
-      // focusInvalid: false, 
+      // focusInvalid: false,
       ignore: "",
       rules: {
         progress_type: { required: true },
@@ -295,28 +299,28 @@
         course_id: { required: true },
         training_title: { required: true },
         place: { required: true },
-        details: { required: true },        
+        details: { required: true },
         start_date: { required: true },
         end_date: { required: true },
         reg_start: { required: true },
-        reg_end: { required: true },        
+        reg_end: { required: true },
         participant_no: { required: true },
         approve_role: { required: true }
       },
 
       invalidHandler: function (event, validator) {
-         //display error alert on form submit    
+         //display error alert on form submit
        },
 
-      errorPlacement: function (label, element) { // render error placement for each input type   
+      errorPlacement: function (label, element) { // render error placement for each input type
         $('<span class="error"></span>').insertAfter(element).append(label)
         var parent = $(element).parent('.input-with-icon');
-        parent.removeClass('success-control').addClass('error-control');  
+        parent.removeClass('success-control').addClass('error-control');
       },
 
       highlight: function (element) { // hightlight error inputs
        var parent = $(element).parent();
-       parent.removeClass('success-control').addClass('error-control'); 
+       parent.removeClass('success-control').addClass('error-control');
      },
 
       unhighlight: function (element) { // revert the change done by hightlight
@@ -325,26 +329,26 @@
 
       success: function (label, element) {
        var parent = $(element).parent('.input-with-icon');
-       parent.removeClass('error-control').addClass('success-control'); 
+       parent.removeClass('error-control').addClass('success-control');
      },
 
      submitHandler: function (form) {
-       form.submit(); 
+       form.submit();
      }
    });
-  });   
+  });
 
   //Select scout office enable / disable by checkbox
-  <?php if($this->ion_auth->is_admin()){ ?> 
+  <?php if($this->ion_auth->is_admin()){ ?>
   window.onload = toggleSelectRegion(); // to disable select on load if needed
   function toggleSelectRegion()
   {
     var isChecked = document.getElementById("checkRegion").checked;
-    document.getElementById("region_multi").disabled = !isChecked;    
+    document.getElementById("region_multi").disabled = !isChecked;
     document.getElementById("regionAll").disabled = !isChecked;
   }
 
-  window.onload = toggleSelectDistrict(); // to disable select on load if needed  
+  window.onload = toggleSelectDistrict(); // to disable select on load if needed
   function toggleSelectDistrict()
   {
     var isChecked = document.getElementById("checkDistrict").checked;
@@ -353,8 +357,8 @@
   }
   <?php } ?>
 
-  <?php if($this->ion_auth->is_region_admin()){ ?> 
-  window.onload = toggleSelectDistrict(); // to disable select on load if needed  
+  <?php if($this->ion_auth->is_region_admin()){ ?>
+  window.onload = toggleSelectDistrict(); // to disable select on load if needed
   function toggleSelectDistrict()
   {
     var isChecked = document.getElementById("checkDistrict").checked;
@@ -370,7 +374,7 @@
     document.getElementById("sc_upazila_thana").disabled = !isChecked;
     document.getElementById("upazilaAll").disabled = !isChecked;
   }
-  
+
   //Select scout stage enable / disable by checkbox
   // window.onload = toggleSelectCub(); // to disable select on load if needed
   // function toggleSelectCub()
@@ -400,7 +404,7 @@
   //   document.getElementById("selectAdultLeaderStage").disabled = !isChecked;
   // }
 
-  // 'event_notify[]': { required: true }  
+  // 'event_notify[]': { required: true }
 
   // function onCountrySelected(){
   //   var country =document.getElementById("ddlCountry").value;

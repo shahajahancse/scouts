@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Scout_group_application extends Backend_Controller {	
+class Scout_group_application extends Backend_Controller {
    var $userSessID;
 
    public function __construct(){
@@ -12,16 +12,16 @@ class Scout_group_application extends Backend_Controller {
       $this->data['module_title'] = 'Scout Group Application';
       $this->userSessID = $this->session->userdata('user_id');
 
-      $this->load->model('Common_model'); 
-      $this->load->model('Scout_group_application_model');     
+      $this->load->model('Common_model');
+      $this->load->model('Scout_group_application_model');
       $this->load->model('offices/Offices_model');
    }
 
-   public function index(){    
+   public function index(){
       redirect('scout_group_application/application_list');
    }
 
-   public function application_list(){
+   public function application_list($offset = 0){
       // if(!($this->ion_auth->is_admin() || $this->ion_auth->is_region_admin() || $this->ion_auth->is_district_admin() || $this->ion_auth->is_upazila_admin())){
       //    redirect('dashboard');
       // }
@@ -32,11 +32,11 @@ class Scout_group_application extends Backend_Controller {
       //   print 'gd NOT loaded';
       // }
 
-      // phpinfo(); 
+      // phpinfo();
       // exit();
+      $limit = 10;
 
-
-      if($this->ion_auth->is_admin()){ 
+      if($this->ion_auth->is_admin()){
          // Superadmin
          $results = $this->Offices_model->get_scout_group($limit, $offset);
          // Results
@@ -46,10 +46,10 @@ class Scout_group_application extends Backend_Controller {
          // Region Admin
          $regionInfo = $this->Offices_model->get_region_office_by_user_id($this->userSessID);
          // Results
-         $this->data['results'] = $this->Scout_group_application_model->get_data($regionInfo->id); 
+         $this->data['results'] = $this->Scout_group_application_model->get_data($regionInfo->id);
 
-      }elseif($this->ion_auth->is_district_admin()){ 
-         // District Admin        
+      }elseif($this->ion_auth->is_district_admin()){
+         // District Admin
          $districtInfo = $this->Offices_model->get_district_office_by_user_id($this->userSessID);
          // Results
          $this->data['results'] = $this->Scout_group_application_model->get_data('', $districtInfo->id);
@@ -59,7 +59,7 @@ class Scout_group_application extends Backend_Controller {
          $upazilaInfo = $this->Offices_model->get_upazila_office_by_user_id($this->userSessID);
          // Results
          $this->data['results'] = $this->Scout_group_application_model->get_data('', '', $upazilaInfo->id);
-         
+
       }else{
          redirect('dashboard');
       }
@@ -68,14 +68,14 @@ class Scout_group_application extends Backend_Controller {
       $this->data['meta_title'] = 'Application List';
       $this->data['subview'] = 'application_list';
       $this->load->view('backend/_layout_main', $this->data);
-   } 
+   }
 
    public function verify($id){
       if(!($this->ion_auth->is_region_admin() || $this->ion_auth->is_district_admin() || $this->ion_auth->is_upazila_admin())){
          redirect('dashboard');
       }
 
-      $dataID = (int) decrypt_url($id);      
+      $dataID = (int) decrypt_url($id);
       // $this->data['users'] = $this->ion_auth->user()->row();
 
       // Validation
@@ -88,24 +88,24 @@ class Scout_group_application extends Backend_Controller {
 
          if($this->ion_auth->is_region_admin()){
             $form_data = array(
-               'reg_region_charter_number' => $this->input->post('reg_num'), 
-               'reg_region_date' => date('Y-m-d'), 
-               'verify_region'   => $this->input->post('status'), 
+               'reg_region_charter_number' => $this->input->post('reg_num'),
+               'reg_region_date' => date('Y-m-d'),
+               'verify_region'   => $this->input->post('status'),
                'comment_region'  => $this->input->post('comments')
                );
 
-         }elseif($this->ion_auth->is_district_admin()){ 
+         }elseif($this->ion_auth->is_district_admin()){
             $form_data = array(
-               'reg_dis_num'     => $this->input->post('reg_num'), 
-               'reg_dis_date'    => date('Y-m-d'), 
+               'reg_dis_num'     => $this->input->post('reg_num'),
+               'reg_dis_date'    => date('Y-m-d'),
                'verify_district' => $this->input->post('status'),
                'comment_district'=> $this->input->post('comments')
                );
 
          }elseif($this->ion_auth->is_upazila_admin()){
             $form_data = array(
-               'reg_upa_num'     => $this->input->post('reg_num'), 
-               'reg_upa_date'    => date('Y-m-d'), 
+               'reg_upa_num'     => $this->input->post('reg_num'),
+               'reg_upa_date'    => date('Y-m-d'),
                'verify_upazila'  => $this->input->post('status'),
                'comment_upazila' => $this->input->post('comments')
                );
@@ -115,7 +115,7 @@ class Scout_group_application extends Backend_Controller {
          if($this->Common_model->edit('scout_group_application', $dataID, 'id', $form_data)){
             // echo $this->db->last_query(); exit;
             //Activity Log 1=C, 2=U, 3=D, 4=V, 5=G
-            func_activity_log(2, 'Scouts group application change status :'.$dataID); 
+            func_activity_log(2, 'Scouts group application change status :'.$dataID);
             $this->session->set_flashdata('success', 'Applicant status change successfully.');
 
             // Redirect
@@ -139,7 +139,7 @@ class Scout_group_application extends Backend_Controller {
          redirect('dashboard');
       }
 
-      $dataID = (int) decrypt_url($id); 
+      $dataID = (int) decrypt_url($id);
 
       // Info
       $info = $this->Scout_group_application_model->get_scout_application($dataID);
@@ -157,27 +157,27 @@ class Scout_group_application extends Backend_Controller {
       } else {
          $this->form_validation->set_rules('email', $this->lang->line('create_user_validation_email_label'), 'required|valid_email|is_unique[' . $tables['users'] . '.email]');
       }
-      $this->form_validation->set_rules('password', $this->lang->line('create_user_validation_password_label'), 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|max_length[' . $this->config->item('max_password_length', 'ion_auth') . ']');  
+      $this->form_validation->set_rules('password', $this->lang->line('create_user_validation_password_label'), 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|max_length[' . $this->config->item('max_password_length', 'ion_auth') . ']');
 
       // $email    = strtolower($this->input->post('email'));
-      $email    = strtolower($info->contact_email);      
+      $email    = strtolower($info->contact_email);
       $identity = ($identity_column==='email') ? $email : $this->input->post('identity');
       $password = $this->input->post('password');
       $groups = array('7');
       $additional_data = array(
          'is_office'    => 1
-         );  
+         );
 
       //Validate and input fiekds
       if ($this->form_validation->run() == true){
-         $lastID = $this->ion_auth->register($identity, $password, $email, $additional_data, $groups); 
+         $lastID = $this->ion_auth->register($identity, $password, $email, $additional_data, $groups);
 
          $form_data = array(
             'user_id'         => $lastID,
             'grp_type'        => $info->grp_type,
-            'grp_name'        => $info->grp_name_en,   
-            'grp_name_bn'     => $info->grp_name_bn,   
-            'grp_remarks'     => $this->input->post('grp_remarks'),            
+            'grp_name'        => $info->grp_name_en,
+            'grp_name_bn'     => $info->grp_name_bn,
+            'grp_remarks'     => $this->input->post('grp_remarks'),
             'grp_mobile'      => $info->contact_mobile,
             'grp_email'       => $info->contact_email,
             'grp_address'     => $info->grp_address,
@@ -200,11 +200,11 @@ class Scout_group_application extends Backend_Controller {
             $this->Common_model->edit('scout_group_application', $dataID, 'id', array('create_group' => 1));
 
             // Insert Scout Unit under a group
-            for ($i=0; $i<sizeof($_POST['unit_name']); $i++) { 
+            for ($i=0; $i<sizeof($_POST['unit_name']); $i++) {
                $form_data2 = array(
                   'unit_name'          => $_POST['unit_name'][$i],
                   'unit_name_bn'       => $_POST['unit_name_bn'][$i],
-                  'unit_type'          => $_POST['unit_type'][$i],           
+                  'unit_type'          => $_POST['unit_type'][$i],
                   'unit_region_id'     => $info->region_id,
                   'unit_scout_dis_id'  => $info->district_id,
                   'unit_scout_upa_id'  => $info->upazila_id,
@@ -221,7 +221,7 @@ class Scout_group_application extends Backend_Controller {
             $this->session->set_flashdata('success', 'Scouts group and unit create successfully.');
             redirect("offices/scout_group");
          }
-      }                  
+      }
 
       //Input fields
       $this->data['identity'] = array(
@@ -240,10 +240,10 @@ class Scout_group_application extends Backend_Controller {
          'placeholder' => 'Mininum 8 character'
          );
 
-      
+
       //Dropdown
-      $this->data['regions'] = $this->Common_model->get_regions();      
-      $this->data['sc_unit_types'] = $this->Common_model->set_scout_unit_type(); 
+      $this->data['regions'] = $this->Common_model->get_regions();
+      $this->data['sc_unit_types'] = $this->Common_model->set_scout_unit_type();
 
       // Load view
       $this->data['meta_title'] = 'Create Scouts Group Office';
@@ -270,13 +270,13 @@ class Scout_group_application extends Backend_Controller {
       $this->load->view('backend/_layout_main', $this->data);
    }
 
-   public function scout_application_pdf($id){   
+   public function scout_application_pdf($id){
       if(!($this->ion_auth->is_admin() || $this->ion_auth->is_region_admin() || $this->ion_auth->is_district_admin() || $this->ion_auth->is_upazila_admin())){
          redirect('dashboard');
       }
 
       $dataID = (int) decrypt_url($id); //exit;
-      if (!$this->Common_model->exists('scout_group_application', 'id', $dataID)) { 
+      if (!$this->Common_model->exists('scout_group_application', 'id', $dataID)) {
          show_404('site - scout_application_pdf - exitsts', TRUE);
       }
 
@@ -285,7 +285,7 @@ class Scout_group_application extends Backend_Controller {
       // echo '<pre>';
       // print_r($this->data['info']); exit;
       $this->data['meta_title'] = "স্কাউটস গ্রুপের আবেদন";
-      $html = $this->load->view('scout_application_pdf', $this->data, true);   
+      $html = $this->load->view('scout_application_pdf', $this->data, true);
       $file_name = $dataID."-scout-group-application.pdf";
 
       //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
@@ -294,7 +294,7 @@ class Scout_group_application extends Backend_Controller {
       //generate the PDF from the given html
       $mpdf->WriteHTML($html);
 
-      //download it for 'D'. 
+      //download it for 'D'.
       $mpdf->Output($file_name, "I");
    }
 
@@ -308,7 +308,7 @@ class Scout_group_application extends Backend_Controller {
 
       //...............................................................................
       $this->data['meta_title'] = "Complain List";
-      $html = $this->load->view('complain_list_pdf', $this->data, true);   
+      $html = $this->load->view('complain_list_pdf', $this->data, true);
       $file_name ="complain_list_pdf.pdf";
 
       //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
@@ -317,7 +317,7 @@ class Scout_group_application extends Backend_Controller {
       //generate the PDF from the given html
       $mpdf->WriteHTML($html);
 
-      //download it for 'D'. 
+      //download it for 'D'.
       $mpdf->Output($file_name, "D");
    }
    /*************complain_list_pdf function pdf End**************/
@@ -338,7 +338,7 @@ class Scout_group_application extends Backend_Controller {
 
       //...............................................................................
       $this->data['meta_title'] = "Details Feedback on Complain";
-      $html = $this->load->view('details_pdf', $this->data, true);   
+      $html = $this->load->view('details_pdf', $this->data, true);
       $file_name ="details_pdf.pdf";
 
       //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
@@ -347,7 +347,7 @@ class Scout_group_application extends Backend_Controller {
       //generate the PDF from the given html
       $mpdf->WriteHTML($html);
 
-      //download it for 'D'. 
+      //download it for 'D'.
       $mpdf->Output($file_name, "D");
    }
    /*************details_pdf function pdf End**************/

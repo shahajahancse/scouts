@@ -7,7 +7,7 @@
 >
 */
 
-class Services extends Backend_Controller {	
+class Services extends Backend_Controller {
 
 	public function __construct(){
         parent::__construct();
@@ -16,8 +16,8 @@ class Services extends Backend_Controller {
         endif;
 
         $this->data['module_title'] = 'Services';
-        $this->load->model('Common_model'); 
-        $this->load->model('Services_model');     
+        $this->load->model('Common_model');
+        $this->load->model('Services_model');
         $this->load->model('offices/Offices_model');
     }
 
@@ -32,11 +32,11 @@ class Services extends Backend_Controller {
 
     public function request_list($offset=0){
         $limit = 25;
-        
+
         if($this->ion_auth->is_admin()){
             $requestTo = 'NHQ';
             //Result
-            $results = $this->Services_model->get_data($limit, $offset, 1, 'Pending');            
+            $results = $this->Services_model->get_data($limit, $offset, 1, 'Pending');
         }elseif($this->ion_auth->is_region_admin()){
             $requestTo = 'Region';
             //Result
@@ -57,16 +57,16 @@ class Services extends Backend_Controller {
         $this->data['meta_title'] = $requestTo .' Service Request List';
         $this->data['subview'] = 'request_list';
         $this->load->view('backend/_layout_main', $this->data);
-    } 
+    }
 
     /*************request_list_pdf function pdf start**************/
     public function request_list_pdf($offset=0){
         $limit = 25;
-        
+
         if($this->ion_auth->is_admin()){
             $requestTo = 'NHQ';
             //Result
-            $results = $this->Services_model->get_data($limit, $offset, 1, 'Pending');            
+            $results = $this->Services_model->get_data($limit, $offset, 1, 'Pending');
         }elseif($this->ion_auth->is_region_admin()){
             $requestTo = 'Region';
             //Result
@@ -79,10 +79,10 @@ class Services extends Backend_Controller {
         //Results
         $this->data['results'] = $results['rows'];
         $this->data['total_rows'] = count($results['rows']);
-      
+
       //...............................................................................
       $this->data['meta_title'] = "Service Request List";
-      $html = $this->load->view('request_list_pdf', $this->data, true);   
+      $html = $this->load->view('request_list_pdf', $this->data, true);
       $file_name ="request_list_pdf.pdf";
 
       //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
@@ -91,7 +91,7 @@ class Services extends Backend_Controller {
       //generate the PDF from the given html
       $mpdf->WriteHTML($html);
 
-      //download it for 'D'. 
+      //download it for 'D'.
       $mpdf->Output($file_name, "D");
    }
    /*************request_list_pdf function pdf End**************/
@@ -102,7 +102,7 @@ class Services extends Backend_Controller {
         if($this->ion_auth->is_admin()){
             $requestTo = 'NHQ';
             //Result
-            $results = $this->Services_model->get_data($limit, $offset, 1, 'Complete');            
+            $results = $this->Services_model->get_data($limit, $offset, 1, 'Complete');
         }elseif($this->ion_auth->is_region_admin()){
             $requestTo = 'Region';
             //Result
@@ -126,14 +126,14 @@ class Services extends Backend_Controller {
     }
 
     /*************complete_list_pdf function pdf start**************/
-    
+
     public function complete_list_pdf($offset=0){
          $limit = 25;
 
         if($this->ion_auth->is_admin()){
             $requestTo = 'NHQ';
             //Result
-            $results = $this->Services_model->get_data($limit, $offset, 1, 'Complete');            
+            $results = $this->Services_model->get_data($limit, $offset, 1, 'Complete');
         }elseif($this->ion_auth->is_region_admin()){
             $requestTo = 'Region';
             //Result
@@ -146,10 +146,10 @@ class Services extends Backend_Controller {
         //Results
         $this->data['results'] = $results['rows'];
         $this->data['total_rows'] = count($results['rows']);
-      
+
       //...............................................................................
       $this->data['meta_title'] = "Service Complete List";
-      $html = $this->load->view('complete_list_pdf', $this->data, true);   
+      $html = $this->load->view('complete_list_pdf', $this->data, true);
       $file_name ="complete_list_pdf.pdf";
 
       //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
@@ -158,7 +158,7 @@ class Services extends Backend_Controller {
       //generate the PDF from the given html
       $mpdf->WriteHTML($html);
 
-      //download it for 'D'. 
+      //download it for 'D'.
       $mpdf->Output($file_name, "D");
    }
    /*************complete_list_pdf function pdf End**************/
@@ -169,7 +169,7 @@ class Services extends Backend_Controller {
         if($this->ion_auth->is_admin()){
             $requestTo = 'NHQ';
             //Result
-            $results = $this->Services_model->get_data($limit, $offset, 1, 'Reject');            
+            $results = $this->Services_model->get_data($limit, $offset, 1, 'Reject');
         }elseif($this->ion_auth->is_region_admin()){
             $requestTo = 'Region';
             //Result
@@ -199,7 +199,7 @@ class Services extends Backend_Controller {
         if($this->ion_auth->is_admin()){
             $requestTo = 'NHQ';
             //Result
-            $results = $this->Services_model->get_data($limit, $offset, 1, 'Reject');            
+            $results = $this->Services_model->get_data($limit, $offset, 1, 'Reject');
         }elseif($this->ion_auth->is_region_admin()){
             $requestTo = 'Region';
             //Result
@@ -212,10 +212,10 @@ class Services extends Backend_Controller {
         //Results
         $this->data['results'] = $results['rows'];
         $this->data['total_rows'] = count($results['rows']);
-      
+
       //...............................................................................
       $this->data['meta_title'] = "Service cancel List";
-      $html = $this->load->view('cancel_list_pdf', $this->data, true);   
+      $html = $this->load->view('cancel_list_pdf', $this->data, true);
       $file_name ="cancel_list_pdf.pdf";
 
       //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
@@ -224,7 +224,7 @@ class Services extends Backend_Controller {
       //generate the PDF from the given html
       $mpdf->WriteHTML($html);
 
-      //download it for 'D'. 
+      //download it for 'D'.
       $mpdf->Output($file_name, "D");
    }
    /*************cancel_list_pdf function pdf End**************/
@@ -235,7 +235,7 @@ class Services extends Backend_Controller {
         if($this->ion_auth->is_admin()){
             $requestTo = 'NHQ';
             //Result
-            $results = $this->Services_model->get_data($limit, $offset, 1, 'Processing');            
+            $results = $this->Services_model->get_data($limit, $offset, 1, 'Processing');
         }elseif($this->ion_auth->is_region_admin()){
             $requestTo = 'Region';
             //Result
@@ -256,18 +256,18 @@ class Services extends Backend_Controller {
         $this->data['meta_title'] = $requestTo .' Service Cancle List';
         $this->data['subview'] = 'on_process_list';
         $this->load->view('backend/_layout_main', $this->data);
-    } 
+    }
 
 
     /*************on_process_list_pdf function pdf start**************/
-    
+
     public function on_process_list_pdf($offset=0){
          $limit = 25;
 
         if($this->ion_auth->is_admin()){
             $requestTo = 'NHQ';
             //Result
-            $results = $this->Services_model->get_data($limit, $offset, 1, 'Processing');            
+            $results = $this->Services_model->get_data($limit, $offset, 1, 'Processing');
         }elseif($this->ion_auth->is_region_admin()){
             $requestTo = 'Region';
             //Result
@@ -280,10 +280,10 @@ class Services extends Backend_Controller {
         //Results
         $this->data['results'] = $results['rows'];
         $this->data['total_rows'] = count($results['rows']);
-      
+
       //...............................................................................
       $this->data['meta_title'] = "On Process Service Request List";
-      $html = $this->load->view('on_process_list_pdf', $this->data, true);   
+      $html = $this->load->view('on_process_list_pdf', $this->data, true);
       $file_name ="on_process_list_pdf.pdf";
 
       //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
@@ -292,20 +292,20 @@ class Services extends Backend_Controller {
       //generate the PDF from the given html
       $mpdf->WriteHTML($html);
 
-      //download it for 'D'. 
+      //download it for 'D'.
       $mpdf->Output($file_name, "D");
    }
    /*************on_process_list_pdf function pdf End**************/
 
     public function details($id){
         $serviceReqID = (int) decrypt_url($id);
-        if (!$this->Common_model->exists('service_request', 'id', $serviceReqID)) { 
+        if (!$this->Common_model->exists('service_request', 'id', $serviceReqID)) {
             show_404('services - details - exitsts', TRUE);
         }
 
         $this->data['info'] = $this->Services_model->get_info($serviceReqID);
 
-        if($this->ion_auth->is_admin()){ 
+        if($this->ion_auth->is_admin()){
             $this->data['results'] = $this->Services_model->get_assign_to_list_by_request_id($serviceReqID);
         }elseif($this->ion_auth->is_region_admin()){
             //Region Admin
@@ -317,14 +317,14 @@ class Services extends Backend_Controller {
             $this->data['results'] = $this->Services_model->get_assign_to_list_by_request_id($serviceReqID,$region);
         }elseif($this->ion_auth->is_district_admin()){
             //District Admin
-            $office = $this->Offices_model->get_district_office_by_user_id($this->userSessID);  
+            $office = $this->Offices_model->get_district_office_by_user_id($this->userSessID);
             $region     = $office->dis_scout_region_id;
             $district   = $office->id;
 
             $this->data['results'] = $this->Services_model->get_assign_to_list_by_request_id($serviceReqID,$region,$district);
             if(empty($this->data['results']))
                 redirect('dashboard');
-           
+
         }elseif($this->ion_auth->is_upazila_admin()){
             //Upazila Admin
             $office = $this->Offices_model->get_upazila_office_by_user_id($this->userSessID);
@@ -335,7 +335,7 @@ class Services extends Backend_Controller {
             $this->data['results'] = $this->Services_model->get_assign_to_list_by_request_id($serviceReqID,$region,$district,$upazila);
             if(empty($this->data['results']))
                 redirect('dashboard');
-            
+
         }elseif($this->ion_auth->is_group_admin()){
             // Group Admin
             $groupInfo = $this->Offices_model->get_scout_group_by_user_id($this->userSessID);
@@ -362,13 +362,13 @@ class Services extends Backend_Controller {
     /*************details_pdf function pdf start**************/
     public function details_pdf($id){
         $serviceReqID = (int) decrypt_url($id);
-        if (!$this->Common_model->exists('service_request', 'id', $serviceReqID)) { 
+        if (!$this->Common_model->exists('service_request', 'id', $serviceReqID)) {
             show_404('services - details_pdf - exitsts', TRUE);
         }
 
         $this->data['info'] = $this->Services_model->get_info($serviceReqID);
 
-        if($this->ion_auth->is_admin()){ 
+        if($this->ion_auth->is_admin()){
             $this->data['results'] = $this->Services_model->get_assign_to_list_by_request_id($serviceReqID);
         }elseif($this->ion_auth->is_region_admin()){
             //Region Admin
@@ -380,14 +380,14 @@ class Services extends Backend_Controller {
             $this->data['results'] = $this->Services_model->get_assign_to_list_by_request_id($serviceReqID,$region);
         }elseif($this->ion_auth->is_district_admin()){
             //District Admin
-            $office = $this->Offices_model->get_district_office_by_user_id($this->userSessID);  
+            $office = $this->Offices_model->get_district_office_by_user_id($this->userSessID);
             $region     = $office->dis_scout_region_id;
             $district   = $office->id;
 
             $this->data['results'] = $this->Services_model->get_assign_to_list_by_request_id($serviceReqID,$region,$district);
             if(empty($this->data['results']))
                 redirect('dashboard');
-           
+
         }elseif($this->ion_auth->is_upazila_admin()){
             //Upazila Admin
             $office = $this->Offices_model->get_upazila_office_by_user_id($this->userSessID);
@@ -398,7 +398,7 @@ class Services extends Backend_Controller {
             $this->data['results'] = $this->Services_model->get_assign_to_list_by_request_id($serviceReqID,$region,$district,$upazila);
             if(empty($this->data['results']))
                 redirect('dashboard');
-            
+
         }elseif($this->ion_auth->is_group_admin()){
             // Group Admin
             $groupInfo = $this->Offices_model->get_scout_group_by_user_id($this->userSessID);
@@ -414,10 +414,10 @@ class Services extends Backend_Controller {
         }else{
             redirect('dashboard');
         }
-      
+
       //...............................................................................
       $this->data['meta_title'] = "Details Services Request";
-      $html = $this->load->view('details_pdf', $this->data, true);   
+      $html = $this->load->view('details_pdf', $this->data, true);
       $file_name ="details_pdf.pdf";
 
       //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
@@ -426,16 +426,16 @@ class Services extends Backend_Controller {
       //generate the PDF from the given html
       $mpdf->WriteHTML($html);
 
-      //download it for 'D'. 
+      //download it for 'D'.
       $mpdf->Output($file_name, "D");
    }
    /*************details_pdf function pdf End**************/
 
     public function assign_to($id){
-        $serviceID = (int) decrypt_url($id); 
-        if (!$this->Common_model->exists('service_request', 'id', $serviceID)) { 
+        $serviceID = (int) decrypt_url($id);
+        if (!$this->Common_model->exists('service_request', 'id', $serviceID)) {
             show_404('services - assign_to - exitsts', TRUE);
-        }        
+        }
 
         $this->data['info'] = $this->Services_model->get_info($serviceID);
 
@@ -450,7 +450,7 @@ class Services extends Backend_Controller {
                 redirect('dashboard');
             }
             //Region Admin
-            $region = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id; 
+            $region = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
             $assignFrom = 'Region';
 
         }else{
@@ -458,7 +458,7 @@ class Services extends Backend_Controller {
         }
         // elseif($this->ion_auth->is_district_admin()){
         //     //District Admin
-        //     $office = $this->Offices_model->get_district_office_by_user_id($this->userSessID);  
+        //     $office = $this->Offices_model->get_district_office_by_user_id($this->userSessID);
         //     $region     = $office->dis_scout_region_id;
         //     $district   = $office->id;
         //     $assignFrom = 'District';
@@ -473,17 +473,17 @@ class Services extends Backend_Controller {
 
         // }
 
-        
+
         //CI validation
-        $this->form_validation->set_rules('assign_office_id', 'assign office type', 'required|trim'); 
-        $this->form_validation->set_rules('region_id', 'region', 'required|trim');          
-        $this->form_validation->set_rules('note', 'note', 'required|trim');          
+        $this->form_validation->set_rules('assign_office_id', 'assign office type', 'required|trim');
+        $this->form_validation->set_rules('region_id', 'region', 'required|trim');
+        $this->form_validation->set_rules('note', 'note', 'required|trim');
 
         //Validate and input data
         if ($this->form_validation->run() == true){
             $form_data = array(
                 'assign_from'       => $assignFrom,
-                'req_service_id'    => $this->data['info']->id, 
+                'req_service_id'    => $this->data['info']->id,
                 'ass_to_office_id'  => $this->input->post('assign_office_id'),
                 'ass_region_id'     => $this->input->post('region_id'),
                 'ass_district_id'   => $this->input->post('district_id')?$this->input->post('district_id'):NULL,
@@ -502,7 +502,7 @@ class Services extends Backend_Controller {
 
         //Dropdown
         $this->data['assign_to_office'] = $this->Common_model->set_service_assign_office_type();
-        $this->data['regions'] = $this->Common_model->get_regions(); 
+        $this->data['regions'] = $this->Common_model->get_regions();
 
         //Load view
         $this->data['meta_title'] = 'Assign Public Service Task to Scouts Office';
@@ -510,26 +510,26 @@ class Services extends Backend_Controller {
         $this->load->view('backend/_layout_main', $this->data);
     }
 
-    public function assign_to_list(){
+    public function assign_to_list($offset = 0){
         $limit = 25;
 
         if($this->ion_auth->is_admin()){
             //Super Admin
             $results = $this->Services_model->get_assign_to_list($limit, $offset, 'NHQ');
 
-        }elseif($this->ion_auth->is_region_admin()){  
+        }elseif($this->ion_auth->is_region_admin()){
             //Region Admin
             $region = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
-           
+
             //Result
             $results = $this->Services_model->get_assign_to_list($limit, $offset, 'Region',$region);
 
         }elseif($this->ion_auth->is_district_admin()){
             //District Admin
-            $office = $this->Offices_model->get_district_office_by_user_id($this->userSessID);  
+            $office = $this->Offices_model->get_district_office_by_user_id($this->userSessID);
             $region     = $office->dis_scout_region_id;
             $district   = $office->id;
-            
+
             //Result
             $results = $this->Services_model->get_assign_to_list($limit, $offset, 'District',$region,$district);
 
@@ -557,7 +557,7 @@ class Services extends Backend_Controller {
         $this->data['meta_title'] = 'Services List';
         $this->data['subview'] = 'assign_to_list';
         $this->load->view('backend/_layout_main', $this->data);
-    } 
+    }
 
 
     /*************assign_to_list_pdf function pdf start**************/
@@ -568,19 +568,19 @@ class Services extends Backend_Controller {
             //Super Admin
             $results = $this->Services_model->get_assign_to_list($limit, $offset, 'NHQ');
 
-        }elseif($this->ion_auth->is_region_admin()){  
+        }elseif($this->ion_auth->is_region_admin()){
             //Region Admin
             $region = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
-           
+
             //Result
             $results = $this->Services_model->get_assign_to_list($limit, $offset, 'Region',$region);
 
         }elseif($this->ion_auth->is_district_admin()){
             //District Admin
-            $office = $this->Offices_model->get_district_office_by_user_id($this->userSessID);  
+            $office = $this->Offices_model->get_district_office_by_user_id($this->userSessID);
             $region     = $office->dis_scout_region_id;
             $district   = $office->id;
-            
+
             //Result
             $results = $this->Services_model->get_assign_to_list($limit, $offset, 'District',$region,$district);
 
@@ -600,10 +600,10 @@ class Services extends Backend_Controller {
          //Results
         $this->data['results']    = $results['rows'];
         $this->data['total_rows'] = count($results['rows']);
-      
+
       //...............................................................................
       $this->data['meta_title'] = "Services List";
-      $html = $this->load->view('assign_to_list_pdf', $this->data, true);   
+      $html = $this->load->view('assign_to_list_pdf', $this->data, true);
       $file_name ="assign_to_list_pdf.pdf";
 
       //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
@@ -612,31 +612,31 @@ class Services extends Backend_Controller {
       //generate the PDF from the given html
       $mpdf->WriteHTML($html);
 
-      //download it for 'D'. 
+      //download it for 'D'.
       $mpdf->Output($file_name, "D");
    }
    /*************assign_to_list_pdf function pdf End**************/
 
-    public function task_assign_list(){
+    public function task_assign_list($offset=0){
         $limit = 25;
 
         if($this->ion_auth->is_admin()){
             //Super Admin
             $results = $this->Services_model->get_task_assign_list($limit, $offset);
 
-        }elseif($this->ion_auth->is_region_admin()){  
+        }elseif($this->ion_auth->is_region_admin()){
             //Region Admin
             $region = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
-            
+
             //Result
             $results = $this->Services_model->get_task_assign_list($limit, $offset, '1',$region);
 
         }elseif($this->ion_auth->is_district_admin()){
             //District Admin
-            $office = $this->Offices_model->get_district_office_by_user_id($this->userSessID);  
+            $office = $this->Offices_model->get_district_office_by_user_id($this->userSessID);
             $region     = $office->dis_scout_region_id;
             $district   = $office->id;
-            
+
             //Result
             $results = $this->Services_model->get_task_assign_list($limit, $offset, '2',$region,$district);
 
@@ -646,7 +646,7 @@ class Services extends Backend_Controller {
             $region     = $office->upa_region_id;
             $district   = $office->upa_scout_dis_id;
             $upazila    = $office->id;
-            
+
             //Result
             $results = $this->Services_model->get_task_assign_list($limit, $offset, '3',$region,$district,$upazila);
 
@@ -686,19 +686,19 @@ class Services extends Backend_Controller {
             //Super Admin
             $results = $this->Services_model->get_task_assign_list($limit, $offset);
 
-        }elseif($this->ion_auth->is_region_admin()){  
+        }elseif($this->ion_auth->is_region_admin()){
             //Region Admin
             $region = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
-            
+
             //Result
             $results = $this->Services_model->get_task_assign_list($limit, $offset, '1',$region);
 
         }elseif($this->ion_auth->is_district_admin()){
             //District Admin
-            $office = $this->Offices_model->get_district_office_by_user_id($this->userSessID);  
+            $office = $this->Offices_model->get_district_office_by_user_id($this->userSessID);
             $region     = $office->dis_scout_region_id;
             $district   = $office->id;
-            
+
             //Result
             $results = $this->Services_model->get_task_assign_list($limit, $offset, '2',$region,$district);
 
@@ -708,7 +708,7 @@ class Services extends Backend_Controller {
             $region     = $office->upa_region_id;
             $district   = $office->upa_scout_dis_id;
             $upazila    = $office->id;
-            
+
             //Result
             $results = $this->Services_model->get_task_assign_list($limit, $offset, '3',$region,$district,$upazila);
 
@@ -729,10 +729,10 @@ class Services extends Backend_Controller {
          //Results
         $this->data['results']    = $results['rows'];
         $this->data['total_rows'] = count($results['rows']);
-      
+
       //...............................................................................
       $this->data['meta_title'] = "Task Assign List";
-      $html = $this->load->view('task_assign_list_pdf', $this->data, true);   
+      $html = $this->load->view('task_assign_list_pdf', $this->data, true);
       $file_name ="task_assign_list_pdf.pdf";
 
       //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
@@ -741,19 +741,19 @@ class Services extends Backend_Controller {
       //generate the PDF from the given html
       $mpdf->WriteHTML($html);
 
-      //download it for 'D'. 
+      //download it for 'D'.
       $mpdf->Output($file_name, "D");
    }
    /*************task_assign_list_pdf function pdf End**************/
 
     public function request_status($id){
-        $serviceID = (int) decrypt_url($id);        
-        if (!$this->Common_model->exists('service_request', 'id', $serviceID)) { 
+        $serviceID = (int) decrypt_url($id);
+        if (!$this->Common_model->exists('service_request', 'id', $serviceID)) {
             show_404('service - request_status - exists', TRUE);
-        } 
+        }
 
         //Result
-        $this->data['info'] = $this->Services_model->get_info($serviceID);          
+        $this->data['info'] = $this->Services_model->get_info($serviceID);
 
         //Check authentication
         if($this->ion_auth->is_admin()){
@@ -766,13 +766,13 @@ class Services extends Backend_Controller {
             if($this->data['info']->serv_region_id == $region OR !empty($this->Services_model->get_assign_to_list_by_request_id($serviceID,$region))){
             }else{
                 redirect('dashboard');
-            } 
+            }
 
             $actionBy = 'Region';
 
         }elseif($this->ion_auth->is_district_admin()){
             //District Admin
-            $office = $this->Offices_model->get_district_office_by_user_id($this->userSessID);  
+            $office = $this->Offices_model->get_district_office_by_user_id($this->userSessID);
             $region     = $office->dis_scout_region_id;
             $district   = $office->id;
 
@@ -815,8 +815,8 @@ class Services extends Backend_Controller {
 
 
         //CI validation
-        $this->form_validation->set_rules('status', 'task status', 'required|trim'); 
-        $this->form_validation->set_rules('note', 'note', 'required|trim');          
+        $this->form_validation->set_rules('status', 'task status', 'required|trim');
+        $this->form_validation->set_rules('note', 'note', 'required|trim');
 
         //Validate and input data
         if ($this->form_validation->run() == true){
@@ -829,7 +829,7 @@ class Services extends Backend_Controller {
                 'act_upazila_id'  => $upazila?$upazila:NULL,
                 'act_group_id'    => $group?$group:NULL,
                 'act_note'        => $this->input->post('note')
-                );           
+                );
 
             // print_r($form_data); exit;
             if($this->Common_model->edit('service_request', $serviceID, 'id', $form_data)){
@@ -846,7 +846,7 @@ class Services extends Backend_Controller {
         //Dropdown
         // $this->data['action_office'] = $this->Common_model->set_service_assign_office_type();
         $this->data['status'] = $this->Common_model->set_service_status();
-        // $this->data['regions'] = $this->Common_model->get_regions(); 
+        // $this->data['regions'] = $this->Common_model->get_regions();
 
         //Load view
         $this->data['meta_title'] = 'Public Service Request Change Status';
@@ -854,10 +854,10 @@ class Services extends Backend_Controller {
         $this->load->view('backend/_layout_main', $this->data);
     }
 
-    public function assign_cancel($id){    
+    public function assign_cancel($id){
         //Encrypt
         $serviceID = (int) decrypt_url($id); //exit;
-        if (!$this->Common_model->exists('service_request', 'id', $serviceID)) { 
+        if (!$this->Common_model->exists('service_request', 'id', $serviceID)) {
             show_404('services - assign_cancel - exitsts', TRUE);
         }
 
@@ -870,11 +870,11 @@ class Services extends Backend_Controller {
             if($this->data['info']->serv_region_id == $region OR !empty($this->Services_model->get_assign_to_list_by_request_id($serviceID,$region))){
             }else{
                 redirect('dashboard');
-            } 
+            }
 
         }elseif($this->ion_auth->is_district_admin()){
             //District Admin
-            $office = $this->Offices_model->get_district_office_by_user_id($this->userSessID);  
+            $office = $this->Offices_model->get_district_office_by_user_id($this->userSessID);
             $region     = $office->dis_scout_region_id;
             $district   = $office->id;
 
@@ -908,7 +908,7 @@ class Services extends Backend_Controller {
         }else{
             redirect('dashboard');
         }
-        
+
 
         //Delete user and all related information
         if($this->Services_model->destroy_assign_to($serviceID)){
@@ -933,7 +933,7 @@ class Services extends Backend_Controller {
     //     $this->data['meta_title'] = 'Services List';
     //     $this->data['subview'] = 'services_list';
     //     $this->load->view('backend/_layout_main', $this->data);
-    // } 
+    // }
 
 
     // public function comments($id){
@@ -955,11 +955,11 @@ class Services extends Backend_Controller {
     //             );
     //         //print_r($form_data);exit();
 
-    //         if($this->Services_model->edit('services_to_scouts', $this->data['users']->id, $id,  $form_data)){                
+    //         if($this->Services_model->edit('services_to_scouts', $this->data['users']->id, $id,  $form_data)){
     //             $this->session->set_flashdata('success', 'Successfully send your comments.');
-    //             redirect('Services/my_services'); 
-    //         } 
-    //         redirect('Services/my_services');     
+    //             redirect('Services/my_services');
+    //         }
+    //         redirect('Services/my_services');
     //     }
 
     //     $this->data['meta_title'] = 'services Comments';
@@ -996,13 +996,13 @@ class Services extends Backend_Controller {
     //     if(empty($this->Services_model->get_scout_member($services_id, $scout_id))){
 
     //         if($this->Common_model->save('services_to_scouts', $form_data2)){
-    //             $this->session->set_flashdata('success', 'Information update successfully.'); 
+    //             $this->session->set_flashdata('success', 'Information update successfully.');
     //         }else{
     //             $this->session->set_flashdata('warning', 'Information update unsuccessfully.');
     //         }
     //     }else{
     //         if($this->Services_model->edit('services_to_scouts', $scout_id, $services_id, $form_data)){
-    //             $this->session->set_flashdata('success', 'Information update successfully.'); 
+    //             $this->session->set_flashdata('success', 'Information update successfully.');
     //         }else{
     //             $this->session->set_flashdata('warning', 'Information update unsuccessfully.');
     //         }

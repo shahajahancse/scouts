@@ -1,5 +1,5 @@
-<div class="page-content">     
-  <div class="content">  
+<div class="page-content">
+  <div class="content">
     <ul class="breadcrumb" style="margin-bottom: 20px;">
       <li> <a href="<?=base_url('dashboard')?>" class="active"> Dashboard </a> </li>
       <li> <a href="<?=base_url('dashboard')?>" class="active"> <?=$module_title; ?> </a></li>
@@ -14,12 +14,12 @@
             <?php if($this->ion_auth->is_admin()){ ?>
             <div class="pull-right">
               <a class="btn btn-success btn-xs btn-mini" href="<?=base_url('services/request_list')?>">All info Request List</a>
-            </div> 
-            <?php } ?>           
+            </div>
+            <?php } ?>
           </div>
 
           <div class="grid-body ">
-            <div><?php //echo validation_errors(); ?></div>     
+            <div><?php //echo validation_errors(); ?></div>
             <?php if($this->session->flashdata('success')):?>
               <div class="alert alert-success">
                 <?php echo $this->session->flashdata('success');?>
@@ -45,7 +45,7 @@
 
               <div class="row">
                 <div class="col-md-7">
-                  <?php 
+                  <?php
                   $attributes = array('id' => 'validate_service');
                   echo form_open_multipart(uri_string(), $attributes);
                   ?>
@@ -61,8 +61,8 @@
                     <div class="col-md-12">
                       <label class="form-label">Note <span class="required">*</span></label>
                       <?php echo form_error('note'); ?>
-                      <textarea name="note" rows="3" style="width: 100%" placeholder="Write your note here...."><?=set_value('note', $info->note)?></textarea>
-                    </div> 
+                      <textarea name="note" rows="3" style="width: 100%" placeholder="Write your note here...."><?=set_value('note', $info->act_note)?></textarea>
+                    </div>
                   </div>
 
                   <div class="pull-right">
@@ -74,7 +74,7 @@
                 </div>
 
                 <div class="col-md-5">
-                  <table class="tg" width="100%">              
+                  <table class="tg" width="100%">
                     <tr>
                       <td class="tg-khup">Service Name:</td>
                       <td class="tg-ywa9"><?=$info->service_name?></td>
@@ -93,7 +93,7 @@
                     </tr>
                     <tr>
                       <td class="tg-khup">Mobile:</td>
-                      <td class="tg-ywa9"> <?=$info->phone?></td>                      
+                      <td class="tg-ywa9"> <?=$info->phone?></td>
                     </tr>
                     <tr>
                       <td class="tg-khup">Email:</td>
@@ -127,7 +127,7 @@
 
       //Validation
       $('#validate_service').validate({
-          // focusInvalid: false, 
+          // focusInvalid: false,
           ignore: "",
           rules: {
             status: {
@@ -147,18 +147,18 @@
         },
 
         invalidHandler: function (event, validator) {
-            //display error alert on form submit    
+            //display error alert on form submit
           },
 
-         errorPlacement: function (label, element) { // render error placement for each input type   
+         errorPlacement: function (label, element) { // render error placement for each input type
           $('<span class="error"></span>').insertAfter(element).append(label)
           var parent = $(element).parent('.input-with-icon');
-          parent.removeClass('success-control').addClass('error-control');  
+          parent.removeClass('success-control').addClass('error-control');
         },
 
          highlight: function (element) { // hightlight error inputs
           var parent = $(element).parent();
-          parent.removeClass('success-control').addClass('error-control'); 
+          parent.removeClass('success-control').addClass('error-control');
         },
 
          unhighlight: function (element) { // revert the change done by hightlight
@@ -167,17 +167,17 @@
 
          success: function (label, element) {
           var parent = $(element).parent('.input-with-icon');
-          parent.removeClass('error-control').addClass('success-control'); 
+          parent.removeClass('error-control').addClass('success-control');
         },
 
         submitHandler: function (form) {
           form.submit();
         },
       });
-    });   
+    });
 
    //  $('#assign_office_id').change(function(){
-   //    $('#district').hide(); 
+   //    $('#district').hide();
    //    $("#upazila").hide();
    //    $("#group").hide();
 
@@ -188,11 +188,11 @@
    //      $("#district").show();
    //    }else if(id == 3){
    //      $("#district").show();
-   //      $("#upazila").show();        
+   //      $("#upazila").show();
    //    }else if(id == 4){
    //      $("#district").show();
-   //      $("#upazila").show(); 
-   //      $("#group").show();        
+   //      $("#upazila").show();
+   //      $("#group").show();
    //    }
    // });
  </script>

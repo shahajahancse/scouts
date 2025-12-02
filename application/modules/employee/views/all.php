@@ -1,5 +1,5 @@
-<div class="page-content">     
-   <div class="content">  
+<div class="page-content">
+   <div class="content">
       <ul class="breadcrumb" style="margin-bottom: 20px;">
          <li> <a href="<?=base_url('dahsboard')?>" class="active"> Dashboard </a> </li>
          <li> <a href="<?=base_url('pds/pds_list')?>" class="active"><?=$module_name?> </a></li>
@@ -47,9 +47,9 @@
             gap: 4px;
          }
 
-        
+
          @media screen and (max-width: 767px) {
-            .table th, 
+            .table th,
             .table td {
                white-space: nowrap;
                min-width: 120px;
@@ -97,7 +97,7 @@
                      <?php if($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin()){ ?>
                      <a href="<?=base_url('employee/create')?>" class="btn btn-blueviolet btn-xs btn-mini"> Create new employee</a>
                      <?php } ?>
-                  </div>            
+                  </div>
                </div>
 
                <div class="grid-body ">
@@ -108,18 +108,18 @@
                   <?php endif; ?>
 
                   <form method="get" action="" class="search-form">
-                     <?php if($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin()){ ?>                     
+                     <?php if($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin()){ ?>
                      <div class="row">
                         <div class="col-md-5 col-sm-12">
                            <?php $more_attr = 'class="form-control input-sm"';
-                           echo form_dropdown('designation', $designation, $_GET['designation'], $more_attr);
+                           echo form_dropdown('designation', $designation, $_GET['designation'] ?? '', $more_attr);
                            ?>
-                        </div>     
+                        </div>
                         <div class="col-md-5 col-sm-12">
                            <?php $more_attr = 'class="sc_district_val form-control input-sm" id="sc_district"';
-                           echo form_dropdown('department', $department, $_GET['department'], $more_attr);
+                           echo form_dropdown('department', $department, $_GET['department'] ?? '', $more_attr);
                            ?>
-                        </div>     
+                        </div>
                         <div class="col-md-2 col-sm-12">
                            <div class="pull-right">
                               <button type="submit" class="btn btn-blueviolet btn-mini"><i class="icon-ok"></i> Search</button>
@@ -142,14 +142,14 @@
                               <th style="width:30%">Name</th>
                               <th style="width:18%">Department</th>
                               <th style="width:20%">Designation</th>
-                              <th style="width:25%">Phone</th>                           
-                              <th style="width:25%">Email</th>                           
+                              <th style="width:25%">Phone</th>
+                              <th style="width:25%">Email</th>
                               <th width="50">SL</th>
                               <th style="width:7%; text-align: right;">Action</th>
                            </tr>
                         </thead>
                         <tbody>
-                           <?php 
+                           <?php
                            $sl=$pagination['current_page'];
                            foreach ($results as $row):
                               $sl++;
@@ -174,7 +174,7 @@
                               <td class="v-align-middle"><?=$row->email; ?></td>
                               <td class="v-align-middle"><?=$row->sl_no; ?></td>
                               <td align="right">
-                                 <div class="btn-group"> 
+                                 <div class="btn-group">
                                     <a class="btn btn-primary dropdown-toggle btn-mini" data-toggle="dropdown" href="#"> Action <span class="caret"></span> </a>
                                     <ul class="dropdown-menu pull-right">
                                        <li><?=anchor("employee/edit/".($row->id), 'Edit')?></li>
@@ -185,7 +185,7 @@
                                  </div>
                               </td>
                            </tr>
-                           <?php endforeach;?>                      
+                           <?php endforeach;?>
                         </tbody>
                      </table>
                   </div>
