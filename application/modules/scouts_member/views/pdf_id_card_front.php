@@ -1,4 +1,4 @@
-<?php
+<?php 
 // echo '<pre>';
 // print_r($info); exit;
 $scout_id = $info->scout_id;
@@ -8,9 +8,9 @@ $sc_district_name_en = $info->dis_name_en;
 $sc_group_name = $info->grp_name;
 
 /*if($info->expire_date != NULL){
-  $expire_date = date('d M, Y', strtotime($info->expire_date));
+  $expire_date = date('d M, Y', strtotime($info->expire_date));  
 }else{*/
-  $expire_date = date('d M, Y', strtotime("31-12-2023"));
+  $expire_date = date('d M, Y', strtotime("31-12-2023"));  
 // }
 
 
@@ -35,10 +35,10 @@ if($info->member_id == 2){
 }elseif($info->member_id == 8){
   /*if($info->sc_section_id == 1 || $info->sc_section_id == 2 || $info->sc_section_id == 3){
     if($info->sc_badge_id == 111){
-      $member_type_section = $info->badge_type_name_en;
+      $member_type_section = $info->badge_type_name_en;      
     }
   }else{*/
-    $member_type_section = 'Adult Leader';
+    $member_type_section = 'Adult Leader';    
   // }
 }elseif($info->member_id == 9){
   $member_type_section = 'Professional Executive';
@@ -53,17 +53,17 @@ if($info->member_id == 2){
 //echo $full_pre_add; exit;
 //echo 'hello'; exit;
 // echo FCPATH; exit;
-?>
+?> 
 
 
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Download or Save Scout ID Card</title>
+  <title>Download or Save Scout ID Card</title> 
 </head>
-<body>
+<body>  
   <div height="100%" width="100%" style="background: #FFFFFF
-  url('<?=FCPATH?>awedget/assets/img/id_card/front.png'); background-repeat: no-repeat; border: 0px solid black;">
+  url('<?=FCPATH?>awedget/assets/img/id_card/front.png'); background-repeat: no-repeat; background-image-resolution: 72dpi; border: 0px solid black;">
   <div style="float: left;border: 0px solid red; width: 400px;">
   <img src="<?=$profile_img_url ?>" style="height: 315px; width: 315px;margin: 265px 0 0 33px;padding: 3px;border: 2px solid black;" >
     <div style="margin: 30px 0 0 0px;text-align:center;font-family: arial;font-weight: bold; font-size: 35pt;border: 0px solid red;">BS ID</div>
