@@ -120,15 +120,15 @@ class Scouts_member extends Backend_Controller {
          redirect('dashboard');
       }
 
-      if($_GET['region']>0 && $_GET['region'] !=NULL){
+      if(!empty($_GET['region']) && $_GET['region'] > 0){
          $this->data['scouts_district'] =  $this->Common_model->get_scout_districts($_GET['region']);
       }
 
-      if($_GET['district']>0 && $_GET['district'] !=NULL){
+      if(!empty($_GET['district']) && $_GET['district'] > 0 ){
          $this->data['scouts_upazila'] =  $this->Common_model->get_scout_upazila_thana($_GET['district']);
       }
 
-      if($_GET['upazila']>0 && $_GET['upazila'] !=NULL){
+      if(!empty($_GET['upazila']) && $_GET['upazila'] > 0){
          $this->data['scouts_group'] =  $this->Common_model->get_scout_group_office('', $_GET['upazila']);
       }
 
@@ -213,15 +213,15 @@ class Scouts_member extends Backend_Controller {
       }
 
 
-      if($_GET['region']>0 && $_GET['region'] !=NULL){
+      if(isset($_GET['region']) && $_GET['region'] > 0){
          $this->data['scouts_district'] =  $this->Common_model->get_scout_districts($_GET['region']);
       }
 
-      if($_GET['district']>0 && $_GET['district'] !=NULL){
+      if(isset($_GET['district']) && $_GET['district'] > 0){
          $this->data['scouts_upazila'] =  $this->Common_model->get_scout_upazila_thana($_GET['district']);
       }
 
-      if($_GET['upazila']>0 && $_GET['upazila'] !=NULL){
+      if(isset($_GET['upazila']) && $_GET['upazila'] > 0){
          $this->data['scouts_group'] =  $this->Common_model->get_scout_group_office('', $_GET['upazila']);
       }
 
@@ -316,15 +316,15 @@ class Scouts_member extends Backend_Controller {
       }
 
 
-      if($_GET['region']>0 && $_GET['region'] !=NULL){
+      if(isset($_GET['region']) && $_GET['region'] !=NULL){
          $this->data['scouts_district'] =  $this->Common_model->get_scout_districts($_GET['region']);
       }
 
-      if($_GET['district']>0 && $_GET['district'] !=NULL){
+      if(isset($_GET['district']) && $_GET['district'] !=NULL){
          $this->data['scouts_upazila'] =  $this->Common_model->get_scout_upazila_thana($_GET['district']);
       }
 
-      if($_GET['upazila']>0 && $_GET['upazila'] !=NULL){
+      if(isset($_GET['upazila']) && $_GET['upazila'] !=NULL){
          $this->data['scouts_group'] =  $this->Common_model->get_scout_group_office('', $_GET['upazila']);
       }
 
@@ -420,15 +420,15 @@ class Scouts_member extends Backend_Controller {
       }
 
 
-      if($_GET['region']>0 && $_GET['region'] !=NULL){
+      if(isset($_GET['region']) && $_GET['region'] !=NULL){
          $this->data['scouts_district'] =  $this->Common_model->get_scout_districts($_GET['region']);
       }
 
-      if($_GET['district']>0 && $_GET['district'] !=NULL){
+      if(isset($_GET['district']) && $_GET['district'] !=NULL){
          $this->data['scouts_upazila'] =  $this->Common_model->get_scout_upazila_thana($_GET['district']);
       }
 
-      if($_GET['upazila']>0 && $_GET['upazila'] !=NULL){
+      if(isset($_GET['upazila']) && $_GET['upazila'] !=NULL){
          $this->data['scouts_group'] =  $this->Common_model->get_scout_group_office('', $_GET['upazila']);
       }
 
@@ -592,15 +592,15 @@ class Scouts_member extends Backend_Controller {
       }
 
 
-      if($_GET['region']>0 && $_GET['region'] !=NULL){
+      if(isset($_GET['region']) && $_GET['region'] !=NULL){
          $this->data['scouts_district'] =  $this->Common_model->get_scout_districts($_GET['region']);
       }
 
-      if($_GET['district']>0 && $_GET['district'] !=NULL){
+      if(isset($_GET['district']) && $_GET['district'] !=NULL){
          $this->data['scouts_upazila'] =  $this->Common_model->get_scout_upazila_thana($_GET['district']);
       }
 
-      if($_GET['upazila']>0 && $_GET['upazila'] !=NULL){
+      if(isset($_GET['upazila']) && $_GET['upazila'] !=NULL){
          $this->data['scouts_group'] =  $this->Common_model->get_scout_group_office('', $_GET['upazila']);
       }
 
@@ -671,15 +671,15 @@ class Scouts_member extends Backend_Controller {
       }
 
 
-      if($_GET['region']>0 && $_GET['region'] !=NULL){
+      if(isset($_GET['region']) && $_GET['region'] !=NULL){
          $this->data['scouts_district'] =  $this->Common_model->get_scout_districts($_GET['region']);
       }
 
-      if($_GET['district']>0 && $_GET['district'] !=NULL){
+      if(isset($_GET['district']) && $_GET['district'] !=NULL){
          $this->data['scouts_upazila'] =  $this->Common_model->get_scout_upazila_thana($_GET['district']);
       }
 
-      if($_GET['upazila']>0 && $_GET['upazila'] !=NULL){
+      if(isset($_GET['upazila']) && $_GET['upazila'] !=NULL){
          $this->data['scouts_group'] =  $this->Common_model->get_scout_group_office('', $_GET['upazila']);
       }
 
@@ -755,15 +755,15 @@ class Scouts_member extends Backend_Controller {
       }
 
 
-      if($_GET['region']>0 && $_GET['region'] !=NULL){
+      if(isset($_GET['region']) && $_GET['region'] !=NULL){
          $this->data['scouts_district'] =  $this->Common_model->get_scout_districts($_GET['region']);
       }
 
-      if($_GET['district']>0 && $_GET['district'] !=NULL){
+      if(isset($_GET['district']) && $_GET['district'] !=NULL){
          $this->data['scouts_upazila'] =  $this->Common_model->get_scout_upazila_thana($_GET['district']);
       }
 
-      if($_GET['upazila']>0 && $_GET['upazila'] !=NULL){
+      if(isset($_GET['upazila']) && $_GET['upazila'] !=NULL){
          $this->data['scouts_group'] =  $this->Common_model->get_scout_group_office('', $_GET['upazila']);
       }
 
@@ -927,15 +927,15 @@ class Scouts_member extends Backend_Controller {
       }
 
 
-      if($_GET['region']>0 && $_GET['region'] !=NULL){
+      if(isset($_GET['region']) && $_GET['region'] !=NULL){
          $this->data['scouts_district'] =  $this->Common_model->get_scout_districts($_GET['region']);
       }
 
-      if($_GET['district']>0 && $_GET['district'] !=NULL){
+      if(isset($_GET['district']) && $_GET['district'] !=NULL){
          $this->data['scouts_upazila'] =  $this->Common_model->get_scout_upazila_thana($_GET['district']);
       }
 
-      if($_GET['upazila']>0 && $_GET['upazila'] !=NULL){
+      if(isset($_GET['upazila']) && $_GET['upazila'] !=NULL){
          $this->data['scouts_group'] =  $this->Common_model->get_scout_group_office('', $_GET['upazila']);
       }
 
@@ -1007,15 +1007,15 @@ class Scouts_member extends Backend_Controller {
       }
 
 
-      if($_GET['region']>0 && $_GET['region'] !=NULL){
+      if(isset($_GET['region']) && $_GET['region'] !=NULL){
          $this->data['scouts_district'] =  $this->Common_model->get_scout_districts($_GET['region']);
       }
 
-      if($_GET['district']>0 && $_GET['district'] !=NULL){
+      if(isset($_GET['district']) && $_GET['district'] !=NULL){
          $this->data['scouts_upazila'] =  $this->Common_model->get_scout_upazila_thana($_GET['district']);
       }
 
-      if($_GET['upazila']>0 && $_GET['upazila'] !=NULL){
+      if(isset($_GET['upazila']) && $_GET['upazila'] !=NULL){
          $this->data['scouts_group'] =  $this->Common_model->get_scout_group_office('', $_GET['upazila']);
       }
 
@@ -1090,16 +1090,15 @@ class Scouts_member extends Backend_Controller {
          redirect('dashboard');
       }
 
-
-      if($_GET['region']>0 && $_GET['region'] !=NULL){
+      if(isset($_GET['region']) && $_GET['region'] !=NULL){
          $this->data['scouts_district'] =  $this->Common_model->get_scout_districts($_GET['region']);
       }
 
-      if($_GET['district']>0 && $_GET['district'] !=NULL){
+      if(isset($_GET['district']) && $_GET['district'] !=NULL){
          $this->data['scouts_upazila'] =  $this->Common_model->get_scout_upazila_thana($_GET['district']);
       }
 
-      if($_GET['upazila']>0 && $_GET['upazila'] !=NULL){
+      if(isset($_GET['upazila']) && $_GET['upazila'] !=NULL){
          $this->data['scouts_group'] =  $this->Common_model->get_scout_group_office('', $_GET['upazila']);
       }
 
@@ -1266,11 +1265,11 @@ class Scouts_member extends Backend_Controller {
          redirect('dashboard');
       }
 
-      if($_GET['region']>0 && $_GET['region'] !=NULL){
+      if(isset($_GET['region']) && $_GET['region'] > 0){
          $this->data['scouts_district'] =  $this->Common_model->get_scout_districts($_GET['region']);
       }
 
-      if($_GET['district']>0 && $_GET['district'] !=NULL){
+      if(isset($_GET['district']) && $_GET['district'] > 0){
          $this->data['scouts_upazila'] =  $this->Common_model->get_scout_upazila_thana($_GET['district']);
       }
 
@@ -1339,11 +1338,11 @@ class Scouts_member extends Backend_Controller {
          redirect('dashboard');
       }
 
-      if($_GET['region']>0 && $_GET['region'] !=NULL){
+      if(isset($_GET['region']) && $_GET['region'] > 0){
          $this->data['scouts_district'] =  $this->Common_model->get_scout_districts($_GET['region']);
       }
 
-      if($_GET['district']>0 && $_GET['district'] !=NULL){
+      if(isset($_GET['district']) && $_GET['district'] > 0){
          $this->data['scouts_upazila'] =  $this->Common_model->get_scout_upazila_thana($_GET['district']);
       }
 
@@ -1401,15 +1400,15 @@ class Scouts_member extends Backend_Controller {
          redirect('dashboard');
       }
 
-      if($_GET['region']>0 && $_GET['region'] !=NULL){
+      if(isset($_GET['region']) && $_GET['region'] != ''){
          $this->data['scouts_district'] =  $this->Common_model->get_scout_districts($_GET['region']);
       }
 
-      if($_GET['district']>0 && $_GET['district'] !=NULL){
+      if(isset($_GET['district']) && $_GET['district'] != ''){
          $this->data['scouts_upazila'] =  $this->Common_model->get_scout_upazila_thana($_GET['district']);
       }
 
-      if($_GET['upazila']>0 && $_GET['upazila'] !=NULL){
+      if(isset($_GET['upazila']) && $_GET['upazila'] != ''){
          $this->data['scouts_group'] =  $this->Common_model->get_scout_group_office('', $_GET['upazila']);
       }
 
@@ -1520,11 +1519,11 @@ class Scouts_member extends Backend_Controller {
          redirect('dashboard');
       }
 
-      if($_GET['region']>0 && $_GET['region'] !=NULL){
+      if(isset($_GET['region']) && $_GET['region'] !=NULL){
          $this->data['scouts_district'] =  $this->Common_model->get_scout_districts($_GET['region']);
       }
 
-      if($_GET['district']>0 && $_GET['district'] !=NULL){
+      if(isset($_GET['district']) && $_GET['district'] !=NULL){
          $this->data['scouts_upazila'] =  $this->Common_model->get_scout_upazila_thana($_GET['district']);
       }
 
@@ -2676,25 +2675,25 @@ class Scouts_member extends Backend_Controller {
       // Scout Information
       $this->data['info'] = $this->My_profile_model->get_info($scoutID);
       // echo $this->data['info']->scout_id; exit;
-
+      $this->load->library('Mpdf_lib');
       //Generate HTML
       $html = $this->load->view('pdf_id_card_front', $this->data, true);
       $html2 = $this->load->view('pdf_id_card_back', $this->data, true);
-
-      $mpdf = new mPDF('', array(349, 225), 10, 'arial', 0, 0, 0, 0);
       $file_name ="scout-id-".$this->data['info']->scout_id.".pdf";
 
-      // $mpdf->showImageErrors = true;
-      // $mpdf->debug = true;
-      //$mpdf->img_dpi = 72;
-
       //generate the PDF from the given html
+      $mpdf = $this->mpdf_lib->create();
       $mpdf->WriteHTML($html);
       $mpdf->AddPage(); // Adds a new page in Landscape orientation
       $mpdf->WriteHTML($html2);
-
-      //download it for 'D'.
       $mpdf->Output($file_name, 'I');
+
+      // $mpdf->WriteHTML($html);
+      // $mpdf->AddPage(); // Adds a new page in Landscape orientation
+      // $mpdf->WriteHTML($html2);
+
+      // //download it for 'D'.
+      // $mpdf->Output($file_name, 'I');
    }
 
 

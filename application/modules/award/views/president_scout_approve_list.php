@@ -1,5 +1,5 @@
-<div class="page-content">     
-   <div class="content">  
+<div class="page-content">
+   <div class="content">
       <ul class="breadcrumb" style="margin-bottom: 20px;">
          <li> <a href="<?=base_url('dahsboard')?>" class="active"> Dashboard </a> </li>
          <li> <a href="<?=base_url('award/president_scout_list')?>" class="active"><?=$module_name?> </a></li>
@@ -14,7 +14,7 @@
          .tg .tg-khup{background-color:#efefef;vertical-align:top; color: black; text-align: right;}
          .tg .tg-akf0{background-color:#ffffff;vertical-align:top;color: black;}
          .tg .tg-mtwr{background-color:#efefef;vertical-align:top; font-weight: bold; text-align: center; font-size: 16px;text-decoration: underline;}
-      </style>   
+      </style>
 
       <div class="row">
          <div class="col-md-12">
@@ -24,7 +24,7 @@
                   <div class="pull-right">
                      <a href="<?=base_url('award/president_scout_list')?>" class="btn btn-blueviolet btn-xs btn-mini"> President Scout Award Circular List</a>
                      <a href="<?=base_url('award/president_scout_award_approval_list_pdf/'.encrypt_url($info->id))?>" target="_blank" class="btn btn-blueviolet btn-xs btn-mini"> Generate Award Approve List PDF </a>
-                  </div>            
+                  </div>
                </div>
 
                <div class="grid-body ">
@@ -40,7 +40,7 @@
                      <td class="tg-ywa9" colspan="3"><?=$info->circular_title;?></td>
                      <th class="tg-khup"> Status</th>
                      <td class="tg-ywa9">
-                        <?php 
+                        <?php
                            if($info->status == 1) {
                               echo $status = '<button class="btn btn-mini btn-info">Enable</button>';
                            }else{
@@ -48,7 +48,7 @@
                            }
                         ?>
                      </td>
-                  </tr> 
+                  </tr>
                </table>
                <br>
 
@@ -56,8 +56,8 @@
                      <thead>
                         <tr>
                            <th style="width:2%"> SL </th>
-                           <th style="width:15%">Name </th> 
-                           <th style="width:10%">Scout ID </th> 
+                           <th style="width:15%">Name </th>
+                           <th style="width:10%">Scout ID </th>
                            <th style="width:10%">Date of Birth</th>
                            <th style="width:10%">Phone</th>
                            <th style="width:30%">Scout Group</th>
@@ -65,7 +65,7 @@
                         </tr>
                      </thead>
                      <tbody>
-                        <?php 
+                        <?php
                         $sl=0;
                         foreach ($results as $row):
                            $sl++;
@@ -85,14 +85,14 @@
                               </div>
                            </td>
                         </tr>
-                     <?php endforeach;?>                      
+                     <?php endforeach;?>
                   </tbody>
                </table>
 
                <div class="row">
                   <div class="col-sm-4 col-md-4 text-left" style="margin-top: 20px;"> Total <span style="color: green; font-weight: bold;"><?php echo count($results); ?> Person Recommended </span></div>
                   <div class="col-sm-8 col-md-8 text-right">
-                     <?php echo $pagination['links']; ?>
+                     <?php echo $pagination['links'] ?? ''; ?>
                   </div>
                </div>
             </div>

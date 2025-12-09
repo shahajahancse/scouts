@@ -76,6 +76,9 @@ if (!function_exists('get_scout_section')) {
 
 if (!function_exists('get_scout_badge')) {
    function get_scout_badge($id) {
+      if (empty($id)) {
+         return '';
+      }
       $CI =& get_instance();
       $CI->db->select('bt.badge_type_name_bn as badge_name');
       $CI->db->from('scout_badge sb');

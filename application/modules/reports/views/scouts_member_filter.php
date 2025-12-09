@@ -29,7 +29,7 @@
       */ ?>
       <div class="col-md-3 m-t-10">
          <?php $more_attr = 'class="form-control input-sm" id="dis_type"';
-         echo form_dropdown('dis_type', $dis_type, $_GET['dis_type'], $more_attr);
+         echo form_dropdown('dis_type', $dis_type, $_GET['dis_type'] ?? '', $more_attr);
          ?>
       </div>
 

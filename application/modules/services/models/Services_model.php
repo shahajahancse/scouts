@@ -29,17 +29,17 @@ class Services_model extends CI_Model {
             $query = $this->db->get()->result();
         }elseif($sc_upa_tha_id){
             $this->db->where('sr.serv_upazila_id', $sc_upa_tha_id);
-            $query = $this->db->get()->result();      
+            $query = $this->db->get()->result();
         }else{
             $query = $this->db->get()->result();
             // echo $this->db->last_query(); exit;
-        } 
+        }
 
         $result['rows'] = $query;
 
         // count query
         // $q = $this->db->select('COUNT(*) as count');
-        // $this->db->from('service_request');  
+        // $this->db->from('service_request');
 
         // if($request_type){
         //     $this->db->where('request_to', $request_type);
@@ -62,13 +62,13 @@ class Services_model extends CI_Model {
         // $result['num_rows'] = $tmp[0]->count;
 
         return $result;
-    }    
+    }
 
     public function get_info($id) {
-        $this->db->select('sr.*, sl.service_name, or.region_name, od.dis_name, ou.upa_name, 
-            or2.region_name AS action_region_name, 
-            od2.dis_name AS action_dis_name,  
-            ou2.upa_name AS action_upa_name, 
+        $this->db->select('sr.*, sl.service_name, or.region_name, od.dis_name, ou.upa_name,
+            or2.region_name AS action_region_name,
+            od2.dis_name AS action_dis_name,
+            ou2.upa_name AS action_upa_name,
             og2.grp_name AS action_grp_name');
         $this->db->from('service_request sr');
         $this->db->join('service_list sl', 'sl.id = sr.service_id', 'LEFT');
@@ -120,7 +120,7 @@ class Services_model extends CI_Model {
 
         // count query
         $q = $this->db->select('COUNT(*) as count');
-        $this->db->from('service_assign');  
+        $this->db->from('service_assign');
         $this->db->where('assign_from', $officeType);
         $query = $this->db->get()->result();
 
@@ -140,7 +140,7 @@ class Services_model extends CI_Model {
         $this->db->join('office_upazila ou', 'ou.id = sa.ass_upazila_id', 'LEFT');
         $this->db->join('office_district od', 'od.id = sa.ass_district_id', 'LEFT');
         $this->db->join('office_region r', 'r.id = sa.ass_region_id', 'LEFT');
-        if($request_type){
+        if(!empty($officeID)){
             $this->db->where('sa.ass_to_office_id', $officeID);
         }
         if($region!=NULL){
@@ -165,8 +165,8 @@ class Services_model extends CI_Model {
 
         // count query
         $q = $this->db->select('COUNT(*) as count');
-        $this->db->from('service_assign');  
-        $this->db->where('assign_from', $officeType);
+        $this->db->from('service_assign');
+        $this->db->where('ass_to_office_id', $officeID);
         $query = $this->db->get()->result();
 
         $tmp = $query;
@@ -241,7 +241,7 @@ class Services_model extends CI_Model {
     //         $this->db->from('services e');
     //         $this->db->join('services_to_scouts es', 'e.id=es.services_id');
     //         $this->db->where('e.services_end_date <',date('Y-m-d'));
-    //         $this->db->like('e.services_notify', 'All'); 
+    //         $this->db->like('e.services_notify', 'All');
     //         $this->db->where('e.sc_region_id', $this->users->sc_region_id);
     //         $this->db->where('e.sc_district_id', $this->users->sc_district_id);
     //         $this->db->where('e.sc_upa_tha_id', $this->users->sc_upa_tha_id);
@@ -256,7 +256,7 @@ class Services_model extends CI_Model {
 
     // function delete($id) {
     //     $this->db->where('id', $id);
-    //     $this->db->delete('service_request');     
+    //     $this->db->delete('service_request');
     //     return TRUE;
     // }
 

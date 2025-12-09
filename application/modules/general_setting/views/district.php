@@ -1,5 +1,5 @@
-<div class="page-content">     
-  <div class="content">  
+<div class="page-content">
+  <div class="content">
     <ul class="breadcrumb" style="margin-bottom: 20px;">
       <li> <a href="<?=base_url()?>" class="active"> Dashboard </a> </li>
       <li> General Setting</li>
@@ -33,7 +33,7 @@
           flex-direction: column;
           align-items: stretch;
         }
-        
+
         .grid-title .pull-right {
           margin-top: 10px;
           width: 100%;
@@ -78,11 +78,11 @@
             <h4><span class="semi-bold"><?=$meta_title; ?></span></h4>
             <div class="pull-right">
               <a href="<?=base_url('general_setting/district_add')?>" class="btn btn-primary btn-xs btn-mini"> Add District </a>
-            </div>            
+            </div>
           </div>
 
           <div class="grid-body ">
-            <div id="infoMessage"><?php //echo $message;?></div>            
+            <div id="infoMessage"><?php //echo $message;?></div>
             <?php if($this->session->flashdata('success')):?>
                 <div class="alert alert-success">
                     <a class="close" data-dismiss="alert">&times;</a>
@@ -93,10 +93,10 @@
                <div class="row form-row">
                   <div class="col-md-4">
                       <label class="form-label">Select Division</label>
-                      <?php 
+                      <?php
                       echo form_error('division');
                       $more_attr = 'class="form-control input-sm" id="division"';
-                      echo form_dropdown('division', $division, $_GET['division'], $more_attr);
+                      echo form_dropdown('division', $division, $_GET['division'] ?? '', $more_attr);
                       ?>
                  </div>
                   <div class="col-md-2">
@@ -120,7 +120,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                <?php 
+                <?php
                   $sl = $pagination['current_page'];
                   foreach ($results as $row):
                     $sl++;
@@ -133,7 +133,7 @@
                     <td class="v-align-middle"><?=$row->district_geo; ?></td>
                     <td> <?php echo ($row->status) ?'<span class="btn btn-primary btn-xs btn-mini">Enable </span>': '<span class="btn btn-danger btn-xs btn-mini">Disable</span>';?> </td>
                     <td class="btn-group-responsive"><?php echo anchor(base_url()."general_setting/district_edit/".$row->id, 'Edit', 'class="btn btn-mini btn-primary"') ;?>&nbsp;<a class="btn btn-mini btn-primary" href="<?=base_url()?>general_setting/district_delete/<?=$row->id?>" onclick="return confirm('Are you sure you want to delete this District?');">Delete</a></td>
-                  <?php endforeach;?>                      
+                  <?php endforeach;?>
                 </tbody>
               </table>
             </div>

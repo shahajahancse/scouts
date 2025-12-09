@@ -1,5 +1,5 @@
-<div class="page-content">     
-   <div class="content">  
+<div class="page-content">
+   <div class="content">
       <ul class="breadcrumb" style="margin-bottom: 20px;">
          <li> <a href="<?=base_url('dahsboard')?>" class="active"> Dashboard </a> </li>
          <li> <a href="<?=base_url('award/nhq_list')?>" class="active"><?=$module_name?> </a></li>
@@ -55,7 +55,7 @@
          }
 
          @media screen and (max-width: 767px) {
-            .table th, 
+            .table th,
             .table td {
                white-space: nowrap;
                min-width: 120px;
@@ -95,7 +95,7 @@
                      <?php //if($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin()){ ?>
                      <!-- <a href="<?=base_url('award/circular_create')?>" class="btn btn-blueviolet btn-xs btn-mini"> Create Award Circular</a> -->
                      <?php //} ?>
-                  </div>            
+                  </div>
                </div>
 
                <div class="grid-body">
@@ -112,7 +112,7 @@
                               <th style="width:2%"> SL </th>
                               <th style="width:30%">Award Circular Title</th>
                               <th style="width:18%">Attachment</th>
-                              <th style="width:18%">Region End Date</th>                           
+                              <th style="width:18%">Region End Date</th>
                               <th style="width:18%">District End Date</th>
                               <th style="width:18%">Upazila End Date</th>
                               <th style="width:18%">Group End Date</th>
@@ -123,7 +123,7 @@
                            </tr>
                         </thead>
                         <tbody>
-                           <?php 
+                           <?php
                            $sl=$pagination['current_page'];
                            foreach ($results as $row):
                               $sl++;
@@ -149,16 +149,15 @@
                               <td> <?=$status?></td>
                               <?php //if($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin()){ ?>
                               <td align="right">
-                                 <div class="btn-group"> 
+                                 <div class="btn-group">
                                     <a class="btn btn-primary dropdown-toggle btn-mini" data-toggle="dropdown" href="#"> Action <span class="caret"></span> </a>
                                     <ul class="dropdown-menu pull-right">
-                                       <?php 
-                                       if($this->ion_auth->is_scout_member()){ 
+                                       <?php
+                                       if($this->ion_auth->is_scout_member()){
                                           $res = $this->Award_model->is_apply_nhq_award($row->id);
-                                          if(count($res)){
-                                          ?> 
+                                          if(is_array($res) && count($res)>0){ ?>
                                           <li><a href="<?=base_url("award/recommendation_details_pdf/".encrypt_url($res->id));?>" class="btn btn-blueviolet" target="_blank">Already Applied (My Application)</a> </li>
-                                          <?php } else { ?> 
+                                          <?php } else { ?>
                                           <li><?=anchor("award/apply_nhq/".encrypt_url($row->id), 'Apply for Award')?></li>
                                           <?php } ?>
 
@@ -171,7 +170,7 @@
                               </td>
                               <?php //} ?>
                            </tr>
-                        <?php endforeach;?>                      
+                        <?php endforeach;?>
                      </tbody>
                   </table>
                </div>

@@ -1,5 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 // include 'classes/BanglaConverter.php';
+
 class Reports extends Backend_Controller {
 
 	public function __construct(){
@@ -15,6 +16,7 @@ class Reports extends Backend_Controller {
 
       $this->load->model('Offices/Offices_model');
       $this->load->model('Reports_model');
+      $this->load->library('Mpdf_lib');
    }
 
    public function index(){
@@ -51,10 +53,9 @@ class Reports extends Backend_Controller {
             $this->data['headding'] = 'Top Scouts Member Registration By Region';
             $html = $this->load->view('scouts_member/pdf_smr_region', $this->data, true);
 
-            $mpdf = new mPDF('', 'A4', 10, 'Nikosh', 10, 10, 10, 5);
-            $mpdf->WriteHtml($html);
-            $mpdf->output();
-            // $mpdf->output('report.pdf', "D");
+            $mpdf = $this->mpdf_lib->create();
+            $mpdf->WriteHTML($html);
+            $mpdf->Output();
 
          }else if( $btn_submit == 'smr_district') {
             // $this->data['region'] = $this->Common_model->get_data('office_region');
@@ -71,10 +72,9 @@ class Reports extends Backend_Controller {
             $this->data['headding'] = 'Top Scouts Member Registration By District';
             $html = $this->load->view('scouts_member/pdf_smr_district', $this->data, true);
 
-            $mpdf = new mPDF('', 'A4', 10, 'Nikosh', 10, 10, 10, 5);
-            $mpdf->WriteHtml($html);
-            $mpdf->output();
-            // $mpdf->output('report.pdf', "D");
+            $mpdf = $this->mpdf_lib->create();
+            $mpdf->WriteHTML($html);
+            $mpdf->Output();
 
          }else if( $btn_submit == 'smr_upazila') {
             // $this->data['region'] = $this->Common_model->get_data('office_region');
@@ -91,10 +91,9 @@ class Reports extends Backend_Controller {
             $this->data['headding'] = 'Top Scouts Member Registration By Upazila';
             $html = $this->load->view('scouts_member/pdf_smr_upazila', $this->data, true);
 
-            $mpdf = new mPDF('', 'A4', 10, 'Nikosh', 10, 10, 10, 5);
-            $mpdf->WriteHtml($html);
-            $mpdf->output();
-            // $mpdf->output('report.pdf', "D");
+            $mpdf = $this->mpdf_lib->create();
+            $mpdf->WriteHTML($html);
+            $mpdf->Output();
          }
       }
 

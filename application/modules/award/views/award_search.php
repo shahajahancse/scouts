@@ -2,7 +2,7 @@
 	.marTopSearch{margin-top: 10px;}
 </style>
 <form method="get" action="">
-	<div class="row">		
+	<div class="row">
 		<div class="col-md-2">
 			<?php
 			$more_attr = 'class="form-control input-sm"';
@@ -10,31 +10,31 @@
 			?>
 		</div>
 
-		<?php if($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin()){ ?>                     
+		<?php if($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin()){ ?>
 		<div class="col-md-3">
-			<?php 
+			<?php
 			$more_attr = 'class="form-control input-sm" id="region"';
-			echo form_dropdown('region', $regions, $_GET['region'], $more_attr);
+			echo form_dropdown('region', $regions, $_GET['region'] ?? '', $more_attr);
 			?>
-		</div>   
+		</div>
 		<div class="col-md-3">
-			<?php 
+			<?php
 			//$more_attr = 'class="sc_district_val form-control input-sm" id="sc_district"';
 			//echo form_dropdown('district', $scouts_district, $_GET['district'], $more_attr);
 			?>
 			<select name="district" class="sc_district_val form-control input-sm" id="sc_district">
 				<option value="">-- Scouts District --</option>
 			</select>
-		</div>	
+		</div>
 
-		<?php }elseif($this->ion_auth->is_region_admin()){ ?> 
+		<?php }elseif($this->ion_auth->is_region_admin()){ ?>
 
 		<div class="col-md-3">
-			<?php 
+			<?php
 			$more_attr = 'class="form-control input-sm""';
 			echo form_dropdown('district', $scouts_district, $_GET['district'], $more_attr);
 			?>
-		</div> 
+		</div>
 
 		<?php } ?>
 
@@ -42,7 +42,7 @@
 			<div class="pull-right ">
 				<button type="submit" class="btn btn-blueviolet btn-mini"><i class="icon-ok"></i> Search</button>
 			</div>
-		</div>		
+		</div>
 
 	<!-- </div>
 
@@ -59,7 +59,7 @@
 				<a href="<?=$download_approve_url?>" target="_blank" class="btn btn-primary btn-xs btn-mini"> Approve Application</a>
 			</div>
 		</div>
-		<?php } ?>	
+		<?php } ?>
 	<?php } ?>
 	</div>
 

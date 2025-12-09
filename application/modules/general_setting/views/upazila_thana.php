@@ -1,5 +1,5 @@
-<div class="page-content">     
-  <div class="content">  
+<div class="page-content">
+  <div class="content">
     <ul class="breadcrumb" style="margin-bottom: 20px;">
       <li> <a href="<?=base_url()?>" class="active"> Dashboard </a> </li>
       <li> General Setting</li>
@@ -33,7 +33,7 @@
           flex-direction: column;
           align-items: stretch;
         }
-        
+
         .grid-title .pull-right {
           margin-top: 10px;
           width: 100%;
@@ -78,11 +78,11 @@
             <h4><span class="semi-bold"><?=$meta_title; ?></span></h4>
             <div class="pull-right">
               <a href="<?=base_url('general_setting/upazila_thana_add')?>" class="btn btn-primary btn-xs btn-mini"> Add Upazila/Thana </a>
-            </div>            
+            </div>
           </div>
 
           <div class="grid-body ">
-            <div id="infoMessage"><?php //echo $message;?></div>            
+            <div id="infoMessage"><?php //echo $message;?></div>
             <?php if($this->session->flashdata('success')):?>
                 <div class="alert alert-success">
                     <a class="close" data-dismiss="alert">&times;</a>
@@ -93,18 +93,18 @@
                <div class="row form-row">
                   <div class="col-md-3">
                       <label class="form-label">Select Division</label>
-                      <?php 
+                      <?php
                       echo form_error('division');
                       $more_attr = 'class="form-control input-sm" id="division"';
-                      echo form_dropdown('division', $division, $_GET['division'], $more_attr);
+                      echo form_dropdown('division', $division, $_GET['division'] ?? '', $more_attr);
                       ?>
                  </div>
                  <div class="col-md-3">
                       <label class="form-label">Select District</label>
-                      <?php 
+                      <?php
                       echo form_error('district');
                       $more_attr = 'class="distirict_val form-control input-sm" id="district"';
-                      echo form_dropdown('district', $district, $_GET['district'], $more_attr);
+                      echo form_dropdown('district', $district, $_GET['district'] ?? '', $more_attr);
                       ?>
                  </div>
                  <div class="col-md-2">
@@ -129,7 +129,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                <?php 
+                <?php
                   $sl=$pagination['current_page'];
                   foreach ($results as $row):
                     $sl++;
@@ -147,7 +147,7 @@
                       <a class="btn btn-mini btn-primary" href="<?=base_url()?>general_setting/upazila_thana_delete/<?=$row->id?>" onclick="return confirm('Are you sure you want to delete this Upazila/Thana?');">Delete</a>
                     </td>
                   </tr>
-                  <?php endforeach;?>                      
+                  <?php endforeach;?>
                 </tbody>
               </table>
             </div>

@@ -1,5 +1,5 @@
-<div class="page-content">     
-   <div class="content">  
+<div class="page-content">
+   <div class="content">
       <ul class="breadcrumb" style="margin-bottom: 20px;">
          <li> <a href="<?=base_url()?>" class="active"> Dashboard </a> </li>
          <li> <a href="javascript:void()" class="active"><?=$module_name?> </a></li>
@@ -61,7 +61,7 @@
          }
 
          @media screen and (max-width: 767px) {
-            .table th, 
+            .table th,
             .table td {
                white-space: nowrap;
                min-width: 120px;
@@ -99,7 +99,7 @@
                      <?php if($this->ion_auth->is_admin()){ ?>
                         <a href="<?=base_url('committee/national_create')?>" class="btn btn-blueviolet btn-xs btn-mini"> Create National Committee</a>
                      <?php } ?>
-                  </div>            
+                  </div>
                </div>
 
                <div class="grid-body">
@@ -125,8 +125,8 @@
                            </tr>
                         </thead>
                         <tbody>
-                           <?php 
-                           $sl=$pagination['current_page'];
+                           <?php
+                           $sl=$pagination['current_page'] ?? 0;
                            foreach ($results as $row):
                               $sl++;
                            if($row->is_current == 1) {
@@ -155,17 +155,17 @@
                                  </div>
                               </td>
                            </tr>
-                        <?php endforeach;?>                      
+                        <?php endforeach;?>
                      </tbody>
                   </table>
                </div>
 
                <div class="pagination-wrapper">
                   <div class="text-left">
-                     Total <span style="color: green; font-weight: bold;"><?php echo $total_rows; ?> NHQ Committee </span>
+                     Total <span style="color: green; font-weight: bold;"><?php echo $total_rows ?? count($results); ?> NHQ Committee </span>
                   </div>
                   <div class="text-right">
-                     <?php echo $pagination['links']; ?>
+                     <?php echo $pagination['links'] ?? ''; ?>
                   </div>
                </div>
             </div>

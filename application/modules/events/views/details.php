@@ -1,5 +1,5 @@
-<div class="page-content">     
-  <div class="content">  
+<div class="page-content">
+  <div class="content">
     <ul class="breadcrumb" style="margin-bottom: 20px;">
       <li> <a href="<?=base_url()?>" class="active"> Dashboard </a> </li>
       <li> <a href="<?=base_url()?>" class="active"> <?=$module_title; ?> </a></li>
@@ -16,7 +16,7 @@
       .tg .tg-2v33{font-weight:bold;background-color:#d8e8d8;border-color:#efefef;text-align:right;}
       .tg .tg-jz97{border-color:#efefef;text-align:left;color: black;}
     </style>
-    
+
     <div class="row-fluid">
       <div class="span12">
         <div class="grid simple ">
@@ -29,12 +29,12 @@
               <!-- <a href="<?=base_url('events/event_participant_list')?>" class="btn btn-blueviolet btn-xs btn-mini"> Event Participant List</a>  -->
               <!-- <a href="<?=base_url('events/upcomming_event_list')?>" class="btn btn-success btn-xs btn-mini"> Upcomming Events List</a>  -->
               <?php } ?>
-            </div> 
-            <?php //} ?>           
+            </div>
+            <?php //} ?>
           </div>
 
           <div class="grid-body ">
-            <div id="infoMessage"><?php //echo $message;?></div>            
+            <div id="infoMessage"><?php //echo $message;?></div>
             <?php if($this->session->flashdata('success')):?>
               <div class="alert alert-success">
                 <?php echo $this->session->flashdata('success');?>
@@ -48,22 +48,35 @@
                   <table class="tg">
                     <tr>
                       <th class="tg-2v33">Event Title:</th>
-                      <th class="tg-jz97"><?=$info->event_title?></th>
+                      <th class="tg-jz97"><?=$info->event_title ?? ''?></th>
                       <th class="tg-wwkm">Event Date:</th>
-                      <th class="tg-6p4y">From <strong><?=date_detail_format($info->event_start_date)?></strong> to <strong><?=date_detail_format($info->event_end_date)?></strong></th>
+                      <th class="tg-6p4y">
+                        From
+                        <?php if(is_object($info) && property_exists($info, 'event_start_date')){ ?>
+                          <strong><?=date_detail_format($info->event_start_date)?></strong>
+                        <?php } ?>
+                        to
+                        <?php if(is_object($info) && property_exists($info, 'event_end_date')){ ?>
+                          <strong><?=date_detail_format($info->event_end_date)?></strong>
+                        <?php } ?>
+                      </th>
                     </tr>
                     <tr>
                       <td class="tg-2v33">Event Venue:</td>
-                      <td class="tg-jz97"><?=$info->event_venue?></td>
+                      <td class="tg-jz97"><?=$info->event_venue ?? ''?></td>
                       <td class="tg-wwkm">Registration Period:</td>
-                      <td class="tg-6p4y">From <strong><?=date_detail_format($info->event_reg_start)?></strong> to <strong><?=date_detail_format($info->event_reg_end)?></strong></td>
-                    </tr>                    
+                      <td class="tg-6p4y">
+                        <?php if(is_object($info) && property_exists($info, 'event_reg_start')){ ?>
+                          From <strong><?=date_detail_format($info->event_reg_start)?></strong> to <strong><?=date_detail_format($info->event_reg_end)?></strong>
+                        <?php } ?>
+                      </td>
+                    </tr>
                     <tr>
                       <td class="tg-2v33">Event Organizer:</td>
                       <td class="tg-jz97">
                         <?php
-                        echo $info->event_organizer;
-                        // if($info->event_level == 'nhq'){                        
+                        echo $info->event_organizer ?? '';
+                        // if($info->event_level == 'nhq'){
                         //   echo 'National Headquarter';
                         // }elseif($info->event_level == 'region'){
                         //   echo $info->region_name;
@@ -73,46 +86,57 @@
                         ?>
                       </td>
                       <td class="tg-wwkm">Number of Participants:</td>
-                      <td class="tg-6p4y"><?=$info->ep_qty?></td>
+                      <td class="tg-6p4y"><?=$info->ep_qty ?? ''?></td>
                     </tr>
                     <tr>
                       <td class="tg-2v33">Event Participant Category:</td>
-                      <td class="tg-jz97"><?php 
-                      if($info->ept_category==1){
+                      <td class="tg-jz97"><?php
+                      if(!empty($info->ept_category) && $info->ept_category==1){
                         echo 'Individual';
                       }else{
                         echo 'Group/Unit';
                       }
-                      ?>                        
+                      ?>
                       </td>
                       <td class="tg-wwkm">Event Category:</td>
-                      <td class="tg-6p4y"><?=$info->event_cate_name?></td>
+                      <td class="tg-6p4y"><?=$info->event_cate_name ?? ''?></td>
                     </tr>
                     <tr>
                       <td class="tg-2v33" valign="top">Event Type:</td>
                       <td class="tg-jz97" valign="top">
-                        <?=$info->et_national == 1 ? '<i class="fa fa-check-circle"></i> National ':'';?><br>
-                        <?=$info->et_international == 1 ? '<i class="fa fa-check-circle"></i> International <br>':'';?>
-                        <?=$info->et_region == 1 ? '<i class="fa fa-check-circle"></i> Region <br>':'';?>
-                        <?=$info->et_district == 1 ? '<i class="fa fa-check-circle"></i> District <br>':'';?>
-                        <?=$info->et_upazila == 1 ? '<i class="fa fa-check-circle"></i> Upazila <br>':'';?>                        
+                        <?php if(is_object($info) && property_exists($info, 'et_national')){ ?>
+                          <?=$info->et_national == 1 ? '<i class="fa fa-check-circle"></i> National ':'';?><br>
+                        <?php } ?>
+                        <?php if ( is_object( $info ) && property_exists( $info, 'et_international' ) ) {
+                            echo $info->et_international == 1 ? '<i class="fa fa-check-circle"></i> International;' : '';
+                        }
+                        if ( is_object( $info ) && property_exists( $info, 'et_region' ) ) {
+                            echo $info->et_region == 1 ? '<i class="fa fa-check-circle"></i> Region;' : '';
+                        }
+                        if ( is_object( $info ) && property_exists( $info, 'et_district' ) ) {
+                            echo $info->et_district == 1 ? '<i class="fa fa-check-circle"></i> District;' : '';
+                        }
+                        if ( is_object( $info ) && property_exists( $info, 'et_upazila' ) ) {
+                            echo $info->et_upazila == 1 ? '<i class="fa fa-check-circle"></i> Upazila;' : '';
+                        } ?>
                       </td>
                       <td class="tg-wwkm">Scouts Office</td>
                       <td class="tg-6p4y" valign="top">
                         <?php
-                          if($info->et_region){
+                          if ( is_object( $info ) && property_exists( $info, 'et_region' ) && $info->et_region ) {
                             echo '<b><u>Scouts Region</u></b><br>';
                             // echo $info->et_region_ids;
-                            $regionIds = explode(',', $info->et_region_ids);
-                            // print_r($regionIds);
-                            foreach ($regionIds as $value) {
-                              // echo $value;
-                              echo $this->Event_model->get_region_office_single($value);
-                              echo '<br>';
+                            if ( isset( $info->et_region_ids ) ) {
+                              $regionIds = explode(',', $info->et_region_ids);
+                              foreach ($regionIds as $value) {
+                                // echo $value;
+                                echo $this->Event_model->get_region_office_single($value);
+                                echo '<br>';
+                              }
                             }
                           }
 
-                          if($info->et_district){
+                          if(is_object($info) && property_exists($info, 'et_district') && $info->et_district){
                             echo '<b><u>Scouts District</u></b><br>';
                             $districtIds = explode(',', $info->et_district_ids);
                             foreach ($districtIds as $value) {
@@ -121,7 +145,7 @@
                             }
                           }
 
-                          if($info->et_upazila){
+                          if(is_object($info) && property_exists($info, 'et_upazila') && $info->et_upazila){
                             echo '<b><u>Scouts Upazila</u></b><br>';
                             $upazilaIds = explode(',', $info->et_upazila_ids);
                             foreach ($upazilaIds as $value) {
@@ -137,9 +161,13 @@
                       <td class="tg-2v33" valign="top">Event Participants Type:</td>
                       <td class="tg-jz97" valign="top">
                         <?php
-                          if($info->ept_cub){
-                            echo 'Cub ('.$this->Event_model->get_badges_single($info->cub_stage_id).')';
-                            echo '<br>';
+                          if(is_object($info) && isset($info->et_region) && $info->et_region){
+                            echo '<b><u>Scouts Region</u></b><br>';
+                            $regionIds = explode(',', $info->et_region_ids);
+                            foreach ($regionIds as $value) {
+                              echo $this->Event_model->get_region_office_single($value);
+                              echo '<br>';
+                            }
                           }
                           if($info->ept_scout){
                             echo 'Scout ('.$this->Event_model->get_badges_single($info->scout_stage_id).')';
@@ -176,7 +204,7 @@
                     <tr>
                       <td class="tg-2v33" valign="top">Approve Role:<br>Event Create From:</td>
                       <td class="tg-jz97" valign="top"><?php
-                      echo $info->office_rules_name.'<br>'; 
+                      echo $info->office_rules_name.'<br>';
 
                       if($info->created_office_by==1){
                         echo 'National Headquarter';
@@ -206,7 +234,7 @@
                               $sl++;
                               //echo $value->file_name .'<button class="btn"><i class="fa fa-download"></i> Download</button>';
 
-                              echo '<a href="'.base_url('event_docs/'.$value->file_name).'" download="'.$value->file_name.'" class="btn btn-mini btn-xs btn-success" style="margin-bottom:2px;">Download - '.$value->file_name.'</a><br>';                              
+                              echo '<a href="'.base_url('event_docs/'.$value->file_name).'" download="'.$value->file_name.'" class="btn btn-mini btn-xs btn-success" style="margin-bottom:2px;">Download - '.$value->file_name.'</a><br>';
                             }
                           }
                         ?>
