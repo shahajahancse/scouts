@@ -4,13 +4,14 @@ class Reports_model extends CI_Model {
 
    public function __construct() {
       parent::__construct();
+      ini_set('memory_limit', '-1');
    }
 
    public function excel_scout_member() {
-      $member_type = $this->input->get('member_type');
-      $dis_type = $this->input->get('dis_type');
-      $startDate = $this->input->get('date_from');
-      $endDate = $this->input->get('date_to');
+      $member_type = $this->input->post('member_type');
+      $dis_type = $this->input->post('dis_type');
+      $startDate = $this->input->post('date_from');
+      $endDate = $this->input->post('date_to');
 
       $this->db->select('u.id, u.username, u.scout_id, u.first_name, u.phone, u.email, u.active, u.sc_badge_id, u.sc_section_id, u.petrol_name, u.last_login, u.dob, u.is_printed, mt.member_type_name');
       $this->db->from('users u');

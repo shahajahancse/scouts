@@ -17,6 +17,7 @@ class Reports extends Backend_Controller {
       $this->load->model('Offices/Offices_model');
       $this->load->model('Reports_model');
       $this->load->library('Mpdf_lib');
+      ini_set('memory_limit', '-1');
    }
 
    public function index(){
