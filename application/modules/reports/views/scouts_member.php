@@ -42,6 +42,13 @@
 
                      </fieldset>
 
+                     <fieldset class="col-md-12">
+                        <legend>Excel Button (Number)</legend>
+
+                        <button type="submit" name="btnsubmit" value="excel_member" class="btn btn-info btn-cons"><i class="fa fa-list"></i> Download Excel </button>
+
+                     </fieldset>
+
                      <div class="clearfix"></div>
                   <?php form_close(); ?>
                </div> <!-- /grid-body -->

@@ -35,6 +35,25 @@ class Reports extends Backend_Controller {
       $date_from = date_db_format($this->input->post('date_from'));
       $date_to = date_db_format($this->input->post('date_to'));
 
+      // scouts member excel generate
+      if( !empty($btn_submit) && $btn_submit == 'excel_member') {
+         $type = $this->input->post('member_type');
+         if (!empty($type) && $type == 1) {
+            $this->data['type'] = 'Verify Member Report';
+         } elseif (!empty($type) && $type == 2) {
+            $this->data['type'] = 'Archive Member Report';
+         } elseif (!empty($type) && $type == 3) {
+            $this->data['type'] = 'Request Member Report';
+         } else {
+            $this->data['type'] = 'All Member Report';
+         }
+         // Results
+         $this->data['results'] = $this->Reports_model->excel_scout_member();
+
+         // Generate Excel
+         $this->load->view('scouts_member/excel_scout_member', $this->data);
+      }
+
       if($this->form_validation->run() == true){
          // Top Scouts Region Member Registration
          if( $btn_submit == 'smr_region') {

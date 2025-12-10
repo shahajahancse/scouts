@@ -6,6 +6,36 @@ class Reports_model extends CI_Model {
       parent::__construct();
    }
 
+   public function excel_scout_member() {
+      $member_type = $this->input->get('member_type');
+      $dis_type = $this->input->get('dis_type');
+      $startDate = $this->input->get('date_from');
+      $endDate = $this->input->get('date_to');
+
+      $this->db->select('u.id, u.username, u.scout_id, u.first_name, u.phone, u.email, u.active, u.sc_badge_id, u.sc_section_id, u.petrol_name, u.last_login, u.dob, u.is_printed, mt.member_type_name');
+      $this->db->from('users u');
+      $this->db->join('member_type mt', 'mt.id = u.member_id', 'LEFT');
+      // $this->db->join('office_groups og', 'og.id = u.sc_group_id', 'LEFT');
+      $this->db->where('u.member_id >', 0);
+
+      if(!empty($member_type) && in_array($member_type, [1,2])){
+         $this->db->where('u.status', $member_type);
+         $this->db->where('u.scout_id IS NOT NULL', NULL);
+         $this->db->where('u.is_verify', 1);
+      }
+      if(!empty($member_type) && $member_type == 3){
+         $this->db->where('u.scout_id', NULL);
+         $this->db->where('u.is_request', 1);
+      }
+      if(!empty($startDate) && !empty($endDate)){
+         $this->db->where('u.created_on >=', strtotime($startDate));
+         $this->db->where('u.created_on <=', strtotime($endDate));
+      }
+      $result = $this->db->get()->result();
+
+      return $result;
+   }
+
    public function get_smr_upazila($dis_type, $startDate=NULL, $endDate=NULL) {
       $startTs = strtotime($startDate);
       $endTs   = strtotime($endDate);
@@ -207,59 +237,59 @@ class Reports_model extends CI_Model {
       return $query;
    }
 
-public function get_scout_district($region_id=NULL) {
-        // result query
-  $this->db->select('od.*, d.div_name, ds.district_name, r.region_name');
-  $this->db->from('office_district od');
-  $this->db->join('division d', 'd.id = od.dis_div_id', 'LEFT');
-  $this->db->join('district ds', 'ds.id = od.dis_dis_id', 'LEFT');
-  $this->db->join('office_region r', 'r.id = od.dis_scout_region_id', 'LEFT');
+   public function get_scout_district($region_id=NULL) {
+         // result query
+      $this->db->select('od.*, d.div_name, ds.district_name, r.region_name');
+      $this->db->from('office_district od');
+      $this->db->join('division d', 'd.id = od.dis_div_id', 'LEFT');
+      $this->db->join('district ds', 'ds.id = od.dis_dis_id', 'LEFT');
+      $this->db->join('office_region r', 'r.id = od.dis_scout_region_id', 'LEFT');
 
-  if($this->input->get('region') != NULL){
-   $this->db->where('od.dis_scout_region_id', $this->input->get('region'));
-}
+      if($this->input->get('region') != NULL){
+         $this->db->where('od.dis_scout_region_id', $this->input->get('region'));
+      }
 
-$query = $this->db->get()->result();
-return $query;
-}
-public function get_scout_upazila() {
-        // result query
-  $this->db->select('ou.*, r.region_name, od.dis_name');
-  $this->db->from('office_upazila ou');
-  $this->db->join('office_region r', 'r.id = ou.upa_region_id', 'LEFT');
-        $this->db->join('office_district od', 'od.id = ou.upa_scout_dis_id', 'LEFT');       //4-10-17
+      $query = $this->db->get()->result();
+      return $query;
+   }
+   public function get_scout_upazila() {
+      // result query
+      $this->db->select('ou.*, r.region_name, od.dis_name');
+      $this->db->from('office_upazila ou');
+      $this->db->join('office_region r', 'r.id = ou.upa_region_id', 'LEFT');
+      $this->db->join('office_district od', 'od.id = ou.upa_scout_dis_id', 'LEFT');       //4-10-17
 
-        if($this->input->get('region') != NULL){
-         $this->db->where('ou.upa_region_id', $this->input->get('region'));
+      if($this->input->get('region') != NULL){
+      $this->db->where('ou.upa_region_id', $this->input->get('region'));
       }
       if($this->input->get('district') > '0'){
-         $this->db->where('ou.upa_scout_dis_id', $this->input->get('district'));
+      $this->db->where('ou.upa_scout_dis_id', $this->input->get('district'));
       }
       $query = $this->db->get()->result();
       return $query;
    }
    public function get_scout_group() {
-        // result query
-     $this->db->select('og.*, r.region_name, od.dis_name, ou.upa_name');
-     $this->db->from('office_groups og');
-     $this->db->join('office_region r', 'r.id = og.grp_region_id', 'LEFT');
-     $this->db->join('office_district od', 'od.id = og.grp_scout_dis_id', 'LEFT');
-     $this->db->join('office_upazila ou', 'ou.id = og.grp_scout_upa_id', 'LEFT');
+         // result query
+      $this->db->select('og.*, r.region_name, od.dis_name, ou.upa_name');
+      $this->db->from('office_groups og');
+      $this->db->join('office_region r', 'r.id = og.grp_region_id', 'LEFT');
+      $this->db->join('office_district od', 'od.id = og.grp_scout_dis_id', 'LEFT');
+      $this->db->join('office_upazila ou', 'ou.id = og.grp_scout_upa_id', 'LEFT');
 
-     if($this->input->get('region') != NULL){
-      $this->db->where('og.grp_region_id', $this->input->get('region'));
-   }
-   if($this->input->get('district') > '0'){
-      $this->db->where('og.grp_scout_dis_id', $this->input->get('district'));
-   }
-   if($this->input->get('upazila') > '0'){
-      $this->db->where('og.grp_scout_upa_id', $this->input->get('upazila'));
-   }
+      if($this->input->get('region') != NULL){
+         $this->db->where('og.grp_region_id', $this->input->get('region'));
+      }
+      if($this->input->get('district') > '0'){
+         $this->db->where('og.grp_scout_dis_id', $this->input->get('district'));
+      }
+      if($this->input->get('upazila') > '0'){
+         $this->db->where('og.grp_scout_upa_id', $this->input->get('upazila'));
+      }
 
 
-   $query = $this->db->get()->result();
-   return $query;
-}
+      $query = $this->db->get()->result();
+      return $query;
+   }
 
 public function get_scout_unit( ) {
         // result query

@@ -3,16 +3,16 @@
   -o-background-size: cover;
   background-size: cover;">
   <div class="container">
-    <div class="row login-container login_register column-seperation">  
-      <?php 
+    <div class="row login-container login_register column-seperation">
+      <?php
       $attributes = array('id' => 'login_validate');
       echo form_open("forgot-password", $attributes);
       ?>
-      <div class="col-md-4 col-sm-6 col-sm-offset-3 col-md-offset-4 box_reg"> 
+      <div class="col-md-4 col-sm-6 col-sm-offset-3 col-md-offset-4 box_reg">
         <img src="<?=base_url('fwedget/assets/images/scout_logo_small.png');?>" class="box_img img-responsive">
         <h4 class="box_title">Forgot Password</h4>
-        <div id="infoMessage"><?php echo $message;?></div>
-        
+        <div id="infoMessage"><?php echo $message ?? ''; ?></div>
+
         <div class="row">
           <div class="col-md-12" style="margin-top: 15px; margin-bottom: 10px;">
             <label>Put your email or username or scout ID</label>

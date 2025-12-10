@@ -325,6 +325,7 @@
                               <label class="form-label">Select Scout Group <span class='required'>*</span></label>
                               <?php echo form_error('sc_group_id');
                               $more_attr = 'class="sc_group_val scoutsGroupSelect2 form-control input-sm" id="sc_unit"';
+                              $scout_group = isset($scout_group) ? $scout_group : array();
                               echo form_dropdown('sc_group_id', $scout_group, set_value('sc_group_id', $info->sc_group_id), $more_attr);
                               ?>
                            </div>

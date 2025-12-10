@@ -543,7 +543,13 @@ class Common_model extends CI_Model {
       $data[''] = '-- Select Member Type --';
       $this->db->select('id, member_type_name');
       $this->db->from('member_type');
-      $this->db->where('is_delete', 0);
+
+      if (!$this->ion_auth->is_admin()) {
+         $this->db->where_not_in('is_delete', array(1,2));
+      } else {
+         $this->db->where_not_in('is_delete', array(1));
+      }
+
       $this->db->order_by('sort_order', 'ASC');
       $query = $this->db->get();
 
