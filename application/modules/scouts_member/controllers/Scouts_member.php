@@ -234,15 +234,26 @@ class Scouts_member extends Backend_Controller {
       $this->data['meta_title'] = 'Scouts Member';
       $html = $this->load->view('scout_member_pdf', $this->data, true);
       $file_name ="scout_member_pdf.pdf";
-
-        //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
-      $mpdf = new mPDF('', 'A4', 10, 'nikosh', 10, 10, 10, 10);
+      ob_end_clean();
+      ob_start();
+      $this->load->library('Mpdf_lib');
+      $mpdf = new \Mpdf\Mpdf([
+         'orientation' => 'P',
+         'format' => 'A4',
+         'default_font_size' => 10,
+         'default_font' => 'nikosh',
+         'margin_left' => 10,
+         'margin_right' => 10,
+         'margin_top' => 10,
+         'margin_bottom' => 10
+      ]);
 
         //generate the PDF from the given html
       $mpdf->WriteHTML($html);
-
+      ob_clean();
         //download it for 'D'.
       $mpdf->Output($file_name, "D");
+      exit();
 
    }
    /****************Scout Member Pdf Function end******************/
@@ -691,15 +702,24 @@ class Scouts_member extends Backend_Controller {
       $this->data['meta_title'] = 'Scouts Member Archive List';
       $html = $this->load->view('archive_list_pdf', $this->data, true);
       $file_name ="archive_list_pdf.pdf";
+      $this->load->library('Mpdf_lib');
+      $mpdf = new \Mpdf\Mpdf([
+         'orientation' => 'P',
+         'format' => 'A4',
+         'default_font_size' => 10,
+         'default_font' => 'nikosh',
+         'margin_left' => 10,
+         'margin_right' => 10,
+         'margin_top' => 10,
+         'margin_bottom' => 10
+      ]);
 
-         //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
-      $mpdf = new mPDF('', 'A4', 10, 'nikosh', 10, 10, 10, 10);
-
-         //generate the PDF from the given html
+        //generate the PDF from the given html
       $mpdf->WriteHTML($html);
-
-         //download it for 'D'.
+      ob_clean();
+        //download it for 'D'.
       $mpdf->Output($file_name, "D");
+      exit();
    }
 
    /****************Scout archive_list_pdf pdf FIle Function end******************/
@@ -1028,14 +1048,24 @@ class Scouts_member extends Backend_Controller {
       $html = $this->load->view('delete_request_pdf', $this->data, true);
       $file_name ="delete_request_pdf.pdf";
 
-         //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
-      $mpdf = new mPDF('', 'A4', 10, 'nikosh', 10, 10, 10, 10);
+      $this->load->library('Mpdf_lib');
+      $mpdf = new \Mpdf\Mpdf([
+         'orientation' => 'P',
+         'format' => 'A4',
+         'default_font_size' => 10,
+         'default_font' => 'nikosh',
+         'margin_left' => 10,
+         'margin_right' => 10,
+         'margin_top' => 10,
+         'margin_bottom' => 10
+      ]);
 
-         //generate the PDF from the given html
+        //generate the PDF from the given html
       $mpdf->WriteHTML($html);
-
-         //download it for 'D'.
+      ob_clean();
+        //download it for 'D'.
       $mpdf->Output($file_name, "D");
+      exit();
    }
 
    /****************Scout delete_request_pdf pdf FIle Function end******************/
@@ -1356,6 +1386,43 @@ class Scouts_member extends Backend_Controller {
 
       // Load page
       $this->data['meta_title'] = 'Scouts Member Verified List';
+      $this->data['subview'] = 'verified_list';
+      $this->load->view('backend/_layout_main', $this->data);
+   }
+
+   public function active_list($offset=0){
+      $limit = 25;
+
+      if($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin()){
+         //Super Admin
+
+         $results = $this->Scouts_member_model->get_last_30day_active_member($limit, $offset);
+
+         //Dropdown
+         $this->data['regions'] = $this->Common_model->get_regions();
+         $this->data['scouts_district'] = array(''=>'Scouts District');
+         $this->data['scouts_upazila'] = array(''=>'Scouts Upazila');
+      }else{
+         redirect('dashboard');
+      }
+
+      if(isset($_GET['region']) && $_GET['region'] > 0){
+         $this->data['scouts_district'] =  $this->Common_model->get_scout_districts($_GET['region']);
+      }
+
+      if(isset($_GET['district']) && $_GET['district'] > 0){
+         $this->data['scouts_upazila'] =  $this->Common_model->get_scout_upazila_thana($_GET['district']);
+      }
+
+      //Results
+      $this->data['results'] = $results['rows'];
+      $this->data['total_rows'] = $results['num_rows'];
+
+      //pagination
+      $this->data['pagination'] = create_pagination('scouts_member/active_list/', $this->data['total_rows'], $limit, 3, $full_tag_wrap = true);
+
+      // Load page
+      $this->data['meta_title'] = 'Last 30 Day Active Member List';
       $this->data['subview'] = 'verified_list';
       $this->load->view('backend/_layout_main', $this->data);
    }
@@ -1720,15 +1787,23 @@ class Scouts_member extends Backend_Controller {
       $this->data['meta_title'] = 'Details Scouts Member';
       $html = $this->load->view('scout_member_details_pdf', $this->data, true);
       $file_name ="scout_member_details_pdf.pdf";
-
-      //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
-      $mpdf = new mPDF('', 'A4', 10, 'nikosh', 10, 10, 10, 10);
-
-      //generate the PDF from the given html
+      ob_end_clean();
+      ob_start();
+      $this->load->library('Mpdf_lib');
+      $mpdf = new \Mpdf\Mpdf([
+         'orientation' => 'P',
+         'format' => 'A4',
+         'default_font_size' => 10,
+         'default_font' => 'nikosh',
+         'margin_left' => 10,
+         'margin_right' => 10,
+         'margin_top' => 10,
+         'margin_bottom' => 10
+      ]);
       $mpdf->WriteHTML($html);
-
-      //download it for 'D'.
+      ob_clean();
       $mpdf->Output($file_name, "D");
+      exit;
    }
 
    /******scout_member_details_pdf function End***/

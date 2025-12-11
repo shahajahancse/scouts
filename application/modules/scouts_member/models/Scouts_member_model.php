@@ -271,6 +271,76 @@ class Scouts_member_model extends CI_Model {
         return $result;
     }
 
+    public function get_last_30day_active_member($limit=1000, $offset=0) {
+        $time = strtotime("-30 days");
+        $this->db->select('u.id, u.first_name, u.scout_id, u.username, mt.member_type_name, u.phone, u.is_request, u.sc_section_id, u.profile_img, ou.unit_name');
+        $this->db->from('users u');
+        $this->db->join('office_unit ou', 'ou.id = u.sc_unit_id', 'LEFT');
+        $this->db->join('member_type mt', 'mt.id = u.member_id', 'LEFT');
+
+        $this->db->where('u.scout_id IS NOT NULL', NULL);
+        $this->db->where('u.member_id !=', 0);
+        $this->db->where('u.is_verify', '1');
+        $this->db->where('u.status', 1);
+        $this->db->where('u.last_login >=', $time);
+        $this->db->limit($limit);
+        $this->db->offset($offset);
+
+        // Search Filter
+        if($this->input->get('region') != NULL){
+            $this->db->where('u.sc_region_id', $this->input->get('region'));
+        }
+        if($this->input->get('district') > '0'){
+            $this->db->where('u.sc_district_id', $this->input->get('district'));
+        }
+        if($this->input->get('upazila') > '0'){
+            $this->db->where('u.sc_upa_tha_id', $this->input->get('upazila'));
+        }
+        if($this->input->get('name') != NULL){
+            $this->db->like('u.first_name', $this->input->get('name'));
+        }
+        if($this->input->get('username') != NULL){
+            $this->db->where('u.username', $this->input->get('username'));
+        }
+
+        //Data Access
+        $query = $this->db->get()->result();
+        $result['rows'] = $query;
+
+
+        // count query
+        $q = $this->db->select('COUNT(*) as count');
+        $this->db->from('users');
+        $this->db->where('scout_id IS NOT NULL', NULL);
+        $this->db->where('member_id !=', 0);
+        $this->db->where('is_verify', '1');
+        $this->db->where('status', 1);
+        $this->db->where('last_login >=', $time);
+
+        // Search Filter
+        if($this->input->get('region') != NULL){
+            $this->db->where('sc_region_id', $this->input->get('region'));
+        }
+        if($this->input->get('district') > '0'){
+            $this->db->where('sc_district_id', $this->input->get('district'));
+        }
+        if($this->input->get('upazila') > '0'){
+            $this->db->where('sc_upa_tha_id', $this->input->get('upazila'));
+        }
+        if($this->input->get('name') != NULL){
+            $this->db->like('first_name', $this->input->get('name'));
+        }
+        if($this->input->get('username') != NULL){
+            $this->db->where('username', $this->input->get('username'));
+        }
+
+        //Data Access
+        $query = $this->db->get()->result();
+        $tmp = $query;
+        $result['num_rows'] = $tmp[0]->count;
+        return $result;
+    }
+
     public function get_request_member_copy_14_07_2025($group_id=NULL) {
         $this->db->select('u.id, u.first_name, u.username, mt.member_type_name, u.phone, u.is_request, u.sc_section_id, u.profile_img, ou.unit_name');
         $this->db->from('users u');

@@ -97,7 +97,7 @@
                     <th style="width:10%">Member Type</th>
                     <th style="width:10%">Section</th>
                     <th style="width: 10%">Details</th>
-                    <th style="width:5%">Verify</th>
+                    <!-- <th style="width:5%">Verify</th> -->
                   </tr>
                 </thead>
                 <tbody>
@@ -123,7 +123,7 @@
                     <td class="v-align-middle"><?php echo $row->member_type_name;?></td>
                     <td class="v-align-middle"><?php echo get_scout_section($row->sc_section_id);?></td>
                     <td class="v-align-middle"><a href="<?=base_url("scouts_member/details/".encrypt_url($row->id))?>" target="_blank" class="label label-green">Details</a></td>
-                    <td class="v-align-middle"> <a href="<?php echo base_url('scouts_member/verified_member_generate_scout_id/'.encrypt_url($row->id));?>" onclick="return confirm('Are you sure you want to generate Scout ID for this user?')" class="btn btn-mini btn-success">Generate ID</a> </td>
+                    <!-- <td class="v-align-middle"> <a href="<?php echo base_url('scouts_member/verified_member_generate_scout_id/'.encrypt_url($row->id));?>" onclick="return confirm('Are you sure you want to generate Scout ID for this user?')" class="btn btn-mini btn-success">Generate ID</a> </td> -->
                   </tr>
                   <?php endforeach;?>
                 </tbody>

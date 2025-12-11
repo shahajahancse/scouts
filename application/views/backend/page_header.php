@@ -253,9 +253,10 @@
 
                               <?php if($this->ion_auth->is_admin() || $this->ion_auth->is_region_admin() || $this->ion_auth->is_district_admin() || $this->ion_auth->is_upazila_admin() || $this->ion_auth->is_group_admin()){ ?>
                               <li> <a href="<?=base_url('scouts_member/archive_list');?>"> Archive Member List</a></li>
-                              <!-- <?php if($this->ion_auth->is_admin()) { ?>
-                              <li> <a href="<?=base_url('scouts_member/delete_request');?>"> Delete Request List</a></li>
-                              <?php } ?> -->  <!-- commented on 11-12-2025 -->
+                              <?php if($this->ion_auth->is_admin()) { ?>
+                              <!-- <li> <a href="<?=base_url('scouts_member/delete_request');?>"> Delete Request List</a></li> -->
+                              <li> <a href="<?=base_url('scouts_member/active_list');?>"> Active Member List</a></li>
+                              <?php } ?>
                               <?php } ?>
                            </ul>
                         </li>
