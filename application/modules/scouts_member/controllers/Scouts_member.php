@@ -2659,7 +2659,38 @@ class Scouts_member extends Backend_Controller {
    //    $this->load->view('backend/_layout_main', $this->data);
    // }
 
-   public function pdf_id_card($id){
+   // public function pdf_id_card($id){
+   //    if(!$this->ion_auth->in_group(array('admin', 'scout_admin', 'monitor_team', 'regional_head', 'district_office', 'upazila_office'))){
+   //       redirect('dashboard');
+   //    }
+
+   //    $scoutID = (int) decrypt_url($id);
+   //    if(!$this->Common_model->exists('users', 'id', $scoutID)){
+   //       show_404('scouts_member - pdf_id_card - exists', TRUE);
+   //    }
+
+   //    // Generate QR Code
+   //    $this->qrcode_generator($scoutID);
+
+   //    // Scout Information
+   //    $this->data['info'] = $this->My_profile_model->get_info($scoutID);
+   //    // echo $this->data['info']->scout_id; exit;
+   //    $this->load->library('Mpdf_lib');
+   //    //Generate HTML
+   //    $html = $this->load->view('pdf_id_card_front', $this->data, true);
+   //    $html2 = $this->load->view('pdf_id_card_back', $this->data, true);
+   //    $file_name ="scout-id-".$this->data['info']->scout_id.".pdf";
+
+   //    //generate the PDF from the given html
+   //    $mpdf = $this->mpdf_lib->create();
+   //    $mpdf->WriteHTML($html);
+   //    // $mpdf->AddPage(); // Adds a new page in Landscape orientation
+   //    // $mpdf->WriteHTML($html2);
+   //    $mpdf->Output($file_name, 'I');
+   // }
+
+   public function pdf_id_card($id)
+   {
       if(!$this->ion_auth->in_group(array('admin', 'scout_admin', 'monitor_team', 'regional_head', 'district_office', 'upazila_office'))){
          redirect('dashboard');
       }
@@ -2669,31 +2700,32 @@ class Scouts_member extends Backend_Controller {
          show_404('scouts_member - pdf_id_card - exists', TRUE);
       }
 
-      // Generate QR Code
+      // Generate QR
       $this->qrcode_generator($scoutID);
 
-      // Scout Information
       $this->data['info'] = $this->My_profile_model->get_info($scoutID);
-      // echo $this->data['info']->scout_id; exit;
+
       $this->load->library('Mpdf_lib');
-      //Generate HTML
-      $html = $this->load->view('pdf_id_card_front', $this->data, true);
-      $html2 = $this->load->view('pdf_id_card_back', $this->data, true);
+
+      /** FIX: Card full page, no margin, landscape **/
+      $mpdf = new \Mpdf\Mpdf([
+         'orientation' => 'P',
+         'format' => [340, 225],             // A4 Landscape (Width=297mm, Height=210mm)
+         'margin_left' => 0,
+         'margin_right' => 0,
+         'margin_top' => 0,
+         'margin_bottom' => 0
+      ]);
+
+      $html_front = $this->load->view('pdf_id_card_front', $this->data, true);
+      $html_back  = $this->load->view('pdf_id_card_back', $this->data, true);
+
+      $mpdf->WriteHTML($html_front);
+      $mpdf->AddPage('P'); // must force landscape again
+      $mpdf->WriteHTML($html_back);
+
       $file_name ="scout-id-".$this->data['info']->scout_id.".pdf";
-
-      //generate the PDF from the given html
-      $mpdf = $this->mpdf_lib->create();
-      $mpdf->WriteHTML($html);
-      $mpdf->AddPage(); // Adds a new page in Landscape orientation
-      $mpdf->WriteHTML($html2);
       $mpdf->Output($file_name, 'I');
-
-      // $mpdf->WriteHTML($html);
-      // $mpdf->AddPage(); // Adds a new page in Landscape orientation
-      // $mpdf->WriteHTML($html2);
-
-      // //download it for 'D'.
-      // $mpdf->Output($file_name, 'I');
    }
 
 

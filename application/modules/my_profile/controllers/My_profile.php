@@ -1124,6 +1124,18 @@ class My_profile extends Backend_Controller {
       $this->load->view('backend/_layout_main', $this->data);
    }
 
+   function ajax_exists_email(){
+      // echo 'true';
+      $item = $_POST['inputData'];
+      $this->db->where('email', $item)->where('id !=', $this->userID);
+      $query = $this->db->get('users');
+
+      if ($query->num_rows() == 0) {
+         echo 'true';
+      }else{
+         echo 'false';
+      }
+   }
 
    public function update_basic_info(){
       $this->data['info'] = $this->My_profile_model->get_info($this->userID);

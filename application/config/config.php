@@ -32,13 +32,11 @@ $config['modules_locations'] = array(
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/scouts/';
-
-/*if($_SERVER['HTTP_HOST'] === 'localhost'){
-	$config['base_url'] = 'http://localhost/scouts/';
-}else{
-	$config['base_url'] = 'http://service.scouts.gov.bd/';
-}*/
+// $config['base_url'] = 'http://localhost/scouts/';
+$config['base_url'] = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') ? "https" : "http")
+                      . "://" . $_SERVER['HTTP_HOST']
+                      . rtrim(str_replace(basename($_SERVER['SCRIPT_NAME']),"",$_SERVER['SCRIPT_NAME']),"/")
+                      . "/";
 
 /*
 |--------------------------------------------------------------------------

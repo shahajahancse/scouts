@@ -1,4 +1,4 @@
-<?php 
+<?php
 // echo '<pre>';
 // print_r($info); exit;
 $scout_id = $info->scout_id;
@@ -8,9 +8,9 @@ $sc_district_name_en = $info->dis_name_en;
 $sc_group_name = $info->grp_name;
 
 if($info->expire_date != NULL){
-  $expire_date = date('d M, Y', strtotime($info->expire_date));  
+  $expire_date = date('d M, Y', strtotime($info->expire_date));
 }else{
-  $expire_date = date('d M, Y', strtotime("31-12-2021"));  
+  $expire_date = date('d M, Y', strtotime("31-12-2021"));
 }
 
 
@@ -47,15 +47,15 @@ if($info->member_id == 2){
 //echo $full_pre_add; exit;
 //echo 'hello'; exit;
 //echo FCPATH; exit;
-?> 
+?>
 
 
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Download or Save Scout ID Card</title> 
+  <title>Download or Save Scout ID Card</title>
 </head>
-<body>  
+<body>
   <div height="100%" width="100%" style="background: #FFFFFF
   url('<?=FCPATH?>awedget/assets/img/id_card/front.png'); background-repeat: no-repeat; background-image-resolution: 72dpi; border: 0px solid black;">
   <div style="float: left;border: 0px solid red; width: 400px;">

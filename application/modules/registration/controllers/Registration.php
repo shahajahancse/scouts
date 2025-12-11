@@ -143,5 +143,15 @@ class Registration extends Backend_Controller {
         }
     }
 
+    function ajax_exists_email(){
+        // echo 'true';
+        $item = $_POST['inputData'];
+        $result = $this->Common_model->exists('users', 'email', $item);
 
+        if ($result == 0) {
+            echo 'true';
+        }else{
+            echo 'false';
+        }
+    }
 }
