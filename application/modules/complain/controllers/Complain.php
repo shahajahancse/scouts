@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Complain extends Backend_Controller {	
+class Complain extends Backend_Controller {
 
 	public function __construct(){
         parent::__construct();
@@ -10,11 +10,11 @@ class Complain extends Backend_Controller {
         endif;
 
         $this->data['module_title'] = 'Complain';
-        $this->load->model('Common_model'); 
-        $this->load->model('Complain_model');     
+        $this->load->model('Common_model');
+        $this->load->model('Complain_model');
     }
 
-	public function index(){    
+	public function index(){
         redirect('Complain/Complain_list');
 	}
 
@@ -29,7 +29,7 @@ class Complain extends Backend_Controller {
         $this->data['meta_title'] = 'Complain List';
         $this->data['subview'] = 'complain_list';
         $this->load->view('backend/_layout_main', $this->data);
-    } 
+    }
 
     /*************complain_list_pdf function pdf start**************/
     public function complain_list_pdf($offset=0){
@@ -38,21 +38,33 @@ class Complain extends Backend_Controller {
         }
 
         $this->data['complain'] = $this->Complain_model->get_data();
-      
-      //...............................................................................
-      $this->data['meta_title'] = "Complain List";
-      $html = $this->load->view('complain_list_pdf', $this->data, true);   
-      $file_name ="complain_list_pdf.pdf";
 
-      //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
-      $mpdf = new mPDF('', 'A4', 10, 'nikosh', 10, 10, 10, 10);
+        //...............................................................................
+        $this->data['meta_title'] = "Complain List";
+        $html = $this->load->view('complain_list_pdf', $this->data, true);
+        $file_name ="complain_list_pdf.pdf";
 
-      //generate the PDF from the given html
-      $mpdf->WriteHTML($html);
+        ob_end_clean();
+        ob_start();
 
-      //download it for 'D'. 
-      $mpdf->Output($file_name, "D");
-   }
+        $this->load->library('Mpdf_lib');
+
+        $mpdf = new \Mpdf\Mpdf([
+            'orientation' => 'P',
+            'format' => 'A4',
+            'default_font_size' => 10,
+            'default_font' => 'nikosh',
+            'margin_left' => 10,
+            'margin_right' => 10,
+            'margin_top' => 10,
+            'margin_bottom' => 10
+        ]);
+        $mpdf->WriteHTML($html);
+        // Must clean output or PDF will be damaged
+        ob_clean();
+        $mpdf->Output($file_name, "D");
+        exit;
+    }
    /*************complain_list_pdf function pdf End**************/
 
     public function details($id){
@@ -85,10 +97,10 @@ class Complain extends Backend_Controller {
         $this->data['users'] = $this->ion_auth->user()->row();
 
         $this->data['complain'] = $this->Complain_model->get_info($encriptID);
-      
+
       //...............................................................................
       $this->data['meta_title'] = "Details Feedback on Complain";
-      $html = $this->load->view('details_pdf', $this->data, true);   
+      $html = $this->load->view('details_pdf', $this->data, true);
       $file_name ="details_pdf.pdf";
 
       //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
@@ -97,7 +109,7 @@ class Complain extends Backend_Controller {
       //generate the PDF from the given html
       $mpdf->WriteHTML($html);
 
-      //download it for 'D'. 
+      //download it for 'D'.
       $mpdf->Output($file_name, "D");
    }
    /*************details_pdf function pdf End**************/

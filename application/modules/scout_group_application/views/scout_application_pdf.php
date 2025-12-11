@@ -1,5 +1,5 @@
 <style type="text/css">
-   table, td, th {  
+   table, td, th {
       border: 1px solid #ddd;
       text-align: left;
    }
@@ -14,22 +14,22 @@
    .title{font-size: 18px; text-align: left; font-weight: bold;}
    .line{width: 80%}
 
-   .noBorder table {  
+   .noBorder table {
       border: none;
    }
-   .noBorder td {  
+   .noBorder td {
       border: none;
       font-size: 18px;
    }
-   .noBorder th {  
+   .noBorder th {
       border: none;
    }
 </style>
 
-<div class="page-content">     
-   <div class="content"> 
+<div class="page-content">
+   <div class="content">
 
-      <div style="border-bottom: 1px solid #ccc;">         
+      <div style="border-bottom: 1px solid #ccc;">
          <div style="text-align: center; width: 300px; margin: 0 auto;">
             <img src="<?=base_url('fwedget/assets/images/scout_logo.png')?>" height="40">
             <h2 style="margin-bottom: 0px; padding-bottom: 0px;"><?php echo $info->region_name; ?></h2>
@@ -56,9 +56,9 @@
                      <?php if($info->grp_type == 1){ ?>
                      <tr>
                         <td> নিয়ন্ত্রক প্রতিষ্ঠানের নাম </td>
-                        <td><?=$info->institute_name?> </td> 
+                        <td><?=$info->institute_name?> </td>
                         <td> প্রতিষ্ঠানের কোড </td>
-                        <td> <?=$info->instituete_code?> </td>                       
+                        <td> <?=$info->instituete_code?> </td>
                      </tr>
                      <?php } ?>
                   </table>
@@ -70,37 +70,37 @@
                         <th width="110"> প্রশিক্ষণ গ্রহণের তারিখ </th>
                         <th> সার্টফিকেট নম্বর </th>
                         <th> প্রশিক্ষণ স্থান </th>
-                        <th> দলের দায়িত্ব </th>            
+                        <th> দলের দায়িত্ব </th>
                      </tr>
                      <tr>
                         <td> <?=$info->leader_name1?> </td>
                         <td> <?=date_bangla_calender_format($info->training_date1)?> </td>
                         <td> <?=$info->certificate_no1?> </td>
                         <td> <?=$info->training_place1?> </td>
-                        <td> <?=$info->group_res1?> </td>            
+                        <td> <?=$info->group_res1?> </td>
                      </tr>
                      <tr>
                         <td> <?=$info->leader_name2?> </td>
                         <td> <?=date_bangla_calender_format($info->training_date2)?> </td>
                         <td> <?=$info->certificate_no2?> </td>
                         <td> <?=$info->training_place2?> </td>
-                        <td> <?=$info->group_res2?> </td>            
+                        <td> <?=$info->group_res2?> </td>
                      </tr>
                      <tr>
                         <td> <?=$info->leader_name3?> </td>
                         <td> <?=date_bangla_calender_format($info->training_date3)?> </td>
                         <td> <?=$info->certificate_no3?> </td>
                         <td> <?=$info->training_place3?> </td>
-                        <td> <?=$info->group_res3?> </td>            
+                        <td> <?=$info->group_res3?> </td>
                      </tr>
                      <tr>
                         <td> <?=$info->leader_name4?> </td>
                         <td> <?=date_bangla_calender_format($info->training_date4)?> </td>
                         <td> <?=$info->certificate_no4?> </td>
                         <td> <?=$info->training_place4?> </td>
-                        <td> <?=$info->group_res4?> </td>            
+                        <td> <?=$info->group_res4?> </td>
                      </tr>
-                  </table> 
+                  </table>
 
                   <div style="font-size: 16px; font-weight: bold; text-align: center;margin-top: 10px;">গ্রুপ কমিটি</div>
                   <table>
@@ -112,9 +112,9 @@
                      </tr>
                      <tr>
                         <td> সভাপতির ঠিকানা </td>
-                        <td> <?=$info->grp_president_add?> </td> 
+                        <td> <?=$info->grp_president_add?> </td>
                         <td> সম্পাদের ঠিকানা </td>
-                        <td> <?=$info->grp_secretary_add?> </td>                       
+                        <td> <?=$info->grp_secretary_add?> </td>
                      </tr>
                   </table>
 
@@ -124,7 +124,7 @@
                         <th width="100">বিভাগ/শ্রেনী </th>
                         <th> মেম্বারশীপ ব্যাজ </th>
                         <th> তাঁরা ব্যাজ/স্ট্যান্ডার্ড ব্যাজ </th>
-                        <th> চাঁদ ব্যাজ </th>            
+                        <th> চাঁদ ব্যাজ </th>
                         <th> চাঁদ তাঁরা ব্যাজ / সার্ভিজ ব্যাজ </th>
                         <th> প্রেসিডেন্ট স্কাউট/ শাপলা কাব </th>
                         <th> মোট </th>
@@ -136,7 +136,7 @@
                         <td align="center"> <?=eng2bng($info->moon_progress_cub)?> </td>
                         <td align="center"> <?=eng2bng($info->moon_service_cub)?> </td>
                         <td align="center"> <?=eng2bng($info->president_shapla_cub)?> </td>
-                        <td align="center"> <?php $total_cub = $info->member_badge_cub+$info->moon_standard_cub+$info->moon_progress_cub+$info->moon_service_cub+$info->president_shapla_cub; echo eng2bng($total_cub);?> </td>
+                        <td align="center"> <?php $total_cub = (int) $info->member_badge_cub + (int) $info->moon_standard_cub + (int) $info->moon_progress_cub + (int) $info->moon_service_cub + (int) $info->president_shapla_cub; echo eng2bng($total_cub);?> </td>
                      </tr>
                      <tr>
                         <td> বয় স্কাউট </td>
@@ -145,16 +145,16 @@
                         <td align="center"> <?=eng2bng($info->moon_progress_boy)?> </td>
                         <td align="center"> <?=eng2bng($info->moon_service_boy)?> </td>
                         <td align="center"> <?=eng2bng($info->president_shapla_boy)?> </td>
-                        <td align="center"> <?php $total_boy = $info->member_badge_boy+$info->moon_standard_boy+$info->moon_progress_boy+$info->moon_service_boy+$info->president_shapla_boy; echo eng2bng($total_boy); ?> </td>
+                        <td align="center"> <?php $total_boy = (int) $info->member_badge_boy + (int) $info->moon_standard_boy + (int) $info->moon_progress_boy + (int) $info->moon_service_boy + (int) $info->president_shapla_boy; echo eng2bng($total_boy); ?> </td>
                      </tr>
                      <tr>
                         <td> মোট </td>
-                        <td align="center"> <?=eng2bng($info->member_badge_cub+$info->member_badge_boy)?> </td>
-                        <td align="center"> <?=eng2bng($info->moon_standard_cub+$info->moon_standard_boy)?> </td>
-                        <td align="center"> <?=eng2bng($info->moon_progress_cub+$info->moon_progress_boy)?> </td>
-                        <td align="center"> <?=eng2bng($info->moon_service_cub+$info->moon_service_boy)?> </td>
-                        <td align="center"> <?=eng2bng($info->president_shapla_cub+$info->president_shapla_boy)?> </td>
-                        <td align="center"> <?=eng2bng($total_cub+$total_boy)?> </td>
+                        <td align="center"> <?=eng2bng((int) $info->member_badge_cub + (int) $info->member_badge_boy)?> </td>
+                        <td align="center"> <?=eng2bng((int) $info->moon_standard_cub + (int) $info->moon_standard_boy)?> </td>
+                        <td align="center"> <?=eng2bng((int) $info->moon_progress_cub + (int) $info->moon_progress_boy)?> </td>
+                        <td align="center"> <?=eng2bng((int) $info->moon_service_cub + (int) $info->moon_service_boy)?> </td>
+                        <td align="center"> <?=eng2bng((int) $info->president_shapla_cub + (int) $info->president_shapla_boy)?> </td>
+                        <td align="center"> <?=eng2bng((int) $total_cub + (int) $total_boy)?> </td>
                      </tr>
                   </table>
 
@@ -192,7 +192,7 @@
                  </div>
                  <div style="border-top:1px dashed black; clear: both;"> </div>
 
-                 <p style="font-size: 16px;"><?php echo $info->grp_name_bn?> কে <?php echo $info->region_name?> তালিকাভুক্তি করা হইল। দলের সনদ নম্বরঃ .............................. তারিখ..............................</p>        
+                 <p style="font-size: 16px;"><?php echo $info->grp_name_bn?> কে <?php echo $info->region_name?> তালিকাভুক্তি করা হইল। দলের সনদ নম্বরঃ .............................. তারিখ..............................</p>
                  <div style="float: right; width: 200px; text-align: right;">
                     সম্পাদক <br>
                     <?php echo $info->region_name?>

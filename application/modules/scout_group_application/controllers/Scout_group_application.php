@@ -288,14 +288,12 @@ class Scout_group_application extends Backend_Controller {
       $html = $this->load->view('scout_application_pdf', $this->data, true);
       $file_name = $dataID."-scout-group-application.pdf";
 
-      //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
-      $mpdf = new mPDF('', 'A4', 10, 'nikosh', 10, 10, 10, 10);
-
       //generate the PDF from the given html
+      $this->load->library('Mpdf_lib');
+      $mpdf = $this->mpdf_lib->create();
       $mpdf->WriteHTML($html);
-
-      //download it for 'D'.
       $mpdf->Output($file_name, "I");
+
    }
 
    /*************complain_list_pdf function pdf start**************/

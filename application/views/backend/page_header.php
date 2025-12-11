@@ -50,7 +50,15 @@
    <script type="text/javascript">var hostname='<?php echo base_url();?>';</script>
    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+   <script>
+   if (location.hostname === "localhost") {
+      window["ga-disable-G-KJS3N7B2XV"] = true;
+   }
+   </script>
+
 </head> <!-- END HEAD -->
+
+
 
 <?php if($this->router->fetch_class('my_message') == 'my_message'){ ?>
 <body class="inner-menu-always-open">
@@ -191,9 +199,11 @@
 
                         <li class="start <?=backend_activate_menu_class('welcome')?>"><a href="<?=base_url('welcome')?>"><i class="fa fa-hand-o-right" aria-hidden="true"></i>Welcome </a> </li>
 
-                        <li class="start <?=backend_activate_menu_class('dashboard')?>">
+                        <li class="start <?=backend_activate_menu_class('dashboard')?>"><a href="<?=base_url('dashboard')?>"><i class="fa fa-hand-o-right" aria-hidden="true"></i> Dashboard </a> </li>
+
+                        <!-- <li class="start <?=backend_activate_menu_class('dashboard')?>">
                            <a href="<?=base_url('dashboard');?>"> <i class="icon-custom-home"></i>  <span class="title"><?=$this->ion_auth->is_employee()?'ড্যাশবোর্ড':'Dashboard'?></span></a>
-                        </li>
+                        </li> -->
 
                         <?php if ($this->ion_auth->is_admin()) { ?>
                         <li class="start <?=backend_activate_menu_class('support')?>"><a href="<?=base_url('support/cbox')?>"><i class="fa fa-user"></i> Complain or Feedback </a> </li>

@@ -1,5 +1,5 @@
-<div class="page-content">     
-   <div class="content">  
+<div class="page-content">
+   <div class="content">
       <ul class="breadcrumb" style="margin-bottom: 20px;">
          <li> <a href="<?=base_url('dashboard')?>" class="active"> Dashboard </a> </li>
          <li> <a href="<?=base_url('pds/pds_list')?>" class="active"> <?=$module_title; ?> </a></li>
@@ -30,38 +30,38 @@
             <div class="grid simple horizontal red">
                <div class="grid-title">
                   <h4><span class="semi-bold"><?=$meta_title; ?></span></h4>
-                  <div class="pull-right">           
-                     <a href="<?=base_url('scout_group_application/application_list')?>" class="btn btn-success btn-xs btn-mini"> Application List</a> 
+                  <div class="pull-right">
+                     <a href="<?=base_url('scout_group_application/application_list')?>" class="btn btn-success btn-xs btn-mini"> Application List</a>
                      <a href="<?=base_url('scout_group_application/scout_application_pdf/'.encrypt_url($info->id))?>" class="btn btn-blueviolet btn-xs btn-mini" target="_blank"> Generate PDF</a>
                   </div>
                </div>
 
                <div class="grid-body">
-                  <div class="row">                  
-                     <table class="tg">  
-                        <caption style="font-size: 20px; font-weight: bold; text-align: center; color: black;">স্কাউটস গ্রুপের আবেদন</caption> 
+                  <div class="row">
+                     <table class="tg">
+                        <caption style="font-size: 20px; font-weight: bold; text-align: center; color: black;">স্কাউটস গ্রুপের আবেদন</caption>
                         <tr>
                            <td class="tg-68ib">বাংলাদেশ স্কাউটস</td>
                            <td class="tg-2fdn"><strong><?=$info->upa_name?></strong></td>
-                        </tr> 
+                        </tr>
                         <tr>
                            <td class="tg-68ib">দল / গ্রুপের নাম</td>
                            <td class="tg-2fdn"><strong><?=$info->grp_name_bn?></strong></td>
-                        </tr>   
+                        </tr>
                         <tr>
                            <td class="tg-68ib">ঠিকানা</td>
                            <td class="tg-2fdn"><?=$info->grp_address?></td>
-                        </tr> 
+                        </tr>
                         <?php if($info->grp_type == 1){ ?>
                         <tr>
                            <td class="tg-68ib">নিয়ন্ত্রক প্রতিষ্ঠানের নাম</td>
                            <td class="tg-2fdn"><?=$info->institute_name?></td>
-                        </tr> 
+                        </tr>
                         <?php } ?>
                         <tr>
                            <td class="tg-68ib">দল/গ্রুপ সংগঠনের তারিখ</td>
                            <td class="tg-2fdn"><?=date_bangla_calender_format($info->grp_open_date)?></td>
-                        </tr> 
+                        </tr>
                      </table>
 
                      <div class="col-md-12" style="margin-top: 20px;">
@@ -72,57 +72,57 @@
                               <th class="tg-xyy0" width="20%"> প্রশিক্ষণ গ্রহণের তারিখ </th>
                               <th class="tg-xyy0"> সার্টফিকেট নম্বর </th>
                               <th class="tg-xyy0"> প্রশিক্ষণ স্থান </th>
-                              <th class="tg-xyy0"> দলের দায়িত্ব </th>            
+                              <th class="tg-xyy0"> দলের দায়িত্ব </th>
                            </tr>
                            <tr>
                               <td class="tg-m6jf"> <?=$info->leader_name1?> </td>
                               <td class="tg-m6jf"> <?=date_bangla_calender_format($info->training_date1)?> </td>
                               <td class="tg-m6jf"> <?=$info->certificate_no1?> </td>
                               <td class="tg-m6jf"> <?=$info->training_place1?> </td>
-                              <td class="tg-m6jf"> <?=$info->group_res1?> </td>            
+                              <td class="tg-m6jf"> <?=$info->group_res1?> </td>
                            </tr>
                            <tr>
                               <td class="tg-m6jf"> <?=$info->leader_name2?> </td>
                               <td class="tg-m6jf"> <?=date_bangla_calender_format($info->training_date2)?> </td>
                               <td class="tg-m6jf"> <?=$info->certificate_no2?> </td>
                               <td class="tg-m6jf"> <?=$info->training_place2?> </td>
-                              <td class="tg-m6jf"> <?=$info->group_res2?> </td>            
+                              <td class="tg-m6jf"> <?=$info->group_res2?> </td>
                            </tr>
                            <tr>
                               <td class="tg-m6jf"> <?=$info->leader_name3?> </td>
                               <td class="tg-m6jf"> <?=date_bangla_calender_format($info->training_date3)?> </td>
                               <td class="tg-m6jf"> <?=$info->certificate_no3?> </td>
                               <td class="tg-m6jf"> <?=$info->training_place3?> </td>
-                              <td class="tg-m6jf"> <?=$info->group_res3?> </td>            
+                              <td class="tg-m6jf"> <?=$info->group_res3?> </td>
                            </tr>
                            <tr>
                               <td class="tg-m6jf"> <?=$info->leader_name4?> </td>
                               <td class="tg-m6jf"> <?=date_bangla_calender_format($info->training_date4)?> </td>
                               <td class="tg-m6jf"> <?=$info->certificate_no4?> </td>
                               <td class="tg-m6jf"> <?=$info->training_place4?> </td>
-                              <td class="tg-m6jf"> <?=$info->group_res4?> </td>            
+                              <td class="tg-m6jf"> <?=$info->group_res4?> </td>
                            </tr>
-                        </table>  
+                        </table>
                      </div>
 
-                     <table class="tg">  
-                        <caption style="font-size: 15px; font-weight: bold; color: black;">গ্রুপ কমিটি</caption> 
+                     <table class="tg">
+                        <caption style="font-size: 15px; font-weight: bold; color: black;">গ্রুপ কমিটি</caption>
                         <tr>
                            <td class="tg-68ib">সভাপতির নাম</td>
                            <td class="tg-2fdn"><strong><?=$info->grp_president?></strong></td>
-                        </tr> 
+                        </tr>
                         <tr>
                            <td class="tg-68ib">ঠিকানা</td>
                            <td class="tg-2fdn"><?=$info->grp_president_add?></td>
-                        </tr>   
+                        </tr>
                         <tr>
                            <td class="tg-68ib">সম্পাদের নাম</td>
                            <td class="tg-2fdn"><strong><?=$info->grp_secretary?></strong></td>
-                        </tr> 
+                        </tr>
                         <tr>
                            <td class="tg-68ib">ঠিকানা</td>
                            <td class="tg-2fdn"><?=$info->grp_secretary_add?></td>
-                        </tr> 
+                        </tr>
                      </table>
 
                      <div class="col-md-12" style="margin-top: 20px;">
@@ -132,7 +132,7 @@
                            <th  class="tg-xyy0" width="100">বিভাগ/শ্রেনী </th>
                            <th class="tg-xyy0"> মেম্বারশীপ ব্যাজ </th>
                            <th class="tg-xyy0"> তাঁরা ব্যাজ/স্ট্যান্ডার্ড ব্যাজ </th>
-                           <th class="tg-xyy0"> চাঁদ ব্যাজ </th>            
+                           <th class="tg-xyy0"> চাঁদ ব্যাজ </th>
                            <th class="tg-xyy0"> চাঁদ তাঁরা ব্যাজ / সার্ভিজ ব্যাজ </th>
                            <th class="tg-xyy0"> প্রেসিডেন্ট স্কাউট/ শাপলা কাব </th>
                            <th class="tg-xyy0"> মোট </th>
@@ -144,9 +144,12 @@
                            <td class="tg-m6jf"> <?=$info->moon_progress_cub?> </td>
                            <td class="tg-m6jf"> <?=$info->moon_service_cub?> </td>
                            <td class="tg-m6jf"> <?=$info->president_shapla_cub?> </td>
-                           <td class="tg-m6jf"> <?php $total_cub = $info->member_badge_cub+$info->moon_standard_cub+$info->moon_progress_cub+$info->moon_service_cub+$info->president_shapla_cub;
-                            echo $total_cub;
-                            ?> </td>
+                           <td class="tg-m6jf">
+                              <?php
+                                 $total_cub = (int) $info->member_badge_cub + (int) $info->moon_standard_cub + (int) $info->moon_progress_cub + (int) $info->moon_service_cub + (int) $info->president_shapla_cub;
+                                 echo $total_cub;
+                              ?>
+                           </td>
                          </tr>
                          <tr>
                            <td class="tg-m6jf"> কাব স্কাউট </td>
@@ -155,18 +158,19 @@
                            <td class="tg-m6jf"> <?=$info->moon_progress_boy?> </td>
                            <td class="tg-m6jf"> <?=$info->moon_service_boy?> </td>
                            <td class="tg-m6jf"> <?=$info->president_shapla_boy?> </td>
-                           <td class="tg-m6jf"> <?php $total_boy = $info->member_badge_boy+$info->moon_standard_boy+$info->moon_progress_boy+$info->moon_service_boy+$info->president_shapla_boy;
-                              echo $total_boy;
+                           <td class="tg-m6jf"> <?php
+                              $total_boy = (int) $info->member_badge_boy + (int) $info->moon_standard_boy + (int) $info->moon_progress_boy + (int) $info->moon_service_boy + (int) $info->president_shapla_boy;
+                              echo (int) $total_boy;
                               ?> </td>
                            </tr>
                            <tr>
                               <td class="tg-m6jf"> মোট </td>
-                              <td class="tg-m6jf"> <?=$info->member_badge_cub+$info->member_badge_boy?> </td>
-                              <td class="tg-m6jf"> <?=$info->moon_standard_cub+$info->moon_standard_boy?> </td>
-                              <td class="tg-m6jf"> <?=$info->moon_progress_cub+$info->moon_progress_boy?> </td>
-                              <td class="tg-m6jf"> <?=$info->moon_service_cub+$info->moon_service_boy?> </td>
-                              <td class="tg-m6jf"> <?=$info->president_shapla_cub+$info->president_shapla_boy?> </td>
-                              <td class="tg-m6jf"> <?=$total_cub+$total_boy?> </td>
+                              <td class="tg-m6jf"> <?php echo (int) $info->member_badge_cub + (int) $info->member_badge_boy;?> </td>
+                              <td class="tg-m6jf"> <?php echo (int) $info->moon_standard_cub + (int) $info->moon_standard_boy;?> </td>
+                              <td class="tg-m6jf"> <?php echo (int) $info->moon_progress_cub + (int) $info->moon_progress_boy;?> </td>
+                              <td class="tg-m6jf"> <?php echo (int) $info->moon_service_cub + (int) $info->moon_service_boy;?> </td>
+                              <td class="tg-m6jf"> <?php echo (int) $info->president_shapla_cub + (int) $info->president_shapla_boy;?> </td>
+                              <td class="tg-m6jf"> <?php echo (int) $total_cub + (int) $total_boy;?> </td>
                            </tr>
                         </table>
                      </div>

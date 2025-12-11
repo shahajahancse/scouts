@@ -4,43 +4,43 @@
 			<h3>Dashboard</h3>
 		</div>
 
-		<div class="row">  
+		<div class="row">
 			<div class="col-md-12">
-				<?php if($info->id){ ?>				
+				<?php if($info->id){ ?>
 
-				<h2>Welcome, <strong><?=$info->dis_name_en?></strong></h2> 
+				<h2>Welcome, <strong><?=$info->dis_name_en?></strong></h2>
 				<div class="clearfix"></div>
 
-				<div class="row">  
+				<div class="row">
 					<div class="col-md-6 col-vlg-3 col-sm-6">
 						<div class="tiles green added-margin  m-b-20">
 							<div class="tiles-body">
 								<div class="tiles-title text_white_14">District Registration Overview</div>
 								<?php /*
 								<div class="widget-stats">
-									<div class="wrapper transparent"> 
+									<div class="wrapper transparent">
 										<span class="item-title">Total Registration</span> <span class="item-count animate-number" style="font-size: 25px;" data-value="<?=$total_online_register?>" data-animation-duration="700">0</span>
 									</div>
 								</div>
 								*/ ?>
 								<div class="widget-stats">
-									<div class="wrapper transparent"> 
+									<div class="wrapper transparent">
 										<span class="item-title">Total Verified</span> <span class="item-count animate-number" style="font-size: 25px;" data-value="<?=$total_online_member?>" data-animation-duration="700">0</span>
 									</div>
 								</div>
 								<div class="widget-stats ">
-									<div class="wrapper transparent"> 
-										<span class="item-title">Total Request Pending</span> <span class="item-count animate-number" style="font-size: 25px;" data-value="<?=$total_request_member?>" data-animation-duration="700">0</span> 
+									<div class="wrapper transparent">
+										<span class="item-title">Total Request Pending</span> <span class="item-count animate-number" style="font-size: 25px;" data-value="<?=$total_request_member?>" data-animation-duration="700">0</span>
 									</div>
-								</div> 
+								</div>
 								<div class="widget-stats ">
-									<div class="wrapper last"> 
-										<span class="item-title">Total Archived</span> <span class="item-count animate-number" style="font-size: 25px;" data-value="<?=$total_archive_member?>" data-animation-duration="700">0</span> 
+									<div class="wrapper last">
+										<span class="item-title">Total Archived</span> <span class="item-count animate-number" style="font-size: 25px;" data-value="<?=$total_archive_member?>" data-animation-duration="700">0</span>
 									</div>
-								</div> 
-							</div>      
-						</div>  
-					</div> 
+								</div>
+							</div>
+						</div>
+					</div>
 
 					<div class="col-md-6 col-vlg-3 col-sm-6">
 						<div class="tiles red added-margin  m-b-20">
@@ -48,19 +48,19 @@
 								<div class="tiles-title text_white_14"><?=$info->dis_name_en?></div>
 								<?php if($info->dis_type == 1 ){ ?>
 								<div class="widget-stats">
-									<div class="wrapper transparent"> 
+									<div class="wrapper transparent">
 										<span class="item-title">Total Scout Upazila</span> <span class="item-count animate-number" style="font-size: 25px;" data-value="<?=$total_upazila?>" data-animation-duration="700">0</span>
 									</div>
 								</div>
 								<?php } ?>
 								<div class="widget-stats">
 									<div class="wrapper last">
-										<span class="item-title">Total Scout Group</span> <span class="item-count animate-number" style="font-size: 25px;" data-value="<?=$total_group?>" data-animation-duration="700">0</span> 
+										<span class="item-title">Total Scout Group</span> <span class="item-count animate-number" style="font-size: 25px;" data-value="<?=$total_group?>" data-animation-duration="700">0</span>
 									</div>
 								</div>
-							</div>      
-						</div>  
-					</div>     
+							</div>
+						</div>
+					</div>
 				</div> <!-- /row -->
 
 				<div class="row">
@@ -74,7 +74,7 @@
 							.tg2 .tg-idlo{font-weight:bold;font-size:14px;background-color:#cbcefb;color:#000000;border-color:#9698ed;text-align:right}
 							.tg2 .tg-m7qj{font-weight:bold;font-size:14px;background-color:#cbcefb;color:#000000;border-color:#9698ed;text-align:left}
 						</style>
-						
+
 						<h3 style="text-align: center; font-weight: bold; "> Upazila Statistics</h3>
 						<table class="tg2">
 							<tr>
@@ -82,14 +82,14 @@
 								<th class="tg-wxkd" style="text-align: right;">Scout Group</th>
             				<th class="tg-wxkd" style="text-align: right;">Member</th>
 							</tr>
-								<?php 
+								<?php
 								foreach ($officelist as $row) {
 									if($row->upa_name != NULL){
 										$exp = explode(',', $row->upa_name);
 										$office_name = $exp[1];
 									}else{
 										$office_name = '';
-									}									
+									}
 									$tSCgroup = $result_data[$row->id]['totalSCgroup']['count'];
             					$tMember = $result_data[$row->id]['totalmember']['count'];
 
@@ -218,7 +218,7 @@
 									</th>
 									<th class="tg-rmb8" style="text-align: center;font-weight: bold; font-style: italic;"><?php echo $c + $c_f;?></th>
 								</tr>
-							</table>  
+							</table>
 						</div> <!-- /col-md-12 -->
 					</div>
 
@@ -232,7 +232,7 @@
 							<button class="btn btn-white btn-cons" type="button">Or this</button>
 						</div> -->
 					</div>
-					<?php } ?>	
+					<?php } ?>
 				</div>
 			</div>
 			<div style="margin-top: 20px;"></div>

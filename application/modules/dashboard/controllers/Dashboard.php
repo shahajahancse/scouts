@@ -91,18 +91,8 @@ class Dashboard extends Backend_Controller {
 		$user_grp_session = $this->session->userdata('current_group');
 
 		if(($this->ion_auth->is_admin() && $user_grp_session == 1) || ($this->ion_auth->is_scout_admin() && $user_grp_session == 2 || ($this->ion_auth->in_group('monitor_team') && $user_grp_session == 3))){
-			//Total Register
-			// $result = $this->Dashboard_model->get_count_online_register();
-			// $this->data['total_online_register'] = $result['count'];
-			// $result = $this->Dashboard_model->get_count_request_members();
-			// $this->data['total_request_member'] = $result['count'];
-			// $result = $this->Dashboard_model->get_count_archive_members();
-			// $this->data['total_archive_member'] = $result['count'];
 
-			//Total Online Member
-			// shahajahan 12-05-24
 			$row = $this->Dashboard_model->total_member_count_by_status();
-			// dd($row);
 			$this->data['total_request_member'] = $row->request;
 			$this->data['total_online_member'] = $row->verify;
 			$this->data['total_archive_member'] = $row->archive;
@@ -110,8 +100,6 @@ class Dashboard extends Backend_Controller {
 			$this->data['total_online_member_female'] = $row->online_member_female;
 			$this->data['total_online_member_others'] = $row->online_member_others;
 
-			//Total Region
-			// $rowsss = $this->Dashboard_model->get_count_online_member_by_region_wise();
 			$this->data['total_member_region_dhk'] = $row->total_member_region_dhk;
 			$this->data['total_member_region_ctg'] = $row->total_member_region_ctg;
 			$this->data['total_member_region_raj'] = $row->total_member_region_raj;
@@ -125,34 +113,6 @@ class Dashboard extends Backend_Controller {
 			$this->data['total_member_region_ral'] = $row->total_member_region_ral;
 			$this->data['total_member_region_nav'] = $row->total_member_region_nav;
 			$this->data['total_member_region_air'] = $row->total_member_region_air;
-			// write end shahajahan 12-05-24
-
-			// commend shahajahan 12-05-24
-			// $result = $this->Dashboard_model->get_count_online_members();
-			// $this->data['total_online_member'] = $result['count'];
-			// $result = $this->Dashboard_model->get_count_online_members_by_gender('Male');
-			// $this->data['total_online_member_male'] = $result['count'];
-			// $result = $this->Dashboard_model->get_count_online_members_by_gender('Female');
-			// $this->data['total_online_member_female'] = $result['count'];
-			// $result = $this->Dashboard_model->get_count_online_members_by_gender('Others');
-			// $this->data['total_online_member_others'] = $result['count'];
-
-
-			//Total Online Member by Member Type
-			/*$result = $this->Dashboard_model->get_count_by_member_type(1);
-			$this->data['total_new_applicant'] = $result['count'];
-			$result = $this->Dashboard_model->get_count_by_member_type(2);
-			$this->data['total_scout'] = $result['count'];
-			$result = $this->Dashboard_model->get_count_by_member_type(8);
-			$this->data['total_adult_leader'] = $result['count'];
-			$result = $this->Dashboard_model->get_count_by_member_type(9);
-			$this->data['total_professional'] = $result['count'];
-			$result = $this->Dashboard_model->get_count_by_member_type(10);
-			$this->data['total_non_warrent'] = $result['count'];
-			$result = $this->Dashboard_model->get_count_by_member_type(12);
-			$this->data['total_warrent'] = $result['count'];
-			$result = $this->Dashboard_model->get_count_by_member_type(13);
-			$this->data['total_support_staff'] = $result['count'];*/
 
 			$rows = $this->Dashboard_model->get_count_by_member_by_type_wise();
 			$this->data['total_new_applicant'] = $rows->total_new_applicant;
@@ -162,9 +122,7 @@ class Dashboard extends Backend_Controller {
 			$this->data['total_non_warrent'] = $rows->total_non_warrent;
 			$this->data['total_warrent'] = $rows->total_warrent;
 			$this->data['total_support_staff'] = $rows->total_support_staff;
-			// shahajahan 12-05-24
 
-			//Online Member Percent statistics
 			$this->data['new_applicant_percent'] = round(($this->data['total_new_applicant']*100)/$this->data['total_online_member'], 2);
 			$this->data['scout_percent'] = round(($this->data['total_scout']*100)/$this->data['total_online_member'], 2);
 			$this->data['adult_leader_percent'] = round(($this->data['total_adult_leader']*100)/$this->data['total_online_member'], 2);
@@ -172,89 +130,13 @@ class Dashboard extends Backend_Controller {
 			$this->data['non_warren_percent'] = round(($this->data['total_non_warrent']*100)/$this->data['total_online_member'], 2);
 			$this->data['warrent_percent'] = round(($this->data['total_warrent']*100)/$this->data['total_online_member'], 2);
 			$this->data['support_staff_percent'] = round(($this->data['total_support_staff']*100)/$this->data['total_online_member'], 2);
-        	// exit;
-        	// echo $total_online_member;
 
-        	//Event
-			// commend shahajahan 12-05-24
-			/*$result = $this->Dashboard_model->get_count_event_total();
-			$this->data['total_event'] = $result['count'];
-			$result = $this->Dashboard_model->get_count_event_total_by_level('nhq');
-			$this->data['total_event_nhq'] = $result['count'];
-			$result = $this->Dashboard_model->get_count_event_total_by_level('region');
-			$this->data['total_event_region'] = $result['count'];
-			$result = $this->Dashboard_model->get_count_event_total_by_level('district');
-			$this->data['total_event_district'] = $result['count'];*/
-			// commend end shahajahan 12-05-24
-
-			// write shahajahan 12-05-24
 			$rowss = $this->Dashboard_model->get_count_event_total_by_level_wise();
 			$this->data['total_event'] = $rowss->count;
 			$this->data['total_event_nhq'] = $rowss->total_event_nhq;
 			$this->data['total_event_region'] = $rowss->total_event_region;
 			$this->data['total_event_district'] = $rowss->total_event_district;
 
-			// commend shahajahan 12-05-24
-			/*$result = $this->Dashboard_model->get_count_online_member_by_region(1);
-			$this->data['total_member_region_dhk'] = $result['count'];
-			$result = $this->Dashboard_model->get_count_online_member_by_region(2);
-			$this->data['total_member_region_ctg'] = $result['count'];
-			$result = $this->Dashboard_model->get_count_online_member_by_region(3);
-			$this->data['total_member_region_raj'] = $result['count'];
-			$result = $this->Dashboard_model->get_count_online_member_by_region(4);
-			$this->data['total_member_region_khl'] = $result['count'];
-			$result = $this->Dashboard_model->get_count_online_member_by_region(5);
-			$this->data['total_member_region_bar'] = $result['count'];
-			$result = $this->Dashboard_model->get_count_online_member_by_region(6);
-			$this->data['total_member_region_syl'] = $result['count'];
-			$result = $this->Dashboard_model->get_count_online_member_by_region(7);
-			$this->data['total_member_region_cum'] = $result['count'];
-			$result = $this->Dashboard_model->get_count_online_member_by_region(8);
-			$this->data['total_member_region_din'] = $result['count'];
-			$result = $this->Dashboard_model->get_count_online_member_by_region(9);
-			$this->data['total_member_region_may'] = $result['count'];
-			$result = $this->Dashboard_model->get_count_online_member_by_region(10);
-			$this->data['total_member_region_rov'] = $result['count'];
-			$result = $this->Dashboard_model->get_count_online_member_by_region(11);
-			$this->data['total_member_region_ral'] = $result['count'];
-			$result = $this->Dashboard_model->get_count_online_member_by_region(12);
-			$this->data['total_member_region_nav'] = $result['count'];
-			$result = $this->Dashboard_model->get_count_online_member_by_region(13);
-			$this->data['total_member_region_air'] = $result['count'];*/
-			// commend end shahajahan 12-05-24
-
-         	//Censes Statistics
-         	//Member Type: New Applicant (na)
-         	// commend shahajahan 12-05-24
-			/*$result = $this->Dashboard_model->get_censes_by_member_id_section_id_gender(1, 1, 'Male');
-			$this->data['count_na_cub_scout_m'] = $result['count'];
-			$result = $this->Dashboard_model->get_censes_by_member_id_section_id_gender(1, 2, 'Male');
-			$this->data['count_na_scout_m'] = $result['count'];
-			$result = $this->Dashboard_model->get_censes_by_member_id_section_id_gender(1, 3, 'Male');
-			$this->data['count_na_rober_scout_m'] = $result['count'];
-			$result = $this->Dashboard_model->get_censes_by_member_id_section_id_gender(1, 1, 'Female');
-			$this->data['count_na_cub_scout_f'] = $result['count'];
-			$result = $this->Dashboard_model->get_censes_by_member_id_section_id_gender(1, 2, 'Female');
-			$this->data['count_na_scout_f'] = $result['count'];
-			$result = $this->Dashboard_model->get_censes_by_member_id_section_id_gender(1, 3, 'Female');
-			$this->data['count_na_rober_scout_f'] = $result['count'];
-
-			//Member Type: Scout
-			$result = $this->Dashboard_model->get_censes_by_member_id_section_id_gender(2, 1, 'Male');
-			$this->data['count_cub_scout_m'] = $result['count'];
-			$result = $this->Dashboard_model->get_censes_by_member_id_section_id_gender(2, 2, 'Male');
-			$this->data['count_scout_m'] = $result['count'];
-			$result = $this->Dashboard_model->get_censes_by_member_id_section_id_gender(2, 3, 'Male');
-			$this->data['count_rober_scout_m'] = $result['count'];
-			$result = $this->Dashboard_model->get_censes_by_member_id_section_id_gender(2, 1, 'Female');
-			$this->data['count_cub_scout_f'] = $result['count'];
-			$result = $this->Dashboard_model->get_censes_by_member_id_section_id_gender(2, 2, 'Female');
-			$this->data['count_scout_f'] = $result['count'];
-			$result = $this->Dashboard_model->get_censes_by_member_id_section_id_gender(2, 3, 'Female');
-			$this->data['count_rober_scout_f'] = $result['count'];*/
-			// commend end shahajahan 12-05-24
-
-			// write shahajahan 12-05-24
 			$this->data['count_na_cub_scout_m'] = $row->na_cub_scout_m;
 			$this->data['count_na_scout_m'] = $row->na_scout_m;
 			$this->data['count_na_rober_scout_m'] = $row->n_rober_scout_m;
@@ -279,47 +161,11 @@ class Dashboard extends Backend_Controller {
 			$this->data['warrant_f'] = $row->warrant_f;
 			$this->data['professional_scouts_f'] = $row->professional_scouts_f;
 			$this->data['support_staff_f'] = $row->support_staff_f;
-			// write end shahajahan 12-05-24
-
-			//Member Type: Other's
-         	// commend shahajahan 12-05-24
-			/*$result = $this->Dashboard_model->get_censes_by_member_id_gender(8, 'Male');
-			$this->data['scouter_s_m'] = $result['count'];
-			$result = $this->Dashboard_model->get_censes_by_member_id_gender(10,'Male');
-			$this->data['non_warrant_m'] = $result['count'];
-			$result = $this->Dashboard_model->get_censes_by_member_id_gender(12,'Male');
-			$this->data['warrant_m'] = $result['count'];
-			$result = $this->Dashboard_model->get_censes_by_member_id_gender(9,'Male');
-			$this->data['professional_scouts_m'] = $result['count'];
-			$result = $this->Dashboard_model->get_censes_by_member_id_gender(13,'Male');
-			$this->data['support_staff_m'] = $result['count'];
-
-			$result = $this->Dashboard_model->get_censes_by_member_id_gender(8,'Female');
-			$this->data['scouter_s_f'] = $result['count'];
-			$result = $this->Dashboard_model->get_censes_by_member_id_gender(10,'Female');
-			$this->data['non_warrant_f'] = $result['count'];
-			$result = $this->Dashboard_model->get_censes_by_member_id_gender(12,'Female');
-			$this->data['warrant_f'] = $result['count'];
-			$result = $this->Dashboard_model->get_censes_by_member_id_gender(9,'Female');
-			$this->data['professional_scouts_f'] = $result['count'];
-			$result = $this->Dashboard_model->get_censes_by_member_id_gender(13,'Female');
-			$this->data['support_staff_f'] = $result['count'];*/
-			// commend end shahajahan 12-05-24
 
 			// Load Page
 			$this->data['meta_title'] = 'Dashboard';
 			$this->data['subview'] = 'superadmin_dashboard';
 			$this->load->view('backend/_layout_main', $this->data);
-
-			// }elseif($this->ion_auth->is_scout_admin() && $user_grp_session == 2){
-			// 	$this->data['info'] = $this->userData['user_info'];
-			// 	// $this->data['scout_info'] = $this->Dashboard_model->get_scout_info($this->userData['user_info']->id);
-
-			// 	// load page
-			// 	$this->data['meta_title'] = 'Dashboard';
-			// 	$this->data['subview'] = 'admin_dashboard';
-			// 	$this->load->view('backend/_layout_main', $this->data);
-
 
 		}elseif($this->ion_auth->is_region_admin() && $user_grp_session == 4){
 			$data_arr = [];
@@ -863,12 +709,12 @@ class Dashboard extends Backend_Controller {
 			$this->data['meta_title'] = 'Dashboard';
 			$this->data['subview'] = 'efile';
 			$this->load->view('backend/_layout_main', $this->data);
+		} else {
+			//Load page
+			$this->data['meta_title'] = 'Dashboard';
+			$this->data['subview'] = 'employee';
+			$this->load->view('backend/_layout_main', $this->data);
 		}
-		//Load page
-		$this->data['meta_title'] = 'Dashboard';
-		$this->data['subview'] = 'employee';
-		$this->load->view('backend/_layout_main', $this->data);
-
 	}
 
 	public function region_overview($regionID){

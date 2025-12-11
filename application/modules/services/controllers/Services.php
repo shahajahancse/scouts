@@ -78,23 +78,13 @@ class Services extends Backend_Controller {
 
         //Results
         $this->data['results'] = $results['rows'];
-        $this->data['total_rows'] = count($results['rows']);
 
       //...............................................................................
       $this->data['meta_title'] = "Service Request List";
-      $html = $this->load->view('request_list_pdf', $this->data, true);
-      $file_name ="request_list_pdf.pdf";
-
-      //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
-      $mpdf = new mPDF('', 'A4', 10, 'nikosh', 10, 10, 10, 10);
-
-      //generate the PDF from the given html
-      $mpdf->WriteHTML($html);
-
-      //download it for 'D'.
-      $mpdf->Output($file_name, "D");
+      $this->load->view('request_list_excel', $this->data, true);
    }
    /*************request_list_pdf function pdf End**************/
+
 
     public function complete_list($offset=0){
         $limit = 25;
@@ -420,14 +410,11 @@ class Services extends Backend_Controller {
       $html = $this->load->view('details_pdf', $this->data, true);
       $file_name ="details_pdf.pdf";
 
-      //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
-      $mpdf = new mPDF('', 'A4', 10, 'nikosh', 10, 10, 10, 10);
-
       //generate the PDF from the given html
+      $this->load->library('Mpdf_lib');
+      $mpdf = $this->mpdf_lib->create();
       $mpdf->WriteHTML($html);
-
-      //download it for 'D'.
-      $mpdf->Output($file_name, "D");
+      $mpdf->Output($file_name, "I");
    }
    /*************details_pdf function pdf End**************/
 

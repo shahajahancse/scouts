@@ -1,5 +1,5 @@
-<div class="page-content">     
-  <div class="content">  
+<div class="page-content">
+  <div class="content">
     <ul class="breadcrumb" style="margin-bottom: 20px;">
       <li> <a href="<?=base_url('dashboard')?>" class="active"> Dashboard </a> </li>
       <li> <a href="<?=base_url('dashboard')?>" class="active"> <?=$module_title; ?> </a></li>
@@ -8,7 +8,7 @@
 
     <style type="text/css">
       .marTopSearch{margin-top: 10px;}
-      
+
       .table-responsive {
         width: 100%;
         margin-bottom: 15px;
@@ -27,7 +27,7 @@
           flex-direction: column;
           align-items: stretch;
         }
-        
+
         .grid-title .pull-right {
           margin-top: 10px;
         }
@@ -59,7 +59,7 @@
               <a href="<?=base_url('services/complete_list')?>" class="btn btn-blueviolet btn-xs btn-mini"> Complete List </a>
               <a href="<?=base_url('services/on_process_list')?>" class="btn btn-blueviolet btn-xs btn-mini"> On Process List </a>
               <a href="<?=base_url('services/cancel_list')?>" class="btn btn-blueviolet btn-xs btn-mini"> Cancel List</a>
-            </div>            
+            </div>
           </div>
 
           <div class="grid-body">
@@ -70,7 +70,7 @@
             <?php endif; ?>
 
             <div class="text-right" style="margin-bottom: 10px;">
-              <a href="<?=base_url('Services/request_list_pdf')?>" class="btn btn-primary btn-xs btn-mini">PDF Download</a>
+              <a href="<?=base_url('Services/request_list_pdf')?>" class="btn btn-primary btn-xs btn-mini">Excel Download</a>
             </div>
 
             <?php if($results) { ?>
@@ -90,7 +90,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <?php 
+                  <?php
                   $sl=$pagination['current_page'];
                   foreach ($results as $row):
                     $sl++;
@@ -105,7 +105,7 @@
                     <td class="v-align-middle"><?=$row->created != NULL ? date_sort_form($row->created): NULL?></td>
                     <td class="v-align-middle"><?=service_request_status($row->status)?></td>
                     <td align="right">
-                     <div class="btn-group"> 
+                     <div class="btn-group">
                       <a class="btn btn-primary dropdown-toggle btn-mini" data-toggle="dropdown" href="#"> Action <span class="caret"></span> </a>
                       <ul class="dropdown-menu pull-right">
                         <li><a href="<?=base_url('services/details/'.encrypt_url($row->id))?>">Details</a></li>
@@ -113,9 +113,9 @@
                         <li><a href="<?=base_url("services/request_status/".encrypt_url($row->id))?>">Service Status</a></li>
                       </ul>
                     </div>
-                  </td> 
+                  </td>
                 </tr>
-              <?php endforeach;?>                      
+              <?php endforeach;?>
               </tbody>
             </table>
             </div>
