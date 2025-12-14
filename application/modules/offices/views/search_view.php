@@ -77,13 +77,13 @@
    <div class="row">
       <div class="col-md-3 col-sm-6 col-xs-12">
          <?php $more_attr = 'class="form-control input-sm" id="sc_district"';
-         echo form_dropdown('district', $scout_district, $_GET['district'], $more_attr);
+         echo form_dropdown('district', $scout_district, $_GET['district'] ?? '', $more_attr);
          ?>
       </div>
       <?php if(isset($_GET['district'])){ ?>
          <div class="col-md-3 col-sm-6 col-xs-12">
             <?php $more_attr = 'class="form-control input-sm" id="sc_district"';
-            echo form_dropdown('upazila', $scout_upazila, $_GET['upazila'], $more_attr);
+            echo form_dropdown('upazila', $scout_upazila, $_GET['upazila'] ?? '', $more_attr);
             ?>
          </div>
       <?php }else{ ?>
@@ -95,13 +95,13 @@
       <?php } ?>
 
       <div class="col-md-3 col-sm-6 col-xs-12">
-         <input type="text" name="grpName" value="<?=$_GET['grpName']?>" class="form-control input-sm" placeholder="Scout Group Name">
+         <input type="text" name="grpName" value="<?=(isset($_GET['grpName'])) ? $_GET['grpName'] : '' ?>" class="form-control input-sm" placeholder="Scout Group Name">
       </div>
       <div class="col-md-2 col-sm-6 col-xs-12">
-         <input type="text" name="uName" value="<?=$_GET['uName']?>" class="form-control input-sm" placeholder="Username">
+         <input type="text" name="uName" value="<?=(isset($_GET['uName'])) ? $_GET['uName'] : '' ?>" class="form-control input-sm" placeholder="Username">
       </div>
       <div class="col-md-2 col-sm-6 col-xs-12">
-         <input type="text" name="charter" value="<?=$_GET['charter']?>" class="form-control input-sm" placeholder="Charter No">
+         <input type="text" name="charter" value="<?=(isset($_GET['charter'])) ? $_GET['charter'] : '' ?>" class="form-control input-sm" placeholder="Charter No">
       </div>
       <div class="col-md-1 col-sm-12 col-xs-12">
          <button type="submit" class="btn btn-blueviolet btn-mini"><i class="icon-ok"></i> Search</button>
@@ -113,17 +113,17 @@
    <div class="row">
       <div class="col-md-4 col-sm-6 col-xs-12">
          <?php $more_attr = 'class="form-control input-sm"';
-         echo form_dropdown('upazila', $scout_upazila, $_GET['upazila'], $more_attr);
+         echo form_dropdown('upazila', $scout_upazila, $_GET['upazila'] ?? '', $more_attr);
          ?>
       </div>
       <div class="col-md-4 col-sm-6 col-xs-12">
-         <input type="text" name="grpName" value="<?=$_GET['grpName']?>" class="form-control input-sm" placeholder="Scout Group Name">
+         <input type="text" name="grpName" value="<?php echo (isset($_GET['grpName'])) ? $_GET['grpName'] : ''; ?>" class="form-control input-sm" placeholder="Scout Group Name">
       </div>
       <div class="col-md-3 col-sm-6 col-xs-12">
-         <input type="text" name="uName" value="<?=$_GET['uName']?>" class="form-control input-sm" placeholder="Username">
+         <input type="text" name="uName" value="<?php echo (isset($_GET['uName'])) ? $_GET['uName'] : ''; ?>" class="form-control input-sm" placeholder="Username">
       </div>
       <div class="col-md-2 col-sm-6 col-xs-12">
-         <input type="text" name="charter" value="<?=$_GET['charter']?>" class="form-control input-sm" placeholder="Charter No">
+         <input type="text" name="charter" value="<?php echo (isset($_GET['charter'])) ? $_GET['charter'] : ''; ?>" class="form-control input-sm" placeholder="Charter No">
       </div>
       <div class="col-md-1 col-sm-12 col-xs-12">
          <button type="submit" class="btn btn-blueviolet btn-mini"><i class="icon-ok"></i> Search</button>
@@ -134,13 +134,13 @@
    <?php if($this->ion_auth->is_upazila_admin()){ ?>
    <div class="row">
       <div class="col-md-4 col-sm-6 col-xs-12">
-         <input type="text" name="grpName" value="<?=$_GET['grpName']?>" class="form-control input-sm" placeholder="Scout Group Name">
+         <input type="text" name="grpName" value="<?=(isset($_GET['grpName'])) ? $_GET['grpName'] : '' ?>" class="form-control input-sm" placeholder="Scout Group Name">
       </div>
       <div class="col-md-3 col-sm-6 col-xs-12">
-         <input type="text" name="uName" value="<?=$_GET['uName']?>" class="form-control input-sm" placeholder="Username">
+         <input type="text" name="uName" value="<?=(isset($_GET['uName'])) ? $_GET['uName'] : '' ?>" class="form-control input-sm" placeholder="Username">
       </div>
       <div class="col-md-2 col-sm-6 col-xs-12">
-         <input type="text" name="charter" value="<?=$_GET['charter']?>" class="form-control input-sm" placeholder="Charter No">
+         <input type="text" name="charter" value="<?=(isset($_GET['charter'])) ? $_GET['charter'] : '' ?>" class="form-control input-sm" placeholder="Charter No">
       </div>
       <div class="col-md-1 col-sm-12 col-xs-12">
          <button type="submit" class="btn btn-blueviolet btn-mini"><i class="icon-ok"></i> Search</button>

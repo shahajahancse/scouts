@@ -1395,9 +1395,7 @@ class Scouts_member extends Backend_Controller {
 
       if($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin()){
          //Super Admin
-
          $results = $this->Scouts_member_model->get_last_30day_active_member($limit, $offset);
-
          //Dropdown
          $this->data['regions'] = $this->Common_model->get_regions();
          $this->data['scouts_district'] = array(''=>'Scouts District');

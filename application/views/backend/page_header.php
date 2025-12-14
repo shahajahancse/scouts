@@ -248,7 +248,6 @@
                               <li> <a href="<?=base_url('scouts_member/create');?>"> Add Scout Member </a> </li>
                               <?php } ?>
 
-                              <?php if($this->ion_auth->is_admin() || $this->ion_auth->is_group_admin()){ ?>
                               <li> <a href="<?=base_url('scouts_member/request');?>"> Member Request List
                                  <?php
                                  if($count_member_req > 0){
@@ -259,7 +258,6 @@
                               <li> <a href="<?=base_url('scouts_member/gone_home');?>"> Gone Home</a></li>
                               <!-- <li> <a href="<?=base_url('scouts_member/verified_list');?>"> Verified Member List</a></li> -->   <!-- commented on 11-12-2025 -->
                               <!-- <li> <a href="<?=base_url('scouts_member/cancel_request');?>"> Cancel Request List</a></li> -->   <!-- commented on 11-12-2025 -->
-                              <?php } ?>
 
                               <?php if($this->ion_auth->is_admin() || $this->ion_auth->is_region_admin() || $this->ion_auth->is_district_admin() || $this->ion_auth->is_upazila_admin() || $this->ion_auth->is_group_admin()){ ?>
                               <li> <a href="<?=base_url('scouts_member/archive_list');?>"> Archive Member List</a></li>
@@ -360,17 +358,15 @@
                                  <?php if($this->ion_auth->is_group_admin()) { ?>
                                  <li>
                                     <a href="<?=base_url('migration/release_group_request_list');?>"> Release Member Request
-                                       <?php
-                                       if($this->ion_auth->is_group_admin() && $count_req_release_grp_mig > 0){
-                                          echo '<span class="badge badge-danger pull-right">'.$count_req_release_grp_mig.'</span>';
-                                       }
-                                       ?>
+                                    <?php if (isset($count_req_release_grp_mig) && $this->ion_auth->is_group_admin() && $count_req_release_grp_mig > 0) { ?>
+                                       <span class="badge badge-danger pull-right"><?=$count_req_release_grp_mig?></span>
+                                    <?php } ?>
                                     </a>
                                  </li>
                                  <li>
                                     <a href="<?=base_url('migration/migrate_group_request_list');?>"> Migrate Member Request
                                        <?php
-                                       if($count_req_migrate_grp_mig > 0){
+                                       if(isset($count_req_migrate_grp_mig) && $count_req_migrate_grp_mig > 0){
                                           echo '<span class="badge badge-danger pull-right">'.$count_req_migrate_grp_mig.'</span>';
                                        }
                                        ?>
@@ -392,7 +388,7 @@
                                  */ ?>
                                  <li> <a href="<?=base_url('migration/migrate_section_request_list');?>"> Migrate Section Request
                                     <?php
-                                    if($count_req_migrate_section_mig > 0){
+                                    if(isset($count_req_migrate_section_mig) && $count_req_migrate_section_mig > 0){
                                        echo '<span class="badge badge-danger pull-right">'.$count_req_migrate_section_mig.'</span>';
                                     }
                                     ?>
