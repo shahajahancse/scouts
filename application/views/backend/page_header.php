@@ -458,7 +458,13 @@
                         </li>
                         <?php } ?>
 
-                        <?php if($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin()|| $this->ion_auth->in_group('award') || $this->ion_auth->is_region_admin() || $this->ion_auth->is_district_admin() || $this->ion_auth->is_upazila_admin() || $this->ion_auth->is_group_admin() || $this->ion_auth->is_scout_member()){ ?>
+                        <li class="start <?=backend_activate_menu_class('scout_news')?>">
+                           <a href="<?=base_url('scout_news/index');?>"> <i class="fa fa-user"></i>
+                              <span class="title">Scout News</span>
+                           </a>
+                        </li>
+
+                        <?php if($this->ion_auth->is_admin()){ ?>
                         <li class="start <?=backend_activate_menu_class('award')?>">
                            <a href="javascript:;" > <i class="fa fa-user"></i> <span class="title">Award</span> <span class="selected"></span> <span class="arrow"></span> </a>
                            <ul class="sub-menu">
@@ -680,12 +686,6 @@
                      <span class="title">Image Gallery</span> </a></li> -->
                      */ ?>
                      <?php } ?>
-
-                     <li class="start <?=backend_activate_menu_class('scout_news')?>">
-                        <a href="<?=base_url('scout_news/index');?>"> <i class="fa fa-user"></i>
-                           <span class="title">Scout News</span>
-                        </a>
-                     </li>
 
                      <?php if($this->ion_auth->is_admin()){ ?>
                      <li class="start <?=backend_activate_menu_class('e_book')?>">

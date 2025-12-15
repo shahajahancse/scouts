@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Scout_news extends Backend_Controller {	
+class Scout_news extends Backend_Controller {
 
 	public function __construct(){
         parent::__construct();
@@ -11,12 +11,22 @@ class Scout_news extends Backend_Controller {
         $this->data['module_title'] = 'Scout News';
         $this->file_path = realpath(APPPATH . '../uploads/news_file');
 
-        $this->load->model('Common_model'); 
-        $this->load->model('Scout_news_model');     
+        $this->load->model('Common_model');
+        $this->load->model('Scout_news_model');
     }
 
     public function index(){
-        redirect('scout_news/news_list');
+
+        if ($this->ion_auth->is_admin()) {
+            $this->data['results'] = $this->Scout_news_model->get_data();
+        } else {
+            $this->data['results'] = $this->Scout_news_model->get_data(1);
+        }
+
+        // Load page
+        $this->data['meta_title'] = 'News List';
+        $this->data['subview'] = 'news_list';
+        $this->load->view('backend/_layout_main', $this->data);
     }
 
     public function create_news(){
@@ -50,7 +60,7 @@ class Scout_news extends Backend_Controller {
                     $uploadData = $this->upload->data();
                     $uploadedFile = $uploadData['file_name'];
 
-                    $source_path = $this->file_path.'/'.$uploadedFile; 
+                    $source_path = $this->file_path.'/'.$uploadedFile;
 
                     // $uploadedFile = $uploadData['file_name'];
                     // print_r($uploadedFile);
@@ -60,13 +70,13 @@ class Scout_news extends Backend_Controller {
             }
 
             if($_FILES['userfile']['size'] > 0){
-                $form_data['attachment_file'] = $uploadedFile; 
+                $form_data['attachment_file'] = $uploadedFile;
             }
 
-            if($this->Common_model->save('scout_news', $form_data)){                
+            if($this->Common_model->save('scout_news', $form_data)){
                 $this->session->set_flashdata('success', 'New news insert successfully.');
                 redirect("scout_news/news_list");
-            } 
+            }
         }
 
         // Load page
@@ -89,9 +99,6 @@ class Scout_news extends Backend_Controller {
     }
 
     public function details($id){
-        if(!($this->ion_auth->is_admin() || $this->ion_auth->is_region_admin() || $this->ion_auth->is_district_admin() || $this->ion_auth->is_upazila_admin() || $this->ion_auth->is_group_admin())){
-            redirect('dashboard');
-        }
 
         $this->data['info'] = $this->Scout_news_model->get_info($id);
 
@@ -130,7 +137,7 @@ class Scout_news extends Backend_Controller {
                     $uploadData = $this->upload->data();
                     $uploadedFile = $uploadData['file_name'];
 
-                    $source_path = $this->file_path.'/'.$uploadedFile; 
+                    $source_path = $this->file_path.'/'.$uploadedFile;
 
                     // $uploadedFile = $uploadData['file_name'];
                     // print_r($uploadedFile);
@@ -140,17 +147,17 @@ class Scout_news extends Backend_Controller {
             }
 
             if($_FILES['userfile']['size'] > 0){
-                $form_data['attachment_file'] = $uploadedFile; 
+                $form_data['attachment_file'] = $uploadedFile;
             }
 
 
-            if($this->Common_model->edit('scout_news', $id, 'id', $form_data)){                
+            if($this->Common_model->edit('scout_news', $id, 'id', $form_data)){
                 $this->session->set_flashdata('success', 'News Update successfully.');
                 redirect("scout_news/news_list");
             }
         }
 
-        $this->data['info'] = $this->Scout_news_model->get_info($id);    
+        $this->data['info'] = $this->Scout_news_model->get_info($id);
 
         // Load page
         $this->data['meta_title'] = 'Edit News';

@@ -1390,40 +1390,207 @@ class Scouts_member extends Backend_Controller {
       $this->load->view('backend/_layout_main', $this->data);
    }
 
-   public function active_list($offset=0){
-      $limit = 25;
+   // public function active_list($offset=0){
+   //    $limit = 25;
 
-      if($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin()){
-         //Super Admin
-         $results = $this->Scouts_member_model->get_last_30day_active_member($limit, $offset);
-         //Dropdown
-         $this->data['regions'] = $this->Common_model->get_regions();
-         $this->data['scouts_district'] = array(''=>'Scouts District');
-         $this->data['scouts_upazila'] = array(''=>'Scouts Upazila');
-      }else{
+   //    if($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin()){
+   //       //Super Admin
+
+   //       $results = $this->Scouts_member_model->get_last_30day_active_member($limit, $offset);
+
+   //       //Dropdown
+   //       $this->data['regions'] = $this->Common_model->get_regions();
+   //       $this->data['scouts_district'] = array(''=>'Scouts District');
+   //       $this->data['scouts_upazila'] = array(''=>'Scouts Upazila');
+   //    }else{
+   //       redirect('dashboard');
+   //    }
+
+   //    if(isset($_GET['region']) && $_GET['region'] > 0){
+   //       $this->data['scouts_district'] =  $this->Common_model->get_scout_districts($_GET['region']);
+   //    }
+
+   //    if(isset($_GET['district']) && $_GET['district'] > 0){
+   //       $this->data['scouts_upazila'] =  $this->Common_model->get_scout_upazila_thana($_GET['district']);
+   //    }
+
+   //    //Results
+   //    $this->data['results'] = $results['rows'];
+   //    $this->data['total_rows'] = $results['num_rows'];
+
+   //    //pagination
+   //    $this->data['pagination'] = create_pagination('scouts_member/active_list/', $this->data['total_rows'], $limit, 3, $full_tag_wrap = true);
+
+   //    // Load page
+   //    $this->data['meta_title'] = 'Last 30 Day Active Member List';
+   //    $this->data['subview'] = 'verified_list';
+   //    $this->load->view('backend/_layout_main', $this->data);
+   // }
+
+
+   // public function active_list($offset = 0)
+   // {
+   //    $limit = 25;
+   //    $is_excel = ($this->input->get('id') == 1);
+
+   //    if ($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin()) {
+
+   //       // Excel হলে limit থাকবে না
+   //       if ($is_excel) {
+   //             $results = $this->Scouts_member_model->get_last_30day_active_member(null, null);
+   //       } else {
+   //             $results = $this->Scouts_member_model->get_last_30day_active_member($limit, $offset);
+   //       }
+
+   //       // Dropdown data (only for view)
+   //       if (!$is_excel) {
+   //             $this->data['regions'] = $this->Common_model->get_regions();
+   //             $this->data['scouts_district'] = array('' => 'Scouts District');
+   //             $this->data['scouts_upazila'] = array('' => 'Scouts Upazila');
+   //       }
+
+   //    } else {
+   //       redirect('dashboard');
+   //    }
+
+   //    // Filter dropdown
+   //    if (!$is_excel) {
+   //       if (isset($_GET['region']) && $_GET['region'] > 0) {
+   //             $this->data['scouts_district'] = $this->Common_model->get_scout_districts($_GET['region']);
+   //       }
+
+   //       if (isset($_GET['district']) && $_GET['district'] > 0) {
+   //             $this->data['scouts_upazila'] = $this->Common_model->get_scout_upazila_thana($_GET['district']);
+   //       }
+   //    }
+   //    // dd($results);
+   //    $this->data['results'] = $results['rows'];
+   //    $this->data['total_rows'] = $results['num_rows'];
+
+   //    // ================= EXCEL DOWNLOAD =================
+   //    if ($is_excel) {
+
+   //       header("Content-Type: text/csv; charset=UTF-8");
+   //       header("Content-Disposition: attachment; filename=active_members.csv");
+   //       header("Pragma: no-cache");
+   //       header("Expires: 0");
+
+   //       $output = fopen("php://output", "w");
+
+   //       // UTF-8 BOM for Bangla
+   //       fprintf($output, chr(0xEF).chr(0xBB).chr(0xBF));
+
+   //       // Header row
+   //       fputcsv($output, [
+   //          'ID',
+   //          'Name',
+   //          'Scout ID',
+   //          'Username',
+   //          'Member Type',
+   //          'Phone',
+   //          'Section',
+   //          'Unit',
+   //          'Status'
+   //       ]);
+
+   //       foreach ($results['rows'] as $row) {
+   //          fputcsv($output, [
+   //                $row->id,
+   //                $row->first_name . ' ' . $row->last_name,
+   //                $row->scout_id,
+   //                $row->username,
+   //                $row->member_type_name,
+   //                $row->phone,
+   //                $row->sc_section_id,
+   //                $row->unit_name ?? '',
+   //                $row->is_request == 1 ? 'Pending' : 'Active'
+   //          ]);
+   //       }
+
+   //       fclose($output);
+   //       exit;
+   //    }
+
+
+   //    // ================= NORMAL VIEW =================
+   //    $this->data['pagination'] = create_pagination(
+   //       'scouts_member/active_list/',
+   //       $this->data['total_rows'],
+   //       $limit,
+   //       3,
+   //       true
+   //    );
+
+   //    $this->data['meta_title'] = 'Last 30 Day Active Member List';
+   //    $this->data['subview'] = 'verified_list';
+
+   //    $this->load->view('backend/_layout_main', $this->data);
+   // }
+
+   public function active_list($offset = 0)
+   {
+      $limit = 25;
+      $is_excel = ($this->input->get('id') == 1);
+
+      if ($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin()) {
+         if ($is_excel) {
+            $results['rows'] = $this->Scouts_member_model->get_last_30day_active_member(0, 0);
+         } else {
+               $results = $this->Scouts_member_model->get_last_30day_active_member($limit, $offset);
+         }
+
+         if (!$is_excel) {
+            $this->data['regions'] = $this->Common_model->get_regions();
+            $this->data['scouts_district'] = array('' => 'Scouts District');
+            $this->data['scouts_upazila'] = array('' => 'Scouts Upazila');
+         }
+
+      } else {
          redirect('dashboard');
       }
 
-      if(isset($_GET['region']) && $_GET['region'] > 0){
-         $this->data['scouts_district'] =  $this->Common_model->get_scout_districts($_GET['region']);
+      if (!$is_excel) {
+         if (!empty($_GET['region']) && $_GET['region'] > 0) {
+            $result['results'] = $this->Scouts_member_model->get_last_30day_active_member($limit, $offset);
+            $this->load->view('scouts_member/verified_list_xecel', $result);
+         }
+         if (!empty($_GET['district']) && $_GET['district'] > 0) {
+            $this->data['scouts_upazila'] = $this->Common_model->get_scout_upazila_thana($_GET['district']);
+         }
       }
 
-      if(isset($_GET['district']) && $_GET['district'] > 0){
-         $this->data['scouts_upazila'] =  $this->Common_model->get_scout_upazila_thana($_GET['district']);
-      }
-
-      //Results
       $this->data['results'] = $results['rows'];
       $this->data['total_rows'] = $results['num_rows'];
 
-      //pagination
-      $this->data['pagination'] = create_pagination('scouts_member/active_list/', $this->data['total_rows'], $limit, 3, $full_tag_wrap = true);
+      // ================= NORMAL VIEW =================
+      $this->data['pagination'] = create_pagination(
+         'scouts_member/active_list/',
+         $this->data['total_rows'],
+         $limit,
+         3,
+         true
+      );
 
-      // Load page
       $this->data['meta_title'] = 'Last 30 Day Active Member List';
       $this->data['subview'] = 'verified_list';
+
       $this->load->view('backend/_layout_main', $this->data);
    }
+   public function active_list_excel()
+   {
+      // Allow only admin
+      if (!($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin())) {
+         redirect('dashboard');
+      }
+
+      // Fetch ALL rows (no limit, no offset)
+      $result['results'] = $this->Scouts_member_model->get_last_30day_active_member_excel(0, 0);
+      $this->load->view('scouts_member/verified_list_xecel', $result);
+
+   }
+
+
+
 
    public function gone_home($offset=0){
       $limit = 25;

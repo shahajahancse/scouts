@@ -1,5 +1,5 @@
-<div class="page-content">     
-  <div class="content">  
+<div class="page-content">
+  <div class="content">
     <ul class="breadcrumb">
       <li> <a href="<?=base_url('dashboard')?>" class="active"> Dashboard </a> </li>
       <li> <a href="<?=base_url('offices/district')?>" class="active"><?=$module_name?> </a> </li>
@@ -11,9 +11,9 @@
         <div class="grid simple horizontal red">
           <div class="grid-title">
             <h4><span class="semi-bold"><?=$meta_title; ?></span></h4>
-            <div class="pull-right">                
-              <a href="<?=base_url('offices/district')?>" class="btn btn-blueviolet btn-xs btn-mini"> Scouts District List</a>  
-              <a href="<?=base_url('offices/district_update/'.encrypt_url($info->id))?>" class="btn btn-blueviolet btn-xs btn-mini">Scouts District Update</a>  
+            <div class="pull-right">
+              <a href="<?=base_url('offices/district')?>" class="btn btn-blueviolet btn-xs btn-mini"> Scouts District List</a>
+              <a href="<?=base_url('offices/district_update/'.encrypt_url($info->id))?>" class="btn btn-blueviolet btn-xs btn-mini">Scouts District Update</a>
             </div>
           </div>
           <div class="grid-body">
@@ -52,7 +52,7 @@
               $district = '<button class="btn btn-mini btn-primary">Air District</button>';
             }
            ?>
-           <a href="<?=base_url('Offices/district_details_pdf'.'/'.encrypt_url($info->id))?>" class="btn btn-primary btn-xs btn-mini" style="float: right;">PDF Download</a>
+           <a href="<?=base_url('Offices/district_details_pdf'.'/'.encrypt_url($info->id))?>" target="_blank" class="btn btn-primary btn-xs btn-mini" style="float: right;">PDF Download</a>
            <table class="tg" width="100%">
             <tr>
               <th class="tg-d8ej" width="200"> Region Name</th>
@@ -71,16 +71,16 @@
               <td class="tg-031e"><?=$info->dis_name_en?></td>
               <th class="tg-d8ej"> Phone</th>
               <td class="tg-031e"><?=$info->dis_phone?></td>
-            </tr>                                      
+            </tr>
             <tr>
               <th class="tg-d8ej"> Fax</th>
-              <td class="tg-031e"><?=$info->dis_fax?></td>                   
+              <td class="tg-031e"><?=$info->dis_fax?></td>
               <th class="tg-d8ej"> Email</th>
               <td class="tg-031e"><?=$info->dis_email?></td>
             </tr>
             <tr>
               <th class="tg-d8ej"> Address</th>
-              <td class="tg-031e"><?=$info->dis_address?></td>                   
+              <td class="tg-031e"><?=$info->dis_address?></td>
               <th class="tg-d8ej"> Status</th>
               <td class="tg-031e"><?=$status?></td>
             </tr>
@@ -90,7 +90,7 @@
             </tr>
           </table>
 
-        </div>  <!-- END GRID BODY -->              
+        </div>  <!-- END GRID BODY -->
       </div> <!-- END GRID -->
     </div>
 

@@ -6,18 +6,21 @@ class Scout_news_model extends CI_Model {
         parent::__construct();
     }
 
-    public function get_data() {
+    public function get_data($status = null) {
         $this->db->select('*');
         $this->db->from('scout_news');
+        if (!empty($status)) {
+            $this->db->where('status', $status);
+        }
         $this->db->order_by('id', 'DESC');
         $query = $this->db->get()->result();
 
         return $query;
-    }    
+    }
 
     public function get_info($id) {
         $this->db->select('id, news_title, news_details, created, status');
-        $this->db->from('scout_news');        
+        $this->db->from('scout_news');
         $this->db->where('id', $id);
         $query = $this->db->get();
 
@@ -34,7 +37,7 @@ class Scout_news_model extends CI_Model {
     function delete($id) {
         $this->db->where('id', $id);
         $this->db->delete('scout_news');
-        
+
         return TRUE;
     }
 

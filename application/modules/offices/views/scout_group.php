@@ -1,6 +1,6 @@
 
-<div class="page-content">     
-   <div class="content">  
+<div class="page-content">
+   <div class="content">
       <ul class="breadcrumb" style="margin-bottom: 20px;">
          <li> <a href="<?=base_url('dashboard')?>" class="active"> Dashboard </a> </li>
          <li> <a href="javascript:void()" class="active"><?=$module_name?> </a></li>
@@ -13,7 +13,7 @@
                border: 0;
                margin-bottom: 0;
             }
-            
+
             .table > thead > tr > th,
             .table > tbody > tr > td {
                white-space: normal;
@@ -76,13 +76,13 @@
                   </div>
                <?php endif; ?>
 
-               <?php $this->load->view('search_view')?> 
+               <?php $this->load->view('search_view')?>
 
-               <?php 
-               if($results) { 
-                  if(!$this->ion_auth->is_vendor()){ ?>        
+               <?php
+               if($results) {
+                  if(!$this->ion_auth->is_vendor()){ ?>
                   <div class="text-right mb-3">
-                     <a href="<?=base_url('offices/scout_group_pdf')?>" class="btn btn-primary btn-xs btn-mini">PDF Download</a>
+                     <a href="<?=base_url('offices/scout_group_excel')?>" target="_blank" class="btn btn-primary btn-xs btn-mini">Excel Download</a>
                   </div>
                   <?php } ?>
 
@@ -101,7 +101,7 @@
                         </tr>
                      </thead>
                      <tbody>
-                        <?php 
+                        <?php
                         $sl=$pagination['current_page'];
                         foreach ($results as $row):
                            $sl++;
@@ -132,7 +132,7 @@
                            <td class="v-align-middle"><?=$row->grp_charter; ?></td>
                            <td><?=$type?></td>
                            <td align="right">
-                              <?php if(!$this->ion_auth->is_vendor()){ ?> 
+                              <?php if(!$this->ion_auth->is_vendor()){ ?>
 
                               <div class="btn-group"> <a class="btn btn-primary dropdown-toggle btn-mini" data-toggle="dropdown" href="#"> Action <span class="caret"></span> </a>
                                  <ul class="dropdown-menu pull-right">
@@ -150,7 +150,7 @@
                                     <?php if($this->ion_auth->is_admin()){?>
                                     <li class="divider"></li>
                                     <li><a href="<?=base_url("offices/scout_group_delete/".encrypt_url($row->id))?>" onclick="return confirm('Be careful! Are you sure you want to delete all information related to this scout group?');">Delete Scout Group</a></li>
-                                    <?php } ?>     
+                                    <?php } ?>
                                  </ul>
                               </div>
 
@@ -159,10 +159,10 @@
                               <a href="<?=base_url("offices/scout_group_details/".encrypt_url($row->id))?>" class="btn btn-primary btn-mini" target="_blank">Details</a>
 
                               <?php } ?>
-                              
-                           </td>                  
+
+                           </td>
                         </tr>
-                     <?php endforeach;?>                      
+                     <?php endforeach;?>
                   </tbody>
                </table>
                </div>

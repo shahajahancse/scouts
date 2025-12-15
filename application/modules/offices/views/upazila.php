@@ -117,7 +117,7 @@
                   <hr>
 
                   <div class="pdf-download">
-                     <a href="<?=base_url('Offices/upazila_pdf')?>" class="btn btn-primary btn-xs btn-mini">PDF Download</a>
+                     <a href="<?=base_url('Offices/upazila_pdf')?>" target="_blank" class="btn btn-primary btn-xs btn-mini">PDF Download</a>
                   </div>
 
                   <div class="table-responsive">

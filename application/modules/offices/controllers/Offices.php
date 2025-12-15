@@ -111,76 +111,157 @@ class Offices extends Backend_Controller {
       $this->data['subview'] = 'scout_group';
       $this->load->view('backend/_layout_main', $this->data);
    }
-
-   /*************scout_group_pdf function pdf start**************/
-   public function scout_group_pdf($offset=0){
-      // $limit = 100;
+   public function scout_group_excel() {
       if($this->ion_auth->is_admin()){
-         // Superadmin
-         //Result
-         $results = $this->Offices_model->get_scout_group_pdf();
-         //Dropdown
-         $this->data['regions'] = $this->Common_model->get_regions();
-
-         if(isset($_GET['region'])){
-            $this->data['scout_district'] = $this->Common_model->get_scout_districts($_GET['region']);
-
-         }
-         if(isset($_GET['district'])){
-            $this->data['scout_upazila'] = $this->Common_model->get_scout_upazila_thana($_GET['district']);
-         }
-
-      }elseif($this->ion_auth->is_region_admin()){
-         // Region Admin
+         $results = $this->Offices_model->get_scout_group_excel();
+      } elseif($this->ion_auth->is_region_admin()){
          $regionInfo = $this->Offices_model->get_region_office_by_user_id($this->userSessID);
-
-
-         // Results
-         $results = $this->Offices_model->get_scout_group_pdf($regionInfo->id);
-         //Dropdown
-         $this->data['scout_district'] = $this->Common_model->get_scout_districts($regionInfo->id);
-
-         if(isset($_GET['district'])){
-            $this->data['scout_upazila'] = $this->Common_model->get_scout_upazila_thana($_GET['district']);
-         }
-
-      }elseif($this->ion_auth->is_district_admin()){
-         // District Admin
+         $results = $this->Offices_model->get_scout_group_excel($regionInfo->id);
+      } elseif($this->ion_auth->is_district_admin()){
          $districtInfo = $this->Offices_model->get_district_office_by_user_id($this->userSessID);
-         // Results
-         $results = $this->Offices_model->get_scout_group_pdf('', $districtInfo->id);
-         //Dropdown
-         $this->data['scout_upazila'] = $this->Common_model->get_scout_upazila_thana($districtInfo->id);
-
-      }elseif($this->ion_auth->is_upazila_admin()){
-         // Upazila Admin
+         $results = $this->Offices_model->get_scout_group_excel('', $districtInfo->id);
+      } elseif($this->ion_auth->is_upazila_admin()){
          $upazilaInfo = $this->Offices_model->get_upazila_office_by_user_id($this->userSessID);
-         // Results
-         $results = $this->Offices_model->get_scout_group_pdf('', '', $upazilaInfo->id);
-
-      }else{
+         $results = $this->Offices_model->get_scout_group_excel('', '', $upazilaInfo->id);
+      } else {
          redirect('dashboard');
       }
 
-      //Results
-      $this->data['results'] = $results['rows'];
-      $this->data['total_rows'] = $results['num_rows'];
+      $filename = "scout_groups_" . date('Y-m-d') . ".csv";
 
+      header("Content-Type: text/csv; charset=UTF-8");
+      header("Content-Disposition: attachment; filename=\"$filename\"");
+      header("Pragma: no-cache");
+      header("Expires: 0");
 
-      //...............................................................................
-      $this->data['meta_title'] = "Scout Group List";
-      $html = $this->load->view('scout_group_pdf', $this->data, true);
-      $file_name ="scout_group_pdf.pdf";
+      $output = fopen("php://output", "w");
 
-      //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
-      $mpdf = new mPDF('', 'A4', 10, 'nikosh', 10, 10, 10, 10);
+      // Optional: UTF-8 BOM for Bangla
+      fprintf($output, chr(0xEF).chr(0xBB).chr(0xBF));
 
-      //generate the PDF from the given html
-      $mpdf->WriteHTML($html);
+      // CSV Header
+      fputcsv($output, [
+         'ID','Group Name','Group Name (BN)','Region','District','Upazila',
+         'Charter No','Created Date','Username','Status'
+      ]);
 
-      //download it for 'D'.
-      $mpdf->Output($file_name, "D");
+      foreach ($results as $row) {
+         fputcsv($output, [
+            $row->id,
+            $row->grp_name,
+            $row->grp_name_bn,
+            $row->region_name,
+            $row->dis_name,
+            $row->upa_name,
+            $row->grp_charter,
+            $row->grp_created,
+            $row->username,
+            $row->grp_status == 1 ? 'Active' : 'Inactive'
+         ]);
+      }
+
+      fclose($output);
+      exit;
    }
+
+
+   /*************scout_group_pdf function pdf start**************/
+   // public function scout_group_excel($offset=0){
+   //    // $limit = 100;
+   //    if($this->ion_auth->is_admin()){
+   //       $results = $this->Offices_model->get_scout_group_excel();
+   //    }elseif($this->ion_auth->is_region_admin()){
+   //       // Region Admin
+   //       $regionInfo = $this->Offices_model->get_region_office_by_user_id($this->userSessID);
+   //       // Results
+   //       $results = $this->Offices_model->get_scout_group_excel($regionInfo->id);
+   //    }elseif($this->ion_auth->is_district_admin()){
+   //       // District Admin
+   //       $districtInfo = $this->Offices_model->get_district_office_by_user_id($this->userSessID);
+   //       // Results
+   //       $results = $this->Offices_model->get_scout_group_excel('', $districtInfo->id);
+   //    }elseif($this->ion_auth->is_upazila_admin()){
+   //       // Upazila Admin
+   //       $upazilaInfo = $this->Offices_model->get_upazila_office_by_user_id($this->userSessID);
+   //       // Results
+   //       $results = $this->Offices_model->get_scout_group_excel('', '', $upazilaInfo->id);
+
+   //    }else{
+   //       redirect('dashboard');
+   //    }
+
+   //    //Results
+   //    $this->data['results'] = $results;
+
+   //    $filename = "scout_groups_" . date('Y-m-d') . ".csv";
+
+   //    header("Content-Type: text/csv");
+   //    header("Content-Disposition: attachment; filename=\"$filename\"");
+   //    header("Pragma: no-cache");
+   //    header("Expires: 0");
+
+   //    $output = fopen("php://output", "w");
+
+   //    // CSV Header
+   //    fputcsv($output, [
+   //       'ID',
+   //       'Group Name',
+   //       'Group Name (BN)',
+   //       'Region',
+   //       'District',
+   //       'Upazila',
+   //       'Charter No',
+   //       'Created Date',
+   //       'Username',
+   //       'Status'
+   //    ]);
+
+   //    // Fetch data in chunks (VERY IMPORTANT)
+   //    $limit = 1000;
+   //    $offset = 0;
+
+   //    while (true) {
+   //       // $data = $this->Scouts_group_model->get_groups($limit, $offset);
+   //       $data = $results;
+
+   //       if (empty($data)) break;
+
+   //       foreach ($data as $row) {
+   //          fputcsv($output, [
+   //                $row->id,
+   //                $row->grp_name,
+   //                $row->grp_name_bn,
+   //                $row->region_name,
+   //                $row->dis_name,
+   //                $row->upa_name,
+   //                $row->grp_charter,
+   //                $row->grp_created,
+   //                $row->username,
+   //                $row->grp_status == 1 ? 'Active' : 'Inactive'
+   //          ]);
+   //       }
+
+   //       $offset += $limit;
+   //    }
+
+   //    fclose($output);
+   //    exit;
+   // }
+      // dd( $this->data['results']);
+      // //...............................................................................
+      // $this->data['meta_title'] = "Scout Group List";
+      // $html = $this->load->view('scout_group_pdf', $this->data, true);
+      // $file_name ="scout_group_pdf.pdf";
+
+      // //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
+      // $mpdf = new mPDF('', 'A4', 10, 'nikosh', 10, 10, 10, 10);
+
+      // //generate the PDF from the given html
+      // $mpdf->WriteHTML($html);
+
+      // //download it for 'D'.
+      // $mpdf->Output($file_name, "D");
+   // }
    /*************scout_group_pdf function pdf End**************/
 
    function scout_group_change_username($id){
@@ -792,14 +873,11 @@ class Offices extends Backend_Controller {
       $html = $this->load->view('scout_group_details_pdf', $this->data, true);
       $file_name ="scout_group_details_pdf.pdf";
 
-      //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
-      $mpdf = new mPDF('', 'A4', 10, 'nikosh', 10, 10, 10, 10);
-
       //generate the PDF from the given html
+      $this->load->library('Mpdf_lib');
+      $mpdf = $this->mpdf_lib->create();
       $mpdf->WriteHTML($html);
-
-      //download it for 'D'.
-      $mpdf->Output($file_name, "D");
+      $mpdf->Output($file_name, 'I');
    }
    /*************scout_group_details_pdf function pdf End**************/
 
@@ -870,16 +948,6 @@ class Offices extends Backend_Controller {
 
       $this->data['info'] = $this->Offices_model->get_scout_unit_info($unitID);
       $this->data['results'] = $this->Scouts_member_model->get_scout_member_by_unit($unitID);
-      // foreach ($this->data['results'] as $k => $user){
-      //    $this->data['results'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
-      // }
-
-      // ZIP file Root Directory
-      $rootPath = realpath(APPPATH . '../temp_dir/zip_file/'.$this->data['info']->id);
-
-      // Delete Files and Folder
-      //@$this->delete_directory($rootPath);
-      //@unlink($rootPath.'.zip');
 
       // Load page
       $this->data['meta_title'] = 'Scout Unit: ';
@@ -889,96 +957,168 @@ class Offices extends Backend_Controller {
 
    /*************scout_unit_idcard_pdf function pdf start**************/
    public function scout_unit_idcard_pdf($id){
-      if(!$this->ion_auth->is_admin()){
+
+      if (!$this->ion_auth->is_admin()) {
          redirect('dashboard');
       }
-      $unitID = (int) decrypt_url($id); //exit;
-      // $unitID = $id; //exit;
+
+      $unitID = (int) decrypt_url($id);
+
       if (!$this->Common_model->exists('office_unit', 'id', $unitID)) {
-         show_404('office - scout_unit_idcard_pdf - exists', TRUE);
+         show_404();
       }
 
-      // Unit information
+      // Data
       $unitInfo = $this->Offices_model->get_scout_unit_info($unitID);
-      // print_r($this->data['info']); exit;
-      $this->data['results'] = $this->Scouts_member_model->get_scout_member_by_unit($unitID);
+      $results  = $this->Scouts_member_model->get_scout_member_by_unit($unitID);
 
-      // ZIP file Root Directory
-      $rootPath = realpath(APPPATH . '../temp_dir/zip_file/'.$unitInfo->id);
+      // ================= CSV EXPORT =================
+      header("Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+      header("Content-Disposition: attachment; filename=unit_members_{$unitID}.xlsx");
+      header("Cache-Control: max-age=0");
 
-      // Create Dirrectory
-      if (!file_exists($rootPath)) {
-          mkdir('temp_dir/zip_file/'.$unitInfo->id, 0777, true);
+
+      // Output stream
+      $output = fopen("php://output", "w");
+
+      // UTF-8 BOM (for Bangla support in Excel)
+      fprintf($output, chr(0xEF).chr(0xBB).chr(0xBF));
+
+      // ---------- Unit Info ----------
+      fputcsv($output, ['Unit Name', $unitInfo->unit_name]);
+      fputcsv($output, ['Group Name', $unitInfo->grp_name]);
+      fputcsv($output, ['Region', $unitInfo->region_name_en]);
+      fputcsv($output, ['District', $unitInfo->dis_name_en]);
+      fputcsv($output, []); // Empty line
+
+      // ---------- Table Header ----------
+      fputcsv($output, [
+         'SL',
+         'Scout ID',
+         'Name',
+         'Father Name',
+         'Mother Name',
+         'Blood Group',
+         'Phone',
+         'Member Type',
+         'District',
+         'Group'
+      ]);
+
+      // ---------- Table Data ----------
+      $sl = 1;
+      foreach ($results as $row) {
+         fputcsv($output, [
+               $sl++,
+               $row->scout_id,
+               $row->first_name,
+               $row->father_name,
+               $row->mother_name,
+               $row->bg_name_en,
+               $row->phone,
+               $row->member_type_name,
+               $row->dis_name_en,
+               $row->grp_name
+         ]);
       }
 
-      // Generate PDF into Created Directory
-      for ($i=0; $i < count($this->data['results']); $i++) {
-         $this->data['info'] = $this->My_profile_model->get_info($this->data['results'][$i]->id);
-         $scoutID = $this->data['info']->scout_id;
-
-         // Generate QR Code
-         $this->qrcode_generator($this->data['info']->id);
-
-         // Generate ID Card
-         $html = $this->load->view('my_profile/pdf_id_card_front', $this->data, true);
-         $html2 = $this->load->view('my_profile/pdf_id_card_back', $this->data, true);
-
-         $mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
-         $file_name = $scoutID.".pdf";
-
-         // Generate the PDF from the given html
-         $mpdf->WriteHTML($html);
-         $mpdf->AddPage(); // Adds a new page in Landscape orientation
-         $mpdf->WriteHTML($html2);
-
-         // Output
-         $mpdf->Output('temp_dir/zip_file/'.$unitInfo->id.'/'.$file_name, 'F');
-      }
-
-
-      // Initialize archive object
-      $zip = new ZipArchive();
-      $zip->open($rootPath.'.zip', ZipArchive::CREATE | ZipArchive::OVERWRITE);
-
-      // Create recursive directory iterator
-      /** @var SplFileInfo[] $files */
-      $files = new RecursiveIteratorIterator(
-          new RecursiveDirectoryIterator($rootPath),
-          RecursiveIteratorIterator::LEAVES_ONLY
-      );
-
-      foreach ($files as $name => $file)
-      {
-          // Skip directories (they would be added automatically)
-          if (!$file->isDir())
-          {
-               // Get real and relative path for current file
-               $filePath = $file->getRealPath();
-               $relativePath = substr($filePath, strlen($rootPath) + 1);// exit;
-
-               // Add current file to archive
-               $zip->addFile($filePath, $relativePath);
-          }
-      }
-
-      // Zip archive will be created only after closing object
-      $zip->close();
-
-      // Delete Files and Folder
-      $this->delete_directory($rootPath);
-
-      // Auto download by browser
-      $downloadFileName = $unitInfo->unit_name != NULL ? $unitInfo->unit_name : $unitInfo->id;
-      $archfilename = $downloadFileName.'.zip';
-      header("Content-type: application/zip");
-      header("Content-Disposition: attachment; filename = $archfilename");
-      header("Pragma: no-cache");
-      header("Expires: 0");
-      readfile($rootPath.".zip");
-
-      // Delete ZIP file
-      @unlink($rootPath.'.zip');
+      fclose($output);
       exit;
+      // if(!$this->ion_auth->is_admin()){
+      //    redirect('dashboard');
+      // }
+      // $unitID = (int) decrypt_url($id); //exit;
+      // // $unitID = $id; //exit;
+      // if (!$this->Common_model->exists('office_unit', 'id', $unitID)) {
+      //    show_404('office - scout_unit_idcard_pdf - exists', TRUE);
+      // }
+
+      // // Unit information
+      // $unitInfo = $this->Offices_model->get_scout_unit_info($unitID);
+      // // print_r($this->data['info']); exit;
+      // $this->data['results'] = $this->Scouts_member_model->get_scout_member_by_unit($unitID);
+
+      // dd($this->data['results']);
+      // dd($unitInfo);
+
+
+
+      // // ZIP file Root Directory
+      // $rootPath = realpath(APPPATH . '../temp_dir/zip_file/'.$unitInfo->id);
+
+      // // Create Dirrectory
+      // if (!file_exists($rootPath)) {
+      //     mkdir('temp_dir/zip_file/'.$unitInfo->id, 0777, true);
+      // }
+
+      // // Generate PDF into Created Directory
+      // for ($i=0; $i < count($this->data['results']); $i++) {
+      //    $this->data['info'] = $this->My_profile_model->get_info($this->data['results'][$i]->id);
+      //    $scoutID = $this->data['info']->scout_id;
+
+      //    // Generate QR Code
+      //    $this->qrcode_generator($this->data['info']->id);
+
+      //    // Generate ID Card
+      //    $html = $this->load->view('my_profile/pdf_id_card_front', $this->data, true);
+      //    $html2 = $this->load->view('my_profile/pdf_id_card_back', $this->data, true);
+      //    $file_name = $scoutID.".pdf";
+
+      //    $this->load->library('Mpdf_lib');
+      //    $mpdf = $this->mpdf_lib->create();
+
+      //    // Generate the PDF from the given html
+      //    $mpdf->WriteHTML($html);
+      //    $mpdf->AddPage('P'); // must force landscape again
+      //    $mpdf->WriteHTML($html2);
+      //    // Output
+      //    $mpdf->Output('temp_dir/zip_file/'.$unitInfo->id.'/'.$file_name, 'F');
+      // }
+
+
+      // // Initialize archive object
+      // $zip = new ZipArchive();
+      // $zip->open($rootPath.'.zip', ZipArchive::CREATE | ZipArchive::OVERWRITE);
+
+      // // Create recursive directory iterator
+      // /** @var SplFileInfo[] $files */
+      // $files = new RecursiveIteratorIterator(
+      //     new RecursiveDirectoryIterator($rootPath),
+      //     RecursiveIteratorIterator::LEAVES_ONLY
+      // );
+
+      // foreach ($files as $name => $file)
+      // {
+      //     // Skip directories (they would be added automatically)
+      //     if (!$file->isDir())
+      //     {
+      //          // Get real and relative path for current file
+      //          $filePath = $file->getRealPath();
+      //          $relativePath = substr($filePath, strlen($rootPath) + 1);// exit;
+
+      //          // Add current file to archive
+      //          $zip->addFile($filePath, $relativePath);
+      //     }
+      // }
+
+      // // Zip archive will be created only after closing object
+      // $zip->close();
+
+      // // Delete Files and Folder
+      // $this->delete_directory($rootPath);
+
+      // // Auto download by browser
+      // $downloadFileName = $unitInfo->unit_name != NULL ? $unitInfo->unit_name : $unitInfo->id;
+      // $archfilename = $downloadFileName.'.zip';
+      // header("Content-type: application/zip");
+      // header("Content-Disposition: attachment; filename = $archfilename");
+      // header("Pragma: no-cache");
+      // header("Expires: 0");
+      // readfile($rootPath.".zip");
+
+      // // Delete ZIP file
+      // @unlink($rootPath.'.zip');
+      // exit;
    }
    /*************scout_group_details_pdf function pdf End**************/
 
@@ -1001,25 +1141,6 @@ class Offices extends Backend_Controller {
       rmdir($dirname);
       return true;
    }
-
-   /*
-   * php delete function that deals with directories recursively
-   */
-   // function delete_files($target) {
-   //    // echo $target; exit;
-   //    if(is_dir($target)){
-   //       $files = glob( $target . '*', GLOB_MARK ); //GLOB_MARK adds a slash to directories returned
-   //       // print_r($files); exit;
-   //       foreach( $files as $file ){
-   //          // echo $file; exit;
-   //          delete_files( $file );
-   //       }
-   //       rmdir( $target );
-
-   //    } elseif(is_file($target)) {
-   //       unlink( $target );
-   //    }
-   // }
 
    public function qrcode_generator($id){
       // echo FCPATH;
@@ -1050,16 +1171,6 @@ class Offices extends Backend_Controller {
       //$this->load->view('qrcode', $data);
       return true;
    }
-
-
-
-
-
-
-
-
-
-
 
 
    public function scout_group_set_username($id){
@@ -1232,14 +1343,11 @@ class Offices extends Backend_Controller {
       $html = $this->load->view('upazila_pdf', $this->data, true);
       $file_name ="upazila_pdf.pdf";
 
-      //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
-      $mpdf = new mPDF('', 'A4', 10, 'nikosh', 10, 10, 10, 10);
-
       //generate the PDF from the given html
+      $this->load->library('Mpdf_lib');
+      $mpdf = $this->mpdf_lib->create();
       $mpdf->WriteHTML($html);
-
-      //download it for 'D'.
-      $mpdf->Output($file_name, "D");
+      $mpdf->Output($file_name, 'I');
    }
 
     /*************upazila_pdf function pdf End**************/
@@ -1687,14 +1795,10 @@ class Offices extends Backend_Controller {
       $html = $this->load->view('district_pdf', $this->data, true);
       $file_name ="district_pdf.pdf";
 
-      //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
-      $mpdf = new mPDF('', 'A4', 10, 'nikosh', 10, 10, 10, 10);
-
-      //generate the PDF from the given html
+      $this->load->library('Mpdf_lib');
+      $mpdf = $this->mpdf_lib->create();
       $mpdf->WriteHTML($html);
-
-      //download it for 'D'.
-      $mpdf->Output($file_name, "D");
+      $mpdf->Output($file_name, 'I');
    }
 
     /*************district_pdf function pdf End**************/
@@ -1993,14 +2097,10 @@ class Offices extends Backend_Controller {
       $html = $this->load->view('district_details_pdf', $this->data, true);
       $file_name ="district_details_pdf.pdf";
 
-      //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
-      $mpdf = new mPDF('', 'A4', 10, 'nikosh', 10, 10, 10, 10);
-
-      //generate the PDF from the given html
+      $this->load->library('Mpdf_lib');
+      $mpdf = $this->mpdf_lib->create();
       $mpdf->WriteHTML($html);
-
-      //download it for 'D'.
-      $mpdf->Output($file_name, "D");
+      $mpdf->Output($file_name, 'I');
    }
    /*************district_details_pdf function pdf End**************/
 
@@ -2065,14 +2165,11 @@ class Offices extends Backend_Controller {
       $html = $this->load->view('region_pdf', $this->data, true);
       $file_name ="region_pdf.pdf";
 
-      //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
-      $mpdf = new mPDF('', 'A4', 10, 'nikosh', 10, 10, 10, 10);
-
       //generate the PDF from the given html
+      $this->load->library('Mpdf_lib');
+      $mpdf = $this->mpdf_lib->create();
       $mpdf->WriteHTML($html);
-
-      //download it for 'D'.
-      $mpdf->Output($file_name, "D");
+      $mpdf->Output($file_name, 'D');
    }
 
    public function region_change_password($id){
@@ -2362,14 +2459,11 @@ class Offices extends Backend_Controller {
       $html = $this->load->view('region_details_pdf', $this->data, true);
       $file_name ="region_details_pdf.pdf";
 
-      //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
-      $mpdf = new mPDF('', 'A4', 10, 'nikosh', 10, 10, 10, 10);
-
       //generate the PDF from the given html
+      $this->load->library('Mpdf_lib');
+      $mpdf = $this->mpdf_lib->create();
       $mpdf->WriteHTML($html);
-
-      //download it for 'D'.
-      $mpdf->Output($file_name, "D");
+      $mpdf->Output($file_name, 'D');
    }
 
    public function region_delete($id){
@@ -2442,14 +2536,11 @@ class Offices extends Backend_Controller {
         $html = $this->load->view('nhq_pdf', $this->data, true);
         $file_name ="nhq_pdf.pdf";
 
-        //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
-        $mpdf = new mPDF('', 'A4', 10, 'nikosh', 10, 10, 10, 10);
-
-        //generate the PDF from the given html
-        $mpdf->WriteHTML($html);
-
-        //download it for 'D'.
-        $mpdf->Output($file_name, "D");
+         //generate the PDF from the given html
+         $this->load->library('Mpdf_lib');
+         $mpdf = $this->mpdf_lib->create();
+         $mpdf->WriteHTML($html);
+         $mpdf->Output($file_name, 'D');
     }
 
     /*************nhq_pdf function pdf End**************/
@@ -2772,14 +2863,13 @@ class Offices extends Backend_Controller {
       $html = $this->load->view('admin_user/region_user_pdf', $this->data, true);
       $file_name = $this->data['info']->region_name_en."_user_list.pdf";
 
-      //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
-      $mpdf = new mPDF('', 'A4', 10, 'nikosh', 10, 10, 10, 10);
 
       //generate the PDF from the given html
+      $this->load->library('Mpdf_lib');
+      $mpdf = $this->mpdf_lib->create();
       $mpdf->WriteHTML($html);
+      $mpdf->Output($file_name, 'D');
 
-      //download it for 'D'.
-      $mpdf->Output($file_name, "I");
    }
 
    public function region_user($id){
@@ -2966,14 +3056,11 @@ class Offices extends Backend_Controller {
       $html = $this->load->view('admin_user/district_user_pdf', $this->data, true);
       $file_name = $this->data['info']->dis_name_en."_user_list.pdf";
 
-      //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
-      $mpdf = new mPDF('', 'A4', 10, 'nikosh', 10, 10, 10, 10);
-
       //generate the PDF from the given html
+      $this->load->library('Mpdf_lib');
+      $mpdf = $this->mpdf_lib->create();
       $mpdf->WriteHTML($html);
-
-      //download it for 'D'.
-      $mpdf->Output($file_name, "I");
+      $mpdf->Output($file_name, 'I');
    }
 
    public function district_user($id){
@@ -3161,14 +3248,11 @@ class Offices extends Backend_Controller {
       $html = $this->load->view('admin_user/upazila_user_pdf', $this->data, true);
       $file_name = $this->data['info']->upa_name_en."_user_list.pdf";
 
-      //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
-      $mpdf = new mPDF('', 'A4', 10, 'nikosh', 10, 10, 10, 10);
-
       //generate the PDF from the given html
+      $this->load->library('Mpdf_lib');
+      $mpdf = $this->mpdf_lib->create();
       $mpdf->WriteHTML($html);
-
-      //download it for 'D'.
-      $mpdf->Output($file_name, "I");
+      $mpdf->Output($file_name, 'I');
    }
 
    public function upazila_user($id){
@@ -3356,14 +3440,11 @@ class Offices extends Backend_Controller {
       $html = $this->load->view('admin_user/scout_group_user_pdf', $this->data, true);
       $file_name = $this->data['info']->upa_name_en."_user_list.pdf";
 
-      //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
-      $mpdf = new mPDF('', 'A4', 10, 'nikosh', 10, 10, 10, 10);
-
       //generate the PDF from the given html
+      $this->load->library('Mpdf_lib');
+      $mpdf = $this->mpdf_lib->create();
       $mpdf->WriteHTML($html);
-
-      //download it for 'D'.
-      $mpdf->Output($file_name, "I");
+      $mpdf->Output($file_name, 'I');
    }
 
    public function scout_group_user($id){
@@ -3547,14 +3628,11 @@ class Offices extends Backend_Controller {
         $html = $this->load->view('registration_charter_pdf', $this->data, true);
         $file_name = $dataID."-registration_charter.pdf";
 
-        //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
-        $mpdf = new mPDF('', 'A4', 10, 'nikosh', 0, 0, 0, 0);
-
-        //generate the PDF from the given html
-        $mpdf->WriteHTML($html);
-
-        //download it for 'D'.
-        $mpdf->Output($file_name, "I");
+      //generate the PDF from the given html
+      $this->load->library('Mpdf_lib');
+      $mpdf = $this->mpdf_lib->create();
+      $mpdf->WriteHTML($html);
+      $mpdf->Output($file_name, 'I');
     }
 
 

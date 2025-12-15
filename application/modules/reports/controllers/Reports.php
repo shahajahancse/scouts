@@ -39,9 +39,9 @@ class Reports extends Backend_Controller {
       // scouts member excel generate
       if( !empty($btn_submit) && $btn_submit == 'excel_member') {
          $type = $this->input->post('member_type');
-         if(!empty($type) && $type == 1) {
+         if (!empty($type) && $type == 1) {
             $this->data['type'] = 'Verify Member Report';
-         }elseif (!empty($type) && $type == 2) {
+         } elseif (!empty($type) && $type == 2) {
             $this->data['type'] = 'Archive Member Report';
          } elseif (!empty($type) && $type == 3) {
             $this->data['type'] = 'Request Member Report';
@@ -128,6 +128,8 @@ class Reports extends Backend_Controller {
       $this->data['subview'] = 'scouts_member';
       $this->load->view('backend/_layout_main', $this->data);
    }
+
+
 
    //  public function scouts_member($offset=0){
    //     $limit = 10;

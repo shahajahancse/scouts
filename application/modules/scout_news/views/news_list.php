@@ -1,5 +1,5 @@
-<div class="page-content">     
-  <div class="content">  
+<div class="page-content">
+  <div class="content">
     <ul class="breadcrumb" style="margin-bottom: 20px;">
       <li> <a href="<?=base_url('dashboard')?>" class="active"> Dashboard </a> </li>
       <li> <a href="<?=base_url('news_list')?>" class="active"> <?=$module_title; ?> </a></li>
@@ -52,7 +52,7 @@
       }
 
       @media screen and (max-width: 767px) {
-        .table th, 
+        .table th,
         .table td {
           white-space: nowrap;
           min-width: 120px;
@@ -82,12 +82,14 @@
           <div class="grid-title">
             <h4><span class="semi-bold"><?=$meta_title; ?></span></h4>
             <div class="pull-right">
+              <?php if ($this->ion_auth->is_admin() || $this->ion_auth->is_region_admin()) { ?>
               <a href="<?=base_url('scout_news/create_news')?>" class="btn btn-blueviolet btn-xs btn-mini"> Create News </a>
+              <?php } ?>
             </div>
           </div>
 
           <div class="grid-body">
-            <div id="infoMessage"><?php //echo $message;?></div>            
+            <div id="infoMessage"><?php //echo $message;?></div>
             <?php if($this->session->flashdata('success')):?>
                 <div class="alert alert-success">
                     <?php echo $this->session->flashdata('success');?>
@@ -127,8 +129,8 @@
                       <td class="v-align-middle"><?=date_bangla_format($row->created)?></td>
                       <td class="v-align-middle"><?=$status?></td>
                       <td class="text-center">
-                        <a href="<?=base_url('scout_news/details/'.$row->id);?>" class="btn btn-primary btn-xs btn-mini">Details</a>     
-                        <?php if($this->ion_auth->is_admin()){ ?> 
+                        <a href="<?=base_url('scout_news/details/'.$row->id);?>" class="btn btn-primary btn-xs btn-mini">Details</a>
+                        <?php if($this->ion_auth->is_admin()){ ?>
                           <a href="<?=base_url('scout_news/edit/'.$row->id);?>" class="btn btn-success btn-xs btn-mini">Edit</a>
                           <a href="<?=base_url('scout_news/delete/'.$row->id);?>" class="btn btn-info btn-xs btn-mini" onclick="return confirm('Are you sure you want to delete this News?');">Delete</a>
                         <?php } ?>
@@ -136,7 +138,7 @@
                     </tr>
                       <?php
                     }
-                  }?>              
+                  }?>
                 </tbody>
               </table>
             </div>

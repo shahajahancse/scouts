@@ -340,6 +340,116 @@ class Scouts_member_model extends CI_Model {
         $result['num_rows'] = $tmp[0]->count;
         return $result;
     }
+    public function get_last_30day_active_member_excel($limit = 1000, $offset = 0)
+    {
+        $time = strtotime('-30 days');
+
+        /* =======================
+        * DATA QUERY
+        * ======================= */
+        $this->db->select('
+            u.id,
+            u.first_name,
+            u.scout_id,
+            u.username,
+            mt.member_type_name,
+            u.phone,
+            u.is_request,
+            u.sc_section_id,
+            u.profile_img,
+            ou.unit_name,
+            MAX(u.last_login) as last_login
+        ');
+        $this->db->from('users u');
+        $this->db->join('office_unit ou', 'ou.id = u.sc_unit_id', 'LEFT');
+        $this->db->join('member_type mt', 'mt.id = u.member_id', 'LEFT');
+
+        /* CONDITIONS (UNCHANGED) */
+        $this->db->where('u.scout_id IS NOT NULL', NULL);
+        $this->db->where('u.member_id !=', 0);
+        $this->db->where('u.is_verify', 1);
+        $this->db->where('u.status', 1);
+        $this->db->where('u.last_login >=', $time);
+
+        /* SEARCH FILTERS */
+        if ($this->input->get('region') != NULL) {
+            $this->db->where('u.sc_region_id', $this->input->get('region'));
+        }
+        if ($this->input->get('district') > 0) {
+            $this->db->where('u.sc_district_id', $this->input->get('district'));
+        }
+        if ($this->input->get('upazila') > 0) {
+            $this->db->where('u.sc_upa_tha_id', $this->input->get('upazila'));
+        }
+        if ($this->input->get('name') != NULL) {
+            $this->db->like('u.first_name', $this->input->get('name'));
+        }
+        if ($this->input->get('username') != NULL) {
+            $this->db->where('u.username', $this->input->get('username'));
+        }
+
+        /* 🔥 ID-WISE RESULT */
+        $this->db->group_by('u.id');
+
+        $this->db->limit($limit, $offset);
+
+        $result['rows'] = $this->db->get()->result();
+
+
+        /* =======================
+        * COUNT QUERY (ID-WISE)
+        * ======================= */
+        $this->db->select('COUNT(DISTINCT u.id) as count');
+        $this->db->from('users u');
+
+        $this->db->where('u.scout_id IS NOT NULL', NULL);
+        $this->db->where('u.member_id !=', 0);
+        $this->db->where('u.is_verify', 1);
+        $this->db->where('u.status', 1);
+        $this->db->where('u.last_login >=', $time);
+
+        /* SAME FILTERS */
+        if ($this->input->get('region') != NULL) {
+            $this->db->where('u.sc_region_id', $this->input->get('region'));
+        }
+        if ($this->input->get('district') > 0) {
+            $this->db->where('u.sc_district_id', $this->input->get('district'));
+        }
+        if ($this->input->get('upazila') > 0) {
+            $this->db->where('u.sc_upa_tha_id', $this->input->get('upazila'));
+        }
+        if ($this->input->get('name') != NULL) {
+            $this->db->like('u.first_name', $this->input->get('name'));
+        }
+        if ($this->input->get('username') != NULL) {
+            $this->db->where('u.username', $this->input->get('username'));
+        }
+
+        $count = $this->db->get()->row();
+        $result['num_rows'] = $count->count;
+
+        return $result;
+    }
+
+
+
+
+    public function get_verified_member_export()
+    {
+        $this->db->select('
+            u.first_name,
+            u.scout_id,
+            u.username,
+            mt.member_type_name,
+            u.sc_section_id
+        ');
+        $this->db->from('users u');
+        $this->db->join('member_type mt', 'mt.id = u.member_type_id', 'LEFT');
+        $this->db->where('u.is_verified', 1);
+
+        return $this->db->get()->result();
+    }
+
 
     public function get_request_member_copy_14_07_2025($group_id=NULL) {
         $this->db->select('u.id, u.first_name, u.username, mt.member_type_name, u.phone, u.is_request, u.sc_section_id, u.profile_img, ou.unit_name');

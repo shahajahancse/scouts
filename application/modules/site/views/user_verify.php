@@ -7,7 +7,7 @@
   <div class="secondary_sc_content">
     <p class="lead font-weight-bold py-2 text-white" style="background-color: #1aa326; padding-left:10px"><?=lang('site_user_verify')?></p>
 
-    <?php 
+    <?php
     $attributes = array('id' => 'infovalidation', 'method' => 'get');
     echo form_open("user-verify", $attributes);
     ?>
@@ -29,17 +29,17 @@
 
       <div class="col-md-2">
         <div class="form-group" style="margin-top: 30px;">
-          <button type="submit" class="btn text-white btn-block" style="background-color: #1aa326;"><?=lang('site_service_traking_search')?></button>   
+          <button type="submit" class="btn text-white btn-block" style="background-color: #1aa326;"><?=lang('site_service_traking_search')?></button>
         </div>
-      </div> 
+      </div>
 
     </div>
 
     <?php if($this->input->get('scoutID')){ ?>
 
-    <div class="row">      
+    <div class="row">
     <div class="col-md-12">
-      <?php 
+      <?php
        if($this->session->userdata('site_lang')=='bangla'){
           $name='full_name_bn';
           $father_name='father_name_bn';
@@ -59,7 +59,7 @@
        }
     ?>
         <p><?=lang('site_user_search_id_number')?> : <?=strtoupper($this->input->get('scoutID'))?></p>
-        <?php if(count($result) != 0){
+        <?php if(is_array($result) && count($result) != 0){
           if($this->session->userdata('site_lang')=='bangla'){
             $pre_village  = $result->pre_village_house_bn;
             $pre_rode     = $result->pre_road_block_bn;
@@ -75,7 +75,7 @@
             $pre_up_th    = $result->pre_up_th_name;
             $pre_po       = $result->pre_post_office;
           }
-  
+
 
 			$full_pre_add = '';
 			if($pre_village != '')
@@ -135,13 +135,13 @@
           <tr>
             <th class="tg-ronw"><?=lang('site_father_name')?></th>
             <td class="tg-t4bo" ><?=$result->$father_name?></td>
-             
+
           </tr>
            <tr>
             <th class="tg-ronw"><?=lang('site_mother_name')?></th>
             <td class="tg-t4bo"><?=$result->$mother_name?></td>
             <td class="tg-t4bo" style="text-align: center; font-weight: bold;"><?=lang('site_scout_id')?> : <?=$result->scout_id?></td>
-           
+
           </tr>
           <tr>
             <th class="tg-ronw"><?=lang('site_user_phone')?></th>
@@ -162,32 +162,32 @@
           </tr>
           <tr>
             <th class="tg-ronw"><?=lang('site_user_address')?></th>
-            <td class="tg-t4bo" colspan="2"><?=$full_pre_add ?></td>          
+            <td class="tg-t4bo" colspan="2"><?=$full_pre_add ?></td>
           </tr>
 
           <?php /*
           <tr>
             <th class="tg-ronw"><?=lang('site_expair_date')?></th>
             <td class="tg-t4bo" colspan="2">
-            <?php 
+            <?php
             if($result->expire_date != NULL){
-              echo $expire_date = date('d M, Y', strtotime($result->expire_date));  
+              echo $expire_date = date('d M, Y', strtotime($result->expire_date));
             }else{
-              echo $expire_date = date('d M, Y', strtotime("31-12-2020"));  
+              echo $expire_date = date('d M, Y', strtotime("31-12-2020"));
             }
             //$this->session->userdata('site_lang')=='bangla'?BanglaConverter::en2bn(date('d - m - Y', strtotime("+5 years", $result->created_on))):BanglaConverter::bn2en(date('d - m - Y', strtotime("+5 years", $result->created_on)));
             ?>
             </td>
           </tr>
           */ ?>
-          
+
           </table>
 
           <?php }else{ ?>
           <p><?=lang('site_user_not_found')?></p>
           <?php } ?>
         </div>
-      </div>      
+      </div>
       <?php } ?>
 
     </div>
@@ -199,7 +199,7 @@
 <script type="text/javascript">
   $(document).ready(function() {
     $('#infovalidation').validate({
-      // focusInvalid: false, 
+      // focusInvalid: false,
       ignore: "",
       rules: {
         scoutID: {
@@ -211,10 +211,10 @@
       },
 
       invalidHandler: function (event, validator) {
-      //display error alert on form submit    
+      //display error alert on form submit
     },
 
-      errorPlacement: function (label, element) { // render error placement for each input type   
+      errorPlacement: function (label, element) { // render error placement for each input type
        $('<span class="error"></span>').insertAfter(element).append(label)
        var parent = $(element).parent('.input-with-icon');
        parent.removeClass('success-control').addClass('error-control');
@@ -222,7 +222,7 @@
 
       highlight: function (element) { // hightlight error inputs
        var parent = $(element).parent();
-       parent.removeClass('success-control').addClass('error-control'); 
+       parent.removeClass('success-control').addClass('error-control');
      },
 
       unhighlight: function (element) { // revert the change done by hightlight
@@ -231,11 +231,11 @@
 
       success: function (label, element) {
        var parent = $(element).parent('.input-with-icon');
-       parent.removeClass('error-control').addClass('success-control'); 
+       parent.removeClass('error-control').addClass('success-control');
      },
 
      submitHandler: function (form) {
-       form.submit(); 
+       form.submit();
      }
    });
 
@@ -244,5 +244,5 @@
       // $('#mask_username').html($('#identity').val());
       $('#scoutID').val().toLocaleUpperCase();
    // });
-  });   
+  });
 </script>
