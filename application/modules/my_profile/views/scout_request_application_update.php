@@ -122,7 +122,7 @@
                               <input type="text" name="mother_name_bn"  class="bangla form-control input-sm" value="<?=set_value('mother_name_bn', $info->mother_name_bn)?>" contenteditable="TRUE">
                            </div>
                            <div class="col-md-3">
-                              <label class="form-label">Email Address</label>
+                              <label class="form-label">Email Address <span class='required'>*</span></label>
                               <?php echo form_error('email'); ?>
                               <input name="email" id="email" value="<?=set_value('email', $info->email)?>" type="text" class="form-control input-sm" placeholder="">
                            </div>
@@ -565,123 +565,6 @@
             form.submit();
          }
       });
-
-      // $('#scout_request_validation').validate({
-      //    ignore: "",
-      //    rules: {
-      //       first_name: {
-      //          required: true
-      //       },
-      //       full_name_bn: {
-      //          required: true
-      //       },
-      //       day: {
-      //          required: true
-      //       },
-      //       month: {
-      //          required: true
-      //       },
-      //       year: {
-      //          required: true
-      //       },
-      //       gender: {
-      //          required: true
-      //       },
-      //       blood_group: {
-      //          required: false
-      //       },
-      //       religion_id: {
-      //          required: true
-      //       },
-      //       father_name: {
-      //          required: true
-      //       },
-      //       father_name_bn: {
-      //          required: false
-      //       },
-      //       mother_name: {
-      //          required: true
-      //       },
-      //       mother_name_bn: {
-      //          required: false
-      //       },
-      //       phone:{
-      //          required: true,
-      //          number: true,
-      //          minlength: 11,
-      //          maxlength: 11
-      //       },
-      //       email: {
-      //          email: true
-      //       },
-      //       pre_village_house:{
-      //          required: true
-      //       },
-      //       pre_village_house_bn:{
-      //          required: false
-      //       },
-      //       pre_road_block:{
-      //          required: true
-      //       },
-      //       pre_road_block_bn:{
-      //          required: false
-      //       },
-      //       pre_division_id: {
-      //          required: true
-      //       },
-      //       pre_district_id: {
-      //          required: true
-      //       },
-      //       pre_upa_tha_id: {
-      //          required: true
-      //       },
-      //       pre_post_office: {
-      //          required: false,
-      //          number: true,
-      //       },
-
-      //       join_date: {
-      //          required: true
-      //       },
-      //       member_id: {
-      //          required: true
-      //       },
-      //       sc_section_id: {
-      //          required: true
-      //       },
-      //       sc_badge_id: {
-      //          required: false
-      //       },
-      //       sc_role_id: {
-      //          required: false
-      //       },
-      //       sc_region_id: {
-      //          required: true
-      //       },
-      //       sc_district_id: {
-      //          required: true
-      //       },
-      //       sc_upa_tha_id: {
-      //          required: false
-      //       },
-      //       sc_group_id: {
-      //          required: true
-      //       },
-      //       sc_unit_id: {
-      //          required: false
-      //       },
-      //       userfile: {
-      //          required: false,
-      //          extension: "jpg|jpeg|png"
-      //       }
-      //    },
-      //    messages: {
-      //       userfile: {
-      //          required: "Image file is required",
-      //          extension: "Allowed file extension jpg, png, jpeg"
-      //       }
-      //    }
-      // });
    });
 
 

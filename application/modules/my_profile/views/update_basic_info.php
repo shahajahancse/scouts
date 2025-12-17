@@ -18,7 +18,9 @@ if($info->member_id == 1 || $info->member_id == 2){
 ?>
 <style type="text/css">
  .info{margin-left: 25px; color: black;}
- /*.required {color: red; font-size: 20px;}*/
+  .error {
+   top: 60px !important;
+ }
 </style>
 
 <div class="page-content">
@@ -132,7 +134,7 @@ if($info->member_id == 1 || $info->member_id == 2){
                     <input type="text" name="mother_name_bn"  class="bangla form-control input-sm" value="<?=set_value('mother_name_bn', $info->mother_name_bn)?>" contenteditable="TRUE">
                   </div>
                   <div class="col-md-3">
-                    <label class="form-label">Email Address</label>
+                    <label class="form-label">Email Address <span class='required'>*</span></label>
                     <?php echo form_error('email'); ?>
                     <input name="email" value="<?=set_value('email', $info->email)?>" type="text" class="form-control input-sm" placeholder="">
                   </div>
@@ -477,8 +479,18 @@ if($info->member_id == 1 || $info->member_id == 2){
         minlength: 11,
         maxlength: 11
       },
-      email: {
-        email:true
+      email:{
+          required: true,
+          email: true,
+          remote: {
+            url: hostname +"my_profile/ajax_exists_email/",
+            type: "post",
+            data: {
+                inputData: function() {
+                  return $("#email").val();
+                }
+            }
+          }
       },
       pre_village_house:{
         required: true
@@ -512,10 +524,39 @@ if($info->member_id == 1 || $info->member_id == 2){
       nid: {
         remote: jQuery.format("Already use in this!")
       },
-      /* birth_id: {
-        remote: jQuery.format("Already use in this!")
-      }, */
+      email: {
+        required: "Enter email address is required.",
+        remote: jQuery.format("Already in use! Please try again.")
+      }
     },
+
+    invalidHandler: function (event, validator) {
+      //display error alert on form submit
+    },
+
+    errorPlacement: function (label, element) { // render error placement for each input type
+      $('<span class="error" style="position: absolute; top:38px;"></span>').insertAfter(element).append(label)
+      var parent = $(element).parent('.input-with-icon');
+      parent.removeClass('success-control').addClass('error-control');
+    },
+
+    highlight: function (element) { // hightlight error inputs
+      var parent = $(element).parent();
+      parent.removeClass('success-control').addClass('error-control');
+    },
+
+    unhighlight: function (element) { // revert the change done by hightlight
+    },
+
+    success: function (label, element) {
+      var parent = $(element).parent('.input-with-icon');
+      parent.removeClass('error-control').addClass('success-control');
+    },
+
+    submitHandler: function (form) {
+      form.submit();
+    }
+
   });
 
   $('#nid').keyup(function(){

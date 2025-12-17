@@ -382,7 +382,7 @@ class Scouts_member extends Backend_Controller {
       ob_end_clean();
       ob_start();
       $this->load->library('Mpdf_lib');
-      $mpdf = new \Mpdf\Mpdf([
+      $mpdf = $this->mpdf_lib->create([
          'orientation' => 'P',
          'format' => 'A4',
          'default_font_size' => 10,
@@ -848,7 +848,7 @@ class Scouts_member extends Backend_Controller {
       $html = $this->load->view('archive_list_pdf', $this->data, true);
       $file_name ="archive_list_pdf.pdf";
       $this->load->library('Mpdf_lib');
-      $mpdf = new \Mpdf\Mpdf([
+      $mpdf = $this->mpdf_lib->create([
          'orientation' => 'P',
          'format' => 'A4',
          'default_font_size' => 10,
@@ -1194,7 +1194,7 @@ class Scouts_member extends Backend_Controller {
       $file_name ="delete_request_pdf.pdf";
 
       $this->load->library('Mpdf_lib');
-      $mpdf = new \Mpdf\Mpdf([
+      $mpdf = $this->mpdf_lib->create([
          'orientation' => 'P',
          'format' => 'A4',
          'default_font_size' => 10,
@@ -2188,7 +2188,7 @@ class Scouts_member extends Backend_Controller {
       ob_end_clean();
       ob_start();
       $this->load->library('Mpdf_lib');
-      $mpdf = new \Mpdf\Mpdf([
+      $mpdf = $this->mpdf_lib->create([
          'orientation' => 'P',
          'format' => 'A4',
          'default_font_size' => 10,
@@ -3181,7 +3181,7 @@ class Scouts_member extends Backend_Controller {
       $this->load->library('Mpdf_lib');
 
       /** FIX: Card full page, no margin, landscape **/
-      $mpdf = new \Mpdf\Mpdf([
+      $mpdf = $this->mpdf_lib->create([
          'orientation' => 'P',
          'format' => [340, 225],             // A4 Landscape (Width=297mm, Height=210mm)
          'margin_left' => 0,

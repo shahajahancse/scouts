@@ -224,6 +224,40 @@ class General_setting extends Backend_Controller {
     }
 
 
+    public function member_types(){
+        $this->data['results'] = $this->db->get('member_type')->result();
+        $this->data['meta_title'] = 'All Division';
+        $this->data['subview'] = 'member_types';
+        $this->load->view('backend/_layout_main', $this->data);
+    }
+    public function member_type_edit($id){
+        $this->form_validation->set_rules('member_type_name', 'member_type_name Name', 'required|trim');
+        $this->form_validation->set_rules('is_delete', 'is_delete', 'required|trim');
+
+        if ($this->form_validation->run() == true){
+
+            $form_data = array(
+                'member_type_name'      => $this->input->post('member_type_name'),
+                'is_delete'        => $this->input->post('is_delete'),
+            );
+
+            // print_r($form_data); exit;
+            if($this->Common_model->edit('member_type',$id, 'id', $form_data)){
+                $this->session->set_flashdata('success', 'Information update successfully.');
+                redirect('general_setting/member_types');
+            }
+        }
+
+
+        $this->data['info'] = $this->db->where('id', $id)->get('member_type')->row();
+
+        // Load page
+        $this->data['meta_title'] = 'Edit Member Type';
+        $this->data['subview'] = 'member_type_edit';
+        $this->load->view('backend/_layout_main', $this->data);
+    }
+
+
     public function division(){
         $this->data['results'] = $this->General_setting_model->get_division();
         // print_r($this->data['results']); exit;

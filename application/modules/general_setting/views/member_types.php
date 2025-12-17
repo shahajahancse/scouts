@@ -1,0 +1,106 @@
+<div class="page-content">
+  <div class="content">
+    <ul class="breadcrumb" style="margin-bottom: 20px;">
+      <li> <a href="<?=base_url()?>" class="active"> Dashboard </a> </li>
+      <li> General Setting</li>
+      <li><?=$meta_title; ?> </li>
+    </ul>
+
+    <style type="text/css">
+      .table-responsive {
+        width: 100%;
+        margin-bottom: 15px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .btn-group-responsive {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+      }
+
+      @media screen and (max-width: 767px) {
+        .grid-title {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .grid-title .pull-right {
+          margin-top: 10px;
+          width: 100%;
+        }
+
+        .grid-title .pull-right .btn {
+          width: 100%;
+          margin-bottom: 5px;
+        }
+
+        .table th,
+        .table td {
+          white-space: nowrap;
+          min-width: 120px;
+        }
+
+        .btn-mini {
+          width: 100%;
+          margin-bottom: 5px;
+          display: block;
+          text-align: center;
+        }
+      }
+    </style>
+
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="grid simple ">
+          <div class="grid-title">
+            <h4><span class="semi-bold"><?=$meta_title; ?></span></h4>
+            <div class="pull-right">
+              <a href="<?=base_url('general_setting/division_add')?>" class="btn btn-primary btn-xs btn-mini"> Add Division</a>
+            </div>
+          </div>
+
+          <div class="grid-body ">
+            <div id="infoMessage"><?php //echo $message;?></div>
+            <?php if($this->session->flashdata('success')):?>
+                <div class="alert alert-success">
+                    <a class="close" data-dismiss="alert">&times;</a>
+                    <?php echo $this->session->flashdata('success');?>
+                </div>
+            <?php endif; ?>
+            <div class="table-responsive">
+              <table class="table table-hover table-condensed" id="">
+                <thead>
+                  <tr>
+                    <th>SL</th>
+                    <th>Division Name</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                <?php
+                  $sl=0;
+                  foreach ($results as $row):
+                    $sl++;
+                ?>
+                  <tr>
+                    <td class="v-align-middle"><?=$sl.'.'?></td>
+                    <td class="v-align-middle"><?=$row->member_type_name?></td>
+                    <td> <?php echo ($row->status) ?'<span class="btn btn-primary btn-xs btn-mini">Enable </span>': '<span class="btn btn-danger btn-xs btn-mini">Disable</span>';?> </td>
+                    <td class="btn-group-responsive"><?php echo anchor(base_url()."general_setting/member_type_edit/".$row->id, 'Edit', 'class="btn btn-mini btn-primary"') ;?>&nbsp;</td>
+                  </tr>
+                  <?php endforeach;?>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    </div> <!-- END ROW -->
+
+  </div>
+</div>

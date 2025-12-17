@@ -67,6 +67,9 @@
       .pull-left {
          float: left !important;
       }
+      .error {
+         top: 60px !important;
+      }
    }
 </style>
 
@@ -92,7 +95,7 @@
                   <?php endif; ?>
                   <?php echo validation_errors(); ?>
                   <?php
-                  $attributes = array('id' => 'scout_member_validation', 'class' => 'responsive-form');
+                  $attributes = array('id' => 'scout_member_add_validation', 'class' => 'responsive-form');
                   echo form_open_multipart("scouts_member/create", $attributes);?>
 
                   <div class="row">
@@ -170,9 +173,9 @@
                               <input type="text" name="mother_name_bn"  class="bangla form-control input-sm" value="<?=set_value('mother_name_bn')?>" contenteditable="TRUE">
                            </div>
                            <div class="col-md-3">
-                              <label class="form-label">11. Email Address</label>
+                              <label class="form-label">11. Email Address <span class='required'>*</span></label>
                               <?php echo form_error('email'); ?>
-                              <input name="email" value="<?=set_value('email')?>" type="text" class="form-control input-sm" placeholder="">
+                              <input name="email" id="email" value="<?=set_value('email')?>" type="text" class="form-control input-sm" placeholder="">
                            </div>
                            <div class="col-md-3">
                               <label class="form-label">12. Blood Group</label>
@@ -550,6 +553,107 @@
 
 <script type="text/javascript">
    $(document).ready(function() {
-      // Existing JavaScript code remains the same
+      $('#scout_member_add_validation').validate({
+         ignore: "",
+         rules: {
+            first_name: { required: true },
+            full_name_bn: { required: true },
+            day: { required: true },
+            month: { required: true },
+            year: { required: true },
+            gender: { required: true },
+            blood_group: { required: false },
+            religion_id: { required: true },
+            father_name: { required: true },
+            father_name_bn: { required: false },
+            mother_name: { required: true },
+            mother_name_bn: { required: false },
+            phone:{
+               required: true,
+               number: true,
+               minlength: 11,
+               maxlength: 11
+            },
+            email:{
+               required: true,
+               email: true,
+               remote: {
+                  url: hostname +"my_profile/ajax_exists_email/",
+                  type: "post",
+                  data: {
+                     inputData: function() {
+                        return $("#email").val();
+                     }
+                  }
+               }
+            },
+            password: {
+               required: false,
+               minlength: 8
+            },
+            pre_village_house:{ required: true },
+            pre_village_house_bn:{ required: false },
+            pre_road_block:{ required: true },
+            pre_road_block_bn:{ required: false },
+            pre_division_id: { required: true },
+            pre_district_id: { required: true },
+            pre_upa_tha_id: { required: true },
+            pre_post_office: {
+               required: false,
+               number: true,
+            },
+
+            join_date: { required: true },
+            member_id: { required: true },
+            sc_section_id: { required: true },
+            sc_badge_id: { required: false },
+            sc_role_id: { required: false },
+            sc_region_id: { required: true },
+            sc_district_id: { required: true },
+            sc_upa_tha_id: { required: false },
+            sc_group_id: { required: true },
+            sc_unit_id: { required: false },
+            userfile: {
+               required: false,
+               extension: "jpg|jpeg|png"
+            }
+         },
+         messages: {
+            userfile: {
+               required: "Image file is required",
+               extension: "Allowed file extension jpg, png, jpeg"
+            },
+            email: {
+            remote: jQuery.format("Already in use! Please try again.")
+            }
+         },
+
+         invalidHandler: function (event, validator) {
+            //display error alert on form submit
+         },
+
+         errorPlacement: function (label, element) { // render error placement for each input type
+            $('<span class="error" style="position: absolute; top:38px;"></span>').insertAfter(element).append(label)
+            var parent = $(element).parent('.input-with-icon');
+            parent.removeClass('success-control').addClass('error-control');
+         },
+
+         highlight: function (element) { // hightlight error inputs
+            var parent = $(element).parent();
+            parent.removeClass('success-control').addClass('error-control');
+         },
+
+         unhighlight: function (element) { // revert the change done by hightlight
+         },
+
+         success: function (label, element) {
+            var parent = $(element).parent('.input-with-icon');
+            parent.removeClass('error-control').addClass('success-control');
+         },
+
+         submitHandler: function (form) {
+            form.submit();
+         }
+      });
    });
 </script>
