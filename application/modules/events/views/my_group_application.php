@@ -1,5 +1,5 @@
-<div class="page-content">     
-  <div class="content">  
+<div class="page-content">
+  <div class="content">
     <ul class="breadcrumb" style="margin-bottom: 20px;">
       <li> <a href="<?=base_url('dashboard')?>" class="active"> Dashboard </a> </li>
       <li> <a href="<?=base_url('events/upcomming_event')?>" class="active"> <?=$module_title; ?> </a></li>
@@ -13,11 +13,11 @@
             <h4><span class="semi-bold"><?=$meta_title; ?></span></h4>
             <div class="pull-right">
               <!-- <a href="<?=base_url('events/create_event')?>" class="btn btn-blueviolet btn-xs btn-mini"> My Application List </a> -->
-            </div> 
+            </div>
           </div>
 
           <div class="grid-body ">
-            <div id="infoMessage"><?php //echo $message;?></div>            
+            <div id="infoMessage"><?php //echo $message;?></div>
             <?php if($this->session->flashdata('success')):?>
               <div class="alert alert-success">
                 <?php echo $this->session->flashdata('success');?>
@@ -35,7 +35,7 @@
               .tg .tg-2bev2{border-color:#656565;text-align:left;vertical-align:top; border-color: #cabebe;}
             </style>
             <?php if($results) {  //print_r($results);?>
-            <?php 
+            <?php
             // echo '<pre>';
             // print_r($results); exit;
             ?>
@@ -48,35 +48,9 @@
                 <th class="tg-hkgo">Action</th>
               </tr>
 
-              <?php 
-              $sl = 0;        
-              foreach ($results as $row):
-                $sl++;
-                $group_verify = event_verify_status($row->verify_group);
-                $upazila_verify = event_verify_status($row->verify_upazila);
-
-              if($row->created_office_by == 1){ //NHQ
-                $district_verify = event_verify_status($row->verify_district);
-                $region_verify = event_verify_status($row->verify_region);
-                $nhq_verify = event_verify_status($row->verify_nhq);
-
-              }elseif($row->created_office_by == 2){ //Region
-                $district_verify = event_verify_status($row->verify_district);
-                $region_verify = event_verify_status($row->verify_region);
-                $nhq_verify = 'Not Applicable';
-
-              }elseif($row->created_office_by == 3){ //District
-                $district_verify = event_verify_status($row->verify_district);
-                $region_verify = 'Not Applicable';
-                $nhq_verify = 'Not Applicable';
-
-              }elseif($row->created_office_by == 4){ //Upazila                
-                $district_verify = 'Not Applicable';
-                $region_verify = 'Not Applicable';
-                $nhq_verify = 'Not Applicable';
-              }
-
-              ?>
+              <?php
+              $sl = 0;
+              foreach ($results as $row): $sl++; ?>
               <tr>
                 <td class="tg-9qvm"><?=$sl?></td>
                 <td class="tg-9qvm"><a href="<?=base_url('events/details/'.$row->event_id);?>"><strong><?=$row->event_title?></strong></a></td>
@@ -86,7 +60,7 @@
                 <!-- <a href="<?=base_url('events/my_app_cancle/'.$row->app_id);?>" onclick="return confirm('Are you sure you want to cancle this application?');" class="btn btn-blueviolet btn-mini">Cancle Application</a> events/group_application_details/'.$row->id -->
                 <a href="<?=base_url('events/group_application_details/'.encrypt_url($row->id));?>" class="btn btn-blueviolet btn-mini">Application Details</a></td>
               </tr>
-            <?php endforeach; ?> 
+            <?php endforeach; ?>
 
           </table>
 

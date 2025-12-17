@@ -170,7 +170,7 @@
             <?php endif; ?>
 
             <?php if($results) {  //print_r($results);?>
-              <a href="<?=base_url('Events/application_list_pdf')?>" class="btn btn-primary btn-xs btn-mini" style="float: right; margin-bottom: 10px;">PDF Download</a>
+              <a href="<?=base_url('Events/excel_application_list')?>" class="btn btn-primary btn-xs btn-mini" style="float: right; margin-bottom: 10px;">Export to Excel</a>
             <div class="table-responsive">
               <table class="table table-hover table-condensed" id="example">
                 <thead>
@@ -186,6 +186,7 @@
                 <tbody>
                   <?php
                   $sl = $pagination['current_page'];
+                  // dd($results);
                   foreach ($results as $row):
                     $sl++;
 
@@ -205,7 +206,7 @@
                   <tr>
                     <td data-label="SL"><?=$sl?></td>
                     <td data-label="Event Details">
-                      <a href="<?=base_url('events/details/'.$row->eventid);?>" target="_blank" >
+                      <a href="<?=base_url('events/details/'.encrypt_url($row->eventid));?>" target="_blank" >
                         <strong><?=$row->event_title?></strong>
                       </a>
                       <br>

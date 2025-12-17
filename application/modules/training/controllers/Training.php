@@ -653,38 +653,28 @@ class Training extends Backend_Controller {
     $this->load->view('backend/_layout_main', $this->data);
 }
 
-public function training_certificate_pdf($id){
-  if(!($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin() || $this->ion_auth->in_group('training'))){
-     redirect('dashboard');
- }
-
- $id = (int) decrypt_url($id);
-
-      // $dataID = (int) decrypt_url($id); //exit;
-      // if (!$this->Common_model->exists('award_cub_recommendation', 'id', $dataID)) {
-      //    show_404('award - president_scout_certificate_pdf - exitsts', TRUE);
-      // }
-
-      //Results
- $this->data['info'] = $this->Training_model->get_trining_certificate($id);
-      // print_r($this->data['info']); exit;
-
-
-      //...............................................................................
- $this->data['meta_title'] = "Training Certificate";
- $html = $this->load->view('training_certificate_pdf', $this->data, true);
- $file_name = $id.".pdf";
-
-      //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
-      // $mpdf = new mPDF('', 'A4', 10, 'nikosh', 10, 10, 10, 10);
- $mpdf = new mPDF('', array(864, 668), 10, 'nikosh', 0, 0, 0, 0);
-
-      //generate the PDF from the given html
- $mpdf->WriteHTML($html);
-
-      //download it for 'D'.
- $mpdf->Output($file_name, "I");
-}
+    public function training_certificate_pdf($id){
+        if(!($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin() || $this->ion_auth->in_group('training'))){
+            redirect('dashboard');
+        }
+        $id = (int) decrypt_url($id);
+        $this->data['info'] = $this->Training_model->get_trining_certificate($id);
+            // print_r($this->data['info']); exit;
+            //...............................................................................
+        $this->data['meta_title'] = "Training Certificate";
+        $html = $this->load->view('training_certificate_pdf', $this->data, true);
+        $file_name = $id.".pdf";
+        $this->load->library('Mpdf_lib');
+        $mpdf = $this->mpdf_lib->create([
+            'format' => 'A4-L',
+            'margin_left' => 0,
+            'margin_right' => 0,
+            'margin_top' => 0,
+            'margin_bottom' => 0
+        ]);
+        $mpdf->WriteHTML($html);
+        $mpdf->Output($file_name, "I");
+    }
 
 
 

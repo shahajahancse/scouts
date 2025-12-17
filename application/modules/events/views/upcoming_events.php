@@ -94,7 +94,7 @@
                   ?>
                   <tr>
                     <td class="v-align-middle"><?=$sl?></td>
-                    <td class="v-align-middle"><a href="<?=base_url('events/details/'.$row->id);?>"><strong><?=$row->event_title?></strong></a></td>
+                    <td class="v-align-middle"><a href="<?=base_url('events/details/'.encrypt_url($row->id));?>"><strong><?=$row->event_title?></strong></a></td>
                     <td class="v-align-middle"><?=$row->event_venue?></td>
                     <td class="v-align-middle"><?=date('d M, y', strtotime($row->event_start_date))?></td>
                     <td class="v-align-middle"><?=date('d M, y', strtotime($row->event_end_date))?></td>

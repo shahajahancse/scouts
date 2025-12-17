@@ -1,5 +1,5 @@
-<div class="page-content">     
-  <div class="content">  
+<div class="page-content">
+  <div class="content">
     <ul class="breadcrumb" style="margin-bottom: 20px;">
       <li> <a href="<?=base_url()?>" class="active"> Dashboard </a> </li>
       <li> <a href="<?=base_url()?>" class="active"> <?=$module_title; ?> </a></li>
@@ -16,7 +16,7 @@
       .tg .tg-2v33{font-weight:bold;background-color:#d8e8d8;border-color:#efefef;text-align:right;}
       .tg .tg-jz97{border-color:#efefef;text-align:left;color: black;}
     </style>
-    
+
     <div class="row-fluid">
       <div class="span12">
         <div class="grid simple ">
@@ -25,7 +25,7 @@
           </div>
 
           <div class="grid-body ">
-            <div id="infoMessage"><?php //echo $message;?></div>            
+            <div id="infoMessage"><?php //echo $message;?></div>
             <?php if($this->session->flashdata('success')):?>
               <div class="alert alert-success">
                 <?php echo $this->session->flashdata('success');?>
@@ -48,7 +48,7 @@
                       <td class="tg-jz97"><?=$info->event_venue?></td>
                       <td class="tg-wwkm">Registration Period:</td>
                       <td class="tg-6p4y">From <strong><?=date_detail_format($info->event_reg_start)?></strong> to <strong><?=date_detail_format($info->event_reg_end)?></strong></td>
-                    </tr>                    
+                    </tr>
                     <tr>
                       <td class="tg-2v33">Event Organizer:</td>
                       <td class="tg-jz97"> <?php echo $info->event_organizer; ?> </td>
@@ -57,13 +57,13 @@
                     </tr>
                     <tr>
                       <td class="tg-2v33">Event Participant Category:</td>
-                      <td class="tg-jz97"><?php 
+                      <td class="tg-jz97"><?php
                         if($info->ept_category==1){
                           echo 'Individual';
                         }else{
                           echo 'Group/Unit';
                         }
-                        ?>  
+                        ?>
                       </td>
                       <td class="tg-wwkm">Event Category:</td>
                       <td class="tg-6p4y"><?=$info->event_cate_name?></td>
@@ -92,30 +92,30 @@
                       <td class="tg-2v33" valign="top">Attachment:</td>
                       <td class="tg-jz97">
                         <?php
-                        if($attachments){
+                        if(!empty($attachments)){
                           $sl=0;
                           foreach ($attachments as $value) {
                             $sl++;
                               //echo $value->file_name .'<button class="btn"><i class="fa fa-download"></i> Download</button>';
 
-                            echo '<a href="'.base_url('event_docs/'.$value->file_name).'" download="'.$value->file_name.'" class="btn btn-mini btn-xs btn-success" style="margin-bottom:2px;">Download - '.$value->file_name.'</a><br>';                              
+                            echo '<a href="'.base_url('event_docs/'.$value->file_name).'" download="'.$value->file_name.'" class="btn btn-mini btn-xs btn-success" style="margin-bottom:2px;">Download - '.$value->file_name.'</a><br>';
                           }
                         }
                         ?>
-                      </td>                    
+                      </td>
                     </tr>
                   </table>
                   <!-- </div> -->
                 </div>
               </div>
 
-              <?php 
+              <?php
 
               $attributes = array('id' => 'event_validate');
-              echo form_open(base_url('events/join_event_as_group/'.$info->id), $attributes);?>
+              echo form_open(base_url('events/join_event_as_group/'.encrypt_url($info->id)), $attributes);?>
 
               <div class="row">
-                <div class="col-md-4 col-md-offset-4">              
+                <div class="col-md-4 col-md-offset-4">
                   <div class="row form-row">
                   <?php echo validation_errors();?>
                     <div class="col-md-12">
@@ -126,12 +126,12 @@
                     </div>
                   </div>
 
-                  <div class="form-actions">  
+                  <div class="form-actions">
                     <div class="pull-right">
                       <button type="submit" class="btn btn-primary btn-cons btn-mini"><i class="icon-ok"></i> Next</button>
                     </div>
-                  </div> 
-                </div>    
+                  </div>
+                </div>
 
               </div>
 

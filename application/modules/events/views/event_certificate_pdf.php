@@ -1,51 +1,55 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><?php echo $meta_title?></title> 
-  <style type="text/css">
-    .content{
-      width: 1900px;
-      margin-left: auto;
-      margin-right: auto;
-      padding-top: 920px; 
-      position: absolute; 
-      top: 200px; 
-      font-size: 65px;
+  <title><?= $meta_title ?></title>
+  <meta charset="utf-8">
+  <style>
+    /* @page {
+      size: A4 landscape;
+      margin: 0;
+    } */
+
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .page {
+      width: 100%;
+      height: 100%;
+      background: url('<?= FCPATH ?>awedget/assets/certificates/scout_jambori.jpg') no-repeat center center;
+      background-size: cover;
+      position: relative;
+    }
+
+    .content {
+      width: 100%;
+      position: absolute;
+      /* top: 700px;        adjust as needed */
+      /* text-align: left; */
+      font-size: 25px;
       font-weight: bold;
-      text-align: center;
-      display: block;
-      overflow: visible;
-      /*border: 1px solid red;*/
-    }
-    .nameBN{
-       padding-top: 0px;    
-       /*border: 1px solid blue;*/
-    }
-    .groupBN{
-      padding-top: 100px;       
-      /*border: 1px solid yellow; */
     }
 
-    .nameEN{
-       padding-top: 340px;    
-       /*border: 1px solid blue;*/
+    .groupsBN {
+      font-size: 20px;
+      padding-top: 238px;
+      padding-left:400px !important;
     }
-    .groupEN{
-      padding-top: 30px;       
-      /*border: 1px solid yellow; */
-    }
+    .groupBN {
+      padding-top: 38px;
+      padding-left:400px !important;
 
+    }
   </style>
 </head>
-<body>  
-  <div height="100%" width="100%" style="background: #FFFFFF
-  url('<?=FCPATH?>awedget/assets/certificates/scout_jambori.jpg'); background-repeat: no-repeat; background-image-resolution: 25dpi; border: 0px solid black;">
 
+<body>
+
+  <div class="page">
     <div class="content">
-      <div class="nameBN"><?php echo $info->full_name_bn?></div>
-      <div class="groupBN"><?php echo $info->grp_name_bn?></div>
-      <?php /*<div class="nameEN"><?php echo $info->first_name?></div>
-      <div class="groupEN"><?php echo $info->grp_name?></div> */ ?>
+      <div class="groupsBN"><?= $info->full_name_bn ?></div>
+      <div class="groupBN"><?= $info->grp_name_bn ?></div>
     </div>
   </div>
 

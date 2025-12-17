@@ -159,6 +159,151 @@ class Scouts_member extends Backend_Controller {
       $this->data['subview'] = 'all';
       $this->load->view('backend/_layout_main', $this->data);
    }
+   public function all_excel($offset=0){
+      $limit = 0;
+
+      //Check authentication
+      if($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin() || $this->ion_auth->in_group(array('award', 'event', 'training'))){
+         // Superadmin
+         $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', '', '', '', 1);
+         //Dropdown
+         $this->data['regions'] = $this->Common_model->get_regions();
+         // print_r($this->data['regions']) ; exit();
+         $this->data['scouts_district'] = array(''=>'Scouts District');
+         $this->data['scouts_upazila'] = array(''=>'Scouts Upazila');
+         $this->data['scouts_group'] = array(''=>'Scouts Group');
+
+      }elseif($this->ion_auth->is_vendor()){
+         // Superadmin
+         $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', '', '', '', 1);
+         //Dropdown
+         $this->data['regions'] = $this->Common_model->get_regions();
+         // print_r($this->data['regions']) ; exit();
+         $this->data['scouts_district'] = array(''=>'Scouts District');
+         $this->data['scouts_upazila'] = array(''=>'Scouts Upazila');
+         $this->data['scouts_group'] = array(''=>'Scouts Group');
+
+      }elseif($this->ion_auth->is_region_admin()){
+         // Region Admin
+         $office = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
+         //Result
+         $results = $this->Scouts_member_model->get_scout_member($limit, $offset, $office, '', '', '', 1);
+
+         $this->data['scouts_district'] =  $this->Common_model->get_scout_districts($office);
+         $this->data['scouts_upazila'] = array(''=>'Scouts Upazila');
+         $this->data['scouts_group'] = array(''=>'Scouts Group');
+
+      }elseif($this->ion_auth->is_district_admin() && $this->session->userdata('sc_region_id') == 10){
+         // District Admin Rover
+         //Result
+         $sc_dis_id = $this->session->userdata('sc_district_id');
+         $results = $this->Scouts_member_model->get_scout_member($limit, $offset, 10, $sc_dis_id, '', '', 1);
+         //Dropdown
+         $this->data['scouts_group'] = $this->Common_model->get_scout_group_office($sc_dis_id);
+
+      }elseif($this->ion_auth->is_district_admin()){
+         // District Admin
+         $office = $this->Offices_model->get_district_office_by_user_id($this->userSessID)->id;
+         //Result
+         $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', $office, '', '', 1);
+         //Dropdown
+
+         $this->data['scouts_upazila'] =  $this->Common_model->get_scout_upazila_thana($office);
+         $this->data['scouts_group'] = array(''=>'Scouts Group');
+
+      }elseif($this->ion_auth->is_upazila_admin()){
+         // Upazila Admin
+         $office = $this->Offices_model->get_upazila_office_by_user_id($this->userSessID)->id;
+         //Result
+         $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', '', $office, '', 1);
+
+         $this->data['scouts_group'] =  $this->Common_model->get_scout_group_office('', $office);
+
+      }elseif($this->ion_auth->is_group_admin()){
+         // Group Admin
+         $office = $this->Offices_model->get_scout_group_by_user_id($this->userSessID)->id;
+         //Result
+         $results = $this->Scouts_member_model->get_scout_member($limit, $offset, '', '', '', $office, 1);
+      }else{
+         redirect('dashboard');
+      }
+
+      if(!empty($_GET['region']) && $_GET['region'] > 0){
+         $this->data['scouts_district'] =  $this->Common_model->get_scout_districts($_GET['region']);
+      }
+
+      if(!empty($_GET['district']) && $_GET['district'] > 0 ){
+         $this->data['scouts_upazila'] =  $this->Common_model->get_scout_upazila_thana($_GET['district']);
+      }
+
+      if(!empty($_GET['upazila']) && $_GET['upazila'] > 0){
+         $this->data['scouts_group'] =  $this->Common_model->get_scout_group_office('', $_GET['upazila']);
+      }
+
+      //Results
+      $this->data['results'] = $results['rows'];
+
+       // ================= CSV EXPORT =================
+      header("Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+      header("Content-Disposition: attachment; filename=scout_members.xlsx");
+      header("Cache-Control: max-age=0");
+
+
+      // Output stream
+      $output = fopen("php://output", "w");
+
+      // UTF-8 BOM (for Bangla support in Excel)
+      fprintf($output, chr(0xEF).chr(0xBB).chr(0xBF));
+
+      // ---------- Table Header ----------
+      fputcsv($output, [
+         'Username',
+         'Scout id',
+         'Name',
+         'Phone',
+         'Email',
+         'Active',
+         'Member type',
+         'Group Name'
+      ]);
+      $key = 1;
+      foreach ($results as $row) {
+         fputcsv($output, [
+            $key++,
+            isset($row->username) ? $row->username : '',
+            isset($row->scout_id) ? $row->scout_id : '',
+            isset($row->first_name) ? $row->first_name : '',
+            isset($row->phone) ? $row->phone : '',
+            isset($row->email) ? $row->email : '',
+            isset($row->active) ? $row->active : '',
+            isset($row->member_type_name) ? $row->member_type_name : '',
+            isset($row->grp_name) ? $row->grp_name : ''
+         ]);
+      }
+
+      fclose($output);
+      exit;
+
+                  //         [id] => 914150
+                  //   [username] => version
+                  //   [scout_id] => ZJ7667
+                  //   [first_name] => Version Upgrade
+                  //   [phone] => 01400616788
+                  //   [email] => version@gmail.com
+                  //   [active] => 1
+                  //   [sc_badge_id] => 1
+                  //   [sc_section_id] => 1
+                  //   [petrol_name] =>
+                  //   [last_login] => 1765772878
+                  //   [dob] => 2005-02-01
+                  //   [profile_img] => 843898.png
+                  //   [is_printed] => 0
+                  //   [member_type_name] => Scout
+                  //   [grp_name] => Shakrail High School Scout Group
+
+
+      // dd($results);
+   }
 
    /****************Scout Member Pdf Function start****Date:11-02-2019* Alomgir******/
    public function scout_member_pdf($offset=0){
@@ -1530,15 +1675,19 @@ class Scouts_member extends Backend_Controller {
    public function active_list($offset = 0)
    {
       $limit = 25;
-      $is_excel = ($this->input->get('id') == 1);
+      $is_excel = ($this->input->get('id') == 1); // Check if export button clicked
 
       if ($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin()) {
+
+         // Fetch all rows for Excel, otherwise use pagination
          if ($is_excel) {
+               // Pass null or 0 to fetch all rows
             $results['rows'] = $this->Scouts_member_model->get_last_30day_active_member(0, 0);
          } else {
                $results = $this->Scouts_member_model->get_last_30day_active_member($limit, $offset);
          }
 
+         // Dropdown data only for normal view
          if (!$is_excel) {
             $this->data['regions'] = $this->Common_model->get_regions();
             $this->data['scouts_district'] = array('' => 'Scouts District');
@@ -1549,10 +1698,10 @@ class Scouts_member extends Backend_Controller {
          redirect('dashboard');
       }
 
+      // Filter dropdown (only for view)
       if (!$is_excel) {
          if (!empty($_GET['region']) && $_GET['region'] > 0) {
-            $result['results'] = $this->Scouts_member_model->get_last_30day_active_member($limit, $offset);
-            $this->load->view('scouts_member/verified_list_xecel', $result);
+            $this->data['scouts_district'] = $this->Common_model->get_scout_districts($_GET['region']);
          }
          if (!empty($_GET['district']) && $_GET['district'] > 0) {
             $this->data['scouts_upazila'] = $this->Common_model->get_scout_upazila_thana($_GET['district']);
@@ -1561,6 +1710,50 @@ class Scouts_member extends Backend_Controller {
 
       $this->data['results'] = $results['rows'];
       $this->data['total_rows'] = $results['num_rows'];
+      // ================= EXCEL EXPORT =================
+      if ($is_excel) {
+         // Send headers for CSV download
+         header("Content-Type: text/csv; charset=UTF-8");
+         header("Content-Disposition: attachment; filename=active_members.csv");
+         header("Pragma: no-cache");
+         header("Expires: 0");
+
+         $output = fopen('php://output', 'w');
+
+         // Add BOM for UTF-8 (Bangla support)
+         fprintf($output, chr(0xEF).chr(0xBB).chr(0xBF));
+
+         // CSV Header
+         fputcsv($output, [
+            'ID',
+            'Name',
+            'Scout ID',
+            'Username',
+            'Member Type',
+            'Phone',
+            'Section',
+            'Unit',
+            'Status'
+         ]);
+
+         // Write data rows
+         foreach ($results['rows'] as $row) {
+         fputcsv($output, [
+            $row->id,
+            $row->first_name,
+            $row->scout_id,
+            $row->username,
+            $row->member_type_name,
+            $row->phone,
+            $row->sc_section_id,
+            $row->unit_name ?? '',
+            $row->is_request == 1 ? 'Pending' : 'Active'
+         ]);
+      }
+
+         fclose($output);
+         exit;
+      }
 
       // ================= NORMAL VIEW =================
       $this->data['pagination'] = create_pagination(
@@ -1584,9 +1777,49 @@ class Scouts_member extends Backend_Controller {
       }
 
       // Fetch ALL rows (no limit, no offset)
-      $result['results'] = $this->Scouts_member_model->get_last_30day_active_member_excel(0, 0);
-      $this->load->view('scouts_member/verified_list_xecel', $result);
+      $results = $this->Scouts_member_model->get_last_30day_active_member(0, 0);
 
+      // ================= CSV EXPORT =================
+      $filename = "active_members";
+      header("Content-Type: application/vnd.ms-excel");
+      header("Content-Disposition: attachment; filename=members.xls");
+      echo '<table border="0" cellpadding="5" cellspacing="0">';
+
+      // CSV Header
+      $headers = [
+         'Sl No',
+         'Name',
+         'Scout ID',
+         'Username',
+         'Member Type',
+         'Phone',
+         'Section',
+         'Unit',
+         'Status'
+      ];
+      echo '<table border="1" cellpadding="5" cellspacing="0">';
+      echo '<tr>';
+      foreach ($headers as $header) {
+         echo '<th>' . $header . '</th>';
+      }
+      echo '</tr>';
+      foreach ($results['rows'] as $key => $row) {
+         echo '<tr>';
+         echo '<td>' . ($key + 1) . '</td>';
+         echo '<td>' . $row->first_name . '</td>';
+         echo '<td>' . $row->scout_id . '</td>';
+         echo '<td>' . $row->username . '</td>';
+         echo '<td>' . $row->member_type_name . '</td>';
+         echo '<td>' . $row->phone . '</td>';
+         echo '<td>' . $row->sc_section_id . '</td>';
+         echo '<td>' . ($row->unit_name ?? '') . '</td>';
+         echo '<td>' . (($row->is_request == 1) ? 'Pending' : 'Active') . '</td>';
+         echo '</tr>';
+      }
+
+      echo '</table>';
+
+      exit;
    }
 
 

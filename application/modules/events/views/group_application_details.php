@@ -1,5 +1,5 @@
-<div class="page-content">     
-  <div class="content">  
+<div class="page-content">
+  <div class="content">
     <ul class="breadcrumb" style="margin-bottom: 20px;">
       <li> <a href="<?=base_url('dashboard')?>" class="active"> Dashboard </a> </li>
       <li> <a href="<?=base_url('dashboard')?>" class="active"> <?=$module_title; ?> </a></li>
@@ -16,7 +16,7 @@
       .tg .tg-2v33{font-weight:bold;background-color:#d8e8d8;border-color:#efefef;text-align:right;}
       .tg .tg-jz97{border-color:#efefef;text-align:left;color: black;}
     </style>
-    
+
     <div class="row-fluid">
       <div class="span12">
         <div class="grid simple ">
@@ -25,7 +25,7 @@
           </div>
 
           <div class="grid-body ">
-            <div id="infoMessage"><?php //echo $message;?></div>            
+            <div id="infoMessage"><?php //echo $message;?></div>
             <?php if($this->session->flashdata('success')):?>
               <div class="alert alert-success">
                 <?php echo $this->session->flashdata('success');?>
@@ -47,9 +47,9 @@
                           .tg .tg-ufl7{font-weight:bold;border-color:#9b9b9b;text-align:right;vertical-align:top}
                           .tg .tg-u8ck{font-weight:bold;border-color:#9b9b9b;text-align:right; width: 100px; background-color: #ccc;}
                           </style>
-                          <?php 
+                          <?php
                           $path = base_url().'profile_img/';
-                          $img_url = '<img src="'.$path.'no-img.png" height="20">';                          
+                          $img_url = '<img src="'.$path.'no-img.png" height="20">';
                           ?>
 
                           <table class="tg">
@@ -58,8 +58,8 @@
                               <th class="tg-107g" colspan="2"><?=$info->unit_name?></th>
                             </tr>
                             <tr>
-                            <?php 
-                            $leaderInfo = $this->Event_model->get_scout_sort_info($info->leader_id); 
+                            <?php
+                            $leaderInfo = $this->Event_model->get_scout_sort_info($info->leader_id);
                             $leader_img = $leaderInfo->profile_img != NULL ? '<img src="'.$path.$leaderInfo->profile_img.'" height="20">': $img_url;
                             $leader_scout = $leaderInfo->scout_id;
                             $leader_name = $leaderInfo->first_name;
@@ -68,9 +68,9 @@
                               <td class="tg-107g"><?=$leader_img?></td>
                               <td class="tg-107g"><?=$leader_scout?><br><?=$leader_name?></td>
                             </tr>
-                            
-                            <?php 
-                            $P1 = $this->Event_model->get_scout_sort_info($info->p1); 
+
+                            <?php
+                            $P1 = $this->Event_model->get_scout_sort_info($info->p1);
                             $P1_img = $P1->profile_img != NULL ? '<img src="'.$path.$P1->profile_img.'" height="20">': $img_url;
                             $P1_scout = $P1->scout_id;
                             $P1_name = $P1->first_name;
@@ -82,7 +82,7 @@
                             </tr>
 
                             <?php
-                            $P2 = $this->Event_model->get_scout_sort_info($info->p2); 
+                            $P2 = $this->Event_model->get_scout_sort_info($info->p2);
                             $P2_img = $P2->profile_img != NULL ? '<img src="'.$path.$P2->profile_img.'" height="20">': $img_url;
                             $P2_scout = $P2->scout_id;
                             $P2_name = $P2->first_name;
@@ -95,10 +95,10 @@
 
 
                             <?php
-                            $P3 = $this->Event_model->get_scout_sort_info($info->p3); 
+                            $P3 = $this->Event_model->get_scout_sort_info($info->p3);
                             $P3_img = $P3->profile_img != NULL ? '<img src="'.$path.$P3->profile_img.'" height="20">': $img_url;
-                            $P2_scout = $P3->scout_id;
-                            $P2_name = $P3->first_name;
+                            $P3_scout = $P3->scout_id;
+                            $P3_name = $P3->first_name;
                             ?>
                             <tr>
                               <td class="tg-u8ck">P3</td>
@@ -108,7 +108,7 @@
 
 
                             <?php
-                            $P4 = $this->Event_model->get_scout_sort_info($info->p4); 
+                            $P4 = $this->Event_model->get_scout_sort_info($info->p4);
                             $P4_img = $P4->profile_img != NULL ? '<img src="'.$path.$P4->profile_img.'" height="20">': $img_url;
                             $P4_scout = $P4->scout_id;
                             $P4_name = $P4->first_name;
@@ -121,7 +121,7 @@
 
 
                             <?php
-                            $P5 = $this->Event_model->get_scout_sort_info($info->p5); 
+                            $P5 = $this->Event_model->get_scout_sort_info($info->p5);
                             $P5_img = $P5->profile_img != NULL ? '<img src="'.$path.$P5->profile_img.'" height="20">': $img_url;
                             $P5_scout = $P5->scout_id;
                             $P5_name = $P5->first_name;
@@ -134,15 +134,15 @@
 
 
                             <?php
-                            $P6 = $this->Event_model->get_scout_sort_info($info->p6); 
+                            $P6 = $this->Event_model->get_scout_sort_info($info->p6);
                             $P6_img = $P6->profile_img != NULL ? '<img src="'.$path.$P6->profile_img.'" height="20">': $img_url;
-                            $P1_scout = $P6->scout_id;
-                            $P1_name = $P6->first_name;
+                            $P6_scout = $P6->scout_id;
+                            $P6_name = $P6->first_name;
                             ?>
                             <tr>
                               <td class="tg-u8ck">P6</td>
                               <td class="tg-2fdn"><?=$P6_img?></td>
-                              <td class="tg-2fdn"><?=$P6_scout?><br><?=$P1_name?></td>
+                              <td class="tg-2fdn"><?=$P6_scout?><br><?=$P6_name?></td>
                             </tr>
 
 
@@ -165,7 +165,7 @@
                           <tr>
                             <td class="tg-2v33">Registration Period:</td>
                             <td class="tg-jz97">From <strong><?=date_detail_format($info->event_reg_start)?></strong> to <strong><?=date_detail_format($info->event_reg_end)?></strong></td>
-                          </tr>                    
+                          </tr>
                           <tr>
                             <td class="tg-2v33">Event Organizer:</td>
                             <td class="tg-jz97"> <?php echo $info->event_organizer; ?> </td>
@@ -206,7 +206,7 @@
 
                   </table>
 
-                  
+
                 </div>
               </div>
 

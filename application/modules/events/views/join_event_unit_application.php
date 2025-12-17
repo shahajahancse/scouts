@@ -1,5 +1,5 @@
-<div class="page-content">     
-  <div class="content">  
+<div class="page-content">
+  <div class="content">
     <ul class="breadcrumb" style="margin-bottom: 20px;">
       <li> <a href="<?=base_url()?>" class="active"> Dashboard </a> </li>
       <li> <a href="<?=base_url()?>" class="active"> <?=$module_title; ?> </a></li>
@@ -17,7 +17,7 @@
       .tg .tg-jz97{border-color:#efefef;text-align:left;color: black;}
     </style>
 
-    <?php 
+    <?php
       $input=0;
       if($unit_info->unit_type == 1 || $unit_info->unit_type == 4){
         $input = 6;
@@ -26,7 +26,7 @@
       }
 
     ?>
-    
+
     <div class="row-fluid">
       <div class="span12">
         <div class="grid simple horizontal red">
@@ -35,22 +35,22 @@
           </div>
 
           <div class="grid-body ">
-            <div id="infoMessage"><?php //echo $message;?></div>            
+            <div id="infoMessage"><?php //echo $message;?></div>
             <?php if($this->session->flashdata('success')):?>
               <div class="alert alert-success">
                 <?php echo $this->session->flashdata('success');?>
               </div>
             <?php endif; ?>
 
-            <?php 
+            <?php
             $attributes = array('id' => 'validateForm');
             echo form_open(uri_string(), $attributes);?>
 
             <div class="tiles white details">
               <div class="row">
-                <div class="col-md-6">                  
+                <div class="col-md-6">
                     <div class="row">
-                      <div class="col-md-10 col-md-offset-1">              
+                      <div class="col-md-10 col-md-offset-1">
                         <div class="row form-row">
                           <div class="col-md-12">
                             <label class="form-label">Adult Leader ID <span class="required">*</span></label>
@@ -70,8 +70,8 @@
                           <?php } ?>
                         </div>
 
-                      </div>    
-                    </div>                        
+                      </div>
+                    </div>
                 </div>
 
                 <div class="col-md-6">
@@ -99,7 +99,7 @@
                     <tr>
                       <td class="tg-wwkm">Registration Period:</td>
                       <td class="tg-6p4y">From <strong><?=date_detail_format($info->event_reg_start)?></strong> to <strong><?=date_detail_format($info->event_reg_end)?></strong></td>
-                    </tr>                   
+                    </tr>
                     <tr>
                       <td class="tg-2v33" valign="top">Event Participants Type:</td>
                       <td class="tg-jz97" valign="top">
@@ -126,30 +126,30 @@
                       <td class="tg-2v33" valign="top">Attachment:</td>
                       <td class="tg-jz97">
                         <?php
-                        if($attachments){
+                        if(!empty($attachments)){
                           $sl=0;
                           foreach ($attachments as $value) {
                             $sl++;
                               //echo $value->file_name .'<button class="btn"><i class="fa fa-download"></i> Download</button>';
 
-                            echo '<a href="'.base_url('event_docs/'.$value->file_name).'" download="'.$value->file_name.'" class="btn btn-mini btn-xs btn-success" style="margin-bottom:2px;">Download - '.$value->file_name.'</a><br>';                              
+                            echo '<a href="'.base_url('event_docs/'.$value->file_name).'" download="'.$value->file_name.'" class="btn btn-mini btn-xs btn-success" style="margin-bottom:2px;">Download - '.$value->file_name.'</a><br>';
                           }
                         }
                         ?>
-                      </td>                    
+                      </td>
                     </tr>
                   </table>
                   <!-- </div> -->
                 </div>
-              </div>              
+              </div>
 
             </div>
 
-            <div class="form-actions">  
+            <div class="form-actions">
                 <div class="pull-right">
                   <button type="submit" class="btn btn-primary btn-cons"><i class="icon-ok"></i> Apply</button>
                 </div>
-              </div>               
+              </div>
             <?php echo form_close();?>
             <input type="hidden" name="hidden_group_id" value="<?=$unit_info->unit_scout_upa_id?>">
           </div>
@@ -169,7 +169,7 @@
 
 
       $('#validateForm').validate({
-      // focusInvalid: false, 
+      // focusInvalid: false,
       ignore: "",
       rules: {
         leader_id: { required: true},
@@ -180,22 +180,22 @@
         p5: { required: true },
         p6: { required: true },
         p7: { required: true },
-        p8: { required: true }  
+        p8: { required: true }
       },
 
       invalidHandler: function (event, validator) {
-         //display error alert on form submit    
+         //display error alert on form submit
        },
 
-      errorPlacement: function (label, element) { // render error placement for each input type   
+      errorPlacement: function (label, element) { // render error placement for each input type
         $('<span class="error"></span>').insertAfter(element).append(label)
         var parent = $(element).parent('.input-with-icon');
-        parent.removeClass('success-control').addClass('error-control');  
+        parent.removeClass('success-control').addClass('error-control');
       },
 
       highlight: function (element) { // hightlight error inputs
        var parent = $(element).parent();
-       parent.removeClass('success-control').addClass('error-control'); 
+       parent.removeClass('success-control').addClass('error-control');
      },
 
       unhighlight: function (element) { // revert the change done by hightlight
@@ -204,20 +204,20 @@
 
       success: function (label, element) {
        var parent = $(element).parent('.input-with-icon');
-       parent.removeClass('error-control').addClass('success-control'); 
+       parent.removeClass('error-control').addClass('success-control');
      },
 
      submitHandler: function (form) {
-       form.submit(); 
+       form.submit();
      }
    });
-  });   
+  });
 
 
   // Select2 AJAX autocomplete for Scout ID Scout Group Wise
     // function scout_id_by_group_select2_dd(){
     //   var group_id = $('#hidden_group_id').val();
-    //   $('.scoutIDGroupSelect2').select2({        
+    //   $('.scoutIDGroupSelect2').select2({
     //     placeholder: '-- Put Scout ID --',
     //     minimumInputLength: 2,
     //     ajax: {

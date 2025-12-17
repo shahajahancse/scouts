@@ -892,12 +892,20 @@ class Events extends Backend_Controller {
                 'curr_district_id'  => $info->sc_district_id,
                 'curr_upazila_id'   => $info->sc_upa_tha_id,
                 'curr_group_id'     => $info->sc_group_id
-                );
-            // print_r($form_data);exit();
+            );
 
-            if($this->Common_model->save('event_participant', $form_data)){
-                $this->session->set_flashdata('success', 'Apply event successfully.');
-                redirect("events/my_application");
+            $check = $this->db->where('event_id', $id)->where('scout_id', $info->id)->get('event_participant')->row();
+            if(!empty($check)){
+                $this->session->set_flashdata('warning', 'You have already applied for this event.');
+                redirect("events/upcomming_event");
+            } else {
+                if($this->Common_model->save('event_participant', $form_data)){
+                    $this->session->set_flashdata('success', 'Apply event successfully.');
+                    redirect("events/my_application");
+                } else {
+                    $this->session->set_flashdata('warning', 'Something is wrong.');
+                    redirect("events/upcomming_event");
+                }
             }
         }else{
             $this->session->set_flashdata('warning', 'Something is wrong.');
@@ -944,8 +952,8 @@ class Events extends Backend_Controller {
             $results = $this->Event_model->get_applicant_data($limit, $offset, '', $officeRegionID);
 
         }elseif($this->ion_auth->is_district_admin()){
-            $officeDistrictID = $this->Offices_model->get_district_office_by_user_id($this->userSessID)->id;
-            $results = $this->Event_model->get_applicant_data($limit, $offset, '', '', $officeDistrictID);
+            $officeDistrictID = $this->Offices_model->get_district_office_by_user_id($this->userSessID);
+            $results = $this->Event_model->get_applicant_data($limit, $offset, '', '', $officeDistrictID->id);
 
         }elseif($this->ion_auth->is_upazila_admin()){
             $officeUpazilaID = $this->Offices_model->get_upazila_office_by_user_id($this->userSessID)->id;
@@ -971,6 +979,67 @@ class Events extends Backend_Controller {
         $this->data['meta_title'] = 'Application List';
         $this->data['subview'] = 'application_list';
         $this->load->view('backend/_layout_main', $this->data);
+    }
+    //this is short time solution. there also more method like this. it will be updated later...
+    public function excel_application_list($offset=0){
+
+        if(!($this->ion_auth->is_admin() || $this->ion_auth->is_region_admin() || $this->ion_auth->in_group('event') || $this->ion_auth->is_district_admin() || $this->ion_auth->is_upazila_admin() || $this->ion_auth->is_group_admin())){
+            redirect('dashboard');
+        }
+        $limit = 10000000;
+
+        if($this->ion_auth->is_admin() || $this->ion_auth->in_group('event')){
+            $results = $this->Event_model->get_applicant_data($limit, $offset, '');
+
+        }elseif($this->ion_auth->is_region_admin()){
+            $officeRegionID = $this->Offices_model->get_region_office_by_user_id($this->userSessID)->id;
+            $results = $this->Event_model->get_applicant_data($limit, $offset, '', $officeRegionID);
+
+        }elseif($this->ion_auth->is_district_admin()){
+            $officeDistrictID = $this->Offices_model->get_district_office_by_user_id($this->userSessID);
+            $results = $this->Event_model->get_applicant_data($limit, $offset, '', '', $officeDistrictID->id);
+
+        }elseif($this->ion_auth->is_upazila_admin()){
+            $officeUpazilaID = $this->Offices_model->get_upazila_office_by_user_id($this->userSessID)->id;
+            $results = $this->Event_model->get_applicant_data($limit, $offset, '', '', '', $officeUpazilaID);
+
+        }elseif($this->ion_auth->is_group_admin()){
+            $officeGroupID = $this->Offices_model->get_scout_group_by_user_id($this->userSessID)->id;
+            $results = $this->Event_model->get_applicant_data($limit, $offset, '', '', '', '', $officeGroupID);
+        }
+
+        // Result
+        $this->data['results'] = $results['rows'];
+        // dd($this->data['results']);
+
+        header("Content-Type: application/vnd.ms-excel");
+        header("Content-Disposition: attachment; filename=applicant_members.xls");
+
+        echo '<br/>';
+
+        echo '<table border="1">';
+        echo '<tr>
+                <th>Event Name</th>
+                <th>Event Date</th>
+                <th>Scout Id</th>
+                <th>Name</th>
+                <th>Apply As</th>
+                <th>App. Date</th>
+                <th>Status</th>
+            </tr>';
+        foreach ($this->data['results']as $row) {
+            echo '<tr>
+                <td>'.$row->event_title.'</td>
+                <td>'.date('d M Y',strtotime($row->event_start_date) ).' to '. date('d M Y',strtotime($row->event_end_date) ).'</td>
+                <td>'.$row->scout_id.'</td>
+                <td>'.$row->first_name.'</td>
+                <td>'.get_event_participant_type($row->participant_type_id).'</td>
+                <td>'.$row->app_date.'</td>
+                <td>'.($row->status == 0 ? 'Pending' : 'Approved').'</td>
+            </tr>';
+        }
+        echo '</table>';
+        exit;
     }
 
 
@@ -1034,11 +1103,93 @@ class Events extends Backend_Controller {
         }
 
         $this->data['results'] = $this->Event_model->get_event_applicant_list($id);
-
+        // dd($this->data['results']);
         // Load page
         $this->data['meta_title'] = 'Event Applicant List';
         $this->data['subview'] = 'event_applicant_list';
         $this->load->view('backend/_layout_main', $this->data);
+    }
+    public function export_event_applicant_list($event_id)
+    {
+        $id = (int) decrypt_url($event_id);
+        // dd($id);
+        if(!$id){
+            redirect('dashboard');
+        }elseif(!$this->Common_model->exists('events', 'id', $id)){
+            redirect('dashboard');
+        }
+
+        $this->data = $this->Event_model->get_event_applicant_list($id);
+        // dd($this->data);
+
+        $filename = "event_members_{$event_id}.csv";
+        header("Content-Disposition: attachment; filename=$filename");
+        header("Content-Type: application/vnd.ms-excel");
+        header("Content-Disposition: attachment; filename=members.xls");
+        echo '<table border="0" cellpadding="5" cellspacing="0">';
+
+        // Row 1
+        echo '<tr>
+                <th>Event Name:</th>
+                <td>'.$this->data['info']->event_title.'</td>
+                <th>Event Venue:</th>
+                <td>'.$this->data['info']->event_venue.'</td>
+            </tr>';
+
+        // Row 2
+        echo '<tr>
+                <th>Event Organizer:</th>
+                <td>'.$this->data['info']->event_organizer.'</td>
+                <th>Event Details:</th>
+                <td>'.$this->data['info']->event_details.'</td>
+            </tr>';
+
+        // Row 3
+        echo '<tr>
+                <th>Region Name:</th>
+                <td>'.$this->data['info']->region_name.'</td>
+                <th>District Name:</th>
+                <td>'.$this->data['info']->dis_name.'</td>
+            </tr>';
+
+        // Row 4
+        echo '<tr>
+                <th>Upazila Name:</th>
+                <td>'.$this->data['info']->upa_name.'</td>
+                <th>Group Name:</th>
+                <td>'.$this->data['info']->grp_name.'</td>
+            </tr>';
+
+        echo '</table>';
+        echo '<br/>';
+
+
+        echo '<table border="1">';
+        echo '<tr>
+                <th>Scout ID</th>
+                <th>Name</th>
+                <th>Member Type</th>
+                <th>Application Date</th>
+                <th>Group Verify</th>
+                <th>District Verify</th>
+                <th>Region Verify</th>
+                <th>NHQ Verify</th>
+            </tr>';
+
+        foreach ($this->data['member_list'] as $row) {
+            echo '<tr>
+                <td>'.$row->scout_id.'</td>
+                <td>'.$row->first_name.'</td>
+                <td>'.$row->member_type_name.'</td>
+                <td>'.$row->app_date.'</td>
+                <td>'.($row->verify_group    == "Approved" ? 'Approved' : 'Not Approved').'</td>
+                <td>'.($row->verify_district == "Approved" ? 'Approved' : 'Not Approved').'</td>
+                <td>'.($row->verify_region   == "Approved" ? 'Approved' : 'Not Approved').'</td>
+                <td>'.($row->verify_nhq      == "Approved" ? 'Approved' : 'Not Approved').'</td>
+            </tr>';
+        }
+        echo '</table>';
+        exit;
     }
 
     public function event_participant_list($id){
@@ -1057,48 +1208,111 @@ class Events extends Backend_Controller {
         $this->data['subview'] = 'event_participant_list';
         $this->load->view('backend/_layout_main', $this->data);
     }
+    public function export_event_participants($event_id)
+    {
+        $id = (int) decrypt_url($event_id);
+        // dd($id);
+        if(!$id){
+            redirect('dashboard');
+        }elseif(!$this->Common_model->exists('events', 'id', $id)){
+            redirect('dashboard');
+        }
 
-    public function event_certificate_pdf($id){
+        $this->data = $this->Event_model->get_event_participant_list($id);
+        // dd($this->data);
+
+        $filename = "event_members_{$event_id}.csv";
+        header("Content-Disposition: attachment; filename=$filename");
+        header("Content-Type: application/vnd.ms-excel");
+        header("Content-Disposition: attachment; filename=members.xls");
+        echo '<table border="0" cellpadding="5" cellspacing="0">';
+
+        // Row 1
+        echo '<tr>
+                <th>Event Name</th>
+                <td>'.$this->data['info']->event_title.'</td>
+                <th>Event Venue</th>
+                <td>'.$this->data['info']->event_venue.'</td>
+            </tr>';
+
+        // Row 2
+        echo '<tr>
+                <th>Event Organizer</th>
+                <td>'.$this->data['info']->event_organizer.'</td>
+                <th>Event Details</th>
+                <td>'.$this->data['info']->event_details.'</td>
+            </tr>';
+
+        // Row 3
+        echo '<tr>
+                <th>Region Name</th>
+                <td>'.$this->data['info']->region_name.'</td>
+                <th>District Name</th>
+                <td>'.$this->data['info']->dis_name.'</td>
+            </tr>';
+
+        // Row 4
+        echo '<tr>
+                <th>Upazila Name</th>
+                <td>'.$this->data['info']->upa_name.'</td>
+                <th>Group Name</th>
+                <td>'.$this->data['info']->grp_name.'</td>
+            </tr>';
+
+        echo '</table>';
+        echo '<br/>';
+
+
+        echo '<table border="1">';
+        echo '<tr>
+                <th>Scout ID</th>
+                <th>Name</th>
+                <th>Member Type</th>
+                <th>Application Date</th>
+            </tr>';
+
+        foreach ($this->data['member_list'] as $row) {
+            echo '<tr>
+                    <td>'.$row->scout_id.'</td>
+                    <td>'.$row->first_name.'</td>
+                    <td>'.$row->member_type_name.'</td>
+                    <td>'.$row->app_date.'</td>
+                </tr>';
+        }
+        echo '</table>';
+        exit;
+    }
+
+    public function event_certificate_pdf($id)
+    {
         $id = (int) decrypt_url($id);
 
-      if(!($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin() || $this->ion_auth->in_group('event'))){
-         redirect('dashboard');
-      }
+        if(!($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin() || $this->ion_auth->in_group('event'))){
+            redirect('dashboard');
+        }
+        //Results
+        $this->data['info'] = $this->Event_model->get_event_certificate($id);
+            if($this->data['info'] == ""){
+                echo "Event Participant Not Approved";
+                exit();
+            }
+        $this->data['meta_title'] = "Event Certificate";
+        $html = $this->load->view('event_certificate_pdf', $this->data, true);
 
-      // $dataID = (int) decrypt_url($id); //exit;
-      // if (!$this->Common_model->exists('award_cub_recommendation', 'id', $dataID)) {
-      //    show_404('award - president_scout_certificate_pdf - exitsts', TRUE);
-      // }
+        $file_name = $id.".pdf";
+        $this->load->library('Mpdf_lib');
 
-      //Results
-      $this->data['info'] = $this->Event_model->get_event_certificate($id);
-      // print_r($this->data['info']); exit;
+        $mpdf = $this->mpdf_lib->create([
+            'format'        => 'A4-L',   // Landscape
+            'margin_left'   => 0,
+            'margin_right'  => 0,
+            'margin_top'    => 0,
+            'margin_bottom' => 0,
+        ]);
 
-
-      //...............................................................................
-      $this->data['meta_title'] = "Event Certificate";
-      $html = $this->load->view('event_certificate_pdf', $this->data, true);
-      $file_name = $id.".pdf";
-
-      //$mpdf = new mPDF('', array(349, 225), 10, '', 0, 0, 0, 0);
-      // $mpdf = new mPDF('', 'A4', 10, 'nikosh', 10, 10, 10, 10);
-      $mpdf = new mPDF('', array(864, 668), 10, 'nikosh', 0, 0, 0, 0);
-
-      //generate the PDF from the given html
       $mpdf->WriteHTML($html);
-
-      //download it for 'D'.
-      $mpdf->Output($file_name, "I");
-   }
-
-
-
-
-
-
-
-
-
+     $mpdf->Output($file_name, 'I');
+    }
 
 
     public function upcomming_event_list(){
@@ -1135,7 +1349,7 @@ class Events extends Backend_Controller {
 
 
     /*************application_list function pdf start**************/
-    public function application_list_pdf(){
+    public function application_list_pdf($offset = 0){
         if(!($this->ion_auth->is_admin() || $this->ion_auth->is_region_admin() || $this->ion_auth->in_group('event') || $this->ion_auth->is_district_admin() || $this->ion_auth->is_upazila_admin() || $this->ion_auth->is_group_admin())){
             redirect('dashboard');
         }

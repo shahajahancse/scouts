@@ -30,6 +30,15 @@ class Complain extends Backend_Controller {
         $this->data['subview'] = 'complain_list';
         $this->load->view('backend/_layout_main', $this->data);
     }
+    public function complain_list_excel(){
+        if(!$this->ion_auth->is_admin()){
+            redirect('dashboard');
+        }
+        $this->data['complain'] = $this->Complain_model->get_data();
+        // Load page
+        $this->data['meta_title'] = 'Complain List';
+       $this->load->view('complain_list_excel', $this->data);
+    }
 
     /*************complain_list_pdf function pdf start**************/
     public function complain_list_pdf($offset=0){

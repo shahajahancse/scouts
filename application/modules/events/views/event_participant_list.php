@@ -1,7 +1,7 @@
-<div class="page-content">     
-  <div class="content">  
+<div class="page-content">
+  <div class="content">
     <ul class="breadcrumb" style="margin-bottom: 20px;">
-      <li> <a href="<?=base_url()?>" class="active"> Dashboard </a> </li>
+      <li> <a href="<?=base_url()?>" class="active"> Dashboard</a> </li>
       <li> <a href="<?=base_url()?>" class="active"> <?=$module_title; ?> </a></li>
       <li><?=$meta_title; ?> </li>
     </ul>
@@ -21,11 +21,13 @@
       <div class="span12">
         <div class="grid simple ">
           <div class="grid-title">
-            <h4><span class="semi-bold"><?=$meta_title; ?></span></h4>
+            <h4><span class="semi-bold"><?=$meta_title; ?></span>
+          </h4>
+          <a class="btn btn-mini btn-success" style="float:right !important;" href="<?=base_url("events/export_event_participants/".encrypt_url($results['info']->id))?>" target="_blank"> Export to Excel <i class="icon-download-alt"></i></a>
           </div>
 
           <div class="grid-body ">
-            <div id="infoMessage"><?php //echo $message;?></div>            
+            <div id="infoMessage"><?php //echo $message;?></div>
             <?php if($this->session->flashdata('success')):?>
               <div class="alert alert-success">
                 <?php echo $this->session->flashdata('success');?>
@@ -53,7 +55,7 @@
                       <td class="tg-jz97">
                       <?php
                         echo $results['info']->event_organizer;
-                        // if($results['info']->event_level == 'nhq'){                        
+                        // if($results['info']->event_level == 'nhq'){
                         //   echo 'National Headquarter';
                         // }elseif($results['info']->event_level == 'region'){
                         //   echo $results['info']->region_name;
@@ -80,13 +82,14 @@
                   <th style="width:10%">Scout ID</th>
                   <th style="width:5%">Image</th>
                   <th style="width:20%">Full Name</th>
-                  <th style="width:15%">Member Type</th>                  
+                  <th style="width:15%">Member Type</th>
                   <th style="width:10%">Join As</th>
                   <th style="width:10%" class="text-center">Details</th>
                 </tr>
               </thead>
               <tbody>
-                <?php 
+                <?php
+                // dd($results);
                 $sl = 0;
                 foreach ($results['member_list'] as $row):
                   $sl++;
@@ -104,9 +107,13 @@
                   <td class="v-align-middle"><?=$row->first_name;?></td>
                   <td class="v-align-middle"><?=$row->member_type_name?></td>
                   <td class="v-align-middle"><?=get_event_participant_type($row->participant_type_id)?></td>
-                  <td><a target="_blank" href="<?=base_url("events/event_certificate_pdf/".encrypt_url($row->id))?>"  class="btn btn-primary btn-mini">Generate Certificate</a></td>
+                  <td>
+                    <?php if($row->verify_nhq == "Approved"){?>
+                    <a target="_blank" href="<?=base_url("events/event_certificate_pdf/".encrypt_url($row->id))?>"  class="btn btn-primary btn-mini">Generate Certificate</a>
+                    <?php } else { echo "NHQ not Appreoved" ;} ?>
+                  </td>
                 </tr>
-              <?php endforeach; ?> 
+              <?php endforeach; ?>
 
             </tbody>
           </table>

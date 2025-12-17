@@ -124,13 +124,15 @@
                       </div>
                       <?php }elseif($this->ion_auth->is_region_admin() || $this->ion_auth->is_district_admin()){ ?>
                         <div class="col-md-4">
+
                           <h5 class="semi-bold">
-                            <input type="checkbox" name="et_upazila" id="checkUpazila" class="eventCheck" value="1" <?=set_value('et_upazila',$info->et_upazila)=='1'?'checked':'';?> onClick="toggleSelectUpazila()"/> Upazila
+                            <input type="checkbox" name="et_upazila" id="checkUpazila" class="eventCheck" value="1" <?=isset($info) && set_value('et_upazila',$info->et_upazila)=='1'?'checked':'';?> onClick="toggleSelectUpazila()"/> Upazila
                             <input type="button" id="upazilaAll" value="Select All" style="font-size: 11px; padding:2;">
                           </h5>
+
                           <?php $more_attr = 'class="sc_upazila_multi_val form-control input-sm" id="sc_upazila_thana"';
-                          $upazilaIds = explode(',', $info->et_upazila_ids);
-                          echo form_multiselect('et_upazila_ids[]', $sc_upazilas, $upazilaIds, $more_attr);
+                          $upazilaIds = isset($info) ? explode(',', $info->et_upazila_ids) : array();
+                          echo form_multiselect('et_upazila_ids[]', $sc_upazilas , $upazilaIds, $more_attr);
                           ?>
                         </div>
                       <?php }elseif($this->ion_auth->is_upazila_admin()){ ?>

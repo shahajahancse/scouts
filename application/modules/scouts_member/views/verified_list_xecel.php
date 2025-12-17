@@ -25,24 +25,17 @@
     <?php
       $sl = 0;
       foreach ($results as $row):
-        dd($row);
+        // dd($row);
       $sl = $sl+1;
-      // $path = base_url().'profile_img/';
-      // if($row->profile_img != NULL){
-      //   $img_url = '<img src="'.$path.$row->profile_img.'" height="20">';
-      // }else{
-      //   $img_url = '<img src="'.$path.'no-img.png" height="20">';
-      // }
       $cont = 'Some content <br> <strong>inside</strong> the popover';
     ?>
     <tr>
       <td class="v-align-middle"><?=$sl.'.'?></td>
-      <!-- <td class="v-align-middle">< ?=$img_url?></td> -->
-      <td class="v-align-middle"><strong><?php echo $row->first_name;?></strong></td>
-      <td class="v-align-middle"><strong><?=$row->scout_id?></td>
-      <td class="v-align-middle"><?php echo $row->username;?></td>
-      <td class="v-align-middle"><?php echo $row->member_type_name;?></td>
-      <td class="v-align-middle"><?php echo get_scout_section($row->sc_section_id);?></td>
+      <td class="v-align-middle"><strong><?php echo isset($row->first_name) ? $row->first_name : ''; ?></strong></td>
+      <td class="v-align-middle"><strong><?php echo isset($row->scout_id) ? $row->scout_id : ''; ?></strong></td>
+      <td class="v-align-middle"><?php echo isset($row->username) ? $row->username : ''; ?></td>
+      <td class="v-align-middle"><?php echo isset($row->member_type_name) ? $row->member_type_name : ''; ?></td>
+      <td class="v-align-middle"><?php echo isset($row->sc_section_id) ? get_scout_section($row->sc_section_id) : ''; ?></td>
     </tr>
     <?php endforeach;?>
   </tbody>

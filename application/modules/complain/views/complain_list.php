@@ -1,5 +1,5 @@
-<div class="page-content">     
-  <div class="content">  
+<div class="page-content">
+  <div class="content">
     <ul class="breadcrumb" style="margin-bottom: 20px;">
       <li> <a href="<?=base_url()?>" class="active"> Dashboard </a> </li>
       <li> <a href="<?=base_url()?>" class="active"> <?=$module_title; ?> </a></li>
@@ -59,7 +59,7 @@
           </div>
 
           <div class="grid-body ">
-            <div id="infoMessage"><?php //echo $message;?></div>            
+            <div id="infoMessage"><?php //echo $message;?></div>
             <?php if($this->session->flashdata('success')):?>
                 <div class="alert alert-success">
                     <a class="close" data-dismiss="alert">&times;</a>
@@ -68,7 +68,7 @@
             <?php endif; ?>
 
             <div class="text-right pdf-download">
-              <a href="<?=base_url('Complain/complain_list_pdf')?>" class="btn btn-primary btn-xs btn-mini">PDF Download</a>
+              <a href="<?=base_url('Complain/complain_list_excel')?>" class="btn btn-primary btn-xs btn-mini">Excel Download</a>
             </div>
 
             <div class="table-responsive">
@@ -96,8 +96,8 @@
                       <td class="v-align-middle"><?=$row->address?></td>
                       <td class="text-center">
                         <div class="btn-group-responsive">
-                          <a href="<?=base_url('complain/details/'.encrypt_url($row->id));?>" class="btn btn-primary btn-xs btn-mini">Details</a>     
-                          <?php if($this->ion_auth->is_admin()){ ?> 
+                          <a href="<?=base_url('complain/details/'.encrypt_url($row->id));?>" class="btn btn-primary btn-xs btn-mini">Details</a>
+                          <?php if($this->ion_auth->is_admin()){ ?>
                             <a href="<?=base_url('complain/delete/'.$row->id);?>" class="btn btn-info btn-xs btn-mini">Delete</a>
                           <?php } ?>
                         </div>

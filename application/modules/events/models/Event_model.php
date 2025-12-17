@@ -332,7 +332,8 @@ class Event_model extends CI_Model {
 
 
     public function get_applicant_data($limit = 1000, $offset = 0, $eventLevel=NULL, $region=NULL, $district=NULL, $upazila=NULL, $group=NULL) {
-        $this->db->select('ep.*, e.id as eventid, e.event_title, e.event_start_date, e.event_end_date, e.event_level, u.id as user_id, u.scout_id, u.first_name');
+
+        $this->db->select('ep.*, e.id as eventid, e.event_title, e.event_start_date, e.event_end_date, e.event_level, u.id as user_id, u.scout_id, u.first_name, u.sc_district_id');
         $this->db->from('event_participant ep');
         $this->db->join('events e', 'e.id = ep.event_id', 'LEFT');
         $this->db->join('users u', 'u.id = ep.scout_id', 'LEFT');
@@ -342,15 +343,19 @@ class Event_model extends CI_Model {
         $this->db->order_by('ep.id', 'DESC');
         if($region){
             $this->db->where('ep.curr_region_id', $region);
+            $this->db->where('ep.curr_region_id = u.sc_region_id');
         }
         if($district){
             $this->db->where('ep.curr_district_id', $district);
+            $this->db->where('ep.curr_district_id = u.sc_district_id');
         }
         if($upazila){
             $this->db->where('ep.curr_upazila_id', $upazila);
+            $this->db->where('ep.curr_upazila_id = u.sc_upa_tha_id');
         }
         if($group){
             $this->db->where('ep.curr_group_id', $group);
+            $this->db->where('ep.curr_group_id = u.sc_group_id');
         }
         $query = $this->db->get()->result();
         // echo $this->db->last_query(); exit;
@@ -430,7 +435,7 @@ class Event_model extends CI_Model {
             $this->db->where('ep.verify_upazila', 'Approved');
         }
         $query['member_list'] = $this->db->get()->result();
-        // dd($query['member_list']);
+        // dd($query);
 
         return $query;
     }
@@ -444,9 +449,6 @@ class Event_model extends CI_Model {
         $this->db->where('e.verify_nhq', 'Approved');
         $this->db->where('e.id', $id);
         $result = $this->db->get()->row();
-
-        // echo $this->db->last_query(); exit;
-
         return $result;
     }
 
@@ -493,7 +495,7 @@ class Event_model extends CI_Model {
         $query = $this->db->select('b.id, bt.badge_type_name_bn')->join('badge_type bt', 'b.badge_type_id=bt.id', 'LEFT')->where('b.id', $id)->get('scout_badge b')->row();
         return isset($query) ? $query->badge_type_name_bn : '';
     }
-    
+
     public function upcomming_event() {
         $this->db->select('*');
         $this->db->where('event_start_date >',date('Y-m-d'));

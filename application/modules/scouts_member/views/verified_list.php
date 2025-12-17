@@ -62,13 +62,7 @@
           <div class="grid-title">
             <h4><span class="semi-bold"><?=$meta_title; ?></span></h4>
             <div class="pull-right">
-              <form action="<?= base_url('scouts_member/active_list') ?>" method="post" style="display:inline;">
-                <input type="hidden" name="id" value="1">
-                <button type="submit" class="btn btn-blueviolet btn-xs btn-mini">
-                  Export to Excel
-                </button>
-              </form>
-
+              <a href="<?=base_url('scouts_member/active_list_excel')?>" class="btn btn-blueviolet btn-xs btn-mini"> Export to Excel </a>
               <a href="<?=base_url('scouts_member/create')?>" class="btn btn-blueviolet btn-xs btn-mini"> Add Scouts Member </a>
               <a href="<?=base_url('scouts_member/all')?>" class="btn btn-blueviolet btn-xs btn-mini"> Scouts List</a>
             </div>

@@ -1,5 +1,5 @@
-<div class="page-content">     
-  <div class="content">  
+<div class="page-content">
+  <div class="content">
     <ul class="breadcrumb" style="margin-bottom: 20px;">
       <li> <a href="<?=base_url()?>" class="active"> Dashboard </a> </li>
       <li> <a href="<?=base_url()?>" class="active"> <?=$module_title; ?> </a></li>
@@ -13,18 +13,18 @@
             <h4><span class="semi-bold"><?=$meta_title; ?></span></h4>
             <div class="pull-right">
               <!-- <a href="<?=base_url('events/create_event')?>" class="btn btn-blueviolet btn-xs btn-mini"> My Application List </a> -->
-            </div> 
+            </div>
           </div>
 
           <div class="grid-body ">
-            <div id="infoMessage"><?php //echo $message;?></div>            
+            <div id="infoMessage"><?php //echo $message;?></div>
             <?php if($this->session->flashdata('success')):?>
               <div class="alert alert-success">
                 <?php echo $this->session->flashdata('success');?>
               </div>
             <?php endif; ?>
             <?php if($this->session->flashdata('warning')):?>
-                <div class="alert alert-warning">                      
+                <div class="alert alert-warning">
                     <?php echo $this->session->flashdata('warning');;?>
                 </div>
             <?php endif; ?>
@@ -46,32 +46,32 @@
                 </tr>
               </thead>
               <tbody>
-                <?php 
+                <?php
                 $sl = 0;
                 foreach ($results as $row):
                   // echo '<pre>';
                   // print_r($row); exit;
-                  
+
                   $sl++;
                 ?>
                 <tr>
                   <td class="v-align-middle"><?=$sl?></td>
-                  <td class="v-align-middle"><a href="<?=base_url('events/details/'.$row->id);?>"><strong><?=$row->event_title?></strong></a></td>
+                  <td class="v-align-middle"><a href="<?=base_url('events/details/'.encrypt_url($row->id));?>"><strong><?=$row->event_title?></strong></a></td>
                   <td class="v-align-middle"><?=$row->event_venue?></td>
                   <td class="v-align-middle"><?=date('d M, y', strtotime($row->event_start_date))?></td>
                   <td class="v-align-middle"><?=date('d M, y', strtotime($row->event_end_date))?></td>
                   <td class="v-align-middle"><?=date('d M, y', strtotime($row->event_reg_start))?></td>
                   <td class="v-align-middle"><?=date('d M, y', strtotime($row->event_reg_end))?></td>
-                  <td align="right"><a target="_blank" href="<?=base_url('events/details/'.$row->id);?>" class="btn btn-primary btn-mini">Details</a> </td>
+                  <td align="right"><a target="_blank" href="<?=base_url('events/details/'.encrypt_url($row->id));?>" class="btn btn-primary btn-mini">Details</a> </td>
                   <?php  //if(count($this->Event_model->is_apply_event($row->id, $info->id))){?>
                   <!-- <td align="right"><a href="<?=base_url('events/join_event/'.$row->id);?>" class="btn btn-blueviolet btn-mini disabled">Already Applied</a> </td> -->
                   <?php //}else{ ?>
                   <td align="right">
-                    <a href="<?=base_url('events/join_event_as_group/'.$row->id);?>" class="btn btn-blueviolet btn-mini">Apply As Group</a> 
+                    <a href="<?=base_url('events/join_event_as_group/'.encrypt_url($row->id));?>" class="btn btn-blueviolet btn-mini">Apply As Group</a>
                   </td>
                   <?php //} ?>
                 </tr>
-              <?php endforeach; ?> 
+              <?php endforeach; ?>
 
             </tbody>
           </table>

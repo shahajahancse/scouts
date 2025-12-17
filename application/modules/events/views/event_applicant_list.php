@@ -22,6 +22,7 @@
         <div class="grid simple ">
           <div class="grid-title">
             <h4><span class="semi-bold"><?=$meta_title; ?></span></h4>
+            <a class="btn btn-mini btn-success" style="float:right !important;" href="<?=base_url("events/export_event_applicant_list/".encrypt_url($results['info']->id))?>" target="_blank"> Export to Excel <i class="icon-download-alt"></i></a>
           </div>
 
           <div class="grid-body ">
@@ -77,12 +78,14 @@
               <thead>
                 <tr>
                   <th style="width:2%"> SL </th>
-                  <th style="width:5%">Image</th>
                   <th style="width:10%">Scout ID</th>
                   <th style="width:20%">Full Name</th>
                   <th style="width:15%">Member Type</th>
                   <th style="width:10%">Apply As</th>
-                  <th style="width:10%">Status</th>
+                  <th style="width:10%">Group Verify</th>
+                  <th style="width:10%">District Verify</th>
+                  <th style="width:10%">Region Verify</th>
+                  <th style="width:10%">NHQ Verify</th>
                   <th style="width:10%" class="text-center">Action</th>
                 </tr>
               </thead>
@@ -91,34 +94,29 @@
                 $sl = 0;
                 foreach ($results['member_list'] as $row):
                   $sl++;
-                  $path = base_url().'profile_img/';
-                  if($row->profile_img != NULL){
-                    $img_url = '<img src="'.$path.$row->profile_img.'" height="20">';
-                  }else{
-                    $img_url = '<img src="'.$path.'no-img.png" height="20">';
-                  }
-
                   $status = '';
-                  if($this->ion_auth->is_admin()){
-                    $status = event_verify_status($row->verify_nhq);
-                  }elseif($this->ion_auth->is_region_admin()){
-                    $status = event_verify_status($row->verify_region);
-                  }elseif($this->ion_auth->is_district_admin()){
-                    $status = event_verify_status($row->verify_district);
-                  }elseif($this->ion_auth->is_upazila_admin()){
-                    $status = event_verify_status($row->verify_upazila);
-                  }elseif($this->ion_auth->is_group_admin()){
-                    $status = event_verify_status($row->verify_group);
-                  }
+                  $group_verify = event_verify_status($row->verify_group);
+                  $district_verify = event_verify_status($row->verify_district);
+                  $region_verify = event_verify_status($row->verify_region);
+                  $nhq_verify = event_verify_status($row->verify_nhq);
+                  // if($results['info']->created_office_by == 4){ //Upazila
+                  //   $district_verify = 'Not Applicable';
+                  //   $region_verify = 'Not Applicable';
+                  //   $nhq_verify = 'Not Applicable';
+                  // }
                 ?>
                 <tr>
                   <td class="v-align-middle"><?=$sl?></td>
-                  <td class="v-align-middle"><?=$img_url?></td>
                   <td class="v-align-middle"><?=$row->scout_id?></td>
                   <td class="v-align-middle"><?=$row->first_name;?></td>
                   <td class="v-align-middle"><?=$row->member_type_name?></td>
                   <td class="v-align-middle"><?=get_event_participant_type($row->participant_type_id)?></td>
-                  <td class="v-align-middle"><?=$status?></td>
+
+                  <td class="tg-2bev2"><?=$group_verify?></td>
+                  <td class="tg-2bev2"><?=$district_verify?></td>
+                  <td class="tg-2bev2"><?=$region_verify?></td>
+                  <td class="tg-2bev2"><?=$nhq_verify?></td>
+
                   <td data-label="Action" class="text-right">
                       <div class="btn-group">
                         <a class="btn btn-primary dropdown-toggle btn-mini" data-toggle="dropdown" href="#">
