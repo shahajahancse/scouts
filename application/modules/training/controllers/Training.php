@@ -620,8 +620,8 @@ class Training extends Backend_Controller {
     }
 
     public function applicant_list($id){
+        $this->data['idd'] =$id;
         $id = (int) decrypt_url($id);
-
         if(!$id){
             redirect('dashboard');
         }elseif(!$this->Common_model->exists('scout_training', 'id', $id)){
@@ -634,6 +634,18 @@ class Training extends Backend_Controller {
         $this->data['meta_title'] = 'Training Applicant List';
         $this->data['subview'] = 'training_applicant_list';
         $this->load->view('backend/_layout_main', $this->data);
+    }
+    public function applicant_list_excel($id){
+        $id = (int) decrypt_url($id);
+        if(!$id){
+            redirect('dashboard');
+        }elseif(!$this->Common_model->exists('scout_training', 'id', $id)){
+            redirect('dashboard');
+        }
+
+        $this->data['results'] = $this->Training_model->get_applicant_list($id);
+        $this->data['meta_title'] = 'Training Applicant List';
+        $this->load->view('training_applicant_list_excel', $this->data);
     }
 
     public function participant_list($id){

@@ -1,5 +1,5 @@
-<div class="page-content">     
-  <div class="content">  
+<div class="page-content">
+  <div class="content">
     <ul class="breadcrumb" style="margin-bottom: 20px;">
       <li> <a href="<?=base_url('dashboard')?>" class="active"> Dashboard </a> </li>
       <li> <a href="<?=base_url('application_list')?>" class="active"> <?=$module_title; ?> </a></li>
@@ -22,10 +22,11 @@
         <div class="grid simple ">
           <div class="grid-title">
             <h4><span class="semi-bold"><?=$meta_title; ?></span></h4>
+            <a href="<?=base_url( 'training/applicant_list_excel/'.$idd)?>" class="btn btn-blueviolet btn-xs btn-mini"> Create Training </a>
           </div>
 
           <div class="grid-body ">
-            <div id="infoMessage"><?php //echo $message;?></div>            
+            <div id="infoMessage"><?php //echo $message;?></div>
             <?php if($this->session->flashdata('success')):?>
               <div class="alert alert-success">
                 <?php echo $this->session->flashdata('success');?>
@@ -54,7 +55,7 @@
                       <?=$results['info']->place?>
                       <?php
                         //echo $results['info']->event_organizer;
-                        // if($results['info']->event_level == 'nhq'){                        
+                        // if($results['info']->event_level == 'nhq'){
                         //   echo 'National Headquarter';
                         // }elseif($results['info']->event_level == 'region'){
                         //   echo $results['info']->region_name;
@@ -81,12 +82,12 @@
                   <th style="width:5%">Image</th>
                   <th style="width:10%">Scout ID</th>
                   <th style="width:20%">Full Name</th>
-                  <th style="width:15%">Member Type</th>                  
+                  <th style="width:15%">Member Type</th>
                   <th style="width:10%" class="text-center">Details</th>
                 </tr>
               </thead>
               <tbody>
-                <?php 
+                <?php
                 $sl = 0;
                 foreach ($results['member_list'] as $row):
                   $sl++;
@@ -105,7 +106,7 @@
                   <td class="v-align-middle"><?=$row->member_type_name?></td>
                   <td><a target="_blank" href="<?=base_url("scouts_member/details/".encrypt_url($row->user_id))?>"  class="btn btn-primary btn-mini">Details</a></td>
                 </tr>
-              <?php endforeach; ?> 
+              <?php endforeach; ?>
 
             </tbody>
           </table>

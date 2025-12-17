@@ -328,11 +328,9 @@ class Events extends Backend_Controller {
 
 
                         $config['upload_path']      = $this->file_path;
-                        $config['allowed_types']    = 'gif|jpg|png|doc|docx|xls|xlsx|pdf';
-                        $config['max_size']         = '60000';
+                        $config['allowed_types']    = 'jpg|jpeg|png|pdf|doc|docx|xls|xlsx|zip';
+                        $config['max_size']         = 2048;
                         $config['file_name']        = $new_file_name;
-                        //$config['max_width']        = '3000';
-                        //$config['max_height']       = '3000';
                         $this->load->library('upload', $config);
                         if($this->upload->do_upload()){
                             $uploadData = $this->upload->data();
@@ -574,8 +572,8 @@ class Events extends Backend_Controller {
 
 
                         $config['upload_path']      = $this->file_path;
-                        $config['allowed_types']    = 'gif|jpg|png|doc|docx|xls|xlsx|pdf';
-                        $config['max_size']         = '6000';
+                        $config['allowed_types']    = 'jpg|jpeg|png|pdf|doc|docx|xls|xlsx|zip';
+                        $config['max_size']         = 2048;
                         $config['file_name']        = $new_file_name;
                         //$config['max_width']        = '3000';
                         //$config['max_height']       = '3000';
