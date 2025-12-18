@@ -1,5 +1,5 @@
-<div class="page-content">     
-  <div class="content">  
+<div class="page-content">
+  <div class="content">
     <ul class="breadcrumb">
       <li> <a href="<?=base_url('dashboard')?>" class="active"> Dashboard </a> </li>
       <li> <a href="<?=base_url('offices/region')?>" class="active"><?=$module_name?> </a> </li>
@@ -11,9 +11,9 @@
         <div class="grid simple horizontal red">
           <div class="grid-title">
             <h4><span class="semi-bold"><?=$meta_title; ?></span></h4>
-            <div class="pull-right">                
-              <a href="<?=base_url('offices/region')?>" class="btn btn-success btn-xs btn-mini"> Region List</a>  
-              <a href="<?=base_url('offices/region_update/'.encrypt_url($info->id))?>" class="btn btn-success btn-xs btn-mini"> Region Update</a>  
+            <div class="pull-right">
+              <a href="<?=base_url('offices/region')?>" class="btn btn-success btn-xs btn-mini"> Region List</a>
+              <a href="<?=base_url('offices/region_update/'.encrypt_url($info->id))?>" class="btn btn-success btn-xs btn-mini"> Region Update</a>
             </div>
           </div>
           <div class="grid-body">
@@ -43,7 +43,7 @@
               $region = '<button class="btn btn-mini btn-primary">Special Region</button>';
             }
             ?>
-            <a href="<?=base_url('Offices/region_details_pdf'.'/'.encrypt_url($info->id))?>" class="btn btn-primary btn-xs btn-mini" style="float: right;">PDF Download</a>
+            <a href="<?=base_url('offices/region_details_pdf'.'/'.encrypt_url($info->id))?>" class="btn btn-primary btn-xs btn-mini" style="float: right;">PDF Download</a>
 
             <table class="tg" width="100%">
               <tr>
@@ -73,7 +73,7 @@
               <tr>
                 <th class="tg-d8ej">Region Logo</th>
                 <td class="tg-031e">
-                  <?php 
+                  <?php
                   $img_path = base_url().'offices_img/';
                   if($info->region_logo != NULL){
                     $src= $img_path.$info->region_logo;
@@ -89,7 +89,7 @@
                 </tr>
               </table>
 
-            </div>  <!-- END GRID BODY -->              
+            </div>  <!-- END GRID BODY -->
           </div> <!-- END GRID -->
         </div>
 

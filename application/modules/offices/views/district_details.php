@@ -52,7 +52,7 @@
               $district = '<button class="btn btn-mini btn-primary">Air District</button>';
             }
            ?>
-           <a href="<?=base_url('Offices/district_details_pdf'.'/'.encrypt_url($info->id))?>" target="_blank" class="btn btn-primary btn-xs btn-mini" style="float: right;">PDF Download</a>
+           <a href="<?=base_url('offices/district_details_pdf'.'/'.encrypt_url($info->id))?>" target="_blank" class="btn btn-primary btn-xs btn-mini" style="float: right;">PDF Download</a>
            <table class="tg" width="100%">
             <tr>
               <th class="tg-d8ej" width="200"> Region Name</th>
