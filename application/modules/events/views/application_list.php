@@ -170,7 +170,7 @@
             <?php endif; ?>
 
             <?php if($results) {  //print_r($results);?>
-              <a href="<?=base_url('Events/excel_application_list')?>" class="btn btn-primary btn-xs btn-mini" style="float: right; margin-bottom: 10px;">Export to Excel</a>
+              <a href="<?=base_url('events/excel_application_list')?>" class="btn btn-primary btn-xs btn-mini" style="float: right; margin-bottom: 10px;">Export to Excel</a>
             <div class="table-responsive">
               <table class="table table-hover table-condensed" id="example">
                 <thead>
