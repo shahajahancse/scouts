@@ -46,6 +46,7 @@
    <!-- <script src="<?=base_url();?>awedget/assets/plugins/jquery-1.9.1.min.js" type="text/javascript"></script> -->
    <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script> -->
    */?>
+   <link rel="stylesheet" href="<?= base_url('awedget/assets/cropper/crop/css/cropper.css') ?>">
    <script src="<?=base_url('awedget/assets/js/jquery.1.9.1.min.js');?>" type="text/javascript"></script>
    <script type="text/javascript">var hostname='<?php echo base_url();?>';</script>
    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
@@ -55,6 +56,10 @@
       window["ga-disable-G-KJS3N7B2XV"] = true;
    }
    </script>
+
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+
 
 </head> <!-- END HEAD -->
 

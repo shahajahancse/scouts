@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700);
 :-moz-placeholder {
   color: '#333843';
 }
@@ -459,7 +459,7 @@ body.menu-non-fixed .page-sidebar {
   padding: 8px 21px 8px 18px;
   text-decoration: none;
   font-size: 14px;
-  font-weight: normal;  
+  font-weight: normal;
 }
 .page-sidebar .page-sidebar-wrapper > ul > li > a.open {
   background: black;
@@ -544,7 +544,7 @@ body.menu-non-fixed .page-sidebar {
 }
 .page-sidebar .page-sidebar-wrapper > ul > li > ul.sub-menu > li > a:hover {
   /*background: #1b1e24 !important;*/
-  background: #e9ffcc !important;  
+  background: #e9ffcc !important;
 }
 .page-sidebar .page-sidebar-wrapper > ul > li > ul.sub-menu > li:first-child > a {
   border-top: 0px !important;
@@ -1352,8 +1352,8 @@ body.menu-non-fixed .page-sidebar {
  .user-info-wrapper {
     display: block;
     margin: 15px 20px;
-    margin-bottom: 10px; 
-    padding-bottom: 10px; 
+    margin-bottom: 10px;
+    padding-bottom: 10px;
     border-bottom: 1px solid #444343;
  }
  .user-info-wrapper .profile-wrapper {
@@ -2838,7 +2838,7 @@ body.menu-non-fixed .page-sidebar {
  button,
  select,
  textarea {
-    font-family: "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;  
+    font-family: "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
  }
  .uneditable-input,
  textarea,
@@ -7701,26 +7701,26 @@ body.menu-non-fixed .page-sidebar {
 
  .uppercaseText{text-transform: uppercase;}
 
- fieldset 
+ fieldset
  {
    border: 1px solid #ddd !important;
    margin: 0px 0px 20px 0px;
    min-width: 0;
-   padding: 10px;       
+   padding: 10px;
    position: relative;
    border-radius:4px;
    background-color:#f5f5f5;
    padding-left:10px!important;
- }  
+ }
 
 legend
 {
    font-size:14px;
    font-weight:bold;
-   margin-bottom: 0px; 
-   width: 35%; 
+   margin-bottom: 0px;
+   width: 35%;
    border: 1px solid #8BC34A;
-   border-radius: 4px; 
-   padding: 5px 5px 5px 10px; 
+   border-radius: 4px;
+   padding: 5px 5px 5px 10px;
    background-color: #eaffce;
 }
