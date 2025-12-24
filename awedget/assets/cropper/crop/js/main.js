@@ -136,6 +136,11 @@
 
         if (files.length > 0) {
           file = files[0];
+          if (file.size > 5 * 1024 * 1024) {
+            alert("Please select image under 5MB");
+            this.$avatarInput.val("");
+            return;
+          }
 
           if (this.isImageFile(file)) {
             if (this.url) {
@@ -227,7 +232,7 @@
       }
     },
 
-    ajaxUpload: function () {
+    ajaxUpload_iframe_24122025: function () {
       var url = this.$avatarForm.attr('action');
       var data = new FormData(this.$avatarForm[0]);
       var _this = this;
@@ -259,6 +264,75 @@
       });
     },
 
+    ajaxUpload: function () {
+      var _this = this;
+      var url = this.$avatarForm.attr('action');
+      function makePng(width, height) {
+        return _this.$img.cropper('getCroppedCanvas', {
+          width: width,
+          height: height,
+          imageSmoothingQuality: 'high'
+        });
+      }
+
+      // First attempt: 400x400 PNG
+      var canvas = makePng(400, 400);
+      if (!canvas) {
+        _this.submitFail('Crop failed');
+        return;
+      }
+
+      canvas.toBlob(function (blob) {
+        // If PNG > 2MB → reduce size
+        if (blob.size > 2 * 1024 * 1024) {
+          // Second attempt: 300x300
+          canvas = makePng(300, 300);
+          canvas.toBlob(function (blob2) {
+            if (blob2.size > 2 * 1024 * 1024) {
+              _this.submitFail('PNG image must be under 2MB');
+              return;
+            }
+            upload(blob2);
+          }, 'image/png');
+        } else {
+          upload(blob);
+        }
+      }, 'image/png');
+
+      function upload(blob) {
+        // 🔥 this keeps hide_img + all existing fields
+        var formData = new FormData(_this.$avatarForm[0]);
+        // override avatar file
+        formData.set('avatar', blob, 'avatar.png');
+        $.ajax(url, {
+          type: 'POST',
+          data: formData,
+          dataType: 'json',
+          processData: false,
+          contentType: false,
+
+          beforeSend: function () {
+            _this.submitStart();
+            jQuery('button.avatar-save').button('loading');
+          },
+
+          success: function (data) {
+            _this.submitDone(data);
+          },
+
+          error: function () {
+            _this.submitFail('Upload faileds');
+          },
+
+          complete: function () {
+            _this.submitEnd();
+            jQuery('button.avatar-save').button('reset');
+          }
+        });
+      }
+    },
+
+
     syncUpload: function () {
       this.$avatarSave.click();
     },
@@ -279,7 +353,7 @@
                 beforeSend: function () {},
                 complete: function () {},
                 success: function (json) {}
-            });            
+            });
             jQuery('img#render-avatar').attr('src', data.urlPath+data.thumb);
             jQuery('input#profile-avatar-url').val(data.thumb);
             //this.$avatar.attr('src', url+'assets/uploads/_thumb/'+data.thumb);
@@ -332,9 +406,9 @@
   $(function () {
     return new CropAvatar($('#crop-avatar'));
   });
-  // 
+  //
   jQuery(document).on('click','img#render-avatar', function(){
-    jQuery('input#ussmid').val(jQuery(this).data('ussuid'));  
+    jQuery('input#ussmid').val(jQuery(this).data('ussuid'));
     jQuery('input#upltypeid').val(jQuery(this).data('upltype'));
   });
 
