@@ -5,7 +5,6 @@ class Scouts_member extends Backend_Controller {
    var $userSessID;
    var $img_path;
    var $qr_path;
-
    var $img_orginal_path;
    var $img_thumb_path;
 
@@ -25,7 +24,6 @@ class Scouts_member extends Backend_Controller {
       $this->load->model('committee/Committee_model');
       $this->img_path = realpath(APPPATH . '../profile_img');
       $this->qr_path = realpath(APPPATH . '../qrcode_img');
-
       $this->img_orginal_path = realpath(APPPATH . '../temp_dir/');
       $this->img_thumb_path = realpath(APPPATH . '../temp_dir/_thumb/');
    }
@@ -34,21 +32,8 @@ class Scouts_member extends Backend_Controller {
       redirect('scouts_member/all');
    }
 
-   // public function file_xls()
-   //  {
-   //     // $this->load->helper('php-excel');
-   //     $data_array =  array (
-   //     $data_array[] = array ("Oliver", "Peter", "Paul"),
-   //                      array ("Marlene", "Mica", "Lina")
-   //              );
-   //     $xls = new Excel_XML;
-   //     $xls->addArray ($data_array);
-   //     $xls->generateXML ( "output_name" );
-   //  }
-
    /******************* Scouts Member All Kind of List ***********************
    ***************************************************************************/
-
    public function all($offset=0){
       $limit = 25;
 
@@ -1535,143 +1520,6 @@ class Scouts_member extends Backend_Controller {
       $this->load->view('backend/_layout_main', $this->data);
    }
 
-   // public function active_list($offset=0){
-   //    $limit = 25;
-
-   //    if($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin()){
-   //       //Super Admin
-
-   //       $results = $this->Scouts_member_model->get_last_30day_active_member($limit, $offset);
-
-   //       //Dropdown
-   //       $this->data['regions'] = $this->Common_model->get_regions();
-   //       $this->data['scouts_district'] = array(''=>'Scouts District');
-   //       $this->data['scouts_upazila'] = array(''=>'Scouts Upazila');
-   //    }else{
-   //       redirect('dashboard');
-   //    }
-
-   //    if(isset($_GET['region']) && $_GET['region'] > 0){
-   //       $this->data['scouts_district'] =  $this->Common_model->get_scout_districts($_GET['region']);
-   //    }
-
-   //    if(isset($_GET['district']) && $_GET['district'] > 0){
-   //       $this->data['scouts_upazila'] =  $this->Common_model->get_scout_upazila_thana($_GET['district']);
-   //    }
-
-   //    //Results
-   //    $this->data['results'] = $results['rows'];
-   //    $this->data['total_rows'] = $results['num_rows'];
-
-   //    //pagination
-   //    $this->data['pagination'] = create_pagination('scouts_member/active_list/', $this->data['total_rows'], $limit, 3, $full_tag_wrap = true);
-
-   //    // Load page
-   //    $this->data['meta_title'] = 'Last 30 Day Active Member List';
-   //    $this->data['subview'] = 'verified_list';
-   //    $this->load->view('backend/_layout_main', $this->data);
-   // }
-
-
-   // public function active_list($offset = 0)
-   // {
-   //    $limit = 25;
-   //    $is_excel = ($this->input->get('id') == 1);
-
-   //    if ($this->ion_auth->is_admin() || $this->ion_auth->is_scout_admin()) {
-
-   //       // Excel হলে limit থাকবে না
-   //       if ($is_excel) {
-   //             $results = $this->Scouts_member_model->get_last_30day_active_member(null, null);
-   //       } else {
-   //             $results = $this->Scouts_member_model->get_last_30day_active_member($limit, $offset);
-   //       }
-
-   //       // Dropdown data (only for view)
-   //       if (!$is_excel) {
-   //             $this->data['regions'] = $this->Common_model->get_regions();
-   //             $this->data['scouts_district'] = array('' => 'Scouts District');
-   //             $this->data['scouts_upazila'] = array('' => 'Scouts Upazila');
-   //       }
-
-   //    } else {
-   //       redirect('dashboard');
-   //    }
-
-   //    // Filter dropdown
-   //    if (!$is_excel) {
-   //       if (isset($_GET['region']) && $_GET['region'] > 0) {
-   //             $this->data['scouts_district'] = $this->Common_model->get_scout_districts($_GET['region']);
-   //       }
-
-   //       if (isset($_GET['district']) && $_GET['district'] > 0) {
-   //             $this->data['scouts_upazila'] = $this->Common_model->get_scout_upazila_thana($_GET['district']);
-   //       }
-   //    }
-   //    // dd($results);
-   //    $this->data['results'] = $results['rows'];
-   //    $this->data['total_rows'] = $results['num_rows'];
-
-   //    // ================= EXCEL DOWNLOAD =================
-   //    if ($is_excel) {
-
-   //       header("Content-Type: text/csv; charset=UTF-8");
-   //       header("Content-Disposition: attachment; filename=active_members.csv");
-   //       header("Pragma: no-cache");
-   //       header("Expires: 0");
-
-   //       $output = fopen("php://output", "w");
-
-   //       // UTF-8 BOM for Bangla
-   //       fprintf($output, chr(0xEF).chr(0xBB).chr(0xBF));
-
-   //       // Header row
-   //       fputcsv($output, [
-   //          'ID',
-   //          'Name',
-   //          'Scout ID',
-   //          'Username',
-   //          'Member Type',
-   //          'Phone',
-   //          'Section',
-   //          'Unit',
-   //          'Status'
-   //       ]);
-
-   //       foreach ($results['rows'] as $row) {
-   //          fputcsv($output, [
-   //                $row->id,
-   //                $row->first_name . ' ' . $row->last_name,
-   //                $row->scout_id,
-   //                $row->username,
-   //                $row->member_type_name,
-   //                $row->phone,
-   //                $row->sc_section_id,
-   //                $row->unit_name ?? '',
-   //                $row->is_request == 1 ? 'Pending' : 'Active'
-   //          ]);
-   //       }
-
-   //       fclose($output);
-   //       exit;
-   //    }
-
-
-   //    // ================= NORMAL VIEW =================
-   //    $this->data['pagination'] = create_pagination(
-   //       'scouts_member/active_list/',
-   //       $this->data['total_rows'],
-   //       $limit,
-   //       3,
-   //       true
-   //    );
-
-   //    $this->data['meta_title'] = 'Last 30 Day Active Member List';
-   //    $this->data['subview'] = 'verified_list';
-
-   //    $this->load->view('backend/_layout_main', $this->data);
-   // }
-
    public function active_list($offset = 0)
    {
       $limit = 25;
@@ -2438,26 +2286,49 @@ class Scouts_member extends Backend_Controller {
             $id = $this->data['info']->id;
 
 	         //Copy image, rename and remove from temp directory
-            if($this->input->post('hide_img') != NULL){
+            // if($this->input->post('hide_img') != NULL){
+            //    $file_name = $this->input->post('hide_img');
+            //    $tmp = explode('.', $file_name);
+            //    $file_extension = end($tmp);
+            //    $file = $this->img_thumb_path.'/'.$this->input->post('hide_img');
+            //    $newfile = $id.'.'.$file_extension;
+            //    if($this->Common_model->set_profile_image($id, $newfile)){
+            //       $saveDir = $this->img_path.'/'.$newfile;
+            //       if (copy($file, $saveDir)) {
+            //          @unlink($this->img_orginal_path.'\\'.$tmp[0].'-original.png');
+            //          @unlink($this->img_orginal_path.'\\'.$tmp[0].'-original.jpg');
+            //          @unlink($this->img_orginal_path.'\\'.$tmp[0].'-original.jpeg');
+            //          @unlink($this->img_thumb_path.'\\'.$file_name);
+            //       }
+            //    }
+            // }
+
+            if ($this->input->post('hide_img') != NULL) {
                $file_name = $this->input->post('hide_img');
                $tmp = explode('.', $file_name);
                $file_extension = end($tmp);
 
-	            //Copy file and rename
-               $file = $this->img_thumb_path.'/'.$this->input->post('hide_img');
-	            // $file = 'temp_dir/_thumb/'.$this->input->post('hide_img');
-               $newfile = $id.'.'.$file_extension;
+               $thumbFile = $this->img_thumb_path . '/' . $file_name;
+               $newFile   = $id . '.' . $file_extension;
+               $savePath = $this->img_path . '/' . $newFile;
 
-	            //Update table image field
-               if($this->Common_model->set_profile_image($id, $newfile)){
-                  $saveDir = $this->img_path.'/'.$newfile;
-                  if (copy($file, $saveDir)) {
-	                  // @unlink($this->img_orginal_path.'\\'.$tmp[0].'-original.'.$file_extension);
-                     @unlink($this->img_orginal_path.'\\'.$tmp[0].'-original.png');
-                     @unlink($this->img_orginal_path.'\\'.$tmp[0].'-original.jpg');
-                     @unlink($this->img_orginal_path.'\\'.$tmp[0].'-original.jpeg');
-                     @unlink($this->img_thumb_path.'\\'.$file_name);
+               /* 🔴 STEP 1: delete old profile image */
+               if (!empty($this->data['info']->profile_img)) {
+                  $oldFile = $this->img_path . '/' . $this->data['info']->profile_img;
+                  if (file_exists($oldFile)) {
+                     unlink($oldFile);
                   }
+               }
+
+               /* 🔴 STEP 2: move file (NOT copy) */
+               if (rename($thumbFile, $savePath)) {
+                  /* 🔴 STEP 3: delete temp originals */
+                  @unlink($this->img_orginal_path . '/' . $tmp[0] . '-original.png');
+                  @unlink($this->img_orginal_path . '/' . $tmp[0] . '-original.jpg');
+                  @unlink($this->img_orginal_path . '/' . $tmp[0] . '-original.jpeg');
+                  @unlink($this->img_thumb_path.'\\'.$file_name);
+                  /* 🔴 STEP 4: DB update */
+                  $this->Common_model->set_profile_image($id, $newFile);
                }
             }
 
@@ -2685,36 +2556,37 @@ class Scouts_member extends Backend_Controller {
 
 
          $user_group = array('9');
-         // if ($this->form_validation->run() == true && $this->ion_auth->register($identity, $password, $email, $additional_data, $user_group)) {
-         // $insert_id = $this->db->insert_id();
 
          if($insert_id = $this->ion_auth->register($identity, $password, $email, $additional_data, $user_group)){
-            //Copy image, rename and remove from temp directory
-            if($this->input->post('hide_img') != NULL){
+
+            if ($this->input->post('hide_img') != NULL) {
                $file_name = $this->input->post('hide_img');
                $tmp = explode('.', $file_name);
                $file_extension = end($tmp);
 
-               //Copy file and rename
-               $file = $this->img_thumb_path.'/'.$this->input->post('hide_img');
-               // $file = 'temp_dir/_thumb/'.$this->input->post('hide_img');
-               $newfile = $insert_id.'.'.$file_extension;
+               $thumbFile = $this->img_thumb_path . '/' . $file_name;
+               $newFile   = $insert_id . '.' . $file_extension;
+               $savePath = $this->img_path . '/' . $newFile;
 
-               //Update table image field
-               if($this->Common_model->set_profile_image($insert_id, $newfile)){
-                  $saveDir = $this->img_path.'/'.$newfile;
-                  if (copy($file, $saveDir)) {
-                     // @unlink($this->img_orginal_path.'\\'.$tmp[0].'-original.'.$file_extension);
-                     @unlink($this->img_orginal_path.'\\'.$tmp[0].'-original.png');
-                     @unlink($this->img_orginal_path.'\\'.$tmp[0].'-original.jpg');
-                     @unlink($this->img_orginal_path.'\\'.$tmp[0].'-original.jpeg');
-                     @unlink($this->img_thumb_path.'\\'.$file_name);
-
-                     //$this->session->set_flashdata('success', 'Image update successfully.');
-                     //redirect('my_profile');
+               /* 🔴 STEP 1: delete old profile image */
+               if (!empty($this->data['info']->profile_img)) {
+                  $oldFile = $this->img_path . '/' . $this->data['info']->profile_img;
+                  if (file_exists($oldFile)) {
+                     unlink($oldFile);
                   }
                }
-            }
+
+               /* 🔴 STEP 2: move file (NOT copy) */
+               if (rename($thumbFile, $savePath)) {
+                  /* 🔴 STEP 3: delete temp originals */
+                  @unlink($this->img_orginal_path . '/' . $tmp[0] . '-original.png');
+                  @unlink($this->img_orginal_path . '/' . $tmp[0] . '-original.jpg');
+                  @unlink($this->img_orginal_path . '/' . $tmp[0] . '-original.jpeg');
+                  @unlink($this->img_thumb_path.'\\'.$file_name);
+                  /* 🔴 STEP 4: DB update */
+                  $this->Common_model->set_profile_image($insert_id, $newFile);
+               }
+            }            
 
             //1=C, 2=U, 3=D, 4=V, 5=G ,A = 6
             func_activity_log(1, 'Scout Member create ID :'.$insert_id);

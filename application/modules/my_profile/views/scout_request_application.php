@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="<?php print HTTP_CROP_PATH;?>css/cropper.css">
+<link rel="stylesheet" href="<?= base_url('awedget/assets/cropper/crop/css/cropper.css') ?>">
 <style type="text/css">
    .edit-pen{ position: absolute; color: #01579B; background: #fff; padding: 5px; box-shadow: 1px 1px 1px 1px #eee; border-radius: 17px; right: 65px; bottom: 10px; border: 1px solid #f1f1f1;
    }
@@ -396,8 +396,8 @@
 
 <?php $this->load->view('profileAvatar'); ?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-filestyle/2.1.0/bootstrap-filestyle.js"></script>
-<script src="<?php print HTTP_CROP_PATH; ?>js/cropper.js"></script>
-<script src="<?php print HTTP_CROP_PATH; ?>js/main.js"></script>
+<script src="<?= base_url('awedget/assets/cropper/crop/js/cropper.js') ?>"></script>
+<script src="<?= base_url('awedget/assets/cropper/crop/js/main.js') ?>"></script>
 
 
 

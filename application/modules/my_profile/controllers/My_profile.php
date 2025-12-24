@@ -692,15 +692,6 @@ class My_profile extends Backend_Controller {
       $this->form_validation->set_rules('blood_group', 'blood group', 'trim');
       $this->form_validation->set_rules('phone', 'mobile number', 'required|trim');
       $this->form_validation->set_rules('email', 'email', 'valid_email|trim');
-
-      // $this->form_validation->set_rules('nid', 'nid', 'trim');
-      // $this->form_validation->set_rules('birth_id', 'birth id', 'trim');
-      // // $this->form_validation->set_rules('phone2', 'telephone', 'trim');
-      // $this->form_validation->set_rules('passport_no', 'passport no', 'trim');
-      // $this->form_validation->set_rules('phone_emergency', 'phone emergency', 'trim');
-      // $this->form_validation->set_rules('occupation_id', 'occupation', 'trim');
-      // $this->form_validation->set_rules('occp_others', 'other occupation', 'trim');
-
       $this->form_validation->set_rules('pre_village_house', 'present village/house (English)', 'required|trim');
       // $this->form_validation->set_rules('pre_village_house_bn', 'present village/house (Bangla)', 'required|trim');
       $this->form_validation->set_rules('pre_road_block', 'present road/block (English)', 'required|trim');
@@ -709,20 +700,6 @@ class My_profile extends Backend_Controller {
       $this->form_validation->set_rules('pre_district_id', 'present district', 'required|trim');
       $this->form_validation->set_rules('pre_upa_tha_id', 'present upazila / thana', 'required|trim');
       $this->form_validation->set_rules('pre_post_office', 'present post office', 'trim');
-
-      // $this->form_validation->set_rules('same_as', 'same as', 'trim');
-
-      // $this->form_validation->set_rules('per_village_house', 'permanent village/house', 'trim');
-      // $this->form_validation->set_rules('per_road_block', 'permanent road/block', 'trim');
-      // $this->form_validation->set_rules('per_division_id', 'permanent division', 'trim');
-      // $this->form_validation->set_rules('per_district_id', 'permanent district', 'trim');
-      // $this->form_validation->set_rules('per_upa_tha_id', 'permanent upazila / thana', 'trim');
-      // $this->form_validation->set_rules('per_post_office', 'permanent post office', 'trim');
-
-      // $this->form_validation->set_rules('facebook', 'facebook', 'trim');
-      // $this->form_validation->set_rules('google', 'google', 'trim');
-      // $this->form_validation->set_rules('linkedin', 'linkedin', 'trim');
-      // $this->form_validation->set_rules('skype', 'skype', 'trim');
 
       $this->form_validation->set_rules('curr_institute_id', 'curr institute', 'trim');
       $this->form_validation->set_rules('curr_class', 'curr class', 'trim');
@@ -744,9 +721,6 @@ class My_profile extends Backend_Controller {
       $this->form_validation->set_rules('sc_unit_id', 'scout unit', 'trim');
       $this->form_validation->set_rules('userfile', 'profile image required', '');
 
-      // if(@$_FILES['userfile']['size'] > 0){
-      //    $this->form_validation->set_rules('userfile', '', 'callback_file_check');
-      // }
       // Run after validation
       if ($this->form_validation->run() == true){
          $dob = $this->input->post('year').'-'.$this->input->post('month').'-'.$this->input->post('day');
@@ -795,69 +769,54 @@ class My_profile extends Backend_Controller {
             'sc_group_id'       => $this->input->post('sc_group_id'),
             'sc_unit_id'        => $this->input->post('sc_unit_id')
          );
-         /*
-         // Image Upload
-         if($_FILES['userfile']['size'] > 0){
-            $new_file_name = time().'-'.$_FILES["userfile"]['name'];
-            $config['allowed_types']= 'jpg|png|jpeg';
-            $config['upload_path']  = $this->img_path;
-            $config['file_name']    = $new_file_name;
-            $config['max_size']     = 600;
-
-            $this->load->library('upload', $config);
-            //upload file to directory
-            if($this->upload->do_upload()){
-               $uploadData = $this->upload->data();
-               $config = array(
-                  'source_image' => $uploadData['full_path'],
-                  'new_image' => $this->img_path,
-                  'maintain_ratio' => TRUE,
-                  'width' => 300,
-                  'height' => 300
-                  );
-               $this->load->library('image_lib',$config);
-               $this->image_lib->initialize($config);
-               $this->image_lib->resize();
-
-               $uploadedFile = $uploadData['file_name'];
-               // print_r($uploadedFile);
-            }else{
-               $this->data['message'] = $this->upload->display_errors();
-            }
-         }
-
-         if($_FILES['userfile']['size'] > 0){
-            $form_data['profile_img'] = $uploadedFile;
-         }
-         */
 
          if($this->Common_model->edit('users', $this->userID, 'id', $form_data)){
             $id = $this->userID;
 
             //Copy image, rename and remove from temp directory
-            if($this->input->post('hide_img') != NULL){
+            // if($this->input->post('hide_img') != NULL){
+            //    $file_name = $this->input->post('hide_img');
+            //    $tmp = explode('.', $file_name);
+            //    $file_extension = end($tmp);
+            //    $file = $this->img_thumb_path.'/'.$this->input->post('hide_img');
+            //    $newfile = $id.'.'.$file_extension;
+            //    if($this->Common_model->set_profile_image($id, $newfile)){
+            //       $saveDir = $this->img_path.'/'.$newfile;
+            //       if (copy($file, $saveDir)) {
+            //          @unlink($this->img_orginal_path.'\\'.$tmp[0].'-original.png');
+            //          @unlink($this->img_orginal_path.'\\'.$tmp[0].'-original.jpg');
+            //          @unlink($this->img_orginal_path.'\\'.$tmp[0].'-original.jpeg');
+            //          @unlink($this->img_thumb_path.'\\'.$file_name);
+            //       }
+            //    }
+            // }
+
+            if ($this->input->post('hide_img') != NULL) {
                $file_name = $this->input->post('hide_img');
                $tmp = explode('.', $file_name);
                $file_extension = end($tmp);
 
-               //Copy file and rename
-               $file = $this->img_thumb_path.'/'.$this->input->post('hide_img');
-               // $file = 'temp_dir/_thumb/'.$this->input->post('hide_img');
-               $newfile = $id.'.'.$file_extension;
+               $thumbFile = $this->img_thumb_path . '/' . $file_name;
+               $newFile   = $id . '.' . $file_extension;
+               $savePath = $this->img_path . '/' . $newFile;
 
-               //Update table image field
-               if($this->Common_model->set_profile_image($id, $newfile)){
-                  $saveDir = $this->img_path.'/'.$newfile;
-                  if (copy($file, $saveDir)) {
-                     // @unlink($this->img_orginal_path.'\\'.$tmp[0].'-original.'.$file_extension);
-                     @unlink($this->img_orginal_path.'\\'.$tmp[0].'-original.png');
-                     @unlink($this->img_orginal_path.'\\'.$tmp[0].'-original.jpg');
-                     @unlink($this->img_orginal_path.'\\'.$tmp[0].'-original.jpeg');
-                     @unlink($this->img_thumb_path.'\\'.$file_name);
-
-                     //$this->session->set_flashdata('success', 'Image update successfully.');
-                     //redirect('my_profile');
+               /* 🔴 STEP 1: delete old profile image */
+               if (!empty($this->data['info']->profile_img)) {
+                  $oldFile = $this->img_path . '/' . $this->data['info']->profile_img;
+                  if (file_exists($oldFile)) {
+                     unlink($oldFile);
                   }
+               }
+
+               /* 🔴 STEP 2: move file (NOT copy) */
+               if (rename($thumbFile, $savePath)) {
+                  /* 🔴 STEP 3: delete temp originals */
+                  @unlink($this->img_orginal_path . '/' . $tmp[0] . '-original.png');
+                  @unlink($this->img_orginal_path . '/' . $tmp[0] . '-original.jpg');
+                  @unlink($this->img_orginal_path . '/' . $tmp[0] . '-original.jpeg');
+                  @unlink($this->img_thumb_path.'\\'.$file_name);
+                  /* 🔴 STEP 4: DB update */
+                  $this->Common_model->set_profile_image($id, $newFile);
                }
             }
 
@@ -913,15 +872,6 @@ class My_profile extends Backend_Controller {
       $this->form_validation->set_rules('blood_group', 'blood group', 'trim');
       $this->form_validation->set_rules('phone', 'mobile number', 'required|trim');
       $this->form_validation->set_rules('email', 'email', 'valid_email|trim');
-
-      // $this->form_validation->set_rules('nid', 'nid', 'trim');
-      // $this->form_validation->set_rules('birth_id', 'birth id', 'trim');
-      // // $this->form_validation->set_rules('phone2', 'telephone', 'trim');
-      // $this->form_validation->set_rules('passport_no', 'passport no', 'trim');
-      // $this->form_validation->set_rules('phone_emergency', 'phone emergency', 'trim');
-      // $this->form_validation->set_rules('occupation_id', 'occupation', 'trim');
-      // $this->form_validation->set_rules('occp_others', 'other occupation', 'trim');
-
       $this->form_validation->set_rules('pre_village_house', 'present village/house (English)', 'required|trim');
       // $this->form_validation->set_rules('pre_village_house_bn', 'present village/house (Bangla)', 'required|trim');
       $this->form_validation->set_rules('pre_road_block', 'present road/block (English)', 'required|trim');
@@ -930,20 +880,6 @@ class My_profile extends Backend_Controller {
       $this->form_validation->set_rules('pre_district_id', 'present district', 'required|trim');
       $this->form_validation->set_rules('pre_upa_tha_id', 'present upazila / thana', 'required|trim');
       $this->form_validation->set_rules('pre_post_office', 'present post office', 'trim');
-
-      // $this->form_validation->set_rules('same_as', 'same as', 'trim');
-
-      // $this->form_validation->set_rules('per_village_house', 'permanent village/house', 'trim');
-      // $this->form_validation->set_rules('per_road_block', 'permanent road/block', 'trim');
-      // $this->form_validation->set_rules('per_division_id', 'permanent division', 'trim');
-      // $this->form_validation->set_rules('per_district_id', 'permanent district', 'trim');
-      // $this->form_validation->set_rules('per_upa_tha_id', 'permanent upazila / thana', 'trim');
-      // $this->form_validation->set_rules('per_post_office', 'permanent post office', 'trim');
-
-      // $this->form_validation->set_rules('facebook', 'facebook', 'trim');
-      // $this->form_validation->set_rules('google', 'google', 'trim');
-      // $this->form_validation->set_rules('linkedin', 'linkedin', 'trim');
-      // $this->form_validation->set_rules('skype', 'skype', 'trim');
 
       $this->form_validation->set_rules('curr_institute_id', 'curr institute', 'trim');
       $this->form_validation->set_rules('curr_class', 'curr class', 'trim');
@@ -1014,74 +950,56 @@ class My_profile extends Backend_Controller {
             'sc_upa_tha_id'     => $this->input->post('sc_upa_tha_id'),
             'sc_group_id'       => $this->input->post('sc_group_id'),
             'sc_unit_id'        => $this->input->post('sc_unit_id'),
-            );
-
-         /*
-         // Image Upload
-         if($_FILES['userfile']['size'] > 0){
-            $new_file_name = time().'-'.$_FILES["userfile"]['name'];
-            $config['allowed_types']= 'jpg|png|jpeg';
-            $config['upload_path']  = $this->img_path;
-            $config['file_name']    = $new_file_name;
-            $config['max_size']     = 600;
-
-            $this->load->library('upload', $config);
-            //upload file to directory
-            if($this->upload->do_upload()){
-               $uploadData = $this->upload->data();
-               $config = array(
-                  'source_image' => $uploadData['full_path'],
-                  'new_image' => $this->img_path,
-                  'maintain_ratio' => TRUE,
-                  'width' => 300,
-                  'height' => 300
-                  );
-               $this->load->library('image_lib',$config);
-               $this->image_lib->initialize($config);
-               $this->image_lib->resize();
-
-               $uploadedFile = $uploadData['file_name'];
-               // print_r($uploadedFile);
-            }else{
-               $this->data['message'] = $this->upload->display_errors();
-            }
-         }
-
-         if($_FILES['userfile']['size'] > 0){
-            $form_data['profile_img'] = $uploadedFile;
-         }
-         */
-
+         );
 
          if($this->Common_model->edit('users', $this->userID, 'id', $form_data)){
             $id = $this->userID;
+            // if($this->input->post('hide_img') != NULL){
+            //    $file_name = $this->input->post('hide_img');
+            //    $tmp = explode('.', $file_name);
+            //    $file_extension = end($tmp);
+            //    $file = $this->img_thumb_path.'/'.$this->input->post('hide_img');
+            //    $newfile = $id.'.'.$file_extension;
+            //    if($this->Common_model->set_profile_image($id, $newfile)){
+            //       $saveDir = $this->img_path.'/'.$newfile;
+            //       if (copy($file, $saveDir)) {
+            //          @unlink($this->img_orginal_path.'\\'.$tmp[0].'-original.png');
+            //          @unlink($this->img_orginal_path.'\\'.$tmp[0].'-original.jpg');
+            //          @unlink($this->img_orginal_path.'\\'.$tmp[0].'-original.jpeg');
+            //          @unlink($this->img_thumb_path.'\\'.$file_name);
+            //       }
+            //    }
+            // }
 
-            //Copy image, rename and remove from temp directory
-            if($this->input->post('hide_img') != NULL){
+            if ($this->input->post('hide_img') != NULL) {
                $file_name = $this->input->post('hide_img');
                $tmp = explode('.', $file_name);
                $file_extension = end($tmp);
 
-               //Copy file and rename
-               $file = $this->img_thumb_path.'/'.$this->input->post('hide_img');
-               // $file = 'temp_dir/_thumb/'.$this->input->post('hide_img');
-               $newfile = $id.'.'.$file_extension;
+               $thumbFile = $this->img_thumb_path . '/' . $file_name;
+               $newFile   = $id . '.' . $file_extension;
+               $savePath = $this->img_path . '/' . $newFile;
 
-               //Update table image field
-               if($this->Common_model->set_profile_image($id, $newfile)){
-                  $saveDir = $this->img_path.'/'.$newfile;
-                  if (copy($file, $saveDir)) {
-                     // @unlink($this->img_orginal_path.'\\'.$tmp[0].'-original.'.$file_extension);
-                     @unlink($this->img_orginal_path.'\\'.$tmp[0].'-original.png');
-                     @unlink($this->img_orginal_path.'\\'.$tmp[0].'-original.jpg');
-                     @unlink($this->img_orginal_path.'\\'.$tmp[0].'-original.jpeg');
-                     @unlink($this->img_thumb_path.'\\'.$file_name);
-
-                     //$this->session->set_flashdata('success', 'Image update successfully.');
-                     //redirect('my_profile');
+               /* 🔴 STEP 1: delete old profile image */
+               if (!empty($this->data['info']->profile_img)) {
+                  $oldFile = $this->img_path . '/' . $this->data['info']->profile_img;
+                  if (file_exists($oldFile)) {
+                     unlink($oldFile);
                   }
                }
+
+               /* 🔴 STEP 2: move file (NOT copy) */
+               if (rename($thumbFile, $savePath)) {
+                  /* 🔴 STEP 3: delete temp originals */
+                  @unlink($this->img_orginal_path . '/' . $tmp[0] . '-original.png');
+                  @unlink($this->img_orginal_path . '/' . $tmp[0] . '-original.jpg');
+                  @unlink($this->img_orginal_path . '/' . $tmp[0] . '-original.jpeg');
+                  @unlink($this->img_thumb_path.'\\'.$file_name);
+                  /* 🔴 STEP 4: DB update */
+                  $this->Common_model->set_profile_image($id, $newFile);
+               }
             }
+
             $this->session->set_flashdata('success', 'Thank You! Your request sent successfully.');
             redirect('dashboard');
          }
@@ -1315,36 +1233,62 @@ class My_profile extends Backend_Controller {
       $this->form_validation->set_rules('hide_img', 'profile image required', 'trim');
 
       $this->data['info'] = $this->My_profile_model->get_info($this->userID);
-      //print_r($this->data['info']->id); exit;
+      // if ($this->form_validation->run() == true){
+      //    $id = $this->data['info']->id;
+      //    if($this->input->post('hide_img') != NULL){
+      //       $file_name = $this->input->post('hide_img');
+      //       $tmp = explode('.', $file_name);
+      //       $file_extension = end($tmp);
 
-      if ($this->form_validation->run() == true){
+      //       $file = $this->img_thumb_path.'/'.$this->input->post('hide_img');
+      //       $newfile = $id.'.'.$file_extension;
+      //       if($this->Common_model->set_profile_image($id, $newfile)){
+      //          $saveDir = $this->img_path.'/'.$newfile;
+      //          if (copy($file, $saveDir)) {
+      //             @unlink($this->img_orginal_path.'\\'.$tmp[0].'-original.png');
+      //             @unlink($this->img_orginal_path.'\\'.$tmp[0].'-original.jpg');
+      //             @unlink($this->img_orginal_path.'\\'.$tmp[0].'-original.jpeg');
+      //             @unlink($this->img_thumb_path.'\\'.$file_name);
+      //             $this->session->set_flashdata('success', 'Image update successfully.');
+      //             redirect('my_profile');
+      //          }
+      //       }
+      //    }
+      // }
+
+      if ($this->form_validation->run() == true) {
          $id = $this->data['info']->id;
-
-         //Copy image, rename and remove from temp directory
-         if($this->input->post('hide_img') != NULL){
+         if ($this->input->post('hide_img') != NULL) {
             $file_name = $this->input->post('hide_img');
             $tmp = explode('.', $file_name);
             $file_extension = end($tmp);
 
-            //Copy file and rename
-            $file = $this->img_thumb_path.'/'.$this->input->post('hide_img');
-            // $file = 'temp_dir/_thumb/'.$this->input->post('hide_img');
-            $newfile = $id.'.'.$file_extension;
+            $thumbFile = $this->img_thumb_path . '/' . $file_name;
+            $newFile   = $id . '.' . $file_extension;
+            $savePath = $this->img_path . '/' . $newFile;
 
-            //Update table image field
-            if($this->Common_model->set_profile_image($id, $newfile)){
-               $saveDir = $this->img_path.'/'.$newfile;
-               if (copy($file, $saveDir)) {
-                  // @unlink($this->img_orginal_path.'\\'.$tmp[0].'-original.'.$file_extension);
-                  @unlink($this->img_orginal_path.'\\'.$tmp[0].'-original.png');
-                  @unlink($this->img_orginal_path.'\\'.$tmp[0].'-original.jpg');
-                  @unlink($this->img_orginal_path.'\\'.$tmp[0].'-original.jpeg');
-                  @unlink($this->img_thumb_path.'\\'.$file_name);
-
-                  $this->session->set_flashdata('success', 'Image update successfully.');
-                  redirect('my_profile');
+            /* 🔴 STEP 1: delete old profile image */
+            if (!empty($this->data['info']->profile_img)) {
+               $oldFile = $this->img_path . '/' . $this->data['info']->profile_img;
+               if (file_exists($oldFile)) {
+                  unlink($oldFile);
                }
+            }
 
+            /* 🔴 STEP 2: move file (NOT copy) */
+            if (rename($thumbFile, $savePath)) {
+                  /* 🔴 STEP 3: delete temp originals */
+                  @unlink($this->img_orginal_path . '/' . $tmp[0] . '-original.png');
+                  @unlink($this->img_orginal_path . '/' . $tmp[0] . '-original.jpg');
+                  @unlink($this->img_orginal_path . '/' . $tmp[0] . '-original.jpeg');
+                  @unlink($this->img_thumb_path.'\\'.$file_name);
+                  /* 🔴 STEP 4: DB update */
+                  $this->Common_model->set_profile_image($id, $newFile);
+
+                  $this->session->set_flashdata('success', 'Image updated successfully.');
+                  redirect('my_profile');
+            } else {
+                  show_error('Image move failed. Check directory permission.');
             }
          }
       }
