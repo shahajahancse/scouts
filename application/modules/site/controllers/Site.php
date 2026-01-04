@@ -887,7 +887,6 @@ class Site extends Frontend_Controller {
 
     public function user_verify(){
         // $this->form_validation->set_rules('user_id', 'User ID', 'required|max_length[6]|max_length[6]|trim');
-
         if (!empty($this->input->get('scoutID'))){
             $user_id             = $this->input->get('scoutID');
             $this->data['result'] = $this->Site_model->get_user_info($user_id);

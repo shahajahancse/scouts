@@ -26,7 +26,8 @@
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
   <!-- <script src="<?=base_url();?>awedget/assets/plugins/jquery-1.8.3.min.js" type="text/javascript"></script> -->
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+  <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script> -->
+  <script src="<?=base_url();?>awedget/assets/js/jquery.1.9.1.js" type="text/javascript"></script>
   <script type="text/javascript">var hostname='<?php echo base_url();?>';</script>
 </head>
 <!-- BEGIN BODY -->
