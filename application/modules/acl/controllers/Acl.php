@@ -34,7 +34,7 @@ class Acl extends Backend_Controller {
         $this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
 
         // Dropdown List
-        $this->data['group_list'] = $this->Common_model->get_user_group(); 
+        $this->data['group_list'] = $this->Common_model->get_user_group();
 
         //Load page
         $this->data['meta_title'] = 'All Users';
@@ -76,7 +76,7 @@ class Acl extends Backend_Controller {
                 /***********Activity Logs Start**********/
                 $insert_id = $this->db->insert_id();
                 func_activity_log(1, 'create access level ID :'.$insert_id); //1=C, 2=U, 3=D, 4=V, 5=G ,A = 6
-                /***********Activity Logs End**********/                
+                /***********Activity Logs End**********/
                 $this->session->set_flashdata('success', 'New access insert successfully.');
                 redirect('acl/access_level');
             }
@@ -91,7 +91,7 @@ class Acl extends Backend_Controller {
         // Load View
         $this->data['meta_title'] = 'Create Access Level';
         $this->data['subview'] = 'create_access_level';
-        $this->load->view('backend/_layout_main', $this->data);        
+        $this->load->view('backend/_layout_main', $this->data);
     }
 
     public function edit_access_level($id){
@@ -114,7 +114,7 @@ class Acl extends Backend_Controller {
                 /***********Activity Logs Start**********/
                 //$insert_id = $this->db->insert_id();
                 func_activity_log(2, 'create access level update ID :'.$insert_id); //1=C, 2=U, 3=D, 4=V, 5=G ,A = 6
-                /***********Activity Logs End**********/ 
+                /***********Activity Logs End**********/
                 $this->session->set_flashdata('success', 'Information update successfully.');
                 redirect('acl/access_level');
             }
@@ -132,7 +132,7 @@ class Acl extends Backend_Controller {
         // Load View
         $this->data['meta_title'] = 'Edit Access Level';
         $this->data['subview'] = 'edit_access_level';
-        $this->load->view('backend/_layout_main', $this->data);        
+        $this->load->view('backend/_layout_main', $this->data);
     }
 
     /******************** Task Register *********************/
@@ -170,7 +170,7 @@ class Acl extends Backend_Controller {
                 /***********Activity Logs Start**********/
                 $insert_id = $this->db->insert_id();
                 func_activity_log(1, 'New task insert ID :'.$insert_id); //1=C, 2=U, 3=D, 4=V, 5=G ,A = 6
-                /***********Activity Logs End**********/                 
+                /***********Activity Logs End**********/
                 $this->session->set_flashdata('success', 'New task insert successfully.');
                 redirect('acl/task_register');
             }
@@ -183,9 +183,9 @@ class Acl extends Backend_Controller {
 
         $this->data['meta_title'] = 'Create Task Register';
         $this->data['subview'] = 'create_task_register';
-        $this->load->view('backend/_layout_main', $this->data);        
+        $this->load->view('backend/_layout_main', $this->data);
     }
-    
+
     // create a new Task Register
     public function edit_task_register($id){
         // validate form input
@@ -221,7 +221,7 @@ class Acl extends Backend_Controller {
 
         $this->data['meta_title'] = 'Edit Task Register';
         $this->data['subview'] = 'edit_task_register';
-        $this->load->view('backend/_layout_main', $this->data);        
+        $this->load->view('backend/_layout_main', $this->data);
     }
 
     /******************** User *********************/
@@ -483,7 +483,7 @@ class Acl extends Backend_Controller {
                 );
 
             // print_r($form_data); exit;
-            if($this->Common_model->save('groups_type', $form_data)){                
+            if($this->Common_model->save('groups_type', $form_data)){
                 $this->session->set_flashdata('success', 'New group type insert successfully.');
                 redirect('acl/group_type');
             }
@@ -492,7 +492,7 @@ class Acl extends Backend_Controller {
         $this->data['meta_title'] = 'Create Group Type';
         $this->data['subview'] = 'create_group_type';
         $this->load->view('backend/_layout_main', $this->data);
-        
+
     }
 
     public function edit_group_type($id){
@@ -509,7 +509,7 @@ class Acl extends Backend_Controller {
                 'group_type_en' => $this->input->post('group_type_en'),
                 'group_type_bn' => $this->input->post('group_type_bn'),
                 'type_description' => $this->input->post('type_description')
-                );         
+                );
 
             // print_r($form_data); exit;
             if($this->Common_model->edit('groups_type', $id, 'id', $form_data)){
@@ -556,7 +556,7 @@ class Acl extends Backend_Controller {
                 /***********Activity Logs Start**********/
                 $insert_id = $this->db->insert_id();
                 func_activity_log(1, 'New role insert ID :'.$insert_id); //1=C, 2=U, 3=D, 4=V, 5=G ,A = 6
-                /***********Activity Logs End**********/                
+                /***********Activity Logs End**********/
                 $this->session->set_flashdata('success', 'New role insert successfully.');
                 redirect('acl/role_group');
             }
@@ -567,7 +567,7 @@ class Acl extends Backend_Controller {
         $this->data['meta_title'] = 'Create Role Group';
         $this->data['subview'] = 'create_role_group';
         $this->load->view('backend/_layout_main', $this->data);
-        
+
     }
 
     public function edit_role_group($id){
@@ -584,7 +584,7 @@ class Acl extends Backend_Controller {
             'role_name_en' => $this->input->post('role_name_en'),
             'role_name_bn' => $this->input->post('role_name_bn'),
             'role_description' => $this->input->post('role_description')
-            );          
+            );
 
             // print_r($form_data); exit;
            if($this->Common_model->edit('groups_role', $id, 'id', $form_data)){
@@ -608,14 +608,14 @@ public function test($group){
 
     $users = $this->ion_auth->users($group)->result();
     echo '<pre>';
-    echo count($users); 
+    echo count($users);
 }
 
 public function userbygroup($group){
 
     $users = $this->ion_auth->users($gorup)->result();
     echo '<pre>';
-    echo count($users); 
+    echo count($users);
 }
 
 public function group_name(){
@@ -683,7 +683,7 @@ public function edit_group($id)
         // bail if no group id given
     if(!$id || empty($id)) {
         redirect('dashboard');
-    }        
+    }
 
     if (!$this->ion_auth->logged_in() || !$this->ion_auth->is_admin()) {
        redirect('dashboard');
@@ -713,13 +713,13 @@ $this->data['message'] = (validation_errors() ? validation_errors() : ($this->io
         // pass the user to the view
 $this->data['group'] = $group;
 
-$readonly = $this->config->item('admin_group', 'ion_auth') || $this->config->item('default_group', 'ion_auth') === $group->name ? 'readonly' : '';        
+$readonly = $this->config->item('admin_group', 'ion_auth') || $this->config->item('default_group', 'ion_auth') === $group->name ? 'readonly' : '';
 
 $this->data['group_name'] = array(
     'name'    => 'group_name',
     'id'      => 'group_name',
     'class'   => 'form-control input-sm',
-    'type'    => 'text',            
+    'type'    => 'text',
     'value'   => $this->form_validation->set_value('group_name', $group->name),
     $readonly => $readonly,
     );
@@ -802,7 +802,7 @@ public function deactivate($id = NULL){
 
 public function user_delete($id){
   if($this->ion_auth->is_admin()){
-   $this->Acl_model->user_destroy($id);          
+   $this->Acl_model->user_destroy($id);
    $this->session->set_flashdata('success', 'Delete region successfully.');
    redirect("acl");
 }else{
