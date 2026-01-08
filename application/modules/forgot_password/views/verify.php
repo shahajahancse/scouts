@@ -2,17 +2,26 @@
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;">
+
+	<style>
+		.forgot {
+			color: #009688 !important;
+			font-weight: 600 ! important;
+			font-size: 14px ! important;
+			text-align: center ! important;
+		}
+	</style>
 	<div class="container">
-		<div class="row login-container login_register column-seperation">  
-			<?php 
+		<div class="row login-container login_register column-seperation">
+			<?php
 			$attributes = array('id' => 'verify_validate');
-			echo form_open("forgot_password/verify_change_password", $attributes);
+			echo form_open(current_url(), $attributes);
 			?>
-			<div class="col-md-4 col-sm-6 col-sm-offset-3 col-md-offset-4 box_reg"> 
+			<div class="col-md-4 col-sm-6 col-sm-offset-3 col-md-offset-4 box_reg">
 				<img src="<?=base_url('fwedget/assets/images/scout_logo_small.png');?>" class="box_img img-responsive">
 				<h4 class="box_title">Forgot Password Verify Code</h4>
 				<div id="infoMessage"><?php echo $message;?></div>
-				<h4 class="box_title2">Please check your email for verify code.</h4>
+				<h4 class="box_title2 forgot">Please check your email for verify code.</h4>
 				<br>
 
 				<div class="row">
@@ -21,7 +30,7 @@
 						<?php echo form_error('verify_code')?>
 						<div class="input-group" >
 							<span class="input-group-addon addonExtra"> <i class="fa fa-key"></i> </span>
-							<input type="text" class="form-control" name="verify_code" value="<?=set_value('verify_code')?>" placeholder="6 Digit">   
+							<input type="text" class="form-control" name="verify_code" value="<?=set_value('verify_code')?>" placeholder="6 Digit">
 						</div>
 					</div>
 
@@ -30,7 +39,7 @@
 						<?php //echo form_error('new')?>
 						<div class="input-group">
 							<span class="input-group-addon addonExtra"> <i class="fa fa-lock"></i> </span>
-							<input type="password" class="form-control" name="new" id="new" placeholder="Password minimum 8 character">   
+							<input type="password" class="form-control" name="new" id="new" placeholder="Password minimum 8 character">
 						</div>
 					</div>
 
@@ -39,7 +48,7 @@
 						<?php //echo form_error('new_confirm')?>
 						<div class="input-group">
 							<span class="input-group-addon addonExtra"> <i class="fa fa-lock"></i> </span>
-							<input type="password" class="form-control" name="new_confirm" placeholder="Re-Type Password">   
+							<input type="password" class="form-control" name="new_confirm" placeholder="Re-Type Password">
 						</div>
 					</div>
 
