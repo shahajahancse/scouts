@@ -41,6 +41,8 @@ class Forgot_password extends CI_Controller {
 					$update_data = array('verify_code' => $code, 'forgotten_password_time' => time());
 					$this->db->where('id', $userinfo->id)->update('users', $update_data);
 					redirect("forgot_password/verify_change_password/".$newdata['forget_id']);
+				} else {
+					$this->ion_auth->set_error('forgot password email not sent');
 				}
 			} else {
 				$this->ion_auth->set_error('forgot password email not found');
