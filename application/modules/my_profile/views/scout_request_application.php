@@ -56,17 +56,17 @@
                            <div class="col-md-3">
                               <label class="form-label">Full Name (Bangla) <span class='required'>*</span></label>
                               <?php echo form_error('full_name_bn'); ?>
-                              <input type="text" name="full_name_bn" class="bangla form-control input-sm" value="<?=set_value('full_name_bn')?>" contenteditable="TRUE">
+                              <input type="text" name="full_name_bn" class="bangla form-control input-sm" value="<?=set_value('full_name_bn', $info->full_name_bn)?>" contenteditable="TRUE">
                            </div>
                            <div class="col-md-3">
                               <label class="form-label">Date of Birth <span class='required'>*</span></label>
                               <?php echo form_error('day'); echo form_error('month'); echo form_error('year'); ?>
                               <div class="row form-row">
                                  <?php
-                                 $dob=explode('-', $info->dob);
-                                 $day  =$dob[2];
-                                 $month=$dob[1];
-                                 $year =$dob[0];
+                                    $dob=explode('-', $info->dob);
+                                    $day  =$dob[2];
+                                    $month=$dob[1];
+                                    $year =$dob[0];
                                  ?>
                                  <div class="col-md-4" style="">
                                     <?php echo form_dropdown('day', $days, set_value('day',$day), 'class="form-control input-sm"'); ?>
@@ -92,12 +92,12 @@
                            <div class="col-md-3">
                               <label class="form-label">Father's Name (English) <span class='required'>*</span></label>
                               <?php echo form_error('father_name'); ?>
-                              <input type="text" name="father_name" class="form-control input-sm" value="<?=set_value('father_name')?>">
+                              <input type="text" name="father_name" class="form-control input-sm" value="<?=set_value('father_name', $info->father_name)?>">
                            </div>
                            <div class="col-md-3">
                               <label class="form-label">Father's Name (Bangla) </label>
                               <?php echo form_error('father_name_bn'); ?>
-                              <input type="text" name="father_name_bn" class="bangla form-control input-sm" value="<?=set_value('father_name_bn')?>" contenteditable="TRUE">
+                              <input type="text" name="father_name_bn" class="bangla form-control input-sm" value="<?=set_value('father_name_bn', $info->father_name_bn)?>" contenteditable="TRUE">
                            </div>
                            <div class="col-md-3">
                               <label class="form-label">Mobile No. (Self/Parents)<span class='required'>*</span></label>
@@ -108,7 +108,7 @@
                               <label class="form-label">Religion <span class='required'>*</span></label>
                               <?php echo form_error('religion_id');
                               $more_attr = 'class="form-control input-sm"';
-                              echo form_dropdown('religion_id', $religions, set_value('religion_id'), $more_attr);
+                              echo form_dropdown('religion_id', $religions, set_value('religion_id', $info->religion_id), $more_attr);
                               ?>
                            </div>
                         </div>
@@ -117,23 +117,23 @@
                            <div class="col-md-3">
                               <label class="form-label">Mother's Name (English) <span class='required'>*</span></label>
                               <?php echo form_error('mother_name'); ?>
-                              <input type="text" name="mother_name"  class="form-control input-sm" value="<?=set_value('mother_name')?>">
+                              <input type="text" name="mother_name"  class="form-control input-sm" value="<?=set_value('mother_name', $info->mother_name)?>">
                            </div>
                            <div class="col-md-3">
                               <label class="form-label">Mother's Name (Bangla) </label>
                               <?php echo form_error('mother_name_bn'); ?>
-                              <input type="text" name="mother_name_bn"  class="bangla form-control input-sm" value="<?=set_value('mother_name_bn')?>" contenteditable="TRUE">
+                              <input type="text" name="mother_name_bn"  class="bangla form-control input-sm" value="<?=set_value('mother_name_bn', $info->mother_name_bn)?>" contenteditable="TRUE">
                            </div>
                            <div class="col-md-3">
                               <label class="form-label">Email Address <span class='required'>*</span></label>
                               <?php echo form_error('email'); ?>
-                              <input name="email" id="email" value="<?=set_value('email')?>" type="text" class="form-control input-sm" placeholder="">
+                              <input name="email" id="email" value="<?=set_value('email', $info->email)?>" type="email" class="form-control input-sm" placeholder="">
                            </div>
                            <div class="col-md-3">
                               <label class="form-label">Blood Group</label>
                               <?php echo form_error('blood_group');
                               $more_attr = 'class="form-control input-sm" ';
-                              echo form_dropdown('blood_group', $blood_group, set_value('blood_group'), $more_attr);
+                              echo form_dropdown('blood_group', $blood_group, set_value('blood_group', $info->blood_group), $more_attr);
                               ?>
                            </div>
                         </div>
@@ -147,34 +147,34 @@
                                  <div class="col-md-6">
                                     <label class="form-label">Village/House No or Name (English) <span class='required'>*</span></label>
                                     <?php echo form_error('pre_village_house'); ?>
-                                    <input type="text" name="pre_village_house" class="form-control input-sm" value="<?=set_value('pre_village_house')?>">
+                                    <input type="text" name="pre_village_house" class="form-control input-sm" value="<?=set_value('pre_village_house', $info->pre_village_house)?>">
                                  </div>
                                  <div class="col-md-6">
                                     <label class="form-label">Road/Block/Sector (English) <span class='required'>*</span></label>
                                     <?php echo form_error('pre_road_block'); ?>
-                                    <input type="text" name="pre_road_block" class="form-control input-sm" value="<?=set_value('pre_road_block')?>">
+                                    <input type="text" name="pre_road_block" class="form-control input-sm" value="<?=set_value('pre_road_block', $info->pre_road_block)?>">
                                  </div>
                                  <div class="col-md-6">
                                     <label class="form-label">Village/House No or Name (Bangla) </label>
                                     <?php echo form_error('pre_village_house_bn'); ?>
-                                    <input type="text" name="pre_village_house_bn" class="bangla form-control input-sm" value="<?=set_value('pre_village_house_bn')?>" contenteditable="TRUE">
+                                    <input type="text" name="pre_village_house_bn" class="bangla form-control input-sm" value="<?=set_value('pre_village_house_bn', $info->pre_village_house_bn)?>" contenteditable="TRUE">
                                  </div>
                                  <div class="col-md-6">
                                     <label class="form-label">Road/Block/Sector (Bangla) </label>
                                     <?php echo form_error('pre_road_block_bn'); ?>
-                                    <input type="text" name="pre_road_block_bn" class="bangla form-control input-sm" value="<?=set_value('pre_road_block_bn')?>" contenteditable="TRUE">
+                                    <input type="text" name="pre_road_block_bn" class="bangla form-control input-sm" value="<?=set_value('pre_road_block_bn', $info->pre_road_block_bn)?>" contenteditable="TRUE">
                                  </div>
                                  <div class="col-md-6">
                                     <label class="form-label">Division <span class='required'>*</span></label>
                                     <?php echo form_error('pre_division_id');
-                                    $more_attr = 'class="form-control input-sm" id="division"';
-                                    echo form_dropdown('pre_division_id', $divisions, set_value('pre_division_id'), $more_attr);
+                                    $more_attr = 'class="form-control input-sm" id="divisionsss"';
+                                    echo form_dropdown('pre_division_id', $divisions, set_value('pre_division_id', $info->pre_division_id), $more_attr);
                                     ?>
                                  </div>
                                  <div class="col-md-6">
                                     <label class="form-label">District <span class='required'>*</span></label>
                                     <?php echo form_error('pre_district_id'); ?>
-                                    <select name="pre_district_id" class="distirict_val form-control input-sm" id="district">
+                                    <select name="pre_district_id" class="distirict_val form-control input-sm" id="districtss">
                                        <option value="">-- Select One --</option>
                                     </select>
                                  </div>
@@ -196,25 +196,14 @@
                            <div class="col-md-5">
                               <div class="row">
                                  <div class="col-md-12" style="margin-top: 25px;">
-                                    <?php /*
-                                    <img width="50" height="50" data-src-retina="<?php //$img_url?>" data-src="<?php //$img_url?>" src="<?php //$img_url?>" alt="">
-                                    <input type="file" name="userfile"><br> */ ?>
                                     <div class="form-group">
                                        <label>Profile Image</label>
                                        <div><?php echo form_error('userfile'); ?></div>
 
                                        <div class="avatar" style="top: 11px;">
                                           <input type="hidden" name="hide_img" id="profile-avatar-url" value="">
-                                          <?php
-                                          // $path = base_url();
-                                          // if(!empty($  ['url'])) {
-                                          // $url = HTTP_USER_PROFILE_THUMB_PATH.$userInfo['url'];
-                                          // } else {
-                                          $url = HTTP_IMAGES_PATH . 'no-img.png';
-                                          // }
-                                          ?>
+                                          <?php $url = HTTP_IMAGES_PATH . 'no-img.png'; ?>
                                           <img src="<?php print $url;?>" alt="image" title="avatar" data-toggle="modal" data-target="#avatar-modal" id="render-avatar" class="circular-fix has-shadow border marg-top10" data-ussuid="<?php print base64_encode(0);?>" data-backdrop="static" data-keyboard="false" data-upltype="avatar" style="width:80px; height:80px; max-width: 80px; max-height: 80px; border: 2px solid black; padding: 3px;"><br>
-                                          <!-- <a href="javascript:void();" data-toggle="modal" data-target="#avatar-modal"><i class="fa fa-pencil edit-pen"></i> </a> -->
                                        </div>
 
                                        <label>Note:</label>
@@ -257,18 +246,18 @@
                            <div class="col-md-4">
                               <label class="form-label">Scout Join Date <span class='required'>*</span></label>
                               <?php echo form_error('join_date'); ?>
-                              <input name="join_date" value="<?=set_value('join_date')?>" type="text" class="form-control input-sm datetime pull-left" placeholder="DD-MM-YYYY">
+                              <input name="join_date" value="<?=set_value('join_date', date('d-m-Y', strtotime($info->join_date)))?>" type="text" class="form-control input-sm datetime pull-left" placeholder="DD-MM-YYYY">
                            </div>
                            <div class="col-md-4">
                               <label class="form-label">Member Type <span class='required'>*</span> </label>
                               <?php echo form_error('member_id'); ?>
-                              <?php echo form_dropdown('member_id',$member_type, set_value('member_id'), 'id="member_id" class="form-control input-sm"');?>
+                              <?php echo form_dropdown('member_id',$member_type, set_value('member_id', $info->member_id), 'id="member_id" class="form-control input-sm"');?>
                            </div>
                            <div class="col-md-4">
                               <label class="form-label">Scout Section Type <span class='required'>*</span></label>
                               <?php echo form_error('sc_section_id');
-                              $more_attr = 'class="form-control input-sm" id="sc_section"';
-                              echo form_dropdown('sc_section_id', $scout_section, set_value('sc_section_id'), $more_attr);
+                              $more_attr = 'class="form-control input-sm" id="sc_sectionss"';
+                              echo form_dropdown('sc_section_id', $scout_section, set_value('sc_section_id', $info->sc_section_id), $more_attr);
                               ?>
                            </div>
                         </div>
@@ -277,7 +266,7 @@
                            <div class="col-md-6" id="sc_badge_hidden">
                               <label class="form-label">Scout Badge</label>
                               <?php echo form_error('sc_badge_id'); ?>
-                              <select name="sc_badge_id" class="sc_badge_val form-control input-sm" id="sc_badge">
+                              <select name="sc_badge_id" class="sc_badge_val form-control input-sm" id="sc_badgesss">
                                  <option value="">-- Select One --</option>
                               </select>
                            </div>
@@ -295,14 +284,14 @@
                               <label class="form-label">Select Scout Region <span class='required'>*</span></label>
                               <?php
                               echo form_error('sc_region_id');
-                              $more_attr = 'class="form-control input-sm" id="region"';
-                              echo form_dropdown('sc_region_id', $regions, set_value('sc_region_id'), $more_attr);
+                              $more_attr = 'class="form-control input-sm" id="regionsss"';
+                              echo form_dropdown('sc_region_id', $regions, set_value('sc_region_id', $info->sc_region_id), $more_attr);
                               ?>
                            </div>
                            <div class="col-md-6">
                               <label class="form-label">Select Scout District <span class='required'>*</span></label>
                               <?php echo form_error('sc_district_id'); ?>
-                              <select name="sc_district_id" class="sc_district_val form-control input-sm" id="sc_district">
+                              <select name="sc_district_id" class="sc_district_val form-control input-sm" id="sc_districtsss">
                                  <option value="">-- Select One --</option>
                               </select>
                            </div>
@@ -329,7 +318,7 @@
                            <div class="col-md-6">
                               <label class="form-label">Petrol Name</label>
                               <?php echo form_error('petrol_name'); ?>
-                              <input name="petrol_name" id="petrol_name" value="<?=set_value('petrol_name')?>" type="text" class="form-control input-sm" placeholder="Ex. Deer / Horse">
+                              <input name="petrol_name" id="petrol_name" value="<?=set_value('petrol_name', $info->petrol_name)?>" type="text" class="form-control input-sm" placeholder="Ex. Deer / Horse">
                            </div>
                         </div>
 
@@ -377,6 +366,7 @@
                      </div>
                   </div> <!-- //Institute and scout info -->
 
+                  <input type="hidden" id="user_id" value="<?= $info->id ?>">
 
                   <div class="form-actions">
                      <div class="pull-right">
@@ -398,8 +388,240 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-filestyle/2.1.0/bootstrap-filestyle.js"></script>
 <script src="<?= base_url('awedget/assets/cropper/crop/js/cropper.js') ?>"></script>
 <script src="<?= base_url('awedget/assets/cropper/crop/js/main.js') ?>"></script>
+<script>
+   $(document).ready(function () {
+
+      var selected_district = "<?= $info->sc_district_id ?? '' ?>";
+      var selected_upazila  = "<?= $info->sc_upa_tha_id ?? '' ?>";
+
+      // =========================
+      // 1. REGION CHANGE
+      // =========================
+      $('#regionsss').change(function(){
+
+         var id = $(this).val();
+         $(".sc_district_val").empty();
+         $(".sc_upazila_thana_val").empty();
+         $('.sc_group_val').val(0);
+
+         if(id){
+            $.ajax({
+               type: "POST",
+               url: hostname +"search_controller/ajax_get_scout_dis_by_region/" + id,
+               success: function(func_data) {
+
+                  $.each(func_data,function(id,name) {
+                     var opt = $('<option />');
+                     opt.val(id);
+                     opt.text(name);
+                     $('.sc_district_val').append(opt);
+                  });
+
+                  // 👉 Edit mode
+                  if(selected_district){
+                     $('#sc_districtsss').val(selected_district).trigger('change');
+                  }
+               }
+            });
+         }
+      });
+
+      // =========================
+      // 2. DISTRICT CHANGE
+      // =========================
+      $('#sc_districtsss').change(function(){
+
+         var id = $(this).val();
+         $(".sc_upazila_thana_val").empty();
+         $('.sc_group_val').val(0);
+
+         if(id){
+            $.ajax({
+               type: "POST",
+               url: hostname +"search_controller/ajax_get_scout_upazila_thana_by_district/" + id,
+               success: function(func_data)
+               {
+                  $.each(func_data,function(id,name)
+                  {
+                     var opt = $('<option />');
+                     opt.val(id);
+                     opt.text(name);
+                     $('.sc_upazila_thana_val').append(opt);
+                  });
+
+                  // 👉 Edit mode
+                  if(selected_upazila){
+                     $('#sc_upazila_thana').val(selected_upazila);
+                  }
+               }
+            });
+         }
+      });
+
+      // =========================
+      // 3. EDIT MODE AUTO LOAD
+      // =========================
+      var region_id = $('#regionsss').val();
+      if(region_id){
+         $('#regionsss').trigger('change');
+      }
+
+   });
+</script>
 
 
+<script>
+   $(document).ready(function () {
+
+      var selected_badge = "<?= $info->sc_badge_id ?>";
+      var selected_role  = "<?= $info->sc_role_id ?>";
+
+      $('#sc_sectionss').change(function () {
+
+         var memberID  = $('#member_id').val();
+         var sectionID = $(this).val();
+
+         $(".sc_badge_val").empty();
+         $(".sc_role_val").empty();
+
+         // ❗ validation
+         if(memberID == ''){
+            $('#sc_sectionss').val('');
+            alert('Please select member type');
+            return false;
+         }
+
+         if(sectionID){
+
+            // ======================
+            // 🔹 Load Badge
+            // ======================
+            $.ajax({
+               type: "POST",
+               url: hostname +"search_controller/ajax_get_scout_badge_by_section/" + memberID + "/" + sectionID,
+               success: function(func_data){
+
+                  $.each(func_data,function(id,name){
+                     var opt = $('<option />');
+                     opt.val(id);
+                     opt.text(name);
+                     $('.sc_badge_val').append(opt);
+                  });
+
+                  // 👉 Edit mode
+                  if(selected_badge){
+                     $('#sc_badgesss').val(selected_badge);
+                  }
+               }
+            });
+
+            // ======================
+            // 🔹 Load Role
+            // ======================
+            $.ajax({
+               type: "POST",
+               url: hostname +"search_controller/ajax_get_scout_role_by_section/" + memberID + "/" + sectionID,
+               success: function(func_data){
+
+                  $.each(func_data,function(id,name){
+                     var opt = $('<option />');
+                     opt.val(id);
+                     opt.text(name);
+                     $('.sc_role_val').append(opt);
+                  });
+
+                  // 👉 Edit mode
+                  if(selected_role){
+                     $('#sc_role').val(selected_role);
+                  }
+               }
+            });
+         }
+      });
+
+      // =========================
+      // ✅ EDIT MODE AUTO LOAD
+      // =========================
+      var section_id = $('#sc_sectionss').val();
+      if(section_id){
+         $('#sc_sectionss').trigger('change');
+      }
+
+   });
+</script>
+
+<script>
+   $(document).ready(function () {
+      var selected_district = "<?= $info->pre_district_id ?>";
+      var selected_upazila  = "<?= $info->pre_upa_tha_id ?>";
+      // =========================
+      // 1. DIVISION CHANGE
+      // =========================
+      $('#divisionsss').change(function () {
+         var id = $(this).val();
+         $(".distirict_val").empty();
+         $(".upazila_thana_val").empty();
+
+         if (id) {
+            $.ajax({
+               type: "POST",
+               url: hostname + "search_controller/ajax_get_district_by_div/" + id,
+               success: function (func_data) {
+
+                  $.each(func_data, function (key, value) {
+                     var opt = $('<option />');
+                     opt.val(key);
+                     opt.text(value);
+                     $('.distirict_val').append(opt);
+                  });
+
+                  // 👉 Edit mode: set selected district
+                  if (selected_district) {
+                     $('#districtss').val(selected_district).trigger('change');
+                  }
+               }
+            });
+         }
+      });
+
+      // =========================
+      // 2. DISTRICT CHANGE
+      // =========================
+      $('#districtss').change(function () {
+         var dis_id = $(this).val();
+         $(".upazila_thana_val").empty();
+         // ✅ IMPORTANT CHECK
+         if (dis_id && dis_id !== "") {
+            $.ajax({
+               type: "POST",
+               url: hostname + "search_controller/ajax_get_upa_tha_by_dis/" + dis_id,
+               success: function (upazilaThanas) {
+
+                  $.each(upazilaThanas, function (id, ut_name) {
+                     var opt = $('<option />');
+                     opt.val(id);
+                     opt.text(ut_name);
+                     $('.upazila_thana_val').append(opt);
+                  });
+
+                  // 👉 Edit mode: set selected upazila
+                  if (selected_upazila) {
+                     $('.upazila_thana_val').val(selected_upazila);
+                  }
+               }
+            });
+         }
+      });
+
+      // =========================
+      // 3. EDIT MODE AUTO LOAD
+      // =========================
+      var division_id = $('#divisionsss').val();
+      if (division_id) {
+         $('#divisionsss').trigger('change');
+      }
+   });
+</script>
 
 <script type="text/javascript">
    $(document).ready(function() {
@@ -461,11 +683,14 @@
                required: true,
                email: true,
                remote: {
-                  url: hostname +"registration/ajax_exists_email/",
+                  url: hostname +"search_controller/ajax_exists_email/",
                   type: "post",
                   data: {
                      inputData: function() {
                         return $("#email").val();
+                     },
+                     user_id: function() {
+                        return $("#user_id").val(); // hidden input
                      }
                   }
                }
@@ -570,10 +795,6 @@
          }
       });
    });
-
-
-
-
 
 
    $('.is_interested').change(function(){

@@ -676,7 +676,7 @@ class My_profile extends Backend_Controller {
    public function scout_request_application(){
       $this->data['info'] = $this->My_profile_model->get_info($this->userID);
       $user_id = $this->data['info']->id;
-
+      // dd($this->data['info']);
       // validate form input
       $this->form_validation->set_rules('first_name', 'full name (English)', 'required|trim');
       $this->form_validation->set_rules('full_name_bn', 'full name (Bangla)', 'required|trim');

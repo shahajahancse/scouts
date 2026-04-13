@@ -5,6 +5,22 @@ class Search_controller extends CI_Controller
 	{
 		parent::__construct();
 	}
+    
+    function ajax_exists_email(){
+        $email = $_POST['inputData'];
+        $user_id = $_POST['user_id'];
+
+        $this->db->where('email', $email);
+        $this->db->where('id !=', $user_id); // 🔥 current user বাদ
+
+        $query = $this->db->get('users');
+
+        if ($query->num_rows() == 0) {
+            echo 'true';
+        } else {
+            echo 'false';
+        }
+    }
 
     function ajax_get_designation_by_service($id){
         $data[''] = '--- Select Designation ---';
