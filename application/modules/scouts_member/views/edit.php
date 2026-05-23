@@ -472,6 +472,7 @@
             </div>
          </div> <!-- //Institute and scout info -->
 
+         <input type="hidden" id="user_id" value="<?= $info->id ?>">
 
          <div class="form-actions">
                   <div class="pull-right">
@@ -529,11 +530,14 @@
                required: true,
                email: true,
                remote: {
-                  url: hostname +"my_profile/ajax_exists_email/",
+                  url: hostname +"search_controller/ajax_exists_email/",
                   type: "post",
                   data: {
                      inputData: function() {
                         return $("#email").val();
+                     },
+                     user_id: function() {
+                        return $("#user_id").val(); // hidden input
                      }
                   }
                }
