@@ -1233,28 +1233,6 @@ class My_profile extends Backend_Controller {
       $this->form_validation->set_rules('hide_img', 'profile image required', 'trim');
 
       $this->data['info'] = $this->My_profile_model->get_info($this->userID);
-      // if ($this->form_validation->run() == true){
-      //    $id = $this->data['info']->id;
-      //    if($this->input->post('hide_img') != NULL){
-      //       $file_name = $this->input->post('hide_img');
-      //       $tmp = explode('.', $file_name);
-      //       $file_extension = end($tmp);
-
-      //       $file = $this->img_thumb_path.'/'.$this->input->post('hide_img');
-      //       $newfile = $id.'.'.$file_extension;
-      //       if($this->Common_model->set_profile_image($id, $newfile)){
-      //          $saveDir = $this->img_path.'/'.$newfile;
-      //          if (copy($file, $saveDir)) {
-      //             @unlink($this->img_orginal_path.'\\'.$tmp[0].'-original.png');
-      //             @unlink($this->img_orginal_path.'\\'.$tmp[0].'-original.jpg');
-      //             @unlink($this->img_orginal_path.'\\'.$tmp[0].'-original.jpeg');
-      //             @unlink($this->img_thumb_path.'\\'.$file_name);
-      //             $this->session->set_flashdata('success', 'Image update successfully.');
-      //             redirect('my_profile');
-      //          }
-      //       }
-      //    }
-      // }
 
       if ($this->form_validation->run() == true) {
          $id = $this->data['info']->id;

@@ -2285,24 +2285,6 @@ class Scouts_member extends Backend_Controller {
          if($this->ion_auth->update($scoutID, $form_data)){
             $id = $this->data['info']->id;
 
-	         //Copy image, rename and remove from temp directory
-            // if($this->input->post('hide_img') != NULL){
-            //    $file_name = $this->input->post('hide_img');
-            //    $tmp = explode('.', $file_name);
-            //    $file_extension = end($tmp);
-            //    $file = $this->img_thumb_path.'/'.$this->input->post('hide_img');
-            //    $newfile = $id.'.'.$file_extension;
-            //    if($this->Common_model->set_profile_image($id, $newfile)){
-            //       $saveDir = $this->img_path.'/'.$newfile;
-            //       if (copy($file, $saveDir)) {
-            //          @unlink($this->img_orginal_path.'\\'.$tmp[0].'-original.png');
-            //          @unlink($this->img_orginal_path.'\\'.$tmp[0].'-original.jpg');
-            //          @unlink($this->img_orginal_path.'\\'.$tmp[0].'-original.jpeg');
-            //          @unlink($this->img_thumb_path.'\\'.$file_name);
-            //       }
-            //    }
-            // }
-
             if ($this->input->post('hide_img') != NULL) {
                $file_name = $this->input->post('hide_img');
                $tmp = explode('.', $file_name);
@@ -2360,7 +2342,60 @@ class Scouts_member extends Backend_Controller {
        $this->load->view('backend/_layout_main', $this->data);
    }
 
+   public function ajax_change_password(){
+      $this->output->set_content_type('application/json');
+      $response = [
+         'success' => false,
+         'message' => 'Invalid request.',
+      ];
 
+      if ($this->input->method() !== 'post') {
+         echo json_encode($response);
+         return;
+      }
+
+      $scoutIdEncrypted = $this->input->post('scout_id');
+      $password = trim($this->input->post('password'));
+      $confirm = trim($this->input->post('password_confirm'));
+      $minPasswordLength = (int) $this->config->item('min_password_length', 'ion_auth');
+      $minPasswordLength = $minPasswordLength ? $minPasswordLength : 8;
+
+      if (!$this->input->post('password')) {
+         $response['message'] = 'Password is required.';
+         echo json_encode($response);
+         return;
+      }
+
+      $this->form_validation->set_rules('password', $this->lang->line('edit_user_validation_password_label'), 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|max_length[' . $this->config->item('max_password_length', 'ion_auth') . ']|matches[password_confirm]');
+      $this->form_validation->set_rules('password_confirm', $this->lang->line('edit_user_validation_password_confirm_label'), 'required');
+
+      if ($this->form_validation->run() === false) {
+         $response['message'] = validation_errors();
+         echo json_encode($response);
+         return;
+      }
+
+      $scoutID = (int) decrypt_url($scoutIdEncrypted);
+      if (!$scoutID || !$this->Common_model->exists('users', 'id', $scoutID)) {
+         $response['message'] = 'Invalid scout selected.';
+         echo json_encode($response);
+         return;
+      }
+
+      $data = ['password' => $password];
+
+      if ($this->ion_auth->update($scoutID, $data)) {
+         func_activity_log(2, 'Scout Member Password Change ID :'.$scoutID);
+         $response = [
+            'success' => true,
+            'message' => 'Password changed successfully.',
+         ];
+      } else {
+         $response['message'] = 'Unable to update password. Please try again.';
+      }
+
+      echo json_encode($response);
+   }
 
    /*************************** Add Scouts Member ****************************
    ***************************************************************************/
@@ -2586,7 +2621,7 @@ class Scouts_member extends Backend_Controller {
                   /* 🔴 STEP 4: DB update */
                   $this->Common_model->set_profile_image($insert_id, $newFile);
                }
-            }            
+            }
 
             //1=C, 2=U, 3=D, 4=V, 5=G ,A = 6
             func_activity_log(1, 'Scout Member create ID :'.$insert_id);

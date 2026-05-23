@@ -190,6 +190,10 @@ if(!$this->ion_auth->is_vendor()){
              <?php } ?>
 
              <li><a href="<?=base_url("scouts_member/archive/".encrypt_url($row->id))?>" onclick="return confirm('Are you sure you want to archive this scouts member?');">Archive Scouts Member</a></li>
+             <li class="divider"></li>
+
+             <li><a href="javascript:void(0);" class="change-password-action" data-toggle="modal" data-target="#changePasswordModal" data-scout-id="<?=encrypt_url($row->id)?>" data-name="<?= $row->first_name ?>" data-bs_id="<?= $row->scout_id ?>">Change Password</a></li>
+
              <?php } ?>
 
              <?php if($this->ion_auth->is_vendor()){ ?>
@@ -228,3 +232,100 @@ if(!$this->ion_auth->is_vendor()){
 </div>
 
 </div>
+
+<div id="changePasswordModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="changePasswordModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="changePasswordModalLabel">Change Password</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form id="changePasswordForm">
+        <div class="modal-body">
+          <input type="hidden" name="scout_id" id="changePasswordScoutId" value="">
+
+          <div class="form-group">
+            <label id="changePasswordScoutName">Name</label>
+          </div>
+
+          <div class="form-group">
+            <label for="changePasswordPassword">New Password</label>
+            <input type="password" name="password" id="changePasswordPassword" class="form-control input-sm" placeholder="Minimum 8 characters" required>
+          </div>
+          <div class="form-group">
+            <label for="changePasswordConfirm">Confirm Password</label>
+            <input type="password" name="password_confirm" id="changePasswordConfirm" class="form-control input-sm" placeholder="Confirm password" required>
+          </div>
+          <div class="alert alert-danger" id="changePasswordError" style="display:none;"></div>
+          <div class="alert alert-success" id="changePasswordSuccess" style="display:none;"></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default btn-mini" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary btn-mini" id="changePasswordSubmit">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+  $('#changePasswordModal').on('show.bs.modal', function(event){
+    var button = $(event.relatedTarget);
+    var scoutId = button.data('scout-id');
+    var name = button.data('name');
+    var scoutName = button.data('bs_id');
+    var modal = $(this);
+    modal.find('#changePasswordScoutId').val(scoutId);
+    modal.find('#changePasswordScoutName').text('Name : ' + name + ' (' + scoutName + ')');
+    modal.find('#changePasswordPassword').val('');
+    modal.find('#changePasswordConfirm').val('');
+    modal.find('#changePasswordError').hide().text('');
+    modal.find('#changePasswordSuccess').hide().text('');
+  });
+
+  $('#changePasswordForm').on('submit', function(e){
+    e.preventDefault();
+    var form = $(this);
+    var password = $.trim($('#changePasswordPassword').val());
+    var confirm = $.trim($('#changePasswordConfirm').val());
+    var error = $('#changePasswordError');
+    var success = $('#changePasswordSuccess');
+    error.hide();
+    success.hide();
+
+    if (password.length < 8) {
+      error.text('Password must be at least 8 characters.').show();
+      return;
+    }
+    if (password !== confirm) {
+      error.text('Passwords do not match.').show();
+      return;
+    }
+
+    var submitBtn = $('#changePasswordSubmit').prop('disabled', true).text('Saving...');
+
+    $.ajax({
+      url: '<?= base_url("scouts_member/ajax_change_password")?>',
+      method: 'POST',
+      data: form.serialize(),
+      dataType: 'json'
+    }).done(function(response){
+      if (response.success) {
+        success.text(response.message || 'Password changed successfully.').show();
+        error.hide();
+        setTimeout(function(){ $('#changePasswordModal').modal('hide'); }, 1200);
+      } else {
+        error.text(response.message || 'Unable to change password.').show();
+      }
+    }).fail(function(){
+      error.text('Server error. Please try again.').show();
+    }).always(function(){
+      submitBtn.prop('disabled', false).text('Save');
+    });
+  });
+});
+</script>
+
