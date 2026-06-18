@@ -119,7 +119,7 @@
             </div>
             <div class="col-md-4">
                <label style="color:transparent">.</label>
-               <?php echo form_submit('submit', 'Submit', "class='btn btn-primary btn-cons pull-right'"); ?>
+               <?php echo form_submit('btn_submit', 'Submit', "class='btn btn-primary btn-cons pull-right'"); ?>
             </div>
          </div>
          <div class="clearfix"></div>

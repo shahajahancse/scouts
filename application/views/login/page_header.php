@@ -18,15 +18,6 @@
   <link href="<?=base_url();?>awedget/assets/css/responsive.css" rel="stylesheet" type="text/css"/>
   <link href="<?=base_url();?>awedget/assets/css/custom-icon-set.css" rel="stylesheet" type="text/css"/>
   <link href="<?=base_url();?>awedget/assets/css/style.css" rel="stylesheet" type="text/css"/>
-  <!-- END CSS TEMPLATE -->
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
-  <!-- <script src="<?=base_url();?>awedget/assets/plugins/jquery-1.8.3.min.js" type="text/javascript"></script> -->
-  <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script> -->
   <script src="<?=base_url();?>awedget/assets/js/jquery.1.9.1.js" type="text/javascript"></script>
   <script type="text/javascript">var hostname='<?php echo base_url();?>';</script>
 </head>
