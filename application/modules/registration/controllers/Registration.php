@@ -1,9 +1,21 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Registration extends Backend_Controller {
+class Registration extends CI_Controller {
 
-	public function __construct(){
+	var $userSessID;
+	var $officeSess;
+
+	function __construct (){
 		parent::__construct();
+		$this->ci_minifier->init(0);
+
+		$this->session->set_userdata('site_lang', 'english');
+		$this->lang->load('scouts', 'english');
+
+		$this->lang->load('auth');
+		$this->data['meta_title'] = 'Page Title';
+		$this->data['domain_title'] = 'Bangladesh Scouts';
+		$this->load->model('Common_model');
 	}
 
 	public function index(){
@@ -45,17 +57,14 @@ class Registration extends Backend_Controller {
         }
 
         if ($this->form_validation->run() == true && $this->ion_auth->register($identity, $password, $email, $additional_data)){
-
-
             // check to see if we are creating the user
             // redirect them back to the admin page
-            $this->session->set_flashdata('message', $this->ion_auth->messages());
+            $this->session->set_flashdata('success', $this->ion_auth->messages());
             redirect("login");
         }else{
             // display the create user form
             // set the flash data error message if there is one
             $this->data['message'] = (validation_errors() ? validation_errors() : ($this->ion_auth->errors() ? $this->ion_auth->errors() : $this->session->flashdata('message')));
-
             //Form Fields
             $this->data['full_name'] = array('name' => 'full_name',
                 'type'  => 'text',
@@ -110,8 +119,6 @@ class Registration extends Backend_Controller {
     }
 
     public function username_valid($str){
-        // alpha_dash_space
-        // return (!preg_match("/^([-a-z0-9_ ])+$/i", $str)) ? FALSE : TRUE;
         if (! preg_match('/^\S*$/', $str)) {
             $this->form_validation->set_message('username_valid', 'The %s field may only contain alpha characters & no white spaces.');
             return FALSE;
@@ -123,7 +130,6 @@ class Registration extends Backend_Controller {
     function ajax_exists_nid(){
         $item = $_POST['inputData'];
         $result = $this->Common_model->exists('users', 'nid', $item);
-
         if ($result == 0) {
             echo 'true';
         }else{
@@ -132,10 +138,8 @@ class Registration extends Backend_Controller {
     }
 
     function ajax_exists_identity(){
-        // echo 'true';
         $item = $_POST['inputData'];
         $result = $this->Common_model->exists('users', 'username', $item);
-
         if ($result == 0) {
             echo 'true';
         }else{
@@ -144,10 +148,8 @@ class Registration extends Backend_Controller {
     }
 
     function ajax_exists_email(){
-        // echo 'true';
         $item = $_POST['inputData'];
         $result = $this->Common_model->exists('users', 'email', $item);
-
         if ($result == 0) {
             echo 'true';
         }else{
