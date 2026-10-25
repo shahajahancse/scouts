@@ -17,7 +17,8 @@ class Reports extends Backend_Controller {
       $this->load->model('Offices/Offices_model');
       $this->load->model('Reports_model');
       $this->load->library('Mpdf_lib');
-      ini_set('memory_limit', '-1');
+      @ini_set('memory_limit', '-1');
+      @ini_set('pcre.backtrack_limit', '50000000');
    }
 
    public function index(){
@@ -33,11 +34,13 @@ class Reports extends Backend_Controller {
       $btn_submit = $this->input->post('btnsubmit');
       $region = $this->input->post('region');
       $dis_type = $this->input->post('dis_type');
-      $date_from = date_db_format($this->input->post('date_from'));
-      $date_to = date_db_format($this->input->post('date_to'));
+      $raw_date_from = $this->input->post('date_from');
+      $raw_date_to = $this->input->post('date_to');
+      $date_from = (!empty($raw_date_from)) ? date_db_format($raw_date_from) : NULL;
+      $date_to = (!empty($raw_date_to)) ? date_db_format($raw_date_to) : NULL;
 
-      // scouts member excel generate
-      if( !empty($btn_submit) && $btn_submit == 'excel_member') {
+      // Scouts member details report (Excel and PDF)
+      if(!empty($btn_submit) && ($btn_submit == 'excel_member' || $btn_submit == 'pdf_member')) {
          $type = $this->input->post('member_type');
          if (!empty($type) && $type == 1) {
             $this->data['type'] = 'Verify Member Report';
@@ -48,72 +51,107 @@ class Reports extends Backend_Controller {
          } else {
             $this->data['type'] = 'All Member Report';
          }
-         // Results
-         $this->data['results'] = $this->Reports_model->excel_scout_member();
+         $this->data['date_from'] = $raw_date_from;
+         $this->data['date_to'] = $raw_date_to;
+         $this->data['dis_type_info'] = !empty($dis_type) ? $this->Common_model->get_single_data('scout_district_type', $dis_type) : NULL;
 
-         // Generate Excel
-         $this->load->view('scouts_member/excel_scout_member', $this->data);
+         if ($btn_submit == 'excel_member') {
+            $this->data['results'] = $this->Reports_model->excel_scout_member();
+            $this->load->view('scouts_member/excel_scout_member', $this->data);
+            return;
+         } else {
+            @ini_set('memory_limit', '-1');
+            @ini_set('pcre.backtrack_limit', '50000000');
+            $this->data['headding'] = $this->data['type'];
+            $results = $this->Reports_model->excel_scout_member(1000);
+            $this->data['results'] = $results;
+
+            $mpdf = $this->mpdf_lib->create(['format' => 'A4-L']);
+
+            $total = count($results);
+            if ($total <= 200) {
+               $this->data['start_index'] = 0;
+               $this->data['is_first_chunk'] = true;
+               $this->data['is_last_chunk'] = true;
+               $this->data['total_records'] = $total;
+               $html = $this->load->view('scouts_member/pdf_scout_member', $this->data, true);
+               $mpdf->WriteHTML($html);
+            } else {
+               $chunks = array_chunk($results, 200);
+               $chunkData = $this->data;
+               foreach ($chunks as $idx => $chunk) {
+                  $chunkData['results'] = $chunk;
+                  $chunkData['start_index'] = $idx * 200;
+                  $chunkData['is_first_chunk'] = ($idx === 0);
+                  $chunkData['is_last_chunk'] = ($idx === count($chunks) - 1);
+                  $chunkData['total_records'] = $total;
+                  $chunkHtml = $this->load->view('scouts_member/pdf_scout_member', $chunkData, true);
+                  $mpdf->WriteHTML($chunkHtml);
+               }
+            }
+            $mpdf->Output(str_replace(' ', '_', $this->data['type']) . '.pdf', 'I');
+            return;
+         }
       }
 
       if($this->form_validation->run() == true){
          // Top Scouts Region Member Registration
-         if( $btn_submit == 'smr_region') {
-            // $this->data['region'] = $this->Common_model->get_data('office_region');
-            $this->data['date_from'] = $this->input->post('date_from');
-            $this->data['date_to'] = $this->input->post('date_to');
-
-            // Results
-            $this->data['dis_type_info'] = $this->Common_model->get_single_data('scout_district_type', $dis_type);
+         if( $btn_submit == 'smr_region' || $btn_submit == 'smr_region_excel') {
+            $this->data['date_from'] = $raw_date_from;
+            $this->data['date_to'] = $raw_date_to;
+            $this->data['dis_type_info'] = !empty($dis_type) ? $this->Common_model->get_single_data('scout_district_type', $dis_type) : NULL;
             $this->data['results'] = $this->Reports_model->get_smr_region($dis_type, $date_from, $date_to);
-            // echo '<pre>';
-            // print_r($this->data['results']); exit;
-
-            // Generate PDF
             $this->data['office_name'] = 'Region Name';
             $this->data['headding'] = 'Top Scouts Member Registration By Region';
-            $html = $this->load->view('scouts_member/pdf_smr_region', $this->data, true);
 
-            $mpdf = $this->mpdf_lib->create();
-            $mpdf->WriteHTML($html);
-            $mpdf->Output();
+            if ($btn_submit == 'smr_region_excel') {
+               $this->load->view('scouts_member/excel_smr_region', $this->data);
+               return;
+            } else {
+               $html = $this->load->view('scouts_member/pdf_smr_region', $this->data, true);
+               $mpdf = $this->mpdf_lib->create();
+               $mpdf->WriteHTML($html);
+               $mpdf->Output('Top_Scouts_Member_Registration_By_Region.pdf', 'I');
+               return;
+            }
 
-         }else if( $btn_submit == 'smr_district') {
-            // $this->data['region'] = $this->Common_model->get_data('office_region');
-            $this->data['date_from'] = $this->input->post('date_from');
-            $this->data['date_to'] = $this->input->post('date_to');
-
-            // Results
-            $this->data['dis_type_info'] = $this->Common_model->get_single_data('scout_district_type', $dis_type);
+         }else if( $btn_submit == 'smr_district' || $btn_submit == 'smr_district_excel') {
+            $this->data['date_from'] = $raw_date_from;
+            $this->data['date_to'] = $raw_date_to;
+            $this->data['dis_type_info'] = !empty($dis_type) ? $this->Common_model->get_single_data('scout_district_type', $dis_type) : NULL;
             $this->data['results'] = $this->Reports_model->get_smr_district($dis_type, $date_from, $date_to);
-            // dd($this->data['results']);
-
-            // Generate PDF
             $this->data['office_name'] = 'District Name';
             $this->data['headding'] = 'Top Scouts Member Registration By District';
-            $html = $this->load->view('scouts_member/pdf_smr_district', $this->data, true);
 
-            $mpdf = $this->mpdf_lib->create();
-            $mpdf->WriteHTML($html);
-            $mpdf->Output();
+            if ($btn_submit == 'smr_district_excel') {
+               $this->load->view('scouts_member/excel_smr_district', $this->data);
+               return;
+            } else {
+               $html = $this->load->view('scouts_member/pdf_smr_district', $this->data, true);
+               $mpdf = $this->mpdf_lib->create();
+               $mpdf->WriteHTML($html);
+               $mpdf->Output('Top_Scouts_Member_Registration_By_District.pdf', 'I');
+               return;
+            }
 
-         }else if( $btn_submit == 'smr_upazila') {
-            // $this->data['region'] = $this->Common_model->get_data('office_region');
-            $this->data['date_from'] = $this->input->post('date_from');
-            $this->data['date_to'] = $this->input->post('date_to');
-
-            // Results
-            $this->data['dis_type_info'] = $this->Common_model->get_single_data('scout_district_type', $dis_type);
+         }else if( $btn_submit == 'smr_upazila' || $btn_submit == 'smr_upazila_excel') {
+            $this->data['date_from'] = $raw_date_from;
+            $this->data['date_to'] = $raw_date_to;
+            $this->data['dis_type_info'] = !empty($dis_type) ? $this->Common_model->get_single_data('scout_district_type', $dis_type) : NULL;
             $this->data['results'] = $this->Reports_model->get_smr_upazila($dis_type, $date_from, $date_to);
-            // dd($this->data['results']);
-
-            // Generate PDF
             $this->data['office_name'] = 'Upazila Name';
             $this->data['headding'] = 'Top Scouts Member Registration By Upazila';
-            $html = $this->load->view('scouts_member/pdf_smr_upazila', $this->data, true);
 
-            $mpdf = $this->mpdf_lib->create();
-            $mpdf->WriteHTML($html);
-            $mpdf->Output();
+            if ($btn_submit == 'smr_upazila_excel') {
+               $this->load->view('scouts_member/excel_smr_upazila', $this->data);
+               return;
+            } else {
+               $html = $this->load->view('scouts_member/pdf_smr_upazila', $this->data, true);
+               $mpdf = $this->mpdf_lib->create();
+               $mpdf->WriteHTML($html);
+               $mpdf->Output('Top_Scouts_Member_Registration_By_Upazila.pdf', 'I');
+               return;
+            }
          }
       }
 

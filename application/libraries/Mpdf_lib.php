@@ -9,9 +9,14 @@ use Mpdf\Config\FontVariables;
 
 class Mpdf_lib {
 
-    public function __construct() {}
+    public function __construct() {
+        @ini_set('memory_limit', '-1');
+        @ini_set('pcre.backtrack_limit', '50000000');
+    }
 
     public function create($options = []) {
+        @ini_set('memory_limit', '-1');
+        @ini_set('pcre.backtrack_limit', '50000000');
 
         $defaultConfig = (new ConfigVariables())->getDefaults();
         $fontDirs = $defaultConfig['fontDir'];

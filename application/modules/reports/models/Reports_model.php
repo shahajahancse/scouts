@@ -7,17 +7,44 @@ class Reports_model extends CI_Model {
       ini_set('memory_limit', '-1');
    }
 
-   public function excel_scout_member() {
+   private function get_optimal_index($type) {
+      static $indexes = null;
+      if ($indexes === null) {
+         $indexes = array();
+         $q = $this->db->query("SHOW INDEX FROM users");
+         if ($q) {
+            foreach ($q->result() as $row) {
+               $indexes[$row->Key_name] = true;
+            }
+         }
+      }
+      if ($type == 'region' && isset($indexes['idx_created_region'])) return 'idx_created_region';
+      if ($type == 'district' && isset($indexes['idx_created_district'])) return 'idx_created_district';
+      if ($type == 'upazila' && isset($indexes['idx_created_upazila'])) return 'idx_created_upazila';
+      if (isset($indexes['idx_created_on'])) return 'idx_created_on';
+      return '';
+   }
+
+   public function excel_scout_member($limit = NULL) {
       $member_type = $this->input->post('member_type');
       $dis_type = $this->input->post('dis_type');
       $startDate = $this->input->post('date_from');
       $endDate = $this->input->post('date_to');
 
-      $this->db->select('u.id, u.username, u.scout_id, u.first_name, u.phone, u.email, u.active, u.sc_badge_id, u.sc_section_id, u.petrol_name, u.last_login, u.dob, u.is_printed, mt.member_type_name');
+      $startTs = (!empty($startDate) && $startDate != '0000-00-00') ? strtotime(date_db_format($startDate)) : NULL;
+      $endTs   = (!empty($endDate) && $endDate != '0000-00-00') ? strtotime(date_db_format($endDate) . ' 23:59:59') : NULL;
+
+      $this->db->select('u.id, u.username, u.scout_id, u.first_name, u.phone, u.email, u.active, u.sc_badge_id, u.sc_section_id, u.petrol_name, u.last_login, u.dob, u.is_printed, mt.member_type_name, bt.badge_type_name_bn as badge_name');
       $this->db->from('users u');
       $this->db->join('member_type mt', 'mt.id = u.member_id', 'LEFT');
-      // $this->db->join('office_groups og', 'og.id = u.sc_group_id', 'LEFT');
+      $this->db->join('scout_badge sb', 'sb.id = u.sc_badge_id', 'LEFT');
+      $this->db->join('badge_type bt', 'bt.id = sb.badge_type_id', 'LEFT');
       $this->db->where('u.member_id >', 0);
+
+      if(!empty($dis_type)){
+         $this->db->join('office_district od', 'od.id = u.sc_district_id', 'INNER');
+         $this->db->where('od.dis_type', (int)$dis_type);
+      }
 
       if(!empty($member_type) && in_array($member_type, [1,2])){
          $this->db->where('u.status', $member_type);
@@ -28,23 +55,30 @@ class Reports_model extends CI_Model {
          $this->db->where('u.scout_id', NULL);
          $this->db->where('u.is_request', 1);
       }
-      if(!empty($startDate) && !empty($endDate)){
-         $this->db->where('u.created_on >=', strtotime($startDate));
-         $this->db->where('u.created_on <=', strtotime($endDate));
+      if(!empty($startTs) && !empty($endTs)){
+         $this->db->where('u.created_on >=', $startTs);
+         $this->db->where('u.created_on <=', $endTs);
       }
-      $result = $this->db->get()->result();
 
+      if (!empty($limit)) {
+         $this->db->limit($limit);
+      }
+
+      $result = $this->db->get()->result();
       return $result;
    }
 
-   public function get_smr_upazila($dis_type, $startDate=NULL, $endDate=NULL) {
-      $startTs = strtotime($startDate);
-      $endTs   = strtotime($endDate);
+   public function get_smr_upazila($dis_type = NULL, $startDate=NULL, $endDate=NULL) {
+      $startTs = (!empty($startDate) && $startDate != '0000-00-00') ? strtotime($startDate) : NULL;
+      $endTs   = (!empty($endDate) && $endDate != '0000-00-00') ? strtotime($endDate . ' 23:59:59') : NULL;
+
+      $forceIndex = $this->get_optimal_index('upazila');
+      $indexHint = !empty($forceIndex) ? "FORCE INDEX ({$forceIndex})" : "";
 
       // Prepare the subquery for counting users
       $userCountSql = "
          SELECT sc_upa_tha_id, COUNT(*) AS total_member
-         FROM users
+         FROM users {$indexHint}
          WHERE scout_id IS NOT NULL
          AND member_id != 0
       ";
@@ -52,91 +86,74 @@ class Reports_model extends CI_Model {
       if (!empty($startTs) && !empty($endTs)) {
          $userCountSql .= " AND created_on BETWEEN {$startTs} AND {$endTs}";
       }
-      $userCountSql .= " GROUP BY sc_upa_tha_id"; // aggregate by upazila/thana
+      $userCountSql .= " GROUP BY sc_upa_tha_id";
 
       // Main query
       $this->db->select('up.upa_name AS dis_name, IFNULL(uc.total_member, 0) AS total_member');
       $this->db->from('office_upazila up');
-      $this->db->join('office_district od', 'od.id = up.upa_scout_dis_id', 'LEFT');
+      if (!empty($dis_type)) {
+         $this->db->join('office_district od', 'od.id = up.upa_scout_dis_id', 'INNER');
+         $this->db->where('od.dis_type', (int)$dis_type);
+      } else {
+         $this->db->join('office_district od', 'od.id = up.upa_scout_dis_id', 'LEFT');
+      }
       $this->db->join("({$userCountSql}) uc", 'uc.sc_upa_tha_id = up.id', 'LEFT');
-      $this->db->where('od.dis_type', $dis_type);
-      $this->db->order_by('total_member', 'DESC'); // just order by total_member
+      $this->db->order_by('total_member', 'DESC');
       $query = $this->db->get()->result();
-
-      // dd($query);
-
-      // $sql = "SELECT `sc_upa_tha_id` AS upazila_id , `count_member` AS total_member, `count_group` AS total_sc_group, `upa_name_en` FROM (
-      // SELECT * FROM (SELECT `sc_upa_tha_id`, COUNT(scout_id) AS count_member FROM `users` WHERE `scout_id` IS NOT NULL AND DATE(FROM_UNIXTIME(created_on)) >= '$startDate' AND DATE(FROM_UNIXTIME(created_on)) <= '$endDate' GROUP BY `sc_upa_tha_id`) as user_count_tbl
-      // INNER JOIN (SELECT `grp_scout_upa_id`, COUNT(id) AS count_group FROM `office_groups` GROUP BY `grp_scout_upa_id`) AS group_count_tbl ON user_count_tbl.sc_upa_tha_id=group_count_tbl.grp_scout_upa_id ) as new_tbl
-      // INNER JOIN office_upazila as sou ON sou.id = new_tbl.sc_upa_tha_id ORDER BY total_member DESC";
-
-      // $query = $this->db->query($sql)->result();
       return $query;
    }
 
-   public function get_smr_district($dis_type, $startDate, $endDate) {
-      $startTs = strtotime($startDate);
-      $endTs   = strtotime($endDate);
+   public function get_smr_district($dis_type = NULL, $startDate=NULL, $endDate=NULL) {
+      $startTs = (!empty($startDate) && $startDate != '0000-00-00') ? strtotime($startDate) : NULL;
+      $endTs   = (!empty($endDate) && $endDate != '0000-00-00') ? strtotime($endDate . ' 23:59:59') : NULL;
+
+      $forceIndex = $this->get_optimal_index('district');
+      $indexHint = !empty($forceIndex) ? "FORCE INDEX ({$forceIndex})" : "";
 
       // Build user count subquery
       $userCountSql = "
          SELECT sc_district_id, COUNT(*) AS total_member
-         FROM users
+         FROM users {$indexHint}
          WHERE scout_id IS NOT NULL
          AND member_id != 0
       ";
-      // Add date filter if needed
       if (!empty($startTs) && !empty($endTs)) {
          $userCountSql .= " AND created_on BETWEEN {$startTs} AND {$endTs}";
       }
       $userCountSql .= " GROUP BY sc_district_id";
 
-
-      // Final optimized query
       $this->db->select("
          od.id,
          od.dis_name,
          COALESCE(u.total_member, 0) AS total_member
       ");
       $this->db->from('office_district od');
-      // LEFT JOIN on optimized subquery
       $this->db->join("({$userCountSql}) u", "u.sc_district_id = od.id", "LEFT");
-      $this->db->where('od.dis_type', $dis_type);
+      if (!empty($dis_type)) {
+         $this->db->where('od.dis_type', (int)$dis_type);
+      }
 
-      // Sort by member count
       $this->db->order_by('u.total_member', 'DESC');
       $query = $this->db->get()->result();
-      // dd($query);
-
-
-      // if($disType != NULL){
-      //    $where = 'WHERE dis_type = '.$disType;
-      // }else{
-      //    $where = 'WHERE 1';
-      // }
-      // $sql = "SELECT `sc_district_id` AS district_id , `count_member` AS total_member, `count_group` AS total_sc_group, `dis_name_en`, `dis_type` FROM (
-      // SELECT * FROM (SELECT `sc_district_id`, COUNT(scout_id) AS count_member FROM `users` WHERE `scout_id` IS NOT NULL AND DATE(FROM_UNIXTIME(created_on)) >= '$startDate' AND DATE(FROM_UNIXTIME(created_on)) <= '$endDate' GROUP BY `sc_district_id`) as user_count_tbl
-      // INNER JOIN (SELECT `grp_scout_dis_id`, COUNT(id) AS count_group FROM `office_groups` GROUP BY `grp_scout_dis_id`) AS group_count_tbl ON user_count_tbl.sc_district_id=group_count_tbl.grp_scout_dis_id ) as new_tbl
-      // INNER JOIN office_district as sod ON sod.id = new_tbl.sc_district_id $where ORDER BY total_member DESC";
-
-      // $query = $this->db->query($sql)->result();
-      // echo $this->db->last_query(); exit;
       return $query;
    }
 
    public function get_smr_region($dis_type = NULL, $startDate=NULL, $endDate=NULL) {
-      $startTs = strtotime($startDate);
-      $endTs   = strtotime($endDate);
+      $startTs = (!empty($startDate) && $startDate != '0000-00-00') ? strtotime($startDate) : NULL;
+      $endTs   = (!empty($endDate) && $endDate != '0000-00-00') ? strtotime($endDate . ' 23:59:59') : NULL;
+
+      $forceIndex = $this->get_optimal_index('region');
+      $indexHint = !empty($forceIndex) ? "FORCE INDEX ({$forceIndex})" : "";
 
       // Build user count subquery
       $userCountSql = "
          SELECT sc_region_id, COUNT(*) AS total_member
-         FROM users
+         FROM users {$indexHint}
          WHERE scout_id IS NOT NULL
          AND member_id != 0
       ";
       if (!empty($startTs) && !empty($endTs)) {
-         $userCountSql .= " AND created_on >= {$startTs} AND created_on <= {$endTs}";
+         $userCountSql .= " AND created_on BETWEEN {$startTs} AND {$endTs}";
       }
       $userCountSql .= " GROUP BY sc_region_id";
 
@@ -144,23 +161,16 @@ class Reports_model extends CI_Model {
       $this->db->from('office_region rg');
       $this->db->join("({$userCountSql}) uc", "uc.sc_region_id = rg.id", "LEFT");
 
-      // Replace join with high-speed EXISTS
-      $this->db->where("EXISTS (
-         SELECT 1 FROM office_district od
-         WHERE od.dis_scout_region_id = rg.id
-            AND od.dis_type = {$dis_type}
-      )", NULL, FALSE);
+      if (!empty($dis_type)) {
+         $this->db->where("EXISTS (
+            SELECT 1 FROM office_district od
+            WHERE od.dis_scout_region_id = rg.id
+               AND od.dis_type = " . (int)$dis_type . "
+         )", NULL, FALSE);
+      }
 
       $this->db->order_by('total_member', 'DESC');
       $query = $this->db->get()->result();
-
-      // dd($query);
-
-      // $sql = "SELECT `sc_region_id` AS region_id , `count_member` AS total_member, `count_group` AS total_sc_group, `region_name_en` FROM (
-      // SELECT * FROM (SELECT `sc_region_id`, COUNT(scout_id) AS count_member FROM `users` WHERE `scout_id` IS NOT NULL AND DATE(FROM_UNIXTIME(created_on)) >= '$startDate' AND DATE(FROM_UNIXTIME(created_on)) <= '$endDate' GROUP BY `sc_region_id`) as user_count_tbl
-      // INNER JOIN (SELECT `grp_region_id`, COUNT(id) AS count_group FROM `office_groups` GROUP BY `grp_region_id`) AS group_count_tbl ON user_count_tbl.sc_region_id=group_count_tbl.grp_region_id ) as new_tbl
-      // INNER JOIN office_region as sor ON sor.id = new_tbl.sc_region_id ORDER BY total_member DESC";
-      // $query = $this->db->query($sql)->result();
       return $query;
    }
 
